@@ -18,16 +18,6 @@ match .*[.block == 'button'] nb {
     </button>
 }
 
-match .*[.block == 'button' && .value] nb {
-    <input value="{.value}">
-        apply . nb-content
-
-        if .disabled {
-            @disabled = 'disabled'
-        }
-    </input>
-}
-
 match .*[.block == 'button' && .href] nb {
     <a href="{.href}">
         apply . nb-content
@@ -48,6 +38,8 @@ match .*[.block == 'button'] nb-content {
         @class += ' _disabled'
     }
 
-    .content
+    <span class="nb-button__text">
+        .content
+    </span>
 }
 
