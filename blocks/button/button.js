@@ -1,1 +1,1 @@
-define('button', {})
+nb.define('button', {})
