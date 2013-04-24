@@ -1,8 +1,40 @@
 func nb-dropdown(nodeset dropdown) {
     block = {
         'block': 'dropdown'
-        'direction': 'm'
+        'direction': 'down'
+        'tail': 'to_top'
     }
 
-    apply nb-extend(block, button) nb
+    apply nb-extend(block, dropdown) nb
 }
+
+match .*[.block == 'dropdown'] nb {
+    <div>
+        apply .direction nb-content
+        apply .tail nb-content
+    </div>
+}
+
+match .*[.block == 'button' && .href] nb {
+    <a href="{.href}">
+        apply . nb-content
+    </a>
+}
+
+match .*[.block == 'dropdown'] nb-content {
+
+    if (.size) {
+        @class += ' nb-button_size_{.size}'
+    }
+
+    @class += ' {.class}'
+
+    if .disabled {
+        @class += ' _disabled'
+    }
+
+    <span class="nb-button__text">
+        .content
+    </span>
+}
+
