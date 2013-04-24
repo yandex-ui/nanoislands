@@ -1,0 +1,8 @@
+func nb-dropdown(nodeset dropdown) {
+    block = {
+        'block': 'dropdown'
+        'direction': 'm'
+    }
+
+    apply nb-extend(block, button) nb
+}
