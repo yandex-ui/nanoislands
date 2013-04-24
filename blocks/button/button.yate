@@ -1,4 +1,3 @@
-
 func nb-button(nodeset button) {
     block = {
         'block': 'button'
@@ -10,22 +9,17 @@ func nb-button(nodeset button) {
 
 match .*[.block == 'button'] nb {
     <button>
-        apply . nb-content
-
-        if .disabled {
-            @disabled = 'disabled'
-        }
+        apply . nb-main
     </button>
 }
 
 match .*[.block == 'button' && .href] nb {
     <a href="{.href}">
-        apply . nb-content
+        apply . nb-main
     </a>
 }
 
-match .*[.block == 'button'] nb-content {
-    @data-nb = 'button'
+match .*[.block == 'button'] nb-attrs {
     @class = 'nb-button'
 
     if (.size) {
@@ -36,14 +30,16 @@ match .*[.block == 'button'] nb-content {
         @class += ' nb-button_theme_{.theme}'
     }
 
-    @class += ' {.class}'
-
-    if .disabled {
-        @class += ' _disabled'
+    if (.class) {
+        @class += ' {.class}'
     }
 
-    apply .attrs.* nb-attrs
+    if .disabled {
+        @class += ' nb-button_disabled js-disabled'
+    }
+}
 
+match .*[.block == 'button'] nb-content {
     <span class="nb-button__text">
         .content
     </span>

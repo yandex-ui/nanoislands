@@ -39,10 +39,14 @@ nb-button_theme()
 
 
 
+
   .nb-button_theme_pseudo
     background: none
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2)
     cursor: pointer
+
+  .nb-button_theme_pseudo .nb-button__text
+      padding: 0 0.78em
 
   .nb-button_theme_pseudo:before
     background: none
@@ -53,11 +57,18 @@ nb-button_theme()
   .nb-button_theme_pseudo:active:before
     box-shadow: none
 
-  .nb-button_theme_pseudo .nb-button__text
-    padding: 0 0.78em
-
   .nb-button_theme_pseudo:active .nb-button__text
     top: 0
+
+  .nb-button_disabled .nb-button_theme_pseudo
+    cursor: default
+
+
+
+
+
+
+
 
 
 nb-button_theme()

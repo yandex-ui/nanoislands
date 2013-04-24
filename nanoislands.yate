@@ -1,5 +1,13 @@
+// основной шаблон для нанобока
+match .*[.block] nb-main {
+    @data-nb = .block
+    apply . nb-attrs
+    apply .attrs.* _nb-attrs
+    apply . nb-content
+}
+
 // общий шаблон для определения атрибутов
-match .attrs.* nb-attrs {
+match .attrs.* _nb-attrs {
     @{name(.)} = .
 }
 
