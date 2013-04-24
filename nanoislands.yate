@@ -4,3 +4,4 @@ match .attrs.* nb-attrs {
 }
 
 include 'blocks/button/button.yate'
+include 'blocks/select/select.yate'

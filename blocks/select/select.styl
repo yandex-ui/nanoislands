@@ -1,0 +1,43 @@
+select()
+
+  .wrap
+    width:200px
+
+  .nb-select
+    max-width:100%
+
+  .select__arrow
+    font-size: 81%
+    font-style: normal
+    line-height: inherit
+    position: absolute
+    right: 1.2em
+    top: 0
+    position:absolute
+    color: #474747
+
+  .nb-select:active .select__arrow
+    padding-top: 1px
+
+  .nb-select._disabled:active .select__arrow
+    padding-top: 0px;
+
+  .nb-select._disabled:active .nb-button__text
+    top: 0px
+
+  .nb-select._disabled
+    opacity: 0.6
+
+  .nb-select._disabled:active
+    box-shadow: none
+
+  .nb-select._disabled:active:before
+    box-shadow: none
+
+  .nb-select .nb-button__text
+      display: block
+      overflow: hidden
+      padding-right: 2.2em
+      text-overflow: ellipsis
+
+select()

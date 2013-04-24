@@ -1,0 +1,43 @@
+
+func nb-select(nodeset select) {
+    block = {
+        'block': 'select'
+        'size': 'm'
+    }
+
+    apply nb-extend(block, select) nb
+}
+
+match .*[.block == 'select'] nb {
+    <button>
+        apply . nb-content
+
+    </button>
+}
+
+match .*[.block == 'select'] nb-content {
+    @data-nb = 'select'
+    @class = 'nb-button nb-select'
+
+    if (.size) {
+        @class += ' nb-button_size_{.size}'
+    }
+
+    if (.theme) {
+        @class += ' nb-button_theme_{.theme}'
+    }
+
+    @class += ' {.class}'
+
+    if .disabled {
+        @class += ' _disabled'
+        @disabled = 'disabled'
+    }
+
+    apply .attrs.* nb-attrs
+
+    <span class="nb-button__text">
+            .content
+    </span>
+    <i class="select__arrow">▼</i>
+}
