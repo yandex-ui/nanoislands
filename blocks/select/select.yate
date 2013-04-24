@@ -39,5 +39,5 @@ match .*[.block == 'select'] nb-content {
     <span class="nb-button__text">
             .content
     </span>
-    <i class="select__arrow">▼</i>
+    <i class="nb-select__arrow">▼</i>
 }
