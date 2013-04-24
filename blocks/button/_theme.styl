@@ -3,11 +3,16 @@ nb-button_theme()
   // кастомизация цветов
   .nb-button
     color: #333
+    box-shadow: 0 1px 0 rgba(#000, 0.07)
+
+    border-radius: 3px
 
     background: #fff
     background: linear-gradient(rgba(#000, 0.2) 0%, rgba(#000, 0.4) 100%)
 
   .nb-button:before
+    border-radius: 2px
+
     background: #eee
     background: linear-gradient(rgba(#fff) 0%, rgba(#eee) 100%)
 
@@ -16,6 +21,10 @@ nb-button_theme()
 
   .nb-button:active:before
     box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.5) inset
+
+  .nb-button__text
+    position: relative
+    padding: 0 1em
 
   .nb-button:active .nb-button__text
     top: 1px
@@ -44,7 +53,11 @@ nb-button_theme()
   .nb-button_theme_pseudo:active:before
     box-shadow: none
 
+  .nb-button_theme_pseudo .nb-button__text
+    padding: 0 0.78em
+
   .nb-button_theme_pseudo:active .nb-button__text
     top: 0
+
 
 nb-button_theme()

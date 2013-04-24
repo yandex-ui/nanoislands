@@ -15,19 +15,13 @@ nb-button()
     user-select: none
     position: relative
     font-family: $fontFamily
-    box-shadow: 0 1px 0 rgba(#000, 0.07)
+
 
   // фиксит выосту кнопки в ФФ
   // при использовании тега button
   .nb-button::-moz-focus-inner
     padding: 0
     border: 0
-
-  .nb-button
-    border-radius: 3px
-
-  .nb-button:before
-    border-radius: 2px
 
   .nb-button:before
     content: ''
@@ -36,10 +30,6 @@ nb-button()
     top: 1px
     right: 1px
     bottom: 1px
-
-  .nb-button__text
-    position: relative
-    padding: 0 1em
 
 nb-button()
 
