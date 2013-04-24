@@ -1,1 +1,6 @@
+// общий шаблон для определения атрибутов
+match .attrs.* nb-attrs {
+    @{name(.)} = .
+}
+
 include 'blocks/button/button.yate'

@@ -32,4 +32,4 @@ yr.externals['nb-extend'] = function(parent, node) {
     return parent;
 }
 
-})()
+})();

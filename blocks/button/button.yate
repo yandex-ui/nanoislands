@@ -32,14 +32,19 @@ match .*[.block == 'button'] nb-content {
         @class += ' nb-button_size_{.size}'
     }
 
+    if (.theme) {
+        @class += ' nb-button_theme_{.theme}'
+    }
+
     @class += ' {.class}'
 
     if .disabled {
         @class += ' _disabled'
     }
 
+    apply .attrs.* nb-attrs
+
     <span class="nb-button__text">
         .content
     </span>
 }
-
