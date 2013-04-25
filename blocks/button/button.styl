@@ -1,3 +1,7 @@
+/*
+    Кнопка.
+*/
+
 nb-button()
 
   .nb-button
@@ -16,6 +20,9 @@ nb-button()
     position: relative
     font-family: $fontFamily
 
+    color: #333
+    background: none
+    border-radius: 3px
 
   // фиксит выосту кнопки в ФФ
   // при использовании тега button
@@ -23,16 +30,15 @@ nb-button()
     padding: 0
     border: 0
 
-  .nb-button:before
-    content: ''
-    position: absolute
-    left: 1px
-    top: 1px
-    right: 1px
-    bottom: 1px
+  .nb-button__text
+    position: relative
+    padding: 0 1em
+
+
+
+
+  @import '_size'
+  @import '_theme'
+  @import '_disabled'
 
 nb-button()
-
-
-@import '_size'
-@import '_theme'

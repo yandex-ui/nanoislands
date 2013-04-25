@@ -1,1 +1,2 @@
 external nodeset nb-extend(nodeset, nodeset)
+external nodeset nb-create(scalar, nodeset)
