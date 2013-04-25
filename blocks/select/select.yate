@@ -1,5 +1,5 @@
 func nb-select(nodeset select) {
-default = {
+    default = {
         'size': 'm'
         'mod': 'select'
         'class': 'nb-select'
