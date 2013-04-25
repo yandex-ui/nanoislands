@@ -1,40 +1,47 @@
-func nb-dropdown(nodeset dropdown) {
-    block = {
-        'block': 'dropdown'
+func nb-dropdown(nodeset options) {
+    default = {
         'direction': 'down'
-        'tail': 'to_top'
+        'tail': 'to-bottom'
     }
 
-    apply nb-extend(block, dropdown) nb
+    nb-block('dropdown', nb-extend(default, options))
 }
 
-match .*[.block == 'dropdown'] nb {
+match .dropdown nb {
     <div>
-        apply .direction nb-content
-        apply .tail nb-content
+        apply . nb-main-attrs
+        apply . nb-main-content
     </div>
 }
 
-match .*[.block == 'button' && .href] nb {
-    <a href="{.href}">
-        apply . nb-content
+match .dropdown nb-attrs {
+    @data-nb = 'dropdown'
+    @class = 'nb-dropdown'
+}
+
+
+match .dropdown.direction nb-attrs {
+    @class += ' nb-dropdown_direction_{.}'
+}
+
+match .dropdown.tail nb-attrs {
+    @class += ' nb-dropdown_tail_{.}'
+}
+
+match .dropdown nb-content {
+    apply .* nb-content
+}
+
+match .dropdown.tail nb-content {
+    <div class="nb-dropdown__tail"></div>
+}
+
+
+match .dropdown.menu nb-content {
+    <a href="{.href}" class="nb-dropdown__line">
+        .text
     </a>
 }
 
-match .*[.block == 'dropdown'] nb-content {
 
-    if (.size) {
-        @class += ' nb-button_size_{.size}'
-    }
-
-    @class += ' {.class}'
-
-    if .disabled {
-        @class += ' _disabled'
-    }
-
-    <span class="nb-button__text">
-        .content
-    </span>
-}
 
