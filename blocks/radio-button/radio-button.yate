@@ -1,0 +1,34 @@
+func nb-radio-button(nodeset options) {
+    default = {
+        'size': 'm'
+        'theme': 'normal'
+    }
+
+    nb-block('radio-button', nb-extend(default, options))
+}
+
+match .radio-button nb {
+    <div>
+        apply . nb-main-attrs
+        apply . nb-main-content
+    </div>
+}
+
+match .radio-button nb-attrs {
+    @data-nb = 'radio-button'
+    @class = 'nb-radio-button'
+}
+
+match .radio-button nb-content {
+    apply .group nb-content-radio-button
+}
+
+match .radio-button.group nb-content-radio-button {
+    button = {
+        'size': ..size
+        'theme': ..theme
+    }
+
+    nb-button(nb-extend(button, .))
+}
+

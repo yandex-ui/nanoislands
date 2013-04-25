@@ -17,8 +17,25 @@ function extend(obj) {
     return obj;
 }
 
+// http://underscorejs.org/#pluck
+function pluck(list, popertyName) {
+    var result = [];
+
+    for (var i = 0, c = list.length; i < c; i++) {
+        var item = list[i];
+        var value = item && item[popertyName];
+
+        if (value) {
+            result.push(value)
+        }
+    }
+
+    return result;
+}
+
+
 yr.externals['nb-extend'] = function(parent, node) {
-    if (node[0]) {
+    if (node && node[0]) {
         if (typeof node == 'string') {
             parent[0].data.content = node;
         } else {
@@ -34,7 +51,12 @@ yr.externals['nb-extend'] = function(parent, node) {
 
 yr.externals['nb-create'] = function(name, options) {
     var data = {};
-    data[name] = options[0].data;
+
+    if (options && options.length) {
+        data[name] = options.length == 1
+            ? options[0].data
+            : pluck(options, 'data')
+    }
 
     return [{
         data: data,
