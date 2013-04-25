@@ -42,6 +42,11 @@ match .button.disabled nb-attrs {
     @class += ' nb-button_disabled js-disabled'
 }
 
+match .button.checked nb-attrs {
+    @class += ' nb-button_checked js-checked'
+}
+
+
 match .button nb-content {
     <span class="nb-button__text">
         apply . nb-content-button

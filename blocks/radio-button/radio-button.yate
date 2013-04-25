@@ -8,10 +8,10 @@ func nb-radio-button(nodeset options) {
 }
 
 match .radio-button nb {
-    <div>
+    <span>
         apply . nb-main-attrs
         apply . nb-main-content
-    </div>
+    </span>
 }
 
 match .radio-button nb-attrs {
@@ -27,6 +27,11 @@ match .radio-button.group nb-content-radio-button {
     button = {
         'size': ..size
         'theme': ..theme
+        'class': .class + ' js-button'
+        'attrs': {
+            'data-nb': ''
+            'data-value': .value
+        }
     }
 
     nb-button(nb-extend(button, .))
