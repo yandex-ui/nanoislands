@@ -1,0 +1,19 @@
+func nb-select(nodeset select) {
+    default = {
+        'size': 'm'
+        'mod': 'select'
+        'class': 'nb-select'
+    }
+
+    nb-button(nb-extend(default, select))
+}
+
+match .button[.mod == 'select'] nb {
+    <button>
+        apply . nb-main-attrs
+        @data-nb = 'select'
+
+        apply . nb-main-content
+
+    </button>
+}

@@ -30,3 +30,4 @@ func nb-block(name, nodeset options) {
 
 include 'blocks/button/button.yate'
 include 'blocks/radio-button/radio-button.yate'
+include 'blocks/select/select.yate'
