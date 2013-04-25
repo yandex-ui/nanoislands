@@ -32,4 +32,16 @@ yr.externals['nb-extend'] = function(parent, node) {
     return parent;
 }
 
+yr.externals['nb-create'] = function(name, options) {
+    var data = {};
+    data[name] = options[0].data;
+
+    return [{
+        data: data,
+        name: '',
+        parent: null,
+        doc: options[0].doc
+    }];
+}
+
 })();

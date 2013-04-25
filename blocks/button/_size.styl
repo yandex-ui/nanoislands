@@ -1,16 +1,46 @@
+/*
+
+  Средняя кнопка
+    yate:
+      options = {
+        'size': 'm' // default
+      }
+
+    css:
+      .nb-button_size_m
+
+  Маленькая кнопка
+    yate:
+      options = {
+        'size': 's'
+      }
+
+    css:
+      .nb-button_size_s
+
+*/
+
 nb-button_size()
 
   // кастомизация размеров
   .nb-button_size_s
     font-size: 13px
-    line-height: 24px
-    background-size: auto, auto 28px
+    line-height: 28px
 
 
   .nb-button_size_m
     font-size: 15px
-    line-height: 28px
-    background-size: auto, auto 32px
+    line-height: 32px
+
+  .nb-button_theme_pseudo
+
+    &.nb-button_size_s
+      line-height: 24px
+
+    &.nb-button_size_m
+      line-height: 28px
+
+
 
 
 nb-button_size()

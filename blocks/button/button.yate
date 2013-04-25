@@ -1,46 +1,53 @@
-func nb-button(nodeset button) {
-    block = {
-        'block': 'button'
+func nb-button(nodeset options) {
+    default = {
         'size': 'm'
+        'theme': 'normal'
     }
 
-    apply nb-extend(block, button) nb
+    nb-block('button', nb-extend(default, options))
 }
 
-match .*[.block == 'button'] nb {
+match .button nb {
     <button>
-        apply . nb-main
+        apply . nb-main-attrs
+        apply . nb-main-content
     </button>
 }
 
-match .*[.block == 'button' && .href] nb {
-    <a href="{.href}">
-        apply . nb-main
+match .button nb {
+    <a>
+        apply . nb-main-attrs
+        apply . nb-main-content
     </a>
 }
 
-match .*[.block == 'button'] nb-attrs {
+match .button nb-attrs {
+    @data-nb = 'button'
     @class = 'nb-button'
-
-    if (.size) {
-        @class += ' nb-button_size_{.size}'
-    }
-
-    if (.theme) {
-        @class += ' nb-button_theme_{.theme}'
-    }
-
-    if (.class) {
-        @class += ' {.class}'
-    }
-
-    if .disabled {
-        @class += ' nb-button_disabled js-disabled'
-    }
 }
 
-match .*[.block == 'button'] nb-content {
+match .button[!.disabled].href nb-attrs {
+    @href="{.}"
+}
+
+match .button.size nb-attrs {
+    @class += ' nb-button_size_{.}'
+}
+
+match .button.theme nb-attrs {
+    @class += ' nb-button_theme_{.}'
+}
+
+match .button.disabled nb-attrs {
+    @class += ' nb-button_disabled js-disabled'
+}
+
+match .button nb-content {
     <span class="nb-button__text">
-        .content
+        apply . nb-content-button
     </span>
+}
+
+match .button nb-content-button {
+    .content
 }
