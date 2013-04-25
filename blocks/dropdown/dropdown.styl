@@ -46,33 +46,33 @@
 .nb-dropdown__tail
   position: absolute
   font-size: 11px
-  width: 1em
-  height: 1em
+  width: 16px
+  height: 16px
   clip: rect(0,0,0,0) // Hide until mode set
 
   .nb-dropdown_tail_to-bottom > &
     top: 0
     left: 50%
-    margin: -1em -.5em
+    margin: -16px -8px
     clip: rect(-99em, 99em, auto, -99em)
 
 
   .nb-dropdown_tail_to-top > &
     bottom: 0
     left: 50%
-    margin: -1em -.5em
+    margin: -16px -8px
     clip: rect(0, 99em, 99em, -99em)
 
   .nb-dropdown_tail_to-left > &
     top: 50%
     right: 0
-    margin: -.5em -1em
+    margin:  -8px -16px
     clip: rect(-99em, 99em, 99em, 0)
 
   .nb-dropdown_tail_to-right > &
     top: 50%
     left: 0
-    margin: -.5em -1em
+    margin:  -8px -16px
     clip: rect(-99em, auto, 99em, -99em)
 
 .nb-dropdown__tail:before
@@ -87,12 +87,12 @@
 
   background: #FFF
 
-  box-shadow: .2em .2em .8em -.2em #000
-  transform: scale(.65,1) rotate(45deg)
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2), 3px 3px 20px 0 rgba(0, 0, 0, 0.2)
+  transform: rotate(45deg)
 
   .nb-dropdown_tail_to-left > &,
   .nb-dropdown_tail_to-right > &
-    transform: scale(1,.65) rotate(45deg)
+    transform: rotate(45deg)
 
 
   .nb-dropdown_tail_to-bottom > &
