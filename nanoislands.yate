@@ -14,7 +14,7 @@ match .* nb-main-content {
 
 
 match .class nb-attrs {
-    @class += ' {.class}'
+    @class += ' {.}'
 }
 
 // общий шаблон для определения атрибутов
