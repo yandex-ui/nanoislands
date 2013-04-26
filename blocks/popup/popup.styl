@@ -1,5 +1,6 @@
 // popup
 .nb-popup
+  opacity: 0;
   z-index: 100
   position: absolute
   text-align: left
@@ -50,55 +51,30 @@
   height: 16px
   clip: rect(0,0,0,0) // Hide until mode set
 
-  .nb-popup_tail_to-bottom > &,
-  .nb-popup_tail_to-bottom-left > &,
-  .nb-popup_tail_to-bottom-right > &
+  .nb-popup_tail_to_bottom > &
     top: 0
     left: 50%
     margin: -16px -8px
     clip: rect(-99em, 99em, auto, -99em)
 
-  .nb-popup_tail_to-top > &,
-  .nb-popup_tail_to-top-left > &,
-  .nb-popup_tail_to-top-right > &
+  .nb-popup_tail_to_top > &
     bottom: 0
     left: 50%
     margin: -16px -8px
     clip: rect(0, 99em, 99em, -99em)
 
-  .nb-popup_tail_to-bottom-right > &,
-  .nb-popup_tail_to-top-right > &
-    left: auto
-    right: 18px
-
-  .nb-popup_tail_to-bottom-left > &,
-  .nb-popup_tail_to-top-left > &
-    left: 18px
-
-  .nb-popup_tail_to-left > &,
-  .nb-popup_tail_to-left-top > &,
-  .nb-popup_tail_to-left-bottom > &
+  .nb-popup_tail_to_left > &
     top: 50%
     right: 0
     margin:  -8px -16px
     clip: rect(-99em, 99em, 99em, 0)
 
-  .nb-popup_tail_to-right > &,
-  .nb-popup_tail_to-right-top > &,
-  .nb-popup_tail_to-right-bottom > &
+  .nb-popup_tail_to_right > &
     top: 50%
     left: 0
     margin:  -8px -16px
     clip: rect(-99em, auto, 99em, -99em)
 
-  .nb-popup_tail_to-left-top > &,
-  .nb-popup_tail_to-right-top > &
-    top: 18px
-
-  .nb-popup_tail_to-left-bottom > &,
-  .nb-popup_tail_to-right-bottom > &
-    top: auto
-    bottom: 18px
 
 .nb-popup__tail:before
   content: ""
@@ -115,34 +91,22 @@
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2), 3px 3px 20px 0 rgba(0, 0, 0, 0.2)
   transform: rotate(45deg)
 
-  .nb-popup_tail_to-left > &,
-  .nb-popup_tail_to-left-top > &,
-  .nb-popup_tail_to-left-bottom > &,
-  .nb-popup_tail_to-right > &,
-  .nb-popup_tail_to-right-left > &,
-  .nb-popup_tail_to-right-bottom > &
+  .nb-popup_tail_to_left > &,
+  .nb-popup_tail_to_right > &
     transform: rotate(45deg)
 
 
-  .nb-popup_tail_to-bottom > &,
-  .nb-popup_tail_to-bottom-left > &,
-  .nb-popup_tail_to-bottom-right > &
+  .nb-popup_tail_to_bottom > &
     top: 50%
 
-  .nb-popup_tail_to-top > &,
-  .nb-popup_tail_to-top-left > &,
-  .nb-popup_tail_to-top-right > &
+  .nb-popup_tail_to_top > &
     top: -50%
 
 
-  .nb-popup_tail_to-right > &,
-  .nb-popup_tail_to-right-top > &,
-  .nb-popup_tail_to-right-bottom > &
+  .nb-popup_tail_to_right > &
     left: 50%
 
-  .nb-popup_tail_to-left > &,
-  .nb-popup_tail_to-left-top > &,
-  .nb-popup_tail_to-left-bottom > &
+  .nb-popup_tail_to_left > &
     left: -50%
 
 

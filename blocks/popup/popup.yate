@@ -1,7 +1,7 @@
 func nb-popup(nodeset options) {
     default = {
         'direction': 'down'
-        'tail': 'to-bottom'
+        'tail': 'true'
     }
 
     nb-block('popup', nb-extend(default, options))
@@ -24,8 +24,8 @@ match .popup.direction nb-attrs {
     @class += ' nb-popup_direction_{.}'
 }
 
-match .popup.tail nb-attrs {
-    @class += ' nb-popup_tail_{.}'
+match .popup.id nb-attrs {
+    @id += '{.}'
 }
 
 match .popup nb-content {
