@@ -16,7 +16,7 @@ match .popup nb {
 
 match .popup nb-attrs {
     @data-nb = 'popup'
-    @class = 'nb-popup'
+    @class = 'nb-popup _hidden'
 }
 
 
