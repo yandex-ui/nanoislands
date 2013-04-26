@@ -50,30 +50,55 @@
   height: 16px
   clip: rect(0,0,0,0) // Hide until mode set
 
-  .nb-dropdown_tail_to-bottom > &
+  .nb-dropdown_tail_to-bottom > &,
+  .nb-dropdown_tail_to-bottom-left > &,
+  .nb-dropdown_tail_to-bottom-right > &
     top: 0
     left: 50%
     margin: -16px -8px
     clip: rect(-99em, 99em, auto, -99em)
 
-
-  .nb-dropdown_tail_to-top > &
+  .nb-dropdown_tail_to-top > &,
+  .nb-dropdown_tail_to-top-left > &,
+  .nb-dropdown_tail_to-top-right > &
     bottom: 0
     left: 50%
     margin: -16px -8px
     clip: rect(0, 99em, 99em, -99em)
 
-  .nb-dropdown_tail_to-left > &
+  .nb-dropdown_tail_to-bottom-right > &,
+  .nb-dropdown_tail_to-top-right > &
+    left: auto
+    right: 18px
+
+  .nb-dropdown_tail_to-bottom-left > &,
+  .nb-dropdown_tail_to-top-left > &
+    left: 18px
+
+  .nb-dropdown_tail_to-left > &,
+  .nb-dropdown_tail_to-left-top > &,
+  .nb-dropdown_tail_to-left-bottom > &
     top: 50%
     right: 0
     margin:  -8px -16px
     clip: rect(-99em, 99em, 99em, 0)
 
-  .nb-dropdown_tail_to-right > &
+  .nb-dropdown_tail_to-right > &,
+  .nb-dropdown_tail_to-right-top > &,
+  .nb-dropdown_tail_to-right-bottom > &
     top: 50%
     left: 0
     margin:  -8px -16px
     clip: rect(-99em, auto, 99em, -99em)
+
+  .nb-dropdown_tail_to-left-top > &,
+  .nb-dropdown_tail_to-right-top > &
+    top: 18px
+
+  .nb-dropdown_tail_to-left-bottom > &,
+  .nb-dropdown_tail_to-right-bottom > &
+    top: auto
+    bottom: 18px
 
 .nb-dropdown__tail:before
   content: ""
@@ -91,21 +116,33 @@
   transform: rotate(45deg)
 
   .nb-dropdown_tail_to-left > &,
-  .nb-dropdown_tail_to-right > &
+  .nb-dropdown_tail_to-left-top > &,
+  .nb-dropdown_tail_to-left-bottom > &,
+  .nb-dropdown_tail_to-right > &,
+  .nb-dropdown_tail_to-right-left > &,
+  .nb-dropdown_tail_to-right-bottom > &
     transform: rotate(45deg)
 
 
-  .nb-dropdown_tail_to-bottom > &
+  .nb-dropdown_tail_to-bottom > &,
+  .nb-dropdown_tail_to-bottom-left > &,
+  .nb-dropdown_tail_to-bottom-right > &
     top: 50%
 
-  .nb-dropdown_tail_to-top > &
+  .nb-dropdown_tail_to-top > &,
+  .nb-dropdown_tail_to-top-left > &,
+  .nb-dropdown_tail_to-top-right > &
     top: -50%
 
 
-  .nb-dropdown_tail_to-right > &
+  .nb-dropdown_tail_to-right > &,
+  .nb-dropdown_tail_to-right-top > &,
+  .nb-dropdown_tail_to-right-bottom > &
     left: 50%
 
-  .nb-dropdown_tail_to-left > &
+  .nb-dropdown_tail_to-left > &,
+  .nb-dropdown_tail_to-left-top > &,
+  .nb-dropdown_tail_to-left-bottom > &
     left: -50%
 
 
