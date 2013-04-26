@@ -23,7 +23,7 @@ match .button[.href] nb {
 
 match .button nb-attrs {
     @data-nb = 'button'
-    @class = 'nb-button'
+    @class = 'nb nb-button'
 }
 
 match .button[!.disabled].href nb-attrs {
@@ -40,12 +40,8 @@ match .button.theme nb-attrs {
 
 match .button.disabled nb-attrs {
     @class += ' nb-button_disabled js-disabled'
+    @disabled = 'disabled'
 }
-
-match .button.checked nb-attrs {
-    @class += ' nb-button_checked js-checked'
-}
-
 
 match .button nb-content {
     <span class="nb-button__text">

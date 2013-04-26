@@ -16,7 +16,7 @@ match .radio-button nb {
 
 match .radio-button nb-attrs {
     @data-nb = 'radio-button'
-    @class = 'nb-radio-button'
+    @class = 'nb nb-radio-button'
 }
 
 match .radio-button nb-content {
@@ -28,8 +28,9 @@ match .radio-button.group nb-content-radio-button {
         'size': ..size
         'theme': ..theme
         'class': .class + ' js-button'
+        'name': ..name
+        'mod': 'radio-button'
         'attrs': {
-            'data-nb': ''
             'data-value': .value
         }
     }
@@ -37,3 +38,24 @@ match .radio-button.group nb-content-radio-button {
     nb-button(nb-extend(button, .))
 }
 
+match .button[.mod == 'radio-button'] nb {
+    uniq = 'nb-radio-button_{nb-uniq()}'
+
+    <label for="{uniq}">
+        apply . nb-main-attrs
+        apply . nb-main-content
+
+        <input class="nb-radio-button__radio" type="radio" name="{ .name }" value="{ .value }" id="{uniq}">
+            if .checked {
+                @checked = 'checked'
+            }
+            if .disabled {
+                @disabled = 'disabled'
+            }
+        </input>
+    </label>
+}
+
+match .button[.mod == 'radio-button'].checked nb-attrs {
+    @class += ' nb-button_checked'
+}

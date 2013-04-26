@@ -1,5 +1,13 @@
 nb-radio-button()
 
+  // .nb-button_focus
+  // .nb-button:focus
+  //   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.07),
+  //     0 0 6px 2px rgba(255, 204, 0, 0.7)
+
+  //   &:before
+  //     box-shadow: 0 0 0 1px rgba(193, 154, 0, 0.2)
+
   .nb-radio-button
     display: inline-block
     margin-left: -1px
@@ -24,6 +32,11 @@ nb-radio-button()
     .nb-button:last-child:before
       border-radius: 0 2px 2px 0
 
+
+    .nb-radio-button__radio
+      position: absolute
+      user-select: none
+      opacity: 0
 
 
 

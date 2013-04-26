@@ -66,4 +66,13 @@ yr.externals['nb-create'] = function(name, options) {
     }];
 }
 
+
+yr.externals['nb-uniq'] = (function(){
+    var uniq = 0;
+    return function() {
+        return uniq++;
+    }
+})()
+
+
 })();

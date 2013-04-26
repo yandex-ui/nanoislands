@@ -1,33 +1,28 @@
 nb.define('radio-button', {
     events: {
         'init': 'init',
-        'click .js-button': 'onClick'
+        'click': 'select',
+        'change': 'change'
     },
 
     init: function() {
-        this.$buttons = $(this.node).children('.js-button');
+        console.log('init', this.name);
+        this.$node = $(this.node);
+        this.$buttons = this.$node.children('.nb-button');
     },
 
-    onClick: function(e, button) {
-        var $button = $(button);
-
-        if (!$button.is('.js-checked')) {
-            this.uncheckedAll();
-            this.checked($button);
-        }
+    select: function(e, button) {
+        this.deselectAll();
+        var $button = $(e.target).closest('.nb-button');
+        $button.addClass('nb-button_checked');
+        $button.find('input').attr('checked', 'checked');
     },
 
-    uncheckedAll: function() {
-        this.$buttons
-            .removeClass('js-checked')
-            .removeClass('nb-button_checked')
+    deselectAll: function() {
+        this.$buttons.removeClass('nb-button_checked');
     },
 
-    checked: function($button) {
-        $button
-            .addClass('js-checked')
-            .addClass('nb-button_checked')
-
-        this.trigger('checked');
+    change: function() {
+        console.log('change');
     }
 });

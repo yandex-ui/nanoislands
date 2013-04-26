@@ -1,0 +1,1 @@
+nb.define('select', {});
