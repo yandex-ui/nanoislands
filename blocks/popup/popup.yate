@@ -1,0 +1,47 @@
+func nb-popup(nodeset options) {
+    default = {
+        'direction': 'down'
+        'tail': 'to-bottom'
+    }
+
+    nb-block('popup', nb-extend(default, options))
+}
+
+match .popup nb {
+    <div>
+        apply . nb-main-attrs
+        apply . nb-main-content
+    </div>
+}
+
+match .popup nb-attrs {
+    @data-nb = 'popup'
+    @class = 'nb-popup'
+}
+
+
+match .popup.direction nb-attrs {
+    @class += ' nb-popup_direction_{.}'
+}
+
+match .popup.tail nb-attrs {
+    @class += ' nb-popup_tail_{.}'
+}
+
+match .popup nb-content {
+    apply .* nb-content
+}
+
+match .popup.tail nb-content {
+    <div class="nb-popup__tail"></div>
+}
+
+
+match .popup.menu nb-content {
+    <a href="{.href}" class="nb-popup__line">
+        .text
+    </a>
+}
+
+
+
