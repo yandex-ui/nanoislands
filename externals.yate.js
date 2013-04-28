@@ -1,4 +1,4 @@
-(function() {
+;(function() {
 
 function extend(obj) {
     var exts = Array.prototype.slice.call(arguments, 1);
