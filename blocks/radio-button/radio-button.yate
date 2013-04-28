@@ -16,7 +16,7 @@ match .radio-button nb {
 
 match .radio-button nb-attrs {
     @data-nb = 'radio-button'
-    @class = 'nb nb-radio-button'
+    @class = 'nb-radio-button'
 }
 
 match .radio-button nb-content {
@@ -55,6 +55,11 @@ match .button[.mod == 'radio-button'] nb {
         </input>
     </label>
 }
+
+match .button[.mod == 'radio-button'] nb-attrs {
+    @class = 'nb-button'
+}
+
 
 match .button[.mod == 'radio-button'].checked nb-attrs {
     @class += ' nb-button_checked'
