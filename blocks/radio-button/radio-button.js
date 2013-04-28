@@ -5,7 +5,6 @@ nb.define('radio-button', {
     },
 
     init: function() {
-        console.log('init', this.name);
         this.$node = $(this.node);
         this.$buttons = this.$node.children('.nb-button');
     },

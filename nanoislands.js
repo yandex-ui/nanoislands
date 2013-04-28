@@ -1,4 +1,4 @@
-include('nanoblocks/nanoblocks.js')
+include('nanoblocks.js')
 
 
 include('blocks/button/button.js')
