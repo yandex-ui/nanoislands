@@ -1,8 +1,7 @@
 nb.define('radio-button', {
     events: {
         'init': 'init',
-        'click .nb-button': 'select',
-        'change': 'change'
+        'click .nb-button': 'select'
     },
 
     init: function() {
@@ -14,16 +13,11 @@ nb.define('radio-button', {
     select: function(e, button) {
         this.deselectAll();
         var $button = $(button);
-        console.log($button);
         $button
             .addClass('nb-button_checked')
     },
 
     deselectAll: function() {
         this.$buttons.removeClass('nb-button_checked');
-    },
-
-    change: function() {
-        console.log('change');
     }
 });
