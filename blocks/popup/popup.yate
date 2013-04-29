@@ -1,6 +1,5 @@
 func nb-popup(nodeset options) {
     default = {
-        'direction': 'down'
         'tail': 'true'
     }
 
@@ -38,7 +37,7 @@ match .popup.tail nb-content {
 
 
 match .popup.menu nb-content {
-    <a href="{.href}" class="nb-popup__line">
+    <a href="{.href}" class="nb-popup__line _link">
         .text
     </a>
 }
