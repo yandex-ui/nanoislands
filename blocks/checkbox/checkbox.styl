@@ -9,7 +9,9 @@ nb-checkbox()
 
     padding-left: $checkbox-size-M * 1.5 - 1px
 
-    text-shadow: 0 1px rgba(#fff, 0.2)
+    font: $font-p1
+
+    text-shadow: 0 1px rgba($background, 0.2)
     user-select: none
 
   .nb-checkbox__input
@@ -22,13 +24,13 @@ nb-checkbox()
     display: inline-block
 
     position: absolute
-    top: 3px
+    top: 2px
     left: 0
 
     width: $checkbox-size-M
     height: $checkbox-size-M
 
-    background: linear-gradient(rgba(#000, 0.2), rgba(#000, 0.38))
+    background: linear-gradient(rgba($foreground, 0.2), rgba($foreground, 0.38))
 
     vertical-align: top
 
@@ -46,7 +48,7 @@ nb-checkbox()
       right: 1px
       bottom: 1px
 
-      background: linear-gradient(#fff, #eee)
+      background: linear-gradient($background, #eee)
 
   .nb-checkbox__flag_checkbox
     border-radius: 3px
@@ -81,18 +83,18 @@ nb-checkbox()
   .nb-checkbox__input:checked + .nb-checkbox__flag
     background: rgba(255, 236, 166, 0.4)
 
-    box-shadow: 0 1px 7px rgba(30, 23, 0, 0.8) inset, 0 2px 0 -1px rgba(#fff, 0.2)
+    box-shadow: 0 1px 7px rgba(30, 23, 0, 0.8) inset, 0 2px 0 -1px rgba($background, 0.2)
 
   .nb-checkbox__input:checked + .nb-checkbox__flag:before
     background: linear-gradient(#ffeca6, #fff6d5)
 
-    box-shadow: 0 1px 3px -1px rgba(#000, 0.45) inset
+    box-shadow: 0 1px 3px -1px rgba($foreground, 0.45) inset
 
   .nb-checkbox__input:checked + .nb-checkbox__flag_radio:after
     background: #333
 
   .nb-checkbox__input:checked + .nb-checkbox__flag_checkbox:after
-    border-color: rgba(#000, 0.85)
+    border-color: rgba($foreground, 0.85)
 
 
   @import _size
