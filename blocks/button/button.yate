@@ -43,6 +43,10 @@ match .button.disabled nb-attrs {
     @disabled = 'disabled'
 }
 
+match .button[!(.content)].icon nb-attrs {
+    @class += ' nb-button_only-icon'
+}
+
 match .button nb-content {
     <span class="nb-button__text">
         apply . nb-content-button
@@ -51,4 +55,14 @@ match .button nb-content {
 
 match .button nb-content-button {
     .content
+}
+
+match .button[.content && .icon] nb-content-button {
+    apply .icon nb
+    .content
+}
+
+match .button[!.content && .icon] nb-content-button {
+    html('&nbsp;')
+    apply .icon nb
 }
