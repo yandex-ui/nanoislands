@@ -41,10 +41,7 @@ match .radio-button.group nb-content-radio-button {
 match .button[.mod == 'radio-button'] nb {
     uniq = 'nb-radio-button_{nb-uniq()}'
 
-    <label for="{uniq}">
-        apply . nb-main-attrs
-        apply . nb-main-content
-
+    <span class="nb-radio-button__button">
         <input class="nb-radio-button__radio" type="radio" name="{ .name }" value="{ .value }" id="{uniq}">
             if .checked {
                 @checked = 'checked'
@@ -53,7 +50,12 @@ match .button[.mod == 'radio-button'] nb {
                 @disabled = 'disabled'
             }
         </input>
-    </label>
+
+        <label for="{uniq}">
+            apply . nb-main-attrs
+            apply . nb-main-content
+        </label>
+    </span>
 }
 
 match .button[.mod == 'radio-button'] nb-attrs {
