@@ -8,10 +8,10 @@ func nb-radio-button(nodeset options) {
 }
 
 match .radio-button nb {
-    <span>
+    <form method="get" action="#">
         apply . nb-main-attrs
         apply . nb-main-content
-    </span>
+    </form>
 }
 
 match .radio-button nb-attrs {
