@@ -1,0 +1,43 @@
+.nb-progress
+  position: relative
+  background: rgba(0,0,0,.07)
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.2), inset 0 0 1px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.2)
+
+.nb-progress__title
+  font: $font-p2
+  white-space: nowrap
+  text-overflow: hellip
+  position: absolute
+  left:  $gapM
+  right: $gapM
+  top: 0
+  line-height:  28px
+  overflow: hidden
+
+.nb-progress_type_title  .nb-progress__title
+  text-align: left
+
+.nb-progress_type_percentage  .nb-progress__title
+  text-align: center
+
+.nb-progress__bar
+  position: relative
+  line-height:  28px
+  height: 28px
+  background: rgba(255,236,166,.4)
+  box-shadow: inset 0 1px 7px rgba(30, 23, 0, .35)
+
+.nb-progress__bar:before
+  content: ' '
+  position: absolute
+  left: 1px
+  right: 1px
+  top: 1px
+  bottom: 1px
+  background: #ffeca6
+  box-shadow: inset 0 1px 3px -1px rgba(0, 0, 0, .2)
+
+
+  
+  
+ 
