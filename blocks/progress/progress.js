@@ -14,6 +14,11 @@ nb.define('progress', {
         this.$bar = $(this.node).find('.js-bar');
     },
 
+    /**
+     * Изменяет значение прогресс бара
+     * @param {String} Новое значение.
+     */
+
     update: function(newVal) {
         var newVal = parseFloat(newVal)
 
@@ -26,6 +31,9 @@ nb.define('progress', {
         this.data('progress', newVal)
     },
 
+    /**
+     * Меняет значение на еденицу
+     */
     tick: function() {
         var newVal = parseFloat(this.data('progress'))
 
