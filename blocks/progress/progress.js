@@ -35,7 +35,7 @@ nb.define('progress', {
      * Меняет значение на еденицу
      */
     tick: function() {
-        var newVal = parseFloat(this.data('progress'))
+        var newVal = parseFloat(this.data('progress'), 10)
 
         newVal < 100 ? newVal++ : newVal
 
