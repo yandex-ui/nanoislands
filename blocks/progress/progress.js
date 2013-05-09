@@ -32,7 +32,7 @@ nb.define('progress', {
     },
 
     /**
-     * Меняет значение на еденицу
+     * Меняет значение на единицу
      */
     tick: function() {
         var newVal = parseFloat(this.data('progress'), 10)

@@ -2,8 +2,12 @@ func nb-progress(nodeset options) {
     default = {
         'bar': 'true'
         'start': '0%'
-        'type': 'percentage' // показывать проценты вместо title
+        'type': 'percentage'
         'title': ''
+
+        // показывать проценты
+        // 'type': 'title'
+
     }
 
     nb-block('progress', nb-extend(default, options))
