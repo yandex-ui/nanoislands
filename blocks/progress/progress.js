@@ -20,7 +20,7 @@ nb.define('progress', {
      */
 
     update: function(newVal) {
-        var newVal = parseFloat(newVal)
+        var newVal = parseFloat(newVal, 10)
 
         this.$bar.css({width: newVal + '%'})
 
