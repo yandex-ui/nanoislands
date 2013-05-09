@@ -18,11 +18,6 @@ match .popup nb-attrs {
     @class = 'nb-popup _hidden'
 }
 
-
-match .popup.direction nb-attrs {
-    @class += ' nb-popup_direction_{.}'
-}
-
 match .popup.id nb-attrs {
     @id += '{.}'
 }
