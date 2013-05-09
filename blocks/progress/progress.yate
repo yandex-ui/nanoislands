@@ -2,7 +2,7 @@ func nb-progress(nodeset options) {
     default = {
         'bar': 'true'
         'start': '0%'
-        'type': 'percentage'
+        'type': 'percentage' // показывать проценты вместо title
         'title': ''
     }
 
