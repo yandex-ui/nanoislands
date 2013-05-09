@@ -1,0 +1,61 @@
+func nb-progress(nodeset options) {
+    default = {
+        'bar': 'true'
+        'start': '0%'
+        'type': 'percentage'
+        'title': ''
+
+        // показывать проценты
+        // 'type': 'title'
+
+    }
+
+    nb-block('progress', nb-extend(default, options))
+}
+
+match .progress nb {
+    <div>
+        apply . nb-main-attrs
+        apply . nb-main-content
+    </div>
+}
+
+match .progress nb-attrs {
+    @data-nb = 'progress'
+    @class = 'nb-progress _init'
+}
+
+match .progress.type nb-attrs {
+    @data-nb-type = '{.}'
+    @class += ' nb-progress_type_{.}'
+}
+
+match .progress.id nb-attrs {
+    @id = '{.}'
+}
+
+match .progress.start nb-attrs {
+    @data-nb-progress = '{.}'
+}
+
+match .progress nb-content {
+    apply .* nb-content
+}
+
+match .progress.bar nb-content {
+    <div class="nb-progress__bar js-bar" style="width: {/.start}"></div>
+}
+
+match .progress.title nb-content {
+    <div class="nb-progress__title js-title">
+        apply . nb-progress-text
+    </div>
+}
+
+match .progress.title nb-progress-text {
+    .
+}
+
+match .progress.title[/.type == 'percentage'] nb-progress-text {
+    /.start
+}
