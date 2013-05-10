@@ -43,7 +43,7 @@ match .progress nb-content {
 }
 
 match .progress.bar nb-content {
-    <div class="nb-progress__bar js-bar" style="width: {/.start}"></div>
+    <div class="nb-progress__bar js-bar" style="width: {/.start}%"></div>
 }
 
 match .progress.title nb-content {
