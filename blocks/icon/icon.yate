@@ -1,3 +1,11 @@
+func nb-icon(icon) {
+    default = {
+        'icon': icon
+    }
+
+    nb-block('icon', default)
+}
+
 match .icon nb {
-    <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_{.}" />
+    <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_{.icon}" />
 }
