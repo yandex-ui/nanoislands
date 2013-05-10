@@ -1,0 +1,38 @@
+func nb-input-group(nodeset defaultBlock, nodeset inputBlock, nodeset buttonBlock ) {
+    default = {
+        'direction': 'inputButton'
+        'class':     'input-group'
+    }
+    defaultInput = {
+        'size': 's'
+        'mod': 'input-group'
+        'class': 'nb-input-group__input'
+    }
+    defaultButton = {
+        'size': 's'
+        'mod': 'input-group'
+        'class': 'nb-input-group__button'
+    }
+
+    tmpInput = nb-extend(defaultInput, inputBlock)
+    tmpButton = nb-extend(defaultButton, buttonBlock)
+    tmpDefault = nb-extend(default, defaultBlock)
+
+    tmpInputButton = nb-extend(nb-wrap('input',tmpInput), nb-wrap('button',tmpButton))
+
+    nb-block('inputGroup', nb-extend(tmpDefault, tmpInputButton))
+}
+
+match .inputGroup nb {
+    <div>
+        @class = .class
+        @data-nb = 'input-group'
+        if (.direction == 'buttonInput') {
+            nb-button(.button)
+            nb-input(.input)
+        } else {
+            nb-input(.input)
+            nb-button(.button)
+        }
+    </div>
+}
