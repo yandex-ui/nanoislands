@@ -1,38 +1,50 @@
-func nb-input-group(nodeset defaultBlock, nodeset inputBlock, nodeset buttonBlock ) {
+func nb-input-button-group(nodeset options) {
     default = {
         'direction': 'inputButton'
-        'class':     'input-group'
-    }
-    defaultInput = {
-        'size': 's'
-        'mod': 'input-group'
-        'class': 'nb-input-group__input'
-    }
-    defaultButton = {
-        'size': 's'
-        'mod': 'input-group'
-        'class': 'nb-input-group__button'
+        'input' : {
+            'size': 's'
+            'mod': 'input-group'
+            'class': 'nb-input-group__input'
+        }
+        'button' : {
+            'size': 's'
+            'mod': 'input-group'
+            'theme': 'normal'
+            'class': 'nb-input-group__button'
+        }
     }
 
-    tmpInput = nb-extend(defaultInput, inputBlock)
-    tmpButton = nb-extend(defaultButton, buttonBlock)
-    tmpDefault = nb-extend(default, defaultBlock)
-
-    tmpInputButton = nb-extend(nb-wrap('input',tmpInput), nb-wrap('button',tmpButton))
-
-    nb-block('inputGroup', nb-extend(tmpDefault, tmpInputButton))
+    tmpInput = nb-extend(default.input, options.input)
+    tmpButton = nb-extend(default.button, options.button)
+    nb-block('inputGroup', default)
 }
+
+func nb-button-input-group(nodeset options) {
+    default = {
+        'direction': 'inputButton'
+        'button' : {
+            'size': 's'
+            'mod': 'input-group'
+            'theme': 'normal'
+            'class': 'nb-input-group__button'
+        }
+        'input' : {
+            'size': 's'
+            'mod': 'input-group'
+            'class': 'nb-input-group__input'
+        }
+    }
+
+    tmpInput = nb-extend(default.input, options.input)
+    tmpButton = nb-extend(default.button, options.button)
+    nb-block('inputGroup', default)
+}
+
 
 match .inputGroup nb {
     <div>
-        @class = .class
+        @class = 'nb-input-group'
         @data-nb = 'input-group'
-        if (.direction == 'buttonInput') {
-            nb-button(.button)
-            nb-input(.input)
-        } else {
-            nb-input(.input)
-            nb-button(.button)
-        }
+        apply .* nb
     </div>
 }

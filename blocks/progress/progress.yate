@@ -1,7 +1,7 @@
 func nb-progress(nodeset options) {
     default = {
         'bar': 'true'
-        'start': '0%'
+        'start': '0'
         'type': 'percentage'
         'title': ''
 

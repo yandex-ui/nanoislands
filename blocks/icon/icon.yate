@@ -7,5 +7,9 @@ func nb-icon(icon) {
 }
 
 match .icon nb {
+    <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_{.}" />
+}
+
+match .icon[.icon] nb {
     <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_{.icon}" />
 }
