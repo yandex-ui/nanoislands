@@ -25,13 +25,16 @@ match .attrs.* nb-attrs {
 /// ==========================
 
 func nb-block(name, nodeset options) {
-    apply nb-create(name, options).* nb
+    apply nb-wrap(name, options).* nb
 }
 
-include 'blocks/icon/icon.yate'
 include 'blocks/button/button.yate'
 include 'blocks/popup/popup.yate'
 include 'blocks/radio-button/radio-button.yate'
 include 'blocks/select/select.yate'
 include 'blocks/checkbox/checkbox.yate'
+include 'blocks/input/input.yate'
+include 'blocks/input-group/input-group.yate'
 include 'blocks/progress/progress.yate'
+include 'blocks/icon/icon.yate'
+include 'blocks/paranja/paranja.yate'

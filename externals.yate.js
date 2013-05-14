@@ -49,7 +49,7 @@ yr.externals['nb-extend'] = function(parent, node) {
     return parent;
 }
 
-yr.externals['nb-create'] = function(name, options) {
+yr.externals['nb-wrap'] = function(name, options) {
     var data = {};
 
     if (options && options.length) {

@@ -1,0 +1,41 @@
+func nb-input(nodeset options) {
+default = {
+        'size': 's'
+    }
+
+    nb-block('input', nb-extend(default, options))
+}
+
+match .input nb {
+    <span>
+        apply . nb-main-attrs
+        apply . nb-main-content
+    </span>
+}
+
+match .input nb-attrs {
+    @data-nb = 'input'
+    @class = 'nb-input-box'
+}
+
+match .input.size nb-attrs {
+    @class += ' nb-input_size_{.}'
+}
+
+match .input.disabled nb-attrs {
+    @class += ' nb-input_disabled js-disabled'
+}
+
+match .input nb-content {
+    <input value="{.content}" class="nb-input">
+        apply .disabled nb-content
+    </input>
+}
+
+match .input.disabled nb-content  {
+    @disabled = "disabled"
+}
+
+
+
+

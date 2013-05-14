@@ -30,6 +30,7 @@ popup.oninit = function() {
 
     if ('modal' in data) {
         this.modal = true;
+        this.$paranja = $(this.node).siblings('nb-paranja')
     }
 
     //  У попапа есть "хвостик".
@@ -42,19 +43,6 @@ popup.oninit = function() {
 };
 
 // ----------------------------------------------------------------------------------------------------------------- //
-
-//  FIXME: Паранджа, наверное, должна быть общедоступным компонентом.
-
-var _$paranja;
-
-var $paranja = function() {
-    if (!_$paranja) {
-        _$paranja = $('<div class="nb-paranja nb-paranja_theme_dark"></div>').hide();
-        $('body').append( _$paranja );
-    }
-
-    return _$paranja;
-};
 
 popup.onopen = function(e, params) {
     var where = params.where;

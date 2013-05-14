@@ -1,0 +1,71 @@
+nb-input()
+
+  .nb-input
+    padding: 5px 8px
+    background: none
+    border: 0px
+    outline: 0 none
+    position: relative
+    z-index: 10
+
+  .nb-input-box:before
+    background: linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4))
+    bottom: 0px
+    content: ""
+    position: absolute
+    right: 0px
+    left: 0px
+    top: 0px
+
+  .nb-input-box:after
+    background: none repeat scroll 0 0 #FFFFFF
+    bottom: 1px
+    content: ""
+    left: 1px
+    position: absolute
+    right: 1px
+    top: 1px
+
+  .nb-input-box
+    display: inline-block
+    position: relative
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+    vertical-align: middle
+
+  .nb-input-box.nb-input_focus
+    -moz-box-shadow: inset 0 1px 5px rgba(0,0,0,.25), 0 1px 1px 0 rgba(255,255,255,.2), 0 0 6px 2px rgba(255,204,0,.7)
+    box-shadow: inset 0 1px 5px rgba(0,0,0,.25), 0 1px 1px 0 rgba(255,255,255,.2), 0 0 6px 2px rgba(255,204,0,.7)
+
+  .nb-input-box.nb-input_focus:after
+    -moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.1), 0 0 0 1px rgba(193,154,0,.2)
+    box-shadow: inset 0 1px 0 rgba(0,0,0,.1), 0 0 0 1px rgba(193,154,0,.2)
+
+  .nb-input-box.nb-input_focus:before
+    display: none
+
+  .nb-input-box.nb-input_size_s input
+    font-size: 13px
+
+  .nb-input-box.nb-input_size_s
+    line-height: 28px
+
+  .nb-input-box.nb-input_size_m input
+    font-size: 15px
+
+  .nb-input-box.nb-input_size_m
+    line-height: 38px
+
+.nb-input:after 
+    content: ''
+    position: absolute
+    z-index: 2
+    top: 3px
+    bottom: 1px
+    right: 1px
+    width: 36px
+    background: red
+    background: linear-gradient(left, rgba(255,255,255,0) 0, #FFF 20%)
+
+
+nb-input()
