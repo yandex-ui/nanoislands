@@ -1,14 +1,11 @@
 func nb-input-button-group(nodeset options) {
     default = {
-        'direction': 'inputButton'
         'input' : {
             'size': 's'
-            'mod': 'input-group'
             'class': 'nb-input-group__input'
         }
         'button' : {
             'size': 's'
-            'mod': 'input-group'
             'theme': 'normal'
             'class': 'nb-input-group__button'
         }
@@ -16,32 +13,29 @@ func nb-input-button-group(nodeset options) {
 
     tmpInput = nb-extend(default.input, options.input)
     tmpButton = nb-extend(default.button, options.button)
-    nb-block('inputGroup', default)
+    nb-block('input-group', default)
 }
 
 func nb-button-input-group(nodeset options) {
     default = {
-        'direction': 'inputButton'
         'button' : {
             'size': 's'
-            'mod': 'input-group'
             'theme': 'normal'
             'class': 'nb-input-group__button'
         }
         'input' : {
             'size': 's'
-            'mod': 'input-group'
             'class': 'nb-input-group__input'
         }
     }
 
     tmpInput = nb-extend(default.input, options.input)
     tmpButton = nb-extend(default.button, options.button)
-    nb-block('inputGroup', default)
+    nb-block('input-group', default)
 }
 
 
-match .inputGroup nb {
+match .input-group nb {
     <div>
         @class = 'nb-input-group'
         @data-nb = 'input-group'

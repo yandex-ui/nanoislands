@@ -1,4 +1,4 @@
-nb.define('public_url', {
+nb.define('input-group', {
     events: {
         'click': 'click',
         'focusout': 'blur'
@@ -7,9 +7,9 @@ nb.define('public_url', {
     click: function(e, input) {
         var $node = $(this.node);
 
-        if (!$(this.node).hasClass('nb-input_focus')) {
-            $(this.node).addClass('nb-input_focus');
-            $(this.node).children('.nb-input').select();
+        if (!$node.hasClass('nb-input_focus')) {
+            $node.addClass('nb-input_focus');
+            $node.children('.nb-input').select();
         }
     },
 
