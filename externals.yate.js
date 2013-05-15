@@ -1,21 +1,32 @@
 ;(function() {
 
-function extend(obj) {
-    var exts = Array.prototype.slice.call(arguments, 1);
+    function extend(obj) {
+        var exts = Array.prototype.slice.call(arguments, 1);
+        exts.unshift(obj)
+        var newObj = {}
 
-    if (exts.length) {
+        var deepExtend = function(destination, source) {
+          for (var prop in source) {
+              if (destination == source[prop]) {
+                continue;
+              }
+              if (typeof source[prop] == 'object' && destination[prop]) {
+                  deepExtend(destination[prop], source[prop]);
+              } else if (source[prop] != undefined) {
+                  destination[prop] = source[prop];
+              }
+          }
+
+          return destination;
+        };
+
         for (var i = 0, c = exts.length; i < c; i++) {
             var ext = exts[i];
-
-            for (var key in ext) {
-                var prop = ext[key];
-                obj[key] = prop;
-            }
+            deepExtend(newObj, ext)
         }
-    }
 
-    return obj;
-}
+        return newObj;
+    }
 
 // http://underscorejs.org/#pluck
 function pluck(list, popertyName) {
