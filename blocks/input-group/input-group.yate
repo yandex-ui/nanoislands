@@ -11,7 +11,7 @@ func nb-input-group(nodeset options) {
         }
     }
 
-    nb-block('input-group', nb-extend(default, options))
+    nb-block('input-group', nb-deep-extend(default, options))
 }
 
 func nb-button-input-group(nodeset options) {
