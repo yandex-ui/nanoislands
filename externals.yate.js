@@ -13,27 +13,30 @@
         var exts = Array.prototype.slice.call(arguments, 1);
         var newObj = {}
 
-        var extendHelper = function(deep, destination, source) {
-          for (var prop in source) {
-              if (deep && destination == source[prop]) {
-                continue;
-              }
-              if (deep && typeof source[prop] == 'object' && destination[prop]) {
-                  extendHelper(deep, destination[prop], source[prop]);
-              } else if (source[prop] != undefined) {
-                  destination[prop] = source[prop];
-              }
-          }
-
-          return destination;
-        };
-
         for (var i = 0, c = exts.length; i < c; i++) {
             var ext = exts[i];
             extendHelper(deep, newObj, ext)
         }
 
         return newObj;
+    }
+
+    function extendHelper(deep, destination, source) {
+      for (var prop in source) {
+          var sp = source[prop]
+          var dp = destination[prop]
+
+          if (deep && destination == sp) {
+            continue;
+          }
+          if (deep && typeof sp == 'object' && dp) {
+              extendHelper(deep, dp, sp);
+          } else if (sp != undefined) {
+              destination[prop] = source[prop];
+          }
+      }
+
+      return destination;
     }
 
 // http://underscorejs.org/#pluck
