@@ -1,5 +1,14 @@
 ;(function() {
 
+    /* Делает extend двух и более объектов объектов
+    *
+    * @param {Boolean} deep extend или нет
+    * @param {Object} Родительский объект
+    * @param {Object} объект который расширяет
+    *
+    * @return {Object} Новый объект
+    * */
+
     function extend(deep) {
         var exts = Array.prototype.slice.call(arguments, 1);
         var newObj = {}
