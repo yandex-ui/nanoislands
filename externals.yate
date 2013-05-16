@@ -1,3 +1,4 @@
 external nodeset nb-extend(nodeset, nodeset)
+external nodeset nb-deep-extend(nodeset, nodeset)
 external nodeset nb-wrap(scalar, nodeset)
 external scalar nb-uniq()

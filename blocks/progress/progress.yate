@@ -57,5 +57,5 @@ match .progress.title nb-progress-text {
 }
 
 match .progress.title[/.type == 'percentage'] nb-progress-text {
-    /.start
+    /.start + '%'
 }

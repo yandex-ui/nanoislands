@@ -1,21 +1,43 @@
 ;(function() {
 
-function extend(obj) {
-    var exts = Array.prototype.slice.call(arguments, 1);
+    /* Делает extend двух и более объектов объектов
+    *
+    * @param {Boolean} deep extend или нет
+    * @param {Object} Родительский объект
+    * @param {Object} объект который расширяет
+    *
+    * @return {Object} Новый объект
+    * */
 
-    if (exts.length) {
+    function extend(deep) {
+        var exts = Array.prototype.slice.call(arguments, 1);
+        var newObj = {}
+
         for (var i = 0, c = exts.length; i < c; i++) {
             var ext = exts[i];
-
-            for (var key in ext) {
-                var prop = ext[key];
-                obj[key] = prop;
-            }
+            extendHelper(deep, newObj, ext)
         }
+
+        return newObj;
     }
 
-    return obj;
-}
+    function extendHelper(deep, destination, source) {
+      for (var prop in source) {
+          var sp = source[prop]
+          var dp = destination[prop]
+
+          if (deep && destination == sp) {
+            continue;
+          }
+          if (deep && typeof sp == 'object' && dp) {
+              extendHelper(deep, dp, sp);
+          } else if (sp != undefined) {
+              destination[prop] = source[prop];
+          }
+      }
+
+      return destination;
+    }
 
 // http://underscorejs.org/#pluck
 function pluck(list, popertyName) {
@@ -41,7 +63,22 @@ yr.externals['nb-extend'] = function(parent, node) {
         } else {
             var dataParent = parent[0].data;
             var dataNode = node[0].data;
-            var dataNew = extend(dataParent, dataNode);
+            var dataNew = extend(false, dataParent, dataNode);
+            parent[0].data = dataNew;
+        }
+    }
+
+    return parent;
+}
+
+yr.externals['nb-deep-extend'] = function(parent, node) {
+    if (node && node[0]) {
+        if (typeof node == 'string') {
+            parent[0].data.content = node;
+        } else {
+            var dataParent = parent[0].data;
+            var dataNode = node[0].data;
+            var dataNew = extend(true, dataParent, dataNode);
             parent[0].data = dataNew;
         }
     }
