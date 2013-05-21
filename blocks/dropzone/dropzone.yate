@@ -1,0 +1,72 @@
+func nb-dropzone(nodeset options) {
+    default = {
+        // 'head': ''
+        // 'text': ''
+        'button' : {
+            'size': 's'
+            // 'content': 'выбрите...'
+            'theme': 'pseudo'
+            'class': 'nb-dropzone__button'
+        }
+    }
+
+    nb-block('dropzone', nb-deep-extend(default, options))
+}
+
+
+match .dropzone nb {
+    <div>
+        apply . nb-main-attrs
+        apply . nb-main-content
+    </div>
+}
+
+match .dropzone nb-attrs {
+    @class = 'nb-dropzone'
+}
+
+
+match .dropzone nb-attrs {
+    @class = 'nb-dropzone'
+}
+
+
+match .dropzone.mod nb-attrs {
+  @class += ' nb-dropzone_type_{.}'
+}
+match .dropzone.button nb-attrs {
+
+}
+
+match .dropzone nb-main-content {
+   apply . nb-content
+}
+
+match .dropzone nb-content {
+        apply .head nb-content
+        apply .text nb-content
+        apply . cover
+
+}
+
+match .dropzone[.mod == 'modal'] cover {
+  <div class="nb-dropzone__cover js-dropzone"></div>
+}
+
+match .dropzone.head nb-content {
+    <div class="nb-dropzone__head">
+        .
+    </div>
+}
+
+match .dropzone.text nb-content {
+    <div class="nb-dropzone__text">
+         .
+         apply ..button nb-content
+    </div>
+}
+
+match .dropzone.button[. != 'false'] nb-content {
+    nb-button(.)
+}
+
