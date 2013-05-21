@@ -22,8 +22,14 @@ match .dropzone nb {
 }
 
 match .dropzone nb-attrs {
-    @class = 'nb-dropzone js-dropzone'
+    @class = 'nb-dropzone'
 }
+
+
+match .dropzone nb-attrs {
+    @class = 'nb-dropzone'
+}
+
 
 match .dropzone.mod nb-attrs {
   @class += ' nb-dropzone_type_{.}'
@@ -39,6 +45,12 @@ match .dropzone nb-main-content {
 match .dropzone nb-content {
         apply .head nb-content
         apply .text nb-content
+        apply . cover
+
+}
+
+match .dropzone[.mod == 'modal'] cover {
+  <div class="nb-dropzone__cover js-dropzone"></div>
 }
 
 match .dropzone.head nb-content {
