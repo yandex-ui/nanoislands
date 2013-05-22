@@ -82,13 +82,14 @@ popup.onopen = function(e, params) {
             $('body').append(this.node);
         }
 
+        $(this.node).removeClass('_hidden');
         //  Передвигаем попап.
         this._move(where, how);
         //  Вешаем события, чтобы попап закрывался по нажатие ESC и клику вне попапа.
         this._bindClose();
 
         //  Показываем.
-        $(this.node).removeClass('_hidden').animate(
+        $(this.node).animate(
             this._animateParams(this.data('direction')).forward,
             this.cfg.animationTime
         );
