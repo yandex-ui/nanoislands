@@ -21,7 +21,9 @@ match .checkbox nb {
 }
 
 match .checkbox nb-content {
-    .text
+    <span class="nb-checkbox__label">
+        .text
+    </span>
 }
 
 match .checked nb-attrs {
