@@ -21,6 +21,14 @@ match .button[.href] nb {
     </a>
 }
 
+match .button[.mod == 'attach'] nb {
+    <span>
+        apply . nb-main-attrs
+        apply . nb-main-content
+        <input type="file" class="nb-button__attach"></input>
+    </span>
+}
+
 match .button nb-attrs {
     @data-nb = 'button'
     @class = 'nb-button'
@@ -41,6 +49,11 @@ match .button.theme nb-attrs {
 match .button.disabled nb-attrs {
     @class += ' nb-button_disabled js-disabled'
     @disabled = 'disabled'
+}
+
+match .button[ .mod == 'attach'] nb-attrs {
+    @class = 'nb-button nb-button_type_attach'
+    @data-nb = 'button'
 }
 
 match .button[!(.content)].icon nb-attrs {
