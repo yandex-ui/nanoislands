@@ -2,6 +2,7 @@ func nb-radio-button(nodeset options) {
     default = {
         'size': 'm'
         'theme': 'normal'
+        'type': 'radio'
     }
 
     nb-block('radio-button', nb-extend(default, options))
@@ -28,6 +29,7 @@ match .radio-button.group nb-content-radio-button {
         'size': ..size
         'theme': ..theme
         'class': .class + ' js-button'
+        'type': ..type
         'name': ..name
         'mod': 'radio-button'
         'attrs': {
@@ -42,7 +44,7 @@ match .button[.mod == 'radio-button'] nb {
     uniq = 'nb-radio-button_{nb-uniq()}'
 
     <span class="nb-radio-button__button">
-        <input class="nb-radio-button__radio" type="radio" name="{ .name }" value="{ .value }" id="{uniq}">
+        <input class="nb-radio-button__radio" type="{ .type }" name="{ .name }" value="{ .value }" id="{ uniq }">
             if .checked {
                 @checked = 'checked'
             }
@@ -51,7 +53,7 @@ match .button[.mod == 'radio-button'] nb {
             }
         </input>
 
-        <label for="{uniq}">
+        <label for="{ uniq }">
             apply . nb-main-attrs
             apply . nb-main-content
         </label>

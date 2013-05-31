@@ -1,5 +1,5 @@
 func nb-input(nodeset options) {
-default = {
+    default = {
         'size': 's'
     }
 
@@ -29,11 +29,16 @@ match .input.disabled nb-attrs {
 match .input nb-content {
     <input value="{.content}" class="nb-input">
         apply .disabled nb-content
+        apply .readonly nb-content
     </input>
 }
 
 match .input.disabled nb-content  {
     @disabled = "disabled"
+}
+
+match .input.readonly nb-content  {
+    @readonly = "readonly"
 }
 
 

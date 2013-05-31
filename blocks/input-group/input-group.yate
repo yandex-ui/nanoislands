@@ -1,24 +1,15 @@
 func nb-input-group(nodeset options) {
-    default = {
-        'button' : {
-            'size': 's'
-            'theme': 'normal'
-            'class': 'nb-input-group__button'
-        }
-        'input' : {
-            'size': 's'
-            'class': 'nb-input-group__input'
-        }
-    }
-
-    nb-block('input-group', nb-deep-extend(nb-deep-extend(options, default), options))
+    nb-block('input-group', options)
 }
-
 
 match .input-group nb {
     <div>
-        @class = 'nb-input-group'
+        @class = '{ .class } nb-input-group'
         @data-nb = 'input-group'
-        apply .* nb
+        for .* {
+                   if name() == 'button'       { nb-button(.)
+            } else if name() == 'input'        { nb-input(.)
+            }
+        }
     </div>
 }
