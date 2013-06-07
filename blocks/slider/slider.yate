@@ -1,0 +1,33 @@
+func nb-slider(nodeset options) {
+    default = {
+        'size': 's'
+        'value': 0
+        'knob': {
+            'type': 'square'
+        }
+    }
+
+    nb-block('slider', nb-deep-extend(default, options))
+}
+
+match .slider nb {
+    <span class="nb-slider nb-slider_size_{.size} {.class}">
+        apply . nb-main-attrs
+
+        <span class="nb-slider__track" />
+        <span class="nb-slider__interval" style="width: {.value}%" />
+
+        apply . nb-slider-knob
+    </span>
+}
+
+match .slider nb-slider-knob {
+    knob = {
+        'class': 'nb-slider__knob nb-slider__knob_{.knob.type} nb-slider__knob_size_{.size} {.knob.class}'
+        'attrs': {
+            'style': 'left: {.value}%'
+        }
+    }
+
+    nb-button(knob)
+}
