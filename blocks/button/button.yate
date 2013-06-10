@@ -56,6 +56,10 @@ match .button[ .mod == 'attach'] nb-attrs {
     @data-nb = 'button'
 }
 
+match .button[ .mod == 'round'] nb-attrs {
+    @class = 'nb-button nb-button_type_round'
+}
+
 match .button[!(.content)].icon nb-attrs {
     @class += ' nb-button_only-icon'
 }

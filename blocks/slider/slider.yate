@@ -14,8 +14,10 @@ match .slider nb {
     <span class="nb-slider nb-slider_size_{.size} {.class}">
         apply . nb-main-attrs
 
-        <span class="nb-slider__track" />
-        <span class="nb-slider__interval" style="width: {.value}%" />
+        <span class="nb-slider__track {.track.class}">
+            <span class="nb-slider__full" />
+            <span class="nb-slider__interval {.interval.class}" style="width: {.value}%" />
+        </span>
 
         apply . nb-slider-knob
     </span>
@@ -29,5 +31,7 @@ match .slider nb-slider-knob {
         }
     }
 
-    nb-button(knob)
+    <div class="nb-slider__range nb-slider__range_size_{.size} {.range.class}">
+        nb-button(knob)
+    </div>
 }

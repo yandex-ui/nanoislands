@@ -10,6 +10,11 @@ nb-slider()
     position: relative
 
   .nb-slider__track
+    display: block
+
+    height: 100%
+
+  .nb-slider__full
   .nb-slider__interval
     display: block
 
@@ -22,7 +27,7 @@ nb-slider()
 
     border-radius: 3px
 
-  .nb-slider__track
+  .nb-slider__full
     left: 1px
     right: 1px
     bottom: 1px
@@ -59,12 +64,17 @@ nb-slider()
 
     content: ''
 
+  .nb-slider__range
   .nb-slider__knob
     position: absolute
     top: 0
     z-index: 3
 
-    height: 100%
+    line-height: 2
+
+  .nb-slider__range
+    left: 0
+    right: 0
 
   .nb-slider__knob_round
   .nb-slider__knob_round:before
