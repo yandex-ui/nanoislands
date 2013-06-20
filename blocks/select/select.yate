@@ -1,19 +1,78 @@
 func nb-select(nodeset select) {
     default = {
         'size': 'm'
-        'mod': 'select'
-        'class': 'nb-select'
+        'theme': 'normal'
     }
 
-    nb-button(nb-extend(default, select))
+    nb-block('select', nb-extend(default, select))
 }
 
-match .button[.mod == 'select'] nb {
-    <button>
-        apply . nb-main-attrs
-        @data-nb = 'select'
+match .select nb {
+   <div>
+       @data-nb = 'select'
+       @class = 'nb-select'
 
-        apply . nb-main-content
-
-    </button>
+       apply . nb-main-content
+   </div>
 }
+
+
+match .select nb-content {
+    <span>
+        @data-nb = 'button'
+        @class = 'nb-button'
+
+        apply .* nb-button-attrs
+
+        <span class="nb-button__text">
+           apply .items nb-button-content
+        </span>
+    </span>
+    <div class="nb-popup">
+        <div class="nb-select__items">
+          apply .items nb-popup-content
+        </div>
+   </div>
+   <select class="nb-select__fallback">
+        apply .items nb-fallback-content
+   </select>
+}
+
+match .select.items[ .selected ] nb-button-content {
+    .text
+}
+
+match .select.items nb-popup-content {
+   <div class="nb-select__item">
+      .text
+   </div>
+}
+
+match .select.items nb-fallback-content {
+    <option value="{ .value }">
+        .text
+    </option>
+}
+
+
+match .select.size nb-button-attrs {
+    @class += ' nb-button_size_{.}'
+}
+
+match .select.size nb-popup-attrs {
+    @class += ' nb-button_size_{.}'
+}
+
+match .select.theme nb-button-attrs {
+    @class += ' nb-button_theme_{.}'
+}
+
+match .select.disabled nb-button-attrs {
+    @class += ' nb-button_disabled js-disabled'
+    @disabled = 'disabled'
+}
+
+match .select[ .mod == 'round'] nb-button-attrs {
+    @class = 'nb-button nb-button_type_round'
+}
+

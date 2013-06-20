@@ -26,7 +26,7 @@ match .popup nb-content {
     apply .* nb-content
 }
 
-match .popup.tail nb-content {
+match .popup[.tail == 'true'] nb-content {
     <div class="nb-popup__tail"></div>
 }
 
