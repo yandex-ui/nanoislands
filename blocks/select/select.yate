@@ -12,23 +12,32 @@ match .select nb {
        @data-nb = 'select'
        @class = 'nb-select'
 
+
        apply . nb-main-content
    </div>
 }
 
 
 match .select nb-content {
-    <span>
-        @data-nb = 'button'
+     data = (
+        '{{id:"'
+        .id
+        '"}}'
+        )
+
+    <button>
+        @data-nb = 'popup-toggler'
         @class = 'nb-button'
+        @data-nb-popup-toggler =  '{{id:"' + .id +'"}}'
+
 
         apply .* nb-button-attrs
 
         <span class="nb-button__text">
            apply .items nb-button-content
         </span>
-    </span>
-    <div class="nb-popup">
+    </button>
+    <div class="nb-popup" data-nb="popup" id="{ .id }">
         <div class="nb-select__items">
           apply .items nb-popup-content
         </div>
