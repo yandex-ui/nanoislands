@@ -20,7 +20,8 @@ popup.events = {
     'open': 'onopen',
     'close': 'onclose',
 
-    'click .nb-popup__close': 'onclose'
+    'click .nb-popup__close': 'onclose',
+    'click': 'onclick'
 };
 
 // ----------------------------------------------------------------------------------------------------------------- //
@@ -34,8 +35,10 @@ popup.oninit = function() {
     }
 
     //  У попапа есть "хвостик".
+    this.$selectParent = $(this.node).parents('.nb-select');
     this.$tail = $(this.node).find('.nb-popup__tail');
     this.hasTail = !!this.$tail.length;
+    this.inSelect = !!this.$selectParent.length;
 
     // Храним исходное положение попапа, чтобы возвращать его на место
     var previous = this.node.previousSibling;
@@ -418,6 +421,10 @@ popup._unbindClose = function() {
     }
     this._onkeypress = this._onclick = this._onpopupclose = null;
 };
+
+popup.onlick = function(){
+
+}
 
 // ----------------------------------------------------------------------------------------------------------------- //
 

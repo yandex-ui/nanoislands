@@ -10,7 +10,8 @@ func nb-select(nodeset select) {
 match .select nb {
    <div>
        @data-nb = 'select'
-       @class = 'nb-select'
+       @class = 'nb-select _init'
+       @is = .id
 
 
        apply . nb-main-content
@@ -19,16 +20,10 @@ match .select nb {
 
 
 match .select nb-content {
-     data = (
-        '{{id:"'
-        .id
-        '"}}'
-        )
-
     <button>
         @data-nb = 'popup-toggler'
-        @class = 'nb-button'
-        @data-nb-popup-toggler =  '{{id:"' + .id +'"}}'
+        @class = 'nb-button nb-select__button'
+        @data-nb-popup-toggler =  '{{id:"nb-popup__select_' + .id +'", how: {{what: "top left", where: "bottom left" }}}}'
 
 
         apply .* nb-button-attrs
@@ -37,12 +32,15 @@ match .select nb-content {
            apply .items nb-button-content
         </span>
     </button>
-    <div class="nb-popup" data-nb="popup" id="{ .id }">
-        <div class="nb-select__items">
-          apply .items nb-popup-content
+    <div class="nb-popup nb-select__popup _hidden" data-nb="popup" id="nb-popup__select_{ .id }">
+        apply .* nb-popup-attrs
+        <div class="nb-popup__content">
+            <div class="nb-select__list">
+                apply .items nb-popup-content
+            </div>
         </div>
    </div>
-   <select class="nb-select__fallback">
+   <select class="nb-select__fallback _hidden">
         apply .items nb-fallback-content
    </select>
 }
@@ -53,7 +51,12 @@ match .select.items[ .selected ] nb-button-content {
 
 match .select.items nb-popup-content {
    <div class="nb-select__item">
-      .text
+       if (.selected) {
+           @class += ' nb-select__item_selected_yes'
+       }
+      <div class="nb-select__text">
+          .text
+      </div>
    </div>
 }
 
@@ -69,11 +72,15 @@ match .select.size nb-button-attrs {
 }
 
 match .select.size nb-popup-attrs {
-    @class += ' nb-button_size_{.}'
+    @class += ' nb-select__popup_size_{.}'
 }
 
 match .select.theme nb-button-attrs {
     @class += ' nb-button_theme_{.}'
+}
+
+match .select.theme nb-popup-attrs {
+    @class += ' nb-select__popup_theme_{.}'
 }
 
 match .select.disabled nb-button-attrs {
