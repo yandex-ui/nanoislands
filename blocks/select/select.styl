@@ -4,6 +4,10 @@ nb-select()
     max-width: 100%
     display: inline-block
 
+  .nb-select__fallback
+    display: none
+
+
   .nb-select__button
     max-width: 100%
 
@@ -128,12 +132,12 @@ nb-select()
     padding-right: 0
     padding-top: 0
 
-  .nb-select_size_m
+  .nb-select_size_m .nb-select__fallback
   .nb-select__popup_size_m .nb-select__item
     font-size: 15px
     line-height: 32px
 
-  .nb-select_size_s
+  .nb-select_size_s .nb-select__fallback
   .nb-select__popup_size_s .nb-select__item
     font-size: 13px
     line-height: 28px

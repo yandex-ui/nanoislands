@@ -1,10 +1,14 @@
 nb.define('button', {
-    // в первом подходе не получилось реализовать фокус
-    // events: {
+    events: {
     //     'click': 'click',
     //     'focusout': 'blur',
     //     'focusin': 'focus',
-    // },
+        'textChange': 'onTextChange'
+    },
+
+    onTextChange: function(name, params){
+        $(this.node).find('.nb-button__text').html(params.text)
+    }
 
     // click: function(e, button) {
     //     var $node = $(this.node);

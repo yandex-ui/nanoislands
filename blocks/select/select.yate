@@ -10,9 +10,9 @@ func nb-select(nodeset select) {
 match .select nb {
    <div>
        @data-nb = 'select'
-       @class = 'nb-select _init'
-       @is = .id
-
+       @class = 'nb-select nb-select_size_ _init'
+       @class += ' nb-select_size_' + .size
+       @id = .id
 
        apply . nb-main-content
    </div>
@@ -21,8 +21,8 @@ match .select nb {
 
 match .select nb-content {
     <button>
-        @data-nb = 'popup-toggler'
-        @class = 'nb-button nb-select__button'
+        @data-nb = 'button popup-toggler'
+        @class = 'nb-button nb-select__button _init'
         @data-nb-popup-toggler =  '{{id:"nb-popup__select_' + .id +'", how: {{what: "top left", where: "bottom left" }}}}'
 
 
@@ -32,7 +32,7 @@ match .select nb-content {
            apply .items nb-button-content
         </span>
     </button>
-    <div class="nb-popup nb-select__popup _hidden" data-nb="popup" id="nb-popup__select_{ .id }">
+    <div class="nb-popup _init nb-select__popup _hidden" data-nb="popup" id="nb-popup__select_{ .id }">
         apply .* nb-popup-attrs
         <div class="nb-popup__content">
             <div class="nb-select__list">
@@ -40,7 +40,10 @@ match .select nb-content {
             </div>
         </div>
    </div>
-   <select class="nb-select__fallback _hidden">
+   <select class="nb-select__fallback" name="{.id}" id="nb-select_{ .id }">
+        if( .disabled ){
+            @disabled = 'disabled'
+        }
         apply .items nb-fallback-content
    </select>
 }
@@ -50,7 +53,7 @@ match .select.items[ .selected ] nb-button-content {
 }
 
 match .select.items nb-popup-content {
-   <div class="nb-select__item">
+   <div class="nb-select__item" nb-select-value="{ .value }">
        if (.selected) {
            @class += ' nb-select__item_selected_yes'
        }
@@ -62,6 +65,11 @@ match .select.items nb-popup-content {
 
 match .select.items nb-fallback-content {
     <option value="{ .value }">
+        if (.selected) {
+              @selected = ''
+        }
+        @label = .text
+
         .text
     </option>
 }
