@@ -1,6 +1,4 @@
 (function () {
-
-
     nb.define('select', {
         events: {
             'init': 'onInit',
@@ -34,8 +32,8 @@
          */
         controlPrepare: function () {
             // minimum width of the popup set to the size of the button
-            $(that.popup.node).css({
-                'min-width': $(that.button.node).outerWidth() - 2
+            $(this.popup.node).css({
+                'min-width': $(this.button.node).outerWidth() - 2
             })
         },
 
@@ -56,7 +54,6 @@
             this.$fallback.find('option[value = ' + params.value + ']').attr('selected', 'selected')
         }
     });
-
 })();
 
 
