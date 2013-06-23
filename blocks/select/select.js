@@ -1,9 +1,13 @@
-(function() {
+(function () {
 
 
-nb.define('select', {
-    events : {
-        'init': function(){
+    nb.define('select', {
+        events: {
+            'init': 'onInit',
+            'changeValue': 'onChangeValue'
+        },
+
+        onInit: function () {
             var that = this
             nb.init(that)
 
@@ -17,44 +21,41 @@ nb.define('select', {
             that.text = that.$fallback.find('option[selected]').html()
 
             // preparing control depending on configuration and content
-           this.controlPrepare()
+            this.controlPrepare()
 
             // subscribe through space to the event from a child popups
-            nb.on('select:'+ that.popup.node.getAttribute('id') +':change', function(name, params){
+            nb.on('select:' + that.popup.node.getAttribute('id') + ':change', function (name, params) {
                 that.trigger('changeValue', params)
             })
         },
-        'changeValue': 'onChangeValue'
 
-    },
+        /**
+         * preparing control depending on configuration and content
+         */
+        controlPrepare: function () {
+            // minimum width of the popup set to the size of the button
+            $(that.popup.node).css({
+                'min-width': $(that.button.node).outerWidth() - 2
+            })
+        },
 
-    /**
-     * preparing control depending on configuration and content
-     */
-    controlPrepare: function(){
-        // minimum width of the popup set to the size of the button
-        $(that.popup.node).css({
-            'min-width': $(that.button.node).outerWidth() - 2
-        })
-    },
-
-    /**
-     * Changes a value of control, text on the button and select value it the fallback
-     *
-     * @param name — event id that caused the change
-     * @param params — {
-     *     text: '..'
-     *     value: '..'
-     * }
-     */
-    onChangeValue: function(name, params){
-        this.value = params.value
-        this.text = params.text
-        this.button.trigger('textChange', params)
-        this.$fallback.find('option[selected]').removeAttr('selected')
-        this.$fallback.find('option[value = '+ params.value +']').attr('selected', 'selected')
-    }
-});
+        /**
+         * Changes a value of control, text on the button and select value it the fallback
+         *
+         * @param name — event id that caused the change
+         * @param params — {
+         *     text: '..'
+         *     value: '..'
+         * }
+         */
+        onChangeValue: function (name, params) {
+            this.value = params.value
+            this.text = params.text
+            this.button.trigger('textChange', params)
+            this.$fallback.find('option[selected]').removeAttr('selected')
+            this.$fallback.find('option[value = ' + params.value + ']').attr('selected', 'selected')
+        }
+    });
 
 })();
 
