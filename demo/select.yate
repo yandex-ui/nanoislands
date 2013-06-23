@@ -1,0 +1,63 @@
+func select-medium() {
+    block = {
+        'size': 'm'
+        'id': 'select1'
+        'items': [
+          {
+              'text': 'select1'
+              'value': 'option1'
+          }
+          {
+              'text': 'text2'
+              'value': 'option2'
+                'selected': 'true'
+          }
+          {
+              'text': 'text2'
+              'value': 'option3'
+          }
+      ]
+    }
+
+    nb-select(block)
+}
+func select-small() {
+    block = {
+           'size': 's'
+           'id': 'select2'
+           'items': [
+               {
+                   'text': 'select1'
+                   'data': 'option1'
+               }
+               {
+                   'text': 'text2'
+                   'data': 'option2'
+                    'selected': 'true'
+               }
+               {
+                   'text': 'text2'
+                   'data': 'option3'
+               }
+           ]
+    }
+    nb-select(block)
+}
+//func select-disable() {
+//    block = {
+//        'content':  'СелектСелектСелектселект'
+//        'size':     's'
+//        'disabled': '1'
+//    }
+//    nb-select(block)
+//}
+
+func selects() {
+
+    <div class="wrap" style="width:200px;">
+    'Селекты:'
+        select-medium()
+        select-small()
+  //      select-disable()
+    </div>
+}

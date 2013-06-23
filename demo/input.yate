@@ -1,0 +1,36 @@
+func input-small() {
+    block = {
+        'content': 'Поле ввода'
+    }
+    nb-input(block)
+}
+
+func input-medium() {
+    block = {
+        'size':    'm'
+        'content': 'Поле ввода'
+    }
+    nb-input(block)
+}
+
+func input-disabled() {
+    block = {
+        'disabled':    '1'
+        'content': 'Поле ввода'
+    }
+    nb-input(block)
+}
+
+func inputs() {
+  <div style="margin: 20px 0px;">
+    <p>Маленький инпут</p>
+    input-small()
+    <br />
+    <p>Средний инпут</p>
+    input-medium()
+    <br />
+    <p>Неактивный инпут</p>
+    input-disabled()
+    <br />
+  </div>
+}

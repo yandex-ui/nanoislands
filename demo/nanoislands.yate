@@ -1,0 +1,27 @@
+include '../externals.yate'
+include '../nanoislands.yate'
+
+
+include 'select.yate'
+include 'buttons.yate'
+include 'checkbox.yate'
+include 'popups.yate'
+include 'progress.yate'
+include 'input.yate'
+include 'input-group.yate'
+include 'islands.yate'
+include 'loaders.yate'
+include 'sliders.yate'
+
+match / {
+    buttons()
+    checkbox()
+    selects()
+    popups()
+    inputs()
+    input-groups()
+    progresses()
+    islands()
+    loaders()
+    sliders()
+}
