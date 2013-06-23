@@ -446,6 +446,11 @@
         this._onkeypress = this._onclick = this._onpopupclose = null;
     };
 
+    /**
+     * Handle event on element select if there is one inside
+     * Changes selected item and trigger events through space
+     * @param e - event
+     */
     popup.onSelect = function (e) {
         var $target = $(e.target)
         var $item = $target.attr('nb-select-value') ? $target : $target.parents('*[nb-select-value]')

@@ -6,6 +6,13 @@ nb.define('button', {
         'textChange': 'onTextChange'
     },
 
+    /**
+     * Changes text of the button
+     * @param name — event id that caused the change
+     * @param params — {
+     *     text: '..'
+     * }
+     */
     onTextChange: function(name, params){
         $(this.node).find('.nb-button__text').html(params.text)
     }
