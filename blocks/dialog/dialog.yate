@@ -1,7 +1,6 @@
 func nb-dialog(nodeset options) {
     default = {
         'theme': 'normal'
-        'hidden': true()
         'title': 'Диалог'
         'close': true()
         'content': 'содержание диалога'
@@ -22,10 +21,6 @@ match .dialog nb-attrs {
     @class = 'nb-dialog nb-dialog_theme_{.theme} nb-island nb-island_fly'
 }
 
-match .dialog.hidden[. == true()] nb-attrs {
-    @class += ' _hidden'
-}
-
 match .dialog.id nb-attrs {
     @id += '{.}'
 }
@@ -41,7 +36,7 @@ match .dialog nb-content {
     apply .actions nb-dialog
 }
 
-match .close nb-dialog {
+match .close[ . != false() ] nb-dialog {
     <a class="nb-dialog__close {.class}">
         nb-icon('close_16')
     </a>
