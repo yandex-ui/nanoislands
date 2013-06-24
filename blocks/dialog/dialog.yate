@@ -1,5 +1,6 @@
 func nb-dialog(nodeset options) {
     default = {
+        'theme': 'normal'
         'hidden': true()
         'title': 'Диалог'
         'close': true()
@@ -18,7 +19,7 @@ match .dialog nb {
 
 match .dialog nb-attrs {
     @data-nb = 'dialog'
-    @class = 'nb-dialog nb-island nb-island_fly'
+    @class = 'nb-dialog nb-dialog_theme_{.theme} nb-island nb-island_fly'
 }
 
 match .dialog.hidden[. == true()] nb-attrs {
@@ -42,7 +43,7 @@ match .dialog nb-content {
 
 match .close nb-dialog {
     <a class="nb-dialog__close {.class}">
-        <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_close_16" />
+        nb-icon('close_16')
     </a>
 }
 

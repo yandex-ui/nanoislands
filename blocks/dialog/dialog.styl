@@ -5,15 +5,20 @@
   min-width: 400px
 
 .nb-dialog__header
-  background: $backgroundPrimary
   padding: 0 $gapM
   height: 50px
   line-height: @height
+
+  background: $backgroundPrimary
   border-bottom: 1px solid darken($background, 16%)
 
 .nb-dialog__close
   float: right
   opacity: 0.3
+
+.nb-dialog__close:hover
+  opacity: 1
+  filter: none
 
 .nb-dialog__content
 .nb-dialog__actions
@@ -23,7 +28,7 @@
   margin-top: -1px
   padding-top: $gapS + 1px
 
-  box-shadow: inset 0 1px rgba($foreground, 0.15), 0 -2px rgba($foreground, 0.04)
-
 .nb-dialog__pull_right
   float: right
+
+@import '_theme'
