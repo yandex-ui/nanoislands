@@ -32,7 +32,15 @@ match .popup nb-content {
 }
 
 match .popup.menu nb-content {
+    <span class="nb-popup__line _link">
+        apply . nb-main-attrs
+        .text
+    </span>
+}
+
+match .popup.menu[ .href ] nb-content {
     <a href="{.href}" class="nb-popup__line _link">
+        apply . nb-main-attrs
         .text
     </a>
 }

@@ -1,0 +1,63 @@
+func nb-dialog(nodeset options) {
+    default = {
+        'theme': 'normal'
+        'title': 'Диалог'
+        'close': true()
+        'content': 'содержание диалога'
+    }
+
+    nb-block('dialog', nb-extend(default, options))
+}
+
+match .dialog nb {
+    <div>
+        apply . nb-main-attrs
+        apply . nb-main-content
+    </div>
+}
+
+match .dialog nb-attrs {
+    @data-nb = 'dialog'
+    @class = 'nb-dialog nb-dialog_theme_{.theme} nb-island nb-island_fly'
+}
+
+match .dialog.id nb-attrs {
+    @id += '{.}'
+}
+
+match .dialog nb-content {
+    <div class="nb-dialog__header">
+        .title
+
+        apply .close nb-dialog
+    </div>
+
+    apply .content nb-dialog
+    apply .actions nb-dialog
+}
+
+match .close[ . != false() ] nb-dialog {
+    <a class="nb-dialog__close {.class}">
+        nb-icon('close_16')
+    </a>
+}
+
+match .content nb-dialog {
+    <div class="nb-dialog__content">
+        .
+    </div>
+}
+
+match .actions nb-dialog {
+    <div class="nb-dialog__actions">
+        <div class="nb-dialog__pull_right">
+            for .right {
+                nb-button(.)
+            }
+        </div>
+
+        for .left {
+            nb-button(.)
+        }
+    </div>
+}
