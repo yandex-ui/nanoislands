@@ -28,7 +28,6 @@ nb.define('button', {
     },
 
     makeFocus: function (e, button) {
-
         if (this.$node.is('.nb-button_disabled')) {
             return false;
         }
@@ -46,7 +45,6 @@ nb.define('button', {
 
     blur: function () {
         this.$node.removeClass('nb-button_focus');
-        nb.trigger('button-focusout');
         this.focused = false;
     }
 })

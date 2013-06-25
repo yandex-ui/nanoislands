@@ -7,27 +7,28 @@ nb.define('input', {
          },
 
         oninit: function(){
+            this.$node = $(this.node);
+            this.focused = false;
             nb.on('input-focusout', function() {
                  this.trigger('focusout');
+
             });
         },
 
         makeFocus: function(){
-            var $node = $(this.node);
-
-            if ($node.is('.nb-input_disabled')) {
+            if (this.$node.is('.nb-input_disabled')) {
                 return false;
             }
 
-            if (!$(this.node).hasClass('nb-input_focus')) {
+            if (!this.$node.hasClass('nb-input_focus')) {
                 nb.trigger('input-focusout');
-                $(this.node).addClass('nb-input_focus');
-
+                this.$node.addClass('nb-input_focus');
+                this.focused = true;
             }
         },
 
         blur: function() {
-            $(this.node).removeClass('nb-input_focus');
-            nb.trigger('input-focusout');
+            this.$node.removeClass('nb-input_focus');
+            this.focused = false;
         }
 });
