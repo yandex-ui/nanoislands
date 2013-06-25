@@ -13,7 +13,7 @@ demo/nanoislands.js: $(shell find . -name '*.yate') node_modules
 
 node_modules: package.json
 	npm install
-	touch package.json
+	touch node_modules
 
 clean:
 	rm -rf nanoislands.css demo/nanoislands.js
