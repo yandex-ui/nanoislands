@@ -1,23 +1,33 @@
 nb.define('input', {
     events: {
-             'click': 'click',
-             'focusout': 'blur'
+             'init': 'oninit',
+             'click': 'makeFocus',
+             'focusout': 'blur',
+             'focusin': 'makeFocus'
          },
 
-         click: function(e, input) {
-             var $node = $(this.node);
+        oninit: function(){
+            nb.on('input-focusout', function() {
+                 this.trigger('focusout');
+            });
+        },
 
-             if ($node.is('.nb-input_disabled')) {
-                 return false;
-             }
+        makeFocus: function(){
+            var $node = $(this.node);
 
-             if (!$(this.node).hasClass('nb-input_focus')) {
+            if ($node.is('.nb-input_disabled')) {
+                return false;
+            }
+
+            if (!$(this.node).hasClass('nb-input_focus')) {
+                nb.trigger('input-focusout');
                 $(this.node).addClass('nb-input_focus');
 
-             }
-         },
+            }
+        },
 
         blur: function() {
             $(this.node).removeClass('nb-input_focus');
+            nb.trigger('input-focusout');
         }
 });
