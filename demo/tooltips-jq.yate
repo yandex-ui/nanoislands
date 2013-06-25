@@ -1,0 +1,25 @@
+func tooltips-jq() {
+    <p>Тултипы jQuery UI (обрати внимание на решение коллизий!):</p>
+    <div style="display: inline-block; position: relative; margin: 0 1em">
+        <a href="#hello" class="nb link link_wrapper link_pseudo" data-nb="tooltip-jq-toggler" data-nb-tooltip-jq-toggler="{{content: 'tooltip1'}}">
+            <span class="link__inner">Tooltip1</span>
+        </a>
+    </div>
+    <div style="display: inline-block; position: relative; margin: 0 1em">
+        <a href="#hello" class="nb link link_wrapper link_pseudo" data-nb="tooltip-jq-toggler" data-nb-tooltip-jq-toggler="{{content: 'tool<b>tip2</b>'}}">
+            <span class="link__inner">Tooltip2</span>
+        </a>
+    </div>
+
+    <p>Тултипы встроенные в jQuery UI, вне nb (обрати внимание на решение коллизий!):</p>
+    <div style="display: inline-block; position: relative; margin: 0 0.5em">
+        <a href="#hello" class="link link_wrapper link_pseudo" title="look at me!">
+            <span class="link__inner">Tooltip1</span>
+        </a>
+    </div>
+    <div style="display: inline-block; position: relative; margin: 0 0.5em">
+        <a href="#hello" class="link link_wrapper link_pseudo" title="look <b>at me!</b>">
+            <span class="link__inner">Tooltip2</span>
+        </a>
+    </div>
+}

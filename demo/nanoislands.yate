@@ -28,12 +28,14 @@ include 'select.yate'
 include 'buttons.yate'
 include 'checkbox.yate'
 include 'popups.yate'
+include 'popups-jq.yate'
 include 'progress.yate'
 include 'input.yate'
 include 'input-group.yate'
 include 'islands.yate'
 include 'loaders.yate'
 include 'sliders.yate'
+include 'tooltips-jq.yate'
 
 match / {
     <div class="demo-toggle nb-island nb-island_fly">
@@ -149,6 +151,22 @@ match / {
         </div>
         <div class="demo-pane__content">
             popups()
+        </div>
+        <div class="demo-pane__content">
+            popups-jq()
+        </div>
+    </div>
+    <div class="demo-pane">
+        <div class="demo-pane__desc">
+            <div class="demo-h2">
+                "Tooltips"
+            </div>
+            <div class="demo-h5">
+                "Требует подключения JS"
+            </div>
+        </div>
+        <div class="demo-pane__content">
+            tooltips-jq()
         </div>
     </div>
 }
