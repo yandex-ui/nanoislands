@@ -34,15 +34,13 @@ nb.define('button', {
 
         if (!this.$node.is(':focus')) {
             nb.trigger('button-focusout');
+            this.$node.addClass('nb-button_focus');
             this.$node.focus();
-            this.focused = true;
+
+
         }
+        this.focused = true;
     },
-
-    focus: function (e, button) {
-        $(this.node).addClass('nb-button_focus');
-    },
-
     blur: function () {
         this.$node.removeClass('nb-button_focus');
         this.focused = false;

@@ -21,13 +21,15 @@
         'close': 'onclose',
 
         'click .nb-popup__close': 'onclose',
-        'click .nb-select__item': 'onSelect'
+        'click .nb-select__item': 'onClick'
     };
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
     popup.oninit = function () {
         var data = this.data();
+
+        this.opened = false;
 
         if ('modal' in data) {
             this.modal = true;
@@ -98,6 +100,7 @@
             );
             this.trigger('show');
 
+            this.opened = true;
 
             // Сообщаем в космос, что открылся попап
             nb.trigger('popup-opened', this);
@@ -133,7 +136,7 @@
                 // Сообщаем в космос, что закрылся попап
                 nb.trigger('popup-closed', that);
             });
-
+        this.opened = false;
     };
 
 // ----------------------------------------------------------------------------------------------------------------- //
@@ -451,26 +454,28 @@
      * Changes selected item and trigger events through space
      * @param e - event
      */
-    popup.onSelect = function (e) {
+    popup.onClick = function (e) {
         var $target = $(e.target)
         var $item = $target.attr('nb-select-value') ? $target : $target.parents('*[nb-select-value]')
-        var value = $item.attr('nb-select-value')
-        var text = $item.find('.nb-select__text').html()
 
-        nb.trigger('select:' + this.node.getAttribute('id') + ':change', {
-            nb: this,
-            target: $target,
-            item: $item,
-            value: value,
-            text: text
-        });
+        this.selectItem($item)
 
         if (e.type == 'click') {
             this.trigger('close')
         }
+    },
 
-        $(this.node).find('.nb-select__item_selected_yes').removeClass('nb-select__item_selected_yes')
-        $item.addClass('nb-select__item_selected_yes')
+    popup.selectItem = function (item) {
+        var value = $(item).attr('nb-select-value');
+        var text = $(item).find('.nb-select__text').html();
+
+        $(this.node).find('.nb-select__item_selected_yes').removeClass('nb-select__item_selected_yes');
+        $(item).addClass('nb-select__item_selected_yes');
+
+        nb.trigger('select:' + this.node.getAttribute('id') + ':change', {
+           value: value,
+           text: text
+        });
     }
 
 // ----------------------------------------------------------------------------------------------------------------- //
