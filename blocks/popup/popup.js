@@ -416,7 +416,7 @@
         var that = this;
 
         this._onkeypress = function (e) {
-            if (e.keyCode === 27) {
+            if (e.keyCode === 27 || e.keyCode === 9) {
                 that.trigger('close');
             }
         };
