@@ -1,0 +1,53 @@
+func slider-small() {
+    slider = {
+        'size': 's'
+        'knob': {
+            'type': 'round'
+            'class': 'js-custom-class'
+            'attrs': {
+                'data-id': '123'
+            }
+        }
+        'value': 20
+        'attrs': {
+            'data-id': '1'
+        }
+    }
+    nb-slider(slider)
+}
+
+func slider-medium() {
+    slider = {
+        'size': 'm'
+        'class': 'js-super-class'
+        'value': 50
+        'knob': {
+            'type': 'round'
+        }
+        'attrs': {
+            'data-id': '1'
+        }
+    }
+    nb-slider(slider)
+}
+
+func slider-large() {
+    slider = {
+        'size': 'l'
+        'value': 70
+        'attrs': {
+            'data-id': '1'
+        }
+    }
+    nb-slider(slider)
+}
+
+func sliders() {
+    <div>
+        <p>Слайдер: </p>
+
+        slider-small()
+        slider-medium()
+        slider-large()
+    </div>
+}

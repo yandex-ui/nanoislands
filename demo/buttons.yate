@@ -1,0 +1,320 @@
+func button-medium() {
+    block = {
+        'content': 'Кнопка'
+    }
+    nb-button(block)
+
+    '&nbsp;'
+
+    link = {
+        'content': 'Кнопка Ссылка'
+        'href': '#'
+    }
+    nb-button(link)
+}
+
+func button-small() {
+    button = {
+        'content': 'Кнопка'
+        'size': 's'
+    }
+    nb-button(button)
+
+    '&nbsp;'
+
+    link = {
+        'content': 'Кнопка Ссылка'
+        'href': '#'
+        'size': 's'
+    }
+    nb-button(link)
+}
+
+func button-action() {
+    buttonS = {
+        'content': 'Кнопка'
+        'size': 's'
+        'theme': 'action'
+    }
+    nb-button(buttonS)
+
+    '&nbsp;'
+
+    linkS = {
+        'content': 'Кнопка Ссылка'
+        'size': 's'
+        'href': '#'
+        'theme': 'action'
+    }
+    nb-button(linkS)
+
+    '&nbsp;'
+
+    buttonM = {
+        'content': 'Кнопка'
+        'size': 'm'
+        'theme': 'action'
+    }
+    nb-button(buttonM)
+
+    '&nbsp;'
+
+    linkM = {
+        'content': 'Кнопка Ссылка'
+        'size': 'm'
+        'href': '#'
+        'theme': 'action'
+        'attrs': {
+            'data-action': 'folderOpen'
+            'data-params': '{{"id": "ho-ho"}}'
+        }
+    }
+    nb-button(linkM)
+
+}
+
+func button-pseudo() {
+    buttonS = {
+        'content': 'Псевдо кнопка'
+        'size': 's'
+        'theme': 'pseudo'
+    }
+    nb-button(buttonS)
+
+    '&nbsp;'
+
+    linkS = {
+        'content': 'Псевдо кнопка ссылка'
+        'size': 's'
+        'href': '#'
+        'theme': 'pseudo'
+    }
+    nb-button(linkS)
+
+    '&nbsp;'
+
+    buttonM = {
+        'content': 'Псевдо кнопка'
+        'size': 'm'
+        'theme': 'pseudo'
+    }
+    nb-button(buttonM)
+
+    '&nbsp;'
+
+    linkM = {
+        'content': 'Псевдо кнопка ссылка'
+        'size': 'm'
+        'href': '#'
+        'theme': 'pseudo'
+    }
+    nb-button(linkM)
+}
+
+
+// наследование
+func nb-myButton(nodeset options) {
+    default = {
+        'size': 'm'
+        'theme': 'normal'
+        'mod': 'myButton'
+        'class': 'nb-mybutton'
+    }
+
+    nb-button(nb-extend(default, options))
+}
+
+match .button[.mod == 'myButton'] nb {
+    <button>
+        apply . nb-main-attrs
+        @data-nb = ''
+
+        apply . nb-main-content
+        apply . nb-mybuttonElem
+    </button>
+}
+
+match .button[.mod == 'myButton'] nb-mybuttonElem {
+    <span class="nb-button__text" style="margin-left: -2em"> :-) </span>
+}
+
+match .button[.mod == 'myButton'] nb-content-button {
+    <b>
+        .content
+    </b>
+}
+
+func button-extend() {
+    options = {
+        'content': 'I extended from the button'
+    }
+    nb-myButton(options)
+}
+
+func button-images() {
+    button = {
+        'icon': 'eye_16'
+    }
+
+    apply button.icon nb
+
+    '&nbsp;'
+
+    nb-button(button)
+
+    '&nbsp;'
+
+    button2 = {
+        'icon': 'link_16'
+        'content': 'Button'
+    }
+
+    nb-button(button2)
+
+    '&nbsp;'
+
+    button3 = {
+        'icon': 'trash_16'
+        'size': 's'
+        'content': 'Button'
+    }
+
+    nb-button(button3)
+}
+
+func button-disabled() {
+    buttonN = {
+        'content': 'Кнопка'
+        'disabled': true()
+
+    }
+    nb-button(buttonN)
+
+    '&nbsp;'
+
+    linkN = {
+        'content': 'Кнопка Ссылка'
+        'href': '#'
+        'disabled': true()
+    }
+    nb-button(linkN)
+
+    '&nbsp;'
+
+    buttonA = {
+        'content': 'Кнопка'
+        'disabled': true()
+        'theme': 'action'
+    }
+    nb-button(buttonA)
+
+    '&nbsp;'
+
+    linkA = {
+        'content': 'Кнопка Ссылка'
+        'href': '#'
+        'disabled': true()
+        'theme': 'action'
+    }
+    nb-button(linkA)
+
+    '&nbsp;'
+
+    buttonP = {
+        'content': 'Кнопка'
+        'disabled': true()
+        'theme': 'pseudo'
+    }
+    nb-button(buttonP)
+
+    '&nbsp;'
+
+    linkP = {
+        'content': 'Кнопка Ссылка'
+        'href': '#'
+        'disabled': true()
+        'theme': 'pseudo'
+    }
+    nb-button(linkP)
+}
+
+func radio-button() {
+
+        radioGroup = {
+            'size': 'm'
+            'name': 'btn'
+            'group':  [
+                {
+                    'content': 'Кнопка 1'
+                    'value': 'btn1'
+                }
+                {
+                    'content': 'Кнопка 2'
+                    'value': 'btn2'
+                    'disabled': true()
+                }
+                {
+                    'content': 'Кнопка 3'
+                    'value': 'btn3'
+                    'checked': true()
+                }
+                {
+                    'content': 'Кнопка 4'
+                    'value': 'btn4'
+                }
+            ]
+        }
+
+    nb-radio-button(radioGroup)
+}
+
+func attach-button() {
+    attach = {
+        'mod': 'attach'
+        'content': 'выберите файл'
+    }
+
+
+    nb-button(attach)
+}
+
+
+func buttons() {
+    <p>
+        'Средние кнопки: '
+        button-medium()
+    </p>
+    <p>
+        'Маленькие кнопки: '
+        button-small()
+    </p>
+    <p>
+        'Кнопки действий: '
+        button-action()
+    </p>
+    <p>
+        'Псевдо кнопки: '
+        button-pseudo()
+    </p>
+    <p>
+        'Неактивные кнопки: '
+        button-disabled()
+    </p>
+    <p>
+        'Наследование кнопки (драфт): '
+        button-extend()
+    </p>
+    <p>
+        'Радио группа из кнопок: '
+        radio-button()
+    </p>
+
+    <p>
+        'Кнопки с картинками: '
+        button-images()
+    </p>
+<p>
+       'Кнопки attach: '
+       attach-button()
+   </p>
+}

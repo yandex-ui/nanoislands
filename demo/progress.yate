@@ -1,0 +1,24 @@
+func progresses() {
+
+    default = {
+        'id': 'progress2'
+        'start': '20'
+    }
+
+    title = {
+        'id': 'progress1'
+        'start': '30'
+        'type': 'title'
+        'title': 'Король_Лев_5_rutracker.org'
+    }
+
+    <p>Прогресс:</p>
+    <div style="display: inline-block; width: 300px; position: relative;">
+        'default'
+        nb-progress(default)
+    </div>
+    <div style="display: inline-block; width: 300px; position: relative; margin-left:  20px;">
+        'type_title'
+        nb-progress(title)
+    </div>
+}

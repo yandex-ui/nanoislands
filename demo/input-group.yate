@@ -1,0 +1,30 @@
+
+func input-groups() {
+        blockDefault1 = {
+            'input' : {
+                'size': 's'
+                'content': 'поле ввода'
+            }
+            'button' : {
+                'size': 's'
+                'content': 'Кнопка'
+            }
+        }
+
+        blockDefault2 = {
+            'button' : {
+                    'size': 's'
+                    'content': 'Кнопка'
+                }
+            'input' : {
+                    'size': 's'
+                    'content': 'поле ввода'
+            }
+        }
+
+    <div>
+        nb-input-group(blockDefault1)
+        <br />
+        nb-input-group(blockDefault2)
+    </div>
+}

@@ -1,0 +1,31 @@
+func loader-small() {
+    loader = {
+        'size': 's'
+        'attrs': {
+            'data-id': '1'
+        }
+    }
+    nb-loader(loader)
+}
+
+
+func loader-medium() {
+    loader = {
+        'attrs': {
+            'data-id': '1'
+        }
+    }
+    nb-loader(loader)
+}
+
+
+
+func loaders() {
+    <div>
+        <p>Крутилки: </p>
+
+        loader-small()
+        loader-medium()
+        loader-small()
+    </div>
+}
