@@ -1,2 +1,7 @@
+.idea
 *.sublime-*
+node_modules
 npm-debug.log
+
+nanoislands.css
+demo/nanoislands.js

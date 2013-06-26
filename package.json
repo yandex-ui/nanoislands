@@ -1,0 +1,18 @@
+{
+    "name": "nanoislands",
+    "version": "0.0.0",
+    "homepage": "https://github.yandex-team.ru/UFO/nanoislands",
+    "repository": {
+        "type": "git",
+        "url": "git://github.yandex-team.ru/UFO/nanoislands.git"
+    },
+    "dependencies": {
+        "nib": "git://github.com/kizu/nib.git#new-gradients",
+        "stylus": "git://github.com/Panya/stylus.git#master",
+        "yate": "*"
+    },
+    "engines": {
+        "node": "*"
+    }
+}
+
