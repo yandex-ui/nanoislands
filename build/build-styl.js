@@ -1,6 +1,6 @@
 var stylus = require('stylus');
-var style = stylus('@import "blocks/nanoislands.styl";')
-    .set('filename', '../nanoislands.css')
+var style = stylus('@import "nanoislands.styl";')
+    .set('filename', 'nanoislands.css')
     .set('resolve url', true)
     .define('url', stylus.resolver())
     .use(require('nib')());

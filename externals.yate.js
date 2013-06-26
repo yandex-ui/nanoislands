@@ -1,5 +1,6 @@
 ;(function() {
 
+
     /* Делает extend двух и более объектов объектов
     *
     * @param {Boolean} deep extend или нет

@@ -1,7 +1,5 @@
 /* borschik:include:../nanoblocks/nanoblocks.js */
 
-/* borschik:include:externals.yate.js */
-
 /* borschik:include:button/button.js */
 /* borschik:include:select/select.js  */
 /* borschik:include:radio-button/radio-button.js  */
