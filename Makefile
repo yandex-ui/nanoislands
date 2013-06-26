@@ -3,7 +3,7 @@ export NPM_BIN
 
 MAKEFLAGS+=-j 4
 
-all: nanoislands.css nanoislands.yate.js nanoislands.ie.css
+all: nanoislands.css nanoislands.yate.js nanoislands.ie.css nanoislands.js
 
 nanoislands.css: $(shell find . -name '*.styl') node_modules
 	node build/build-styl.js > $@
