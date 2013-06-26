@@ -35,7 +35,9 @@
 nb-button_theme()
 
   .nb-button_theme_normal
-    background: #fff
+
+    if !ie
+      background: #fff
     background: linear-gradient(rgba(#000, 0.2) 0%, rgba(#000, 0.4) 100%)
 
   .nb-button_theme_normal:before
@@ -101,7 +103,35 @@ nb-button_theme()
     cursor: default
 
 
+  if ie
+    a.nb-button
+      border: 2px solid
+      border-right-color: #666
+      border-bottom-color: #666
+      border-top-color: #efefef
+      border-left-color: #efefef
+      background: #D4D0C8
 
+    a.nb-button_theme_normal
+    a.nb-button_theme_action
+      &:active
+        border-right-color: #efefef
+        border-bottom-color: #efefef
+        border-top-color: #666
+        border-left-color: #666
 
+    .nb-button_theme_action
+    a.nb-button_theme_action
+      background: #ffdf60
+
+    .nb-button_theme_pseudo
+    a.nb-button_theme_pseudo
+      text-decoration: none
+      background: none
+      border: 1px solid #ccc
+
+    .nb-button_theme_pseudo.nb-button_disabled
+    a.nb-button_theme_pseudo.nb-button_disabled
+      border: 1px solid #ddd
 
 nb-button_theme()

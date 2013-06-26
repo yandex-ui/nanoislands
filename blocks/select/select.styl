@@ -5,10 +5,16 @@ nb-select()
     display: inline-block
 
   .nb-select__fallback
-    display: none
+    if !ie
+      display: none
+    if ie
+      display: inline-block
 
 
   .nb-select__button
+    if ie
+      display: none
+
     max-width: 100%
 
     cursor: default

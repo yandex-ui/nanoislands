@@ -25,22 +25,37 @@ nb-button_size()
   // кастомизация размеров
   .nb-button_size_s
     font-size: 13px
-    line-height: 28px
+    if !ie
+      line-height: 28px
+
+    if ie
+      line-height: 20px
+
+
 
 
   .nb-button_size_m
     font-size: 15px
-    line-height: 32px
+
+    if !ie
+      line-height: 32px
+
+    if ie
+      line-height: 26px
+
 
   .nb-button_theme_pseudo
 
     &.nb-button_size_s
-      line-height: 24px
+      if !ie
+        line-height: 24px
+
+      if ie
+        line-height: 20px
+
 
     &.nb-button_size_m
       line-height: 28px
-
-
 
 
 nb-button_size()

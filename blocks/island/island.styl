@@ -3,6 +3,9 @@ nb-island()
     background: $background
     box-shadow: 0 0 0 1px rgba($foreground, 0.1), 0 6px 6px -4px rgba($foreground, 0.14)
 
+    if ie
+      border: 1px solid #ccc;
+
   .nb-island_padding_s
     padding: $gapS
 

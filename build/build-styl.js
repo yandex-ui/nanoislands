@@ -1,6 +1,13 @@
+var ie = process.argv[2] == 'ie' || false;
+
+var content = [
+    'ie = ' + ie.toString(),
+    '@import "nanoislands.styl";'
+].join('\n');
+
 var stylus = require('stylus');
-var style = stylus('@import "nanoislands.styl";')
-    .set('filename', 'nanoislands.css')
+var style = stylus(content)
+    .set('filename', ie ? 'nanoislands.ie.css' : 'nanoislands.css')
     .set('resolve url', true)
     .define('url', stylus.resolver())
     .use(require('nib')());

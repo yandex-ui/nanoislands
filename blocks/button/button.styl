@@ -6,25 +6,35 @@ nb-button()
 
   .nb-button
     display: inline-block
-    margin: 0
-    padding: 0
-    outline: 0 auto
-
-    cursor: default
-    text-decoration: none
 
     text-align: center
     white-space: nowrap
-    border: 0
+
     user-select: none
     position: relative
     font-family: $fontFamily
 
     color: #333
-    background: none
+
     border-radius: 3px
 
     vertical-align: middle
+
+    if !ie
+      margin: 0
+      padding: 0
+      border: 0
+      background: none
+      cursor: default
+      text-decoration: none
+      outline: 0 auto
+
+    if ie
+      overflow: visible
+
+  if ie
+    a.nb-button
+      padding: 2px 0
 
   .nb-button:focus
     outline: none
@@ -45,7 +55,7 @@ nb-button()
     .nb-icon
       margin-right: 4px
       margin-left:  -4px
-      
+
 
   .nb-button_only-icon
     .nb-icon
