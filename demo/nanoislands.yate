@@ -1,5 +1,5 @@
-include '../externals.yate'
-include '../nanoislands.yate'
+include '../blocks/externals.yate'
+include '../blocks/nanoislands.yate'
 
 
 include 'select.yate'

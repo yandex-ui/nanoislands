@@ -9,7 +9,8 @@
     "dependencies": {
         "nib": "git://github.com/kizu/nib.git#new-gradients",
         "stylus": "git://github.com/Panya/stylus.git#master",
-        "yate": "*"
+        "yate": "*",
+        "borschik": "*"
     },
     "engines": {
         "node": "*"

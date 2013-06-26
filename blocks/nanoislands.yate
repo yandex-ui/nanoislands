@@ -1,0 +1,45 @@
+// основной шаблон для нанобока
+match .* nb-main-attrs {
+    apply . nb-attrs
+    apply .* nb-attrs
+    apply .attrs.* nb-attrs
+}
+
+match .* nb-main-content {
+    apply . nb-content
+}
+
+
+// ===========================
+
+
+match .class nb-attrs {
+    @class += ' {.}'
+}
+
+// общий шаблон для определения атрибутов
+match .attrs.* nb-attrs {
+    @{name(.)} = .
+}
+
+/// ==========================
+
+func nb-block(name, nodeset options) {
+    apply nb-wrap(name, options).* nb
+}
+
+include 'button/button.yate'
+include 'popup/popup.yate'
+include 'radio-button/radio-button.yate'
+include 'select/select.yate'
+include 'checkbox/checkbox.yate'
+include 'input/input.yate'
+include 'input-group/input-group.yate'
+include 'progress/progress.yate'
+include 'icon/icon.yate'
+include 'paranja/paranja.yate'
+include 'island/island.yate'
+include 'dropzone/dropzone.yate'
+include 'loader/loader.yate'
+include 'slider/slider.yate'
+include 'dialog/dialog.yate'
