@@ -34,20 +34,19 @@
 
 nb-button_theme()
 
-  .nb-button_theme_normal
+  if !ie
+    .nb-button_theme_normal
+      background: #C4C4C4
+      background: linear-gradient(rgba(#000, 0.2) 0%, rgba(#000, 0.4) 100%)
 
-    if !ie
-      background: #fff
-    background: linear-gradient(rgba(#000, 0.2) 0%, rgba(#000, 0.4) 100%)
-
-  .nb-button_theme_normal:before
-    background: #eee
-    background: linear-gradient(rgba(#fff) 0%, rgba(#eee) 100%)
+    .nb-button_theme_normal:before
+      background: #fafafa
+      background: linear-gradient(rgba(#fff) 0%, rgba(#eee) 100%)
 
 
 
   .nb-button_theme_action
-    background: #ffdf60
+    background: #A79A80
     background: linear-gradient(rgba(96, 64, 0, 0.4) 0%, rgba(70, 47, 0, 0.54) 100%)
 
   .nb-button_theme_action:before

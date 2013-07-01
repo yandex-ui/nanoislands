@@ -53,23 +53,8 @@ a.nb-button {
 .nb-button_theme_pseudo.nb-button_size_m {
   line-height: 28px;
 }
-.nb-button_theme_normal {
-  background: -webkit-linear-gradient(rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
-  background: -moz-linear-gradient(rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
-  background: -o-linear-gradient(rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
-  background: -ms-linear-gradient(rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
-  background: linear-gradient(rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
-}
-.nb-button_theme_normal:before {
-  background: #eee;
-  background: -webkit-linear-gradient(#fff 0%, #eee 100%);
-  background: -moz-linear-gradient(#fff 0%, #eee 100%);
-  background: -o-linear-gradient(#fff 0%, #eee 100%);
-  background: -ms-linear-gradient(#fff 0%, #eee 100%);
-  background: linear-gradient(#fff 0%, #eee 100%);
-}
 .nb-button_theme_action {
-  background: #ffdf60;
+  background: #a79a80;
   background: -webkit-linear-gradient(rgba(96,64,0,0.4) 0%, rgba(70,47,0,0.54) 100%);
   background: -moz-linear-gradient(rgba(96,64,0,0.4) 0%, rgba(70,47,0,0.54) 100%);
   background: -o-linear-gradient(rgba(96,64,0,0.4) 0%, rgba(70,47,0,0.54) 100%);
@@ -195,6 +180,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   text-align: left;
   white-space: normal;
   background: #fff;
+  border: 1px solid #cbcbcb;
 }
 .nb-popup .nb-popup__content {
   display: block;
@@ -663,6 +649,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   padding: 3px 8px;
 }
 .nb-input-box:before {
+  background: #c4c4c4;
   background: -webkit-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
   background: -moz-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
   background: -o-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));

@@ -56,5 +56,6 @@ match .input.type nb-content  {
     @type = .
 }
 
-
-
+match .input.name nb-content  {
+    @name = .
+}
