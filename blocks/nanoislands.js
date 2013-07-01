@@ -1,4 +1,4 @@
-/* borschik:include:../nanoblocks/nanoblocks.js */
+/* borschik:include:../libs/nanoblocks.js */
 
 /* borschik:include:button/button.js */
 /* borschik:include:select/select.js  */
