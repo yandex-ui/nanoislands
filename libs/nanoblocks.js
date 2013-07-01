@@ -13,6 +13,30 @@
 
 var nb = {};
 
+// Простите, но в ИЕ такого нет
+if (!Array.prototype.indexOf)
+{
+  Array.prototype.indexOf = function(elt /*, from*/)
+  {
+    var len = this.length;
+
+    var from = Number(arguments[1]) || 0;
+    from = (from < 0)
+         ? Math.ceil(from)
+         : Math.floor(from);
+    if (from < 0)
+      from += len;
+
+    for (; from < len; from++)
+    {
+      if (from in this &&
+          this[from] === elt)
+        return from;
+    }
+    return -1;
+  };
+}
+
 //  ---------------------------------------------------------------------------------------------------------------  //
 
 //  Минимальный common.js
@@ -124,7 +148,7 @@ nb.node.setMod = function(node, name, value) {
 
     } else {
         //  Удаляем старый модификатор, если он там был.
-        className = className.replace(rx, ' ').trim();
+        className = className.replace(rx, ' ').replace(/(^\s+|\s+$)/g, '');
 
         //  Тут недостаточно просто if (value) { ... },
         //  потому что value может быть нулем.
