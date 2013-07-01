@@ -21,6 +21,15 @@ func input-disabled() {
     nb-input(block)
 }
 
+func input-length() {
+    block = {
+        'length': 11
+        'maxlength': 11
+        'placeholder': '11 символов'
+    }
+    nb-input(block)
+}
+
 func inputs() {
   <div style="margin: 20px 0px;">
     <p>Маленький инпут</p>
@@ -31,6 +40,9 @@ func inputs() {
     <br />
     <p>Неактивный инпут</p>
     input-disabled()
+    <br />
+    <p>Инпут с плейсхолдером и ограниченной длинной символов</p>
+    input-length()
     <br />
   </div>
 }

@@ -28,8 +28,7 @@ match .input.disabled nb-attrs {
 
 match .input nb-content {
     <input value="{.content}" class="nb-input">
-        apply .disabled nb-content
-        apply .readonly nb-content
+        apply .* nb-content
     </input>
 }
 
@@ -41,6 +40,21 @@ match .input.readonly nb-content  {
     @readonly = "readonly"
 }
 
+match .input.maxlength nb-content  {
+    @maxlength = .
+}
+
+match .input.length nb-content  {
+    @size = .
+}
+
+match .input.placeholder nb-content  {
+    @placeholder = .
+}
+
+match .input.type nb-content  {
+    @type = .
+}
 
 
 
