@@ -53,10 +53,12 @@ match .actions nb-dialog {
         <div class="nb-dialog__pull_right">
             for .right {
                 nb-button(.)
+                ' '
             }
         </div>
 
         for .left {
+            ' '
             nb-button(.)
         }
     </div>
