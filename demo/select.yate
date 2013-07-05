@@ -3,46 +3,51 @@ func select-medium() {
         'size': 'm'
         'id': 'select1'
         'items': [
-          {
-              'text': 'select1'
-              'value': 'option1'
-          }
-          {
-              'text': 'text2'
-              'value': 'option2'
+            {
+                'text': 'Карта'
+                'value': 'option1'
                 'selected': 'true'
-          }
-          {
-              'text': 'text2'
-              'value': 'option3'
-          }
-      ]
+            }
+            {
+                'text': 'Спутник'
+                'value': 'option2'
+            }
+            {
+                'text': 'Гибрид'
+                'value': 'option3'
+            }
+        ]
     }
 
     nb-select(block)
 }
 func select-small() {
     block = {
-           'size': 's'
-           'id': 'select2'
-           'items': [
-               {
-                   'text': 'select1'
-                   'data': 'option1'
-               }
-               {
-                   'text': 'text2'
-                   'data': 'option2'
-                    'selected': 'true'
-               }
-               {
-                   'text': 'text2'
-                   'data': 'option3'
-               }
-           ]
+        'size': 's'
+        'id': 'select2'
+        'items': [
+            {
+                'text': 'Карта'
+                'data': 'option1'
+                'selected': 'true'
+            }
+            {
+                'text': 'Спутник'
+                'data': 'option2'
+            }
+            {
+                'text': 'Гибрид'
+                'data': 'option3'
+            }
+            {
+                'text': 'Народная карта'
+                'data': 'option4'
+            }
+        ]
     }
     nb-select(block)
 }
+
 //func select-disable() {
 //    block = {
 //        'content':  'СелектСелектСелектселект'
@@ -53,11 +58,34 @@ func select-small() {
 //}
 
 func selects() {
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: M '
+            <span class="demo-code demo-code_small">
+                '.nb-select_size_m'
+            </span>
+        </div>
 
-    <div class="wrap" style="width:200px;">
-    'Селекты:'
-        select-medium()
-        select-small()
-  //      select-disable()
+        show(select-medium())
     </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: S '
+            <span class="demo-code demo-code_small">
+                '.nb-select_size_s'
+            </span>
+        </div>
+
+        show(select-small())
+    </div>
+    // <div class="demo-section">
+    //     <div class="demo-h3">
+    //         'Disabled '
+    //         <span class="demo-code demo-code_small">
+    //             '.nb-select_size_s'
+    //         </span>
+    //     </div>
+
+    //     show(select-disable())
+    // </div>
 }

@@ -1,18 +1,50 @@
+func toggle-default() {
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup'}}" href="#default">
+        <span class="link__inner">
+            "Попап по умолчанию"
+        </span>
+    </a>
+}
+
+func toggle-to-right() {
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup1', how: {{ where: 'left', what: 'right' }}}}" href="#right">
+        <span class="link__inner">
+            "Попап справа"
+        </span>
+    </a>
+}
+
+func toggle-to-left() {
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup2', how: {{ where: 'right', what: 'left' }}}}" href="#left">
+        <span class="link__inner">
+            "Попап слева"
+        </span>
+    </a>
+}
+
+func toggle-to-top() {
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup3', how: {{ where: 'top', what: 'bottom' }}}}" href="#top">
+        <span class="link__inner">
+            "Попап сверху"
+        </span>
+    </a>
+}
+
 func popups() {
     default = {
         'id': 'popup'
         'menu': [
             {
                 'href': '#'
-                'text': 'пункт1'
+                'text': 'Скопировать'
             }
             {
                 'href': '#'
-                'text': 'пункт2'
+                'text': 'Переместить'
             }
             {
                 'href': '#'
-                'text': 'пункт3'
+                'text': 'Удалить'
             }
         ]
     }
@@ -22,15 +54,15 @@ func popups() {
         'menu': [
             {
                 'href': '#'
-                'text': 'пункт1'
+                'text': 'Скопировать'
             }
             {
                 'href': '#'
-                'text': 'пункт2'
+                'text': 'Переместить'
             }
             {
                 'href': '#'
-                'text': 'пункт3'
+                'text': 'Удалить'
             }
         ]
     }
@@ -40,15 +72,15 @@ func popups() {
         'menu': [
             {
                 'href': '#'
-                'text': 'пункт1'
+                'text': 'Скопировать'
             }
             {
                 'href': '#'
-                'text': 'пункт2'
+                'text': 'Переместить'
             }
             {
                 'href': '#'
-                'text': 'пункт3'
+                'text': 'Удалить'
             }
         ]
     }
@@ -58,44 +90,53 @@ func popups() {
         'menu': [
             {
                 'href': '#'
-                'text': 'пункт1'
+                'text': 'Скопировать'
             }
             {
                 'href': '#'
-                'text': 'пункт2'
+                'text': 'Переместить'
             }
             {
                 'href': '#'
-                'text': 'пункт3'
+                'text': 'Удалить'
             }
         ]
     }
 
-    <p>Дропдауны:</p>
-    <div style="display: inline-block; width: 200px; position: relative;">
-        <a href="#hello" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup'}}">
-            <span class="link__inner">Попап по умолчанию</span>
-        </a>
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-default())
+            code(toggle-default())
+            code(nb-popup(default))
+        </div>
+
         nb-popup(default)
     </div>
-    <div style="display: inline-block; width: 200px; position: relative;">
-        <a href="#hello" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup1', how: {{ where: 'left', what: 'right' }}}}">
-            <span class="link__inner">Попап справа</span>
-        </a>
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-to-right())
+            code(toggle-to-right())
+            code(nb-popup(toRight))
+        </div>
+
         nb-popup(toRight)
     </div>
-    <div style="display: inline-block; width: 200px; position: relative;">
-        <a href="#hello" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup2', how: {{ where: 'right', what: 'left' }}}}">
-            <span class="link__inner">Попап слева</span>
-        </a>
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-to-left())
+            code(toggle-to-left())
+            code(nb-popup(toLeft))
+        </div>
 
         nb-popup(toLeft)
     </div>
-     <div style="display: inline-block; width: 200px; position: relative;">
-         <a href="#hello" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup3', how: {{ where: 'top', what: 'bottom' }}}}">
-           <span class="link__inner">Попап Сверху</span>
-        </a>
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-to-top())
+            code(toggle-to-top())
+            code(nb-popup(toTop))
+        </div>
 
-       nb-popup(toTop)
+        nb-popup(toTop)
     </div>
 }
