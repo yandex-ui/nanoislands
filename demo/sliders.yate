@@ -43,11 +43,25 @@ func slider-large() {
 }
 
 func sliders() {
-    <div>
-        <p>Слайдер: </p>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: S, Knob: Round'
+        </div>
 
-        slider-small()
-        slider-medium()
-        slider-large()
+        show(slider-small())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: M, Knob: Round'
+        </div>
+
+        show(slider-medium())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: L, Knob: Square'
+        </div>
+
+        show(slider-large())
     </div>
 }

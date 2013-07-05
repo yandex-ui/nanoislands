@@ -18,13 +18,18 @@ func island-padding() {
     nb-island(island)
 }
 
-
-
 func islands() {
-    <div>
-        <p>Острова: </p>
-        island-simple()
-        <br />
-        island-padding()
+    <div class="demo-section">
+        show(island-simple())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Padding: L, Inline '
+            <span class="demo-code demo-code_small">
+                '.nb-island_padding_l.nb-island_inline'
+            </span>
+        </div>
+
+        show(island-padding())
     </div>
 }

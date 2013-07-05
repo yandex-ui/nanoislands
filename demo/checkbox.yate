@@ -1,113 +1,103 @@
+func checkbox-radio() {
+    radio = {
+        'type': 'radio'
+        'text': 'Человек'
+        'attrs': {
+            'name': 'biotype'
+        }
+    }
+
+    radio2 = {
+        'type': 'radio'
+        'text': 'Паук'
+        'attrs': {
+            'name': 'biotype'
+        }
+    }
+
+    nb-checkbox(radio)
+    <br />
+    nb-checkbox(radio2)
+}
+
+func checkbox-check() {
+    radio = {
+        'text': 'Дерево'
+        'checked': true()
+        'attrs': {
+            'name': 'task'
+        }
+    }
+
+    radio2 = {
+        'text': 'Сын'
+        'attrs': {
+            'name': 'task'
+        }
+    }
+
+    radio3 = {
+        'text': 'Дом'
+        'attrs': {
+            'name': 'task'
+        }
+    }
+
+    nb-checkbox(radio)
+    <br />
+    nb-checkbox(radio2)
+    <br />
+    nb-checkbox(radio3)
+}
+
+func checkbox-small() {
+    radio = {
+        'type': 'radio'
+        'size': 's'
+        'text': 'JavaScript'
+        'checked': true()
+        'attrs': {
+            'name': 'language'
+        }
+    }
+
+    radio2 = {
+        'type': 'radio'
+        'size': 's'
+        'text': 'Java'
+        'attrs': {
+            'name': 'language'
+        }
+    }
+
+    nb-checkbox(radio)
+    <br />
+    nb-checkbox(radio2)
+}
+
 func checkbox() {
-    <p>
-        <div style="margin-top: 5px;">
-            radio1 = {
-                'type': 'radio'
-                'text': 'Человек'
-                'attrs': {
-                    'name': 'name-yo'
-                }
-            }
-
-            nb-checkbox(radio1)
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Type: Radio'
         </div>
-        ' '
-        <div style="margin-top: 5px;">
-            radio2 = {
-                'type': 'radio'
-                'text': 'Паук'
-                'attrs': {
-                    'name': 'name-yo'
-                }
-            }
 
-            nb-checkbox(radio2)
+        show(checkbox-radio())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Type: Checkbox'
         </div>
-        ' '
-        <div style="margin-top: 5px;">
-            radio3 = {
-                'type': 'radio'
-                'size': 's'
-                'text': 'Джекил'
-                'attrs': {
-                    'name': 'name-yo'
-                }
-            }
 
-            nb-checkbox(radio3)
+        show(checkbox-check())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: S '
+            <span class="demo-code demo-code_small">
+                '.nb-checkbox_size_s'
+            </span>
         </div>
-        ' '
-        <div style="margin-top: 5px;">
-            radio4 = {
-                'type': 'radio'
-                'size': 's'
-                'text': 'Хайд'
-                'attrs': {
-                    'name': 'name-yo'
-                }
-            }
 
-            nb-checkbox(radio4)
-        </div>
-    </p>
-    <p>
-        <div style="display: inline-block; margin-right: 10px;">
-            check1 = {
-                'text': 'Поэт'
-                'attrs': {
-                    'name': 'surname-yo'
-                }
-            }
-
-            nb-checkbox(check1)
-        </div>
-        ' '
-        <div style="display: inline-block; margin-right: 10px;">
-            check2 = {
-                'text': 'Гражданин'
-                'attrs': {
-                    'name': 'middlename-yo'
-                    'checked': true()
-                }
-            }
-
-            nb-checkbox(check2)
-        </div>
-        ' '
-        <div style="display: inline-block; padding-left: 15px; border-left: 1px solid #ccc; margin-right: 10px;">
-            check3 = {
-                'text': 'Студентка'
-                'size': 's'
-            }
-
-            nb-checkbox(check3)
-        </div>
-        ' '
-        <div style="display: inline-block; margin-right: 10px;">
-            check4 = {
-                'text': 'Комсомолка'
-                'size': 's'
-            }
-
-            nb-checkbox(check4)
-        </div>
-        ' '
-        <div style="display: inline-block; margin-right: 10px;">
-            check5 = {
-                'text': 'Спортсменка'
-                'size': 's'
-            }
-
-            nb-checkbox(check5)
-        </div>
-        ' '
-        <div style="display: inline-block; margin-right: 10px;">
-            check6 = {
-                'text': 'Красавица'
-                'size': 's'
-            }
-
-            nb-checkbox(check6)
-        </div>
-    </p>
+        show(checkbox-small())
+    </div>
 }

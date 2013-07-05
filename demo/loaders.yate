@@ -18,14 +18,25 @@ func loader-medium() {
     nb-loader(loader)
 }
 
-
-
 func loaders() {
-    <div>
-        <p>Крутилки: </p>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: M '
+            <span class="demo-code demo-code_small">
+                '.nb-loader_size_m'
+            </span>
+        </div>
 
-        loader-small()
-        loader-medium()
-        loader-small()
+        show(loader-medium())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: S '
+            <span class="demo-code demo-code_small">
+                '.nb-loader_size_s'
+            </span>
+        </div>
+
+        show(loader-small())
     </div>
 }
