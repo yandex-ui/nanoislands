@@ -27,7 +27,6 @@ func show(xml markup) {
 include 'select.yate'
 include 'buttons.yate'
 include 'checkbox.yate'
-include 'popups.yate'
 include 'popups-jq.yate'
 include 'progress.yate'
 include 'input.yate'
@@ -148,9 +147,6 @@ match / {
             <div class="demo-h5">
                 "Требует подключения JS"
             </div>
-        </div>
-        <div class="demo-pane__content">
-            popups()
         </div>
         <div class="demo-pane__content">
             popups-jq()
