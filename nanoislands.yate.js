@@ -2209,7 +2209,7 @@ var yr = yr || require('yate/lib/runtime.js');
         a0.s = 'div';
         a0.a[ "id" ] = new yr.scalarAttr(simpleScalar('id', c0));
         a0.a[ "data-nb" ] = new yr.scalarAttr("select");
-        a0.a[ "class" ] = new yr.scalarAttr("nb-select nb-select_size_ _init");
+        a0.a[ "class" ] = new yr.scalarAttr("nb-select nb-select_size_ _init " + nodeset2scalar( ( selectNametest('class', c0, []) ) ));
         var tmp0 = a0.a[ "class" ];
         if (tmp0) {
             a0.a[ "class" ] = tmp0.addscalar(" nb-select_size_" + simpleScalar('size', c0));

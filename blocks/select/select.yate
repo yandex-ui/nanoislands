@@ -11,7 +11,7 @@ match .select nb {
    <div>
        @id = .id
        @data-nb = 'select'
-       @class = 'nb-select nb-select_size_ _init'
+       @class = 'nb-select nb-select_size_ _init { .class }'
        @class += ' nb-select_size_' + .size
 
        apply . nb-main-content
