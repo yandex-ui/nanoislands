@@ -1,46 +1,37 @@
-func nb-popup(nodeset options) {
+func nb-popup-jq(nodeset options) {
     default = {
-        'tail': 'true'
+        'fake': 1
     }
 
-    nb-block('popup', nb-extend(default, options))
+    nb-block('popup-jq', nb-extend(default, options))
 }
 
-match .popup nb {
+match .popup-jq nb {
     <div>
         apply . nb-main-attrs
         apply . nb-main-content
     </div>
 }
 
-match .popup nb-attrs {
-    @data-nb = 'popup'
-    @class = 'nb-popup _hidden'
+match .popup-jq nb-attrs {
+    @data-nb = 'popup-jq'
+    @class = 'nb-popup nb-popup-jq _hidden'
 }
 
-match .popup.id nb-attrs {
+match .popup-jq.id nb-attrs {
     @id += '{.}'
 }
 
-match .popup nb-content {
-    <div class="nb-popup__content">
-        apply .* nb-content
-    </div>
-    if (.tail == 'true'){
-        <div class="nb-popup__tail"></div>
-    }
+match .popup-jq.modal nb-attrs {
+    @data-nb-modal = 'true'
 }
 
-match .popup.menu nb-content {
-    <span class="nb-popup__line _link">
-        apply . nb-main-attrs
-        .text
-    </span>
+match .popup-jq nb-content {
+    apply .* nb-content
 }
 
-match .popup.menu[ .href ] nb-content {
+match .popup-jq.menu nb-content {
     <a href="{.href}" class="nb-popup__line _link">
-        apply . nb-main-attrs
         .text
     </a>
 }
