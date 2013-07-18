@@ -24,6 +24,7 @@ nb.define('input', {
                 nb.trigger('input-focusout');
                 this.$node.addClass('nb-input_focus');
                 this.focused = true;
+                this.$node.find('input').get(0).focus();
             }
         },
 
