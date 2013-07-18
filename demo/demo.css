@@ -55,6 +55,12 @@ body
     border-top-width: 0;
 }
 
+.demo-section_dark
+{
+    background: #272727;
+    color: #eee;
+}
+
 .demo-h2,
 .demo-h3
 {

@@ -607,14 +607,23 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 .nb-icon_link_16 {
   background-image: url("blocks/icon/link_16.svg");
 }
+.nb-icon_link_16_white {
+  background-image: url("blocks/icon/link_16_white.svg");
+}
 .nb-icon_download_16 {
   background-image: url("blocks/icon/download_16.svg");
+}
+.nb-icon_download_16_white {
+  background-image: url("blocks/icon/download_16_white.svg");
 }
 .nb-icon_eye_16 {
   background-image: url("blocks/icon/eye_16.svg");
 }
 .nb-icon_trash_16 {
   background-image: url("blocks/icon/trash_16.svg");
+}
+.nb-icon_trash_16_white {
+  background-image: url("blocks/icon/trash_16_white.svg");
 }
 .nb-icon_three-dots_16 {
   background-image: url("blocks/icon/three-dots_16.svg");
@@ -805,6 +814,9 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 .nb-loader_size_m {
   width: 32px;
   height: 32px;
+}
+.nb-loader__spinner_color_white {
+  background-image: url("blocks/loader/loader_32_white.svg");
 }
 @-o-keyframes spin {
     0%   { -o-transform: rotate(0deg) }
