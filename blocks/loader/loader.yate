@@ -7,7 +7,7 @@ func nb-loader(nodeset options) {
 }
 
 match .loader nb {
-    <span class="{.class} nb-loader nb-loader_size_{.size}">
+    <span class="nb-loader nb-loader_size_{.size}">
         apply . nb-main-attrs
 
         <span class="nb-loader__spinner">

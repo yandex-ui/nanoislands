@@ -3243,7 +3243,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<span";
         a0.a = {
-            'class': new yr.scalarAttr(nodeset2scalar( ( selectNametest('class', c0, []) ) ) + " nb-loader nb-loader_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ))
+            'class': new yr.scalarAttr("nb-loader nb-loader_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ))
         };
         a0.s = 'span';
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
