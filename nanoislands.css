@@ -1,15 +1,3 @@
-@import "libs/jquery-ui/themes/base/jquery.ui.core.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.autocomplete.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.button.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.dialog.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.menu.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.progressbar.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.resizable.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.selectable.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.slider.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.spinner.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.tabs.css";
-@import "libs/jquery-ui/themes/base/jquery.ui.tooltip.css";
 .nb-button {
   display: inline-block;
   text-align: center;
@@ -214,10 +202,7 @@
   padding: 0;
   vertical-align: top;
 }
-.nb-popup {
-  opacity: 0;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  filter: alpha(opacity=0);
+.nb-popup-outer {
   z-index: 100;
   position: absolute;
   text-align: left;
@@ -226,68 +211,68 @@
   -webkit-box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.15), 0px 8px 30px -5px rgba(0,0,0,0.5);
   box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.15), 0px 8px 30px -5px rgba(0,0,0,0.5);
 }
-.nb-popup .nb-popup__content {
+.nb-popup-outer .nb-popup__content {
   display: block;
   white-space: normal;
 }
-.nb-popup .nb-popup__line {
+.nb-popup-outer .nb-popup__line {
   display: block;
   padding: 5px 10px;
 }
-.nb-popup .nb-popup__line:first-child {
+.nb-popup-outer .nb-popup__line:first-child {
   padding: 10px 10px 5px 10px;
 }
-.nb-popup .nb-popup__line:last-child {
+.nb-popup-outer .nb-popup__line:last-child {
   padding: 5px 10px 10px 10px;
 }
-.nb-popup .nb-popup__line._link {
+.nb-popup-outer .nb-popup__line._link {
   display: block;
   text-decoration: none;
   white-space: nowrap;
 }
-.nb-popup .nb-popup__hr {
+.nb-popup-outer .nb-popup__hr {
   margin: 3px 0;
   height: 1px;
   background: #ddd;
   overflow: hidden;
 }
-.nb-popup-jq {
-  opacity: 1;
-  -ms-filter: none;
-  filter: none;
-}
 .nb-popup__tail {
+  width: 100%;
+  height: 0;
+}
+.nb-popup__tail i {
   position: absolute;
   font-size: 11px;
   width: 16px;
   height: 16px;
   clip: rect(0,0,0,0);
+  z-index: 101;
 }
-.nb-popup_tail_to_bottom > .nb-popup__tail {
+.nb-popup_tail_to_bottom > .nb-popup__tail i {
   top: 0;
   left: 50%;
   margin: -16px -8px;
   clip: rect(-99em,99em,auto,-99em);
 }
-.nb-popup_tail_to_top > .nb-popup__tail {
+.nb-popup_tail_to_top > .nb-popup__tail i {
   bottom: 0;
   left: 50%;
   margin: -16px -8px;
   clip: rect(0,99em,99em,-99em);
 }
-.nb-popup_tail_to_left > .nb-popup__tail {
+.nb-popup_tail_to_left > .nb-popup__tail i {
   top: 50%;
   right: 0;
   margin: -8px -16px;
   clip: rect(-99em,99em,99em,0);
 }
-.nb-popup_tail_to_right > .nb-popup__tail {
+.nb-popup_tail_to_right > .nb-popup__tail i {
   top: 50%;
   left: 0;
   margin: -8px -16px;
   clip: rect(-99em,auto,99em,-99em);
 }
-.nb-popup__tail:before {
+.nb-popup__tail i:before {
   content: "";
   position: absolute;
   top: 0;
@@ -303,30 +288,25 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-.nb-popup_tail_to_left > .nb-popup__tail:before,
-.nb-popup_tail_to_right > .nb-popup__tail:before {
+.nb-popup_tail_to_left > .nb-popup__tail i:before,
+.nb-popup_tail_to_right > .nb-popup__tail i:before {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-.nb-popup_tail_to_bottom > .nb-popup__tail:before {
+.nb-popup_tail_to_bottom > .nb-popup__tail i:before {
   top: 50%;
 }
-.nb-popup_tail_to_top > .nb-popup__tail:before {
+.nb-popup_tail_to_top > .nb-popup__tail i:before {
   top: -50%;
 }
-.nb-popup_tail_to_right > .nb-popup__tail:before {
+.nb-popup_tail_to_right > .nb-popup__tail i:before {
   left: 50%;
 }
-.nb-popup_tail_to_left > .nb-popup__tail:before {
+.nb-popup_tail_to_left > .nb-popup__tail i:before {
   left: -50%;
-}
-.nb-popup_type_modal {
-  opacity: 1;
-  -ms-filter: none;
-  filter: none;
 }
 .nb-popup__title {
   font: 1.25em/1.125em Arial, sans-serif;

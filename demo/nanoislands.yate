@@ -27,7 +27,7 @@ func show(xml markup) {
 include 'select.yate'
 include 'buttons.yate'
 include 'checkbox.yate'
-include 'popups-jq.yate'
+include 'popups.yate'
 include 'progress.yate'
 include 'input.yate'
 include 'input-group.yate'
@@ -149,7 +149,7 @@ match / {
             </div>
         </div>
         <div class="demo-pane__content">
-            popups-jq()
+            popups()
         </div>
     </div>
     <div class="demo-pane">

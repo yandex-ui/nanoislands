@@ -1,36 +1,36 @@
-func nb-popup-jq(nodeset options) {
+func nb-popup(nodeset options) {
     default = {
         'fake': 1
     }
 
-    nb-block('popup-jq', nb-extend(default, options))
+    nb-block('popup', nb-extend(default, options))
 }
 
-match .popup-jq nb {
+match .popup nb {
     <div>
         apply . nb-main-attrs
         apply . nb-main-content
     </div>
 }
 
-match .popup-jq nb-attrs {
-    @data-nb = 'popup-jq'
-    @class = 'nb-popup nb-popup-jq _hidden'
+match .popup nb-attrs {
+    @data-nb = 'popup'
+    @class = 'nb-popup _hidden'
 }
 
-match .popup-jq.id nb-attrs {
+match .popup.id nb-attrs {
     @id += '{.}'
 }
 
-match .popup-jq.modal nb-attrs {
+match .popup.modal nb-attrs {
     @data-nb-modal = 'true'
 }
 
-match .popup-jq nb-content {
+match .popup nb-content {
     apply .* nb-content
 }
 
-match .popup-jq.menu nb-content {
+match .popup.menu nb-content {
     <a href="{.href}" class="nb-popup__line _link">
         .text
     </a>

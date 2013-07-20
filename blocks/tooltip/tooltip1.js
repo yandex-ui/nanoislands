@@ -1,2 +1,2 @@
 //супер-сложная реализация =)
-$( document ).tooltip();
+//$( document ).tooltip();
