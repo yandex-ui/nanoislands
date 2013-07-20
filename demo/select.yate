@@ -28,20 +28,20 @@ func select-small() {
         'items': [
             {
                 'text': 'Карта'
-                'data': 'option1'
+                'value': 'option1'
                 'selected': 'true'
             }
             {
                 'text': 'Спутник'
-                'data': 'option2'
+                'value': 'option2'
             }
             {
                 'text': 'Гибрид'
-                'data': 'option3'
+                'value': 'option3'
             }
             {
                 'text': 'Народная карта'
-                'data': 'option4'
+                'value': 'option4'
             }
         ]
     }

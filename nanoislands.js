@@ -1151,10 +1151,8 @@ nb.define('select', {
         // find elements and values
         var c = that.children();
         that.button = c[0];
-        that.popup = c[1];
         that.$fallback = $(that.node).find('.nb-select__fallback');
         that.$selected = that.$fallback.children(":selected");
-        that.value = that.$selected.val() ? that.$selected.text() : "";
 
         // preparing control depending on configuration and content
         that.controlPrepare()
@@ -1212,35 +1210,51 @@ nb.define('select', {
      */
     controlPrepare: function() {
         var that = this;
-        $(that.button.node).autocomplete({
+        var control = $(that.button.node).autocomplete({
             delay: 0,
             minLength: 0,
+            autoFocus: false,
             source: function(request, response) {
                 response(that.$fallback.children("option").map(function() {
-                    var text = $(this).text();
                     return {
-                        label: text,
-                        value: text,
+                        label: $(this).text(),
+                        value: $(this).val(),
                         option: this
                     };
                 }));
             },
             select: function(event, ui) {
+                console.log(ui);
                 ui.item.option.selected = true;
+
+                control.data("uiAutocomplete")._trigger("selected", event, {
+                    item: ui.item.option
+                });
             }
         }).addClass("ui-widget ui-widget-content");
 
+        control.data("uiAutocomplete").valueMethod = function(value) {
+            if (value) {
+                that.$selected.removeAttr('selected')
+                that.$selected = that.$fallback.children('[value="' + value + '"]').attr('selected', 'selected');
 
-        $(that.button.node).attr("tabIndex", -1).click(function() {
-                // close if already visible
-                if ($(that.button.node).autocomplete("widget").is(":visible")) {
-                    $(that.button.node).autocomplete("close");
-                    return;
-                }
-                // pass empty string as value to search for, displaying all results
-                $(that.button.node).autocomplete( "search", "" )
+                that.button.trigger('textChange', {
+                    text: that.$selected.text()
+                })
+            }
+            return that.$selected.val();
+        }
+
+        $(that.button.node).click(function() {
+            // close if already visible
+            if ($(that.button.node).autocomplete("widget").is(":visible")) {
+                $(that.button.node).autocomplete("close");
+                return;
+            }
+            // pass empty string as value to search for, displaying all results
+            $(that.button.node).autocomplete("search", "")
             //    $(that.button.node).focus();
-            });
+        });
     },
 
     /**
@@ -1256,8 +1270,9 @@ nb.define('select', {
         this.value = params.value
         this.text = params.text
         this.button.trigger('textChange', params)
-        this.$fallback.find('option[selected]').removeAttr('selected')
-        this.$fallback.find('option[value = ' + params.value + ']').attr('selected', 'selected')
+        this.$selected = this.$fallback.childreb(':selected')
+        this.$selected.removeAttr('selected')
+        this.$selected = this.$fallback.find('option[value = ' + params.value + ']').attr('selected', 'selected')
     }
 })
 
