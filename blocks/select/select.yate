@@ -21,9 +21,8 @@ match .select nb {
 
 match .select nb-content {
     <button>
-        @data-nb = 'button popup-toggler'
+        @data-nb = 'button'
         @class = 'nb-button nb-select__button _init'
-        @data-nb-popup-toggler =  '{{id:"nb-popup__select_' + .id +'", how: {{what: "top left", where: "bottom left" }}}}'
 
         apply .* nb-button-attrs
 
@@ -31,19 +30,6 @@ match .select nb-content {
            apply .items nb-button-content
         </span>
     </button>
-    <div>
-        @id = 'nb-popup__select_' + .id
-        @class = 'nb-popup nb-select__popup _hidden _init'
-        @data-nb = 'popup'
-
-        apply .* nb-popup-attrs
-
-        <div class="nb-popup__content">
-            <div class="nb-select__list">
-                apply .items nb-popup-content
-            </div>
-        </div>
-   </div>
    <select>
         @id = 'nb-select_' + .id
         @class = 'nb-select__fallback'
@@ -57,20 +43,6 @@ match .select nb-content {
    </select>
 }
 
-match .select.items nb-popup-content {
-   <div>
-       @class= 'nb-select__item'
-       @nb-select-value = .value
-
-        if (.selected) {
-           @class += ' nb-select__item_selected_yes'
-        }
-
-        <div class="nb-select__text">
-          .text
-        </div>
-   </div>
-}
 
 match .select.items nb-fallback-content {
     <option>
@@ -94,20 +66,14 @@ match .select.size nb-button-attrs {
     @class += ' nb-button_size_{.}'
 }
 
-match .select.size nb-popup-attrs {
-    @class += ' nb-select__popup_size_{.}'
-}
-
 match .select.theme nb-button-attrs {
     @class += ' nb-button_theme_{.}'
 }
 
-match .select.theme nb-popup-attrs {
-    @class += ' nb-select__popup_theme_{.}'
-}
+
 
 match .select.disabled nb-button-attrs {
-    @class += ' nb-button_disabled js-disabled'
+    @class += ' nb-button_disabled'
     @disabled = 'disabled'
 }
 
