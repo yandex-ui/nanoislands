@@ -1188,8 +1188,6 @@ nb.define('select', {
         }).addClass('ui-widget ui-widget-content');
 
         control.data('uiAutocomplete')._renderItem = function(ul, item) {
-            console.log('item', item.label, item.option.selected);
-
             var $itemNode = $('<li class="nb-select__item"></li>');
 
             if(item.option.selected){
