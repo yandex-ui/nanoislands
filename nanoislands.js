@@ -1166,8 +1166,10 @@ nb.define('select', {
     controlPrepare: function() {
         var that = this;
 
+        // preparing position parameters for popup from direction data
         var position = {};
-        //                position.collision = 'flip';
+        position.collision = 'flip';
+
         if (that.data.direction == 'top') {
             position.my = "left bottom";
             position.at = "left top";
@@ -1176,8 +1178,8 @@ nb.define('select', {
             position.my = "left top";
             position.at = "left bottom";
         }
-        console.log(position);
 
+        // select JUI control init
         var control = $(that.button.node).autocomplete({
             delay: 0,
             minLength: 0,
@@ -1201,6 +1203,7 @@ nb.define('select', {
             }
         }).addClass('ui-widget ui-widget-content');
 
+        // redefine one menu item rendering method, fires every time, then popup opening
         control.data('uiAutocomplete')._renderItem = function(ul, item) {
             var $itemNode = $('<li class="nb-select__item"></li>');
 
@@ -1215,6 +1218,8 @@ nb.define('select', {
             return $itemNode;
         };
 
+        // redefine valueMethod, extend with button text changing and fallback select value changing
+        // if value not provided, return current value of fallback select
         control.data('uiAutocomplete').valueMethod = function(value) {
             if (value) {
                 that.$selected.removeAttr('selected');
@@ -1226,8 +1231,10 @@ nb.define('select', {
             return that.$selected.val();
         };
 
+        // add click event for button
         $(that.button.node).click(function() {
             // close if already visible
+            console.log($(that.button.node).autocomplete('widget').is(':visible'));
             if ($(that.button.node).autocomplete('widget').is(':visible')) {
                 $(that.button.node).autocomplete('close');
                 return;

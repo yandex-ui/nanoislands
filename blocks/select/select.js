@@ -94,6 +94,7 @@ nb.define('select', {
         // add click event for button
         $(that.button.node).click(function() {
             // close if already visible
+            console.log($(that.button.node).autocomplete('widget').is(':visible'));
             if ($(that.button.node).autocomplete('widget').is(':visible')) {
                 $(that.button.node).autocomplete('close');
                 return;
