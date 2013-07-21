@@ -276,6 +276,10 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 .nb-popup-outer.ui-dialog .ui-dialog-content {
   padding: 0;
 }
+.nb-radio-button.ui-buttonset .ui-button {
+  margin: 0;
+  margin-right: -1px;
+}
 .nb-radio-button {
   display: inline;
   zoom: 1;

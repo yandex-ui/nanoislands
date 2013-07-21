@@ -1637,45 +1637,45 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j33 = [ 0, 'button', 2, p7 ];
 
-    var j34 = [ 0, 'type' ];
+    var j34 = [ 0, 'name' ];
 
-    var j35 = [ 0, 'name' ];
+    var j35 = [ 0, 'checked' ];
 
-    var j36 = [ 0, 'checked' ];
+    var j36 = [ 0, 'button', 2, p7, 0, 'checked' ];
 
-    var j37 = [ 0, 'button', 2, p7, 0, 'checked' ];
+    var j37 = [ 0, 'select' ];
 
-    var j38 = [ 0, 'select' ];
+    var j38 = [ 0, 'id' ];
 
-    var j39 = [ 0, 'id' ];
+    var j39 = [ 0, 'direction' ];
 
-    var j40 = [ 0, 'direction' ];
+    var j40 = [ 0, 'size' ];
 
-    var j41 = [ 0, 'size' ];
+    var j41 = [ 0, 'theme' ];
 
-    var j42 = [ 0, 'theme' ];
+    var j42 = [ 0, 'items' ];
 
-    var j43 = [ 0, 'items' ];
+    var j43 = [ 0, 'select', 0, 'items' ];
 
-    var j44 = [ 0, 'select', 0, 'items' ];
-
-    var j45 = [ 0, 'selected' ];
+    var j44 = [ 0, 'selected' ];
 
     function p8(m, c0, i0, l0) {
         return simpleBoolean('selected', c0);
     }
 
-    var j46 = [ 0, 'select', 0, 'items', 2, p8 ];
+    var j45 = [ 0, 'select', 0, 'items', 2, p8 ];
 
-    var j47 = [ 0, 'select', 0, 'size' ];
+    var j46 = [ 0, 'select', 0, 'size' ];
 
-    var j48 = [ 0, 'select', 0, 'theme' ];
+    var j47 = [ 0, 'select', 0, 'theme' ];
 
-    var j49 = [ 0, 'select', 0, 'disabled' ];
+    var j48 = [ 0, 'select', 0, 'disabled' ];
 
-    var j50 = [ 0, 'select', 2, p3 ];
+    var j49 = [ 0, 'select', 2, p3 ];
 
-    var j51 = [ 0, 'checkbox' ];
+    var j50 = [ 0, 'checkbox' ];
+
+    var j51 = [ 0, 'type' ];
 
     var j52 = [ 0, 'input' ];
 
@@ -2168,16 +2168,14 @@ var yr = yr || require('yate/lib/runtime.js');
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += "<form";
+        r0 += "<div";
         a0.a = {
-            'method': new yr.scalarAttr("get"),
-            'action': new yr.scalarAttr("#")
         };
-        a0.s = 'form';
+        a0.s = 'div';
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += m.a(m, [ c0 ], 'nb-main-content', a0)
         r0 += closeAttrs(a0);
-        r0 += "</form>";
+        r0 += "</div>";
 
         return r0;
     };
@@ -2189,7 +2187,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r0 = '';
 
         a0.a[ "data-nb" ] = new yr.scalarAttr("radio-button");
-        a0.a[ "class" ] = new yr.scalarAttr("nb-radio-button");
+        a0.a[ "class" ] = new yr.scalarAttr("nb-radio-button _init");
 
         return r0;
     };
@@ -2246,7 +2244,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<input";
         a0.a = {
             'class': new yr.scalarAttr("nb-radio-button__radio"),
-            'type': new yr.scalarAttr(nodeset2scalar( ( selectNametest('type', c0, []) ) )),
+            'type': new yr.scalarAttr("radio"),
             'name': new yr.scalarAttr(nodeset2scalar( ( selectNametest('name', c0, []) ) )),
             'value': new yr.scalarAttr(nodeset2scalar( ( selectNametest('value', c0, []) ) )),
             'id': new yr.scalarAttr(( v76 ))
@@ -2293,14 +2291,14 @@ var yr = yr || require('yate/lib/runtime.js');
 
         var tmp0 = a0.a[ "class" ];
         if (tmp0) {
-            a0.a[ "class" ] = tmp0.addscalar(" nb-button_checked");
+            a0.a[ "class" ] = tmp0.addscalar(" nb-button_type_checked");
         } else {
-            a0.a[ "class" ] = new yr.scalarAttr(" nb-button_checked");
+            a0.a[ "class" ] = new yr.scalarAttr(" nb-button_type_checked");
         }
 
         return r0;
     };
-    M.t31.j = j37;
+    M.t31.j = j36;
     M.t31.a = 0;
 
     // match .select : nb
@@ -2334,7 +2332,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t32.j = j38;
+    M.t32.j = j37;
     M.t32.a = 0;
 
     // match .select : nb-content
@@ -2375,7 +2373,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t33.j = j38;
+    M.t33.j = j37;
     M.t33.a = 0;
 
     // match .select.items : nb-fallback-content
@@ -2398,7 +2396,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t34.j = j44;
+    M.t34.j = j43;
     M.t34.a = 0;
 
     // match .select.items[ .selected ] : nb-button-content
@@ -2410,7 +2408,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t35.j = j46;
+    M.t35.j = j45;
     M.t35.a = 0;
 
     // match .select.size : nb-button-attrs
@@ -2426,7 +2424,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t36.j = j47;
+    M.t36.j = j46;
     M.t36.a = 0;
 
     // match .select.theme : nb-button-attrs
@@ -2442,7 +2440,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t37.j = j48;
+    M.t37.j = j47;
     M.t37.a = 0;
 
     // match .select.disabled : nb-button-attrs
@@ -2459,7 +2457,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t38.j = j49;
+    M.t38.j = j48;
     M.t38.a = 0;
 
     // match .select[ .mod == "round" ] : nb-button-attrs
@@ -2470,7 +2468,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t39.j = j50;
+    M.t39.j = j49;
     M.t39.a = 0;
 
     // match .checkbox : nb
@@ -2499,7 +2497,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t40.j = j51;
+    M.t40.j = j50;
     M.t40.a = 0;
 
     // match .checkbox : nb-content
@@ -2513,7 +2511,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t41.j = j51;
+    M.t41.j = j50;
     M.t41.a = 0;
 
     // match .checked : nb-attrs
@@ -2526,7 +2524,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t42.j = j36;
+    M.t42.j = j35;
     M.t42.a = 0;
 
     // match .input : nb
