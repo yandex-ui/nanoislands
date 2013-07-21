@@ -5,15 +5,16 @@ nb.define('select', {
     },
 
     onInit: function() {
-        var that = this
-        nb.init(that)
+        var that = this;
+        nb.init(that);
+        nb.init(that);
 
         // find elements and values
         var c = that.children();
         that.button = c[0];
         that.$fallback = $(that.node).find('.nb-select__fallback');
-        that.$selected = that.$fallback.children(":selected");
-        that.value = that.$selected.val() ? that.$selected.text() : "";
+        that.$selected = that.$fallback.children(':selected');
+        that.value = that.$selected.val() ? that.$selected.text() : '';
 
         // preparing control depending on configuration and content
         that.controlPrepare();
@@ -29,7 +30,7 @@ nb.define('select', {
             minLength: 0,
             autoFocus: false,
             source: function(request, response) {
-                response(that.$fallback.children("option").map(function() {
+                response(that.$fallback.children('option').map(function() {
                     return {
                         label: $(this).text(),
                         value: $(this).val(),
@@ -38,35 +39,49 @@ nb.define('select', {
                 }));
             },
             select: function(event, ui) {
-                console.log(ui);
                 ui.item.option.selected = true;
 
-                control.data("uiAutocomplete")._trigger("selected", event, {
+                control.data('uiAutocomplete')._trigger('selected', event, {
                     item: ui.item.option
                 });
             }
-        }).addClass("ui-widget ui-widget-content");
+        }).addClass('ui-widget ui-widget-content');
 
-        control.data("uiAutocomplete").valueMethod = function(value) {
+        control.data('uiAutocomplete')._renderItem = function(ul, item) {
+            console.log('item', item.label, item.option.selected);
+
+            var $itemNode = $('<li class="nb-select__item"></li>');
+
+            if(item.option.selected){
+                $itemNode.addClass('nb-select__item_selected_yes');
+            }
+
+            $itemNode.data('ui-autocomplete-item', item);
+            $itemNode.append('<a class="nb-select__text">' + item.label + '</a>');
+            $itemNode.appendTo(ul);
+
+            return $itemNode;
+        };
+
+        control.data('uiAutocomplete').valueMethod = function(value) {
             if (value) {
-                that.$selected.removeAttr('selected')
+                that.$selected.removeAttr('selected');
                 that.$selected = that.$fallback.children('[value="' + value + '"]').attr('selected', 'selected');
-
                 that.button.trigger('textChange', {
                     text: that.$selected.text()
-                })
+                });
             }
             return that.$selected.val();
-        }
+        };
 
         $(that.button.node).click(function() {
             // close if already visible
-            if ($(that.button.node).autocomplete("widget").is(":visible")) {
-                $(that.button.node).autocomplete("close");
+            if ($(that.button.node).autocomplete('widget').is(':visible')) {
+                $(that.button.node).autocomplete('close');
                 return;
             }
             // pass empty string as value to search for, displaying all results
-            $(that.button.node).autocomplete("search", "");
+            $(that.button.node).autocomplete('search', '');
             //    $(that.button.node).focus();
         });
     },
@@ -89,6 +104,6 @@ nb.define('select', {
         this.$selected = this.$fallback.children('option[value = ' + params.value + ']');
         this.$selected.attr('selected', 'selected');
     }
-})
+});
 
 

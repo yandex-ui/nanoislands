@@ -1,0 +1,34 @@
+{
+    "browser": true,
+    "devel": true,
+    "jquery": true,
+    "node": false,
+    "globals": {
+        "Modernizr": false,
+        "no": false,
+        "ufo": false,
+        "ns": false,
+        "nb": true,
+        "yr": false,
+        "$": true,
+        "_": false
+    },
+
+    "forin" :true,
+    "camelcase":true,
+    "bitwise": true,
+    "curly": true,
+    "eqnull": true,
+    "immed":true,
+    "latedef": true,
+    "loopfunc": true,
+    "newcap": true,
+    "noarg": true,
+    "noempty": true,
+    "nonew": true,
+    "onevar": false,
+    "shadow": true,
+    "sub": true,
+    "trailing": true,
+    "undef": true
+}
