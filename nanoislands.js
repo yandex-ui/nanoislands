@@ -1180,7 +1180,7 @@ nb.define('select', {
         }
 
         // select JUI control init
-        var control = $(that.button.node).autocomplete({
+        that.control = $(that.node).autocomplete({
             delay: 0,
             minLength: 0,
             autoFocus: false,
@@ -1197,14 +1197,14 @@ nb.define('select', {
             select: function(event, ui) {
                 ui.item.option.selected = true;
 
-                control.data('uiAutocomplete')._trigger('selected', event, {
+                that.control.data('uiAutocomplete')._trigger('selected', event, {
                     item: ui.item.option
                 });
             }
         }).addClass('ui-widget ui-widget-content');
 
         // redefine one menu item rendering method, fires every time, then popup opening
-        control.data('uiAutocomplete')._renderItem = function(ul, item) {
+        that.control.data('uiAutocomplete')._renderItem = function(ul, item) {
             var $itemNode = $('<li class="nb-select__item"></li>');
 
             if (item.option.selected) {
@@ -1212,7 +1212,7 @@ nb.define('select', {
             }
 
             $itemNode.data('ui-autocomplete-item', item);
-            $itemNode.append('<a class="nb-select__text">' + item.label + '</a>');
+            $itemNode.append('<a><span class="nb-select__text">' + item.label + '</span></a>');
             $itemNode.appendTo(ul);
 
             return $itemNode;
@@ -1220,7 +1220,7 @@ nb.define('select', {
 
         // redefine valueMethod, extend with button text changing and fallback select value changing
         // if value not provided, return current value of fallback select
-        control.data('uiAutocomplete').valueMethod = function(value) {
+        that.control.data('uiAutocomplete').valueMethod = function(value) {
             if (value) {
                 that.$selected.removeAttr('selected');
                 that.$selected = that.$fallback.children('[value="' + value + '"]').attr('selected', 'selected');
@@ -1234,14 +1234,13 @@ nb.define('select', {
         // add click event for button
         $(that.button.node).click(function() {
             // close if already visible
-            console.log($(that.button.node).autocomplete('widget').is(':visible'));
-            if ($(that.button.node).autocomplete('widget').is(':visible')) {
-                $(that.button.node).autocomplete('close');
+            if (that.control.autocomplete('widget').css('display') == 'block') {
+                that.control.autocomplete('close');
                 return;
             }
             // pass empty string as value to search for, displaying all results
-            $(that.button.node).autocomplete('search', '');
-            //    $(that.button.node).focus();
+            that.control.autocomplete('search', '');
+            that.control.focus();
         });
     },
 
