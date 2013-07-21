@@ -7,7 +7,7 @@ nb.define('select', {
     onInit: function() {
         var that = this;
         nb.init(that);
-        nb.init(that);
+        that.data = that.data();
 
         // find elements and values
         var c = that.children();
@@ -25,10 +25,26 @@ nb.define('select', {
      */
     controlPrepare: function() {
         var that = this;
+
+        // preparing position parameters for popup from direction data
+        var position = {};
+        position.collision = 'flip';
+
+        if (that.data.direction == 'top') {
+            position.my = "left bottom";
+            position.at = "left top";
+
+        } else {
+            position.my = "left top";
+            position.at = "left bottom";
+        }
+
+        // select JUI control init
         var control = $(that.button.node).autocomplete({
             delay: 0,
             minLength: 0,
             autoFocus: false,
+            position: position,
             source: function(request, response) {
                 response(that.$fallback.children('option').map(function() {
                     return {
@@ -47,10 +63,11 @@ nb.define('select', {
             }
         }).addClass('ui-widget ui-widget-content');
 
+        // redefine one menu item rendering method, fires every time, then popup opening
         control.data('uiAutocomplete')._renderItem = function(ul, item) {
             var $itemNode = $('<li class="nb-select__item"></li>');
 
-            if(item.option.selected){
+            if (item.option.selected) {
                 $itemNode.addClass('nb-select__item_selected_yes');
             }
 
@@ -61,6 +78,8 @@ nb.define('select', {
             return $itemNode;
         };
 
+        // redefine valueMethod, extend with button text changing and fallback select value changing
+        // if value not provided, return current value of fallback select
         control.data('uiAutocomplete').valueMethod = function(value) {
             if (value) {
                 that.$selected.removeAttr('selected');
@@ -72,6 +91,7 @@ nb.define('select', {
             return that.$selected.val();
         };
 
+        // add click event for button
         $(that.button.node).click(function() {
             // close if already visible
             if ($(that.button.node).autocomplete('widget').is(':visible')) {

@@ -1147,7 +1147,7 @@ nb.define('select', {
     onInit: function() {
         var that = this;
         nb.init(that);
-        nb.init(that);
+        that.data = that.data();
 
         // find elements and values
         var c = that.children();
@@ -1165,10 +1165,24 @@ nb.define('select', {
      */
     controlPrepare: function() {
         var that = this;
+
+        var position = {};
+        //                position.collision = 'flip';
+        if (that.data.direction == 'top') {
+            position.my = "left bottom";
+            position.at = "left top";
+
+        } else {
+            position.my = "left top";
+            position.at = "left bottom";
+        }
+        console.log(position);
+
         var control = $(that.button.node).autocomplete({
             delay: 0,
             minLength: 0,
             autoFocus: false,
+            position: position,
             source: function(request, response) {
                 response(that.$fallback.children('option').map(function() {
                     return {
@@ -1190,7 +1204,7 @@ nb.define('select', {
         control.data('uiAutocomplete')._renderItem = function(ul, item) {
             var $itemNode = $('<li class="nb-select__item"></li>');
 
-            if(item.option.selected){
+            if (item.option.selected) {
                 $itemNode.addClass('nb-select__item_selected_yes');
             }
 

@@ -2,6 +2,7 @@ func nb-select(nodeset select) {
     default = {
         'size': 'm'
         'theme': 'normal'
+        'direction': 'bottom'
     }
 
     nb-block('select', nb-extend(default, select))
@@ -11,6 +12,7 @@ match .select nb {
    <div>
        @id = .id
        @data-nb = 'select'
+       @data-nb-direction = .direction
        @class = 'nb-select ui-front _init'
        @class += ' nb-select_size_' + .size
        @class += ' nb-select_theme_' + .theme

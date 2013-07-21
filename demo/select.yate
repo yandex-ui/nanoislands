@@ -25,6 +25,7 @@ func select-small() {
     block = {
         'size': 's'
         'id': 'select2'
+        'direction': 'top'
         'items': [
             {
                 'text': 'Карта'
