@@ -1179,7 +1179,6 @@ nb.define('select', {
                 }));
             },
             select: function(event, ui) {
-                console.log('select', ui.item.option);
                 ui.item.option.selected = true;
 
                 control.data('uiAutocomplete')._trigger('selected', event, {
