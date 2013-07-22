@@ -53,19 +53,20 @@ a.nb-button {
 .nb-button_theme_pseudo.nb-button_size_m {
   line-height: 28px;
 }
-.nb-button_theme_normal {
-  background: linear-gradient(rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
-}
-.nb-button_theme_normal:before {
-  background: #eee;
-  background: linear-gradient(#fff 0%, #eee 100%);
-}
 .nb-button_theme_action {
-  background: #ffdf60;
+  background: #a79a80;
+  background: -webkit-linear-gradient(rgba(96,64,0,0.4) 0%, rgba(70,47,0,0.54) 100%);
+  background: -moz-linear-gradient(rgba(96,64,0,0.4) 0%, rgba(70,47,0,0.54) 100%);
+  background: -o-linear-gradient(rgba(96,64,0,0.4) 0%, rgba(70,47,0,0.54) 100%);
+  background: -ms-linear-gradient(rgba(96,64,0,0.4) 0%, rgba(70,47,0,0.54) 100%);
   background: linear-gradient(rgba(96,64,0,0.4) 0%, rgba(70,47,0,0.54) 100%);
 }
 .nb-button_theme_action:before {
   background: #ffdf60;
+  background: -webkit-linear-gradient(#ffdf60 0%, #fc0 100%);
+  background: -moz-linear-gradient(#ffdf60 0%, #fc0 100%);
+  background: -o-linear-gradient(#ffdf60 0%, #fc0 100%);
+  background: -ms-linear-gradient(#ffdf60 0%, #fc0 100%);
   background: linear-gradient(#ffdf60 0%, #fc0 100%);
 }
 .nb-button_theme_normal:active .nb-button__text,
@@ -125,6 +126,8 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 }
 .nb-button_disabled {
   opacity: 0.6;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  filter: alpha(opacity=60);
 }
 .nb-radio-button__radio:checked + .nb-button,
 .nb-button_checked,
@@ -135,6 +138,10 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 .nb-radio-button__radio:checked + .nb-button:before,
 .nb-button_checked:before,
 .nb-button_checked:active:before {
+  background: -webkit-linear-gradient(#ffeca6 0px, #fff6d5 100%);
+  background: -moz-linear-gradient(#ffeca6 0px, #fff6d5 100%);
+  background: -o-linear-gradient(#ffeca6 0px, #fff6d5 100%);
+  background: -ms-linear-gradient(#ffeca6 0px, #fff6d5 100%);
   background: linear-gradient(#ffeca6 0px, #fff6d5 100%);
 }
 .nb-radio-button__radio:checked + .nb-button .nb-button__text,
@@ -152,6 +159,8 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   width: 430px;
   font-size: 150%;
   opacity: 0;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  filter: alpha(opacity=0);
   border: 0;
 }
 .nb-button_type_round {
@@ -164,11 +173,14 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 }
 .nb-popup {
   opacity: 0;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  filter: alpha(opacity=0);
   z-index: 100;
   position: absolute;
   text-align: left;
   white-space: normal;
   background: #fff;
+  border: 1px solid #cbcbcb;
 }
 .nb-popup .nb-popup__content {
   display: block;
@@ -249,6 +261,8 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 }
 .nb-popup_type_modal {
   opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }
 .nb-popup__title {
   font: 1.25em/1.125em Arial, sans-serif;
@@ -268,6 +282,8 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 .nb-radio-button__button .nb-radio-button__radio {
   position: absolute;
   opacity: 0;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  filter: alpha(opacity=0);
 }
 .nb-select {
   max-width: 100%;
@@ -289,6 +305,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   display: block;
   overflow: hidden;
   margin-right: 1em;
+  -o-text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwb2x5Z29uIHBvaW50cz0iNy4xOTQsMiAzLjk5Niw1LjE5NSAwLjc5OSwyIDAsMi43OTkgMy45OTYsNi43OTQgNy45OTEsMi43OTkiLz48L3N2Zz4=") no-repeat scroll 100% 50% transparent;
@@ -318,6 +335,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   padding-right: 2.5em;
   padding-top: 0;
   position: relative;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   vertical-align: top;
 }
@@ -438,6 +456,10 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   position: relative;
   width: 16px;
   height: 16px;
+  background: -webkit-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.38));
+  background: -moz-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.38));
+  background: -o-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.38));
+  background: -ms-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.38));
   background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.38));
   vertical-align: middle;
 }
@@ -452,6 +474,10 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   left: 1px;
   right: 1px;
   bottom: 1px;
+  background: -webkit-linear-gradient(#fff, #eee);
+  background: -moz-linear-gradient(#fff, #eee);
+  background: -o-linear-gradient(#fff, #eee);
+  background: -ms-linear-gradient(#fff, #eee);
   background: linear-gradient(#fff, #eee);
 }
 .nb-checkbox__flag_checkbox:after {
@@ -471,6 +497,10 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   background: rgba(255,236,166,0.4);
 }
 .nb-checkbox__input:checked + .nb-checkbox__flag:before {
+  background: -webkit-linear-gradient(#ffeca6, #fff6d5);
+  background: -moz-linear-gradient(#ffeca6, #fff6d5);
+  background: -o-linear-gradient(#ffeca6, #fff6d5);
+  background: -ms-linear-gradient(#ffeca6, #fff6d5);
   background: linear-gradient(#ffeca6, #fff6d5);
 }
 .nb-checkbox__input:checked + .nb-checkbox__flag_radio:after {
@@ -504,6 +534,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 .nb-progress__title {
   font: 0.813em/1.125em Arial, sans-serif;
   white-space: nowrap;
+  -o-text-overflow: hellip;
   text-overflow: hellip;
   position: absolute;
   left: 16px;
@@ -618,6 +649,11 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   padding: 3px 8px;
 }
 .nb-input-box:before {
+  background: #c4c4c4;
+  background: -webkit-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
+  background: -moz-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
+  background: -o-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
+  background: -ms-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
   background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
   content: "";
   position: absolute;
@@ -668,7 +704,11 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   right: 1px;
   width: 36px;
   background: #f00;
-  background: linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+  background: -o-linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+  background: -ms-linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+  background: linear-gradient(to right, rgba(255,255,255,0) 0, #fff 20%);
 }
 .nb-input-group .nb-button:first-child {
   z-index: 10;
@@ -754,6 +794,8 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   right: 0;
   bottom: 0;
   opacity: 0.4;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  filter: alpha(opacity=40);
   background: url("blocks/loader/loader_32.svg");
 }
 .nb-loader_size_s {
@@ -880,9 +922,13 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   top: 0;
   right: 16px;
   opacity: 0.3;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+  filter: alpha(opacity=30);
 }
 .nb-dialog__close:hover {
   opacity: 1;
+  -ms-filter: none;
+  filter: none;
   filter: none;
 }
 .nb-dialog__content,

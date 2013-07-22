@@ -2,6 +2,7 @@ var ie = process.argv[2] == 'ie' || false;
 
 var content = [
     'ie = ' + ie.toString(),
+    '@import "node_modules/nib/index.styl";',
     '@import "nanoislands.styl";'
 ].join('\n');
 
