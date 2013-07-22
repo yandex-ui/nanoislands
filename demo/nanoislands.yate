@@ -1,4 +1,3 @@
-include '../blocks/externals.yate'
 include '../blocks/nanoislands.yate'
 
 func podium(xml markup) {
