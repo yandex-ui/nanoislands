@@ -2036,6 +2036,7 @@ nb.define('progress', {
 })
 /* progress/progress.js end */
 
+
 /* dialog/dialog.js begin */
 nb.define('dialog', {
     events: {}
