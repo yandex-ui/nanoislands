@@ -1,9 +1,9 @@
-nb.define('radio-button', {
+nb.define('slider', {
     events: {
          'init': 'onInit'
      },
 
     onInit: function() {
-         this.control = $(this.node).buttonset();
+         this.control = $(this.node).slider({range: 'min'});
     }
 });

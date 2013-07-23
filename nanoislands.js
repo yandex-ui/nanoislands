@@ -1268,6 +1268,18 @@ nb.define('select', {
 
 /* select/select.js end */
 
+/* slider/slider.js begin */
+nb.define('slider', {
+    events: {
+         'init': 'onInit'
+     },
+
+    onInit: function() {
+         this.control = $(this.node).slider({range: 'min'});
+    }
+});
+/* slider/slider.js end */
+
 /* radio-button/radio-button.js begin */
 nb.define('radio-button', {
     events: {
@@ -1275,7 +1287,6 @@ nb.define('radio-button', {
      },
 
     onInit: function() {
-        console.log('radio');
          this.control = $(this.node).buttonset();
     }
 });

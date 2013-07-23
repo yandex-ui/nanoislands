@@ -2,7 +2,7 @@ func nb-slider(nodeset options) {
     default = {
         'size': 's'
         'value': 0
-        'knob': {
+        'handle': {
             'type': 'square'
         }
     }
@@ -11,27 +11,19 @@ func nb-slider(nodeset options) {
 }
 
 match .slider nb {
-    <span class="nb-slider nb-slider_size_{.size} {.class}">
-        apply . nb-main-attrs
-
-        <span class="nb-slider__track {.track.class}">
-            <span class="nb-slider__full" />
-            <span class="nb-slider__interval {.interval.class}" style="width: {.value}%" />
-        </span>
-
-        apply . nb-slider-knob
-    </span>
-}
-
-match .slider nb-slider-knob {
-    knob = {
-        'class': 'nb-slider__knob nb-slider__knob_{.knob.type} nb-slider__knob_size_{.size} {.knob.class}'
-        'attrs': {
-            'style': 'left: {.value}%'
-        }
+    handle = {
+        'class': 'nb-slider__handle nb-slider__handle_{.handle.type} ui-slider-handle nb-slider__handle_size_{.size} {.handle.class}'
+        'type': 'plain'
+        'href': '#'
     }
 
-    <div class="nb-slider__range nb-slider__range_size_{.size} {.range.class}">
-        nb-button(knob)
+    <div>
+        @class += ' nb-slider _init'
+        @class += ' @nb-slider_size_' + .size
+        @class += ' ' + .class
+        @data-nb='slider'
+
+        nb-button(handle)
+
     </div>
 }
