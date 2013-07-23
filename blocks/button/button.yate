@@ -46,7 +46,7 @@ match .button.theme nb-attrs {
     @class += ' nb-button_theme_{.}'
 }
 
-match .button.disabled nb-attrs {
+match .button.disabled[ . == true() ] nb-attrs {
     @class += ' nb-button_disabled js-disabled'
     @disabled = 'disabled'
 }

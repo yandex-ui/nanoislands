@@ -7,3 +7,4 @@
 /* borschik:include:input/input.js  */
 /* borschik:include:input-group/input-group.js  */
 /* borschik:include:progress/progress.js  */
+/* borschik:include:dialog/dialog.js  */

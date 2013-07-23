@@ -1370,6 +1370,7 @@ nb.define('select', {
         this.button.trigger('textChange', params)
         this.$fallback.find('option[selected]').removeAttr('selected')
         this.$fallback.find('option[value = ' + params.value + ']').attr('selected', 'selected')
+        this.$fallback.val(params.value);
     }
 })
 
@@ -1957,6 +1958,7 @@ nb.define('input', {
                 nb.trigger('input-focusout');
                 this.$node.addClass('nb-input_focus');
                 this.focused = true;
+                this.$node.find('input').get(0).focus();
             }
         },
 
@@ -1965,6 +1967,7 @@ nb.define('input', {
             this.focused = false;
         }
 });
+
 /* input/input.js end */
 
 /* input-group/input-group.js begin */
@@ -2035,4 +2038,11 @@ nb.define('progress', {
     }
 })
 /* progress/progress.js end */
+
+/* dialog/dialog.js begin */
+nb.define('dialog', {
+    events: {}
+})
+
+/* dialog/dialog.js end */
 

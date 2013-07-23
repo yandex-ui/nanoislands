@@ -1571,35 +1571,39 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j12 = [ 0, 'button', 0, 'theme' ];
 
-    var j13 = [ 0, 'button', 0, 'disabled' ];
-
     function p3(m, c0, i0, l0) {
+        return nodeset2boolean( [ c0 ] ) == true;
+    }
+
+    var j13 = [ 0, 'button', 0, 'disabled', 2, p3 ];
+
+    function p4(m, c0, i0, l0) {
         return cmpSN("round", selectNametest('mod', c0, []));
     }
 
-    var j14 = [ 0, 'button', 2, p3 ];
+    var j14 = [ 0, 'button', 2, p4 ];
 
     var j15 = [ 0, 'content' ];
 
-    function p4(m, c0, i0, l0) {
+    function p5(m, c0, i0, l0) {
         return !nodeset2boolean( (selectNametest('content', c0, [])) );
     }
 
-    var j16 = [ 0, 'button', 2, p4, 0, 'icon' ];
+    var j16 = [ 0, 'button', 2, p5, 0, 'icon' ];
 
     var j17 = [ 0, 'icon' ];
 
-    function p5(m, c0, i0, l0) {
+    function p6(m, c0, i0, l0) {
         return simpleBoolean('content', c0) && simpleBoolean('icon', c0);
     }
 
-    var j18 = [ 0, 'button', 2, p5 ];
+    var j18 = [ 0, 'button', 2, p6 ];
 
-    function p6(m, c0, i0, l0) {
+    function p7(m, c0, i0, l0) {
         return !simpleBoolean('content', c0) && simpleBoolean('icon', c0);
     }
 
-    var j19 = [ 0, 'button', 2, p6 ];
+    var j19 = [ 0, 'button', 2, p7 ];
 
     var j20 = [ 0, 'popup' ];
 
@@ -1611,11 +1615,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j24 = [ 0, 'text' ];
 
-    function p7(m, c0, i0, l0) {
+    function p8(m, c0, i0, l0) {
         return simpleBoolean('href', c0);
     }
 
-    var j25 = [ 0, 'popup', 0, 'menu', 2, p7 ];
+    var j25 = [ 0, 'popup', 0, 'menu', 2, p8 ];
 
     var j26 = [ 0, 'radio-button' ];
 
@@ -1633,11 +1637,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j33 = [ 0, 'value' ];
 
-    function p8(m, c0, i0, l0) {
+    function p9(m, c0, i0, l0) {
         return cmpSN("radio-button", selectNametest('mod', c0, []));
     }
 
-    var j34 = [ 0, 'button', 2, p8 ];
+    var j34 = [ 0, 'button', 2, p9 ];
 
     var j35 = [ 0, 'type' ];
 
@@ -1645,7 +1649,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j37 = [ 0, 'checked' ];
 
-    var j38 = [ 0, 'button', 2, p8, 0, 'checked' ];
+    var j38 = [ 0, 'button', 2, p9, 0, 'checked' ];
 
     var j39 = [ 0, 'select' ];
 
@@ -1659,11 +1663,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j44 = [ 0, 'selected' ];
 
-    function p9(m, c0, i0, l0) {
+    function p10(m, c0, i0, l0) {
         return simpleBoolean('selected', c0);
     }
 
-    var j45 = [ 0, 'select', 0, 'items', 2, p9 ];
+    var j45 = [ 0, 'select', 0, 'items', 2, p10 ];
 
     var j46 = [ 0, 'select', 0, 'size' ];
 
@@ -1671,7 +1675,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j48 = [ 0, 'select', 0, 'disabled' ];
 
-    var j49 = [ 0, 'select', 2, p3 ];
+    var j49 = [ 0, 'select', 2, p4 ];
 
     var j50 = [ 0, 'checkbox' ];
 
@@ -1711,17 +1715,17 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j68 = [ 0, 'type' ];
 
-    function p10(m, c0, i0, l0) {
+    function p11(m, c0, i0, l0) {
         return cmpSN("percentage", selectNametest('type', c0.doc.root, []));
     }
 
-    var j69 = [ 0, 'progress', 0, 'title', 4, p10 ];
+    var j69 = [ 0, 'progress', 0, 'title', 4, p11 ];
 
-    function p11(m, c0, i0, l0) {
+    function p12(m, c0, i0, l0) {
         return simpleBoolean('icon', c0);
     }
 
-    var j70 = [ 0, 'icon', 2, p11 ];
+    var j70 = [ 0, 'icon', 2, p12 ];
 
     var j71 = [ 0, 'paranja' ];
 
@@ -1741,11 +1745,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j79 = [ 0, 'head' ];
 
-    function p12(m, c0, i0, l0) {
+    function p13(m, c0, i0, l0) {
         return cmpSN("modal", selectNametest('mod', c0, []));
     }
 
-    var j80 = [ 0, 'dropzone', 2, p12 ];
+    var j80 = [ 0, 'dropzone', 2, p13 ];
 
     var j81 = [ 0, 'dropzone', 0, 'head' ];
 
@@ -1753,11 +1757,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j83 = [ 1, 1, 0, 'button' ];
 
-    function p13(m, c0, i0, l0) {
+    function p14(m, c0, i0, l0) {
         return !(cmpSN("false", [ c0 ]));
     }
 
-    var j84 = [ 0, 'dropzone', 0, 'button', 2, p13 ];
+    var j84 = [ 0, 'dropzone', 0, 'button', 2, p14 ];
 
     var j85 = [ 0, 'loader' ];
 
@@ -1787,21 +1791,21 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j98 = [ 0, 'actions' ];
 
-    function p14(m, c0, i0, l0) {
+    function p15(m, c0, i0, l0) {
         return nodeset2boolean( [ c0 ] ) != false;
     }
 
-    var j99 = [ 0, 'close', 2, p14 ];
+    var j99 = [ 0, 'close', 2, p15 ];
 
     var j100 = [ 0, 'right' ];
 
     var j101 = [ 0, 'left' ];
 
-    function p15(m, c0, i0, l0) {
+    function p16(m, c0, i0, l0) {
         return cmpSN("myButton", selectNametest('mod', c0, []));
     }
 
-    var j102 = [ 0, 'button', 2, p15 ];
+    var j102 = [ 0, 'button', 2, p16 ];
 
     var j103 = [ ];
 
@@ -1969,7 +1973,7 @@ var yr = yr || require('yate/lib/runtime.js');
     M.t10.j = j12;
     M.t10.a = 0;
 
-    // match .button.disabled : nb-attrs
+    // match .button.disabled[ . == true() ] : nb-attrs
     M.t11 = function t11(m, c0, i0, l0, a0) {
         var r0 = '';
 
@@ -2343,7 +2347,7 @@ var yr = yr || require('yate/lib/runtime.js');
         a0.s = 'div';
         a0.a[ "id" ] = new yr.scalarAttr(simpleScalar('id', c0));
         a0.a[ "data-nb" ] = new yr.scalarAttr("select");
-        a0.a[ "class" ] = new yr.scalarAttr("nb-select nb-select_size_ _init");
+        a0.a[ "class" ] = new yr.scalarAttr("nb-select nb-select_size_ _init " + nodeset2scalar( ( selectNametest('class', c0, []) ) ));
         var tmp0 = a0.a[ "class" ];
         if (tmp0) {
             a0.a[ "class" ] = tmp0.addscalar(" nb-select_size_" + simpleScalar('size', c0));
