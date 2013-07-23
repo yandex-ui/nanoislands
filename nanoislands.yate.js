@@ -1571,26 +1571,17 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j12 = [ 0, 'button', 0, 'theme' ];
 
-<<<<<<< HEAD
-=======
-    var j13 = [ 0, 'button', 0, 'disabled' ];
-
->>>>>>> origin/master
     function p3(m, c0, i0, l0) {
         return nodeset2boolean( [ c0 ] ) == true;
     }
 
-    var j14 = [ 0, 'button', 0, 'disabled', 2, p3 ];
+    var j13 = [ 0, 'button', 0, 'disabled', 2, p3 ];
 
     function p4(m, c0, i0, l0) {
         return cmpSN("round", selectNametest('mod', c0, []));
     }
 
-<<<<<<< HEAD
-    var j15 = [ 0, 'button', 2, p4 ];
-=======
-    var j14 = [ 0, 'button', 2, p3 ];
->>>>>>> origin/master
+    var j14 = [ 0, 'button', 2, p4 ];
 
     var j15 = [ 0, 'content' ];
 
@@ -1598,13 +1589,9 @@ var yr = yr || require('yate/lib/runtime.js');
         return !nodeset2boolean( (selectNametest('content', c0, [])) );
     }
 
-<<<<<<< HEAD
-    var j17 = [ 0, 'button', 2, p5, 0, 'icon' ];
-=======
-    var j16 = [ 0, 'button', 2, p4, 0, 'icon' ];
+    var j16 = [ 0, 'button', 2, p5, 0, 'icon' ];
 
     var j17 = [ 0, 'icon' ];
->>>>>>> origin/master
 
     function p6(m, c0, i0, l0) {
         return simpleBoolean('content', c0) && simpleBoolean('icon', c0);
@@ -1732,21 +1719,13 @@ var yr = yr || require('yate/lib/runtime.js');
         return cmpSN("percentage", selectNametest('type', c0.doc.root, []));
     }
 
-<<<<<<< HEAD
-    var j65 = [ 0, 'progress', 0, 'title', 4, p11 ];
-=======
-    var j69 = [ 0, 'progress', 0, 'title', 4, p10 ];
->>>>>>> 224fd48
+    var j69 = [ 0, 'progress', 0, 'title', 4, p11 ];
 
     function p12(m, c0, i0, l0) {
         return simpleBoolean('icon', c0);
     }
 
-<<<<<<< HEAD
-    var j66 = [ 0, 'icon', 2, p12 ];
-=======
-    var j70 = [ 0, 'icon', 2, p11 ];
->>>>>>> 224fd48
+    var j70 = [ 0, 'icon', 2, p12 ];
 
     var j71 = [ 0, 'paranja' ];
 
@@ -1770,11 +1749,7 @@ var yr = yr || require('yate/lib/runtime.js');
         return cmpSN("modal", selectNametest('mod', c0, []));
     }
 
-<<<<<<< HEAD
-    var j76 = [ 0, 'dropzone', 2, p13 ];
-=======
-    var j80 = [ 0, 'dropzone', 2, p12 ];
->>>>>>> 224fd48
+    var j80 = [ 0, 'dropzone', 2, p13 ];
 
     var j81 = [ 0, 'dropzone', 0, 'head' ];
 
@@ -1786,11 +1761,7 @@ var yr = yr || require('yate/lib/runtime.js');
         return !(cmpSN("false", [ c0 ]));
     }
 
-<<<<<<< HEAD
-    var j80 = [ 0, 'dropzone', 0, 'button', 2, p14 ];
-=======
-    var j84 = [ 0, 'dropzone', 0, 'button', 2, p13 ];
->>>>>>> 224fd48
+    var j84 = [ 0, 'dropzone', 0, 'button', 2, p14 ];
 
     var j85 = [ 0, 'loader' ];
 
@@ -1824,15 +1795,7 @@ var yr = yr || require('yate/lib/runtime.js');
         return nodeset2boolean( [ c0 ] ) != false;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    var j94 = [ 0, 'close', 2, p15 ];
-=======
-    var j98 = [ 0, 'close', 2, p14 ];
->>>>>>> 224fd48
-=======
-    var j99 = [ 0, 'close', 2, p14 ];
->>>>>>> origin/master
+    var j99 = [ 0, 'close', 2, p15 ];
 
     var j100 = [ 0, 'right' ];
 
@@ -1842,15 +1805,7 @@ var yr = yr || require('yate/lib/runtime.js');
         return cmpSN("myButton", selectNametest('mod', c0, []));
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    var j97 = [ 0, 'button', 2, p16 ];
-=======
-    var j101 = [ 0, 'button', 2, p15 ];
->>>>>>> 224fd48
-=======
-    var j102 = [ 0, 'button', 2, p15 ];
->>>>>>> origin/master
+    var j102 = [ 0, 'button', 2, p16 ];
 
     var j103 = [ ];
 
