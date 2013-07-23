@@ -92,6 +92,7 @@ nb.define('select', {
         this.button.trigger('textChange', params)
         this.$fallback.find('option[selected]').removeAttr('selected')
         this.$fallback.find('option[value = ' + params.value + ']').attr('selected', 'selected')
+        this.$fallback.val(params.value);
     }
 })
 

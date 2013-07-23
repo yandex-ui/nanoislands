@@ -1,22 +1,22 @@
 func input-small() {
     block = {
-        'content': 'Поле ввода'
+        'content': 'Москва'
     }
     nb-input(block)
 }
 
 func input-medium() {
     block = {
-        'size':    'm'
-        'content': 'Поле ввода'
+        'size': 'm'
+        'content': 'Москва'
     }
     nb-input(block)
 }
 
 func input-disabled() {
     block = {
-        'disabled':    '1'
-        'content': 'Поле ввода'
+        'disabled': '1'
+        'content': 'Москва'
     }
     nb-input(block)
 }
@@ -31,18 +31,41 @@ func input-length() {
 }
 
 func inputs() {
-  <div style="margin: 20px 0px;">
-    <p>Маленький инпут</p>
-    input-small()
-    <br />
-    <p>Средний инпут</p>
-    input-medium()
-    <br />
-    <p>Неактивный инпут</p>
-    input-disabled()
-    <br />
-    <p>Инпут с плейсхолдером и ограниченной длинной символов</p>
-    input-length()
-    <br />
-  </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: M '
+            <span class="demo-code demo-code_small">
+                '.nb-input_size_m'
+            </span>
+        </div>
+
+        show(input-medium())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: S '
+            <span class="demo-code demo-code_small">
+                '.nb-input_size_s'
+            </span>
+        </div>
+
+        show(input-small())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Disabled '
+            <span class="demo-code demo-code_small">
+                '.nb-input_disabled'
+            </span>
+        </div>
+
+        show(input-disabled())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Maxlength'
+        </div>
+
+        show(input-length())
+    </div>
 }

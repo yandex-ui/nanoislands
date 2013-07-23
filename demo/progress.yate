@@ -1,5 +1,4 @@
 func progresses() {
-
     default = {
         'id': 'progress2'
         'start': '20'
@@ -12,13 +11,24 @@ func progresses() {
         'title': 'Король_Лев_5_rutracker.org'
     }
 
-    <p>Прогресс:</p>
-    <div style="display: inline-block; width: 300px; position: relative;">
-        'default'
-        nb-progress(default)
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Type: Percentage '
+            <span class="demo-code demo-code_small">
+                '.nb-progress_type_percentage'
+            </span>
+        </div>
+
+        show(nb-progress(default))
     </div>
-    <div style="display: inline-block; width: 300px; position: relative; margin-left:  20px;">
-        'type_title'
-        nb-progress(title)
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Type: Title '
+            <span class="demo-code demo-code_small">
+                '.nb-progress_type_title'
+            </span>
+        </div>
+
+        show(nb-progress(title))
     </div>
 }

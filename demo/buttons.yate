@@ -1,13 +1,13 @@
 func button-medium() {
     block = {
-        'content': 'Кнопка'
+        'content': 'Применить'
     }
     nb-button(block)
 
-    '&nbsp;'
+    ' '
 
     link = {
-        'content': 'Кнопка Ссылка'
+        'content': 'Проверить'
         'href': '#'
     }
     nb-button(link)
@@ -15,100 +15,28 @@ func button-medium() {
 
 func button-small() {
     button = {
-        'content': 'Кнопка'
+        'content': 'Применить'
         'size': 's'
     }
     nb-button(button)
-
-    '&nbsp;'
-
-    link = {
-        'content': 'Кнопка Ссылка'
-        'href': '#'
-        'size': 's'
-    }
-    nb-button(link)
 }
 
 func button-action() {
-    buttonS = {
-        'content': 'Кнопка'
-        'size': 's'
-        'theme': 'action'
-    }
-    nb-button(buttonS)
-
-    '&nbsp;'
-
-    linkS = {
-        'content': 'Кнопка Ссылка'
-        'size': 's'
-        'href': '#'
-        'theme': 'action'
-    }
-    nb-button(linkS)
-
-    '&nbsp;'
-
     buttonM = {
-        'content': 'Кнопка'
+        'content': 'Отправить'
         'size': 'm'
         'theme': 'action'
     }
     nb-button(buttonM)
-
-    '&nbsp;'
-
-    linkM = {
-        'content': 'Кнопка Ссылка'
-        'size': 'm'
-        'href': '#'
-        'theme': 'action'
-        'attrs': {
-            'data-action': 'folderOpen'
-            'data-params': '{{"id": "ho-ho"}}'
-        }
-    }
-    nb-button(linkM)
-
 }
 
 func button-pseudo() {
-    buttonS = {
-        'content': 'Псевдо кнопка'
-        'size': 's'
-        'theme': 'pseudo'
-    }
-    nb-button(buttonS)
-
-    '&nbsp;'
-
-    linkS = {
-        'content': 'Псевдо кнопка ссылка'
-        'size': 's'
-        'href': '#'
-        'theme': 'pseudo'
-    }
-    nb-button(linkS)
-
-    '&nbsp;'
-
     buttonM = {
-        'content': 'Псевдо кнопка'
+        'content': 'Выбрать&hellip;'
         'size': 'm'
         'theme': 'pseudo'
     }
     nb-button(buttonM)
-
-    '&nbsp;'
-
-    linkM = {
-        'content': 'Псевдо кнопка ссылка'
-        'size': 'm'
-        'href': '#'
-        'theme': 'pseudo'
-    }
-    nb-button(linkM)
 }
 
 
@@ -152,118 +80,55 @@ func button-extend() {
 }
 
 func button-images() {
-    button = {
+    icon = {
         'icon': 'eye_16'
     }
 
-    apply button.icon nb
+    nb-button(icon)
 
-    '&nbsp;'
+    ' '
+
+    button = {
+        'icon': 'link_16'
+        'content': 'Открыть'
+    }
 
     nb-button(button)
-
-    '&nbsp;'
-
-    button2 = {
-        'icon': 'link_16'
-        'content': 'Button'
-    }
-
-    nb-button(button2)
-
-    '&nbsp;'
-
-    button3 = {
-        'icon': 'trash_16'
-        'size': 's'
-        'content': 'Button'
-    }
-
-    nb-button(button3)
 }
 
 func button-disabled() {
-    buttonN = {
+    disabled = {
         'content': 'Кнопка'
         'disabled': true()
-
     }
-    nb-button(buttonN)
-
-    '&nbsp;'
-
-    linkN = {
-        'content': 'Кнопка Ссылка'
-        'href': '#'
-        'disabled': true()
-    }
-    nb-button(linkN)
-
-    '&nbsp;'
-
-    buttonA = {
-        'content': 'Кнопка'
-        'disabled': true()
-        'theme': 'action'
-    }
-    nb-button(buttonA)
-
-    '&nbsp;'
-
-    linkA = {
-        'content': 'Кнопка Ссылка'
-        'href': '#'
-        'disabled': true()
-        'theme': 'action'
-    }
-    nb-button(linkA)
-
-    '&nbsp;'
-
-    buttonP = {
-        'content': 'Кнопка'
-        'disabled': true()
-        'theme': 'pseudo'
-    }
-    nb-button(buttonP)
-
-    '&nbsp;'
-
-    linkP = {
-        'content': 'Кнопка Ссылка'
-        'href': '#'
-        'disabled': true()
-        'theme': 'pseudo'
-    }
-    nb-button(linkP)
+    nb-button(disabled)
 }
 
 func radio-button() {
-
-        radioGroup = {
-            'size': 'm'
-            'name': 'btn'
-            'group':  [
-                {
-                    'content': 'Кнопка 1'
-                    'value': 'btn1'
-                }
-                {
-                    'content': 'Кнопка 2'
-                    'value': 'btn2'
-                    'disabled': true()
-                }
-                {
-                    'content': 'Кнопка 3'
-                    'value': 'btn3'
-                    'checked': true()
-                }
-                {
-                    'content': 'Кнопка 4'
-                    'value': 'btn4'
-                }
-            ]
-        }
+    radioGroup = {
+        'size': 'm'
+        'name': 'btn'
+        'group':  [
+            {
+                'content': 'Все'
+                'value': 'btn1'
+            }
+            {
+                'content': 'Непрочитанные'
+                'value': 'btn3'
+                'checked': true()
+            }
+            {
+                'content': 'Прочитанные'
+                'value': 'btn4'
+            }
+            {
+                'content': 'Удаленные'
+                'value': 'btn2'
+                'disabled': true()
+            }
+        ]
+    }
 
     nb-radio-button(radioGroup)
 }
@@ -271,50 +136,86 @@ func radio-button() {
 func attach-button() {
     attach = {
         'mod': 'attach'
-        'content': 'выберите файл'
+        'content': 'Прикрепить файл'
     }
-
 
     nb-button(attach)
 }
 
 
 func buttons() {
-    <p>
-        'Средние кнопки: '
-        button-medium()
-    </p>
-    <p>
-        'Маленькие кнопки: '
-        button-small()
-    </p>
-    <p>
-        'Кнопки действий: '
-        button-action()
-    </p>
-    <p>
-        'Псевдо кнопки: '
-        button-pseudo()
-    </p>
-    <p>
-        'Неактивные кнопки: '
-        button-disabled()
-    </p>
-    <p>
-        'Наследование кнопки (драфт): '
-        button-extend()
-    </p>
-    <p>
-        'Радио группа из кнопок: '
-        radio-button()
-    </p>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: M '
+            <span class="demo-code demo-code_small">
+                '.nb-button_size_m'
+            </span>
+        </div>
 
-    <p>
-        'Кнопки с картинками: '
-        button-images()
-    </p>
-<p>
-       'Кнопки attach: '
-       attach-button()
-   </p>
+        show(button-medium())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: S '
+            <span class="demo-code demo-code_small">
+                '.nb-button_size_s'
+            </span>
+        </div>
+
+        show(button-small())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Theme: Action '
+            <span class="demo-code demo-code_small">
+                '.nb-button_theme_action'
+            </span>
+        </div>
+
+        show(button-action())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Theme: Pseudo '
+            <span class="demo-code demo-code_small">
+                '.nb-button_theme_pseudo'
+            </span>
+        </div>
+
+        show(button-pseudo())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Disabled '
+            <span class="demo-code demo-code_small">
+                '.nb-button_disabled'
+            </span>
+        </div>
+
+        show(button-disabled())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Кнопка с иконкой'
+        </div>
+
+        show(button-images())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Радио-группа'
+        </div>
+
+        show(radio-button())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Type: Attach '
+            <span class="demo-code demo-code_small">
+                '.nb-button_type_attach'
+            </span>
+        </div>
+
+        show(attach-button())
+    </div>
 }

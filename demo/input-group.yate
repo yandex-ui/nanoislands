@@ -1,30 +1,38 @@
-
 func input-groups() {
-        blockDefault1 = {
-            'input' : {
-                'size': 's'
-                'content': 'поле ввода'
-            }
-            'button' : {
-                'size': 's'
-                'content': 'Кнопка'
-            }
+    blockDefault1 = {
+        'input' : {
+            'size': 's'
+            'placeholder': 'Номер билета'
         }
-
-        blockDefault2 = {
-            'button' : {
-                    'size': 's'
-                    'content': 'Кнопка'
-                }
-            'input' : {
-                    'size': 's'
-                    'content': 'поле ввода'
-            }
+        'button' : {
+            'size': 's'
+            'content': 'Проверить'
         }
+    }
 
-    <div>
-        nb-input-group(blockDefault1)
-        <br />
-        nb-input-group(blockDefault2)
+    blockDefault2 = {
+        'button' : {
+            'size': 's'
+            'icon': 'link_16'
+        }
+        'input' : {
+            'size': 's'
+            'content': 'http://yadi.sk/'
+        }
+    }
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Поле+кнопка'
+        </div>
+
+        show(nb-input-group(blockDefault1))
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Кнопка+поле'
+        </div>
+
+        show(nb-input-group(blockDefault2))
     </div>
 }
