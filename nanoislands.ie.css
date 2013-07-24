@@ -842,15 +842,17 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   width: 100%;
   position: relative;
 }
+.nb-slider__fallback {
+  display: inline;
+  zoom: 1;
+}
 .nb-slider__body {
+  display: none;
   position: relative;
   z-index: 7;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
-}
-.i-ua_js_no .nb-slider__body {
-  display: none;
 }
 .nb-slider_disabled_yes .nb-slider__body {
   opacity: 0.5;

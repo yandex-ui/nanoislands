@@ -15,7 +15,7 @@ nanoislands.ie.css: $(shell find . -name '*.styl') node_modules
 nanoislands.yate.js: $(shell find . -name '*.yate') node_modules
 	$(NPM_BIN)/yate demo/nanoislands.yate > $@
 
-nanoislands.js: blocks/nanoislands.js node_modules
+nanoislands.js: blocks/nanoislands.js $(shell find blocks -name '*.js') node_modules
 	$(NPM_BIN)/borschik --input=blocks/nanoislands.js --minimize=no --output=nanoislands.js
 
 node_modules: package.json

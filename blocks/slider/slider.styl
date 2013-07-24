@@ -9,7 +9,11 @@ nb-slider()
 
     position: relative
 
+  .nb-slider__fallback
+    display: inline-block
+
   .nb-slider__body
+    display: none
     position: relative
     z-index: 7
 
@@ -18,11 +22,6 @@ nb-slider()
     -webkit-user-select: none
     -moz-user-select: none
     user-select: none
-
-
-
-  .i-ua_js_no .nb-slider__body
-    display: none
 
   .nb-slider_disabled_yes .nb-slider__body
     opacity: 0.5

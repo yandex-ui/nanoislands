@@ -1,17 +1,16 @@
 func nb-slider(nodeset options) {
-        default = {
-            'size': 's'
-            'value': 0
-            'type': 'range'
-            'theme': 'normal'
-            'orientation': 'horiz'
-            'handle': {
-                'type': 'square'
-            }
+    default = {
+        'size': 's'
+        'value': 0
+        'type': 'range'
+        'theme': 'normal'
+        'orientation': 'horiz'
+        'handle': {
+            'type': 'square'
         }
+    }
 
-
-        nb-block('slider', nb-deep-extend(default, options))
+    nb-block('slider', nb-deep-extend(default, options))
 }
 
 match .slider nb {
@@ -25,6 +24,8 @@ match .slider nb {
                 <span class="nb-slider__handle__text"></span>
             </a>
         </div>
+        <input class="nb-slider__fallback" type="text" value="{.value}" id="{.id}" />
+
     </div>
 }
 
@@ -38,6 +39,14 @@ match .slider nb-attrs {
 
 match .slider.size nb-attrs {
    @class += ' nb-slider_size_{.}'
+}
+
+match .slider.value nb-attrs {
+   @data-nb-value = '{.}'
+}
+
+match .slider.id nb-attrs {
+   @id = '{.}'
 }
 
 match .slider.theme nb-attrs {
