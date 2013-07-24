@@ -1,7 +1,7 @@
 func slider-small() {
     slider = {
         'size': 's'
-        'knob': {
+        'handle': {
             'type': 'round'
             'class': 'js-custom-class'
             'attrs': {
@@ -21,7 +21,7 @@ func slider-medium() {
         'size': 'm'
         'class': 'js-super-class'
         'value': 50
-        'knob': {
+        'handle': {
             'type': 'round'
         }
         'attrs': {
@@ -45,21 +45,21 @@ func slider-large() {
 func sliders() {
     <div class="demo-section">
         <div class="demo-h3">
-            'Size: S, Knob: Round'
+            'Size: S, handle: Round'
         </div>
 
         show(slider-small())
     </div>
     <div class="demo-section">
         <div class="demo-h3">
-            'Size: M, Knob: Round'
+            'Size: M, handle: Round'
         </div>
 
         show(slider-medium())
     </div>
     <div class="demo-section">
         <div class="demo-h3">
-            'Size: L, Knob: Square'
+            'Size: L, handle: Square'
         </div>
 
         show(slider-large())

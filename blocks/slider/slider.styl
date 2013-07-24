@@ -9,69 +9,91 @@ nb-slider()
 
     position: relative
 
-    .nb-slider__track
-      display: block
+  .nb-slider__body
+    position: relative
+    z-index: 7
 
-      height: 100%
+    cursor: default
 
-    &:before
-    .ui-slider-range
-      display: block
+    -webkit-user-select: none
+    -moz-user-select: none
+    user-select: none
 
-      position: absolute
-      top: 50%
 
-      height: $nb-slider__track-height
 
-      margin-top: -(@height / 2)
+  .i-ua_js_no .nb-slider__body
+    display: none
 
-      border-radius: 3px
+  .nb-slider_disabled_yes .nb-slider__body
+    opacity: 0.5
+
+  .nb-slider__body:before
+    content: ''
+    display: block
+    position: absolute
+    z-index: 1
+    left: 1px
+    right: 1px
+    top: 0
+    margin:  0
+
+    height: $nb-slider__track-height
+
+    border-radius: 3px
+
+  .nb-slider_theme_normal .nb-slider__body:before
+    background-color: rgba(0,0,0,.07)
+
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.2), inset 0 0 1px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.2)
+
+  .nb-slider.nb-slider_orientation_horiz .nb-slider__body .ui-slider-range
+    position: absolute
+    z-index: 2
+    height: $nb-slider__track-height
+
+    top:  0
+    margin-left: 1px
+    margin-right: -1px
+    border-radius: 3px
+
+    background: rgba(255,236,166,.4)
+    box-shadow: 0 1px 7px rgba(30,23,0,.35) inset
 
     &:before
       content: ''
+      position: absolute
       left: 1px
       right: 1px
+      top: 1px
       bottom: 1px
-      z-index: 1
-
-      background: rgba($foreground, 0.07)
-
-      box-shadow: inset 0 1px 3px rgba($foreground, 0.2), inset 0 0 1px rgba($foreground, 0.4), 0 1px 0 rgba($background, 0.2)
-
-    div.ui-slider-range
-
-      height: $nb-slider__track-height
-
-      margin-left: 1px
-      margin-right: -1px
-
-      background: rgba(255,236,166,.4)
-      box-shadow: inset 0 1px 7px rgba(30,23,0,.35)
-
-    .ui-slider-range:before
+      border-radius: 2px
 
       background: #ffeca6
+      box-shadow: 0 1px 3px -1px rgba(0,0,0,0.2) inset
 
-      border-radius: 2px
-      box-shadow: inset 0 1px 3px -1px rgba($foreground, 0.2)
+  .nb-slider .nb-slider__body .nb-slider__handle
+    z-index: 6
+    top:  0
+    margin:  0
 
-      content: ''
+  .nb-slider__handle_type_round
+  .nb-slider__handle_type_round:before
+    border-radius: 50%
 
-    .nb-slider__range
-    .nb-slider__handle
-      position: absolute
-      top: 0
-      z-index: 3
+  .nb-slider_animation_yes .nb-slider__handle
+    -webkit-transition: left .25s ease, bottom .25s ease
+    -moz-transition: left .25s ease, bottom .25s ease
+    -o-transition: left .25s ease, bottom .25s ease
+    transition: left .25s ease, bottom .25s ease
 
-      line-height: 2
+  .nb-slider_animation_yes .ui-slider-range
+    -webkit-transition: width .25s ease, left .25s ease, height .25s ease, bottom .25s ease
+    -moz-transition: width .25s ease, left .25s ease, height .25s ease, bottom .25s ease
+    -o-transition: width .25s ease, left .25s ease, height .25s ease, bottom .25s ease
+    transition: width .25s ease, left .25s ease, height .25s ease, bottom .25s ease
 
-    .nb-slider__range
-      left: 0
-      right: 0
-
-    .nb-slider__handle_round
-    .nb-slider__handle_round:before
-      border-radius: 50%
+  .nb-slider_theme_normal
+      font-family: Arial, sans-serif
 
   @import "_size"
 

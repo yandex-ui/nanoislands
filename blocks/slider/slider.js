@@ -4,6 +4,6 @@ nb.define('slider', {
      },
 
     onInit: function() {
-         this.control = $(this.node).slider({range: 'min'});
+         this.control = $(this.node).children('.nb-slider__body').slider({range: 'min'});
     }
 });
