@@ -1414,21 +1414,14 @@ var yr = yr || require('yate/lib/runtime.js');
         //  var slider : object
         var r1 = {};
         var a1 = { a: {} };
+        r1[ "id" ] = "s2";
         r1[ "size" ] = "s";
         var r2 = {};
         var a2 = { a: {} };
         r2[ "type" ] = "round";
         r2[ "class" ] = "js-custom-class";
-        var r3 = {};
-        var a3 = { a: {} };
-        r3[ "data-id" ] = "123";
-        r2[ "attrs" ] = r3;
         r1[ "handle" ] = r2;
         r1[ "value" ] = 20;
-        var r2 = {};
-        var a2 = { a: {} };
-        r2[ "data-id" ] = "1";
-        r1[ "attrs" ] = r2;
         var v72 = r1;
 
         r0 += closeAttrs(a0);
@@ -1451,10 +1444,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var a2 = { a: {} };
         r2[ "type" ] = "round";
         r1[ "handle" ] = r2;
-        var r2 = {};
-        var a2 = { a: {} };
-        r2[ "data-id" ] = "1";
-        r1[ "attrs" ] = r2;
+        r1[ "id" ] = "s1";
         var v73 = r1;
 
         r0 += closeAttrs(a0);
@@ -1472,10 +1462,6 @@ var yr = yr || require('yate/lib/runtime.js');
         var a1 = { a: {} };
         r1[ "size" ] = "l";
         r1[ "value" ] = 70;
-        var r2 = {};
-        var a2 = { a: {} };
-        r2[ "data-id" ] = "1";
-        r1[ "attrs" ] = r2;
         var v74 = r1;
 
         r0 += closeAttrs(a0);
