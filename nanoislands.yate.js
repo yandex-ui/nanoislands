@@ -3777,6 +3777,12 @@ var yr = yr || require('yate/lib/runtime.js');
         };
         a0.s = 'div';
         a0.a[ "id" ] = new yr.scalarAttr(simpleScalar('id', c0));
+        var tmp0 = a0.a[ "class" ];
+        if (tmp0) {
+            a0.a[ "class" ] = tmp0.addscalar(" " + nodeset2scalar( ( selectNametest('class', c0, []) ) ));
+        } else {
+            a0.a[ "class" ] = new yr.scalarAttr(" " + nodeset2scalar( ( selectNametest('class', c0, []) ) ));
+        }
         if (!(cmpSN("true", selectNametest('search', c0, [])))) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
