@@ -45,4 +45,4 @@ nb.define('button', {
         this.$node.removeClass('nb-button_focus');
         this.focused = false;
     }
-})
+});
