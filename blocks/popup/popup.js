@@ -329,4 +329,3 @@ nb.define('popup-toggler', {
     }
 
 });
-

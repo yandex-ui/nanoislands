@@ -20,6 +20,12 @@ match .mixin-nb nb-attrs {
     @data-nb += ' {.}'
 }
 
+match .data-nb nb-attrs {
+    for .* {
+        @data-nb-{name(.)} = .
+    }
+}
+
 // общий шаблон для определения атрибутов
 match .attrs.* nb-attrs {
     @{name(.)} = .
