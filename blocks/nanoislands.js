@@ -2,7 +2,6 @@
 
 /* borschik:include:button/button.js */
 /* borschik:include:tooltip/tooltip.js */
-/* borschik:include:tooltip/tooltip1.js */
 /* borschik:include:select/select.js  */
 /* borschik:include:slider/slider.js  */
 /* borschik:include:radio-button/radio-button.js  */

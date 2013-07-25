@@ -34,7 +34,7 @@ match .button nb-attrs {
         @data-nb = 'button'
     }
 
-    @class = 'nb-button'
+    @class = 'nb-button _init'
 }
 
 match .button[!.disabled].href nb-attrs {

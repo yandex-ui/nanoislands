@@ -1056,19 +1056,13 @@ $(function() {
 nb.define('button', {
     events: {
         'init': 'oninit',
-        'click': 'makeFocus',
-        'focusout': 'blur',
-        'focusin': 'makeFocus',
         'textChange': 'onTextChange'
     },
 
     oninit: function () {
         this.$node = $(this.node);
-        this.focused = false;
 
-        nb.on('button-focusout', function () {
-            this.trigger('focusout');
-        });
+        $(this.node).button();
     },
 
     /**
@@ -1082,24 +1076,7 @@ nb.define('button', {
         this.$node.find('.nb-button__text').html(params.text)
     },
 
-    makeFocus: function (e, button) {
-        if (this.$node.is('.nb-button_disabled')) {
-            return false;
-        }
 
-        if (!this.$node.is(':focus')) {
-            nb.trigger('button-focusout');
-            this.$node.addClass('nb-button_focus');
-            this.$node.focus();
-
-
-        }
-        this.focused = true;
-    },
-    blur: function () {
-        this.$node.removeClass('nb-button_focus');
-        this.focused = false;
-    }
 })
 /* button/button.js end */
 
@@ -1122,7 +1099,8 @@ nb.define('tooltip-jq-toggler', {
 
         $(this.node).tooltip({
             content: data.content,
-            items: '*'
+            items: '*',
+            tooltipClass: "nb-tooltip nb-island nb-island_type_fly nb-island_padding_s"
         });
         $(this.node).tooltip("open");
     }
@@ -1130,12 +1108,6 @@ nb.define('tooltip-jq-toggler', {
 });
 
 /* tooltip/tooltip.js end */
-
-/* tooltip/tooltip1.js begin */
-//супер-сложная реализация =)
-//$( document ).tooltip();
-
-/* tooltip/tooltip1.js end */
 
 /* select/select.js begin */
 nb.define('select', {

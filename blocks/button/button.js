@@ -1,19 +1,13 @@
 nb.define('button', {
     events: {
         'init': 'oninit',
-        'click': 'makeFocus',
-        'focusout': 'blur',
-        'focusin': 'makeFocus',
         'textChange': 'onTextChange'
     },
 
     oninit: function () {
         this.$node = $(this.node);
-        this.focused = false;
 
-        nb.on('button-focusout', function () {
-            this.trigger('focusout');
-        });
+        $(this.node).button();
     },
 
     /**
@@ -27,22 +21,5 @@ nb.define('button', {
         this.$node.find('.nb-button__text').html(params.text)
     },
 
-    makeFocus: function (e, button) {
-        if (this.$node.is('.nb-button_disabled')) {
-            return false;
-        }
 
-        if (!this.$node.is(':focus')) {
-            nb.trigger('button-focusout');
-            this.$node.addClass('nb-button_focus');
-            this.$node.focus();
-
-
-        }
-        this.focused = true;
-    },
-    blur: function () {
-        this.$node.removeClass('nb-button_focus');
-        this.focused = false;
-    }
 })

@@ -16,7 +16,8 @@ nb.define('tooltip-jq-toggler', {
 
         $(this.node).tooltip({
             content: data.content,
-            items: '*'
+            items: '*',
+            tooltipClass: "nb-tooltip nb-island nb-island_type_fly nb-island_padding_s"
         });
         $(this.node).tooltip("open");
     }

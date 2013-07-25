@@ -18,8 +18,8 @@ match .island.padding nb-attrs {
     @class += ' nb-island_padding_{.}'
 }
 
-match .island.inline nb-attrs {
-    @class += ' nb-island_inline'
+match .island.type nb-attrs {
+    @class += ' nb-island_type_{.}'
 }
 
 match .island nb-content {
