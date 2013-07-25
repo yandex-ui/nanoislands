@@ -1056,7 +1056,7 @@ $(function() {
 nb.define('button', {
     events: {
         'init': 'oninit',
-        'click': 'makeFocus',
+        'click': 'onClick',
         'focusout': 'blur',
         'focusin': 'makeFocus',
         'textChange': 'onTextChange'
@@ -1082,25 +1082,30 @@ nb.define('button', {
         this.$node.find('.nb-button__text').html(params.text)
     },
 
+    onClick: function() {
+        if (!this.$node.is('.nb-button_disabled')) {
+            this.$node.focus();
+        }
+    },
+
     makeFocus: function (e, button) {
         if (this.$node.is('.nb-button_disabled')) {
             return false;
         }
 
-        if (!this.$node.is(':focus')) {
+        if (!this.focused) {
             nb.trigger('button-focusout');
             this.$node.addClass('nb-button_focus');
-            this.$node.focus();
-
-
+            this.focused = true;
         }
-        this.focused = true;
     },
+
     blur: function () {
         this.$node.removeClass('nb-button_focus');
         this.focused = false;
     }
-})
+});
+
 /* button/button.js end */
 
 /* tooltip/tooltip.js begin */
@@ -1648,7 +1653,6 @@ nb.define('popup-toggler', {
     }
 
 });
-
 
 /* popup/popup.js end */
 
