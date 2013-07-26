@@ -2,27 +2,26 @@
 match .* nb-main-attrs {
     apply . nb-attrs
     apply .* nb-attrs
-    apply .attrs.* nb-attrs
+
+    @class += for .class {
+        ' {.}'
+    }
+
+    @data-nb += for .mixin-nb {
+        ' {.}'
+    }
+
+    for .data-nb.* {
+        @data-nb-{name()} = .
+    }
+
+    for .attrs.* {
+        @{name()} = .
+    }
 }
 
 match .* nb-main-content {
     apply . nb-content
-}
-
-
-// ===========================
-
-match .class nb-attrs {
-    @class += ' {.}'
-}
-
-match .mixin-nb nb-attrs {
-    @data-nb += ' {.}'
-}
-
-// общий шаблон для определения атрибутов
-match .attrs.* nb-attrs {
-    @{name(.)} = .
 }
 
 /// ==========================

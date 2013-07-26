@@ -19,7 +19,7 @@ nb.define('button', {
      */
     onTextChange: function (name, params) {
         this.$node.find('.nb-button__text').html(params.text)
-    },
-
+    }
 
 })
+
