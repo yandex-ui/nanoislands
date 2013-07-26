@@ -49,9 +49,10 @@ nb-button_theme()
     background: #A79A80
     background: linear-gradient(rgba(96, 64, 0, 0.4) 0%, rgba(70, 47, 0, 0.54) 100%)
 
-  .nb-button_theme_action:before
-    background: #ffdf60
-    background: linear-gradient(#FFDF60 0%, #FFCC00 100%)
+  if !ie
+    .nb-button_theme_action:before
+      background: #ffdf60
+      background: linear-gradient(#FFDF60 0%, #FFCC00 100%)
 
 
 
@@ -80,15 +81,16 @@ nb-button_theme()
     &.nb-button_disabled:active .nb-button__text
       top: 0px
 
-    &:before
-      content: ''
-      position: absolute
-      left: 1px
-      top: 1px
-      right: 1px
-      bottom: 1px
+    if !ie
+      &:before
+        content: ''
+        position: absolute
+        left: 1px
+        top: 1px
+        right: 1px
+        bottom: 1px
 
-      border-radius: 2px
+        border-radius: 2px
 
 
   .nb-button_theme_pseudo

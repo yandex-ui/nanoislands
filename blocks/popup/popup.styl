@@ -6,6 +6,7 @@
   white-space: normal
   background: #FFF
   box-shadow: 0px 0px 0px 1px rgba(0,0,0,.15), 0px 8px 30px -5px rgba(0,0,0,.5)
+  outline: 0 none
 
   if ie
     border: 1px solid #CBCBCB
@@ -20,6 +21,7 @@
   .nb-popup__line
     display: block
     padding: ($gapS / 2) $gapS
+    outline: 0 none
 
   .nb-popup__line:first-child
     padding: $gapS $gapS ($gapS / 2) $gapS
@@ -120,7 +122,7 @@
 .nb-popup__text
   font: $font-p2
 
-.nb-popup.ui-dialog-no-close .ui-dialog-titlebar
+.nb-popup-outer.ui-dialog-no-close .ui-dialog-titlebar
   display: none
 
 .nb-popup.ui-dialog-fixed
