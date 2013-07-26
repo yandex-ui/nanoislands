@@ -21,5 +21,4 @@ nb.define('button', {
         this.$node.find('.nb-button__text').html(params.text)
     }
 
-})
-
+});
