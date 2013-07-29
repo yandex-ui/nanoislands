@@ -67,6 +67,11 @@ jQuery.widget('nb.contextDialog', $.nb.dialogCloseOnOuterClick, {
         $('<div class="nb-popup__tail"><i/></div>').prependTo(this.uiDialog);
     },
 
+    _createTitlebar: function(){},
+    _title: function(){},
+    _createButtonPane: function(){},
+    _createButtons: function(){},
+
     _position: function() {
         var position = this.options.position;
         this._super();
