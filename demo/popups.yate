@@ -114,9 +114,9 @@ func popups() {
     modal = {
        'id': 'popup4'
        'type': 'modal'
-       'close': true()
        'title': 'Some modal popup'
        'content': 'Some text for that popup'
+       'width': '300px'
        'buttons': [
             {
                'content': 'Отправить'
@@ -129,12 +129,6 @@ func popups() {
                'size': 'm'
                'class': 'nb-popup__button'
             }
-            {
-               'content': 'Отменить'
-               'size': 'm'
-               'class': 'nb-popup__button_pull_right'
-            }
-
         ]
 
    }

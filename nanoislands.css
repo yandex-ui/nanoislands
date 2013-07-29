@@ -313,12 +313,32 @@
 }
 .nb-popup__title {
   font: 1.25em/1.125em Arial, sans-serif;
+  padding: 10px;
 }
-.nb-popup__text {
-  font: 0.813em/1.125em Arial, sans-serif;
+.nb-popup__content {
+  font: 0.9376em/1.4667em Arial, sans-serif;
+  padding: 0 10px;
 }
-.nb-popup-outer.ui-dialog-no-close .ui-dialog-titlebar {
-  display: none;
+.nb-popup__close {
+  cursor: pointer;
+  opacity: 0.25;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+  filter: alpha(opacity=25);
+  position: absolute;
+  right: 1px;
+  top: 0;
+}
+.nb-popup__close:hover {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.nb-popup__buttons {
+  padding: 10px;
+  padding-top: 10px;
+}
+.nb-popup__button {
+  margin-right: 10px;
 }
 .nb-popup.ui-dialog-fixed {
   position: fixed !important;
