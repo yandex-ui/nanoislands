@@ -1,4 +1,4 @@
-func nb-popup(nodeset options) {
+func nb-popup-menu(nodeset options) {
     default = {
         'fake': 1
     }
@@ -9,32 +9,62 @@ func nb-popup(nodeset options) {
 match .popup nb {
     <div>
         apply . nb-main-attrs
-        apply . nb-main-content
+
+        @data-nb = 'popup'
+        @class = 'nb-popup _hidden'
+
+        if(.id){
+            @id += '{.id}'
+        }
+
+        for .menu {
+        <a href="{.href}" class="nb-popup__line _link">
+            .text
+        </a>
+        }
     </div>
 }
 
-match .popup nb-attrs {
-    @data-nb = 'popup'
-    @class = 'nb-popup _hidden'
+func nb-popup-modal(nodeset options) {
+    default = {
+        'close': true()
+         <!--'title': 'Some modal popup'-->
+         <!-- 'content': 'Some text for that popup'-->
+         <!--'buttons': -->
+    }
+
+    nb-block('modalPopup', nb-extend(default, options))
 }
 
-match .popup.id nb-attrs {
-    @id += '{.}'
+match .modalPopup nb {
+    <div>
+        apply . nb-main-attrs
+
+        @data-nb = 'popup'
+        @data-nb-modal = 'true'
+        @class = 'nb-popup nb-popup_type_modal _hidden'
+
+
+        if(.id){
+            @id += '{.id}'
+        }
+
+        if(.title){
+            <div class="nb-popup__title">
+                .content
+            </div>
+        }
+
+        if(.content){
+            <div class="nb-popup__content">
+                .content
+            </div>
+        }
+        if(.buttons){
+            for .buttons {
+                nb-button(.)
+            }
+        }
+    </div>
 }
-
-match .popup.modal nb-attrs {
-    @data-nb-modal = 'true'
-}
-
-match .popup nb-content {
-    apply .* nb-content
-}
-
-match .popup.menu nb-content {
-    <a href="{.href}" class="nb-popup__line _link">
-        .text
-    </a>
-}
-
-
 

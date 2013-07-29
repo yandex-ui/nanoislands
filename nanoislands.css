@@ -211,6 +211,7 @@
   background: #fff;
   -webkit-box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.15), 0px 8px 30px -5px rgba(0,0,0,0.5);
   box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.15), 0px 8px 30px -5px rgba(0,0,0,0.5);
+  outline: 0 none;
 }
 .nb-popup-outer .nb-popup__content {
   display: block;
@@ -219,6 +220,7 @@
 .nb-popup-outer .nb-popup__line {
   display: block;
   padding: 5px 10px;
+  outline: 0 none;
 }
 .nb-popup-outer .nb-popup__line:first-child {
   padding: 10px 10px 5px 10px;
@@ -315,7 +317,7 @@
 .nb-popup__text {
   font: 0.813em/1.125em Arial, sans-serif;
 }
-.nb-popup.ui-dialog-no-close .ui-dialog-titlebar {
+.nb-popup-outer.ui-dialog-no-close .ui-dialog-titlebar {
   display: none;
 }
 .nb-popup.ui-dialog-fixed {
