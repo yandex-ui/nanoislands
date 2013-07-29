@@ -2229,7 +2229,7 @@ var yr = yr || require('yate/lib/runtime.js');
         }
         if (nodeset2boolean( (selectNametest('title', c0, [])) )) {
             r0 += "<div class=\"" + "nb-popup__title" + "\">";
-            r0 += nodeset2xml( selectNametest('content', c0, []) );
+            r0 += nodeset2xml( selectNametest('title', c0, []) );
             r0 += "</div>";
         }
         if (nodeset2boolean( (selectNametest('content', c0, [])) )) {

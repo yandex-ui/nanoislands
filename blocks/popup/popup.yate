@@ -53,7 +53,7 @@ match .modalPopup nb {
 
         if(.title){
             <div class="nb-popup__title">
-                .content
+                .title
             </div>
         }
 
