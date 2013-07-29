@@ -35,7 +35,7 @@ func nb-popup-modal(nodeset options) {
      // 'buttons':
     }
 
-    nb-block('modalPopup', nb-extend(default, options))
+    nb-block('modalPopup', nb-deep-extend(default, options))
 }
 
 match .modalPopup nb {

@@ -271,7 +271,7 @@
         if (this.modal) {
             $(this.node).dialogCloseOnOuterClick({
                 height: data.height,
-                minHeight: data.minHeight,
+                minHeight: data.minheight,
                 width: data.width,
                 show: 'fade',
                 hide: 'fade',

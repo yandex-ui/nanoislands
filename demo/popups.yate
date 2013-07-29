@@ -113,10 +113,11 @@ func popups() {
 
     modal = {
        'id': 'popup4'
-       'type': 'modal'
        'title': 'Some modal popup'
        'content': 'Some text for that popup'
-       'width': '300px'
+       'data-nb': {
+            'width': '300px'
+       }
        'buttons': [
             {
                'content': 'Отправить'

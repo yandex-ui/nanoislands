@@ -85,7 +85,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var v7 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f0', c0, i0, l0, a0, "modalPopup", (yr.externals['nb-extend'])(yr.object2nodeset( v7 ), v6));
+        r0 += m.f('f0', c0, i0, l0, a0, "modalPopup", (yr.externals['nb-deep-extend'])(yr.object2nodeset( v7 ), v6));
 
         return r0;
     };
@@ -1084,10 +1084,12 @@ var yr = yr || require('yate/lib/runtime.js');
         var r1 = {};
         var a1 = { a: {} };
         r1[ "id" ] = "popup4";
-        r1[ "type" ] = "modal";
         r1[ "title" ] = "Some modal popup";
         r1[ "content" ] = "Some text for that popup";
-        r1[ "width" ] = "300px";
+        var r2 = {};
+        var a2 = { a: {} };
+        r2[ "width" ] = "300px";
+        r1[ "data-nb" ] = r2;
         var r2 = [];
         var a2 = { a: {} };
         var r3 = {};
