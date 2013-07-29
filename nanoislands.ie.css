@@ -261,7 +261,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
   filter: alpha(opacity=25);
   position: absolute;
-  right: 1px;
+  right: 2px;
   top: 0;
 }
 .nb-popup__close:hover {

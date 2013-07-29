@@ -191,7 +191,7 @@
     popup.events = {
         'init': 'oninit',
         'open': 'onopen',
-        'click .nb-popup__close': 'onclose',
+        'click .nb-popup__close': 'closeClick',
         'close': 'onclose'
     };
 
@@ -247,8 +247,13 @@
         }
     };
 
-    popup.onclose = function() {
+    popup.closeClick = function(){
         $(this.node).dialogCloseOnOuterClick('close');
+        this.trigger('close');
+    }
+
+    popup.onclose = function() {
+
         //  Снимаем флаг о том, что попап открыт.
         this.where = null;
     };

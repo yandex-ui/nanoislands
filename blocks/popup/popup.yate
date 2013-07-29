@@ -1,6 +1,6 @@
 func nb-popup-menu(nodeset options) {
     default = {
-        'fake': 1
+       'none': 'none'
     }
 
     nb-block('popup', nb-extend(default, options))
@@ -8,32 +8,31 @@ func nb-popup-menu(nodeset options) {
 
 match .popup nb {
     <div>
+        @class = 'nb-popup _hidden'
+        @data-nb = 'popup'
+
         apply . nb-main-attrs
 
-        @data-nb = 'popup'
-        @class = 'nb-popup _hidden'
-
-        if(.id){
-            @id += '{.id}'
-        }
-
         for .menu {
-        <a href="{.href}" class="nb-popup__line _link">
-            .text
-        </a>
+            <a href="{.href}" class="nb-popup__line _link">
+                .text
+            </a>
         }
     </div>
 }
 
 func nb-popup-modal(nodeset options) {
     default = {
+        'data-nb': {
+            'modal': 'true'
+            'width': 'auto'
+            'height': 'auto'
+            'minHeight': 'auto'
+        }
         'close': 'true'
-        'width': 'auto'
-        'height': 'auto'
-        'minHeight': 'auto'
-         <!--'title': 'Some modal popup'-->
-         <!-- 'content': 'Some text for that popup'-->
-         <!--'buttons': -->
+     // 'title': 'Some modal popup'
+     // 'content': 'Some text for that popup'
+     // 'buttons':
     }
 
     nb-block('modalPopup', nb-extend(default, options))
@@ -41,18 +40,10 @@ func nb-popup-modal(nodeset options) {
 
 match .modalPopup nb {
     <div>
-        apply . nb-main-attrs
-
-        @data-nb = 'popup'
-        @data-nb-modal = 'true'
         @class = 'nb-popup nb-popup_type_modal _hidden'
-        @data-nb-width = .width
-        @data-nb-height = .height
-        @data-nb-minHeight = .minHeight
+        @data-nb = 'popup'
 
-        if(.id){
-            @id += '{.id}'
-        }
+        apply . nb-main-attrs
 
         if(.close == 'true'){
             <a class="nb-popup__close">
