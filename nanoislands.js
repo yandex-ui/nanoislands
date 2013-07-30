@@ -1312,9 +1312,10 @@ nb.define('radio-button', {
 
             this._on(this.document, {
                 mousedown: function(e) {
-                    if (!$.contains(this.uiDialog[0], e.target)) {
-                        this.close();
-                    }
+                    if (e.which !== 1) return;
+                    if ($.contains(this.uiDialog[0], e.target)) return;
+
+                    this.close();
                 }
             });
 
