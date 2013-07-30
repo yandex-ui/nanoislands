@@ -7,14 +7,11 @@ func nb-popup-menu(nodeset options) {
 }
 
 match .popup nb {
-    <div>
-        @class = 'nb-popup _hidden'
-        @data-nb = 'popup'
-
+    <div class="nb-popup _hidden" data-nb="popup">
         apply . nb-main-attrs
 
         for .menu {
-            <a href="{.href}" class="nb-popup__line _link">
+            <a href="{ .href }" class="nb-popup__line _link">
                 .text
             </a>
         }
@@ -39,30 +36,26 @@ func nb-popup-modal(nodeset options) {
 }
 
 match .modalPopup nb {
-    <div>
-        @class = 'nb-popup nb-popup_type_modal _hidden'
-        @data-nb = 'popup'
-
+    <div class="nb-popup nb-popup_type_modal _hidden" data-nb="popup">
         apply . nb-main-attrs
 
-        if(.close == 'true'){
+        if .close {
             <a class="nb-popup__close">
                 nb-icon('close_16')
             </a>
         }
 
-        if(.title){
+        if .title {
             <div class="nb-popup__title">
                 .title
             </div>
         }
 
-        if(.content){
-            <div class="nb-popup__content">
-                .content
-            </div>
-        }
-        if(.buttons){
+        <div class="nb-popup__content">
+            .content
+        </div>
+
+        if .buttons {
             <div class="nb-popup__buttons">
                 for .buttons {
                     nb-button(.)
@@ -71,4 +64,3 @@ match .modalPopup nb {
         }
     </div>
 }
-

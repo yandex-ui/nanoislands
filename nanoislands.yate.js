@@ -1895,13 +1895,8 @@ var yr = yr || require('yate/lib/runtime.js');
 
         r0 += m.a(m, [ c0 ], 'nb-attrs', a0)
         r0 += m.a(m, selectNametest('*', c0, []), 'nb-attrs', a0)
-        if (nodeset2boolean( (selectNametest('id', c0, [])) )) {
-            var tmp0 = a0.a[ "id" ];
-            if (tmp0) {
-                a0.a[ "id" ] = tmp0.addscalar(nodeset2scalar( ( selectNametest('id', c0, []) ) ));
-            } else {
-                a0.a[ "id" ] = new yr.scalarAttr(nodeset2scalar( ( selectNametest('id', c0, []) ) ));
-            }
+        if (simpleBoolean('id', c0)) {
+            a0.a[ "id" ] = new yr.scalarAttr(simpleScalar('id', c0));
         }
         var r1 = '';
         var a1 = { a: {} };
@@ -2191,10 +2186,10 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<div";
         a0.a = {
+            'class': new yr.scalarAttr("nb-popup _hidden"),
+            'data-nb': new yr.scalarAttr("popup")
         };
         a0.s = 'div';
-        a0.a[ "class" ] = new yr.scalarAttr("nb-popup _hidden");
-        a0.a[ "data-nb" ] = new yr.scalarAttr("popup");
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         var items0 = selectNametest('menu', c0, []);
@@ -2218,28 +2213,26 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<div";
         a0.a = {
+            'class': new yr.scalarAttr("nb-popup nb-popup_type_modal _hidden"),
+            'data-nb': new yr.scalarAttr("popup")
         };
         a0.s = 'div';
-        a0.a[ "class" ] = new yr.scalarAttr("nb-popup nb-popup_type_modal _hidden");
-        a0.a[ "data-nb" ] = new yr.scalarAttr("popup");
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
-        if ((cmpSN("true", selectNametest('close', c0, [])))) {
+        if (simpleBoolean('close', c0)) {
             r0 += "<a class=\"" + "nb-popup__close" + "\">";
             r0 += m.f('f10', c0, i0, l0, a0, "close_16");
             r0 += "</a>";
         }
-        if (nodeset2boolean( (selectNametest('title', c0, [])) )) {
+        if (simpleBoolean('title', c0)) {
             r0 += "<div class=\"" + "nb-popup__title" + "\">";
             r0 += nodeset2xml( selectNametest('title', c0, []) );
             r0 += "</div>";
         }
-        if (nodeset2boolean( (selectNametest('content', c0, [])) )) {
-            r0 += "<div class=\"" + "nb-popup__content" + "\">";
-            r0 += nodeset2xml( selectNametest('content', c0, []) );
-            r0 += "</div>";
-        }
-        if (nodeset2boolean( (selectNametest('buttons', c0, [])) )) {
+        r0 += "<div class=\"" + "nb-popup__content" + "\">";
+        r0 += nodeset2xml( selectNametest('content', c0, []) );
+        r0 += "</div>";
+        if (simpleBoolean('buttons', c0)) {
             r0 += "<div class=\"" + "nb-popup__buttons" + "\">";
             var items0 = selectNametest('buttons', c0, []);
             for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
