@@ -1,15 +1,19 @@
 func nb-popup-menu(nodeset options) {
     default = {
        'none': 'none'
+       //'menu': [
+       //    {
+       //        'href': '#'
+       //        'text': 'Скопировать'
+       //     }
+       //]
     }
 
     nb-block('popupMenu', nb-extend(default, options))
 }
 
 match .popupMenu nb {
-    <div>
-        @class = 'nb-popup _hidden'
-        @data-nb = 'popup'
+    <div class="nb-popup _hidden" data-nb='popup'>
 
         apply . nb-main-attrs
 
@@ -33,9 +37,7 @@ func nb-popup(nodeset options) {
 }
 
 match .popup nb {
-    <div>
-        @class = 'nb-popup _hidden'
-        @data-nb = 'popup'
+    <div class="nb-popup _hidden" data-nb='popup'>
 
         apply . nb-main-attrs
 
