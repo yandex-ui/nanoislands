@@ -346,6 +346,22 @@
 .nb-popup-outer.ui-dialog .ui-dialog-content {
   padding: 0;
 }
+.nb-popup_tail_to_bottom .nb-popup__tail_to_right i,
+.nb-popup_tail_to_top .nb-popup__tail_to_right i {
+  left: 75%;
+}
+.nb-popup_tail_to_bottom .nb-popup__tail_to_left i,
+.nb-popup_tail_to_top .nb-popup__tail_to_left i {
+  left: 25%;
+}
+.nb-popup_tail_to_left .nb-popup__tail_to_bottom i,
+.nb-popup_tail_to_right .nb-popup__tail_to_bottom i {
+  top: 75%;
+}
+.nb-popup_tail_to_left .nb-popup__tail_to_top i,
+.nb-popup_tail_to_right .nb-popup__tail_to_top i {
+  top: 25%;
+}
 .nb-radio-button.ui-buttonset .ui-button {
   margin: 0;
   margin-right: -1px;

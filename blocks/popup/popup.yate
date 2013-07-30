@@ -1,6 +1,7 @@
 func nb-popup-menu(nodeset options) {
     default = {
        'none': 'none'
+       'tail': 'left|right|top|bottom'
        //'menu': [
        //    {
        //        'href': '#'
@@ -16,6 +17,10 @@ match .popupMenu nb {
     <div class="nb-popup _hidden" data-nb='popup'>
 
         apply . nb-main-attrs
+
+        if .tail {
+            @data-nb-tail = .tail
+        }
 
         for .menu {
             <a href="{ .href }" class="nb-popup__line _link">
@@ -41,6 +46,10 @@ match .popup nb {
 
         apply . nb-main-attrs
 
+        if .tail {
+            @data-nb-tail = .tail
+        }
+
         if .title {
             <div class="nb-popup__title">
                 .title
@@ -48,7 +57,7 @@ match .popup nb {
         }
 
         <div class="nb-popup__content">
-            .content
+            html(.content)
         </div>
 
     </div>

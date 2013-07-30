@@ -1302,9 +1302,9 @@ nb.define('radio-button', {
     jQuery.widget('nb.dialogCloseOnOuterClick', $.ui.dialog, {
 
         options: {
-           height: 'auto',
-           minHeight: 'auto',
-           width: 'auto'
+            height: 'auto',
+            minHeight: 'auto',
+            width: 'auto'
         },
         open: function() {
             var that = this;
@@ -1341,6 +1341,7 @@ nb.define('radio-button', {
         tailOffset: 13,
 
         options: {
+            tail: 'center',
             height: 'auto',
             minHeight: 'auto',
             width: 'auto',
@@ -1366,8 +1367,14 @@ nb.define('radio-button', {
 
         _create: function() {
             this._super();
+            var $tail = $('<div class="nb-popup__tail"><i/></div>');
+
+            if (this.options.tail != 'cnter') {
+                $tail.addClass('nb-popup__tail_to_' + this.options.tail);
+            }
+
             //TODO: проверить, что вызывается один раз
-            $('<div class="nb-popup__tail"><i/></div>').prependTo(this.uiDialog);
+            $tail.prependTo(this.uiDialog);
         },
 
         _position: function() {
@@ -1540,7 +1547,7 @@ nb.define('radio-button', {
         }
     };
 
-    popup.closeClick = function(){
+    popup.closeClick = function() {
         $(this.node).dialogCloseOnOuterClick('close');
         this.trigger('close');
     }
@@ -1583,6 +1590,7 @@ nb.define('radio-button', {
         how = how || {};
 
         $(this.node).contextDialog({
+            tail: data.tail,
             position: {
                 // где попап
                 at: (how.where ? how.where : 'center bottom'),// + ' center',
