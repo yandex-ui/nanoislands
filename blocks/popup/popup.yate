@@ -3,11 +3,14 @@ func nb-popup-menu(nodeset options) {
        'none': 'none'
     }
 
-    nb-block('popup', nb-extend(default, options))
+    nb-block('popupMenu', nb-extend(default, options))
 }
 
-match .popup nb {
-    <div class="nb-popup _hidden" data-nb="popup">
+match .popupMenu nb {
+    <div>
+        @class = 'nb-popup _hidden'
+        @data-nb = 'popup'
+
         apply . nb-main-attrs
 
         for .menu {
@@ -15,6 +18,37 @@ match .popup nb {
                 .text
             </a>
         }
+    </div>
+}
+
+
+func nb-popup(nodeset options) {
+    default = {
+       'none': 'none'
+        // 'title': 'Some modal popup'
+        // 'content': 'Some text for that popup'
+    }
+
+    nb-block('popup', nb-extend(default, options))
+}
+
+match .popup nb {
+    <div>
+        @class = 'nb-popup _hidden'
+        @data-nb = 'popup'
+
+        apply . nb-main-attrs
+
+        if .title {
+            <div class="nb-popup__title">
+                .title
+            </div>
+        }
+
+        <div class="nb-popup__content">
+            .content
+        </div>
+
     </div>
 }
 
