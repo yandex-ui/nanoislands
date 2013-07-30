@@ -4,8 +4,8 @@ match .* nb-main-attrs {
     apply . nb-attrs
     apply .* nb-attrs
 
-    if(.id){
-        @id += '{.id}'
+    if .id {
+        @id = .id
     }
 
     @class += for .class {
