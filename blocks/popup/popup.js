@@ -1,59 +1,219 @@
-;(function () {
+(function() {
 
-    var popup = {
-        cfg: {
-            // Время анимации попапа
-            animationTime: 150,
+    /**
+     * @fileOverview Надстройки nb над jQueryUI
+     */
 
-            // Дистанция с которой появляется поап
-            animationDistance: 10,
+    $.nb = {};
 
-            // Расстояние на которое попап отстает от тригера
-            tailOffset: 23
+    // диалог, закрывающий по нажатию вне
+    jQuery.widget('nb.dialogCloseOnOuterClick', $.ui.dialog, {
+
+        options: {
+           height: 'auto',
+           minHeight: 'auto',
+           width: 'auto'
+        },
+        open: function() {
+            var that = this;
+            this._super();
+
+            this._on(this.document, {
+                mousedown: function(e) {
+                    if (!$.contains(this.uiDialog[0], e.target)) {
+                        this.close();
+                    }
+                }
+            });
+
+            this._onpopupclose = nb.on('popup-close', function() {
+                that.close();
+            });
+        },
+        close: function() {
+            this._super();
+
+            this._off(this.document, 'mousedown');
+            nb.off('popup-close', this._onpopupclose);
+        },
+
+        _createTitlebar: function() {
+            this.uiDialogTitlebarClose = $()
         }
+    });
+
+    // диалог с хвостиком + dialogCloseOnOuterClick
+    jQuery.widget('nb.contextDialog', $.nb.dialogCloseOnOuterClick, {
+
+        tailOffset: 13,
+
+        options: {
+            height: 'auto',
+            minHeight: 'auto',
+            width: 'auto',
+            show: {
+                effect: 'nb',
+                duration: 150
+            },
+            hide: {
+                effect: 'nb',
+                duration: 150
+            },
+            draggable: false,
+            resizable: false,
+            dialogClass: 'nb-popup-outer ui-dialog-no-close',
+            position: {
+                my: 'center top',
+                at: 'center bottom',
+                // horizontal: fit, пытаемся уместить в window
+                // vertical: flip - выбирает наилучший вариант - вверх или вних
+                collision: "fit flip"
+            }
+        },
+
+        _create: function() {
+            this._super();
+            //TODO: проверить, что вызывается один раз
+            $('<div class="nb-popup__tail"><i/></div>').prependTo(this.uiDialog);
+        },
+
+        _position: function() {
+            var position = this.options.position;
+            this._super();
+
+            var $handler = position.of;
+            var handlerOffset = $handler.offset();
+
+            //TODO: вот этого this.uiDialog.css('top', '+=13px'); можно не делать, если сразу в position писать {at: 'center top+13'}
+            // положение надо вычислять все руками, потому что jquery-ui никак не сообщает о том, была ли коллизия
+
+            // позиционирования слева или справа
+            if (position.at && /^\s*(left|right)/.test(position.at)) {
+                var popupLeft = parseInt(this.uiDialog.css('left'), 10);
+                if (popupLeft > handlerOffset.left) {
+                    // попап находится справа
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'right');
+                    this.uiDialog.data('nb-tail-dir', 'right');
+                    this.uiDialog.css('left', '+=' + this.tailOffset * 2);
+
+                } else {
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'left');
+                    this.uiDialog.data('nb-tail-dir', 'left');
+                    this.uiDialog.css('left', '-=' + this.tailOffset * 2);
+                }
+
+            } else {
+                var popupTop = parseInt(this.uiDialog.css('top'), 10);
+                if (popupTop > handlerOffset.top) {
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'bottom');
+                    this.uiDialog.data('nb-tail-dir', 'bottom');
+                    this.uiDialog.css('top', '+=' + this.tailOffset * 2);
+
+                } else {
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'top');
+                    this.uiDialog.data('nb-tail-dir', 'top');
+                    this.uiDialog.css('top', '-=' + this.tailOffset * 2);
+                }
+            }
+        }
+    });
+
+    jQuery.effects.effect.nb = function(o, done) {
+        var $this = $(this);
+        var mode = $.effects.setMode($this, o.mode || "hide");
+        var tailDir = $this.data('nb-tail-dir');
+
+        if (tailDir)
+
+            var res = {
+                show: {
+                    'bottom': {
+                        opacity: 1,
+                        top: '-=' + $.nb.contextDialog.prototype.tailOffset
+                    },
+                    'top': {
+                        opacity: 1,
+                        top: '+=' + $.nb.contextDialog.prototype.tailOffset
+                    },
+                    'left': {
+                        opacity: 1,
+                        left: '+=' + $.nb.contextDialog.prototype.tailOffset
+                    },
+                    'right': {
+                        opacity: 1,
+                        left: '-=' + $.nb.contextDialog.prototype.tailOffset
+                    }
+
+                },
+                hide: {
+                    'bottom': {
+                        opacity: 0,
+                        top: '+=' + $.nb.contextDialog.prototype.tailOffset
+                    },
+                    'top': {
+                        opacity: 0,
+                        top: '-=' + $.nb.contextDialog.prototype.tailOffset
+                    },
+                    'left': {
+                        opacity: 0,
+                        left: '-=' + $.nb.contextDialog.prototype.tailOffset
+                    },
+                    'right': {
+                        opacity: 0,
+                        left: '+=' + $.nb.contextDialog.prototype.tailOffset
+                    }
+                }
+            };
+
+        if (mode == 'show') {
+            $this.show();
+        }
+
+        $this.animate(res[mode][tailDir], {
+            queue: false,
+            duration: o.duration,
+            easing: o.easing,
+            complete: function() {
+                if (mode == 'hide') {
+                    $this.hide();
+                }
+                done();
+            }
+        });
     };
 
-// ----------------------------------------------------------------------------------------------------------------- //
+    //TODO: не понимаю зачем this.moved и this._home
+
+    var popup = {};
+
+    // ----------------------------------------------------------------------------------------------------------------- //
 
     popup.events = {
         'init': 'oninit',
         'open': 'onopen',
-        'close': 'onclose',
-
-        'click .nb-popup__close': 'onclose',
-        'click .nb-select__item': 'onClick'
+        'click .nb-popup__close': 'closeClick',
+        'close': 'onclose'
     };
 
-// ----------------------------------------------------------------------------------------------------------------- //
+    // ----------------------------------------------------------------------------------------------------------------- //
 
-    popup.oninit = function () {
+    popup.oninit = function() {
         var data = this.data();
-
-        this.opened = false;
 
         if ('modal' in data) {
             this.modal = true;
-            this.$paranja = $(this.node).siblings('nb-paranja')
         }
-
-        //  У попапа есть "хвостик".
-        this.$selectParent = $(this.node).parents('.nb-select');
-        this.$tail = $(this.node).find('.nb-popup__tail');
-        this.hasTail = !!this.$tail.length;
-        this.inSelect = !!this.$selectParent.length;
 
         // Храним исходное положение попапа, чтобы возвращать его на место
         var previous = this.node.previousSibling;
         this._home = previous ? { previous: previous } : { parent: this.node.parentNode };
     };
 
-// ----------------------------------------------------------------------------------------------------------------- //
+    // ----------------------------------------------------------------------------------------------------------------- //
 
-    popup.onopen = function (e, params) {
+    popup.onopen = function(e, params) {
         var where = params.where;
         var how = params.how;
-
-        //  FIXME: Нужно сделать отдельный флаг this.visible.
 
         //  Специальный флаг-костыль.
         //  Если он true, то это значит, что мы только что передвинули открытый попап в другое место
@@ -77,408 +237,74 @@
             //  На всякий случай даем сигнал, что нужно закрыть все открытые попапы.
             nb.trigger('popup-close');
 
-            //  Включаем паранджу, если нужно.
-            if (this.modal) {
-                //  Ноду блока переносим внутрь паранджи.
-                $paranja().append(this.node).show();
-            } else {
-                //  Переносим ноду попапа в самый конец документа,
-                //  чтобы избежать разных проблем с css.
-                $('body').append(this.node);
-            }
-
             $(this.node).removeClass('_hidden');
             //  Передвигаем попап.
             this._move(where, how);
-            //  Вешаем события, чтобы попап закрывался по нажатие ESC и клику вне попапа.
-            this._bindClose();
-
-            //  Показываем.
-            $(this.node).animate(
-                this._animateParams(this.data('direction')).forward,
-                this.cfg.animationTime
-            );
             this.trigger('show');
-
-            this.opened = true;
 
             // Сообщаем в космос, что открылся попап
             nb.trigger('popup-opened', this);
         }
     };
 
-    popup.onclose = function () {
-        var that = this
-        //  Снимаем все события, которые повесили в open.
-        this._unbindClose();
+    popup.closeClick = function(){
+        $(this.node).dialogCloseOnOuterClick('close');
+        this.trigger('close');
+    }
+
+    popup.onclose = function() {
+
         //  Снимаем флаг о том, что попап открыт.
         this.where = null;
-        //  Прячем.
-        if (this.modal) {
-            $paranja().hide();
-        }
-
-        $(this.node).animate(
-            that._animateParams(that.data('direction')).reverse,
-            that.cfg.animationTime,
-            function () {
-                $(this).addClass('_hidden');
-
-                that.trigger('hide');
-
-                // Возвращаем ноду попапа на старое место
-                if (that._home.previous) {
-                    $(that._home.previous).after(that.node);
-                } else if (that._home.parent) {
-                    $(that._home.parent).prepend(that.node);
-                }
-
-                // Сообщаем в космос, что закрылся попап
-                nb.trigger('popup-closed', that);
-            });
-        this.opened = false;
     };
 
-// ----------------------------------------------------------------------------------------------------------------- //
+    // ----------------------------------------------------------------------------------------------------------------- //
 
-    popup._move = function (where, how) {
-        //  FIXME: Не нужно это делать в _move().
+    popup._move = function(where, how) {
         //  Запоминаем, на какой ноде мы открываем попап.
         this.where = where;
+        var that = this;
+
+        var data = this.data();
 
         //  Модальный попап двигать не нужно.
         if (this.modal) {
+            $(this.node).dialogCloseOnOuterClick({
+                height: data.height,
+                minHeight: data.minheight,
+                width: data.width,
+                show: 'fade',
+                hide: 'fade',
+                modal: true,
+                resizable: false,
+                draggable: false,
+                dialogClass: 'nb-popup-outer ui-dialog-fixed',
+                close: function() {
+                    that.trigger('close');
+                }
+            });
+
             return;
         }
 
-        how = normalizeHow(how);
+        how = how || {};
 
-        //  Изначальные прямоугольники для what и where.
-        var orig_what = nb.rect(this.node);
-        where = nb.rect(where);
-
-        //  Adjusted what -- т.е. мы what передвинули так, чтобы точки привязки what и where совпадали.
-        //  adj_what -- это объект с двумя свойствами:
-        //
-        //    * rect -- это собственно сдвинутый what.
-        //    * point -- это точка привязки, куда мы его сдвинули.
-        //
-        var adj_what = nb.rect.adjust(orig_what, where, how);
-        var what = adj_what.rect;
-
-        var tailDir;
-        var needTail = this.hasTail && (( tailDir = this._tailDirs(how.what, how.where) ));
-
-        if (needTail) {
-            //  Показываем "хвост" с нужной стороны попапа.
-            this.setMod('nb-popup_tail_to', tailDir[1]);
-
-            // Запоминаем направление
-            this.data('direction', tailDir[1])
-
-            var css = { left: '', right: '', top: '', bottom: '' };
-
-            //  Позиционируем "хвост", если он должен быть не по-центру попапа.
-            if (tailDir[0] !== 'center') {
-                //  Сдвиг, который делает точку привязки началом координат.
-                var offset2origin = nb.vec.scale(adj_what.point, -1);
-
-                //  Преобразование в "положение 1".
-                var transform = transforms[ tailDir.join(' ') ];
-
-                var t_what = nb.rect.trans(nb.rect.move(what, offset2origin), transform);
-                var t_where = nb.rect.trans(nb.rect.move(where, offset2origin), transform);
-
-                //  После этих преобразований мы получаем, что точка привязки сместилась в начало координат,
-                //  левый нижний угол where в начале координат, левый верхний угол what в начале координат.
-                //
-                //  -------------
-                //  |   where   |
-                //  |           |
-                //  *-------------------
-                //  |       what       |
-                //  |                  |
-                //  |                  |
-                //  |                  |
-                //  --------------------
-                //
-
-                //  Слевы положение "хвоста" ограничено некой константой.
-                var MIN_LEFT = 18;
-                //  Справа -- минимумом из середин what и where.
-                var r = Math.min(t_what[1][0] / 2, t_where[1][0] / 2);
-
-                var x, y;
-                if (MIN_LEFT <= r) {
-                    //  Для "хвоста" достаточно места.
-
-                    x = r;
-                } else {
-                    //  "Хвост" не влезает, поэтому необходимо подвинуть и сам попап.
-
-                    x = MIN_LEFT;
-                    t_what = nb.rect.move(t_what, [ r - MIN_LEFT, 0 ]);
-                }
-
-                //  Зазор для "хвоста".
-                t_what = nb.rect.move(t_what, [ 0, this.cfg.tailOffset]);
-
-                //  Делаем обратное преобразование попапа...
-                what = nb.rect.move(nb.rect.trans(nb.rect.trans(nb.rect.trans(t_what, transform), transform), transform), adj_what.point);
-                //  ...и смещения для "хвоста".
-                var tailOffset = nb.vec.mulM(transform, nb.vec.mulM(transform, nb.vec.mulM(transform, [ x, 0])));
-
-                //  Позиционируем "хвост".
-                x = tailOffset[0];
-                y = tailOffset[1];
-
-                var AUTO = 'auto';
-                if (x > 0) {
-                    css.left = x;
-                    css.right = AUTO;
-                } else if (x < 0) {
-                    css.left = AUTO;
-                    css.right = -x;
-                } else if (y > 0) {
-                    css.top = y;
-                    css.bottom = AUTO;
-                } else {
-                    css.top = AUTO;
-                    css.bottom = -y;
-                }
-            } else {
-                //  Зазор для "хвоста".
-                what = nb.rect.move(what, nb.vec.scale(nb.vec.dir2vec(how.where), this.cfg.tailOffset));
-            }
-
-            this.$tail.css(css).show();
-        } else {
-            this.$tail.hide();
-        }
-
-        //  Позиционируем попап.
-        $(this.node).css({
-            left: what[0][0],
-            top: what[0][1]
-        });
-
-    };
-
-    function normalizeHow(how) {
-        //  Дефолтное направление открытия.
-        how = how || { dir: 'bottom' };
-
-        var what, where;
-
-        //  Если направление задано через dir, пересчитываем это в what/where.
-        if (how.dir) {
-            //  Скажем, если dir === 'bottom', то where === 'bottom', а what === 'top'.
-            //  nb.vev.flipDir возвращает противоположное направление.
-            what = nb.vec.flipDir[ how.dir ];
-            where = how.dir;
-        } else {
-            what = how.what;
-            where = how.where;
-        }
-
-        return {
-            what: normalizeDir(what),
-            where: normalizeDir(where)
-        };
-    }
-
-
-    var transforms = {
-        'left bottom': [
-            [  1, 0 ],
-            [  0, 1 ]
-        ],
-        'right bottom': [
-            [ -1, 0 ],
-            [  0, 1 ]
-        ],
-        'top left': [
-            [  0, 1 ],
-            [ -1, 0 ]
-        ],
-        'bottom left': [
-            [  0, -1 ],
-            [ -1, 0 ]
-        ],
-        'right top': [
-            [ -1, 0 ],
-            [  0, -1 ]
-        ],
-        'left top': [
-            [  1, 0 ],
-            [  0, -1 ]
-        ],
-        'bottom right': [
-            [  0, -1 ],
-            [  1, 0 ]
-        ],
-        'top right': [
-            [  0, 1 ],
-            [  1, 0 ]
-        ]
-    };
-
-    popup._animateParams = function (dir) {
-        var res = {
-            forward: {
-                opacity: 1
+        $(this.node).contextDialog({
+            position: {
+                // где попап
+                at: (how.where ? how.where : 'center bottom'),// + ' center',
+                // где ссылка, которая открыла попап
+                my: (how.what ? how.what : 'center top'),// + ' center',
+                of: $(this.where),
+                // horizontal: fit, пытаемся уместить в window
+                // vertical: flip - выбирает наилучший вариант - вверх или вних
+                collision: "fit flip"
             },
-            reverse: {
-                opacity: 0
-            }
-        }
-        switch (dir) {
-            case 'left':
-                res.forward['left'] = '+=' + this.cfg.animationDistance;
-                res.reverse['left'] = '-=' + this.cfg.animationDistance;
-                break;
-            case 'right':
-                res.forward['left'] = '-=' + this.cfg.animationDistance;
-                res.reverse['left'] = '+=' + this.cfg.animationDistance;
-                break;
-            case 'top':
-                res.forward['top'] = '+=' + this.cfg.animationDistance;
-                res.reverse['top'] = '-=' + this.cfg.animationDistance;
-                break;
-            case 'bottom':
-                res.forward['top'] = '-=' + this.cfg.animationDistance;
-                res.reverse['top'] = '+=' + this.cfg.animationDistance;
-                break;
-        }
-        return res
-    };
-
-    function normalizeDir(dir) {
-        dir = dir || '';
-
-        var parts;
-        switch (dir) {
-            //  Если направление не задано, считаем, что это 'center center'.
-            case '':
-                parts = [ 'center', 'center' ];
-                break;
-
-            //  Если задано только одно направление, второе выставляем в 'center'.
-            case 'left':
-            case 'right':
-            case 'center':
-                parts = [ dir, 'center' ];
-                break;
-
-            case 'top':
-            case 'bottom':
-                parts = [ 'center', dir ];
-                break;
-
-            default:
-                parts = dir.split(/\s+/);
-
-                //  В случае 'top right' и т.д. переставляем части местами.
-                //  Одного сравнения недостаточно, потому что может быть 'top center' или 'center left'.
-                if (/^(?:left|right)/.test(parts[1]) || /^(?:top|bottom)/.test(parts[0])) {
-                    parts = [ parts[1], parts[0] ];
-                }
-        }
-
-        return parts;
-    }
-
-    popup._tailDirs = function (what, where) {
-
-        if (what[0] === where[0] && nb.vec.flipDir[ what[1] ] === where[1]) {
-            return where;
-        }
-
-        if (what[1] === where[1] && nb.vec.flipDir[ what[0] ] === where[0]) {
-            return [ where[1], where[0] ];
-        }
-
-    }
-
-// ----------------------------------------------------------------------------------------------------------------- //
-
-//  Вешаем события перед открытием попапа, чтобы он закрывался при:
-//
-//    * Нажатии ESC;
-//    * Клике в любое место вне попапа;
-//    * При получении глобального события `popup-close`.
-//
-//  В случае необходимости, можно закрыть все открытые попапы вот так:
-//
-//      nb.trigger('popup-close');
-//
-    popup._bindClose = function () {
-        var that = this;
-
-        this._onkeypress = function (e) {
-            if (e.keyCode === 27 || e.keyCode === 9) {
+            close: function() {
                 that.trigger('close');
             }
-        };
-        $(document).on('keydown', this._onkeypress);
-
-        this._onclick = function (e, target) {
-            if (that.moved) {
-                that.moved = false;
-                return;
-            }
-            //  Проверяем, что клик случился не внутри попапа и не на ноде, на которой попап открыт (если открыт).
-            if ((that.node !== target) && !$.contains(that.node, target) && !( that.where && !( that.where instanceof Array ) && ( $.contains(that.where, target) || that.where == target ) )) {
-                that.trigger('close');
-            }
-        };
-        nb.on('space:click', this._onclick);
-
-        this._onpopupclose = nb.on('popup-close', function () {
-            that.trigger('close');
         });
     };
-
-//  Снимаем все события, повешенные в `_bindClose`.
-    popup._unbindClose = function () {
-        if (this.where) {
-            $(document).off('keydown', this._onkeypress);
-            nb.off('space:click', this._onclick);
-            nb.off('popup-close', this._onpopupclose);
-        }
-        this._onkeypress = this._onclick = this._onpopupclose = null;
-    };
-
-    /**
-     * Handle event on element select if there is one inside
-     * Changes selected item and trigger events through space
-     * @param e - event
-     */
-    popup.onClick = function (e) {
-        var $target = $(e.target)
-        var $item = $target.attr('nb-select-value') ? $target : $target.parents('*[nb-select-value]')
-
-        this.selectItem($item)
-
-        if (e.type == 'click') {
-            this.trigger('close')
-        }
-    },
-
-    popup.selectItem = function (item) {
-        var value = $(item).attr('nb-select-value');
-        var text = $(item).find('.nb-select__text').html();
-
-        $(this.node).find('.nb-select__item_selected_yes').removeClass('nb-select__item_selected_yes');
-        $(item).addClass('nb-select__item_selected_yes');
-
-        nb.trigger('select:' + this.node.getAttribute('id') + ':change', {
-           value: value,
-           text: text
-        });
-    }
-
-// ----------------------------------------------------------------------------------------------------------------- //
 
     nb.define('popup', popup);
 
@@ -492,7 +318,7 @@ nb.define('popup-toggler', {
         'click': 'onclick'
     },
 
-    'onclick': function () {
+    'onclick': function() {
         if (this.getMod('_disabled')) {
             return;
         }
@@ -519,6 +345,3 @@ nb.define('popup-toggler', {
     }
 
 });
-
-//  ---------------------------------------------------------------------------------------------------------------  //
-

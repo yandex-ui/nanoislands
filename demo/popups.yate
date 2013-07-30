@@ -30,6 +30,14 @@ func toggle-to-top() {
     </a>
 }
 
+func toggle-modal() {
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup4'}}" href="#modal">
+        <span class="link__inner">
+            "Модальный Попап"
+        </span>
+    </a>
+}
+
 func popups() {
     default = {
         'id': 'popup'
@@ -103,40 +111,72 @@ func popups() {
         ]
     }
 
+    modal = {
+       'id': 'popup4'
+       'title': 'Some modal popup'
+       'content': 'Some text for that popup'
+       'data-nb': {
+            'width': '300px'
+       }
+       'buttons': [
+            {
+               'content': 'Отправить'
+               'size': 'm'
+               'theme': 'action'
+               'class': 'nb-popup__button'
+            }
+            {
+               'content': 'Сохранить'
+               'size': 'm'
+               'class': 'nb-popup__button'
+            }
+        ]
+
+   }
+
     <div class="demo-section">
         <div class="demo-group">
             podium(toggle-default())
             code(toggle-default())
-            code(nb-popup(default))
+            code(nb-popup-menu(default))
         </div>
 
-        nb-popup(default)
+        nb-popup-menu(default)
     </div>
     <div class="demo-section">
         <div class="demo-group">
             podium(toggle-to-right())
             code(toggle-to-right())
-            code(nb-popup(toRight))
+            code(nb-popup-menu(toRight))
         </div>
 
-        nb-popup(toRight)
+        nb-popup-menu(toRight)
     </div>
     <div class="demo-section">
         <div class="demo-group">
             podium(toggle-to-left())
             code(toggle-to-left())
-            code(nb-popup(toLeft))
+            code(nb-popup-menu(toLeft))
         </div>
 
-        nb-popup(toLeft)
+        nb-popup-menu(toLeft)
     </div>
     <div class="demo-section">
         <div class="demo-group">
             podium(toggle-to-top())
             code(toggle-to-top())
-            code(nb-popup(toTop))
+            code(nb-popup-menu(toTop))
         </div>
 
-        nb-popup(toTop)
+        nb-popup-menu(toTop)
+    </div>
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-modal())
+            code(toggle-modal())
+            code(nb-popup-modal(modal))
+        </div>
+
+        nb-popup-modal(modal)
     </div>
 }

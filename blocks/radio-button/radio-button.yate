@@ -9,15 +9,15 @@ func nb-radio-button(nodeset options) {
 }
 
 match .radio-button nb {
-    <form method="get" action="#">
+    <div>
         apply . nb-main-attrs
         apply . nb-main-content
-    </form>
+    </div>
 }
 
 match .radio-button nb-attrs {
     @data-nb = 'radio-button'
-    @class = 'nb-radio-button'
+    @class = 'nb-radio-button _init'
 }
 
 match .radio-button nb-content {
@@ -44,7 +44,7 @@ match .button[.mod == 'radio-button'] nb {
     uniq = 'nb-radio-button_{nb-uniq()}'
 
     <span class="nb-radio-button__button">
-        <input class="nb-radio-button__radio" type="{ .type }" name="{ .name }" value="{ .value }" id="{ uniq }">
+        <input class="nb-radio-button__radio" type="radio" name="{ .name }" value="{ .value }" id="{ uniq }">
             if .checked {
                 @checked = 'checked'
             }
@@ -66,5 +66,5 @@ match .button[.mod == 'radio-button'] nb-attrs {
 
 
 match .button[.mod == 'radio-button'].checked nb-attrs {
-    @class += ' nb-button_checked'
+    @class += ' nb-button_type_checked'
 }

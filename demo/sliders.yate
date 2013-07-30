@@ -1,17 +1,12 @@
 func slider-small() {
     slider = {
+        'id': 's2'
         'size': 's'
-        'knob': {
+        'handle': {
             'type': 'round'
             'class': 'js-custom-class'
-            'attrs': {
-                'data-id': '123'
-            }
         }
         'value': 20
-        'attrs': {
-            'data-id': '1'
-        }
     }
     nb-slider(slider)
 }
@@ -21,12 +16,10 @@ func slider-medium() {
         'size': 'm'
         'class': 'js-super-class'
         'value': 50
-        'knob': {
+        'handle': {
             'type': 'round'
         }
-        'attrs': {
-            'data-id': '1'
-        }
+        'id': 's1'
     }
     nb-slider(slider)
 }
@@ -35,9 +28,6 @@ func slider-large() {
     slider = {
         'size': 'l'
         'value': 70
-        'attrs': {
-            'data-id': '1'
-        }
     }
     nb-slider(slider)
 }
@@ -45,21 +35,21 @@ func slider-large() {
 func sliders() {
     <div class="demo-section">
         <div class="demo-h3">
-            'Size: S, Knob: Round'
+            'Size: S, handle: Round'
         </div>
 
         show(slider-small())
     </div>
     <div class="demo-section">
         <div class="demo-h3">
-            'Size: M, Knob: Round'
+            'Size: M, handle: Round'
         </div>
 
         show(slider-medium())
     </div>
     <div class="demo-section">
         <div class="demo-h3">
-            'Size: L, Knob: Square'
+            'Size: L, handle: Square'
         </div>
 
         show(slider-large())

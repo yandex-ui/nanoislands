@@ -2,7 +2,10 @@ func nb-slider(nodeset options) {
     default = {
         'size': 's'
         'value': 0
-        'knob': {
+        'type': 'range'
+        'theme': 'normal'
+        'orientation': 'horiz'
+        'handle': {
             'type': 'square'
         }
     }
@@ -11,27 +14,53 @@ func nb-slider(nodeset options) {
 }
 
 match .slider nb {
-    <span class="nb-slider nb-slider_size_{.size} {.class}">
+    <div>
         apply . nb-main-attrs
 
-        <span class="nb-slider__track {.track.class}">
-            <span class="nb-slider__full" />
-            <span class="nb-slider__interval {.interval.class}" style="width: {.value}%" />
-        </span>
+        <div class="nb-slider__body nb-slider__body_type_{{.type}}">
+            <a>
+                @class = 'nb-slider__handle nb-button nb-button_size_{.size} nb-button_theme_{.theme} ui-slider-handle'
+                apply .handle.* nb-attrs
+                <span class="nb-slider__handle__text"></span>
+            </a>
+        </div>
+        <input class="nb-slider__fallback" type="text" value="{.value}" id="{.id}" />
 
-        apply . nb-slider-knob
-    </span>
+    </div>
 }
 
-match .slider nb-slider-knob {
-    knob = {
-        'class': 'nb-slider__knob nb-slider__knob_{.knob.type} nb-slider__knob_size_{.size} {.knob.class}'
-        'attrs': {
-            'style': 'left: {.value}%'
-        }
+match .slider nb-attrs {
+    if(.type != 'plain'){
+        @data-nb='slider'
     }
 
-    <div class="nb-slider__range nb-slider__range_size_{.size} {.range.class}">
-        nb-button(knob)
-    </div>
+    @class = 'nb-slider _init'
+}
+
+match .slider.size nb-attrs {
+   @class += ' nb-slider_size_{.}'
+}
+
+match .slider.value nb-attrs {
+   @data-nb-value = '{.}'
+}
+
+match .slider.id nb-attrs {
+   @id = '{.}'
+}
+
+match .slider.theme nb-attrs {
+   @class += ' nb-slider_theme_{.}'
+}
+
+match .slider.orientation nb-attrs {
+   @class += ' nb-slider_orientation_{.}'
+}
+
+match .slider.handle.type nb-attrs {
+    @class += ' nb-slider__handle_type_{.}'
+}
+
+match .slider.handle.class nb-attrs {
+    @class += ' {.}'
 }

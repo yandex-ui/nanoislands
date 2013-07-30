@@ -1,32 +1,5 @@
-// основной шаблон для нанобока
-match .* nb-main-attrs {
-    apply . nb-attrs
-    apply .* nb-attrs
-    apply .attrs.* nb-attrs
-}
-
-match .* nb-main-content {
-    apply . nb-content
-}
-
-
-// ===========================
-
-
-match .class nb-attrs {
-    @class += ' {.}'
-}
-
-// общий шаблон для определения атрибутов
-match .attrs.* nb-attrs {
-    @{name(.)} = .
-}
-
-/// ==========================
-
-func nb-block(name, nodeset options) {
-    apply nb-wrap(name, options).* nb
-}
+include 'common/externals.yate'
+include 'common/blocks.yate'
 
 include 'button/button.yate'
 include 'popup/popup.yate'
@@ -42,4 +15,3 @@ include 'island/island.yate'
 include 'dropzone/dropzone.yate'
 include 'loader/loader.yate'
 include 'slider/slider.yate'
-include 'dialog/dialog.yate'

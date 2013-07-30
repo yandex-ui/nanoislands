@@ -1,12 +1,12 @@
 // popup
-.nb-popup
-  opacity: 0
+.nb-popup-outer
   z-index: 100
   position: absolute
   text-align: left
   white-space: normal
   background: #FFF
   box-shadow: 0px 0px 0px 1px rgba(0,0,0,.15), 0px 8px 30px -5px rgba(0,0,0,.5)
+  outline: 0 none
 
   if ie
     border: 1px solid #CBCBCB
@@ -21,6 +21,7 @@
   .nb-popup__line
     display: block
     padding: ($gapS / 2) $gapS
+    outline: 0 none
 
   .nb-popup__line:first-child
     padding: $gapS $gapS ($gapS / 2) $gapS
@@ -44,14 +45,18 @@
     background: #DDD
     overflow: hidden
 
-
   // popup's tail
 .nb-popup__tail
+  width:  100%
+  height:  0
+
+.nb-popup__tail i
   position: absolute
   font-size: 11px
   width: 16px
   height: 16px
   clip: rect(0,0,0,0) // Hide until mode set
+  z-index: 101;
 
   .nb-popup_tail_to_bottom > &
     top: 0
@@ -78,7 +83,7 @@
     clip: rect(-99em, auto, 99em, -99em)
 
 
-.nb-popup__tail:before
+.nb-popup__tail i:before
   content: ""
 
   position: absolute
@@ -111,11 +116,34 @@
   .nb-popup_tail_to_left > &
     left: -50%
 
-.nb-popup_type_modal
-  opacity: 1
-
 .nb-popup__title
   font: $font-h3
+  padding: $gapS
 
-.nb-popup__text
-  font: $font-p2
+.nb-popup__content
+  font: $font-p1
+  padding: 0 $gapS
+
+.nb-popup__close
+  cursor: pointer
+  opacity: .25
+  position: absolute
+  right: 2px
+  top: 0
+
+.nb-popup__close:hover
+  opacity: 1
+
+.nb-popup__buttons
+
+  padding: $gapS
+  padding-top: $gapS
+
+.nb-popup__button
+  margin-right:  $gapS
+
+.nb-popup.ui-dialog-fixed
+  position: fixed !important
+
+.nb-popup-outer.ui-dialog .ui-dialog-content
+  padding:  0

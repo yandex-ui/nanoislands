@@ -8,12 +8,24 @@ func island-simple() {
     nb-island(island)
 }
 
+func island-fly() {
+    island = {
+        'content': 'Летающий остров'
+        'type': 'fly'
+        'padding': 'm'
+        'attrs': {
+            'style': 'height: 100px; width: 200px'
+        }
+    }
+    nb-island(island)
+}
+
 
 func island-padding() {
     island = {
         'content': 'Остров с паддингами и инлайном'
         'padding': 'l'
-        'inline':  true()
+        'type':  'inline'
     }
     nb-island(island)
 }
@@ -21,6 +33,9 @@ func island-padding() {
 func islands() {
     <div class="demo-section">
         show(island-simple())
+    </div>
+    <div class="demo-section">
+        show(island-fly())
     </div>
     <div class="demo-section">
         <div class="demo-h3">

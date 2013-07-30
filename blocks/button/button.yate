@@ -30,8 +30,11 @@ match .button[.mod == 'attach'] nb {
 }
 
 match .button nb-attrs {
-    @data-nb = 'button'
-    @class = 'nb-button'
+    if(.type != 'plain'){
+        @data-nb = 'button'
+    }
+
+    @class = 'nb-button _init'
 }
 
 match .button[!.disabled].href nb-attrs {
