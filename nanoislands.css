@@ -1234,7 +1234,7 @@
 .nb-tabs__panel {
   margin: 10px 0;
 }
-.nb-tabs .nb-tabs__tabs_first {
+.nb-tabs .nb-tabs__tabs {
   margin-left: -16px;
 }
 .nb-tabs_size_s .nb-tabs__tabs {

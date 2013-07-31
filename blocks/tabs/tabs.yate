@@ -16,46 +16,21 @@ match .tabs nb {
 
         prefix = "tabs-{nb-uniq()}"
 
-        tabs = .items[ !.href ]
-        links = .items[ .href ]
+        <ul class="nb-tabs__tabs">
+            for .items {
+                <li class="nb-tabs__tab">
+                    if .active {
+                        @class += " ui-tabs-active"
+                    }
 
-        if count(tabs) {
-            <ul class="nb-tabs__tabs nb-tabs__tabs_first">
-                for tabs {
-                    <li class="nb-tabs__tab">
-                        if .active {
-                            @class += " ui-tabs-active"
-                        }
+                    <a class="nb-tabs__link _link" href="#{prefix}-{index()}">
+                        .title
+                    </a>
+                </li>
+            }
+        </ul>
 
-                        <a class="nb-tabs__link _link" href="#{prefix}-{index()}">
-                            .title
-                        </a>
-                    </li>
-                }
-            </ul>
-        }
-
-        if count(links) {
-            <div class="nb-tabs__tabs">
-                if !count(tabs) {
-                    @class += " nb-tabs__tabs_first"
-                }
-
-                for links {
-                    <div class="nb-tabs__tab">
-                        <a class="_link" href="{.href}">
-                            if .target {
-                                @target = .target
-                            }
-
-                            .title
-                        </a>
-                    </div>
-                }
-            </div>
-        }
-
-        for tabs {
+        for .items {
             <div class="nb-tabs__panel" id="{prefix}-{index()}">
                 html(.content)
             </div>

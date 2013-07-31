@@ -43,11 +43,6 @@ func tabs-medium() {
                 'title': 'Обсуждение'
                 'content': tabs-discussion()
             }
-            {
-                'title': 'Править'
-                'href': '/edit'
-                'target': '_blank'
-            }
         ]
     }
 
