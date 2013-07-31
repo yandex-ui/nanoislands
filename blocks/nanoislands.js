@@ -10,3 +10,4 @@
 /* borschik:include:input-group/input-group.js  */
 /* borschik:include:progress/progress.js  */
 /* borschik:include:paranja/paranja.js  */
+/* borschik:include:tabs/tabs.js  */

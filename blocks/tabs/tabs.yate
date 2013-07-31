@@ -1,0 +1,39 @@
+func nb-tabs(nodeset options) {
+    default = {
+        'size': 'm'
+    }
+
+    nb-block('tabs', nb-extend(default, options))
+}
+
+match .tabs nb {
+    <div class="nb-tabs nb-tabs_size_{.size} _init" data-nb="tabs">
+        if .rise {
+            @class += ' nb-tabs_rise_{.rise}'
+        }
+
+        apply . nb-main-attrs
+
+        prefix = "tabs-{nb-uniq()}"
+
+        <ul class="nb-tabs__tabs">
+            for .items {
+                <li class="nb-tabs__tab">
+                    if .active {
+                        @class += " ui-tabs-active"
+                    }
+
+                    <a class="nb-tabs__link _link" href="#{prefix}-{index()}">
+                        .title
+                    </a>
+                </li>
+            }
+        </ul>
+
+        for .items {
+            <div class="nb-tabs__panel" id="{prefix}-{index()}">
+                html(.content)
+            </div>
+        }
+    </div>
+}

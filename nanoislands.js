@@ -1762,3 +1762,19 @@ nb.define('paranja', {
     events: {}
 });
 /* paranja/paranja.js end */
+
+/* tabs/tabs.js begin */
+nb.define('tabs', {
+    events: {
+        'init': 'oninit'
+    },
+
+    oninit: function () {
+        this.$node = $(this.node);
+
+        this.$node.tabs();
+    }
+});
+
+/* tabs/tabs.js end */
+
