@@ -1756,3 +1756,9 @@ nb.define('progress', {
     }
 })
 /* progress/progress.js end */
+
+/* paranja/paranja.js begin */
+nb.define('paranja', {
+    events: {}
+});
+/* paranja/paranja.js end */
