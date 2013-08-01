@@ -2,6 +2,7 @@ func select-medium() {
     block = {
         'size': 'm'
         'id': 'select1'
+        'class': 'my-test-class'
         'items': [
             {
                 'text': 'Карта'

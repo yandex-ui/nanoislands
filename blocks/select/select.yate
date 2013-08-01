@@ -9,13 +9,8 @@ func nb-select(nodeset select) {
 }
 
 match .select nb {
-   <div>
-       @id = .id
-       @data-nb = 'select'
-       @data-nb-direction = .direction
-       @class = 'nb-select ui-front _init'
-       @class += ' nb-select_size_' + .size
-       @class += ' nb-select_theme_' + .theme
+   <div class="nb-select ui-front _init  nb-select_size_{ .size } nb-select_theme_{ .theme }" data-nb="select"  data-nb-direction ="{ .direction }">
+       apply . nb-main-attrs
 
        apply . nb-main-content
    </div>
@@ -23,64 +18,42 @@ match .select nb {
 
 
 match .select nb-content {
-    <button>
-        @data-nb = 'button'
-        @class = 'nb-button nb-select__button _init'
+    <button class="nb-button nb-select__button _init nb-button_size_{ .size } nb-button_theme_{ .theme }" data-nb="button">
 
-        apply .* nb-button-attrs
+        if ( .disabled ) {
+            @class += ' nb-button_disabled'
+            @disabled = 'disabled'
+        }
+
+        if .mod == 'round' {
+            @class = 'nb-button nb-button_type_round'
+        }
 
         <span class="nb-button__text">
            apply .items nb-button-content
         </span>
     </button>
-   <select>
-        @id = 'nb-select_' + .id
-        @class = 'nb-select__fallback'
-        @name = .id
-
+    <select id="nb-select_{ .id }" class="nb-select__fallback" name ="{ .id }">
         if ( .disabled ) {
             @disabled = 'disabled'
         }
 
-        apply .items nb-fallback-content
-   </select>
-}
+        for .items {
+            <option>
+                @label = .text
+                @value = .value
 
+                if (.selected) {
+                      @selected = ''
+                }
 
-match .select.items nb-fallback-content {
-    <option>
-        @label = .text
-        @value = .value
-
-        if (.selected) {
-              @selected = ''
+                .text
+            </option>
         }
-
-        .text
-    </option>
+   </select>
 }
 
 match .select.items[ .selected ] nb-button-content {
     .text
-}
-
-
-match .select.size nb-button-attrs {
-    @class += ' nb-button_size_{.}'
-}
-
-match .select.theme nb-button-attrs {
-    @class += ' nb-button_theme_{.}'
-}
-
-
-
-match .select.disabled nb-button-attrs {
-    @class += ' nb-button_disabled'
-    @disabled = 'disabled'
-}
-
-match .select[ .mod == 'round'] nb-button-attrs {
-    @class = 'nb-button nb-button_type_round'
 }
 
