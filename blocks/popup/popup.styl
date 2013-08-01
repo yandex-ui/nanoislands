@@ -1,5 +1,6 @@
 // popup
-.nb-popup-outer
+
+.nb-popup
   z-index: 100
   position: absolute
   text-align: left
@@ -56,30 +57,30 @@
   width: 16px
   height: 16px
   clip: rect(0,0,0,0) // Hide until mode set
-  z-index: 101;
+  z-index: 101
 
   .nb-popup_tail_to_bottom > &
     top: 0
     left: 50%
-    margin: -16px -8px
+    margin: -13px -8px
     clip: rect(-99em, 99em, auto, -99em)
 
   .nb-popup_tail_to_top > &
     bottom: 0
     left: 50%
-    margin: -16px -8px
+    margin: -13px -8px
     clip: rect(0, 99em, 99em, -99em)
 
   .nb-popup_tail_to_left > &
     top: 50%
     right: 0
-    margin:  -8px -16px
+    margin:  -8px -13px
     clip: rect(-99em, 99em, 99em, 0)
 
   .nb-popup_tail_to_right > &
     top: 50%
     left: 0
-    margin:  -8px -16px
+    margin:  -8px -13px
     clip: rect(-99em, auto, 99em, -99em)
 
 
@@ -128,8 +129,8 @@
   cursor: pointer
   opacity: .25
   position: absolute
-  right: 2px
-  top: 0
+  right: ($gapS / 2)
+  top: ($gapS / 3)
 
 .nb-popup__close:hover
   opacity: 1
@@ -163,3 +164,8 @@
 .nb-popup_tail_to_left .nb-popup__tail_to_top i
 .nb-popup_tail_to_right .nb-popup__tail_to_top i
   top: 25%
+
+
+.nb-popup-outer
+ .nb-popup
+   position: static

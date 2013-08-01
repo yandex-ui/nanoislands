@@ -203,7 +203,7 @@
   padding: 0;
   vertical-align: top;
 }
-.nb-popup-outer {
+.nb-popup {
   z-index: 100;
   position: absolute;
   text-align: left;
@@ -213,27 +213,27 @@
   box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.15), 0px 8px 30px -5px rgba(0,0,0,0.5);
   outline: 0 none;
 }
-.nb-popup-outer .nb-popup__content {
+.nb-popup .nb-popup__content {
   display: block;
   white-space: normal;
 }
-.nb-popup-outer .nb-popup__line {
+.nb-popup .nb-popup__line {
   display: block;
   padding: 5px 10px;
   outline: 0 none;
 }
-.nb-popup-outer .nb-popup__line:first-child {
+.nb-popup .nb-popup__line:first-child {
   padding: 10px 10px 5px 10px;
 }
-.nb-popup-outer .nb-popup__line:last-child {
+.nb-popup .nb-popup__line:last-child {
   padding: 5px 10px 10px 10px;
 }
-.nb-popup-outer .nb-popup__line._link {
+.nb-popup .nb-popup__line._link {
   display: block;
   text-decoration: none;
   white-space: nowrap;
 }
-.nb-popup-outer .nb-popup__hr {
+.nb-popup .nb-popup__hr {
   margin: 3px 0;
   height: 1px;
   background: #ddd;
@@ -254,25 +254,25 @@
 .nb-popup_tail_to_bottom > .nb-popup__tail i {
   top: 0;
   left: 50%;
-  margin: -16px -8px;
+  margin: -13px -8px;
   clip: rect(-99em,99em,auto,-99em);
 }
 .nb-popup_tail_to_top > .nb-popup__tail i {
   bottom: 0;
   left: 50%;
-  margin: -16px -8px;
+  margin: -13px -8px;
   clip: rect(0,99em,99em,-99em);
 }
 .nb-popup_tail_to_left > .nb-popup__tail i {
   top: 50%;
   right: 0;
-  margin: -8px -16px;
+  margin: -8px -13px;
   clip: rect(-99em,99em,99em,0);
 }
 .nb-popup_tail_to_right > .nb-popup__tail i {
   top: 50%;
   left: 0;
-  margin: -8px -16px;
+  margin: -8px -13px;
   clip: rect(-99em,auto,99em,-99em);
 }
 .nb-popup__tail i:before {
@@ -325,8 +325,8 @@
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
   filter: alpha(opacity=25);
   position: absolute;
-  right: 2px;
-  top: 0;
+  right: 5px;
+  top: 3.3333333333333335px;
 }
 .nb-popup__close:hover {
   opacity: 1;
@@ -361,6 +361,9 @@
 .nb-popup_tail_to_left .nb-popup__tail_to_top i,
 .nb-popup_tail_to_right .nb-popup__tail_to_top i {
   top: 25%;
+}
+.nb-popup-outer .nb-popup {
+  position: static;
 }
 .nb-radio-button.ui-buttonset .ui-button {
   margin: 0;

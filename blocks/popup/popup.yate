@@ -1,7 +1,7 @@
 func nb-popup-menu(nodeset options) {
     default = {
        'none': 'none'
-       'tail': 'left|right|top|bottom'
+       //'tail': 'left|right|top|bottom'
        //'menu': [
        //    {
        //        'href': '#'
@@ -24,7 +24,7 @@ match .popupMenu nb {
 
         for .menu {
             <a href="{ .href }" class="nb-popup__line _link">
-                .text
+                html(.text)
             </a>
         }
     </div>
@@ -52,7 +52,7 @@ match .popup nb {
 
         if .title {
             <div class="nb-popup__title">
-                .title
+                html(.title)
             </div>
         }
 
@@ -72,6 +72,10 @@ func nb-popup-modal(nodeset options) {
             'minHeight': 'auto'
         }
         'close': 'true'
+     // 'close': {
+     //       'class': ''
+     //       'attrs': {}
+     //   }
      // 'title': 'Some modal popup'
      // 'content': 'Some text for that popup'
      // 'buttons':
@@ -83,21 +87,26 @@ func nb-popup-modal(nodeset options) {
 match .modalPopup nb {
     <div class="nb-popup nb-popup_type_modal _hidden" data-nb="popup">
         apply . nb-main-attrs
-
+        <div class="nb-popup__i">
         if .close {
-            <a class="nb-popup__close">
+            <a class="nb-popup__close { .close.class }">
+                if .close.attrs {
+                    for .close.attrs.* {
+                        @{name()} = .
+                    }
+                }
                 nb-icon('close_16')
             </a>
         }
 
         if .title {
             <div class="nb-popup__title">
-                .title
+                html(.title)
             </div>
         }
 
         <div class="nb-popup__content">
-            .content
+            html(.content)
         </div>
 
         if .buttons {
@@ -107,5 +116,6 @@ match .modalPopup nb {
                 }
             </div>
         }
+        </div>
     </div>
 }
