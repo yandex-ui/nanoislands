@@ -118,6 +118,12 @@ func popups() {
        'data-nb': {
             'width': '300px'
        }
+       'close': {
+            'class': 'ns-action'
+            'attrs': {
+                'data-params': '123'
+            }
+       }
        'buttons': [
             {
                'content': 'Отправить'
