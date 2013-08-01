@@ -1169,14 +1169,30 @@ nb.define('select', {
             select: function(event, ui) {
                 ui.item.option.selected = true;
 
-                that.control.data('uiAutocomplete')._trigger('selected', event, {
+                that.$jUI._trigger('selected', event, {
                     item: ui.item.option
                 });
+            },
+            // delegate handler on 'outer' click on open
+            open: function() {
+                that.$jUI._on(that.$jUI.document, {
+                    // on 'outer' mousedown close control
+                    mousedown: function(e) {
+                        if (e.which == 1 && !$.contains(that.$jUI.element.get(0), e.target)) {
+                            this.close();
+                        }
+                    }
+                })
+            },
+            close: function() {
+                that.$jUI._off(that.$jUI.document, 'mousedown');
             }
         }).addClass('ui-widget ui-widget-content');
 
+        that.$jUI = that.control.data('uiAutocomplete')
+
         // redefine one menu item rendering method, fires every time, then popup opening
-        that.control.data('uiAutocomplete')._renderItem = function(ul, item) {
+        that.$jUI._renderItem = function(ul, item) {
             var $itemNode = $('<li class="nb-select__item"></li>');
 
             if (item.option.selected) {
@@ -1192,7 +1208,7 @@ nb.define('select', {
 
         // redefine valueMethod, extend with button text changing and fallback select value changing
         // if value not provided, return current value of fallback select
-        that.control.data('uiAutocomplete').valueMethod = function(value) {
+        that.$jUI.valueMethod = function(value) {
             if (value) {
                 that.$selected.removeAttr('selected');
                 that.$selected = that.$fallback.children('[value="' + value + '"]').attr('selected', 'selected');
