@@ -1113,7 +1113,9 @@ nb.define('tooltip-jq-toggler', {
 nb.define('select', {
     events: {
         'init': 'onInit',
-        'changeValue': 'onChangeValue'
+        'changeValue': 'onChangeValue' // { value, text }
+        //'open' { event, ui}
+        //'close' { event, ui}
     },
 
     onInit: function() {
@@ -1152,7 +1154,7 @@ nb.define('select', {
         }
 
         // select JUI control init
-        that.control = $(that.node).autocomplete({
+        $(that.node).autocomplete({
             delay: 0,
             minLength: 0,
             autoFocus: false,
@@ -1174,7 +1176,7 @@ nb.define('select', {
                 });
             },
             // delegate handler on 'outer' click on open
-            open: function() {
+            open: function(event, ui) {
                 that.$jUI._on(that.$jUI.document, {
                     // on 'outer' mousedown close control
                     mousedown: function(e) {
@@ -1183,13 +1185,22 @@ nb.define('select', {
                         }
                     }
                 })
+                that.trigger('open', {
+                    event: event,
+                    ui: ui
+                });
             },
-            close: function() {
+
+            close: function(event, ui) {
                 that.$jUI._off(that.$jUI.document, 'mousedown');
+                that.trigger('close',  {
+                    event: event,
+                    ui: ui
+                });
             }
         }).addClass('ui-widget ui-widget-content');
 
-        that.$jUI = that.control.data('uiAutocomplete')
+        that.$jUI = $(that.node).data('uiAutocomplete')
 
         // redefine one menu item rendering method, fires every time, then popup opening
         that.$jUI._renderItem = function(ul, item) {
@@ -1210,11 +1221,11 @@ nb.define('select', {
         // if value not provided, return current value of fallback select
         that.$jUI.valueMethod = function(value) {
             if (value) {
-                that.$selected.removeAttr('selected');
-                that.$selected = that.$fallback.children('[value="' + value + '"]').attr('selected', 'selected');
-                that.button.trigger('textChange', {
-                    text: that.$selected.text()
-                });
+               var text = that.$fallback.children('[value="' + value + '"]').text()
+               that.trigger('changeValue',{
+                   value: value,
+                   text: text
+               })
             }
             return that.$selected.val();
         };
@@ -1222,13 +1233,13 @@ nb.define('select', {
         // add click event for button
         $(that.button.node).click(function() {
             // close if already visible
-            if (that.control.autocomplete('widget').css('display') == 'block') {
-                that.control.autocomplete('close');
+            if ($(that.node).autocomplete('widget').css('display') == 'block') {
+                $(that.node).autocomplete('close');
                 return;
             }
             // pass empty string as value to search for, displaying all results
-            that.control.autocomplete('search', '');
-            that.control.focus();
+            $(that.node).autocomplete('search', '');
+            $(that.node).focus();
         });
     },
 
@@ -1244,11 +1255,13 @@ nb.define('select', {
     onChangeValue: function(name, params) {
         this.value = params.value;
         this.text = params.text;
-        this.button.trigger('textChange', params);
-        this.$selected = this.$fallback.children(':selected');
         this.$selected.removeAttr('selected');
-        this.$selected = this.$fallback.children('option[value = ' + params.value + ']');
-        this.$selected.attr('selected', 'selected');
+
+        this.$selected = this.$fallback.children('[value="' + this.value + '"]').attr('selected', 'selected');
+        this.button.trigger('textChange', {
+            text: this.text
+        });
+
         this.$fallback.val(params.value);
     }
 });
