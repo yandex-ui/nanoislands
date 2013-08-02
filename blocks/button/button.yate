@@ -30,7 +30,7 @@ match .button[.mod == 'attach'] nb {
 }
 
 match .button nb-attrs {
-    if(.type != 'plain'){
+    if !.static {
         @data-nb = 'button'
     }
 

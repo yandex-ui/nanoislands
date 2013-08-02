@@ -30,7 +30,7 @@ match .slider nb {
 }
 
 match .slider nb-attrs {
-    if(.type != 'plain'){
+    if !.static {
         @data-nb='slider'
     }
 
