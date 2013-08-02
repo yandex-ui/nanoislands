@@ -2,7 +2,9 @@ func input-groups() {
     blockDefault1 = {
         'input' : {
             'size': 's'
-            'placeholder': 'Номер билета'
+            'attrs': {
+                'placeholder': 'Номер билета'
+            }
         }
         'button' : {
             'size': 's'

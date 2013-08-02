@@ -112,5 +112,8 @@ yr.externals['nb-uniq'] = (function(){
     }
 })()
 
+yr.externals['nb-warn'] = function(message){
+    console.log('%c' + message, 'color:#ffcc00');
+};
 
 })();

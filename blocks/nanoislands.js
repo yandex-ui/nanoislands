@@ -11,3 +11,4 @@
 /* borschik:include:progress/progress.js  */
 /* borschik:include:paranja/paranja.js  */
 /* borschik:include:tabs/tabs.js  */
+/* borschik:include:arrow/arrow.js  */
