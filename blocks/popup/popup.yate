@@ -23,7 +23,12 @@ match .popupMenu nb {
         }
 
         for .menu {
-            <a href="{ .href }" class="nb-popup__line _link">
+            <a class="nb-popup__line _link">
+                if .href {
+                    @href = .href
+                }
+
+                apply . nb-main-attrs
                 html(.text)
             </a>
         }
@@ -88,37 +93,44 @@ func nb-popup-modal(nodeset options) {
 }
 
 match .modalPopup nb {
-    <div class="nb-popup nb-popup_type_modal _hidden" data-nb="popup">
+    <div class="nb-popup nb-popup_type_modal">
+        if !.static {
+            @data-nb = "popup"
+            @class += " _hidden"
+        }
+
         apply . nb-main-attrs
+
         <div class="nb-popup__i">
-        if .close {
-            <a class="nb-popup__close { .close.class }">
-                if .close.attrs {
-                    for .close.attrs.* {
-                        @{name()} = .
+            if .close {
+                <a class="nb-popup__close { .close.class }">
+                    if .close.attrs {
+                        for .close.attrs.* {
+                            @{name()} = .
+                        }
                     }
-                }
-                nb-icon('close_16')
-            </a>
-        }
+                    nb-icon('close_16')
+                </a>
+            }
 
-        if .title {
-            <div class="nb-popup__title">
-                html(.title)
+            if .title {
+                <div class="nb-popup__title">
+                    html(.title)
+                </div>
+            }
+
+            <div class="nb-popup__content">
+                html(.content)
             </div>
-        }
 
-        <div class="nb-popup__content">
-            html(.content)
-        </div>
-
-        if .buttons {
-            <div class="nb-popup__buttons">
-                for .buttons {
-                    nb-button(.)
-                }
-            </div>
-        }
+            if .buttons {
+                <div class="nb-popup__buttons">
+                    for .buttons {
+                        nb-button(.)
+                        ' '
+                    }
+                </div>
+            }
         </div>
     </div>
 }
