@@ -15,7 +15,9 @@ func input-medium() {
 
 func input-disabled() {
     block = {
-        'disabled': '1'
+        'attrs': {
+            'disabled': '1'
+        }
         'content': 'Москва'
     }
     nb-input(block)
@@ -23,9 +25,11 @@ func input-disabled() {
 
 func input-length() {
     block = {
-        'length': 11
-        'maxlength': 11
-        'placeholder': '11 символов'
+        'attrs': {
+            'length': 11
+            'maxlength': 11
+            'placeholder': '11 символов'
+        }
     }
     nb-input(block)
 }

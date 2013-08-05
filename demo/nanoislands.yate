@@ -35,6 +35,7 @@ include 'loaders.yate'
 include 'sliders.yate'
 include 'tooltips-jq.yate'
 include 'tabs.yate'
+include 'arrows.yate'
 
 match / {
     <div class="demo-toggle nb-island nb-island_fly">
@@ -176,6 +177,16 @@ match / {
         </div>
         <div class="demo-pane__content">
             tabs()
+        </div>
+    </div>
+    <div class="demo-pane">
+        <div class="demo-pane__desc">
+            <div class="demo-h2">
+                "Arrows"
+            </div>
+        </div>
+        <div class="demo-pane__content">
+            arrows()
         </div>
     </div>
 }
