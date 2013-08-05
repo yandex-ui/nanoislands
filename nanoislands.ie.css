@@ -1049,8 +1049,8 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   display: inline;
   zoom: 1;
 }
-.nb-arrow_top,
-.nb-arrow_bottom {
+.nb-arrow__top,
+.nb-arrow__bottom {
   position: absolute;
   left: 0px;
   width: 100%;
@@ -1060,8 +1060,8 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   z-index: 3;
   padding: 5px;
 }
-.nb-arrow_top,
-.nb-arrow_bottom,
+.nb-arrow__top,
+.nb-arrow__bottom,
 .nb-arrow__content {
   background: -webkit-linear-gradient(top right, #ffdb4c 0, #fc0 100%);
   background: -moz-linear-gradient(top right, #ffdb4c 0, #fc0 100%);
@@ -1069,7 +1069,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   background: -ms-linear-gradient(top right, #ffdb4c 0, #fc0 100%);
   background: linear-gradient(to bottom left, #ffdb4c 0, #fc0 100%);
 }
-.nb-arrow_top {
+.nb-arrow__top {
   -webkit-transform-origin: 0 0;
   -moz-transform-origin: 0 0;
   -o-transform-origin: 0 0;
@@ -1078,7 +1078,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   height: 50%;
   top: 0;
 }
-.nb-arrow_bottom {
+.nb-arrow__bottom {
   -webkit-transform-origin: 0 100%;
   -moz-transform-origin: 0 100%;
   -o-transform-origin: 0 100%;
@@ -1087,8 +1087,8 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   height: 50%;
   bottom: 0;
 }
-.nb-arrow_service .nb-arrow_top,
-.nb-arrow_service .nb-arrow_bottom,
+.nb-arrow_service .nb-arrow__top,
+.nb-arrow_service .nb-arrow__bottom,
 .nb-arrow_service .nb-arrow__content {
   background: #ffdb4c;
 }

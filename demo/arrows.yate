@@ -27,7 +27,7 @@ func arrow-search-service() {
     block = {
         'search': 'true'
         'href': '#'
-        'text': 'Диск Диск'
+        'text': 'Диск'
     }
     nb-arrow(block)
 }
