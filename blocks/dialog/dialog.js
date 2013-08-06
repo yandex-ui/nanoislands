@@ -1,3 +1,0 @@
-nb.define('dialog', {
-    events: {}
-})
