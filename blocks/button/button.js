@@ -1,7 +1,9 @@
 nb.define('button', {
     events: {
         'init': 'oninit',
-        'textChange': 'onTextChange'
+        'textChange': 'onTextChange',
+        'disable': 'onDisable',
+        'enable': 'onEnable'
     },
 
     oninit: function () {
@@ -21,12 +23,18 @@ nb.define('button', {
         this.$node.find('.nb-button__text').html(params.text)
     },
 
-    disable: function () {
+    /**
+     * Disables the button
+     */
+    onDisable: function () {
         this.$node.button( "disable" );
         this.$node.addClass('nb-button_disabled');
     },
 
-    enable: function() {
+    /**
+     * Enables the button
+     */
+    onEnable: function() {
         this.$node.button( "enable" );
         this.$node.removeClass('nb-button_disabled');
     }
