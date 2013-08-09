@@ -19,6 +19,16 @@ nb.define('button', {
      */
     onTextChange: function (name, params) {
         this.$node.find('.nb-button__text').html(params.text)
+    },
+
+    disable: function () {
+        this.$node.button( "disable" );
+        this.$node.addClass('nb-button_disabled');
+    },
+
+    enable: function() {
+        this.$node.button( "enable" );
+        this.$node.removeClass('nb-button_disabled');
     }
 
 });
