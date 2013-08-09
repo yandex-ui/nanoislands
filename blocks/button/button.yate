@@ -29,7 +29,7 @@ match .button nb {
     <button class="nb-button _init nb-button_size_{ .size }  nb-button_theme_{ .theme }">
         apply . nb-main-attrs
 
-        if .disabled == true() {
+        if .disabled {
             @class += ' nb-button_disabled js-disabled'
             @disabled = 'disabled'
         }
@@ -64,7 +64,7 @@ match .buttonLink nb {
     <a class="nb-button _init nb-button_size_{ .size }  nb-button_theme_{ .theme }">
         apply . nb-main-attrs
 
-        if .disabled == true() {
+        if .disabled {
             @class += ' nb-button_disabled js-disabled'
             @disabled = 'disabled'
         }
@@ -104,11 +104,10 @@ match .buttonAttach nb {
     <span class="nb-button _init nb-button_size_{ .size } nb-button_type_attach  nb-button_theme_{ .theme }">
         apply . nb-main-attrs
 
-        if .disabled == true() {
+        if .disabled {
             @class += ' nb-button_disabled js-disabled'
             @disabled = 'disabled'
         }
-
 
         if !( .disabled ) && .href {
             @href="{ .href }"
@@ -118,7 +117,7 @@ match .buttonAttach nb {
             @data-nb = 'button'
         }
 
-        if !(.content) && .icon {
+        if !( .content ) && .icon {
             @class += ' nb-button_only-icon'
         }
 
