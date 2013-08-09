@@ -7,82 +7,138 @@ func nb-button(nodeset options) {
     nb-block('button', nb-extend(default, options))
 }
 
+func nb-button-link(nodeset options) {
+    default = {
+        'size': 'm'
+        'theme': 'normal'
+    }
+
+    nb-block('buttonLink', nb-extend(default, options))
+}
+
+func nb-button-attach(nodeset options) {
+    default = {
+        'size': 'm'
+        'theme': 'normal'
+    }
+
+    nb-block('buttonAttach', nb-extend(default, options))
+}
+
 match .button nb {
-    <button>
+    <button class="nb-button _init nb-button_size_{ .size }  nb-button_theme_{ .theme }">
         apply . nb-main-attrs
-        apply . nb-main-content
+
+        if .disabled {
+            @class += ' nb-button_disabled js-disabled'
+            @disabled = 'disabled'
+        }
+
+        if !( .static ) {
+            @data-nb = 'button'
+        }
+
+        if !( .content ) && .icon {
+            @class += ' nb-button_only-icon'
+        }
+
+        if .type == 'round' {
+            @class += " nb-button_type_round"
+        }
+
+        <span class="nb-button__text">
+            if (.content && .icon) {
+                apply .icon nb
+                html(.content)
+            } else if (!.content && .icon){
+                html('&nbsp;')
+                apply .icon nb
+            } else {
+                html(.content)
+            }
+        </span>
     </button>
 }
 
-match .button[.href] nb {
-    <a>
+match .buttonLink nb {
+    <a class="nb-button _init nb-button_size_{ .size }  nb-button_theme_{ .theme }">
         apply . nb-main-attrs
-        apply . nb-main-content
+
+        if .disabled {
+            @class += ' nb-button_disabled js-disabled'
+            @disabled = 'disabled'
+        }
+
+
+        if !( .disabled ) && .href {
+            @href="{ .href }"
+        }
+
+        if !( .static ) {
+            @data-nb = 'button'
+        }
+
+        if !( .content ) && .icon {
+            @class += ' nb-button_only-icon'
+        }
+
+        if .type == 'round' {
+            @class += " nb-button_type_round"
+        }
+
+        <span class="nb-button__text">
+            if (.content && .icon) {
+                apply .icon nb
+                html(.content)
+            } else if (!.content && .icon ){
+                html('&nbsp;')
+                apply .icon nb
+            } else {
+                html(.content)
+            }
+        </span>
     </a>
 }
 
-match .button[.mod == 'attach'] nb {
-    <span>
+match .buttonAttach nb {
+    <span class="nb-button _init nb-button_size_{ .size } nb-button_type_attach  nb-button_theme_{ .theme }">
         apply . nb-main-attrs
-        apply . nb-main-content
+
+        if .disabled {
+            @class += ' nb-button_disabled js-disabled'
+            @disabled = 'disabled'
+        }
+
+        if !( .disabled ) && .href {
+            @href="{ .href }"
+        }
+
+        if !( .static ) {
+            @data-nb = 'button'
+        }
+
+        if !( .content ) && .icon {
+            @class += ' nb-button_only-icon'
+        }
+
+        if .type == 'round' {
+            @class += " nb-button_type_round"
+        }
+
+        <span class="nb-button__text">
+            if (.content && .icon) {
+                apply .icon nb
+                html(.content)
+            } else if (!.content && .icon){
+                html('&nbsp;')
+                apply .icon nb
+            } else {
+                html(.content)
+            }
+        </span>
         <input type="file" class="nb-button__attach"></input>
     </span>
 }
 
-match .button nb-attrs {
-    if !.static {
-        @data-nb = 'button'
-    }
 
-    @class = 'nb-button _init'
-}
 
-match .button[!.disabled].href nb-attrs {
-    @href="{.}"
-}
-
-match .button.size nb-attrs {
-    @class += ' nb-button_size_{.}'
-}
-
-match .button.theme nb-attrs {
-    @class += ' nb-button_theme_{.}'
-}
-
-match .button.disabled[ . == true() ] nb-attrs {
-    @class += ' nb-button_disabled js-disabled'
-    @disabled = 'disabled'
-}
-
-match .button[ .mod == 'attach'] nb-attrs {
-    @class = 'nb-button nb-button_type_attach'
-    @data-nb = 'button'
-}
-
-match .button[ .mod == 'round'] nb-attrs {
-    @class = 'nb-button nb-button_type_round'
-}
-
-match .button[!(.content)].icon nb-attrs {
-    @class += ' nb-button_only-icon'
-}
-
-match .button nb-content {
-    <span class="nb-button__text">
-        apply . nb-content-button
-    </span>
-}
-
-match .button nb-content-button {
-    .content
-}
-
-match .button[.content && .icon] nb-content-button {
-    apply .icon nb
-    .content
-}
-
-match .button[!.content && .icon] nb-content-button {
-    html('&nbsp;')
-    apply .icon nb
-}

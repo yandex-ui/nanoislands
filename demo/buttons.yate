@@ -10,7 +10,7 @@ func button-medium() {
         'content': 'Проверить'
         'href': '#'
     }
-    nb-button(link)
+    nb-button-link(link)
 }
 
 func button-small() {
@@ -37,46 +37,6 @@ func button-pseudo() {
         'theme': 'pseudo'
     }
     nb-button(buttonM)
-}
-
-
-// наследование
-func nb-myButton(nodeset options) {
-    default = {
-        'size': 'm'
-        'theme': 'normal'
-        'mod': 'myButton'
-        'class': 'nb-mybutton'
-    }
-
-    nb-button(nb-extend(default, options))
-}
-
-match .button[.mod == 'myButton'] nb {
-    <button>
-        apply . nb-main-attrs
-        @data-nb = ''
-
-        apply . nb-main-content
-        apply . nb-mybuttonElem
-    </button>
-}
-
-match .button[.mod == 'myButton'] nb-mybuttonElem {
-    <span class="nb-button__text" style="margin-left: -2em"> :-) </span>
-}
-
-match .button[.mod == 'myButton'] nb-content-button {
-    <b>
-        .content
-    </b>
-}
-
-func button-extend() {
-    options = {
-        'content': 'I extended from the button'
-    }
-    nb-myButton(options)
 }
 
 func button-images() {
@@ -139,7 +99,7 @@ func attach-button() {
         'content': 'Прикрепить файл'
     }
 
-    nb-button(attach)
+    nb-button-attach(attach)
 }
 
 
