@@ -30,7 +30,7 @@ match .button nb {
         apply . nb-main-attrs
 
         if .disabled {
-            @class += ' nb-button_disabled js-disabled'
+            @class += ' nb-button_disabled'
             @disabled = 'disabled'
         }
 
@@ -65,7 +65,7 @@ match .buttonLink nb {
         apply . nb-main-attrs
 
         if .disabled {
-            @class += ' nb-button_disabled js-disabled'
+            @class += ' nb-button_disabled'
             @disabled = 'disabled'
         }
 
@@ -105,7 +105,7 @@ match .buttonAttach nb {
         apply . nb-main-attrs
 
         if .disabled {
-            @class += ' nb-button_disabled js-disabled'
+            @class += ' nb-button_disabled'
             @disabled = 'disabled'
         }
 

@@ -2313,12 +2313,12 @@ var yr = yr || require('yate/lib/runtime.js');
         };
         a0.s = 'button';
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
-        if (cmpSN(true, simpleBoolean('disabled', c0))) {
+        if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-button_disabled js-disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" nb-button_disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled js-disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled");
             }
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
@@ -2379,12 +2379,12 @@ var yr = yr || require('yate/lib/runtime.js');
         };
         a0.s = 'a';
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
-        if (cmpSN(true, simpleBoolean('disabled', c0))) {
+        if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-button_disabled js-disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" nb-button_disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled js-disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled");
             }
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
@@ -2448,12 +2448,12 @@ var yr = yr || require('yate/lib/runtime.js');
         };
         a0.s = 'span';
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
-        if (cmpSN(true, simpleBoolean('disabled', c0))) {
+        if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-button_disabled js-disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" nb-button_disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled js-disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled");
             }
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }

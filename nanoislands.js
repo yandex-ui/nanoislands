@@ -1056,7 +1056,9 @@ $(function() {
 nb.define('button', {
     events: {
         'init': 'oninit',
-        'textChange': 'onTextChange'
+        'textChange': 'onTextChange',
+        'disable': 'onDisable',
+        'enable': 'onEnable'
     },
 
     oninit: function () {
@@ -1074,6 +1076,22 @@ nb.define('button', {
      */
     onTextChange: function (name, params) {
         this.$node.find('.nb-button__text').html(params.text)
+    },
+
+    /**
+     * Disables the button
+     */
+    onDisable: function () {
+        this.$node.button( "disable" );
+        this.$node.addClass('nb-button_disabled');
+    },
+
+    /**
+     * Enables the button
+     */
+    onEnable: function() {
+        this.$node.button( "enable" );
+        this.$node.removeClass('nb-button_disabled');
     }
 
 });
