@@ -2048,19 +2048,19 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j9 = [ 0, 'theme' ];
 
-    var j10 = [ 0, 'disabled' ];
+    var j10 = [ 0, 'static' ];
 
-    var j11 = [ 0, 'content' ];
+    var j11 = [ 0, 'disabled' ];
 
-    var j12 = [ 0, 'icon' ];
+    var j12 = [ 0, 'content' ];
 
-    var j13 = [ 0, 'type' ];
+    var j13 = [ 0, 'icon' ];
 
-    var j14 = [ 0, 'buttonLink' ];
+    var j14 = [ 0, 'type' ];
 
-    var j15 = [ 0, 'href' ];
+    var j15 = [ 0, 'buttonLink' ];
 
-    var j16 = [ 0, 'static' ];
+    var j16 = [ 0, 'href' ];
 
     var j17 = [ 0, 'buttonAttach' ];
 
@@ -2312,6 +2312,9 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-button _init nb-button_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ) + "  nb-button_theme_" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ))
         };
         a0.s = 'button';
+        if (!nodeset2boolean( (selectNametest('static', c0, [])) )) {
+            a0.a[ "data-nb" ] = new yr.scalarAttr("button");
+        }
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
@@ -2431,7 +2434,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t3.j = j14;
+    M.t3.j = j15;
     M.t3.a = 0;
 
     // match .buttonAttach : nb
@@ -3251,7 +3254,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t34.j = j12;
+    M.t34.j = j13;
     M.t34.a = 0;
 
     // match .icon[ .icon ] : nb

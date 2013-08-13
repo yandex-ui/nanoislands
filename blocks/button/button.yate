@@ -27,6 +27,10 @@ func nb-button-attach(nodeset options) {
 
 match .button nb {
     <button class="nb-button _init nb-button_size_{ .size }  nb-button_theme_{ .theme }">
+        if !( .static ) {
+            @data-nb = 'button'
+        }
+
         apply . nb-main-attrs
 
         if .disabled {
