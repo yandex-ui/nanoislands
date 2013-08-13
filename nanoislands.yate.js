@@ -2050,17 +2050,17 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j10 = [ 0, 'disabled' ];
 
-    var j11 = [ 0, 'static' ];
+    var j11 = [ 0, 'content' ];
 
-    var j12 = [ 0, 'content' ];
+    var j12 = [ 0, 'icon' ];
 
-    var j13 = [ 0, 'icon' ];
+    var j13 = [ 0, 'type' ];
 
-    var j14 = [ 0, 'type' ];
+    var j14 = [ 0, 'buttonLink' ];
 
-    var j15 = [ 0, 'buttonLink' ];
+    var j15 = [ 0, 'href' ];
 
-    var j16 = [ 0, 'href' ];
+    var j16 = [ 0, 'static' ];
 
     var j17 = [ 0, 'buttonAttach' ];
 
@@ -2322,9 +2322,6 @@ var yr = yr || require('yate/lib/runtime.js');
             }
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
-        if (!nodeset2boolean( (selectNametest('static', c0, [])) )) {
-            a0.a[ "data-nb" ] = new yr.scalarAttr("button");
-        }
         if (!nodeset2boolean( (selectNametest('content', c0, [])) ) && simpleBoolean('icon', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -2434,7 +2431,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t3.j = j15;
+    M.t3.j = j14;
     M.t3.a = 0;
 
     // match .buttonAttach : nb
@@ -3254,7 +3251,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t34.j = j13;
+    M.t34.j = j12;
     M.t34.a = 0;
 
     // match .icon[ .icon ] : nb
