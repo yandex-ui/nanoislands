@@ -2352,8 +2352,6 @@ var yr = yr || require('yate/lib/runtime.js');
             r0 += closeAttrs(a0);
             r0 += simpleScalar('content', c0);
         } else if ((!simpleBoolean('content', c0) && simpleBoolean('icon', c0))) {
-            r0 += closeAttrs(a0);
-            r0 += " ";
             r0 += m.a(m, selectNametest('icon', c0, []), 'nb', a0)
         } else {
             r0 += closeAttrs(a0);
@@ -2421,8 +2419,6 @@ var yr = yr || require('yate/lib/runtime.js');
             r0 += closeAttrs(a0);
             r0 += simpleScalar('content', c0);
         } else if ((!simpleBoolean('content', c0) && simpleBoolean('icon', c0))) {
-            r0 += closeAttrs(a0);
-            r0 += " ";
             r0 += m.a(m, selectNametest('icon', c0, []), 'nb', a0)
         } else {
             r0 += closeAttrs(a0);
@@ -2490,8 +2486,6 @@ var yr = yr || require('yate/lib/runtime.js');
             r0 += closeAttrs(a0);
             r0 += simpleScalar('content', c0);
         } else if ((!simpleBoolean('content', c0) && simpleBoolean('icon', c0))) {
-            r0 += closeAttrs(a0);
-            r0 += " ";
             r0 += m.a(m, selectNametest('icon', c0, []), 'nb', a0)
         } else {
             r0 += closeAttrs(a0);

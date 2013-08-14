@@ -51,7 +51,6 @@ match .button nb {
                 apply .icon nb
                 html(.content)
             } else if (!.content && .icon){
-                html('&nbsp;')
                 apply .icon nb
             } else {
                 html(.content)
@@ -91,7 +90,6 @@ match .buttonLink nb {
                 apply .icon nb
                 html(.content)
             } else if (!.content && .icon ){
-                html('&nbsp;')
                 apply .icon nb
             } else {
                 html(.content)
@@ -130,7 +128,6 @@ match .buttonAttach nb {
                 apply .icon nb
                 html(.content)
             } else if (!.content && .icon){
-                html('&nbsp;')
                 apply .icon nb
             } else {
                 html(.content)

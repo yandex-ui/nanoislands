@@ -1,25 +1,22 @@
-nb-icon()
+.nb-icon
+  kind: icon (size 16px 16px)
 
-  .nb-icon
-    border: none
-    font: 0/0 a
+  // Move this to a skin?
+  .nb-button &
+    margin: -0.2em $islands_xs 0 -1*$islands_xs
 
-    width: 16px
-    height: 16px
+  .nb-button_only-icon &
+    margin: -0.2em -1*$islands_xs 0
 
-    background-repeat: no-repeat
-    background-position: 50% 50%
+$svg-icons = \
+  close_16 link_16 link_16_white download_16 download_16_white eye_16 trash_16 trash_16_white\
+  three-dots_16 play_16 pause_16 mail_16 \
+  vk twitter odnoklassniki
 
-    position: relative
-    top: 3px
+for $icon in $svg-icons
+  .nb-icon_{$icon}
+    background-image: url($icon + '.svg')
 
-  $svg-icons = \
-    close_16 link_16 link_16_white download_16 download_16_white eye_16 trash_16 trash_16_white\
-    three-dots_16 play_16 pause_16 mail_16 \
-    vk twitter odnoklassniki
-
-  for $icon in $svg-icons
-    .nb-icon_{$icon}
-      background-image: url($icon + '.svg')
-
-nb-icon()
+// Compensate visual shift for link icon
+.nb-icon_link_16
+  left: 2px

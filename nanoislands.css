@@ -1,3 +1,12 @@
+.nb-tabs__tab {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
 .nb-button_theme_normal,
 .nb-button_theme_action,
 .nb-button_theme_pseudo {
@@ -16,6 +25,26 @@
   border: none;
 }
 
+.nb-input {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  font: inherit;
+}
+
+.nb-input:focus {
+  outline: none;
+}
+
+.nb-icon {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -0.25em;
+  background: 50% no-repeat;
+}
+
 .nb-button_theme_normal,
 .nb-button_theme_action,
 .nb-button_theme_pseudo {
@@ -27,6 +56,47 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: baseline;
+}
+
+.nb-input-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.nb-input-group .nb-button:first-child,
+.nb-input-group .nb-button:first-child:before,
+.nb-input-group .nb-input-box:first-child > .nb-input,
+.nb-input-group .nb-input-box:first-child > .nb-input:before {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.nb-input-group .nb-button:last-child,
+.nb-input-group .nb-button:last-child:before,
+.nb-input-group .nb-input-box:last-child > .nb-input,
+.nb-input-group .nb-input-box:last-child > .nb-input:before {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.nb-input-group .nb-button:not(:first-child):not(:last-child),
+.nb-input-group .nb-button:last-child,
+.nb-input-group .nb-input-box:not(:first-child):not(:last-child),
+.nb-input-group .nb-input-box:last-child {
+  margin-left: -1px;
+}
+
+.nb-input {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+  cursor: text;
   vertical-align: baseline;
 }
 
@@ -1090,14 +1160,16 @@
 }
 
 .nb-icon {
-  border: none;
-  font: 0/0 a;
   width: 16px;
   height: 16px;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  position: relative;
-  top: 3px;
+}
+
+.nb-button .nb-icon {
+  margin: -0.2em 6px 0 -6px;
+}
+
+.nb-button_only-icon .nb-icon {
+  margin: -0.2em -6px 0;
 }
 
 .nb-icon_close_16 {
@@ -1160,107 +1232,83 @@
   background-image: url("blocks/icon/odnoklassniki.svg");
 }
 
+.nb-icon_link_16 {
+  left: 2px;
+}
+
 .nb-input {
-  padding: 0 8px;
-  max-width: 100%;
+  width: 400px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: none;
-  border: 0;
-  outline: 0 none;
-  position: relative;
-  z-index: 10;
-  font: 86% Arial, sans-serif;
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  line-height: 20px;
+  min-height: 32px;
+  font-size: 15px;
+  border-color: rgba(0,0,0,0.38) rgba(0,0,0,0.27) rgba(0,0,0,0.16);
+  background: -webkit-linear-gradient(#fff, #fff);
+  background: linear-gradient(#fff, #fff);
+  background-clip: padding-box;
+  background-size: 16px 16px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
 }
 
-.nb-input-box:before {
-  background: #c4c4c4;
-  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0,0,0,0.4));
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
+.nb-input:not(.is-disabled):focus {
+  outline: none;
+  border-color: rgba(78,62,2,0.515) rgba(94,76,2,0.42) rgba(117,93,0,0.335);
+  box-shadow: 0 0 6px 2px rgba(255,204,0,0.7), 0 1px 0 rgba(255,255,255,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
 }
 
-.nb-input-box:after {
-  background: #fff;
-  bottom: 1px;
-  content: "";
-  left: 1px;
-  position: absolute;
-  right: 1px;
-  top: 1px;
+.nb-input:focus {
+  z-index: 9;
 }
 
-.nb-input-box {
-  position: relative;
-  display: inline-block;
+.nb-input_size_s > .nb-input {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  vertical-align: middle;
-}
-
-.nb-input-box.nb-input_focus {
-  box-shadow: inset 0 1px 5px rgba(0,0,0,0.25), 0 1px 1px 0 rgba(255,255,255,0.2), 0 0 6px 2px rgba(255,204,0,0.7);
-}
-
-.nb-input-box.nb-input_focus:after {
-  box-shadow: inset 0 1px 0 rgba(0,0,0,0.1), 0 0 0 1px rgba(193,154,0,0.2);
-}
-
-.nb-input-box.nb-input_focus:before {
-  display: none;
-}
-
-.nb-input-box.nb-input_size_s input {
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  line-height: 16px;
+  min-height: 28px;
   font-size: 13px;
+  border-color: rgba(0,0,0,0.38) rgba(0,0,0,0.27) rgba(0,0,0,0.16);
+  background: -webkit-linear-gradient(#fff, #fff);
+  background: linear-gradient(#fff, #fff);
+  background-clip: padding-box;
+  background-size: 16px 16px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
 }
 
-.nb-input-box.nb-input_size_s {
-  line-height: 28px;
+.nb-input_size_s > .nb-input:not(.is-disabled):focus {
+  outline: none;
+  border-color: rgba(78,62,2,0.515) rgba(94,76,2,0.42) rgba(117,93,0,0.335);
+  box-shadow: 0 0 6px 2px rgba(255,204,0,0.7), 0 1px 0 rgba(255,255,255,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
 }
 
-.nb-input-box.nb-input_size_m input {
-  font-size: 16px;
-}
-
-.nb-input-box.nb-input_size_m {
-  line-height: 32px;
-}
-
-.nb-input:after {
-  content: '';
-  position: absolute;
-  z-index: 2;
-  top: 3px;
-  bottom: 1px;
-  right: 1px;
-  width: 36px;
-  background: #f00;
-  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, #fff 20%);
-  background: linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
-}
-
-.nb-input-group .nb-button:first-child {
-  border-radius: 3px 0 0 3px;
-  z-index: 10;
+.nb-input_size_s > .nb-input:focus {
+  z-index: 9;
 }
 
 .nb-input-group .nb-button:first-child:before {
-  border-radius: 2px 0 0 2px;
   right: 0;
 }
 
-.nb-input-group .nb-button:last-child {
-  border-radius: 0 3px 3px 0;
+.nb-input-group .nb-button:not(:first-child):not(:last-child),
+.nb-input-group .nb-button:not(:first-child):not(:last-child):before {
+  border-radius: 0;
 }
 
-.nb-input-group .nb-button:last-child:before {
-  border-radius: 0 2px 2px 0;
-  left: 0;
+.nb-input-group .nb-button:not(:first-child):not(:last-child):before {
+  right: 0;
+}
+
+.nb-input-group .nb-input-box:not(:first-child):not(:last-child) > .nb-input,
+.nb-input-group .nb-input-box:not(:first-child):not(:last-child) > .nb-input:before {
+  border-radius: 0;
+}
+
+.nb-input-group .nb-input-box:not(:last-child) > .nb-input:before {
+  right: 0;
 }
 
 .nb-island {
@@ -1541,71 +1589,62 @@
   width: 20px;
 }
 
-.nb-tabs__tab,
-.nb-tabs__tabs,
-.nb-tabs__link {
+.nb-tabs {
   position: relative;
-  top: 0;
-  display: inline-block;
-  white-space: nowrap;
-  outline: none;
+  display: block;
+  margin: 0 -8px;
+  font-size: 15px;
 }
 
 .nb-tabs__tab {
-  margin-left: 16px;
-  list-style: none;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
 }
 
-.nb-tabs__link:after {
-  display: none;
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 0;
-  right: 0;
-  border-bottom: 2px solid;
-}
-
-.ui-state-active .nb-tabs__link {
-  color: #000;
-}
-
-.ui-state-active .nb-tabs__link:after {
+.nb-tabs__link {
+  cursor: pointer;
+  color: #22c;
+  text-decoration: none;
+  line-height: 2em;
+  padding: 3px 8px;
+  position: relative;
   display: block;
 }
 
-.ui-tabs-active .nb-tabs__link,
-.ui-state-disabled .nb-tabs__link {
+.nb-tabs__link:hover {
+  color: #d00;
+}
+
+.ui-state-active .nb-tabs__link,
+.ui-state-active:hover .nb-tabs__link {
+  color: #000;
   cursor: default;
 }
 
-.nb-tabs__panel {
-  margin: 10px 0;
+.ui-state-active .nb-tabs__link:before,
+.ui-state-active:hover .nb-tabs__link:before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 8px;
+  bottom: auto;
+  left: 8px;
+  border-top: 2px solid;
 }
 
-.nb-tabs .nb-tabs__tabs {
-  margin-left: -16px;
+.nb-tabs_size_s {
+  position: relative;
+  display: block;
+  margin: 0 -8px;
+  font-size: 13px;
 }
 
-.nb-tabs_size_s .nb-tabs__tabs {
-  font: 0.9376em/1.4667em Arial, sans-serif;
-  line-height: 30px;
-}
-
-.nb-tabs_size_m .nb-tabs__tabs {
-  line-height: 36px;
-}
-
-.nb-tabs_rise_s {
-  margin-top: -10px;
-}
-
-.nb-tabs_rise_m {
-  margin-top: -16px;
-}
-
+.nb-tabs_rise_s,
+.nb-tabs_rise_m,
 .nb-tabs_rise_l {
-  margin-top: -20px;
+  margin-top: -16px;
+  margin-bottom: 10px;
 }
 
 .nb-arrow {
