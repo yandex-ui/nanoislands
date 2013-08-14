@@ -1,0 +1,65 @@
+func nb-header(nodeset header) {
+    default = {
+        'arrow': {
+            'search': 'true'
+            'buttonContent': 'Найти'
+            'class': 'nb-header__arrow'
+        }
+        'serveces': 'true'
+        'settings': 'true'
+        'userpic': '/libs/nanoislands/blocks/header/avatar.png'
+    }
+
+    nb-block('header', nb-extend(default, header))
+}
+
+match .header nb {
+    <div class="nb-header">
+        @class += ' {.class}'
+        <div class="nb-header__right">
+
+            if .serveces == 'true' {
+                iconServices = {
+                    'icon': {
+                    'icon': 'services'
+                    'size': 'm'
+                    }
+                'theme': 'pseudo'
+                'header': true()
+                'class': 'nb-header__button'
+                }
+
+                nb-button(iconServices)
+            }
+
+            if .settings == 'true' {
+                iconSettings = {
+                    'icon': {
+                    'icon': 'settings'
+                    'size': 'm'
+                    }
+                'theme': 'pseudo'
+                'header': true()
+                'class': 'nb-header__button'
+                }
+
+                nb-button(iconSettings)
+            }
+
+            <a href="#" class="nb-header__account">
+                <div class="nb-header__avatar" style="background-image: url('{.userpic}')">
+                    if .notices > 0 {
+                        <div class="nb-header__notice-count">{.notices}</div>
+                    }
+                </div>
+                if .username {
+                    <span class="nb-header__username _link"> {.username} </span>
+                }
+            </a>
+        </div>
+        <div class="nb-header__left">
+            <a href="http://www.yandex.ru/" class="nb-header__logo"></a>
+            nb-arrow(.arrow)
+        </div>
+    </div>
+}

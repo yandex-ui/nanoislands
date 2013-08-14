@@ -13,10 +13,23 @@ nb-icon()
     position: relative
     top: 3px
 
+  .nb-icon_size_s
+    width: 16px
+    height: 16px
+
+  .nb-icon_size_m
+    width: 32px
+    height: 32px
+
+  .nb-icon_size_l
+    width: 48px
+    height: 48px
+
   $svg-icons = \
     close_16 link_16 link_16_white download_16 download_16_white eye_16 trash_16 trash_16_white\
     three-dots_16 play_16 pause_16 mail_16 \
-    vk twitter odnoklassniki
+    vk twitter odnoklassniki\
+    services settings
 
   for $icon in $svg-icons
     .nb-icon_{$icon}

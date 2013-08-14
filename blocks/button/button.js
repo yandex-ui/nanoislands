@@ -3,7 +3,8 @@ nb.define('button', {
         'init': 'oninit',
         'textChange': 'onTextChange',
         'disable': 'onDisable',
-        'enable': 'onEnable'
+        'enable': 'onEnable',
+        'click': 'togglePress'
     },
 
     oninit: function () {
@@ -37,6 +38,13 @@ nb.define('button', {
     onEnable: function() {
         this.$node.button( "enable" );
         this.$node.removeClass('nb-button_disabled');
+    },
+
+    /**
+     * Toggles pressed state
+     */
+    togglePress: function(e) {
+        this.$node.toggleClass('nb-button_header_pressed');
     }
 
 });
