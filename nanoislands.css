@@ -1312,32 +1312,35 @@
 }
 
 .nb-island {
+  position: relative;
+  display: block;
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 6px 6px -4px rgba(0,0,0,0.14);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
 }
 
-.nb-island.nb-island_padding_s {
+.nb-island_type_inline {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+.nb-island_type_fly {
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 8px 30px -5px rgba(0,0,0,0.5);
+}
+
+.nb-island_padding_s {
   padding: 10px;
 }
 
-.nb-island.nb-island_padding_m {
+.nb-island_padding_m {
   padding: 16px;
 }
 
-.nb-island.nb-island_padding_l {
+.nb-island_padding_l {
   padding: 20px;
-}
-
-.nb-island.nb-island_type_inline {
-  display: inline-block;
-}
-
-.nb-island.nb-island_type_fly {
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 8px 25px -5px rgba(0,0,0,0.25);
-}
-
-.nb-island.nb-island__type_fly-contrast {
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.5), 0 2px 2px rgba(255,255,255,0.5), 0 10px 12px -5px rgba(0,0,0,0.5);
 }
 
 .nb-dropzone {

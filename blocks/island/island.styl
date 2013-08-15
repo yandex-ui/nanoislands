@@ -1,27 +1,19 @@
-nb-island()
-  .nb-island
-    background: $background
-    box-shadow: 0 0 0 1px rgba($foreground, 0.1), 0 6px 6px -4px rgba($foreground, 0.14)
+.nb-island
+  kind: block
+  skin: isle
 
-    if ie
-      border: 1px solid #ccc;
+.nb-island_type_inline
+  kind: block inline
+  skin: isle
 
-    &.nb-island_padding_s
-      padding: $gapS
+.nb-island_type_fly
+  skin: isle fly
 
-    &.nb-island_padding_m
-      padding: $gapM
+.nb-island_padding_s
+  padding: $islands_s
 
-    &.nb-island_padding_l
-      padding: $gapL
+.nb-island_padding_m
+  padding: $islands_m
 
-    &.nb-island_type_inline
-      display: inline-block
-
-    &.nb-island_type_fly
-      box-shadow: 0 0 0 1px rgba($foreground, 0.1), 0 8px 25px -5px rgba($foreground, 0.25)
-
-    &.nb-island__type_fly-contrast
-      box-shadow: 0 0 0 1px rgba($foreground, 0.5), 0 2px 2px rgba($background, 0.5), 0 10px 12px -5px rgba($foreground, 0.5)
-
-nb-island()
+.nb-island_padding_l
+  padding: $islands_l

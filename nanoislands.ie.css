@@ -898,21 +898,28 @@ button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
   right: 0;
 }
 .nb-island {
+  position: relative;
+  display: block;
   background: #fff;
-  border: 1px solid #ccc;
 }
-.nb-island.nb-island_padding_s {
-  padding: 10px;
-}
-.nb-island.nb-island_padding_m {
-  padding: 16px;
-}
-.nb-island.nb-island_padding_l {
-  padding: 20px;
-}
-.nb-island.nb-island_type_inline {
+.nb-island_type_inline {
+  position: relative;
   display: inline;
   zoom: 1;
+  vertical-align: top;
+  background: #fff;
+}
+.nb-island_type_fly {
+  background: #fff;
+}
+.nb-island_padding_s {
+  padding: 10px;
+}
+.nb-island_padding_m {
+  padding: 16px;
+}
+.nb-island_padding_l {
+  padding: 20px;
 }
 .nb-dropzone {
   color: #888;
