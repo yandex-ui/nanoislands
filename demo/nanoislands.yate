@@ -38,6 +38,7 @@ include 'tabs.yate'
 include 'arrows.yate'
 include 'header.yate'
 include 'user.yate'
+include 'suggest.yate'
 
 match / {
     <div class="demo-toggle nb-island nb-island_fly">
@@ -179,6 +180,16 @@ match / {
         </div>
         <div class="demo-pane__content">
             tabs()
+        </div>
+    </div>
+    <div class="demo-pane">
+        <div class="demo-pane__desc">
+            <div class="demo-h2">
+                "Suggests"
+            </div>
+        </div>
+        <div class="demo-pane__content">
+            suggests()
         </div>
     </div>
     <div class="demo-pane">
