@@ -498,6 +498,13 @@ button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
   zoom: 1;
   vertical-align: top;
 }
+.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button:before {
+  right: 0;
+}
+input.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button,
+label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
+  border-right-color: transparent;
+}
 .nb-radio-button__radio:checked + .nb-button {
   background: #fff1c0;
   border-color: #999278 #b4ad93 #ccc4aa;
@@ -507,13 +514,6 @@ button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
 }
 .nb-radio-button__radio:focus + .nb-button:after {
   z-index: 9;
-}
-.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button:before {
-  right: 0;
-}
-input.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button,
-label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
-  border-right-color: transparent;
 }
 .nb-select {
   max-width: 100%;
