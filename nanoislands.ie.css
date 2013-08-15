@@ -41,6 +41,10 @@
   margin-top: -0.25em;
   background: 50% no-repeat;
 }
+.nb-radio-button__radio {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px) !important;
+}
 .nb-button_theme_normal,
 .nb-button_theme_action,
 .nb-button_theme_pseudo {
@@ -51,6 +55,7 @@
   cursor: pointer;
   vertical-align: baseline;
 }
+.nb-radio-button,
 .nb-input-group {
   position: relative;
   display: inline;
@@ -58,6 +63,8 @@
   vertical-align: top;
   white-space: nowrap;
 }
+.nb-radio-button .nb-radio-button__button:not(:first-child):not(:last-child),
+.nb-radio-button .nb-radio-button__button:last-child,
 .nb-input-group .nb-button:not(:first-child):not(:last-child),
 .nb-input-group .nb-button:last-child,
 .nb-input-group .nb-input-box:not(:first-child):not(:last-child),
@@ -485,22 +492,28 @@ button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
 .nb-popup-outer .nb-popup {
   position: static;
 }
-.nb-radio-button.ui-buttonset .ui-button {
-  margin: 0;
-  margin-right: -1px;
-}
 .nb-radio-button {
+  position: relative;
   display: inline;
   zoom: 1;
-  margin-left: -1px;
-  white-space: nowrap;
+  vertical-align: top;
 }
-.nb-radio-button .nb-button {
-  margin-right: -1px;
+.nb-radio-button__radio:checked + .nb-button {
+  background: #fff1c0;
+  border-color: #999278 #b4ad93 #ccc4aa;
 }
-.nb-radio-button__button .nb-radio-button__radio {
-  position: absolute;
-  opacity: 0;
+.nb-radio-button__radio:focus + .nb-button {
+  outline: 0;
+}
+.nb-radio-button__radio:focus + .nb-button:after {
+  z-index: 9;
+}
+.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button:before {
+  right: 0;
+}
+input.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button,
+label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
+  border-right-color: transparent;
 }
 .nb-select {
   max-width: 100%;
@@ -891,16 +904,30 @@ button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
 .nb-input-group .nb-button:first-child:before {
   right: 0;
 }
+input.nb-input-group .nb-button:first-child,
+label.nb-input-group .nb-button:first-child {
+  border-right-color: transparent;
+}
 .nb-input-group .nb-button:not(:first-child):not(:last-child):before {
   right: 0;
 }
+input.nb-input-group .nb-button:not(:first-child):not(:last-child),
+label.nb-input-group .nb-button:not(:first-child):not(:last-child) {
+  border-right-color: transparent;
+}
 .nb-input-group .nb-input-box:not(:last-child) > .nb-input:before {
   right: 0;
+}
+input.nb-input-group .nb-input-box:not(:last-child) > .nb-input,
+label.nb-input-group .nb-input-box:not(:last-child) > .nb-input {
+  border-right-color: transparent;
 }
 .nb-island {
   position: relative;
   display: block;
   background: #fff;
+  border: 1px solid #e6e6e6;
+  margin: -1px 0;
 }
 .nb-island_type_inline {
   position: relative;
@@ -908,9 +935,13 @@ button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
   zoom: 1;
   vertical-align: top;
   background: #fff;
+  border: 1px solid #e6e6e6;
+  margin: -1px 0;
 }
 .nb-island_type_fly {
   background: #fff;
+  border: 1px solid #e6e6e6;
+  margin: -1px 0;
 }
 .nb-island_padding_s {
   padding: 10px;

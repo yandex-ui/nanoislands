@@ -1,47 +1,15 @@
-nb-radio-button()
+.nb-radio-button
+  kind: block inline
+  skin: group
 
-  // .nb-button_focus
-  // .nb-button:focus
-  //   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.07),
-  //     0 0 6px 2px rgba(255, 204, 0, 0.7)
+.nb-radio-button .nb-radio-button__button
+  skin: nested-group-item '.nb-button'
 
-  //   &:before
-  //     box-shadow: 0 0 0 1px rgba(193, 154, 0, 0.2)
+.nb-radio-button__radio
+  kind: hidden visually
 
-  .nb-radio-button
-    display: inline-block
-    margin-left: -1px
-    white-space: nowrap
+.nb-radio-button__radio:checked + .nb-button
+  skin: button_checked
 
-    .nb-button
-      margin-right: -1px
-
-    .nb-button
-    .nb-button:before
-      border-radius: 0
-
-    .nb-radio-button__button:first-child .nb-button
-      border-radius: 3px 0 0 3px
-
-    .nb-radio-button__button:first-child .nb-button:before
-      border-radius: 2px 0 0 2px
-
-    .nb-radio-button__button:last-child .nb-button
-      border-radius: 0 3px 3px 0
-
-    .nb-radio-button__button:last-child .nb-button:before
-      border-radius: 0 2px 2px 0
-
-  .nb-radio-button__button
-    .nb-radio-button__radio
-      position: absolute
-      user-select: none
-      opacity: 0
-
-
-.nb-radio-button.ui-buttonset .ui-button
-  margin: 0
-  margin-right: -1px
-
-
-nb-radio-button()
+.nb-radio-button__radio:focus + .nb-button
+  skin: button_focus
