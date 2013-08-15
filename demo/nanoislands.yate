@@ -37,6 +37,7 @@ include 'tooltips-jq.yate'
 include 'tabs.yate'
 include 'arrows.yate'
 include 'header.yate'
+include 'user.yate'
 
 match / {
     <div class="demo-toggle nb-island nb-island_fly">
@@ -198,6 +199,16 @@ match / {
         </div>
         <div class="demo-pane__content">
             header()
+        </div>
+    </div>
+    <div class="demo-pane">
+        <div class="demo-pane__desc">
+            <div class="demo-h2">
+                "Блок юзера"
+            </div>
+        </div>
+        <div class="demo-pane__content">
+            userBlock()
         </div>
     </div>
 }

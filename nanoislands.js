@@ -1058,8 +1058,7 @@ nb.define('button', {
         'init': 'oninit',
         'textChange': 'onTextChange',
         'disable': 'onDisable',
-        'enable': 'onEnable',
-        'click': 'togglePress'
+        'enable': 'onEnable'
     },
 
     oninit: function () {
@@ -1093,13 +1092,6 @@ nb.define('button', {
     onEnable: function() {
         this.$node.button( "enable" );
         this.$node.removeClass('nb-button_disabled');
-    },
-
-    /**
-     * Toggles pressed state
-     */
-    togglePress: function(e) {
-        this.$node.toggleClass('nb-button_header_pressed');
     }
 
 });
@@ -1863,4 +1855,48 @@ nb.define('arrow', {
 })
 
 /* arrow/arrow.js end */
+
+/* header/header.js begin */
+nb.define('header', {
+    events: {
+        'init': 'oninit',
+        'click .nb-header__button': 'togglePress'
+    },
+
+    oninit: function () {
+        this.$node = $(this.node);
+    },
+
+    /**
+     * Toggles pressed state of button
+     */
+
+    togglePress: function(e) {
+        var $target = $(e.target);
+        $target.closest('.nb-header__button').toggleClass('nb-header__button_pressed');
+
+        if ( $target.hasClass('nb-icon_services') ) {
+            nb.trigger('services-click');
+        }
+
+        if ( $target.hasClass('nb-icon_settings') ) {
+            nb.trigger('settings-click');
+        }
+    }
+
+});
+/* header/header.js end */
+
+/* user/user.js begin */
+nb.define('user', {
+    events: {
+        'init': 'oninit'
+    },
+
+    oninit: function () {
+
+    }
+
+});
+/* user/user.js end */
 

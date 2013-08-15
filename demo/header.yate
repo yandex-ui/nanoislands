@@ -1,6 +1,8 @@
 header = {
-    'username': 'Username'
-    'notices': '7'
+    'user': {
+        'username': 'Username'
+        'notices': '7'
+    }
 }
 
 func header() {

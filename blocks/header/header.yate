@@ -5,60 +5,56 @@ func nb-header(nodeset header) {
             'buttonContent': 'Найти'
             'class': 'nb-header__arrow'
         }
-        'serveces': 'true'
+        'services': 'true'
         'settings': 'true'
-        'userpic': '/libs/nanoislands/blocks/header/avatar.png'
+        'yaHref': 'http://yandex.ru'
     }
 
     nb-block('header', nb-extend(default, header))
 }
 
 match .header nb {
-    <div class="nb-header">
-        @class += ' {.class}'
-        <div class="nb-header__right">
-
-            if .serveces == 'true' {
-                iconServices = {
-                    'icon': {
-                    'icon': 'services'
-                    'size': 'm'
-                    }
-                'theme': 'pseudo'
-                'header': true()
-                'class': 'nb-header__button'
-                }
-
-                nb-button(iconServices)
-            }
+    <div class="nb-header _init" data-nb="header">
+        apply . nb-main-attrs
+        <div class="nb-header__actions">
 
             if .settings == 'true' {
-                iconSettings = {
-                    'icon': {
-                    'icon': 'settings'
-                    'size': 'm'
-                    }
-                'theme': 'pseudo'
-                'header': true()
-                'class': 'nb-header__button'
-                }
 
-                nb-button(iconSettings)
+                <div class="nb-header__button">
+                    <div class="nb-header__button__icon">
+
+                        iconSettings = {
+                            'icon': {
+                                'icon': 'settings'
+                                'size': 'm'
+                            }
+                        }
+
+                        apply iconSettings.icon nb
+                    </div>
+                </div>
             }
 
-            <a href="#" class="nb-header__account">
-                <div class="nb-header__avatar" style="background-image: url('{.userpic}')">
-                    if .notices > 0 {
-                        <div class="nb-header__notice-count">{.notices}</div>
+            if .services == 'true' {
+                iconServices = {
+                    'icon': {
+                        'icon': 'services'
+                        'size': 'm'
                     }
-                </div>
-                if .username {
-                    <span class="nb-header__username _link"> {.username} </span>
                 }
-            </a>
+
+                <div class="nb-header__button">
+                    <div class="nb-header__button__icon">
+                        apply iconServices.icon nb
+                    </div>
+                </div>
+            }
+            if .user {
+                nb-user(.user)
+            }
         </div>
-        <div class="nb-header__left">
-            <a href="http://www.yandex.ru/" class="nb-header__logo"></a>
+        <div class="nb-header__main">
+            <a href="{.yaHref}" class="nb-header__logo"></a>
             nb-arrow(.arrow)
         </div>
     </div>

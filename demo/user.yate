@@ -1,0 +1,39 @@
+userNormal = {
+    'username': 'sweetlush'
+    'notices': '7'
+    'userpic': 'http://center.yandex-team.ru/api/v1/user/sweetlush/photo_10670/300.jpg'
+}
+userRtL = {
+    'username': 'Username'
+    'notices': '1'
+    'rightToLeft': 'true'
+}
+userSmall = {
+    'username': 'basvasilich'
+    'size': '32'
+    'userpic': 'http://center.yandex-team.ru/api/v1/user/basvasilich/photo_6631/300.jpg?0.5863942694850266'
+}
+
+func userBlock() {
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Блок информации о пользователе 42px'
+        </div>
+
+        show(nb-user(userNormal))
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Блок информации о пользователе справа налево'
+        </div>
+
+        show(nb-user(userRtL))
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Блок информации о пользователе 32px'
+        </div>
+
+        show(nb-user(userSmall))
+    </div>
+}
