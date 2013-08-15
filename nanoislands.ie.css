@@ -1287,11 +1287,11 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   position: relative;
   background-position: 50% 50%;
 }
-.nb-user_size_42 .nb-user__avatar {
+.nb-user_size_m .nb-user__avatar {
   width: 42px;
   height: 42px;
 }
-.nb-user_size_32 .nb-user__avatar {
+.nb-user_size_s .nb-user__avatar {
   width: 32px;
   height: 32px;
 }

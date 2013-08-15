@@ -433,7 +433,7 @@ var yr = yr || require('yate/lib/runtime.js');
         //  var default : object
         var r1 = {};
         var a1 = { a: {} };
-        r1[ "size" ] = "42";
+        r1[ "size" ] = "m";
         r1[ "userpic" ] = "/libs/nanoislands/blocks/header/avatar.png";
         var v44 = r1;
 
@@ -2126,7 +2126,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r1 = {};
         var a1 = { a: {} };
         r1[ "username" ] = "basvasilich";
-        r1[ "size" ] = "32";
+        r1[ "size" ] = "s";
         r1[ "userpic" ] = "http://center.yandex-team.ru/api/v1/user/basvasilich/photo_6631/300.jpg?0.5863942694850266";
         return r1;
     };

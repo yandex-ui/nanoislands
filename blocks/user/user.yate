@@ -1,6 +1,6 @@
 func nb-user(nodeset user) {
     default = {
-        'size': '42'
+        'size': 'm'
         'userpic': '/libs/nanoislands/blocks/header/avatar.png'
     }
 
