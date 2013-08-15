@@ -1,6 +1,7 @@
 func nb-icon(icon) {
     default = {
         'icon': icon
+        'size': 's'
     }
 
     nb-block('icon', default)
@@ -11,5 +12,5 @@ match .icon nb {
 }
 
 match .icon[.icon] nb {
-    <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_{.icon}" />
+    <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_{.icon} nb-icon_size_{.size}" />
 }

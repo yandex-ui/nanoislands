@@ -1,0 +1,58 @@
+.nb-user
+  cursor: pointer
+  display: inline-block
+
+.nb-user__avatar
+  display: inline-block
+  margin-left: $gapS
+  vertical-align: middle
+  border-radius: 50%
+  position: relative
+
+  background-size: cover
+  background-position: 50% 50%
+  box-shadow: inset 0 1px 0 1px rgba(0, 0, 0, 0.15)
+
+.nb-user_size_m .nb-user__avatar
+  width: 42px
+  height: 42px
+
+.nb-user_size_s .nb-user__avatar
+  width: 32px
+  height: 32px
+
+.nb-user__notice-count
+  position: absolute
+  right: -4px
+  top: -4px
+
+  user-select: none
+
+  background: #ff0000
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.1), 0 5px 10px -5px rgba(0, 0, 0, 0.5)
+
+  color: #fff
+  font-weight: bold
+
+  border-radius: 50%
+  border: 2px solid $background
+
+  width: 15px
+  height: 15px
+
+  font-size: 13px
+  line-height: 15px
+  text-align: center
+
+.nb-user__name._link
+  color: #000
+  user-select: none
+  display: inline-block
+  padding-left: $gapS
+
+.nb-user_size_42 .nb-user__name
+  font: 15px/80% Arial,Helvetica,sans-serif
+
+.nb-user__name:first-letter,
+.nb-user:hover .nb-user__name
+  color: #d00

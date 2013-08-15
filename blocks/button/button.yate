@@ -38,6 +38,10 @@ match .button nb {
             @disabled = 'disabled'
         }
 
+        if !( .static ) {
+            @data-nb = 'button'
+        }
+
         if !( .content ) && .icon {
             @class += ' nb-button_only-icon'
         }
@@ -68,7 +72,6 @@ match .buttonLink nb {
             @class += ' nb-button_disabled'
             @disabled = 'disabled'
         }
-
 
         if !( .disabled ) && .href {
             @href="{ .href }"
