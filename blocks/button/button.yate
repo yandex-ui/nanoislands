@@ -38,10 +38,6 @@ match .button nb {
             @disabled = 'disabled'
         }
 
-        if !( .static ) {
-            @data-nb = 'button'
-        }
-
         if !( .content ) && .icon {
             @class += ' nb-button_only-icon'
         }
