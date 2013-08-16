@@ -14,7 +14,9 @@ match .checkbox nb {
         <input class="nb-checkbox__input" type="{.type}" id="{uniq}">
             apply . nb-main-attrs
         </input>
-        <span class="nb-checkbox__flag nb-checkbox__flag_{.type}"></span>
+        <span class="nb-checkbox__flag nb-checkbox__flag_{.type}">
+            <span class="nb-checkbox__flag__icon"></span>
+        </span>
         ' '
         apply . nb-main-content
     </label>

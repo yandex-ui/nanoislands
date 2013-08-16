@@ -2864,7 +2864,9 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         r0 += '';
-        r0 += "<span class=\"" + "nb-checkbox__flag nb-checkbox__flag_" + nodeset2attrvalue( ( selectNametest('type', c0, []) ) ) + "\"></span>";
+        r0 += "<span class=\"" + "nb-checkbox__flag nb-checkbox__flag_" + nodeset2attrvalue( ( selectNametest('type', c0, []) ) ) + "\">";
+        r0 += "<span class=\"" + "nb-checkbox__flag__icon" + "\"></span>";
+        r0 += "</span>";
         r0 += " ";
         r0 += m.a(m, [ c0 ], 'nb-main-content', a0)
         r0 += "</label>";
