@@ -2,7 +2,7 @@
     Кнопка.
 */
 
-$skin-islands-button-content = '.ui-button-text'
+$skin-islands-button-content = '.nb-button__text'
 $skin-islands-button-disabled = '.nb-button_disabled'
 
 // Обычная кнопка
@@ -35,3 +35,11 @@ $skin-islands-button-disabled = '.nb-button_disabled'
 // Задизейбленная кнопка
 .nb-button_disabled
   skin: disabled
+
+// Кнопка аттача
+
+.nb-file-intruder
+  kind: file-intruder \
+    (-inner '&__inner') \
+    (-input '&__input') \
+    (-focus '&__focus' 'islands-button_focus_style')

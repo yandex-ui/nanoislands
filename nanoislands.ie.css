@@ -83,6 +83,33 @@
   cursor: text;
   vertical-align: baseline;
 }
+.nb-file-intruder {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 11;
+}
+.nb-file-intruder__inner {
+  float: right;
+  text-align: right;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.nb-file-intruder__input {
+  position: relative;
+  z-index: 11;
+  display: inline;
+  zoom: 1;
+  vertical-align: 0;
+  padding: 0;
+  margin: -5em 0 0 -20em;
+  cursor: pointer;
+  font-size: 80px;
+  opacity: 0;
+}
 .nb-button_disabled {
   cursor: default !important;
   opacity: 0.6;
@@ -113,11 +140,11 @@
   bottom: 1px;
   left: 1px;
 }
-.nb-button_theme_normal > .ui-button-text {
+.nb-button_theme_normal .nb-button__text {
   position: relative;
   display: block;
 }
-button.nb-button_theme_normal > .ui-button-text {
+button.nb-button_theme_normal .nb-button__text {
   margin: -1px -1px -3px;
 }
 .nb-button_theme_normal:after {
@@ -128,15 +155,19 @@ button.nb-button_theme_normal > .ui-button-text {
   bottom: 0;
   left: 0;
 }
+input[type=file]:focus + .nb-button_theme_normal,
 .nb-button_theme_normal:not(.nb-button_disabled):focus {
   outline: 0;
 }
+input[type=file]:focus + .nb-button_theme_normal:after,
 .nb-button_theme_normal:not(.nb-button_disabled):focus:after {
   z-index: 9;
 }
+input[type=file]:hover + .nb-button_theme_normal,
 .nb-button_theme_normal:not(.nb-button_disabled):hover {
   background: #b0b0b0;
 }
+input[type=file]:hover + .nb-button_theme_normal:before,
 .nb-button_theme_normal:not(.nb-button_disabled):hover:before {
   background: #fbfaf9;
 }
@@ -160,11 +191,11 @@ button.nb-button_theme_normal > .ui-button-text {
   bottom: 1px;
   left: 1px;
 }
-.nb-button_theme_normal.nb-button_size_s > .ui-button-text {
+.nb-button_theme_normal.nb-button_size_s .nb-button__text {
   position: relative;
   display: block;
 }
-button.nb-button_theme_normal.nb-button_size_s > .ui-button-text {
+button.nb-button_theme_normal.nb-button_size_s .nb-button__text {
   margin: -1px -1px -3px;
 }
 .nb-button_theme_normal.nb-button_size_s:after {
@@ -175,15 +206,19 @@ button.nb-button_theme_normal.nb-button_size_s > .ui-button-text {
   bottom: 0;
   left: 0;
 }
+input[type=file]:focus + .nb-button_theme_normal.nb-button_size_s,
 .nb-button_theme_normal.nb-button_size_s:not(.nb-button_disabled):focus {
   outline: 0;
 }
+input[type=file]:focus + .nb-button_theme_normal.nb-button_size_s:after,
 .nb-button_theme_normal.nb-button_size_s:not(.nb-button_disabled):focus:after {
   z-index: 9;
 }
+input[type=file]:hover + .nb-button_theme_normal.nb-button_size_s,
 .nb-button_theme_normal.nb-button_size_s:not(.nb-button_disabled):hover {
   background: #b0b0b0;
 }
+input[type=file]:hover + .nb-button_theme_normal.nb-button_size_s:before,
 .nb-button_theme_normal.nb-button_size_s:not(.nb-button_disabled):hover:before {
   background: #fbfaf9;
 }
@@ -207,11 +242,11 @@ button.nb-button_theme_normal.nb-button_size_s > .ui-button-text {
   bottom: 1px;
   left: 1px;
 }
-.nb-button_theme_action > .ui-button-text {
+.nb-button_theme_action .nb-button__text {
   position: relative;
   display: block;
 }
-button.nb-button_theme_action > .ui-button-text {
+button.nb-button_theme_action .nb-button__text {
   margin: -1px -1px -3px;
 }
 .nb-button_theme_action:after {
@@ -222,15 +257,19 @@ button.nb-button_theme_action > .ui-button-text {
   bottom: 0;
   left: 0;
 }
+input[type=file]:focus + .nb-button_theme_action,
 .nb-button_theme_action:not(.nb-button_disabled):focus {
   outline: 0;
 }
+input[type=file]:focus + .nb-button_theme_action:after,
 .nb-button_theme_action:not(.nb-button_disabled):focus:after {
   z-index: 9;
 }
+input[type=file]:hover:not(:checked) + .nb-button_theme_action,
 .nb-button_theme_action:not(.nb-button_disabled):hover {
   background: #b0b0b0;
 }
+input[type=file]:hover:not(:checked) + .nb-button_theme_action:before,
 .nb-button_theme_action:not(.nb-button_disabled):hover:before {
   background: #fd5;
 }
@@ -254,11 +293,11 @@ button.nb-button_theme_action > .ui-button-text {
   bottom: 1px;
   left: 1px;
 }
-.nb-button_theme_action.nb-button_size_s > .ui-button-text {
+.nb-button_theme_action.nb-button_size_s .nb-button__text {
   position: relative;
   display: block;
 }
-button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
+button.nb-button_theme_action.nb-button_size_s .nb-button__text {
   margin: -1px -1px -3px;
 }
 .nb-button_theme_action.nb-button_size_s:after {
@@ -269,15 +308,19 @@ button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
   bottom: 0;
   left: 0;
 }
+input[type=file]:focus + .nb-button_theme_action.nb-button_size_s,
 .nb-button_theme_action.nb-button_size_s:not(.nb-button_disabled):focus {
   outline: 0;
 }
+input[type=file]:focus + .nb-button_theme_action.nb-button_size_s:after,
 .nb-button_theme_action.nb-button_size_s:not(.nb-button_disabled):focus:after {
   z-index: 9;
 }
+input[type=file]:hover:not(:checked) + .nb-button_theme_action.nb-button_size_s,
 .nb-button_theme_action.nb-button_size_s:not(.nb-button_disabled):hover {
   background: #b0b0b0;
 }
+input[type=file]:hover:not(:checked) + .nb-button_theme_action.nb-button_size_s:before,
 .nb-button_theme_action.nb-button_size_s:not(.nb-button_disabled):hover:before {
   background: #fd5;
 }
@@ -307,7 +350,7 @@ button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
   bottom: 0;
   left: 0;
 }
-.nb-button_theme_pseudo > .ui-button-text {
+.nb-button_theme_pseudo .nb-button__text {
   position: relative;
   display: block;
 }
@@ -343,7 +386,7 @@ button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
   bottom: 0;
   left: 0;
 }
-.nb-button_theme_pseudo.nb-button_size_s > .ui-button-text {
+.nb-button_theme_pseudo.nb-button_size_s .nb-button__text {
   position: relative;
   display: block;
 }
@@ -352,6 +395,13 @@ button.nb-button_theme_action.nb-button_size_s > .ui-button-text {
 }
 .nb-button_theme_pseudo.nb-button_size_s:not(.nb-button_disabled):focus:after {
   z-index: 9;
+}
+.nb-file-intruder__focus {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 .nb-popup {
   z-index: 100;
@@ -508,7 +558,8 @@ input.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button,
 label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
   border-right-color: transparent;
 }
-.nb-radio-button__radio:checked + .nb-button {
+.nb-radio-button__radio:checked + .nb-button,
+.nb-radio-button__radio:checked + .nb-button:hover {
   background: #fff1c0;
   border-color: #999278 #b4ad93 #ccc4aa;
 }
@@ -708,11 +759,11 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
   bottom: 1px;
   left: 1px;
 }
-.nb-checkbox__flag_radio > .ui-button-text {
+.nb-checkbox__flag_radio .nb-button__text {
   position: relative;
   display: block;
 }
-button.nb-checkbox__flag_radio > .ui-button-text {
+button.nb-checkbox__flag_radio .nb-button__text {
   margin: -1px -1px -3px;
 }
 .nb-checkbox__flag_radio:after {
@@ -723,9 +774,11 @@ button.nb-checkbox__flag_radio > .ui-button-text {
   bottom: 0;
   left: 0;
 }
+input[type=file]:focus + .nb-checkbox__flag_radio,
 .nb-checkbox__flag_radio:not(.nb-button_disabled):focus {
   outline: 0;
 }
+input[type=file]:focus + .nb-checkbox__flag_radio:after,
 .nb-checkbox__flag_radio:not(.nb-button_disabled):focus:after {
   z-index: 9;
 }
@@ -764,11 +817,11 @@ input:not(:checked) + .nb-checkbox__flag_radio > .nb-checkbox__flag__icon {
   bottom: 1px;
   left: 1px;
 }
-.nb-checkbox__flag_checkbox > .ui-button-text {
+.nb-checkbox__flag_checkbox .nb-button__text {
   position: relative;
   display: block;
 }
-button.nb-checkbox__flag_checkbox > .ui-button-text {
+button.nb-checkbox__flag_checkbox .nb-button__text {
   margin: -1px -1px -3px;
 }
 .nb-checkbox__flag_checkbox:after {
@@ -779,9 +832,11 @@ button.nb-checkbox__flag_checkbox > .ui-button-text {
   bottom: 0;
   left: 0;
 }
+input[type=file]:focus + .nb-checkbox__flag_checkbox,
 .nb-checkbox__flag_checkbox:not(.nb-button_disabled):focus {
   outline: 0;
 }
+input[type=file]:focus + .nb-checkbox__flag_checkbox:after,
 .nb-checkbox__flag_checkbox:not(.nb-button_disabled):focus:after {
   z-index: 9;
 }
@@ -799,7 +854,8 @@ button.nb-checkbox__flag_checkbox > .ui-button-text {
 input:not(:checked) + .nb-checkbox__flag_checkbox > .nb-checkbox__flag__icon {
   visibility: hidden;
 }
-.nb-checkbox__input:checked + .nb-checkbox__flag {
+.nb-checkbox__input:checked + .nb-checkbox__flag,
+.nb-checkbox__input:checked + .nb-checkbox__flag:hover {
   background: #fff1c0;
   border-color: #999278 #b4ad93 #ccc4aa;
 }

@@ -2438,11 +2438,11 @@ var yr = yr || require('yate/lib/runtime.js');
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += "<span";
+        r0 += "<label";
         a0.a = {
             'class': new yr.scalarAttr("nb-button _init nb-button_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ) + " nb-button_type_attach  nb-button_theme_" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ))
         };
-        a0.s = 'span';
+        a0.s = 'label';
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
@@ -2476,6 +2476,12 @@ var yr = yr || require('yate/lib/runtime.js');
             }
         }
         r0 += closeAttrs(a0);
+        r0 += "<span class=\"" + "nb-file-intruder" + "\">";
+        r0 += "<span class=\"" + "nb-file-intruder__inner" + "\">";
+        r0 += "<input class=\"" + "nb-file-intruder__input" + "\" type=\"" + "file" + "\"/>";
+        r0 += "<span class=\"" + "nb-file-intruder__focus" + "\"></span>";
+        r0 += "</span>";
+        r0 += "</span>";
         r0 += "<span";
         a0.a = {
             'class': new yr.scalarAttr("nb-button__text")
@@ -2493,8 +2499,7 @@ var yr = yr || require('yate/lib/runtime.js');
         }
         r0 += closeAttrs(a0);
         r0 += "</span>";
-        r0 += "<input type=\"" + "file" + "\" class=\"" + "nb-button__attach" + "\"/>";
-        r0 += "</span>";
+        r0 += "</label>";
 
         return r0;
     };
