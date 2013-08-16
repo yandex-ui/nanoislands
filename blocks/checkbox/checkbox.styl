@@ -1,5 +1,6 @@
 .nb-checkbox
   kind: block inline
+  skin: para no-margin
 
   cursor: pointer
 
@@ -21,5 +22,7 @@
 .nb-checkbox__input:focus + .nb-checkbox__flag
   skin: button_focus
 
-.nb-checkbox_size_s
+.nb-checkbox_size_s,
+.nb-checkbox_size_s .nb-checkbox__flag_radio,
+.nb-checkbox_size_s .nb-checkbox__flag_checkbox
   skin: para2 no-margin

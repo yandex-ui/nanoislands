@@ -40,7 +40,7 @@
   display: inline;
   zoom: 1;
   vertical-align: middle;
-  margin-top: -0.25em;
+  margin-top: -0.2em;
   background: 50% no-repeat;
 }
 .nb-radio-button__radio,
@@ -681,12 +681,14 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
   display: inline;
   zoom: 1;
   vertical-align: top;
+  font-size: 15px;
+  line-height: 22px;
   cursor: pointer;
 }
 .nb-checkbox__flag_radio {
   font: 15px/22px Arial, sans-serif;
   position: relative;
-  vertical-align: baseline;
+  vertical-align: middle;
   color: #333;
   width: 1em;
   height: 1em;
@@ -696,7 +698,6 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
   border: 1px solid;
   border-color: #cbcbcb #b2b2b2 #9a9a9a;
   text-align: center;
-  margin-top: -4px;
   margin-right: 6px;
 }
 .nb-checkbox__flag_radio:before {
@@ -743,7 +744,7 @@ input:not(:checked) + .nb-checkbox__flag_radio > .nb-checkbox__flag__icon {
 .nb-checkbox__flag_checkbox {
   font: 15px/22px Arial, sans-serif;
   position: relative;
-  vertical-align: baseline;
+  vertical-align: middle;
   color: #333;
   width: 1em;
   height: 1em;
@@ -752,9 +753,7 @@ input:not(:checked) + .nb-checkbox__flag_radio > .nb-checkbox__flag__icon {
   background: #f6f6f6;
   border: 1px solid;
   border-color: #cbcbcb #b2b2b2 #9a9a9a;
-  vertical-align: middle;
   text-align: center;
-  margin-top: -3px;
   margin-right: 6px;
 }
 .nb-checkbox__flag_checkbox:before {
@@ -810,7 +809,9 @@ input:not(:checked) + .nb-checkbox__flag_checkbox > .nb-checkbox__flag__icon {
 .nb-checkbox__input:focus + .nb-checkbox__flag:after {
   z-index: 9;
 }
-.nb-checkbox_size_s {
+.nb-checkbox_size_s,
+.nb-checkbox_size_s .nb-checkbox__flag_radio,
+.nb-checkbox_size_s .nb-checkbox__flag_checkbox {
   font-size: 13px;
   line-height: 18px;
 }
@@ -882,10 +883,12 @@ input:not(:checked) + .nb-checkbox__flag_checkbox > .nb-checkbox__flag__icon {
   height: 16px;
 }
 .nb-button .nb-icon {
-  margin: -0.2em 6px 0 -6px;
+  margin-right: 6px;
+  margin-left: -6px;
 }
 .nb-button_only-icon .nb-icon {
-  margin: -0.2em -6px 0;
+  margin-right: -6px;
+  margin-left: -6px;
 }
 .nb-icon_close_16 {
   background-image: url("blocks/icon/close_16.svg");

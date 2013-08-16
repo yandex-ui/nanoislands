@@ -17,7 +17,6 @@ match .checkbox nb {
         <span class="nb-checkbox__flag nb-checkbox__flag_{.type}">
             <span class="nb-checkbox__flag__icon"></span>
         </span>
-        ' '
         apply . nb-main-content
     </label>
 }

@@ -43,7 +43,7 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  margin-top: -0.25em;
+  margin-top: -0.2em;
   background: 50% no-repeat;
 }
 
@@ -981,13 +981,15 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
   position: relative;
   display: inline-block;
   vertical-align: top;
+  font-size: 15px;
+  line-height: 22px;
   cursor: pointer;
 }
 
 .nb-checkbox__flag_radio {
   font: 15px/22px Arial, sans-serif;
   position: relative;
-  vertical-align: baseline;
+  vertical-align: middle;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1003,7 +1005,6 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0,0,0,0.4));
   background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
   text-align: center;
-  margin-top: -4px;
   margin-right: 6px;
   border-radius: 50%;
 }
@@ -1070,7 +1071,7 @@ input:not(:checked) + .nb-checkbox__flag_radio > .nb-checkbox__flag__icon {
 .nb-checkbox__flag_checkbox {
   font: 15px/22px Arial, sans-serif;
   position: relative;
-  vertical-align: baseline;
+  vertical-align: middle;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1085,9 +1086,7 @@ input:not(:checked) + .nb-checkbox__flag_radio > .nb-checkbox__flag__icon {
   background: rgba(0,0,0,0.3);
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0,0,0,0.4));
   background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
-  vertical-align: middle;
   text-align: center;
-  margin-top: -3px;
   margin-right: 6px;
 }
 
@@ -1176,7 +1175,9 @@ input:not(:checked) + .nb-checkbox__flag_checkbox > .nb-checkbox__flag__icon {
   border-radius: inherit;
 }
 
-.nb-checkbox_size_s {
+.nb-checkbox_size_s,
+.nb-checkbox_size_s .nb-checkbox__flag_radio,
+.nb-checkbox_size_s .nb-checkbox__flag_checkbox {
   font-size: 13px;
   line-height: 18px;
 }
@@ -1264,11 +1265,13 @@ input:not(:checked) + .nb-checkbox__flag_checkbox > .nb-checkbox__flag__icon {
 }
 
 .nb-button .nb-icon {
-  margin: -0.2em 6px 0 -6px;
+  margin-right: 6px;
+  margin-left: -6px;
 }
 
 .nb-button_only-icon .nb-icon {
-  margin: -0.2em -6px 0;
+  margin-right: -6px;
+  margin-left: -6px;
 }
 
 .nb-icon_close_16 {
