@@ -135,7 +135,11 @@ match .buttonAttach nb {
                 html(.content)
             }
         </span>
-        <input type="file" class="nb-button__attach"></input>
+        <input type="file" class="nb-button__attach">
+            if .attrs.name {
+                @name = "{.attrs.name}"
+            }
+        </input>
     </span>
 }
 

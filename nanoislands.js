@@ -1067,7 +1067,8 @@ nb.define('button', {
         'init': 'oninit',
         'textChange': 'onTextChange',
         'disable': 'onDisable',
-        'enable': 'onEnable'
+        'enable': 'onEnable',
+        'destroy': 'onDestroy'
     },
 
     oninit: function () {
@@ -1101,8 +1102,11 @@ nb.define('button', {
     onEnable: function() {
         this.$node.button( "enable" );
         this.$node.removeClass('nb-button_disabled');
-    }
+    },
 
+    onDestroy: function() {
+        this.$node.button('destroy');
+    }
 });
 
 /* button/button.js end */
@@ -1639,7 +1643,7 @@ nb.define('radio-button', {
 
 
     popup.onclose = function() {
-        if (this.node.widget.isOpen()) {
+        if (this.node && this.node.widget && this.node.widget.isOpen()) {
             this.node.widget.close();
         }
     };

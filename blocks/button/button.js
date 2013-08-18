@@ -3,7 +3,8 @@ nb.define('button', {
         'init': 'oninit',
         'textChange': 'onTextChange',
         'disable': 'onDisable',
-        'enable': 'onEnable'
+        'enable': 'onEnable',
+        'destroy': 'onDestroy'
     },
 
     oninit: function () {
@@ -37,6 +38,9 @@ nb.define('button', {
     onEnable: function() {
         this.$node.button( "enable" );
         this.$node.removeClass('nb-button_disabled');
-    }
+    },
 
+    onDestroy: function() {
+        this.$node.button('destroy');
+    }
 });

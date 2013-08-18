@@ -1002,7 +1002,7 @@ nb.define = function(name, methods, base) {
 nb.init = function(where) {
     where = where || document;
 
-    var nodes = $(where).find('._init');
+    var nodes = $(where).find('._init').addBack().filter('._init');
     for (var i = 0, l = nodes.length; i < l; i++) {
         nb.block( nodes[i] );
     }
@@ -1011,7 +1011,7 @@ nb.init = function(where) {
 nb.destroy = function(where) {
     where = where || document;
 
-    var nodes = $(where).find('._init');
+    var nodes = $(where).find('._init').addBack().filter('._init');
     for (var i = 0, l = nodes.length; i < l; i++) {
         var id = nodes[i].getAttribute('id');
         delete _cache[id];

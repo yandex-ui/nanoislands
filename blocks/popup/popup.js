@@ -284,7 +284,7 @@
 
 
     popup.onclose = function() {
-        if (this.node.widget.isOpen()) {
+        if (this.node && this.node.widget && this.node.widget.isOpen()) {
             this.node.widget.close();
         }
     };
