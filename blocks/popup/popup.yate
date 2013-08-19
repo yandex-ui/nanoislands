@@ -126,7 +126,13 @@ match .modalPopup nb {
             if .buttons {
                 <div class="nb-popup__buttons">
                     for .buttons {
-                        nb-button(.)
+                        if .mode == 'link' {
+                            nb-button-link(.)
+                        } else if .mode == 'attach' {
+                            nb-button-attach(.)
+                        } else {
+                            nb-button(.)
+                        }
                         ' '
                     }
                 </div>

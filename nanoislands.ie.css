@@ -258,7 +258,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 }
 .nb-popup__content {
   font: 0.9376em/1.4667em Arial, sans-serif;
-  padding: 0 10px;
+  padding: 0 10px 10px;
 }
 .nb-popup__close {
   cursor: pointer;
@@ -275,8 +275,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   filter: none;
 }
 .nb-popup__buttons {
-  padding: 10px;
-  padding-top: 10px;
+  padding: 0 10px 10px;
 }
 .nb-popup__button {
   margin-right: 10px;
