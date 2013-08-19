@@ -1085,23 +1085,29 @@ nb.define('button', {
      * }
      */
     onTextChange: function (name, params) {
-        this.$node.find('.nb-button__text').html(params.text)
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.find('.nb-button__text').html(params.text);
+        }
     },
 
     /**
      * Disables the button
      */
     onDisable: function () {
-        this.$node.button( "disable" );
-        this.$node.addClass('nb-button_disabled');
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.button('disable');
+            this.$node.addClass('nb-button_disabled');
+        }
     },
 
     /**
      * Enables the button
      */
     onEnable: function() {
-        this.$node.button( "enable" );
-        this.$node.removeClass('nb-button_disabled');
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.button('enable');
+            this.$node.removeClass('nb-button_disabled');
+        }
     },
 
     onDestroy: function() {
