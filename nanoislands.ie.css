@@ -146,7 +146,6 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 430px;
   font-size: 150%;
   opacity: 0;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
