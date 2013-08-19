@@ -41,6 +41,10 @@ nb.define('button', {
     },
 
     onDestroy: function() {
-        this.$node.button('destroy');
+        // вызвали destroy в одном методе, но ссылка на кнопку была сохранена в другом
+        // в результате повторный вызов и ошибка в консоли
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.button('destroy');
+        }
     }
 });
