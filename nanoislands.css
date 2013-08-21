@@ -1671,6 +1671,9 @@
 .nb-suggest {
   padding: 0;
 }
+.nb-suggest .ui-menu-item {
+  font-size: 0;
+}
 .nb-suggest .ui-menu-item a {
   padding: 3px 8px;
 }
