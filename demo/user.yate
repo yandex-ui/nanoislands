@@ -14,10 +14,28 @@ userSmall = {
     'userpic': 'http://center.yandex-team.ru/api/v1/user/basvasilich/photo_6631/300.jpg?0.5863942694850266'
 }
 
+userEmail = {
+    'username': 'Константин Леонидович Васильев'
+    'email': 'mctep@yandex-team.ru'
+    'justify': true()
+    'rightToLeft': true()
+    'size': 's'
+    'userpic': 'https://center.yandex-team.ru/api/v1/user/mctep/avatar/36.jpg'
+}
+
+userEmail2 = {
+    'username': 'Константин Леонидович Васильев'
+    'email': 'mctep@yandex-team.ru'
+    'justify': true()
+    'size': 'm'
+    'userpic': 'https://center.yandex-team.ru/api/v1/user/mctep/avatar/36.jpg'
+}
+
+
 func userBlock() {
     <div class="demo-section">
         <div class="demo-h3">
-            'Блок информации о пользователе 42px'
+            'Блок информации о пользователе L'
         </div>
 
         show(nb-user(userNormal))
@@ -31,9 +49,23 @@ func userBlock() {
     </div>
     <div class="demo-section">
         <div class="demo-h3">
-            'Блок информации о пользователе 32px'
+            'Блок информации о пользователе S'
         </div>
 
         show(nb-user(userSmall))
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Блок информации о пользователе растянутый и с имейлом'
+        </div>
+
+        <div style="width: 200px">
+            show(nb-user(userEmail))
+        </div>
+
+        <div style="width: 200px">
+            show(nb-user(userEmail2))
+        </div>
     </div>
 }

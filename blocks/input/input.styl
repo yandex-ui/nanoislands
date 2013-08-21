@@ -14,7 +14,7 @@ nb-input()
     font: 86% $fontFamily
 
     if ie
-      border: 1px solid #ccc;
+      border: 1px solid #ccc
       padding: 3px 8px
 
   .nb-input-box:before
@@ -30,8 +30,10 @@ nb-input()
     top: 0
 
   .nb-input-box input
+    height: 100%
+    display: inline-block
     if ie
-      background-color: #FFF;
+      background-color: #FFF
 
 
 
@@ -64,12 +66,14 @@ nb-input()
 
   .nb-input-box.nb-input_size_s
     line-height: 28px
+    height: 28px
 
   .nb-input-box.nb-input_size_m input
     font-size: 16px
 
   .nb-input-box.nb-input_size_m
     line-height: 32px
+    height: 32px
 
   .nb-input:after
     content: ''

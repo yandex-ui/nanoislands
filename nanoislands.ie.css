@@ -736,6 +736,9 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   top: 0;
 }
 .nb-input-box input {
+  height: 100%;
+  display: inline;
+  zoom: 1;
   background-color: #fff;
 }
 .nb-input-box:after {
@@ -761,12 +764,14 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 }
 .nb-input-box.nb-input_size_s {
   line-height: 28px;
+  height: 28px;
 }
 .nb-input-box.nb-input_size_m input {
   font-size: 16px;
 }
 .nb-input-box.nb-input_size_m {
   line-height: 32px;
+  height: 32px;
 }
 .nb-input:after {
   content: '';
@@ -1278,22 +1283,19 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   cursor: pointer;
   display: inline;
   zoom: 1;
+  position: relative;
+}
+.nb-user__pseudo {
+  display: inline;
+  zoom: 1;
+  width: 100%;
 }
 .nb-user__avatar {
   display: inline;
   zoom: 1;
-  margin-left: 10px;
   vertical-align: middle;
   position: relative;
   background-position: 50% 50%;
-}
-.nb-user_size_m .nb-user__avatar {
-  width: 42px;
-  height: 42px;
-}
-.nb-user_size_s .nb-user__avatar {
-  width: 32px;
-  height: 32px;
 }
 .nb-user__notice-count {
   position: absolute;
@@ -1309,18 +1311,137 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   line-height: 15px;
   text-align: center;
 }
-.nb-user__name._link {
-  color: #000;
+.nb-user__label {
   display: inline;
   zoom: 1;
-  padding-left: 10px;
+  vertical-align: middle;
+  text-align: left;
 }
-.nb-user_size_42 .nb-user__name {
-  font: 15px/80% Arial, Helvetica, sans-serif;
+.nb-user_size_m {
+  font-size: 15px;
+  height: 42px;
+}
+.nb-user_size_m .nb-user__avatar {
+  width: 42px;
+  height: 42px;
+}
+.nb-user_size_s {
+  font-size: 13px;
+  height: 32px;
+}
+.nb-user_size_s .nb-user__avatar {
+  width: 32px;
+  height: 32px;
+}
+.nb-user_direction_ltr .nb-user__avatar {
+  margin-left: 0;
+}
+.nb-user_direction_ltr .nb-user__label {
+  margin-left: 10px;
+}
+.nb-user_direction_rtl .nb-user__avatar {
+  margin-left: 10px;
+}
+.nb-user_direction_rtl .nb-user__label {
+  margin-left: 0;
+}
+.nb-user__email {
+  color: #999;
+}
+.nb-user__name,
+.nb-user__email {
+  display: block;
+}
+.nb-user_size_m {
+  line-height: 18px;
+}
+.nb-user_size_s {
+  line-height: 15.6px;
+}
+.nb-user__email {
+  font-size: 0.95em;
+}
+.nb-user__name._link {
+  color: #000;
 }
 .nb-user__name:first-letter,
 .nb-user:hover .nb-user__name {
   color: #d00;
+}
+.nb-user_justify {
+  display: block;
+  text-align: justify;
+}
+.nb-user_justify .nb-user__label {
+  display: block;
+}
+.nb-user_justify .nb-user__name,
+.nb-user_justify .nb-user__email {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+.nb-user_justify .nb-user__avatar {
+  position: absolute;
+  top: 0;
+}
+.nb-user_justify.nb-user_direction_rtl .nb-user__avatar {
+  right: 0;
+}
+.nb-user_justify.nb-user_direction_rtl.nb-user_size_s .nb-user__label {
+  margin-right: 42px;
+}
+.nb-user_justify.nb-user_direction_rtl.nb-user_size_m .nb-user__label {
+  margin-right: 52px;
+}
+.nb-user_justify.nb-user_direction_ltr .nb-user__avatar {
+  left: 0;
+}
+.nb-user_justify.nb-user_direction_ltr.nb-user_size_s .nb-user__label {
+  margin-left: 42px;
+}
+.nb-user_justify.nb-user_direction_ltr.nb-user_size_m .nb-user__label {
+  margin-left: 52px;
+}
+.nb-user_justify.nb-user_size_m .nb-user__label {
+  padding-top: 3px;
+}
+.nb-user_justify.nb-user_size_m .nb-user__name:only-child {
+  top: 9px;
+}
+.nb-user_justify.nb-user_size_s .nb-user__label {
+  padding-top: 0.40000000000000036px;
+}
+.nb-user_justify.nb-user_size_s .nb-user__name:only-child {
+  top: 7.8px;
+}
+.nb-suggest {
+  padding: 0;
+}
+.nb-suggest .ui-menu-item {
+  font-size: 0;
+}
+.nb-suggest .ui-menu-item a {
+  padding: 3px 8px;
+}
+.nb-suggest.ui-menu {
+  margin-top: 1px;
+  max-width: 300px;
+}
+.nb-suggest.ui-menu .ui-menu-item a.ui-state-focus,
+.nb-suggest.ui-menu .ui-menu-item a.ui-state-active {
+  margin: 0;
+  background: #ffeba0;
+}
+.nb-suggest_size_s .ui-menu-item a {
+  font-size: 13px;
+  line-height: 28px;
+}
+.nb-suggest_size_m .ui-menu-item a {
+  font-size: 15px;
+  line-height: 32px;
 }
 IMG {
   border: 0;

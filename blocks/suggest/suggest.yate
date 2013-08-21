@@ -1,0 +1,82 @@
+func nb-suggest(nodeset options) {
+    defaults = {
+        'size': 's'
+        'countMax': '10'
+        'type': 'default'
+    }
+
+    nb-block('suggest', nb-extend(defaults, options))
+}
+
+match .suggest nb {
+    <div class="nb-suggest__container _init" data-nb="suggest">
+        @data-countMax = .countMax
+        @data-type = .type
+        @data-size = .size
+        @data-source = .source
+        @data-highlight = .highlight
+        @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest nb-suggest_size_{.size}'
+        if .class-suggest {
+            @data-class-suggest += ' {.class-suggest}'
+        }
+
+        apply . nb-main-attrs
+
+        input = {
+            'size': .size
+            'width': .width
+        }
+
+        nb-input(input)
+    </div>
+}
+
+match / nb-suggest {
+    <li>
+        <a>
+            apply .item nb-suggest
+        </a>
+    </li>
+}
+
+match /[.type == 'default'].item nb-suggest {
+    html(.label)
+}
+
+match /[.type == 'username'].item nb-suggest {
+    user = {
+        'size': /.size
+        'mod': 'suggest'
+        'username': (
+            if .username {
+                .username
+            } else if .email {
+                .email
+            }
+        )
+        'rightToLeft': true()
+        if .username && .email {
+            'email': .email
+        }
+        'justify': true()
+        if .userpic {
+            'userpic': .userpic
+        }
+        if .usernameHighlighted {
+            'usernameHighlighted': .usernameHighlighted
+        }
+        if .emailHighlighted {
+            'emailHighlighted': .emailHighlighted
+        }
+    }
+
+    nb-user(user)
+}
+
+match .user[.mod == 'suggest' && .usernameHighlighted].username nb-user-name {
+    html(..usernameHighlighted)
+}
+
+match .user[.mod == 'suggest' && .emailHighlighted].email nb-user-name {
+    html(..emailHighlighted)
+}
