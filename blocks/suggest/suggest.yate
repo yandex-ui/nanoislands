@@ -24,7 +24,7 @@ match .suggest nb {
 
         input = {
             'size': .size
-            'width': '400px'
+            'width': .width
         }
 
         nb-input(input)

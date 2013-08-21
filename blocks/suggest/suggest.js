@@ -166,9 +166,6 @@
 
             this.$suggest.addClass(this.$node.data('class-suggest'));
 
-
-            console.log(this.$input);
-
         }
     }, apiSuggest));
 
