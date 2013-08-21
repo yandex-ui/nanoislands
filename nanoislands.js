@@ -1959,8 +1959,6 @@ nb.define('user', {
          * Включение или отключение выделения жирным начертанием результатов
          * матчинга в выпадающем списке.
          *
-         * @description ВНИМАНИЕ! Экспериментальная фича. В продакшене не использовать.
-         *
          * @type {Boolean}
          */
         highlight: false,
@@ -1998,31 +1996,46 @@ nb.define('user', {
     $.widget("ui.suggest", $.ui.autocomplete, {
         options: optionsSuggest,
 
-        _renderItem: function( ul, item ) {
+        _renderMenu: function( ul, items ) {
+            var that = this;
+            var html = '';
+
+            $.each( items, function(index, item) {
+                html += that._renderItem(item);
+            });
+
+            $(html).appendTo(ul);
+
+            ul.children('li').each(function(index) {
+                $(this).data("ui-autocomplete-item", items[index]);
+            });
+        },
+
+        _renderItem: function(item) {
             var clone = $.extend({}, item);
 
             if (this.options.highlight) {
                 if (typeof highlightings[this.options.type] == 'function') {
                     highlightings[this.options.type](clone, this._value());
+                } else if (typeof this.options.highlight == 'function') {
+                    this.options.highlight(clone, this._value());
                 }
             }
 
-            var html = yr.run('main', {
+            return yr.run('main', {
                 item: clone,
                 type: this.options.type,
                 size: this.options.size
             }, 'nb-suggest');
-
-            return $(html).appendTo(ul);
         },
 
         _suggest: function(items) {
             this._super(items);
 
-            if (this.options.countMax) {
-                var heightMax = this.menu.element.children().eq(0).height() * this.options.countMax;
+            if (this.options.countMax && !this._heightMax) {
+                this._heightMax = this.menu.element.children().eq(0).height() * this.options.countMax;
                 this.menu.element.css({
-                    'max-height': heightMax,
+                    'max-height': this._heightMax,
                     'overflow-y': 'auto',
                     'overflow-x': 'hidden'
                 });
