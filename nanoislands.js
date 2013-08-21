@@ -1906,7 +1906,7 @@ nb.define('user', {
     /**
      * Саджест
      * @namespace jquery.ui.suggest
-     *
+     * @extends {jquery.ui.autocomplete} http://api.jqueryui.com/autocomplete/
      * @description
      *      Саджест это блок сотоящий из инпута и выпадающего списка.
      *      При вводе какого-либо значения в инпут это значение матчится на список
@@ -1914,18 +1914,17 @@ nb.define('user', {
      *      показываются в выпадающем списке, в котором пользователь может выбрать
      *      нужный ему элемент.
      *      После выбора элемента значение инпута меняется на значение выбранного элемента
-     *
      */
 
     /**
      * Опции инициализации саджеста
      * @description
      *     Эти опции могут быть определены в yate шаблонах при описании наноблока.
-     *     Опции можно менять в рантайме через стандартные механизмы jquery.ui
+     *     Опции можно менять в рантайме через метод option
      *
      * @example
      *     var sug = nb.find('#mysuggest');
-     *     sug.suggest('option', 'source', 'http://mydomain.com/user/search');
+     *     sug.option('source', 'http://mydomain.com/user/search');
      *
      * @type {Object}
      */
@@ -1978,7 +1977,8 @@ nb.define('user', {
     }
 
     /**
-     * Методы саджеста помимо методов jquery.autocomplete (http://api.jqueryui.com/autocomplete/)
+     * Внешние методы саджеста
+     * @interface
      * @type {Object}
      */
     var apiSuggest = {
@@ -1988,6 +1988,12 @@ nb.define('user', {
          */
         getSelectedItem: function() {
             return this.$input.data().uiSuggest.selectedItem;
+        },
+
+        option: function() {
+            var args = Array.prototype.slice.call(arguments);
+            args.unshift('option');
+            return this.$input.suggest.apply(window, args);
         }
     }
 
