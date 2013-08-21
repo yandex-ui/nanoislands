@@ -68,7 +68,12 @@
          *
          * @type {String}
          */
-        size: 's'
+        size: 's',
+
+        /**
+         * Количесвто введенных символов, после которого начинать поиск слов
+         */
+        minLength: 2
     }
 
     /**
@@ -159,7 +164,8 @@
                 countMax: this.$node.data('countMax'),
                 type: this.$node.data('type'),
                 size: this.$node.data('size'),
-                highlight: this.$node.data('highlight')
+                highlight: this.$node.data('highlight'),
+                minLength: this.$node.data('minLength')
             });
 
             this.$suggest = this.$input.data().uiSuggest.menu.element;
