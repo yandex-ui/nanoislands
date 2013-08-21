@@ -1679,6 +1679,7 @@
 }
 .nb-suggest.ui-menu {
   margin-top: 1px;
+  max-width: 300px;
 }
 .nb-suggest.ui-menu .ui-menu-item a.ui-state-focus,
 .nb-suggest.ui-menu .ui-menu-item a.ui-state-active {
