@@ -2040,14 +2040,14 @@ nb.define('user', {
             var matcher = new RegExp( '(' + $.ui.autocomplete.escapeRegex(term) + ')', "ig" );
             var matches = item.label.match(matcher);
 
-            item.username = item.username.replace(matcher, '<b>$1</b>');
+            item.usernameHighlighted = item.username.replace(matcher, '<b>$1</b>');
 
             var partsEmail = item.email.split('@', 2);
 
             if (partsEmail.length > 1) {
-                item.email = partsEmail[0].replace(matcher, '<b>$1</b>') + '@' + partsEmail[1];
+                item.emailHighlighted = partsEmail[0].replace(matcher, '<b>$1</b>') + '@' + partsEmail[1];
             } else {
-                item.email = item.email.replace(matcher, '<b>$1</b>');
+                item.emailHighlighted = item.email.replace(matcher, '<b>$1</b>');
             }
         }
     }

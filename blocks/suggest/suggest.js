@@ -56,8 +56,6 @@
          * Включение или отключение выделения жирным начертанием результатов
          * матчинга в выпадающем списке.
          *
-         * @description ВНИМАНИЕ! Экспериментальная фича. В продакшене не использовать.
-         *
          * @type {Boolean}
          */
         highlight: false,
@@ -101,6 +99,8 @@
             if (this.options.highlight) {
                 if (typeof highlightings[this.options.type] == 'function') {
                     highlightings[this.options.type](clone, this._value());
+                } else if (typeof this.options.highlight == 'function') {
+                    this.options.highlight(clone, this._value());
                 }
             }
 
@@ -137,14 +137,14 @@
             var matcher = new RegExp( '(' + $.ui.autocomplete.escapeRegex(term) + ')', "ig" );
             var matches = item.label.match(matcher);
 
-            item.username = item.username.replace(matcher, '<b>$1</b>');
+            item.usernameHighlighted = item.username.replace(matcher, '<b>$1</b>');
 
             var partsEmail = item.email.split('@', 2);
 
             if (partsEmail.length > 1) {
-                item.email = partsEmail[0].replace(matcher, '<b>$1</b>') + '@' + partsEmail[1];
+                item.emailHighlighted = partsEmail[0].replace(matcher, '<b>$1</b>') + '@' + partsEmail[1];
             } else {
-                item.email = item.email.replace(matcher, '<b>$1</b>');
+                item.emailHighlighted = item.email.replace(matcher, '<b>$1</b>');
             }
         }
     }

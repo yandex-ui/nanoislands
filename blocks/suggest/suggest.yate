@@ -46,6 +46,7 @@ match /[.type == 'default'].item nb-suggest {
 match /[.type == 'username'].item nb-suggest {
     user = {
         'size': /.size
+        'mod': 'suggest'
         'username': (
             if .username {
                 .username
@@ -61,7 +62,21 @@ match /[.type == 'username'].item nb-suggest {
         if .userpic {
             'userpic': .userpic
         }
+        if .usernameHighlighted {
+            'usernameHighlighted': .usernameHighlighted
+        }
+        if .emailHighlighted {
+            'emailHighlighted': .emailHighlighted
+        }
     }
 
     nb-user(user)
+}
+
+match .user[.mod == 'suggest' && .usernameHighlighted].username nb-user-name {
+    html(..usernameHighlighted)
+}
+
+match .user[.mod == 'suggest' && .emailHighlighted].email nb-user-name {
+    html(..emailHighlighted)
 }
