@@ -99,6 +99,10 @@ match .modalPopup nb {
             @class += " _hidden"
         }
 
+        if .theme {
+            @class += ' nb-popup_theme_{.theme}'
+        }
+
         apply . nb-main-attrs
 
         <div class="nb-popup__i">
