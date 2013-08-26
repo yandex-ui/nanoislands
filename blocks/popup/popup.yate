@@ -129,9 +129,13 @@ match .modalPopup nb {
 
             if .buttons {
                 <div class="nb-popup__buttons">
-                    for .buttons {
-                        nb-button(.)
-                        ' '
+                    if count(.buttons.*) {
+                        for .buttons {
+                            nb-button(.)
+                            ' '
+                        }
+                    } else {
+                        html(.buttons)
                     }
                 </div>
             }
