@@ -19,6 +19,15 @@
     css:
       .nb-button_theme_action
 
+  Круглая кнопка
+    yate:
+      options = {
+        'theme': 'round'
+      }
+
+    css:
+      .nb-button_theme_round
+
 
   Псевдо-кнопка (замена псевдоссылкам)
     yate:
@@ -36,10 +45,12 @@ nb-button_theme()
 
   if !ie
     .nb-button_theme_normal
+    .nb-button_theme_round
       background: #C4C4C4
       background: linear-gradient(rgba(#000, 0.2) 0%, rgba(#000, 0.4) 100%)
 
     .nb-button_theme_normal:before
+    .nb-button_theme_round:before
       background: #fafafa
       background: linear-gradient(rgba(#fff) 0%, rgba(#eee) 100%)
 
@@ -59,6 +70,7 @@ nb-button_theme()
   // нажатие
 
   .nb-button_theme_normal
+  .nb-button_theme_round
   .nb-button_theme_action
 
     &:active
@@ -103,6 +115,20 @@ nb-button_theme()
   .nb-button_theme_pseudo.nb-button_disabled
     cursor: default
 
+  .nb-button_theme_round
+    line-height: 1
+    text-align: center
+
+  .nb-button_theme_round
+  .nb-button_theme_round:before
+    border-radius: 50%
+
+  .nb-button_theme_round .nb-button__text
+    padding: 0
+
+    vertical-align: top
+
+
 
   if ie
     a.nb-button
@@ -114,6 +140,7 @@ nb-button_theme()
       background: #D4D0C8
 
     a.nb-button_theme_normal
+    a.nb-button_theme_round
     a.nb-button_theme_action
       &:active
         border-right-color: #efefef

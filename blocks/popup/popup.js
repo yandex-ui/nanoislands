@@ -247,7 +247,7 @@
 
             $(this.node).removeClass('_hidden');
             //  Передвигаем попап.
-            this._move(where, how);
+            this._move(where, how, params);
             this.trigger('show');
 
             // Сообщаем в космос, что открылся попап
@@ -268,7 +268,7 @@
 
     // ----------------------------------------------------------------------------------------------------------------- //
 
-    popup._move = function(where, how) {
+    popup._move = function(where, how, params) {
         //  Запоминаем, на какой ноде мы открываем попап.
         this.where = where;
         var that = this;
@@ -289,7 +289,8 @@
                 dialogClass: 'nb-popup-outer ui-dialog-fixed',
                 close: function() {
                     that.trigger('close');
-                }
+                },
+                appendTo: params.appendTo
             });
 
             return;

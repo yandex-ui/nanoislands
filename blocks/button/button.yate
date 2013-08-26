@@ -4,25 +4,13 @@ func nb-button(nodeset options) {
         'theme': 'normal'
     }
 
-    nb-block('button', nb-extend(default, options))
-}
-
-func nb-button-link(nodeset options) {
-    default = {
-        'size': 'm'
-        'theme': 'normal'
+    if options.type == 'file' {
+        nb-block('buttonAttach', nb-extend(default, options))
+    } else if options.href {
+        nb-block('buttonLink', nb-extend(default, options))
+    } else {
+        nb-block('button', nb-extend(default, options))
     }
-
-    nb-block('buttonLink', nb-extend(default, options))
-}
-
-func nb-button-attach(nodeset options) {
-    default = {
-        'size': 'm'
-        'theme': 'normal'
-    }
-
-    nb-block('buttonAttach', nb-extend(default, options))
 }
 
 match .button nb {
@@ -40,10 +28,6 @@ match .button nb {
 
         if !( .content ) && .icon {
             @class += ' nb-button_only-icon'
-        }
-
-        if .type == 'round' {
-            @class += " nb-button_type_round"
         }
 
         <span class="nb-button__text">
@@ -81,10 +65,6 @@ match .buttonLink nb {
             @class += ' nb-button_only-icon'
         }
 
-        if .type == 'round' {
-            @class += " nb-button_type_round"
-        }
-
         <span class="nb-button__text">
             if (.content && .icon) {
                 apply .icon nb
@@ -100,7 +80,7 @@ match .buttonLink nb {
 }
 
 match .buttonAttach nb {
-    <span class="nb-button _init nb-button_size_{ .size } nb-button_type_attach  nb-button_theme_{ .theme }">
+    <span class="nb-button _init nb-button_size_{ .size } nb-button_type_attach nb-button_theme_{ .theme }">
         apply . nb-main-attrs
 
         if .disabled {
@@ -118,10 +98,6 @@ match .buttonAttach nb {
 
         if !( .content ) && .icon {
             @class += ' nb-button_only-icon'
-        }
-
-        if .type == 'round' {
-            @class += " nb-button_type_round"
         }
 
         <span class="nb-button__text">
