@@ -1003,12 +1003,21 @@ nb.define = function(name, methods, base) {
 nb.init = function(where) {
     where = where || document;
 
-    var nodes = $(where).find('._init');
+    var nodes = $(where).find('._init').addBack().filter('._init');
     for (var i = 0, l = nodes.length; i < l; i++) {
         nb.block( nodes[i] );
     }
 };
 
+nb.destroy = function(where) {
+    where = where || document;
+
+    var nodes = $(where).find('._init').addBack().filter('._init');
+    for (var i = 0, l = nodes.length; i < l; i++) {
+        var id = nodes[i].getAttribute('id');
+        delete _cache[id];
+    }
+};
 //  ---------------------------------------------------------------------------------------------------------------  //
 
 //  Создаем "космос".
@@ -1058,7 +1067,8 @@ nb.define('button', {
         'init': 'oninit',
         'textChange': 'onTextChange',
         'disable': 'onDisable',
-        'enable': 'onEnable'
+        'enable': 'onEnable',
+        'destroy': 'onDestroy'
     },
 
     oninit: function () {
@@ -1075,25 +1085,38 @@ nb.define('button', {
      * }
      */
     onTextChange: function (name, params) {
-        this.$node.find('.nb-button__text').html(params.text)
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.find('.nb-button__text').html(params.text);
+        }
     },
 
     /**
      * Disables the button
      */
     onDisable: function () {
-        this.$node.button( "disable" );
-        this.$node.addClass('nb-button_disabled');
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.button('disable');
+            this.$node.addClass('nb-button_disabled');
+        }
     },
 
     /**
      * Enables the button
      */
     onEnable: function() {
-        this.$node.button( "enable" );
-        this.$node.removeClass('nb-button_disabled');
-    }
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.button('enable');
+            this.$node.removeClass('nb-button_disabled');
+        }
+    },
 
+    onDestroy: function() {
+        // вызвали destroy в одном методе, но ссылка на кнопку была сохранена в другом
+        // в результате повторный вызов и ошибка в консоли
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.button('destroy');
+        }
+    }
 });
 
 /* button/button.js end */
@@ -1146,7 +1169,12 @@ nb.define('select', {
         that.button = c[0];
         that.$fallback = $(that.node).find('.nb-select__fallback');
         that.$selected = that.$fallback.children(':selected');
+
         that.value = that.$selected.val() ? that.$selected.text() : '';
+
+        this.button.trigger('textChange', {
+            text: that.value
+        });
 
         // preparing control depending on configuration and content
         that.controlPrepare();
@@ -1157,7 +1185,6 @@ nb.define('select', {
      */
     controlPrepare: function() {
         var that = this;
-
         // preparing position parameters for popup from direction data
         var position = {};
         position.collision = 'flip';
@@ -1249,7 +1276,9 @@ nb.define('select', {
         };
 
         // add click event for button
-        $(that.button.node).click(function() {
+        $(that.button.node).click(function(evt) {
+            // иначе сабмитит форму при клике
+            evt.preventDefault();
             // close if already visible
             if ($(that.node).autocomplete('widget').css('display') == 'block') {
                 $(that.node).autocomplete('close');
@@ -1274,6 +1303,7 @@ nb.define('select', {
         this.value = params.value;
         this.text = params.text;
         this.$selected.removeAttr('selected');
+
 
         this.$selected = this.$fallback.children('[value="' + this.value + '"]').attr('selected', 'selected');
         this.button.trigger('textChange', {
@@ -1345,26 +1375,31 @@ nb.define('radio-button', {
 
     $.nb = {};
 
-    // диалог, закрывающий по нажатию вне
-    jQuery.widget('nb.dialogCloseOnOuterClick', $.ui.dialog, {
-
+    $.widget('nb.baseDialog', $.ui.dialog, {
         options: {
             height: 'auto',
             minHeight: 'auto',
             width: 'auto'
         },
         open: function() {
-            var that = this;
             this._super();
+            var that = this;
 
-            this._on(this.document, {
-                mousedown: function(e) {
-                    if (e.which !== 1) return;
-                    if ($.contains(this.uiDialog[0], e.target)) return;
+            if (!this.options.modal) {
+                this._onmousedown = function(e) {
+                    if (e.which !== 1) {
+                        return;
+                    }
 
-                    this.close();
-                }
-            });
+                    if ($.contains(that.uiDialog[0], e.target)) {
+                        return;
+                    }
+
+                    that.close();
+                };
+
+                this.document.on('mousedown', this._onmousedown);
+            }
 
             this._onpopupclose = nb.on('popup-close', function() {
                 that.close();
@@ -1372,18 +1407,24 @@ nb.define('radio-button', {
         },
         close: function() {
             this._super();
-
-            this._off(this.document, 'mousedown');
+            this.document.off('mousedown', this._onmousedown);
             nb.off('popup-close', this._onpopupclose);
         },
-
+        _create: function() {
+            this._super();
+            this.element[0].widget = this;
+        },
+        _destroy: function() {
+            this._super();
+            delete this.element[0].widget;
+        },
         _createTitlebar: function() {
-            this.uiDialogTitlebarClose = $()
+            this.uiDialogTitlebarClose = $();
         }
     });
 
-    // диалог с хвостиком + dialogCloseOnOuterClick
-    jQuery.widget('nb.contextDialog', $.nb.dialogCloseOnOuterClick, {
+    // диалог с хвостиком
+    jQuery.widget('nb.contextDialog', $.nb.baseDialog, {
 
         tailOffset: 13,
 
@@ -1538,11 +1579,25 @@ nb.define('radio-button', {
     popup.events = {
         'init': 'oninit',
         'open': 'onopen',
-        'click .nb-popup__close': 'closeClick',
-        'close': 'onclose'
+        'click .nb-popup__close': 'onclose',
+        'close': 'onclose',
+        'destroy': 'ondestroy',
+        'position': 'onposition'
     };
 
     // ----------------------------------------------------------------------------------------------------------------- //
+
+    popup.onposition = function(e, params) {
+        var where = params.where;
+        var how = params.how;
+        this._move(where, how, params);
+    };
+
+    popup.ondestroy = function() {
+        if (this.node && this.node.widget) {
+            this.node.widget.destroy();
+        }
+    };
 
     popup.oninit = function() {
         var data = this.data();
@@ -1576,7 +1631,7 @@ nb.define('radio-button', {
             } else {
                 this.moved = true;
                 //  На другой ноде. Передвигаем его в нужное место.
-                this._move(where, how);
+                this._move(where, how, params);
             }
         } else {
             //  Попап закрыт. Будем открывать.
@@ -1594,15 +1649,11 @@ nb.define('radio-button', {
         }
     };
 
-    popup.closeClick = function() {
-        $(this.node).dialogCloseOnOuterClick('close');
-        this.trigger('close');
-    }
 
     popup.onclose = function() {
-
-        //  Снимаем флаг о том, что попап открыт.
-        this.where = null;
+        if (this.node && this.node.widget && this.node.widget.isOpen()) {
+            this.node.widget.close();
+        }
     };
 
     // ----------------------------------------------------------------------------------------------------------------- //
@@ -1611,12 +1662,22 @@ nb.define('radio-button', {
         //  Запоминаем, на какой ноде мы открываем попап.
         this.where = where;
         var that = this;
+        var using;
 
         var data = this.data();
 
+        if (params.animate) {
+            using =  function(props) {
+                $(this).animate({
+                    left : props.left,
+                    top : props.top
+                }, 'fast');
+            };
+        }
+
         //  Модальный попап двигать не нужно.
         if (this.modal) {
-            $(this.node).dialogCloseOnOuterClick({
+            $(this.node).baseDialog({
                 height: data.height,
                 minHeight: data.minheight,
                 width: data.width,
@@ -1629,7 +1690,10 @@ nb.define('radio-button', {
                 close: function() {
                     that.trigger('close');
                 },
-                appendTo: params.appendTo
+                appendTo: params.appendTo,
+                position: {
+                    using: using
+                }
             });
 
             return;
@@ -1647,7 +1711,8 @@ nb.define('radio-button', {
                 of: $(this.where),
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
-                collision: "fit flip"
+                collision: "fit flip",
+                using: using
             },
             close: function() {
                 that.trigger('close');

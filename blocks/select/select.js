@@ -16,7 +16,12 @@ nb.define('select', {
         that.button = c[0];
         that.$fallback = $(that.node).find('.nb-select__fallback');
         that.$selected = that.$fallback.children(':selected');
+
         that.value = that.$selected.val() ? that.$selected.text() : '';
+
+        this.button.trigger('textChange', {
+            text: that.value
+        });
 
         // preparing control depending on configuration and content
         that.controlPrepare();
@@ -27,7 +32,6 @@ nb.define('select', {
      */
     controlPrepare: function() {
         var that = this;
-
         // preparing position parameters for popup from direction data
         var position = {};
         position.collision = 'flip';
@@ -119,7 +123,9 @@ nb.define('select', {
         };
 
         // add click event for button
-        $(that.button.node).click(function() {
+        $(that.button.node).click(function(evt) {
+            // иначе сабмитит форму при клике
+            evt.preventDefault();
             // close if already visible
             if ($(that.node).autocomplete('widget').css('display') == 'block') {
                 $(that.node).autocomplete('close');
@@ -144,6 +150,7 @@ nb.define('select', {
         this.value = params.value;
         this.text = params.text;
         this.$selected.removeAttr('selected');
+
 
         this.$selected = this.$fallback.children('[value="' + this.value + '"]').attr('selected', 'selected');
         this.button.trigger('textChange', {
