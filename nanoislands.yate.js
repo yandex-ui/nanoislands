@@ -48,7 +48,6 @@ var yr = yr || require('yate/lib/runtime.js');
         var v3 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += (console.log(v2),'');
         if (cmpSN("file", m.n(j2, v2))) {
             r0 += m.f('f0', c0, i0, l0, a0, "buttonAttach", (yr.externals['nb-extend'])(yr.object2nodeset( v3 ), v2));
         } else if (nodeset2boolean( m.n(j1, v2) )) {

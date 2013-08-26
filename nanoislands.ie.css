@@ -69,10 +69,12 @@ a.nb-button {
   background: linear-gradient(rgba(96,64,0,0.4) 0%, rgba(70,47,0,0.54) 100%);
 }
 .nb-button_theme_normal:active .nb-button__text,
+.nb-button_theme_round:active .nb-button__text,
 .nb-button_theme_action:active .nb-button__text {
   top: 1px;
 }
 .nb-button_theme_normal.nb-button_disabled:active .nb-button__text,
+.nb-button_theme_round.nb-button_disabled:active .nb-button__text,
 .nb-button_theme_action.nb-button_disabled:active .nb-button__text {
   top: 0px;
 }
@@ -85,6 +87,14 @@ a.nb-button {
 .nb-button_theme_pseudo.nb-button_disabled {
   cursor: default;
 }
+.nb-button_theme_round {
+  line-height: 1;
+  text-align: center;
+}
+.nb-button_theme_round .nb-button__text {
+  padding: 0;
+  vertical-align: top;
+}
 a.nb-button {
   border: 2px solid;
   border-right-color: #666;
@@ -94,6 +104,7 @@ a.nb-button {
   background: #d4d0c8;
 }
 a.nb-button_theme_normal:active,
+a.nb-button_theme_round:active,
 a.nb-button_theme_action:active {
   border-right-color: #efefef;
   border-bottom-color: #efefef;
@@ -152,14 +163,6 @@ a.nb-button_theme_pseudo.nb-button_disabled {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   filter: alpha(opacity=0);
   border: 0;
-}
-.nb-button_type_round {
-  line-height: 1;
-  text-align: center;
-}
-.nb-button_type_round .nb-button__text {
-  padding: 0;
-  vertical-align: top;
 }
 .nb-popup {
   z-index: 100;
