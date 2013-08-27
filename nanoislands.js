@@ -2052,14 +2052,26 @@ nb.define('user', {
          * Возвращает выбранный в саджесте элемент данных из истоника.
          * @return {Object}
          */
-        getSelectedItem: function() {
+        getItemSelected: function() {
             return this.$input.data().uiSuggest.selectedItem;
         },
 
-        option: function() {
+        /**
+         * Устанавливает опцию для виджета.
+         * По сути является аналогом jq.ui.option
+         * http://api.jqueryui.com/autocomplete/#method-option
+         *
+         * @param  {String} name  Имя опции
+         * @param  [value] Значение опции
+         */
+        option: function(name, value) {
             var args = Array.prototype.slice.call(arguments);
             args.unshift('option');
-            return this.$input.suggest.apply(window, args);
+            return this.$input.suggest.apply(this.$input, args);
+        },
+
+        value: function() {
+            return this.$input.val();
         }
     }
 
@@ -2112,6 +2124,12 @@ nb.define('user', {
                     'overflow-x': 'hidden'
                 });
             }
+        },
+
+        search: function(value, event) {
+            this._trigger('_search');
+
+            return this._super(value, event);
         }
     });
 
@@ -2147,6 +2165,16 @@ nb.define('user', {
 
             var source = this.$node.data('source');
 
+            this.$node.find('input').on('keydown', function(e) {
+                var keyCode = $.ui.keyCode;
+
+                if ($.inArray(e.keyCode, [ keyCode.ENTER, keyCode.NUMPAD_ENTER ]) !== -1) {
+                    if (!this.$input.data().uiSuggest.menu.active) {
+                        this.trigger('nb-enter', this.value());
+                    }
+                }
+            }.bind(this));
+
             this.$input = this.$node.find('input').suggest({
                 source: source,
                 countMax: this.$node.data('countMax'),
@@ -2160,6 +2188,13 @@ nb.define('user', {
 
             this.$suggest.addClass(this.$node.data('class-suggest'));
 
+            this.$input.on('suggest_search', function(e) {
+                this.trigger('nb-change', this.value());
+            }.bind(this));
+
+            this.$input.on('suggestselect', function(e, item) {
+                this.trigger('nb-select', item);
+            }.bind(this));
         }
     }, apiSuggest));
 

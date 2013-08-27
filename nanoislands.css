@@ -1701,6 +1701,9 @@
 .nb-user_justify.nb-user_size_s .nb-user__name:only-child {
   top: 7.8px;
 }
+.nb-suggest__container {
+  display: inline-block;
+}
 .nb-suggest {
   padding: 0;
 }

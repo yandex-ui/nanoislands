@@ -24,7 +24,8 @@ match .suggest nb {
 
         input = {
             'size': .size
-            'width': .width
+            'content': .content
+            'attrs': .attrsInput
         }
 
         nb-input(input)

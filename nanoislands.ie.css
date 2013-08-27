@@ -1441,6 +1441,10 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 .nb-user_justify.nb-user_size_s .nb-user__name:only-child {
   top: 7.8px;
 }
+.nb-suggest__container {
+  display: inline;
+  zoom: 1;
+}
 .nb-suggest {
   padding: 0;
 }

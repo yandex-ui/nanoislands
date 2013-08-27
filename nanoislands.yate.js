@@ -2476,7 +2476,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j110 = [ 0, 'suggest' ];
 
-    var j111 = [ 0, 'width' ];
+    var j111 = [ 0, 'attrsInput' ];
 
     var j112 = [ 0, 'countMax' ];
 
@@ -4349,7 +4349,8 @@ var yr = yr || require('yate/lib/runtime.js');
         var r1 = {};
         var a1 = { a: {} };
         r1[ "size" ] = yr.nodeset2data(selectNametest('size', c0, []));
-        r1[ "width" ] = yr.nodeset2data(selectNametest('width', c0, []));
+        r1[ "content" ] = yr.nodeset2data(selectNametest('content', c0, []));
+        r1[ "attrs" ] = yr.nodeset2data(selectNametest('attrsInput', c0, []));
         var v114 = r1;
 
         r0 += closeAttrs(a0);
