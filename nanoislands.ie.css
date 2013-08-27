@@ -735,7 +735,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 }
 .nb-input {
   padding: 0 8px;
-  max-width: 100%;
+  width: 100%;
   background: none;
   border: 0;
   outline: 0 none;
