@@ -13,9 +13,9 @@
      *      После выбора элемента значение инпута меняется на значение выбранного элемента
      *
      *      Поддерживаемые события:
-     *        nb-change – всплывает при любом изменении инпута
+     *        nb-type – всплывает при вводе значения в инпут
      *        nb-select – всплывает при выборе значения из саджеста
-     *        nb-enter – всплывает при нажатии на энетер и отсутвии саджеста
+     *        nb-keypress-enter – всплывает при нажатии на энетер и отсутвии саджеста
      */
 
     /**
@@ -181,11 +181,7 @@
 
             item.usernameHighlighted = item.username.replace(matcher, '<b>$1</b>');
 
-            var partsEmail = item.email.split('@', 2);
-
-            if (partsEmail.length > 1) {
-                item.emailHighlighted = partsEmail[0].replace(matcher, '<b>$1</b>') + '@' + partsEmail[1];
-            } else {
+            if (item.email) {
                 item.emailHighlighted = item.email.replace(matcher, '<b>$1</b>');
             }
         }
@@ -206,7 +202,7 @@
 
                 if ($.inArray(e.keyCode, [ keyCode.ENTER, keyCode.NUMPAD_ENTER ]) !== -1) {
                     if (!this.$input.data().uiSuggest.menu.active) {
-                        this.trigger('nb-enter', this.value());
+                        this.trigger('nb-keypress-enter', this.value());
                     }
                 }
             }.bind(this));
@@ -225,11 +221,11 @@
             this.$suggest.addClass(this.$node.data('class-suggest'));
 
             this.$input.on('suggest_search', function(e) {
-                this.trigger('nb-change', this.value());
+                this.trigger('nb-type', this.value());
             }.bind(this));
 
             this.$input.on('suggestselect', function(e, item) {
-                this.trigger('nb-select', item);
+                this.trigger('nb-select', item.item);
             }.bind(this));
         }
     }, apiSuggest));
