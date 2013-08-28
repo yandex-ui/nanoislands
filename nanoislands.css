@@ -37,6 +37,8 @@
   outline: none;
 }
 
+.nb-select .nb-button__text:before,
+.nb-select .nb-button_size_s .nb-button__text:before,
 .nb-checkbox__flag_radio,
 .nb-checkbox__flag_checkbox,
 .nb-icon {
@@ -75,32 +77,32 @@
   white-space: nowrap;
 }
 
-.nb-radio-button .nb-radio-button__button:first-child > .nb-button,
-.nb-radio-button .nb-radio-button__button:first-child > .nb-button:before,
-.nb-input-group .nb-button:first-child,
-.nb-input-group .nb-button:first-child:before,
-.nb-input-group .nb-input-box:first-child > .nb-input,
-.nb-input-group .nb-input-box:first-child > .nb-input:before {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+.nb-radio-button .nb-radio-button__button:first-child:not(:only-child) > .nb-button,
+.nb-radio-button .nb-radio-button__button:first-child:not(:only-child) > .nb-button:before,
+.nb-input-group .nb-button:first-child:not(:only-child),
+.nb-input-group .nb-button:first-child:not(:only-child):before,
+.nb-input-group .nb-input-box:first-child:not(:only-child) > .nb-input,
+.nb-input-group .nb-input-box:first-child:not(:only-child) > .nb-input:before {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
-.nb-radio-button .nb-radio-button__button:last-child > .nb-button,
-.nb-radio-button .nb-radio-button__button:last-child > .nb-button:before,
-.nb-input-group .nb-button:last-child,
-.nb-input-group .nb-button:last-child:before,
-.nb-input-group .nb-input-box:last-child > .nb-input,
-.nb-input-group .nb-input-box:last-child > .nb-input:before {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+.nb-radio-button .nb-radio-button__button:last-child:not(:only-child) > .nb-button,
+.nb-radio-button .nb-radio-button__button:last-child:not(:only-child) > .nb-button:before,
+.nb-input-group .nb-button:last-child:not(:only-child),
+.nb-input-group .nb-button:last-child:not(:only-child):before,
+.nb-input-group .nb-input-box:last-child:not(:only-child) > .nb-input,
+.nb-input-group .nb-input-box:last-child:not(:only-child) > .nb-input:before {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
 .nb-radio-button .nb-radio-button__button:not(:first-child):not(:last-child),
-.nb-radio-button .nb-radio-button__button:last-child,
+.nb-radio-button .nb-radio-button__button:last-child:not(:only-child),
 .nb-input-group .nb-button:not(:first-child):not(:last-child),
-.nb-input-group .nb-button:last-child,
+.nb-input-group .nb-button:last-child:not(:only-child),
 .nb-input-group .nb-input-box:not(:first-child):not(:last-child),
-.nb-input-group .nb-input-box:last-child {
+.nb-input-group .nb-input-box:last-child:not(:only-child) {
   margin-left: -1px;
 }
 
@@ -155,6 +157,18 @@
 
 .nb-button_disabled .nb-button_disabled {
   opacity: 1;
+}
+
+.nb-select .nb-button__text:before,
+.nb-select .nb-button_size_s .nb-button__text:before {
+  width: 6px;
+  height: 6px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  margin-top: -0.33em;
+  -webkit-transform: scale(0.75) rotate(45deg);
+  -ms-transform: scale(0.75) rotate(45deg);
+  transform: scale(0.75) rotate(45deg);
 }
 
 .nb-button_theme_normal {
@@ -824,15 +838,15 @@ input[type=file]:hover:not(:checked) + .nb-button_theme_action.nb-button_size_s:
 
 .nb-radio-button .nb-radio-button__button:not(:first-child):not(:last-child) > .nb-button,
 .nb-radio-button .nb-radio-button__button:not(:first-child):not(:last-child) > .nb-button:before {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
-.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button:before {
+.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child) > .nb-button:before {
   right: 0;
 }
 
-input.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button,
-label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
+input.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child) > .nb-button,
+label.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child) > .nb-button {
   border-right-color: transparent;
 }
 
@@ -866,28 +880,31 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
 }
 
 .nb-select {
-  max-width: 100%;
+  position: relative;
   display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
 }
 
 .nb-select__fallback {
   display: none;
 }
 
-.nb-select__button {
-  max-width: 100%;
-  cursor: default;
-  text-align: left;
-  vertical-align: top;
+.nb-select .nb-button__text:before {
+  content: "";
+  float: right;
+  top: 0.7em;
+  left: -1px;
+  margin-right: -6px;
+  margin-left: 10px;
 }
 
-.nb-select .nb-button__text {
-  display: block;
-  overflow: hidden;
-  margin-right: 1em;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwb2x5Z29uIHBvaW50cz0iNy4xOTQsMiAzLjk5Niw1LjE5NSAwLjc5OSwyIDAsMi43OTkgMy45OTYsNi43OTQgNy45OTEsMi43OTkiLz48L3N2Zz4=") no-repeat scroll 100% 50% transparent;
+.nb-select .nb-button_size_s .nb-button__text:before {
+  float: right;
+  top: 0.6em;
+  left: -1px;
+  margin-right: -6px;
+  margin-left: 10px;
 }
 
 .nb-select .ui-menu {
@@ -958,13 +975,6 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child) > .nb-button {
 
 .nb-select__item_label_yes .nb-select__text {
   font-weight: bold;
-}
-
-.nb-select__button {
-  cursor: default;
-  max-width: 100%;
-  text-align: left;
-  vertical-align: top;
 }
 
 .nb-select__list {
@@ -1471,18 +1481,18 @@ input:not(:checked) + .nb-checkbox__flag_checkbox > .nb-checkbox__flag__icon {
   z-index: 9;
 }
 
-.nb-input-group .nb-button:first-child:before {
+.nb-input-group .nb-button:first-child:not(:only-child):before {
   right: 0;
 }
 
-input.nb-input-group .nb-button:first-child,
-label.nb-input-group .nb-button:first-child {
+input.nb-input-group .nb-button:first-child:not(:only-child),
+label.nb-input-group .nb-button:first-child:not(:only-child) {
   border-right-color: transparent;
 }
 
 .nb-input-group .nb-button:not(:first-child):not(:last-child),
 .nb-input-group .nb-button:not(:first-child):not(:last-child):before {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 .nb-input-group .nb-button:not(:first-child):not(:last-child):before {
@@ -1496,15 +1506,15 @@ label.nb-input-group .nb-button:not(:first-child):not(:last-child) {
 
 .nb-input-group .nb-input-box:not(:first-child):not(:last-child) > .nb-input,
 .nb-input-group .nb-input-box:not(:first-child):not(:last-child) > .nb-input:before {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
-.nb-input-group .nb-input-box:not(:last-child) > .nb-input:before {
+.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input:before {
   right: 0;
 }
 
-input.nb-input-group .nb-input-box:not(:last-child) > .nb-input,
-label.nb-input-group .nb-input-box:not(:last-child) > .nb-input {
+input.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input,
+label.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input {
   border-right-color: transparent;
 }
 

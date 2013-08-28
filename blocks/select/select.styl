@@ -1,38 +1,26 @@
-nb-select()
+.nb-select
+  kind: block inline
+  max-width: 100%
 
-  .nb-select
-    max-width: 100%
-    display: inline-block
-
-  .nb-select__fallback
+  &__fallback
     if !ie
       display: none
     if ie
       display: inline-block
 
-
-  .nb-select__button
+  &__button
     if ie
       display: none
 
-    max-width: 100%
 
-    cursor: default
-    text-align: left
+.nb-select .nb-button__text:before
+  content: ""
+  skin: icon_dropdown selecty
 
-    vertical-align: top
+.nb-select .nb-button_size_s .nb-button__text:before
+  skin: icon_dropdown selecty small
 
-  .nb-select .nb-button__text
-    display: block
-    overflow: hidden
-
-    margin-right: 1em
-
-    -o-text-overflow: ellipsis
-    text-overflow: ellipsis
-
-    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwb2x5Z29uIHBvaW50cz0iNy4xOTQsMiAzLjk5Niw1LjE5NSAwLjc5OSwyIDAsMi43OTkgMy45OTYsNi43OTQgNy45OTEsMi43OTkiLz48L3N2Zz4=") no-repeat scroll 100% 50% transparent
-
+nb-select()
   .nb-select .ui-menu
 
     -webkit-user-select: none
@@ -95,12 +83,6 @@ nb-select()
 
   .nb-select__item_label_yes .nb-select__text
     font-weight: bold
-
-  .nb-select__button
-    cursor: default
-    max-width: 100%
-    text-align: left
-    vertical-align: top
 
   .nb-select__list
     overflow-x: hidden
