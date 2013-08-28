@@ -26,6 +26,10 @@ match .button nb {
             @disabled = 'disabled'
         }
 
+        if .type {
+            @type = .type
+        }
+
         if !( .content ) && .icon {
             @class += ' nb-button_only-icon'
         }
