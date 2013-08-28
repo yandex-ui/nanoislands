@@ -394,7 +394,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var v38 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f0', c0, i0, l0, a0, "header", (yr.externals['nb-extend'])(yr.object2nodeset( v38 ), v37));
+        r0 += m.f('f0', c0, i0, l0, a0, "header", (yr.externals['nb-deep-extend'])(yr.object2nodeset( v38 ), v37));
 
         return r0;
     };
