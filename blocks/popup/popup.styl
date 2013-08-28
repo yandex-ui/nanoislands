@@ -1,34 +1,21 @@
-// popup
-
 .nb-popup
   z-index: 100
   position: absolute
-  text-align: left
-  white-space: normal
-  background: #FFF
-  box-shadow: 0px 0px 0px 1px rgba(0,0,0,.15), 0px 8px 30px -5px rgba(0,0,0,.5)
-  outline: 0 none
+  skin: popup (-content '&__content') (-close '&__close') (-tail '&__tail')
 
-  if ie
-    border: 1px solid #CBCBCB
+// popup
 
-  // Custom content goes here. If there is a need in popup-wide things, drop it.
-  .nb-popup__content
-    display: block
-
-    white-space: normal // Doubled to fix IE bug
-
-
+.nb-popup
   .nb-popup__line
     display: block
-    padding: ($gapS / 2) $gapS
+    padding: ($islands_s / 2) $islands_s
     outline: 0 none
 
   .nb-popup__line:first-child
-    padding: $gapS $gapS ($gapS / 2) $gapS
+    padding: $islands_s $islands_s ($islands_s / 2) $islands_s
 
   .nb-popup__line:last-child
-    padding: ($gapS / 2) $gapS $gapS $gapS
+    padding: ($islands_s / 2) $islands_s $islands_s $islands_s
 
 
   .nb-popup__line._link
@@ -46,124 +33,44 @@
     background: #DDD
     overflow: hidden
 
-  // popup's tail
-.nb-popup__tail
-  width:  100%
-  height:  0
-
-.nb-popup__tail i
-  position: absolute
-  font-size: 11px
-  width: 16px
-  height: 16px
-  clip: rect(0,0,0,0) // Hide until mode set
-  z-index: 101
-
-  .nb-popup_tail_to_bottom > &
-    top: 0
-    left: 50%
-    margin: -13px -8px
-    clip: rect(-99em, 99em, auto, -99em)
-
-  .nb-popup_tail_to_top > &
-    bottom: 0
-    left: 50%
-    margin: -13px -8px
-    clip: rect(0, 99em, 99em, -99em)
-
-  .nb-popup_tail_to_left > &
-    top: 50%
-    right: 0
-    margin:  -8px -13px
-    clip: rect(-99em, 99em, 99em, 0)
-
-  .nb-popup_tail_to_right > &
-    top: 50%
-    left: 0
-    margin:  -8px -13px
-    clip: rect(-99em, auto, 99em, -99em)
-
-
-.nb-popup__tail i:before
-  content: ""
-
-  position: absolute
-  top: 0
-  left: 0
-
-  width: 100%
-  height: 100%
-
-  background: #FFF
-
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2), 3px 3px 20px 0 rgba(0, 0, 0, 0.2)
-  transform: rotate(45deg)
-
-  .nb-popup_tail_to_left > &,
-  .nb-popup_tail_to_right > &
-    transform: rotate(45deg)
-
-
-  .nb-popup_tail_to_bottom > &
-    top: 50%
-
-  .nb-popup_tail_to_top > &
-    top: -50%
-
-
-  .nb-popup_tail_to_right > &
-    left: 50%
-
-  .nb-popup_tail_to_left > &
-    left: -50%
-
 .nb-popup__title
   font: $font-h3
-  padding: $gapS
+  padding: $islands_s
 
 .nb-popup__content
   font: $font-p1
-  padding: 0 $gapS
-
-.nb-popup__close
-  cursor: pointer
-  opacity: .25
-  position: absolute
-  right: ($gapS / 2)
-  top: ($gapS / 3)
-
-.nb-popup__close:hover
-  opacity: 1
+  padding: 0 $islands_s
 
 .nb-popup__buttons
 
-  padding: $gapS
-  padding-top: $gapS
+  padding: $islands_s
+  padding-top: $islands_s
 
 .nb-popup__button
-  margin-right:  $gapS
+  margin-right:  $islands_s
 
 .nb-popup.ui-dialog-fixed
   position: fixed !important
 
+.nb-popup-outer.ui-dialog,
 .nb-popup-outer.ui-dialog .ui-dialog-content
   padding:  0
 
-.nb-popup_tail_to_bottom .nb-popup__tail_to_right i
-.nb-popup_tail_to_top .nb-popup__tail_to_right i
-  left: 75%
+// .nb-popup_tail_to_bottom .nb-popup__tail_to_right i
+// .nb-popup_tail_to_top .nb-popup__tail_to_right i
+//   left: 75%
 
-.nb-popup_tail_to_bottom .nb-popup__tail_to_left i
-.nb-popup_tail_to_top .nb-popup__tail_to_left i
-  left: 25%
+// .nb-popup_tail_to_bottom .nb-popup__tail_to_left i
+// .nb-popup_tail_to_top .nb-popup__tail_to_left i
+//   left: 25%
 
-.nb-popup_tail_to_left .nb-popup__tail_to_bottom i
-.nb-popup_tail_to_right .nb-popup__tail_to_bottom i
-  top: 75%
+// .nb-popup_tail_to_left .nb-popup__tail_to_bottom i
+// .nb-popup_tail_to_right .nb-popup__tail_to_bottom i
+//   top: 75%
 
-.nb-popup_tail_to_left .nb-popup__tail_to_top i
-.nb-popup_tail_to_right .nb-popup__tail_to_top i
-  top: 25%
+// .nb-popup_tail_to_left .nb-popup__tail_to_top i
+// .nb-popup_tail_to_right .nb-popup__tail_to_top i
+//   top: 25%
 
 
 .nb-popup-outer

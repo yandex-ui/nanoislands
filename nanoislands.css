@@ -37,6 +37,7 @@
   outline: none;
 }
 
+.nb-popup__close,
 .nb-select .nb-button__text:before,
 .nb-select .nb-button_size_s .nb-button__text:before,
 .nb-checkbox__flag_radio,
@@ -159,6 +160,12 @@
   opacity: 1;
 }
 
+.nb-popup__close {
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04IDEuMjA5Yy0zLjc1MSAwLTYuNzkxIDMuMDQtNi43OTEgNi43OTEgMCAzLjc0OSAzLjA0IDYuNzg5IDYuNzkxIDYuNzg5IDMuNzQ5IDAgNi43ODktMy4wNCA2Ljc4OS02Ljc4OSAwLTMuNzUxLTMuMDQtNi43OTEtNi43ODktNi43OTF6bTMuOTkgOS4zNTVsLTEuNDI2IDEuNDI2LTIuNTY0LTIuNTY0LTIuNTY0IDIuNTY0LTEuNDI2LTEuNDI2IDIuNTY0LTIuNTY0LTIuNTY0LTIuNTY0IDEuNDI2LTEuNDI2IDIuNTY0IDIuNTY0IDIuNTY0LTIuNTY0IDEuNDI2IDEuNDI2LTIuNTY0IDIuNTY0IDIuNTY0IDIuNTY0eiIvPjwvc3ZnPg==");
+}
+
 .nb-select .nb-button__text:before,
 .nb-select .nb-button_size_s .nb-button__text:before {
   width: 6px;
@@ -169,6 +176,15 @@
   -webkit-transform: scale(0.75) rotate(45deg);
   -ms-transform: scale(0.75) rotate(45deg);
   transform: scale(0.75) rotate(45deg);
+}
+
+.nb-popup__close {
+  cursor: pointer;
+  opacity: 0.2;
+}
+
+.nb-popup__close:hover {
+  opacity: 1;
 }
 
 .nb-button_theme_normal {
@@ -649,16 +665,98 @@ input[type=file]:hover:not(:checked) + .nb-button_theme_action.nb-button_size_s:
 .nb-popup {
   z-index: 100;
   position: absolute;
-  text-align: left;
-  white-space: normal;
   background: #fff;
-  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.15), 0px 8px 30px -5px rgba(0,0,0,0.5);
-  outline: 0 none;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 8px 30px -5px rgba(0,0,0,0.5);
 }
 
-.nb-popup .nb-popup__content {
-  display: block;
-  white-space: normal;
+.nb-popup_to_top .nb-popup__tail {
+  bottom: 0;
+  left: 50%;
+  margin: -1em -0.5em;
+  clip: rect(0,99em,99em,-99em);
+}
+
+.nb-popup_to_top .nb-popup__tail:before {
+  top: -50%;
+}
+
+.nb-popup_to_right .nb-popup__tail {
+  top: 50%;
+  left: 0;
+  margin: -0.5em -1em;
+  clip: rect(-99em,auto,99em,-99em);
+}
+
+.nb-popup_to_right .nb-popup__tail:before {
+  left: 50%;
+}
+
+.nb-popup_to_bottom .nb-popup__tail {
+  top: 0;
+  left: 50%;
+  margin: -1em -0.5em;
+  clip: rect(-99em,99em,auto,-99em);
+}
+
+.nb-popup_to_bottom .nb-popup__tail:before {
+  top: 50%;
+}
+
+.nb-popup_to_left .nb-popup__tail {
+  top: 50%;
+  right: 0;
+  margin: -0.5em -1em;
+  clip: rect(-99em,99em,99em,0);
+}
+
+.nb-popup_to_left .nb-popup__tail:before {
+  left: -50%;
+}
+
+.nb-popup__content {
+  padding: 0 20px 0 20px;
+}
+
+.nb-popup__content:before {
+  content: "";
+  display: table;
+  margin-bottom: 16px;
+}
+
+.nb-popup__content:after {
+  content: "";
+  display: table;
+  clear: both;
+  margin-top: 16px;
+}
+
+.nb-popup__close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  margin-top: 0;
+}
+
+.nb-popup__tail {
+  position: absolute;
+  font-size: 16px;
+  width: 1em;
+  height: 1em;
+  clip: rect(0,0,0,0);
+}
+
+.nb-popup__tail:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 8px 8px 30px -5px rgba(0,0,0,0.5);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .nb-popup .nb-popup__line {
@@ -688,85 +786,6 @@ input[type=file]:hover:not(:checked) + .nb-button_theme_action.nb-button_size_s:
   overflow: hidden;
 }
 
-.nb-popup__tail {
-  width: 100%;
-  height: 0;
-}
-
-.nb-popup__tail i {
-  position: absolute;
-  font-size: 11px;
-  width: 16px;
-  height: 16px;
-  clip: rect(0,0,0,0);
-  z-index: 101;
-}
-
-.nb-popup_tail_to_bottom > .nb-popup__tail i {
-  top: 0;
-  left: 50%;
-  margin: -13px -8px;
-  clip: rect(-99em,99em,auto,-99em);
-}
-
-.nb-popup_tail_to_top > .nb-popup__tail i {
-  bottom: 0;
-  left: 50%;
-  margin: -13px -8px;
-  clip: rect(0,99em,99em,-99em);
-}
-
-.nb-popup_tail_to_left > .nb-popup__tail i {
-  top: 50%;
-  right: 0;
-  margin: -8px -13px;
-  clip: rect(-99em,99em,99em,0);
-}
-
-.nb-popup_tail_to_right > .nb-popup__tail i {
-  top: 50%;
-  left: 0;
-  margin: -8px -13px;
-  clip: rect(-99em,auto,99em,-99em);
-}
-
-.nb-popup__tail i:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2), 3px 3px 20px 0 rgba(0,0,0,0.2);
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.nb-popup_tail_to_left > .nb-popup__tail i:before,
-.nb-popup_tail_to_right > .nb-popup__tail i:before {
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.nb-popup_tail_to_bottom > .nb-popup__tail i:before {
-  top: 50%;
-}
-
-.nb-popup_tail_to_top > .nb-popup__tail i:before {
-  top: -50%;
-}
-
-.nb-popup_tail_to_right > .nb-popup__tail i:before {
-  left: 50%;
-}
-
-.nb-popup_tail_to_left > .nb-popup__tail i:before {
-  left: -50%;
-}
-
 .nb-popup__title {
   font: 1.25em/1.125em Arial, sans-serif;
   padding: 10px;
@@ -775,18 +794,6 @@ input[type=file]:hover:not(:checked) + .nb-button_theme_action.nb-button_size_s:
 .nb-popup__content {
   font: 0.9376em/1.4667em Arial, sans-serif;
   padding: 0 10px;
-}
-
-.nb-popup__close {
-  cursor: pointer;
-  opacity: 0.25;
-  position: absolute;
-  right: 5px;
-  top: 3.3333333333333335px;
-}
-
-.nb-popup__close:hover {
-  opacity: 1;
 }
 
 .nb-popup__buttons {
@@ -802,28 +809,9 @@ input[type=file]:hover:not(:checked) + .nb-button_theme_action.nb-button_size_s:
   position: fixed !important;
 }
 
+.nb-popup-outer.ui-dialog,
 .nb-popup-outer.ui-dialog .ui-dialog-content {
   padding: 0;
-}
-
-.nb-popup_tail_to_bottom .nb-popup__tail_to_right i,
-.nb-popup_tail_to_top .nb-popup__tail_to_right i {
-  left: 75%;
-}
-
-.nb-popup_tail_to_bottom .nb-popup__tail_to_left i,
-.nb-popup_tail_to_top .nb-popup__tail_to_left i {
-  left: 25%;
-}
-
-.nb-popup_tail_to_left .nb-popup__tail_to_bottom i,
-.nb-popup_tail_to_right .nb-popup__tail_to_bottom i {
-  top: 75%;
-}
-
-.nb-popup_tail_to_left .nb-popup__tail_to_top i,
-.nb-popup_tail_to_right .nb-popup__tail_to_top i {
-  top: 25%;
 }
 
 .nb-popup-outer .nb-popup {
