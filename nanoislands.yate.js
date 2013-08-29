@@ -2613,9 +2613,6 @@ var yr = yr || require('yate/lib/runtime.js');
             }
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
-        if (simpleBoolean('type', c0)) {
-            a0.a[ "type" ] = new yr.scalarAttr(simpleScalar('type', c0));
-        }
         if (!nodeset2boolean( (selectNametest('content', c0, [])) ) && simpleBoolean('icon', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -4118,7 +4115,10 @@ var yr = yr || require('yate/lib/runtime.js');
             r1[ "size" ] = "m";
             r1[ "content" ] = yr.nodeset2data(selectNametest('buttonContent', c0, []));
             r1[ "class" ] = "nb-arrow__button";
-            r1[ "type" ] = "submit";
+            var r2 = {};
+            var a2 = { a: {} };
+            r2[ "type" ] = "submit";
+            r1[ "attrs" ] = r2;
             var v111 = r1;
 
             var tmp0 = a0.a[ "class" ];
