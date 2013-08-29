@@ -1621,7 +1621,7 @@ input:not(:checked) + .nb-checkbox__flag_checkbox > .nb-checkbox__flag__icon {
 }
 
 .nb-input {
-  width: 400px;
+  width: 190px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid transparent;
