@@ -328,7 +328,7 @@
 }
 .nb-popup__title {
   font: 1.25em/1.125em Arial, sans-serif;
-  padding: 0 20px 0 10px;
+  padding: 10px;
   display: block;
   overflow: hidden;
   -o-text-overflow: ellipsis;
