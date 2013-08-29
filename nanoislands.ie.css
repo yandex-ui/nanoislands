@@ -1260,6 +1260,8 @@ label.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input
   position: relative;
   display: inline;
   zoom: 1;
+  overflow: hidden;
+  -webkit-transform: translate(0, 0);
 }
 .nb-loader__spinner {
   position: absolute;

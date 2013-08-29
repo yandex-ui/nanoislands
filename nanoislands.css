@@ -1801,6 +1801,8 @@ label.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input
 .nb-loader {
   position: relative;
   display: inline-block;
+  overflow: hidden;
+  -webkit-transform: translate(0, 0);
 }
 
 .nb-loader__spinner {
