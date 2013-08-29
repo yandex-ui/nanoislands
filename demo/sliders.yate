@@ -3,7 +3,6 @@ func slider-small() {
         'id': 's2'
         'size': 's'
         'handle': {
-            'type': 'round'
             'class': 'js-custom-class'
         }
         'value': 20
@@ -16,18 +15,7 @@ func slider-medium() {
         'size': 'm'
         'class': 'js-super-class'
         'value': 50
-        'handle': {
-            'type': 'round'
-        }
         'id': 's1'
-    }
-    nb-slider(slider)
-}
-
-func slider-large() {
-    slider = {
-        'size': 'l'
-        'value': 70
     }
     nb-slider(slider)
 }
@@ -46,12 +34,5 @@ func sliders() {
         </div>
 
         show(slider-medium())
-    </div>
-    <div class="demo-section">
-        <div class="demo-h3">
-            'Size: L, handle: Square'
-        </div>
-
-        show(slider-large())
     </div>
 }

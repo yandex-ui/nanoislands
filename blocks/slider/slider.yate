@@ -1,13 +1,8 @@
 func nb-slider(nodeset options) {
     default = {
-        'size': 's'
         'value': 0
         'type': 'range'
-        'theme': 'normal'
         'orientation': 'horiz'
-        'handle': {
-            'type': 'square'
-        }
     }
 
     nb-block('slider', nb-deep-extend(default, options))
@@ -18,13 +13,19 @@ match .slider nb {
         apply . nb-main-attrs
 
         <div class="nb-slider__body nb-slider__body_type_{{.type}}">
-            <a>
-                @class = 'nb-slider__handle nb-button nb-button_size_{.size} nb-button_theme_{.theme} ui-slider-handle'
+            <label>
+                @class = 'ui-slider-handle'
+                if .size == 's' {
+                    @class += ' nb-slider__small-handle'
+                } else {
+                    @class += ' nb-slider__handle'
+                }
                 apply .handle.* nb-attrs
-                <span class="nb-slider__handle__text"></span>
-            </a>
+                <span class="nb-button__text">
+                    <input class="nb-slider__fallback" type="text" value="{.value}" id="{.id}__value" readonly="readonly" />
+                </span>
+            </label>
         </div>
-        <input class="nb-slider__fallback" type="text" value="{.value}" id="{.id}" />
 
     </div>
 }

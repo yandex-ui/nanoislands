@@ -1298,10 +1298,9 @@ nb.define('slider', {
     onInit: function() {
         var that = this;
         that.data = that.data();
-        that.$fallback = $(that.node).children('.nb-slider__fallback');
+        that.$fallback = $(that.node).find('.nb-slider__fallback');
         that.$control = $(that.node).children('.nb-slider__body');
 
-        that.$fallback.hide();
         that.$control.show();
 
         that.$control.slider({
@@ -1312,16 +1311,21 @@ nb.define('slider', {
                 that.onChangeValue();
             }
         });
+        that.onChangeValue();
     },
 
     onChangeValue: function(value){
         if (value) {
             this.data.value = this.$control.slider("option", "value", value);
         }
-
         this.$fallback.attr('value', this.data.value);
+
+        // Adjust the width of an input to its content
+        this.$fallback.width(0);
+        this.$fallback.width(this.$fallback[0].scrollWidth);
     }
 });
+
 /* slider/slider.js end */
 
 /* radio-button/radio-button.js begin */
