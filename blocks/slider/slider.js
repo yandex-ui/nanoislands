@@ -10,6 +10,7 @@ nb.define('slider', {
         that.$fallback = $(that.node).find('.nb-slider__fallback');
         that.$control = $(that.node).children('.nb-slider__body');
 
+        that.$fallback.attr('readonly','readonly');
         that.$control.show();
 
         that.$control.slider({

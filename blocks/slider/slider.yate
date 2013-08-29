@@ -22,7 +22,7 @@ match .slider nb {
                 }
                 apply .handle.* nb-attrs
                 <span class="nb-button__text">
-                    <input class="nb-slider__fallback" type="text" value="{.value}" id="{.id}__value" readonly="readonly" />
+                    <input class="nb-slider__fallback" type="text" value="{.value}" id="{.id}__value" />
                 </span>
             </label>
         </div>

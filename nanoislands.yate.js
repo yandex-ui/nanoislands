@@ -3842,7 +3842,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += m.a(m, m.s(j82, c0), 'nb-attrs', a0)
         r0 += closeAttrs(a0);
         r0 += "<span class=\"" + "nb-button__text" + "\">";
-        r0 += "<input class=\"" + "nb-slider__fallback" + "\" type=\"" + "text" + "\" value=\"" + nodeset2attrvalue( ( selectNametest('value', c0, []) ) ) + "\" id=\"" + nodeset2attrvalue( ( selectNametest('id', c0, []) ) ) + "__value" + "\" readonly=\"" + "readonly" + "\"/>";
+        r0 += "<input class=\"" + "nb-slider__fallback" + "\" type=\"" + "text" + "\" value=\"" + nodeset2attrvalue( ( selectNametest('value', c0, []) ) ) + "\" id=\"" + nodeset2attrvalue( ( selectNametest('id', c0, []) ) ) + "__value" + "\"/>";
         r0 += "</span>";
         r0 += "</label>";
         r0 += "</div>";
