@@ -39,7 +39,9 @@ match .arrow nb {
                     'size': 'm'
                     'content': .buttonContent
                     'class': 'nb-arrow__button'
-                    'type': 'submit'
+                    'attrs': {
+                        'type': 'submit'
+                    }
                 }
 
                 <form>
