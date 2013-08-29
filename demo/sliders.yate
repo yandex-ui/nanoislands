@@ -23,14 +23,14 @@ func slider-medium() {
 func sliders() {
     <div class="demo-section">
         <div class="demo-h3">
-            'Size: S, handle: Round'
+            'Size: S'
         </div>
 
         show(slider-small())
     </div>
     <div class="demo-section">
         <div class="demo-h3">
-            'Size: M, handle: Round'
+            'Size: M'
         </div>
 
         show(slider-medium())
