@@ -1,0 +1,45 @@
+func suggests() {
+
+    suggest = {
+        'source': '["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7", "Вариант 8", "Вариант 9", "Вариант 10", "Вариант 11", "Вариант 12", "Вариант 13", "Вариант 14", "Вариант 15", "Вариант 16", "Вариант 17", "Вариант 18", "Вариант 19"]'
+        'highlight': true()
+    }
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Простейший саджест с большим количеством вариантов. Введите буквы «Ва»'
+        </div>
+        nb-suggest(suggest)
+    </div>
+
+    suggestUser = {
+        'source': '[{{"value": "Константин Константинович Константинопольский","label": "Константин Константинович Константинопольский konstantin.konstantinopolsky","username": "Константин Константинович Константинопольский","email": "konstantin.konstantinopolsky@yandex-team.ru"}},{{"value": "Константин Васильев","label": "Константин Васильев mctep","username": "Константин Васильев","email": "mctep@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/mctep/avatar/54.jpg"}},{{"value": "Евгений Дорошенко","label": "Евгений Дорошенко esdoroshenko","username": "Евгений Дорошенко","email": "esdoroshenko@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/esdoroshenko/avatar/54.jpg"}},{{"value": "Вадим Пацев","label": "Вадим Пацев basvasilich","username": "Вадим Пацев","email": "basvasilich@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/basvasilich/avatar/54.jpg"}},{{"value": "Светлана Блыщак","label": "Светлана Блыщак sweetlush","username": "Светлана Блыщак","email": "sweetlush@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/sweetlush/avatar/54.jpg"}},{{"value": "Яна Недоросткова","label": "Яна Недоросткова yanann11","username": "Яна Недоросткова","email": "yanann11@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/yanann11/avatar/54.jpg"}},{{"value": "Азиз Йулдошев","label": "Азиз Йулдошев lapple","username": "Азиз Йулдошев","email": "lapple@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/lapple/avatar/54.jpg"}}]'
+        'highlight': true()
+        'type': 'username'
+    }
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Саджест с подсветкой, в котором представлена команда разработчиков Диска'
+        </div>
+        nb-suggest(suggestUser)
+    </div>
+
+    suggestUser2 = {
+        'source': './users.json'
+        'type': 'username'
+    }
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Саджест, который ходит на сервер за demo/users.json.'
+        </div>
+        <div class="demo-h5">
+            // <span class="demo-code">
+                'Для корректной работы, необходмо настроить ваш сервер на выдачу json файлов как есть. '
+                'Файл статичный, поэтому результаты будут всегда одинаковые. '
+            // </span>
+        </div>
+        nb-suggest(suggestUser2)
+    </div>
+}

@@ -1,0 +1,16 @@
+header = {
+    'user': {
+        'username': 'Username'
+        'notices': '7'
+    }
+}
+
+func header() {
+    <div class="demo-section">
+        <div class="demo-h3">
+        'Шапка с поисковой стрелкой'
+        </div>
+
+    show(nb-header(header))
+    </div>
+}

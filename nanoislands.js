@@ -1003,12 +1003,21 @@ nb.define = function(name, methods, base) {
 nb.init = function(where) {
     where = where || document;
 
-    var nodes = $(where).find('._init');
+    var nodes = $(where).find('._init').addBack().filter('._init');
     for (var i = 0, l = nodes.length; i < l; i++) {
         nb.block( nodes[i] );
     }
 };
 
+nb.destroy = function(where) {
+    where = where || document;
+
+    var nodes = $(where).find('._init').addBack().filter('._init');
+    for (var i = 0, l = nodes.length; i < l; i++) {
+        var id = nodes[i].getAttribute('id');
+        delete _cache[id];
+    }
+};
 //  ---------------------------------------------------------------------------------------------------------------  //
 
 //  Создаем "космос".
@@ -1058,7 +1067,8 @@ nb.define('button', {
         'init': 'oninit',
         'textChange': 'onTextChange',
         'disable': 'onDisable',
-        'enable': 'onEnable'
+        'enable': 'onEnable',
+        'destroy': 'onDestroy'
     },
 
     oninit: function () {
@@ -1075,25 +1085,38 @@ nb.define('button', {
      * }
      */
     onTextChange: function (name, params) {
-        this.$node.find('.nb-button__text').html(params.text)
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.find('.nb-button__text').html(params.text);
+        }
     },
 
     /**
      * Disables the button
      */
     onDisable: function () {
-        this.$node.button( "disable" );
-        this.$node.addClass('nb-button_disabled');
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.button('disable');
+            this.$node.addClass('nb-button_disabled');
+        }
     },
 
     /**
      * Enables the button
      */
     onEnable: function() {
-        this.$node.button( "enable" );
-        this.$node.removeClass('nb-button_disabled');
-    }
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.button('enable');
+            this.$node.removeClass('nb-button_disabled');
+        }
+    },
 
+    onDestroy: function() {
+        // вызвали destroy в одном методе, но ссылка на кнопку была сохранена в другом
+        // в результате повторный вызов и ошибка в консоли
+        if (this.$node && this.$node.data('uiButton')) {
+            this.$node.button('destroy');
+        }
+    }
 });
 
 /* button/button.js end */
@@ -1146,7 +1169,12 @@ nb.define('select', {
         that.button = c[0];
         that.$fallback = $(that.node).find('.nb-select__fallback');
         that.$selected = that.$fallback.children(':selected');
+
         that.value = that.$selected.val() ? that.$selected.text() : '';
+
+        this.button.trigger('textChange', {
+            text: that.value
+        });
 
         // preparing control depending on configuration and content
         that.controlPrepare();
@@ -1157,7 +1185,6 @@ nb.define('select', {
      */
     controlPrepare: function() {
         var that = this;
-
         // preparing position parameters for popup from direction data
         var position = {};
         position.collision = 'flip';
@@ -1249,7 +1276,9 @@ nb.define('select', {
         };
 
         // add click event for button
-        $(that.button.node).click(function() {
+        $(that.button.node).click(function(evt) {
+            // иначе сабмитит форму при клике
+            evt.preventDefault();
             // close if already visible
             if ($(that.node).autocomplete('widget').css('display') == 'block') {
                 $(that.node).autocomplete('close');
@@ -1274,6 +1303,7 @@ nb.define('select', {
         this.value = params.value;
         this.text = params.text;
         this.$selected.removeAttr('selected');
+
 
         this.$selected = this.$fallback.children('[value="' + this.value + '"]').attr('selected', 'selected');
         this.button.trigger('textChange', {
@@ -1349,26 +1379,31 @@ nb.define('radio-button', {
 
     $.nb = {};
 
-    // диалог, закрывающий по нажатию вне
-    jQuery.widget('nb.dialogCloseOnOuterClick', $.ui.dialog, {
-
+    $.widget('nb.baseDialog', $.ui.dialog, {
         options: {
             height: 'auto',
             minHeight: 'auto',
             width: 'auto'
         },
         open: function() {
-            var that = this;
             this._super();
+            var that = this;
 
-            this._on(this.document, {
-                mousedown: function(e) {
-                    if (e.which !== 1) return;
-                    if ($.contains(this.uiDialog[0], e.target)) return;
+            if (!this.options.modal) {
+                this._onmousedown = function(e) {
+                    if (e.which !== 1) {
+                        return;
+                    }
 
-                    this.close();
-                }
-            });
+                    if ($.contains(that.uiDialog[0], e.target)) {
+                        return;
+                    }
+
+                    that.close();
+                };
+
+                this.document.on('mousedown', this._onmousedown);
+            }
 
             this._onpopupclose = nb.on('popup-close', function() {
                 that.close();
@@ -1376,18 +1411,24 @@ nb.define('radio-button', {
         },
         close: function() {
             this._super();
-
-            this._off(this.document, 'mousedown');
+            this.document.off('mousedown', this._onmousedown);
             nb.off('popup-close', this._onpopupclose);
         },
-
+        _create: function() {
+            this._super();
+            this.element[0].widget = this;
+        },
+        _destroy: function() {
+            this._super();
+            delete this.element[0].widget;
+        },
         _createTitlebar: function() {
-            this.uiDialogTitlebarClose = $()
+            this.uiDialogTitlebarClose = $();
         }
     });
 
-    // диалог с хвостиком + dialogCloseOnOuterClick
-    jQuery.widget('nb.contextDialog', $.nb.dialogCloseOnOuterClick, {
+    // диалог с хвостиком
+    jQuery.widget('nb.contextDialog', $.nb.baseDialog, {
 
         tailOffset: 13,
 
@@ -1542,11 +1583,25 @@ nb.define('radio-button', {
     popup.events = {
         'init': 'oninit',
         'open': 'onopen',
-        'click .nb-popup__close': 'closeClick',
-        'close': 'onclose'
+        'click .nb-popup__close': 'onclose',
+        'close': 'onclose',
+        'destroy': 'ondestroy',
+        'position': 'onposition'
     };
 
     // ----------------------------------------------------------------------------------------------------------------- //
+
+    popup.onposition = function(e, params) {
+        var where = params.where;
+        var how = params.how;
+        this._move(where, how, params);
+    };
+
+    popup.ondestroy = function() {
+        if (this.node && this.node.widget) {
+            this.node.widget.destroy();
+        }
+    };
 
     popup.oninit = function() {
         var data = this.data();
@@ -1580,7 +1635,7 @@ nb.define('radio-button', {
             } else {
                 this.moved = true;
                 //  На другой ноде. Передвигаем его в нужное место.
-                this._move(where, how);
+                this._move(where, how, params);
             }
         } else {
             //  Попап закрыт. Будем открывать.
@@ -1590,7 +1645,7 @@ nb.define('radio-button', {
 
             $(this.node).removeClass('_hidden');
             //  Передвигаем попап.
-            this._move(where, how);
+            this._move(where, how, params);
             this.trigger('show');
 
             // Сообщаем в космос, что открылся попап
@@ -1598,29 +1653,35 @@ nb.define('radio-button', {
         }
     };
 
-    popup.closeClick = function() {
-        $(this.node).dialogCloseOnOuterClick('close');
-        this.trigger('close');
-    }
 
     popup.onclose = function() {
-
-        //  Снимаем флаг о том, что попап открыт.
-        this.where = null;
+        if (this.node && this.node.widget && this.node.widget.isOpen()) {
+            this.node.widget.close();
+        }
     };
 
     // ----------------------------------------------------------------------------------------------------------------- //
 
-    popup._move = function(where, how) {
+    popup._move = function(where, how, params) {
         //  Запоминаем, на какой ноде мы открываем попап.
         this.where = where;
         var that = this;
+        var using;
 
         var data = this.data();
 
+        if (params.animate) {
+            using =  function(props) {
+                $(this).animate({
+                    left : props.left,
+                    top : props.top
+                }, 'fast');
+            };
+        }
+
         //  Модальный попап двигать не нужно.
         if (this.modal) {
-            $(this.node).dialogCloseOnOuterClick({
+            $(this.node).baseDialog({
                 height: data.height,
                 minHeight: data.minheight,
                 width: data.width,
@@ -1632,6 +1693,10 @@ nb.define('radio-button', {
                 dialogClass: 'nb-popup-outer ui-dialog-fixed',
                 close: function() {
                     that.trigger('close');
+                },
+                appendTo: params.appendTo,
+                position: {
+                    using: using
                 }
             });
 
@@ -1650,7 +1715,8 @@ nb.define('radio-button', {
                 of: $(this.where),
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
-                collision: "fit flip"
+                collision: "fit flip",
+                using: using
             },
             close: function() {
                 that.trigger('close');
@@ -1859,4 +1925,287 @@ nb.define('arrow', {
 })
 
 /* arrow/arrow.js end */
+
+/* header/header.js begin */
+nb.define('header', {
+    events: {
+        'init': 'oninit',
+        'click .nb-header__button': 'togglePress'
+    },
+
+    oninit: function () {
+        this.$node = $(this.node);
+    },
+
+    /**
+     * Toggles pressed state of button
+     */
+
+    togglePress: function(e) {
+        var $target = $(e.target);
+        $target.closest('.nb-header__button').toggleClass('nb-header__button_pressed');
+
+        if ( $target.hasClass('nb-icon_services') ) {
+            nb.trigger('services-click');
+        }
+
+        if ( $target.hasClass('nb-icon_settings') ) {
+            nb.trigger('settings-click');
+        }
+    }
+
+});
+/* header/header.js end */
+
+/* user/user.js begin */
+nb.define('user', {
+    events: {
+        'init': 'oninit'
+    },
+
+    oninit: function () {
+
+    }
+
+});
+/* user/user.js end */
+
+/* suggest/suggest.js begin */
+;(function() {
+
+    /**
+     * Саджест
+     * @namespace jquery.ui.suggest
+     * @extends {jquery.ui.autocomplete} http://api.jqueryui.com/autocomplete/
+     * @description
+     *      Саджест это блок сотоящий из инпута и выпадающего списка.
+     *      При вводе какого-либо значения в инпут это значение матчится на список
+     *      слов из источника данных, и подходящие элементы из исходного списка
+     *      показываются в выпадающем списке, в котором пользователь может выбрать
+     *      нужный ему элемент.
+     *      После выбора элемента значение инпута меняется на значение выбранного элемента
+     *
+     *      Поддерживаемые события:
+     *        nb-type – всплывает при вводе значения в инпут
+     *        nb-select – всплывает при выборе значения из саджеста
+     *        nb-keypress-enter – всплывает при нажатии на энетер и отсутвии саджеста
+     */
+
+    /**
+     * Опции инициализации саджеста
+     * @description
+     *     Эти опции могут быть определены в yate шаблонах при описании наноблока.
+     *     Опции можно менять в рантайме через метод option
+     *
+     * @example
+     *     var sug = nb.find('#mysuggest');
+     *     sug.option('source', 'http://mydomain.com/user/search');
+     *
+     * @type {Object}
+     */
+    var optionsSuggest = {
+        /**
+         * Истоник данных
+         * @description См. http://api.jqueryui.com/autocomplete/#option-source
+         *
+         * @type {(String|Array|Function)}
+         */
+        source: null,
+
+        /**
+         * Количество элеметов, при котором в выпадающем списке появляется скролл
+         *
+         * @type {Number}
+         */
+        countMax: 10,
+
+        /**
+         * Тип саджеста
+         * @description
+         *     Указывает из какого шаблона брать верстку для элемента выпадающего списка.
+         *     См. файл suggest.yate: match /[.type].item nb-suggest
+         *
+         * @type {String}
+         */
+        type: 'default',
+
+        /**
+         * Включение или отключение выделения жирным начертанием результатов
+         * матчинга в выпадающем списке.
+         *
+         * @type {Boolean}
+         */
+        highlight: false,
+
+        /**
+         * Размер блока.
+         * @description Применятся на размер элементов в выпадающем списке.
+         *
+         * @type {String}
+         */
+        size: 's',
+
+        /**
+         * Количесвто введенных символов, после которого начинать поиск слов
+         */
+        minLength: 2
+    }
+
+    /**
+     * Внешние методы саджеста
+     * @interface
+     * @type {Object}
+     */
+    var apiSuggest = {
+        /**
+         * Возвращает выбранный в саджесте элемент данных из истоника.
+         * @return {Object}
+         */
+        getItemSelected: function() {
+            return this.$input.data().uiSuggest.selectedItem;
+        },
+
+        /**
+         * Устанавливает опцию для виджета.
+         * По сути является аналогом jq.ui.option
+         * http://api.jqueryui.com/autocomplete/#method-option
+         *
+         * @param  {String} name  Имя опции
+         * @param  [value] Значение опции
+         */
+        option: function(name, value) {
+            var args = Array.prototype.slice.call(arguments);
+            args.unshift('option');
+            return this.$input.suggest.apply(this.$input, args);
+        },
+
+        value: function() {
+            return this.$input.val();
+        }
+    }
+
+
+
+    $.widget("ui.suggest", $.ui.autocomplete, {
+        options: optionsSuggest,
+
+        _renderMenu: function( ul, items ) {
+            var that = this;
+            var html = '';
+
+            $.each( items, function(index, item) {
+                html += that._renderItem(item);
+            });
+
+            $(html).appendTo(ul);
+
+            ul.children('li').each(function(index) {
+                $(this).data("ui-autocomplete-item", items[index]);
+            });
+        },
+
+        _renderItem: function(item) {
+            var clone = $.extend({}, item);
+
+            if (this.options.highlight) {
+                if (typeof highlightings[this.options.type] == 'function') {
+                    highlightings[this.options.type](clone, this._value());
+                } else if (typeof this.options.highlight == 'function') {
+                    this.options.highlight(clone, this._value());
+                }
+            }
+
+            return yr.run('main', {
+                item: clone,
+                type: this.options.type,
+                size: this.options.size
+            }, 'nb-suggest');
+        },
+
+        _suggest: function(items) {
+            this._super(items);
+
+            if (this.options.countMax && !this._heightMax) {
+                this._heightMax = this.menu.element.children().eq(0).height() * this.options.countMax;
+                this.menu.element.css({
+                    'max-height': this._heightMax,
+                    'overflow-y': 'auto',
+                    'overflow-x': 'hidden'
+                });
+            }
+        },
+
+        search: function(value, event) {
+            this._trigger('_search');
+
+            return this._super(value, event);
+        }
+    });
+
+    var highlightings = {
+        'default': function(item, term) {
+            var matcher = new RegExp( '(' + $.ui.autocomplete.escapeRegex(term) + ')', "i" );
+            item.label = item.label.replace(matcher, '<b>$1</b>');
+        },
+
+        'username': function(item, term) {
+            var matcher = new RegExp( '(' + $.ui.autocomplete.escapeRegex(term) + ')', "ig" );
+            var matches = item.label.match(matcher);
+
+            item.usernameHighlighted = item.username.replace(matcher, '<b>$1</b>');
+
+            if (item.email) {
+                item.emailHighlighted = item.email.replace(matcher, '<b>$1</b>');
+            }
+        }
+    }
+
+    nb.define('suggest', $.extend({
+        events: {
+            'init': 'oninit'
+        },
+
+        oninit: function() {
+            this.$node = $(this.node);
+
+            var source = this.$node.data('source');
+
+            this.$node.find('input').on('keydown', function(e) {
+                var keyCode = $.ui.keyCode;
+
+                if ($.inArray(e.keyCode, [ keyCode.ENTER, keyCode.NUMPAD_ENTER ]) !== -1) {
+                    if (!this.$input.data().uiSuggest.menu.active) {
+                        this.trigger('nb-keypress-enter', this.value());
+                    }
+                }
+            }.bind(this));
+
+            this.$input = this.$node.find('input').suggest({
+                source: source,
+                countMax: this.$node.data('countMax'),
+                type: this.$node.data('type'),
+                size: this.$node.data('size'),
+                highlight: this.$node.data('highlight'),
+                minLength: this.$node.data('minLength')
+            });
+
+            this.$suggest = this.$input.data().uiSuggest.menu.element;
+
+            this.$suggest.addClass(this.$node.data('class-suggest'));
+
+            this.$input.on('suggest_search', function(e) {
+                this.trigger('nb-type', this.value());
+            }.bind(this));
+
+            this.$input.on('suggestselect', function(e, item) {
+                this.trigger('nb-select', item.item);
+            }.bind(this));
+        }
+    }, apiSuggest));
+
+})();
+
+
+
+/* suggest/suggest.js end */
 

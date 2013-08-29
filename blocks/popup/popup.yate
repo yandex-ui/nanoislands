@@ -99,6 +99,10 @@ match .modalPopup nb {
             @class += " _hidden"
         }
 
+        if .theme {
+            @class += ' nb-popup_theme_{.theme}'
+        }
+
         apply . nb-main-attrs
 
         <div class="nb-popup__i">
@@ -125,9 +129,13 @@ match .modalPopup nb {
 
             if .buttons {
                 <div class="nb-popup__buttons">
-                    for .buttons {
-                        nb-button(.)
-                        ' '
+                    if count(.buttons.*) {
+                        for .buttons {
+                            nb-button(.)
+                            ' '
+                        }
+                    } else {
+                        html(.buttons)
                     }
                 </div>
             }

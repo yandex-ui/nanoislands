@@ -10,7 +10,7 @@ func button-medium() {
         'content': 'Проверить'
         'href': '#'
     }
-    nb-button-link(link)
+    nb-button(link)
 }
 
 func button-small() {
@@ -95,11 +95,11 @@ func radio-button() {
 
 func attach-button() {
     attach = {
-        'mod': 'attach'
         'content': 'Прикрепить файл'
+        'type': 'file'
     }
 
-    nb-button-attach(attach)
+    nb-button(attach)
 }
 
 

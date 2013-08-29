@@ -12,3 +12,6 @@
 /* borschik:include:paranja/paranja.js  */
 /* borschik:include:tabs/tabs.js  */
 /* borschik:include:arrow/arrow.js  */
+/* borschik:include:header/header.js  */
+/* borschik:include:user/user.js  */
+/* borschik:include:suggest/suggest.js  */

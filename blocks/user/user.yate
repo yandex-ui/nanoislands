@@ -1,0 +1,60 @@
+func nb-user(nodeset user) {
+    default = {
+        'size': 'm'
+        'userpic': '/libs/nanoislands/blocks/header/avatar.png'
+    }
+
+    nb-block('user', nb-extend(default, user))
+}
+
+match .user nb {
+
+    <span class="nb-user nb-user_size_{.size} _init" data-nb="user">
+        apply . nb-main-attrs
+        if .justify {
+            @class += ' nb-user_justify'
+        }
+
+        if !.rightToLeft {
+            @class += ' nb-user_direction_ltr'
+            apply . nb-user-pic
+            apply . nb-user-name
+        } else {
+            @class += ' nb-user_direction_rtl'
+            apply . nb-user-name
+            apply . nb-user-pic
+        }
+    </span>
+}
+
+match .user nb-user-pic {
+    <span class="nb-user__avatar nb-user__avatar_size_{.size}" style="background-image: url('{.userpic}')">
+        if .notices > 0 {
+            <span class="nb-user__notice-count">
+                .notices
+            </span>
+        }
+    </span>
+}
+
+match .user nb-user-name {
+    <span class="nb-user__label">
+        <span class="nb-user__name _link" title="{.username}">
+            apply .username nb-user-name
+        </span>
+        if .email {
+            <span class="nb-user__email" title="{.email}">
+                apply .email nb-user-name
+            </span>
+        }
+
+    </span>
+}
+
+match .user.username nb-user-name {
+    .
+}
+
+match .user.email nb-user-name {
+    .
+}

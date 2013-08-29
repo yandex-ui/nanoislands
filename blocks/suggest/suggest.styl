@@ -1,0 +1,34 @@
+nb-suggest()
+
+  .nb-suggest__container
+    display: inline-block
+
+  .nb-suggest
+    padding: 0
+
+    .ui-menu-item
+      font-size: 0
+
+    .ui-menu-item a
+      padding: ($gapXS/2) ($gapM/2)
+
+    &.ui-menu
+      margin-top: 1px
+      max-width: 300px
+
+      .ui-menu-item
+        a.ui-state-focus
+        a.ui-state-active
+          margin: 0
+          background: $bgMenuItemSelected
+
+  .nb-suggest_size_s .ui-menu-item a
+    font-size: 13px
+    line-height: 28px
+
+  .nb-suggest_size_m .ui-menu-item a
+    font-size: 15px
+    line-height: 32px
+
+
+nb-suggest()

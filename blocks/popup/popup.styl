@@ -76,3 +76,27 @@
 .nb-popup-outer
  .nb-popup
    position: static
+
+.ui-widget-overlay.ui-front
+  background: #000
+  background: rgba(0,0,0,0.3)
+
+.nb-popup_theme_default
+  .nb-popup__title
+    padding: 0 2*$gapM 0 $gapM
+    height: 50px
+    line-height: @height
+
+    font-size: 1em
+
+    background: $backgroundPrimary
+    border-bottom: 1px solid darken($background, 16%)
+
+  .nb-popup__content
+    padding: 0
+
+  .nb-popup__buttons
+    margin-top: -1px
+    padding: ($gapS + 1px) $gapS $gapS
+
+    box-shadow: inset 0 1px rgba($foreground, 0.15), 0 -2px rgba($foreground, 0.04)

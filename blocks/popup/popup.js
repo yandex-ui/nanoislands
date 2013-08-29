@@ -6,26 +6,31 @@
 
     $.nb = {};
 
-    // диалог, закрывающий по нажатию вне
-    jQuery.widget('nb.dialogCloseOnOuterClick', $.ui.dialog, {
-
+    $.widget('nb.baseDialog', $.ui.dialog, {
         options: {
             height: 'auto',
             minHeight: 'auto',
             width: 'auto'
         },
         open: function() {
-            var that = this;
             this._super();
+            var that = this;
 
-            this._on(this.document, {
-                mousedown: function(e) {
-                    if (e.which !== 1) return;
-                    if ($.contains(this.uiDialog[0], e.target)) return;
+            if (!this.options.modal) {
+                this._onmousedown = function(e) {
+                    if (e.which !== 1) {
+                        return;
+                    }
 
-                    this.close();
-                }
-            });
+                    if ($.contains(that.uiDialog[0], e.target)) {
+                        return;
+                    }
+
+                    that.close();
+                };
+
+                this.document.on('mousedown', this._onmousedown);
+            }
 
             this._onpopupclose = nb.on('popup-close', function() {
                 that.close();
@@ -33,18 +38,24 @@
         },
         close: function() {
             this._super();
-
-            this._off(this.document, 'mousedown');
+            this.document.off('mousedown', this._onmousedown);
             nb.off('popup-close', this._onpopupclose);
         },
-
+        _create: function() {
+            this._super();
+            this.element[0].widget = this;
+        },
+        _destroy: function() {
+            this._super();
+            delete this.element[0].widget;
+        },
         _createTitlebar: function() {
-            this.uiDialogTitlebarClose = $()
+            this.uiDialogTitlebarClose = $();
         }
     });
 
-    // диалог с хвостиком + dialogCloseOnOuterClick
-    jQuery.widget('nb.contextDialog', $.nb.dialogCloseOnOuterClick, {
+    // диалог с хвостиком
+    jQuery.widget('nb.contextDialog', $.nb.baseDialog, {
 
         tailOffset: 13,
 
@@ -199,11 +210,25 @@
     popup.events = {
         'init': 'oninit',
         'open': 'onopen',
-        'click .nb-popup__close': 'closeClick',
-        'close': 'onclose'
+        'click .nb-popup__close': 'onclose',
+        'close': 'onclose',
+        'destroy': 'ondestroy',
+        'position': 'onposition'
     };
 
     // ----------------------------------------------------------------------------------------------------------------- //
+
+    popup.onposition = function(e, params) {
+        var where = params.where;
+        var how = params.how;
+        this._move(where, how, params);
+    };
+
+    popup.ondestroy = function() {
+        if (this.node && this.node.widget) {
+            this.node.widget.destroy();
+        }
+    };
 
     popup.oninit = function() {
         var data = this.data();
@@ -237,7 +262,7 @@
             } else {
                 this.moved = true;
                 //  На другой ноде. Передвигаем его в нужное место.
-                this._move(where, how);
+                this._move(where, how, params);
             }
         } else {
             //  Попап закрыт. Будем открывать.
@@ -247,7 +272,7 @@
 
             $(this.node).removeClass('_hidden');
             //  Передвигаем попап.
-            this._move(where, how);
+            this._move(where, how, params);
             this.trigger('show');
 
             // Сообщаем в космос, что открылся попап
@@ -255,29 +280,35 @@
         }
     };
 
-    popup.closeClick = function() {
-        $(this.node).dialogCloseOnOuterClick('close');
-        this.trigger('close');
-    }
 
     popup.onclose = function() {
-
-        //  Снимаем флаг о том, что попап открыт.
-        this.where = null;
+        if (this.node && this.node.widget && this.node.widget.isOpen()) {
+            this.node.widget.close();
+        }
     };
 
     // ----------------------------------------------------------------------------------------------------------------- //
 
-    popup._move = function(where, how) {
+    popup._move = function(where, how, params) {
         //  Запоминаем, на какой ноде мы открываем попап.
         this.where = where;
         var that = this;
+        var using;
 
         var data = this.data();
 
+        if (params.animate) {
+            using =  function(props) {
+                $(this).animate({
+                    left : props.left,
+                    top : props.top
+                }, 'fast');
+            };
+        }
+
         //  Модальный попап двигать не нужно.
         if (this.modal) {
-            $(this.node).dialogCloseOnOuterClick({
+            $(this.node).baseDialog({
                 height: data.height,
                 minHeight: data.minheight,
                 width: data.width,
@@ -289,6 +320,10 @@
                 dialogClass: 'nb-popup-outer ui-dialog-fixed',
                 close: function() {
                     that.trigger('close');
+                },
+                appendTo: params.appendTo,
+                position: {
+                    using: using
                 }
             });
 
@@ -307,7 +342,8 @@
                 of: $(this.where),
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
-                collision: "fit flip"
+                collision: "fit flip",
+                using: using
             },
             close: function() {
                 that.trigger('close');
