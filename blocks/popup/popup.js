@@ -282,6 +282,10 @@
 
 
     popup.onclose = function() {
+
+         //  Снимаем флаг о том, что попап открыт.
+        this.where = null;
+
         if (this.node && this.node.widget && this.node.widget.isOpen()) {
             this.node.widget.close();
         }

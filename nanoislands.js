@@ -1651,8 +1651,8 @@ nb.define('radio-button', {
 
 
     popup.onclose = function() {
-        
-        //  Снимаем флаг о том, что попап открыт.
+
+         //  Снимаем флаг о том, что попап открыт.
         this.where = null;
 
         if (this.node && this.node.widget && this.node.widget.isOpen()) {
@@ -1745,10 +1745,7 @@ nb.define('popup-toggler', {
 
         //  Находим соответствующий попап.
         //  Соответствие задается атрибутом `id`.
-
-
         var popup = nb.find(data['id']);
-
 
         if (popup) {
             popup.trigger('open', {
