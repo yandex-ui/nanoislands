@@ -461,7 +461,7 @@
   display: none;
 }
 .nb-select__button {
-  max-width: 100%;
+  width: 100%;
   cursor: default;
   text-align: left;
   vertical-align: middle;
@@ -1496,6 +1496,8 @@
 }
 .nb-header__arrow {
   display: inline-block;
+}
+.nb-header__arrow.nb-arrow_search {
   width: 60%;
 }
 .nb-header__button {
