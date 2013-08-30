@@ -3,7 +3,7 @@ func nb-progress(nodeset options) {
         'bar': 'true'
         'start': '0'
         'type': 'percentage'
-        'title': ' '
+        'title': ''
 
         // показывать проценты
         // 'type': 'title'
@@ -14,25 +14,48 @@ func nb-progress(nodeset options) {
 }
 
 match .progress nb {
-    <div class='nb-progress _init nb-progress_type_{ .type }' data-nb='progress' data-nb-type='{ .type }' data-nb-progress='{ .start }'>
-
+    <div>
         apply . nb-main-attrs
-
-        if .bar {
-            <div class="nb-progress__bar js-bar" style="width: { .start }%"></div>
-        }
-
-        if .title {
-            <div class="nb-progress__title js-title">
-                if .type == 'percentage' {
-                    .start + '%'
-                } else {
-                    .title
-                }
-            </div>
-        }
-
+        apply . nb-main-content
     </div>
 }
 
+match .progress nb-attrs {
+    @data-nb = 'progress'
+    @class = 'nb-progress _init'
+}
 
+match .progress.type nb-attrs {
+    @data-nb-type = '{.}'
+    @class += ' nb-progress_type_{.}'
+}
+
+match .progress.id nb-attrs {
+    @id = '{.}'
+}
+
+match .progress.start nb-attrs {
+    @data-nb-progress = '{.}'
+}
+
+match .progress nb-content {
+    apply .* nb-content
+}
+
+match .progress.bar nb-content {
+    <div class="nb-progress__bar js-bar" style="width: {/.start}%"></div>
+}
+
+match .progress.title nb-content {
+    <div class="nb-progress__title js-title">
+        apply . nb-progress-text
+    </div>
+}
+
+match .progress.title nb-progress-text {
+    .
+}
+
+match .progress.title[/.type == 'percentage'] nb-progress-text {
+    /.start + '%'
+}
