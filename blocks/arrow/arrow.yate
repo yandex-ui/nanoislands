@@ -9,12 +9,15 @@ func nb-arrow(nodeset arrow) {
 
 match .arrow nb {
     <div class="nb-arrow _init" data-nb="arrow">
+
         apply . nb-main-attrs
+
         if .search != 'true'{
             @class += ' nb-arrow_service'
         } else {
             @class += ' nb-arrow_search'
         }
+
         <div class="nb-arrow__top"></div>
         <div class="nb-arrow__bottom"></div>
         <div class="nb-arrow__content">

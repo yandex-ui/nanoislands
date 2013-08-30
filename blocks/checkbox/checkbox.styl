@@ -46,7 +46,7 @@ nb-checkbox()
 
       background: linear-gradient($background, #eee)
 
-  .nb-checkbox__flag_checkbox
+  .nb-checkbox_type_checkbox .nb-checkbox__flag
     border-radius: 3px
 
     &:before
@@ -61,7 +61,7 @@ nb-checkbox()
       border: solid transparent
       border-width: 3px 3px 0 0
 
-  .nb-checkbox__flag_radio
+  .nb-checkbox_type_radio .nb-checkbox__flag
     border-radius: 100%
 
     &:before
@@ -86,14 +86,14 @@ nb-checkbox()
 
     box-shadow: 0 1px 3px -1px rgba($foreground, 0.45) inset
 
-  .nb-checkbox__input:checked + .nb-checkbox__flag_radio:after
+  .nb-checkbox_type_radio .nb-checkbox__input:checked + .nb-checkbox__flag:after
     background: #333
 
-  .nb-checkbox__input:checked + .nb-checkbox__flag_checkbox:after
+  .nb-checkbox_type_checkbox .nb-checkbox__input:checked + .nb-checkbox__flag:after
     border-color: rgba($foreground, 0.85)
 
   .nb-checkbox__label
-    margin-left: 4px
+    margin-left: 0.5em
     display: inline-block
     vertical-align: middle
 
