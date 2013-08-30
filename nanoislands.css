@@ -1043,7 +1043,7 @@
   font: 1.25em/1.125em Arial, sans-serif;
 }
 .nb-dropzone__text {
-  font: 0.813em/1.125em Arial, sans-serif;
+  font-size: 13px;
   line-height: 24px;
 }
 .nb-dropzone__button {
