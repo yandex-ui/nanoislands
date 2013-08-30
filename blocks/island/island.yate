@@ -10,18 +10,16 @@ func nb-island(nodeset options) {
 match .island nb {
     <div class="nb-island">
         apply . nb-main-attrs
-        apply . nb-main-content
+
+        if .padding {
+            @class += ' nb-island_padding_{ .padding }'
+        }
+
+        if .type {
+            @class += ' nb-island_type_{ .type }'
+        }
+
+        html(.content)
     </div>
 }
 
-match .island.padding nb-attrs {
-    @class += ' nb-island_padding_{.}'
-}
-
-match .island.type nb-attrs {
-    @class += ' nb-island_type_{.}'
-}
-
-match .island nb-content {
-    .content
-}

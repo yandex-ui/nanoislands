@@ -2413,127 +2413,125 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j67 = [ 0, 'island' ];
 
-    var j68 = [ 0, 'island', 0, 'padding' ];
+    var j68 = [ 0, 'padding' ];
 
-    var j69 = [ 0, 'island', 0, 'type' ];
+    var j69 = [ 0, 'dropzone' ];
 
-    var j70 = [ 0, 'dropzone' ];
+    var j70 = [ 0, 'head' ];
 
-    var j71 = [ 0, 'head' ];
+    var j71 = [ 0, 'loader' ];
 
-    var j72 = [ 0, 'loader' ];
+    var j72 = [ 0, 'color' ];
 
-    var j73 = [ 0, 'color' ];
+    var j73 = [ 0, 'slider' ];
 
-    var j74 = [ 0, 'slider' ];
+    var j74 = [ 0, 'handle', 0, '*' ];
 
-    var j75 = [ 0, 'handle', 0, '*' ];
+    var j75 = [ 0, 'slider', 0, 'size' ];
 
-    var j76 = [ 0, 'slider', 0, 'size' ];
+    var j76 = [ 0, 'slider', 0, 'value' ];
 
-    var j77 = [ 0, 'slider', 0, 'value' ];
+    var j77 = [ 0, 'slider', 0, 'id' ];
 
-    var j78 = [ 0, 'slider', 0, 'id' ];
+    var j78 = [ 0, 'slider', 0, 'theme' ];
 
-    var j79 = [ 0, 'slider', 0, 'theme' ];
+    var j79 = [ 0, 'slider', 0, 'orientation' ];
 
-    var j80 = [ 0, 'slider', 0, 'orientation' ];
+    var j80 = [ 0, 'slider', 0, 'handle', 0, 'type' ];
 
-    var j81 = [ 0, 'slider', 0, 'handle', 0, 'type' ];
+    var j81 = [ 0, 'slider', 0, 'handle', 0, 'class' ];
 
-    var j82 = [ 0, 'slider', 0, 'handle', 0, 'class' ];
+    var j82 = [ 0, 'tabs' ];
 
-    var j83 = [ 0, 'tabs' ];
+    var j83 = [ 0, 'rise' ];
 
-    var j84 = [ 0, 'rise' ];
+    var j84 = [ 0, 'active' ];
 
-    var j85 = [ 0, 'active' ];
+    var j85 = [ 0, 'arrow' ];
 
-    var j86 = [ 0, 'arrow' ];
+    var j86 = [ 0, 'search' ];
 
-    var j87 = [ 0, 'search' ];
+    var j87 = [ 0, 'buttonContent' ];
 
-    var j88 = [ 0, 'buttonContent' ];
+    var j88 = [ 0, 'requests' ];
 
-    var j89 = [ 0, 'requests' ];
+    var j89 = [ 0, 'header' ];
 
-    var j90 = [ 0, 'header' ];
+    var j90 = [ 0, 'settings' ];
 
-    var j91 = [ 0, 'settings' ];
+    var j91 = [ 0, 'services' ];
 
-    var j92 = [ 0, 'services' ];
+    var j92 = [ 0, 'user' ];
 
-    var j93 = [ 0, 'user' ];
+    var j93 = [ 0, 'yaHref' ];
 
-    var j94 = [ 0, 'yaHref' ];
+    var j94 = [ 0, 'justify' ];
 
-    var j95 = [ 0, 'justify' ];
+    var j95 = [ 0, 'rightToLeft' ];
 
-    var j96 = [ 0, 'rightToLeft' ];
+    var j96 = [ 0, 'userpic' ];
 
-    var j97 = [ 0, 'userpic' ];
+    var j97 = [ 0, 'notices' ];
 
-    var j98 = [ 0, 'notices' ];
+    var j98 = [ 0, 'username' ];
 
-    var j99 = [ 0, 'username' ];
+    var j99 = [ 0, 'email' ];
 
-    var j100 = [ 0, 'email' ];
+    var j100 = [ 0, 'user', 0, 'username' ];
 
-    var j101 = [ 0, 'user', 0, 'username' ];
+    var j101 = [ 0, 'user', 0, 'email' ];
 
-    var j102 = [ 0, 'user', 0, 'email' ];
+    var j102 = [ 0, 'suggest' ];
 
-    var j103 = [ 0, 'suggest' ];
+    var j103 = [ 0, 'attrsInput' ];
 
-    var j104 = [ 0, 'attrsInput' ];
+    var j104 = [ 0, 'countMax' ];
 
-    var j105 = [ 0, 'countMax' ];
+    var j105 = [ 0, 'source' ];
 
-    var j106 = [ 0, 'source' ];
+    var j106 = [ 0, 'highlight' ];
 
-    var j107 = [ 0, 'highlight' ];
+    var j107 = [ 0, 'class-suggest' ];
 
-    var j108 = [ 0, 'class-suggest' ];
+    var j108 = [ ];
 
-    var j109 = [ ];
-
-    var j110 = [ 0, 'item' ];
+    var j109 = [ 0, 'item' ];
 
     function p3(m, c0, i0, l0) {
         return cmpSN("default", selectNametest('type', c0, []));
     }
 
-    var j111 = [ 2, p3, 0, 'item' ];
+    var j110 = [ 2, p3, 0, 'item' ];
 
-    var j112 = [ 0, 'label' ];
+    var j111 = [ 0, 'label' ];
 
     function p4(m, c0, i0, l0) {
         return cmpSN("username", selectNametest('type', c0, []));
     }
 
-    var j113 = [ 2, p4, 0, 'item' ];
+    var j112 = [ 2, p4, 0, 'item' ];
 
-    var j114 = [ 0, 'size' ];
+    var j113 = [ 0, 'size' ];
 
-    var j115 = [ 0, 'usernameHighlighted' ];
+    var j114 = [ 0, 'usernameHighlighted' ];
 
-    var j116 = [ 0, 'emailHighlighted' ];
+    var j115 = [ 0, 'emailHighlighted' ];
 
     function p5(m, c0, i0, l0) {
         return cmpSN("suggest", selectNametest('mod', c0, [])) && simpleBoolean('usernameHighlighted', c0);
     }
 
-    var j117 = [ 0, 'user', 2, p5, 0, 'username' ];
+    var j116 = [ 0, 'user', 2, p5, 0, 'username' ];
 
-    var j118 = [ 1, 1, 0, 'usernameHighlighted' ];
+    var j117 = [ 1, 1, 0, 'usernameHighlighted' ];
 
     function p6(m, c0, i0, l0) {
         return cmpSN("suggest", selectNametest('mod', c0, [])) && simpleBoolean('emailHighlighted', c0);
     }
 
-    var j119 = [ 0, 'user', 2, p6, 0, 'email' ];
+    var j118 = [ 0, 'user', 2, p6, 0, 'email' ];
 
-    var j120 = [ 1, 1, 0, 'emailHighlighted' ];
+    var j119 = [ 1, 1, 0, 'emailHighlighted' ];
 
     // match .* : nb-main-attrs
     M.t0 = function t0(m, c0, i0, l0, a0) {
@@ -3188,6 +3186,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-input-box")
         };
         a0.s = 'span';
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('size', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -3203,40 +3202,6 @@ var yr = yr || require('yate/lib/runtime.js');
             } else {
                 a0.a[ "class" ] = new yr.scalarAttr(" nb-input_disabled js-disabled");
             }
-        }
-        if (simpleBoolean('id', c0)) {
-            a0.a[ "id" ] = new yr.scalarAttr(simpleScalar('id', c0));
-        }
-        var r1 = '';
-        var a1 = { a: {} };
-        var items0 = selectNametest('class', c0, []);
-        for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
-            var c1 = items0[ i1 ];
-            r1 += " " + nodeset2scalar( ( [ c1 ] ) );
-        }
-        var tmp0 = a0.a[ "class" ];
-        if (tmp0) {
-            a0.a[ "class" ] = tmp0.addscalar(r1);
-        } else {
-            a0.a[ "class" ] = new yr.scalarAttr(r1);
-        }
-        var r1 = '';
-        var a1 = { a: {} };
-        var items0 = selectNametest('mixin-nb', c0, []);
-        for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
-            var c1 = items0[ i1 ];
-            r1 += " " + nodeset2scalar( ( [ c1 ] ) );
-        }
-        var tmp0 = a0.a[ "data-nb" ];
-        if (tmp0) {
-            a0.a[ "data-nb" ] = tmp0.addscalar(r1);
-        } else {
-            a0.a[ "data-nb" ] = new yr.scalarAttr(r1);
-        }
-        var items0 = m.s(j7, c0);
-        for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
-            var c1 = items0[ i1 ];
-            a0.a[ "data-nb-" + ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( [ c1 ] ));
         }
         r0 += closeAttrs(a0);
         r0 += "<input";
@@ -3597,8 +3562,24 @@ var yr = yr || require('yate/lib/runtime.js');
         };
         a0.s = 'div';
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
-        r0 += m.a(m, [ c0 ], 'nb-main-content', a0)
+        if (simpleBoolean('padding', c0)) {
+            var tmp0 = a0.a[ "class" ];
+            if (tmp0) {
+                a0.a[ "class" ] = tmp0.addscalar(" nb-island_padding_" + nodeset2scalar( ( selectNametest('padding', c0, []) ) ));
+            } else {
+                a0.a[ "class" ] = new yr.scalarAttr(" nb-island_padding_" + nodeset2scalar( ( selectNametest('padding', c0, []) ) ));
+            }
+        }
+        if (simpleBoolean('type', c0)) {
+            var tmp0 = a0.a[ "class" ];
+            if (tmp0) {
+                a0.a[ "class" ] = tmp0.addscalar(" nb-island_type_" + nodeset2scalar( ( selectNametest('type', c0, []) ) ));
+            } else {
+                a0.a[ "class" ] = new yr.scalarAttr(" nb-island_type_" + nodeset2scalar( ( selectNametest('type', c0, []) ) ));
+            }
+        }
         r0 += closeAttrs(a0);
+        r0 += simpleScalar('content', c0);
         r0 += "</div>";
 
         return r0;
@@ -3606,52 +3587,8 @@ var yr = yr || require('yate/lib/runtime.js');
     M.t37.j = j67;
     M.t37.a = 0;
 
-    // match .island.padding : nb-attrs
-    M.t38 = function t38(m, c0, i0, l0, a0) {
-        var r0 = '';
-
-        var tmp0 = a0.a[ "class" ];
-        if (tmp0) {
-            a0.a[ "class" ] = tmp0.addscalar(" nb-island_padding_" + nodeset2scalar( ( [ c0 ] ) ));
-        } else {
-            a0.a[ "class" ] = new yr.scalarAttr(" nb-island_padding_" + nodeset2scalar( ( [ c0 ] ) ));
-        }
-
-        return r0;
-    };
-    M.t38.j = j68;
-    M.t38.a = 0;
-
-    // match .island.type : nb-attrs
-    M.t39 = function t39(m, c0, i0, l0, a0) {
-        var r0 = '';
-
-        var tmp0 = a0.a[ "class" ];
-        if (tmp0) {
-            a0.a[ "class" ] = tmp0.addscalar(" nb-island_type_" + nodeset2scalar( ( [ c0 ] ) ));
-        } else {
-            a0.a[ "class" ] = new yr.scalarAttr(" nb-island_type_" + nodeset2scalar( ( [ c0 ] ) ));
-        }
-
-        return r0;
-    };
-    M.t39.j = j69;
-    M.t39.a = 0;
-
-    // match .island : nb-content
-    M.t40 = function t40(m, c0, i0, l0, a0) {
-        var r0 = '';
-
-        r0 += closeAttrs(a0);
-        r0 += nodeset2xml( selectNametest('content', c0, []) );
-
-        return r0;
-    };
-    M.t40.j = j67;
-    M.t40.a = 0;
-
     // match .dropzone : nb
-    M.t41 = function t41(m, c0, i0, l0, a0) {
+    M.t38 = function t38(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3690,11 +3627,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t41.j = j70;
-    M.t41.a = 0;
+    M.t38.j = j69;
+    M.t38.a = 0;
 
     // match .loader : nb
-    M.t42 = function t42(m, c0, i0, l0, a0) {
+    M.t39 = function t39(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3724,11 +3661,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t42.j = j72;
-    M.t42.a = 0;
+    M.t39.j = j71;
+    M.t39.a = 0;
 
     // match .slider : nb
-    M.t43 = function t43(m, c0, i0, l0, a0) {
+    M.t40 = function t40(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3744,7 +3681,7 @@ var yr = yr || require('yate/lib/runtime.js');
         };
         a0.s = 'a';
         a0.a[ "class" ] = new yr.scalarAttr("nb-slider__handle nb-button nb-button_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ) + " nb-button_theme_" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + " ui-slider-handle");
-        r0 += m.a(m, m.s(j75, c0), 'nb-attrs', a0)
+        r0 += m.a(m, m.s(j74, c0), 'nb-attrs', a0)
         r0 += closeAttrs(a0);
         r0 += "<span class=\"" + "nb-slider__handle__text" + "\"></span>";
         r0 += "</a>";
@@ -3754,11 +3691,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t43.j = j74;
-    M.t43.a = 0;
+    M.t40.j = j73;
+    M.t40.a = 0;
 
     // match .slider : nb-attrs
-    M.t44 = function t44(m, c0, i0, l0, a0) {
+    M.t41 = function t41(m, c0, i0, l0, a0) {
         var r0 = '';
 
         if (!simpleBoolean('static', c0)) {
@@ -3768,11 +3705,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t44.j = j74;
-    M.t44.a = 0;
+    M.t41.j = j73;
+    M.t41.a = 0;
 
     // match .slider.size : nb-attrs
-    M.t45 = function t45(m, c0, i0, l0, a0) {
+    M.t42 = function t42(m, c0, i0, l0, a0) {
         var r0 = '';
 
         var tmp0 = a0.a[ "class" ];
@@ -3784,33 +3721,33 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t45.j = j76;
-    M.t45.a = 0;
+    M.t42.j = j75;
+    M.t42.a = 0;
 
     // match .slider.value : nb-attrs
-    M.t46 = function t46(m, c0, i0, l0, a0) {
+    M.t43 = function t43(m, c0, i0, l0, a0) {
         var r0 = '';
 
         a0.a[ "data-nb-value" ] = new yr.scalarAttr(nodeset2scalar( ( [ c0 ] ) ));
 
         return r0;
     };
-    M.t46.j = j77;
-    M.t46.a = 0;
+    M.t43.j = j76;
+    M.t43.a = 0;
 
     // match .slider.id : nb-attrs
-    M.t47 = function t47(m, c0, i0, l0, a0) {
+    M.t44 = function t44(m, c0, i0, l0, a0) {
         var r0 = '';
 
         a0.a[ "id" ] = new yr.scalarAttr(nodeset2scalar( ( [ c0 ] ) ));
 
         return r0;
     };
-    M.t47.j = j78;
-    M.t47.a = 0;
+    M.t44.j = j77;
+    M.t44.a = 0;
 
     // match .slider.theme : nb-attrs
-    M.t48 = function t48(m, c0, i0, l0, a0) {
+    M.t45 = function t45(m, c0, i0, l0, a0) {
         var r0 = '';
 
         var tmp0 = a0.a[ "class" ];
@@ -3822,11 +3759,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t48.j = j79;
-    M.t48.a = 0;
+    M.t45.j = j78;
+    M.t45.a = 0;
 
     // match .slider.orientation : nb-attrs
-    M.t49 = function t49(m, c0, i0, l0, a0) {
+    M.t46 = function t46(m, c0, i0, l0, a0) {
         var r0 = '';
 
         var tmp0 = a0.a[ "class" ];
@@ -3838,11 +3775,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t49.j = j80;
-    M.t49.a = 0;
+    M.t46.j = j79;
+    M.t46.a = 0;
 
     // match .slider.handle.type : nb-attrs
-    M.t50 = function t50(m, c0, i0, l0, a0) {
+    M.t47 = function t47(m, c0, i0, l0, a0) {
         var r0 = '';
 
         var tmp0 = a0.a[ "class" ];
@@ -3854,11 +3791,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t50.j = j81;
-    M.t50.a = 0;
+    M.t47.j = j80;
+    M.t47.a = 0;
 
     // match .slider.handle.class : nb-attrs
-    M.t51 = function t51(m, c0, i0, l0, a0) {
+    M.t48 = function t48(m, c0, i0, l0, a0) {
         var r0 = '';
 
         var tmp0 = a0.a[ "class" ];
@@ -3870,11 +3807,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t51.j = j82;
-    M.t51.a = 0;
+    M.t48.j = j81;
+    M.t48.a = 0;
 
     // match .tabs : nb
-    M.t52 = function t52(m, c0, i0, l0, a0) {
+    M.t49 = function t49(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var prefix : scalar
@@ -3932,11 +3869,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t52.j = j83;
-    M.t52.a = 0;
+    M.t49.j = j82;
+    M.t49.a = 0;
 
     // match .arrow : nb
-    M.t53 = function t53(m, c0, i0, l0, a0) {
+    M.t50 = function t50(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4029,11 +3966,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t53.j = j86;
-    M.t53.a = 0;
+    M.t50.j = j85;
+    M.t50.a = 0;
 
     // match .header : nb
-    M.t54 = function t54(m, c0, i0, l0, a0) {
+    M.t51 = function t51(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4102,11 +4039,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t54.j = j90;
-    M.t54.a = 0;
+    M.t51.j = j89;
+    M.t51.a = 0;
 
     // match .user : nb
-    M.t55 = function t55(m, c0, i0, l0, a0) {
+    M.t52 = function t52(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4149,11 +4086,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t55.j = j93;
-    M.t55.a = 0;
+    M.t52.j = j92;
+    M.t52.a = 0;
 
     // match .user : nb-user-pic
-    M.t56 = function t56(m, c0, i0, l0, a0) {
+    M.t53 = function t53(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4167,11 +4104,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t56.j = j93;
-    M.t56.a = 0;
+    M.t53.j = j92;
+    M.t53.a = 0;
 
     // match .user : nb-user-name
-    M.t57 = function t57(m, c0, i0, l0, a0) {
+    M.t54 = function t54(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4200,11 +4137,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t57.j = j93;
-    M.t57.a = 0;
+    M.t54.j = j92;
+    M.t54.a = 0;
 
     // match .user.username : nb-user-name
-    M.t58 = function t58(m, c0, i0, l0, a0) {
+    M.t55 = function t55(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4212,11 +4149,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t58.j = j101;
-    M.t58.a = 0;
+    M.t55.j = j100;
+    M.t55.a = 0;
 
     // match .user.email : nb-user-name
-    M.t59 = function t59(m, c0, i0, l0, a0) {
+    M.t56 = function t56(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4224,11 +4161,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t59.j = j102;
-    M.t59.a = 0;
+    M.t56.j = j101;
+    M.t56.a = 0;
 
     // match .suggest : nb
-    M.t60 = function t60(m, c0, i0, l0, a0) {
+    M.t57 = function t57(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var input : object
@@ -4267,11 +4204,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t60.j = j103;
-    M.t60.a = 0;
+    M.t57.j = j102;
+    M.t57.a = 0;
 
     // match / : nb-suggest
-    M.t61 = function t61(m, c0, i0, l0, a0) {
+    M.t58 = function t58(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4287,11 +4224,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t61.j = 1;
-    M.t61.a = 1;
+    M.t58.j = 1;
+    M.t58.a = 1;
 
     // match /[ .type == "default" ].item : nb-suggest
-    M.t62 = function t62(m, c0, i0, l0, a0) {
+    M.t59 = function t59(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4299,11 +4236,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t62.j = j111;
-    M.t62.a = 1;
+    M.t59.j = j110;
+    M.t59.a = 1;
 
     // match /[ .type == "username" ].item : nb-suggest
-    M.t63 = function t63(m, c0, i0, l0, a0) {
+    M.t60 = function t60(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var user : object
@@ -4339,35 +4276,35 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t63.j = j113;
-    M.t63.a = 1;
+    M.t60.j = j112;
+    M.t60.a = 1;
 
     // match .user[ .mod == "suggest" && .usernameHighlighted ].username : nb-user-name
-    M.t64 = function t64(m, c0, i0, l0, a0) {
+    M.t61 = function t61(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += nodeset2scalar( m.s(j118, c0) );
+        r0 += nodeset2scalar( m.s(j117, c0) );
 
         return r0;
     };
-    M.t64.j = j117;
-    M.t64.a = 0;
+    M.t61.j = j116;
+    M.t61.a = 0;
 
     // match .user[ .mod == "suggest" && .emailHighlighted ].email : nb-user-name
-    M.t65 = function t65(m, c0, i0, l0, a0) {
+    M.t62 = function t62(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += nodeset2scalar( m.s(j120, c0) );
+        r0 += nodeset2scalar( m.s(j119, c0) );
 
         return r0;
     };
-    M.t65.j = j119;
-    M.t65.a = 0;
+    M.t62.j = j118;
+    M.t62.a = 0;
 
     // match /
-    M.t66 = function t66(m, c0, i0, l0, a0) {
+    M.t63 = function t63(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var check : object
@@ -4569,8 +4506,8 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t66.j = 1;
-    M.t66.a = 1;
+    M.t63.j = 1;
+    M.t63.a = 1;
 
     M.matcher = {
         "nb-main-attrs": {
@@ -4631,28 +4568,28 @@ var yr = yr || require('yate/lib/runtime.js');
                 "t37"
             ],
             "dropzone": [
-                "t41"
+                "t38"
             ],
             "loader": [
-                "t42"
+                "t39"
             ],
             "slider": [
-                "t43"
+                "t40"
             ],
             "tabs": [
-                "t52"
+                "t49"
             ],
             "arrow": [
-                "t53"
+                "t50"
             ],
             "header": [
-                "t54"
+                "t51"
             ],
             "user": [
-                "t55"
+                "t52"
             ],
             "suggest": [
-                "t60"
+                "t57"
             ]
         },
         "nb-content": {
@@ -4688,9 +4625,6 @@ var yr = yr || require('yate/lib/runtime.js');
             ],
             "title": [
                 "t29"
-            ],
-            "island": [
-                "t40"
             ]
         },
         "nb-button-content": {
@@ -4703,12 +4637,11 @@ var yr = yr || require('yate/lib/runtime.js');
                 "t23"
             ],
             "type": [
-                "t50",
-                "t39",
+                "t47",
                 "t24"
             ],
             "id": [
-                "t47",
+                "t44",
                 "t25"
             ],
             "start": [
@@ -4718,26 +4651,23 @@ var yr = yr || require('yate/lib/runtime.js');
                 "t35"
             ],
             "theme": [
-                "t48",
+                "t45",
                 "t36"
             ],
-            "padding": [
-                "t38"
-            ],
             "slider": [
-                "t44"
+                "t41"
             ],
             "size": [
-                "t45"
+                "t42"
             ],
             "value": [
-                "t46"
+                "t43"
             ],
             "orientation": [
-                "t49"
+                "t46"
             ],
             "class": [
-                "t51"
+                "t48"
             ]
         },
         "nb-progress-text": {
@@ -4748,34 +4678,34 @@ var yr = yr || require('yate/lib/runtime.js');
         },
         "nb-user-pic": {
             "user": [
-                "t56"
+                "t53"
             ]
         },
         "nb-user-name": {
             "user": [
-                "t57"
+                "t54"
             ],
             "username": [
-                "t64",
-                "t58"
+                "t61",
+                "t55"
             ],
             "email": [
-                "t65",
-                "t59"
+                "t62",
+                "t56"
             ]
         },
         "nb-suggest": {
             "": [
-                "t61"
+                "t58"
             ],
             "item": [
-                "t63",
-                "t62"
+                "t60",
+                "t59"
             ]
         },
         "": {
             "": [
-                "t66"
+                "t63"
             ]
         }
     };

@@ -8,6 +8,7 @@ func nb-input(nodeset options) {
 
 match .input nb {
     <span data-nb='input' class='nb-input-box'>
+        apply . nb-main-attrs
         if .size {
             @class += ' nb-input_size_{.size}'
         }
@@ -16,28 +17,12 @@ match .input nb {
             @class += ' nb-input_disabled js-disabled'
         }
 
-        if .id {
-            @id = .id
-        }
-
-        @class += for .class {
-            ' {.}'
-        }
-
-        @data-nb += for .mixin-nb {
-            ' {.}'
-        }
-
-        for .data-nb.* {
-            @data-nb-{name()} = .
-        }
-
         <input value="{.content}" class="nb-input">
-        for .attrs.* {
-            @{name()} = .
-        }
+            for .attrs.* {
+                @{name()} = .
+            }
 
-        apply .* nb-content
+            apply .* nb-content
         </input>
     </span>
 }
