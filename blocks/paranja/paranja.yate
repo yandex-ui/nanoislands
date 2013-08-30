@@ -7,17 +7,9 @@ func nb-paranja(nodeset options) {
 }
 
 match .paranja nb {
-    <div>
+    <div class="nb-paranja nb-paranja_theme_{ .theme }" data-nb='paranja'>
         apply . nb-main-attrs
-        apply . nb-main-content
+        
+        html( .content )
     </div>
-}
-
-match .paranja nb-attrs {
-    @data-nb = 'paranja'
-    @class = 'nb-paranja'
-}
-
-match .paranja.theme nb-attrs {
-    @class += ' nb-paranja_theme_{.}'
 }

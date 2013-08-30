@@ -12,7 +12,7 @@ match .loader nb {
 
         <span class="nb-loader__spinner">
             if .color {
-                @class += " nb-loader__spinner_color_{.color}"
+                @class += " nb-loader__spinner_color_{ .color }"
             }
         </span>
     </span>
