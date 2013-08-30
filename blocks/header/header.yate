@@ -10,7 +10,7 @@ func nb-header(nodeset header) {
         'yaHref': 'http://yandex.ru'
     }
 
-    nb-block('header', nb-extend(default, header))
+    nb-block('header', nb-deep-extend(default, header))
 }
 
 match .header nb {

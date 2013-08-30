@@ -34,6 +34,7 @@ match .arrow nb {
                     'attrs': {
                         'autocomplete': 'off'
                         'value': .value
+                        'name': 'text'
                     }
                 }
 
@@ -41,24 +42,33 @@ match .arrow nb {
                     'size': 'm'
                     'content': .buttonContent
                     'class': 'nb-arrow__button'
+                    'attrs': {
+                        'type': 'submit'
+                    }
                 }
 
-                nb-button(button)
-                if .text {
-                    <div class="nb-arrow__name__wrap">
-                        <a href="{.href}" class="nb-arrow__name _link">{.text}</a>
-                    </div>
-                }
-                <div class="nb-arrow__input__wrap">
-                    nb-input(input)
-                </div>
+                <form>
+                    if .action {
+                        @action = .action
+                    }
 
-                if .requests {
-                    <div class="nb-arrow__requests__wrap">
-                        <span class="nb-arrow__input_fake"> </span>
-                        <div class="nb-arrow__requests"> &mdash; {.requests} </div>
+                    nb-button(button)
+                    if .text {
+                        <div class="nb-arrow__name__wrap">
+                            <a href="{.href}" class="nb-arrow__name _link">{.text}</a>
+                        </div>
+                    }
+                    <div class="nb-arrow__input__wrap">
+                        nb-input(input)
                     </div>
-                }
+
+                    if .requests {
+                        <div class="nb-arrow__requests__wrap">
+                            <span class="nb-arrow__input_fake"> </span>
+                            <div class="nb-arrow__requests"> &mdash; {.requests} </div>
+                        </div>
+                    }
+                </form>
             }
 
         </div>

@@ -257,7 +257,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 }
 .nb-popup__title {
   font: 1.25em/1.125em Arial, sans-serif;
-  padding: 0 20px 0 10px;
+  padding: 10px;
   display: block;
   overflow: hidden;
   -o-text-overflow: ellipsis;
@@ -367,7 +367,7 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 }
 .nb-select__button {
   display: none;
-  max-width: 100%;
+  width: 100%;
   cursor: default;
   text-align: left;
   vertical-align: middle;
@@ -1255,6 +1255,8 @@ a.nb-button_theme_pseudo.nb-button_disabled {
 .nb-header__arrow {
   display: inline;
   zoom: 1;
+}
+.nb-header__arrow.nb-arrow_search {
   width: 60%;
 }
 .nb-header__button {
