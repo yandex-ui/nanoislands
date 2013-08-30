@@ -2150,7 +2150,7 @@ nb.define('user', {
 
             item.usernameHighlighted = item.username.replace(matcher, '<b>$1</b>');
 
-            if (item.email) {
+            if (typeof item.email == 'string') {
                 item.emailHighlighted = item.email.replace(matcher, '<b>$1</b>');
             }
         }
