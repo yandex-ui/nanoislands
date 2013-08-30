@@ -22,7 +22,7 @@ match .slider nb {
         }
 
         <div class="nb-slider__body nb-slider__body_type_{ .type }">
-            <a class = 'nb-slider__handle nb-button nb-button_size_{ .size } nb-button_theme_{ .theme } ui-slider-handle'>
+            <a class = 'nb-slider__handle nb-button nb-button_size_{ .size } nb-button_theme_{ .theme } nb-slider__handle_type_{ .handle.type } ui-slider-handle'>
                 if .handle.class {
                     @class += ' { .handle.class }'
                 }
