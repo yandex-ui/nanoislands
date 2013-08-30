@@ -9,7 +9,7 @@ func nb-tabs(nodeset options) {
 match .tabs nb {
     <div class="nb-tabs nb-tabs_size_{.size} _init" data-nb="tabs">
         if .rise {
-            @class += ' nb-tabs_rise_{.rise}'
+            @class += ' nb-tabs_rise_{ .rise }'
         }
 
         apply . nb-main-attrs
@@ -32,7 +32,7 @@ match .tabs nb {
 
         for .items {
             <div class="nb-tabs__panel" id="{prefix}-{index()}">
-                html(.content)
+                html( .content )
             </div>
         }
     </div>
