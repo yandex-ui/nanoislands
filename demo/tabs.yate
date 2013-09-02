@@ -79,7 +79,9 @@ func tabs-island() {
     exchange = (
         group = {
             'input': {
-                'placeholder': 'Серийный номер'
+                'attrs': {
+                    'placeholder': 'Серийный номер'
+                }
             }
             'button': {
                 'size': 's'
@@ -93,7 +95,9 @@ func tabs-island() {
     return = (
         group = {
             'input': {
-                'placeholder': 'Серийный номер'
+                'attrs': {
+                    'placeholder': 'Серийный номер'
+                }
             }
             'button': {
                 'size': 's'

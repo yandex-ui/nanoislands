@@ -16,7 +16,7 @@ func input-medium() {
 func input-disabled() {
     block = {
         'attrs': {
-            'disabled': '1'
+            'disabled': true()
         }
         'content': 'Москва'
     }
