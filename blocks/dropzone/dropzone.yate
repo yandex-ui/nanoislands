@@ -16,7 +16,7 @@ func nb-dropzone(nodeset options) {
 
 
 match .dropzone nb {
-    <div class="nb-dropzone {.class}">
+    <div class="nb-dropzone">
         apply . nb-main-attrs
 
         if .type {
