@@ -13,7 +13,7 @@ match .input nb {
             @class += ' nb-input_size_{.size}'
         }
 
-        if .disabled {
+        if .attrs.disabled {
             @class += ' nb-input_disabled js-disabled'
         }
 
@@ -25,39 +25,4 @@ match .input nb {
             apply .* nb-content
         </input>
     </span>
-}
-
-match .input.disabled nb-content  {
-    @disabled = "disabled"
-    nb-warn('Увидел это предупреждение - перенеси параметр {name()} у input в объект attrs. В новой версии nanoislands эти параметры будут удалены и работать не будут.')
-}
-
-match .input.readonly nb-content  {
-    @readonly = "readonly"
-    nb-warn('Увидел это предупреждение - перенеси параметр {name()} у input в объект attrs. В новой версии nanoislands эти параметры будут удалены и работать не будут.')
-}
-
-match .input.maxlength nb-content  {
-    @maxlength = .
-    nb-warn('Увидел это предупреждение - перенеси параметр {name()} у input в объект attrs. В новой версии nanoislands эти параметры будут удалены и работать не будут.')
-}
-
-match .input.length nb-content  {
-    @size = .
-    nb-warn('Увидел это предупреждение - перенеси параметр {name()} у input в объект attrs. В новой версии nanoislands эти параметры будут удалены и работать не будут.')
-}
-
-match .input.placeholder nb-content  {
-    @placeholder = .
-    nb-warn('Увидел это предупреждение - перенеси параметр {name()} у input в объект attrs. В новой версии nanoislands эти параметры будут удалены и работать не будут.')
-}
-
-match .input.type nb-content  {
-    @type = .
-    nb-warn('Увидел это предупреждение - перенеси параметр {name()} у input в объект attrs. В новой версии nanoislands эти параметры будут удалены и работать не будут.')
-}
-
-match .input.name nb-content  {
-    @name = .
-    nb-warn('Увидел это предупреждение - перенеси параметр {name()} у input в объект attrs. В новой версии nanoislands эти параметры будут удалены и работать не будут.')
 }
