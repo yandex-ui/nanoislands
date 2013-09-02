@@ -16,11 +16,11 @@ func nb-dropzone(nodeset options) {
 
 
 match .dropzone nb {
-    <div class="nb-dropzone">
+    <div class="nb-dropzone {.class}">
         apply . nb-main-attrs
 
         if .type {
-            @class += ' nb-dropzone_type_{.}'
+            @class += ' nb-dropzone_type_{.type}'
         }
 
         if .head {
