@@ -20,7 +20,7 @@ match .dropzone nb {
         apply . nb-main-attrs
 
         if .type {
-            @class += ' nb-dropzone_type_{.}'
+            @class += ' nb-dropzone_type_{.type}'
         }
 
         if .head {
@@ -31,7 +31,7 @@ match .dropzone nb {
 
         if .text {
             <div class="nb-dropzone__text">
-                .text
+                html(.text)
                 if .button != 'false'{
                     nb-button(.button)
                 }
