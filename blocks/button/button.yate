@@ -35,7 +35,6 @@ match .button nb {
                 apply .icon nb
                 html(.content)
             } else if (!.content && .icon){
-                html('&nbsp;')
                 apply .icon nb
             } else {
                 html(.content)
@@ -70,7 +69,6 @@ match .buttonLink nb {
                 apply .icon nb
                 html(.content)
             } else if (!.content && .icon ){
-                html('&nbsp;')
                 apply .icon nb
             } else {
                 html(.content)
@@ -80,7 +78,7 @@ match .buttonLink nb {
 }
 
 match .buttonAttach nb {
-    <span class="nb-button _init nb-button_size_{ .size } nb-button_type_attach nb-button_theme_{ .theme }">
+    <label class="nb-button _init nb-button_size_{ .size } nb-button_type_attach  nb-button_theme_{ .theme }">
         apply . nb-main-attrs
 
         if .disabled {
@@ -100,24 +98,25 @@ match .buttonAttach nb {
             @class += ' nb-button_only-icon'
         }
 
+        <span class="nb-file-intruder">
+            <span class="nb-file-intruder__inner">
+                <input class="nb-file-intruder__input" type="file">
+                    if .attrs.name {
+                        @name = "{.attrs.name}"
+                    }
+                </input>
+                <span class="nb-file-intruder__focus"></span>
+            </span>
+        </span>
         <span class="nb-button__text">
             if (.content && .icon) {
                 apply .icon nb
                 html(.content)
             } else if (!.content && .icon){
-                html('&nbsp;')
                 apply .icon nb
             } else {
                 html(.content)
             }
         </span>
-        <input type="file" class="nb-button__attach">
-            if .attrs.name {
-                @name = "{.attrs.name}"
-            }
-        </input>
-    </span>
+    </label>
 }
-
-
-

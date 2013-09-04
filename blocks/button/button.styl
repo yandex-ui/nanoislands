@@ -2,84 +2,52 @@
     Кнопка.
 */
 
-nb-button()
+$skin-islands-button-content = '.nb-button__text'
+$skin-islands-button-disabled = '.nb-button_disabled'
 
-  .nb-button
-    display: inline-block
+// Обычная кнопка
+.nb-button_theme_normal
+  kind: button
+  skin: button
 
-    text-align: center
-    white-space: nowrap
+// Маленькая обычная кнопка
+.nb-button_theme_normal.nb-button_size_s
+  skin: button small
 
-    user-select: none
-    position: relative
-    font-family: $fontFamily
+// Летающая кнопка
+.nb-button_flying
+  skin: button fly
 
-    color: #333
+// Маленькая летающая кнопка
+.nb-button_flying.nb-button_size_s
+  skin: button fly small
 
-    border-radius: 3px
+// Кнопка-действие
+.nb-button_theme_action
+  kind: button
+  skin: action-button
 
-    vertical-align: middle
+// Маленькая кнопка-действие
+.nb-button_theme_action.nb-button_size_s
+  skin: action-button small
 
-    if !ie
-      margin: 0
-      padding: 0
-      border: 0
-      background: none
-      cursor: default
-      text-decoration: none
-      outline: 0 auto
+// Псевдо-кнопка
+.nb-button_theme_pseudo
+  kind: button
+  skin: pseudo-button
 
-    if ie
-      overflow: visible
+// Маленькая псевдо-кнопка
+.nb-button_theme_pseudo.nb-button_size_s
+  skin: pseudo-button small
 
-  if ie
-    a.nb-button
-      padding: 2px 0
+// Задизейбленная кнопка
+.nb-button_disabled
+  skin: disabled
 
-  .nb-button:focus
-  .nb-button.ui-state-focus
-    outline: none
-    -moz-box-shadow: 0 1px 0 rgba(0,0,0,.07), 0 0 6px 2px rgba(255,204,0,.7)
-    box-shadow: 0 1px 0 rgba(0,0,0,.07), 0 0 6px 2px rgba(255,204,0,.7)
+// Кнопка аттача
 
-  // фиксит выосту кнопки в ФФ
-  // при использовании тега button
-  .nb-button::-moz-focus-inner
-    padding: 0
-    border: 0
-
-  .nb-button__text
-    position: relative
-    padding: 0 1em
-
-  .nb-button
-    .nb-icon
-      margin-right: 4px
-      margin-left:  -4px
-
-
-  .nb-button_only-icon
-    .nb-icon
-      position: absolute
-      left: 50%
-      top: 50%
-      margin: -8px 0 0 -8px
-
-    .nb-icon_size_m
-      margin: -16px 0 0 -16px
-
-    .nb-icon_size_l
-      margin: -24px 0 0 -24px
-
-    .nb-button__text
-      width: 4px
-      display: inline-block
-
-
-  @import '_size'
-  @import '_theme'
-  @import '_disabled'
-  @import '_checked'
-  @import '_attach'
-
-nb-button()
+.nb-file-intruder
+  kind: file-intruder \
+    (-inner '&__inner') \
+    (-input '&__input') \
+    (-focus '&__focus' 'islands-button_focus_style')

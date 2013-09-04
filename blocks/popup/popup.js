@@ -111,12 +111,12 @@
                 var popupLeft = parseInt(this.uiDialog.css('left'), 10);
                 if (popupLeft > handlerOffset.left) {
                     // попап находится справа
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'right');
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'right');
                     this.uiDialog.data('nb-tail-dir', 'right');
                     this.uiDialog.css('left', '+=' + this.tailOffset * 2);
 
                 } else {
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'left');
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'left');
                     this.uiDialog.data('nb-tail-dir', 'left');
                     this.uiDialog.css('left', '-=' + this.tailOffset * 2);
                 }
@@ -124,12 +124,12 @@
             } else {
                 var popupTop = parseInt(this.uiDialog.css('top'), 10);
                 if (popupTop > handlerOffset.top) {
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'bottom');
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'bottom');
                     this.uiDialog.data('nb-tail-dir', 'bottom');
                     this.uiDialog.css('top', '+=' + this.tailOffset * 2);
 
                 } else {
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'top');
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'top');
                     this.uiDialog.data('nb-tail-dir', 'top');
                     this.uiDialog.css('top', '-=' + this.tailOffset * 2);
                 }

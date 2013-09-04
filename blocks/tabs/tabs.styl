@@ -1,77 +1,25 @@
-nb-tabs()
-  .nb-tabs__tab
-  .nb-tabs__tabs
-  .nb-tabs__link
-    position: relative
-    top: 0
+.nb-tabs
+  kind: block
+  skin: tabs
 
-    display: inline-block
+.nb-tabs__tab
+  reset('li')
+  kind: block inline
 
-    white-space: nowrap
-    outline: none
+.nb-tabs__link
+  skin: tabs-item
+  kind: block
 
-  .nb-tabs__tab
-    margin-left: $gapM
+.ui-state-active .nb-tabs__link,
+.ui-state-active:hover .nb-tabs__link
+  skin: tabs-item_selected
 
-    list-style: none
+.nb-tabs_size_s
+  kind: block
+  skin: tabs small
 
-  .nb-tabs__link:after
-    display: none
-    content: ''
-
-    position: absolute
-    top: -1px
-    left: 0
-    right: 0
-
-    border-bottom: 2px solid
-
-  .ui-state-active .nb-tabs__link
-    color: $foreground
-
-  .ui-state-active .nb-tabs__link:after
-    display: block
-
-  .ui-tabs-active .nb-tabs__link
-  .ui-state-disabled .nb-tabs__link
-    cursor: default
-
-  .nb-tabs__panel
-    margin: $gapS 0
-
-  if !ie
-    .nb-tabs .nb-tabs__tabs
-      margin-left: -($gapM)
-
-  if ie
-    .nb-tabs__link
-      top: -1px
-
-    .ui-state-active .nb-tabs__link
-      border-top: 2px solid
-
-  .nb-tabs_size_s .nb-tabs__tabs
-    font: $font-p1
-
-    if ie
-      line-height: 29px
-    else
-      line-height: 30px
-
-  .nb-tabs_size_m .nb-tabs__tabs
-    if ie
-      line-height: 35px
-    else
-      line-height: 36px
-
-  // Для возвышения на самый верх острова.
-  .nb-tabs_rise_s
-    margin-top: -($gapS)
-
-  .nb-tabs_rise_m
-    margin-top: -($gapM)
-
-  .nb-tabs_rise_l
-    margin-top: -($gapL)
-
-nb-tabs()
+.nb-tabs_rise_s,
+.nb-tabs_rise_m,
+.nb-tabs_rise_l
+  margin-top: -1*$islands_m
+  margin-bottom: $islands_s

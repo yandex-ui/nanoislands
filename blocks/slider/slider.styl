@@ -9,8 +9,20 @@ nb-slider()
 
     position: relative
 
+  .nb-slider__handle
+    kind: button
+    skin: button fly no-active
+
+  .nb-slider__small-handle
+    kind: button
+    skin: button fly small no-active
+
   .nb-slider__fallback
-    display: inline-block
+    kind: block
+    reset: input
+    user-select: none
+    width: 1.2em
+    text-align: center
 
   .nb-slider__body
     display: none
@@ -40,7 +52,7 @@ nb-slider()
 
     border-radius: 3px
 
-  .nb-slider_theme_normal .nb-slider__body:before
+  .nb-slider__body:before
     background-color: rgba(0,0,0,.07)
 
     box-shadow: inset 0 1px 3px rgba(0,0,0,.2), inset 0 0 1px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.2)
@@ -70,30 +82,15 @@ nb-slider()
       background: #ffeca6
       box-shadow: 0 1px 3px -1px rgba(0,0,0,0.2) inset
 
-  .nb-slider .nb-slider__body .nb-slider__handle
+  .nb-slider .nb-slider__body .ui-slider-handle
     z-index: 6
-    top:  0
-    margin:  0
+    top: -0.85em
+    margin: 0 0 0 -1.5em
 
-  .nb-slider__handle_type_round
-  .nb-slider__handle_type_round:before
-    border-radius: 50%
-
-  .nb-slider_animation_yes .nb-slider__handle
-    -webkit-transition: left .25s ease, bottom .25s ease
-    -moz-transition: left .25s ease, bottom .25s ease
-    -o-transition: left .25s ease, bottom .25s ease
+  .nb-slider_animation_yes .ui-slider-handle
     transition: left .25s ease, bottom .25s ease
 
   .nb-slider_animation_yes .ui-slider-range
-    -webkit-transition: width .25s ease, left .25s ease, height .25s ease, bottom .25s ease
-    -moz-transition: width .25s ease, left .25s ease, height .25s ease, bottom .25s ease
-    -o-transition: width .25s ease, left .25s ease, height .25s ease, bottom .25s ease
     transition: width .25s ease, left .25s ease, height .25s ease, bottom .25s ease
-
-  .nb-slider_theme_normal
-      font-family: Arial, sans-serif
-
-  @import "_size"
 
 nb-slider()

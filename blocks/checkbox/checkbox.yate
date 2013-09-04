@@ -18,7 +18,7 @@ match .checkbox nb {
                 @checked = 'checked'
             }
         </input>
-        <span class="nb-checkbox__flag"></span>
+        <span class="nb-checkbox__flag"><span class="nb-checkbox__flag__icon"></span></span>
 
         <span class="nb-checkbox__label">
             .text

@@ -5,6 +5,10 @@ nb-loader()
 
     display: inline-block
 
+    // Fixes missing subpixel-antialiasing bug
+    overflow: hidden
+    -webkit-transform: translate(0,0)
+
   .nb-loader__spinner
     position: absolute
     top: 0

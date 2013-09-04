@@ -7,10 +7,13 @@
         "url": "git://github.yandex-team.ru/UFO/nanoislands.git"
     },
     "dependencies": {
-        "nib": "git://github.com/kizu/nib.git#new-gradients",
-        "stylus": "git://github.com/Panya/stylus.git#master",
         "yate": "0.0.56",
-        "borschik": "0.3.5"
+        "borschik": "0.3.5",
+        "autoprefixer": "0.7.x",
+        "stylus": "0.37.x",
+        "csso": "1.3.x",
+        "stylobate": "0.13.x",
+        "stylobate-islands": "0.11.x"
     },
     "engines": {
         "node": "*"

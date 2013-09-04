@@ -1328,10 +1328,10 @@ nb.define('slider', {
     onInit: function() {
         var that = this;
         that.data = that.data();
-        that.$fallback = $(that.node).children('.nb-slider__fallback');
+        that.$fallback = $(that.node).find('.nb-slider__fallback');
         that.$control = $(that.node).children('.nb-slider__body');
 
-        that.$fallback.hide();
+        that.$fallback.attr('readonly','readonly');
         that.$control.show();
 
         that.$control.slider({
@@ -1342,16 +1342,21 @@ nb.define('slider', {
                 that.onChangeValue();
             }
         });
+        that.onChangeValue();
     },
 
     onChangeValue: function(value){
         if (value) {
             this.data.value = this.$control.slider("option", "value", value);
         }
-
         this.$fallback.attr('value', this.data.value);
+
+        // Adjust the width of an input to its content
+        this.$fallback.width(0);
+        this.$fallback.width(this.$fallback[0].scrollWidth);
     }
 });
+
 /* slider/slider.js end */
 
 /* radio-button/radio-button.js begin */
@@ -1480,12 +1485,12 @@ nb.define('radio-button', {
                 var popupLeft = parseInt(this.uiDialog.css('left'), 10);
                 if (popupLeft > handlerOffset.left) {
                     // попап находится справа
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'right');
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'right');
                     this.uiDialog.data('nb-tail-dir', 'right');
                     this.uiDialog.css('left', '+=' + this.tailOffset * 2);
 
                 } else {
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'left');
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'left');
                     this.uiDialog.data('nb-tail-dir', 'left');
                     this.uiDialog.css('left', '-=' + this.tailOffset * 2);
                 }
@@ -1493,12 +1498,12 @@ nb.define('radio-button', {
             } else {
                 var popupTop = parseInt(this.uiDialog.css('top'), 10);
                 if (popupTop > handlerOffset.top) {
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'bottom');
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'bottom');
                     this.uiDialog.data('nb-tail-dir', 'bottom');
                     this.uiDialog.css('top', '+=' + this.tailOffset * 2);
 
                 } else {
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_tail_to', 'top');
+                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'top');
                     this.uiDialog.data('nb-tail-dir', 'top');
                     this.uiDialog.css('top', '-=' + this.tailOffset * 2);
                 }
