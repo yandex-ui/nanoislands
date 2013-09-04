@@ -27,6 +27,7 @@ include 'select.yate'
 include 'buttons.yate'
 include 'checkbox.yate'
 include 'popups.yate'
+include 'dropzone.yate'
 include 'progress.yate'
 include 'input.yate'
 include 'input-group.yate'
@@ -220,6 +221,16 @@ match / {
         </div>
         <div class="demo-pane__content">
             userBlock()
+        </div>
+    </div>
+    <div class="demo-pane">
+        <div class="demo-pane__desc">
+            <div class="demo-h2">
+                "Dropzone"
+            </div>
+        </div>
+        <div class="demo-pane__content">
+            dropzone()
         </div>
     </div>
 }

@@ -1462,7 +1462,7 @@ nb.define('radio-button', {
             this._super();
             var $tail = $('<div class="nb-popup__tail"><i/></div>');
 
-            if (this.options.tail != 'cnter') {
+            if (this.options.tail != 'center') {
                 $tail.addClass('nb-popup__tail_to_' + this.options.tail);
             }
 
@@ -1656,6 +1656,10 @@ nb.define('radio-button', {
 
 
     popup.onclose = function() {
+
+         //  Снимаем флаг о том, что попап открыт.
+        this.where = null;
+
         if (this.node && this.node.widget && this.node.widget.isOpen()) {
             this.node.widget.close();
         }
@@ -2155,7 +2159,7 @@ nb.define('user', {
 
             item.usernameHighlighted = item.username.replace(matcher, '<b>$1</b>');
 
-            if (item.email) {
+            if (typeof item.email == 'string') {
                 item.emailHighlighted = item.email.replace(matcher, '<b>$1</b>');
             }
         }

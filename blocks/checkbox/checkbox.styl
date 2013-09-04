@@ -7,11 +7,11 @@
 .nb-checkbox__input
   kind: hidden visually
 
-.nb-checkbox__flag_radio
+.nb-checkbox_type_radio .nb-checkbox__flag
   kind: icon
   skin: radio (-icon '& > .nb-checkbox__flag__icon')
 
-.nb-checkbox__flag_checkbox
+.nb-checkbox_type_checkbox .nb-checkbox__flag
   kind: icon
   skin: checkbox (-icon '& > .nb-checkbox__flag__icon')
 
@@ -23,6 +23,5 @@
   skin: button_focus
 
 .nb-checkbox_size_s,
-.nb-checkbox_size_s .nb-checkbox__flag_radio,
-.nb-checkbox_size_s .nb-checkbox__flag_checkbox
+.nb-checkbox_size_s .nb-checkbox__flag
   skin: para2 no-margin

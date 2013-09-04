@@ -46,8 +46,8 @@
 .nb-popup__close,
 .nb-select .nb-button__text:before,
 .nb-select .nb-button_size_s .nb-button__text:before,
-.nb-checkbox__flag_radio,
-.nb-checkbox__flag_checkbox,
+.nb-checkbox_type_radio .nb-checkbox__flag,
+.nb-checkbox_type_checkbox .nb-checkbox__flag,
 .nb-icon {
   position: relative;
   display: inline-block;
@@ -959,6 +959,10 @@ input[type=file]:hover:not(:checked) + .nb-button_theme_action.nb-button_size_s:
 .nb-popup__title {
   font: 1.25em/1.125em Arial, sans-serif;
   padding: 10px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nb-popup__content {
@@ -977,6 +981,10 @@ input[type=file]:hover:not(:checked) + .nb-button_theme_action.nb-button_size_s:
 
 .nb-popup.ui-dialog-fixed {
   position: fixed !important;
+}
+
+.ui-tooltip.nb-island {
+  position: absolute;
 }
 
 .nb-popup-outer.ui-dialog,
@@ -1251,7 +1259,7 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child)
   cursor: pointer;
 }
 
-.nb-checkbox__flag_radio {
+.nb-checkbox_type_radio .nb-checkbox__flag {
   font: 15px/22px Arial, sans-serif;
   position: relative;
   vertical-align: middle;
@@ -1274,7 +1282,7 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child)
   border-radius: 50%;
 }
 
-.nb-checkbox__flag_radio:before {
+.nb-checkbox_type_radio .nb-checkbox__flag:before {
   content: "";
   position: absolute;
   top: 1px;
@@ -1284,12 +1292,12 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child)
   border-radius: 2px;
 }
 
-.nb-checkbox__flag_radio .nb-button__text {
+.nb-checkbox_type_radio .nb-checkbox__flag .nb-button__text {
   position: relative;
   display: block;
 }
 
-.nb-checkbox__flag_radio:after {
+.nb-checkbox_type_radio .nb-checkbox__flag:after {
   content: "";
   position: absolute;
   top: 0;
@@ -1298,29 +1306,29 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child)
   left: 0;
 }
 
-input[type=file]:focus + .nb-checkbox__flag_radio,
-.nb-checkbox__flag_radio:not(.nb-button_disabled):focus {
+input[type=file]:focus + .nb-checkbox_type_radio .nb-checkbox__flag,
+.nb-checkbox_type_radio .nb-checkbox__flag:not(.nb-button_disabled):focus {
   outline: 0;
 }
 
-input[type=file]:focus + .nb-checkbox__flag_radio:after,
-.nb-checkbox__flag_radio:not(.nb-button_disabled):focus:after {
+input[type=file]:focus + .nb-checkbox_type_radio .nb-checkbox__flag:after,
+.nb-checkbox_type_radio .nb-checkbox__flag:not(.nb-button_disabled):focus:after {
   z-index: 9;
   box-shadow: 0 0 6px 2px rgba(255,204,0,0.7), inset 0 0 0 1px rgba(193,154,0,0.2);
   border-radius: inherit;
 }
 
-.nb-checkbox__flag_radio:before {
+.nb-checkbox_type_radio .nb-checkbox__flag:before {
   background: #f7f7f7;
   background: -webkit-linear-gradient(#fff, #eee);
   background: linear-gradient(#fff, #eee);
 }
 
-.nb-checkbox__flag_radio:before {
+.nb-checkbox_type_radio .nb-checkbox__flag:before {
   border-radius: 50%;
 }
 
-.nb-checkbox__flag_radio > .nb-checkbox__flag__icon {
+.nb-checkbox_type_radio .nb-checkbox__flag > .nb-checkbox__flag__icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1331,11 +1339,11 @@ input[type=file]:focus + .nb-checkbox__flag_radio:after,
   border-radius: 50%;
 }
 
-input:not(:checked) + .nb-checkbox__flag_radio > .nb-checkbox__flag__icon {
+input:not(:checked) + .nb-checkbox_type_radio .nb-checkbox__flag > .nb-checkbox__flag__icon {
   visibility: hidden;
 }
 
-.nb-checkbox__flag_checkbox {
+.nb-checkbox_type_checkbox .nb-checkbox__flag {
   font: 15px/22px Arial, sans-serif;
   position: relative;
   vertical-align: middle;
@@ -1357,7 +1365,7 @@ input:not(:checked) + .nb-checkbox__flag_radio > .nb-checkbox__flag__icon {
   margin-right: 6px;
 }
 
-.nb-checkbox__flag_checkbox:before {
+.nb-checkbox_type_checkbox .nb-checkbox__flag:before {
   content: "";
   position: absolute;
   top: 1px;
@@ -1367,12 +1375,12 @@ input:not(:checked) + .nb-checkbox__flag_radio > .nb-checkbox__flag__icon {
   border-radius: 2px;
 }
 
-.nb-checkbox__flag_checkbox .nb-button__text {
+.nb-checkbox_type_checkbox .nb-checkbox__flag .nb-button__text {
   position: relative;
   display: block;
 }
 
-.nb-checkbox__flag_checkbox:after {
+.nb-checkbox_type_checkbox .nb-checkbox__flag:after {
   content: "";
   position: absolute;
   top: 0;
@@ -1381,25 +1389,25 @@ input:not(:checked) + .nb-checkbox__flag_radio > .nb-checkbox__flag__icon {
   left: 0;
 }
 
-input[type=file]:focus + .nb-checkbox__flag_checkbox,
-.nb-checkbox__flag_checkbox:not(.nb-button_disabled):focus {
+input[type=file]:focus + .nb-checkbox_type_checkbox .nb-checkbox__flag,
+.nb-checkbox_type_checkbox .nb-checkbox__flag:not(.nb-button_disabled):focus {
   outline: 0;
 }
 
-input[type=file]:focus + .nb-checkbox__flag_checkbox:after,
-.nb-checkbox__flag_checkbox:not(.nb-button_disabled):focus:after {
+input[type=file]:focus + .nb-checkbox_type_checkbox .nb-checkbox__flag:after,
+.nb-checkbox_type_checkbox .nb-checkbox__flag:not(.nb-button_disabled):focus:after {
   z-index: 9;
   box-shadow: 0 0 6px 2px rgba(255,204,0,0.7), inset 0 0 0 1px rgba(193,154,0,0.2);
   border-radius: inherit;
 }
 
-.nb-checkbox__flag_checkbox:before {
+.nb-checkbox_type_checkbox .nb-checkbox__flag:before {
   background: #f7f7f7;
   background: -webkit-linear-gradient(#fff, #eee);
   background: linear-gradient(#fff, #eee);
 }
 
-.nb-checkbox__flag_checkbox > .nb-checkbox__flag__icon {
+.nb-checkbox_type_checkbox .nb-checkbox__flag > .nb-checkbox__flag__icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1414,7 +1422,7 @@ input[type=file]:focus + .nb-checkbox__flag_checkbox:after,
   transform: scale(0.9) rotate(50deg) skewX(12deg);
 }
 
-input:not(:checked) + .nb-checkbox__flag_checkbox > .nb-checkbox__flag__icon {
+input:not(:checked) + .nb-checkbox_type_checkbox .nb-checkbox__flag > .nb-checkbox__flag__icon {
   visibility: hidden;
 }
 
@@ -1448,8 +1456,7 @@ input:not(:checked) + .nb-checkbox__flag_checkbox > .nb-checkbox__flag__icon {
 }
 
 .nb-checkbox_size_s,
-.nb-checkbox_size_s .nb-checkbox__flag_radio,
-.nb-checkbox_size_s .nb-checkbox__flag_checkbox {
+.nb-checkbox_size_s .nb-checkbox__flag {
   font-size: 13px;
   line-height: 18px;
 }
@@ -1759,7 +1766,7 @@ label.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input
 }
 
 .nb-dropzone__text {
-  font: 0.813em/1.125em Arial, sans-serif;
+  font-size: 13px;
   line-height: 24px;
 }
 

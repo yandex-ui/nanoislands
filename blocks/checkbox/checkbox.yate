@@ -10,25 +10,19 @@ func nb-checkbox(nodeset options) {
 match .checkbox nb {
     uniq = 'nb-checkbox_{nb-uniq()}'
 
-    <label class="nb-checkbox nb-checkbox_size_{.size}" for="{uniq}">
-        <input class="nb-checkbox__input" type="{.type}" id="{uniq}">
+    <label class="nb-checkbox nb-checkbox_size_{ .size } nb-checkbox_type_{ .type }" for="{ uniq }">
+        <input class="nb-checkbox__input" type="{ .type }" id="{ uniq }">
             apply . nb-main-attrs
+
+            if .checked {
+                @checked = 'checked'
+            }
         </input>
-        <span class="nb-checkbox__flag nb-checkbox__flag_{.type}">
-            <span class="nb-checkbox__flag__icon"></span>
+        <span class="nb-checkbox__flag"><span class="nb-checkbox__flag__icon"></span></span>
+
+        <span class="nb-checkbox__label">
+            .text
         </span>
-        apply . nb-main-content
     </label>
 }
 
-match .checkbox nb-content {
-    <span class="nb-checkbox__label">
-        .text
-    </span>
-}
-
-match .checked nb-attrs {
-    if . {
-        @checked = 'checked'
-    }
-}

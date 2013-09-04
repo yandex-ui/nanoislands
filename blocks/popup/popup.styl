@@ -36,6 +36,10 @@
 .nb-popup__title
   font: $font-h3
   padding: $islands_s
+  display: block
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
 
 .nb-popup__content
   font: $font-p1
@@ -51,6 +55,9 @@
 
 .nb-popup.ui-dialog-fixed
   position: fixed !important
+
+.ui-tooltip.nb-island
+  position: absolute
 
 .nb-popup-outer.ui-dialog,
 .nb-popup-outer.ui-dialog .ui-dialog-content

@@ -9,59 +9,29 @@ func nb-slider(nodeset options) {
 }
 
 match .slider nb {
-    <div>
+    <div class='nb-slider _init nb-slider_size_{ .size }  nb-slider_theme_{ .theme } nb-slider_orientation_{ .orientation }  nb-slider__handle_type_{ .type }' data-nb-value='{ .value }'>
         apply . nb-main-attrs
 
-        <div class="nb-slider__body nb-slider__body_type_{{.type}}">
-            <label>
-                @class = 'ui-slider-handle'
+        if !.static {
+            @data-nb='slider'
+        }
+
+        <div class="nb-slider__body nb-slider__body_type_{ .type }">
+            <label class='ui-slider-handle'>
                 if .size == 's' {
                     @class += ' nb-slider__small-handle'
                 } else {
                     @class += ' nb-slider__handle'
                 }
-                apply .handle.* nb-attrs
+
+                if .handle.class {
+                    @class += ' { .handle.class }'
+                }
+
                 <span class="nb-button__text">
                     <input class="nb-slider__fallback" type="text" value="{.value}" id="{.id}__value" />
                 </span>
             </label>
         </div>
-
     </div>
-}
-
-match .slider nb-attrs {
-    if !.static {
-        @data-nb='slider'
-    }
-
-    @class = 'nb-slider _init'
-}
-
-match .slider.size nb-attrs {
-   @class += ' nb-slider_size_{.}'
-}
-
-match .slider.value nb-attrs {
-   @data-nb-value = '{.}'
-}
-
-match .slider.id nb-attrs {
-   @id = '{.}'
-}
-
-match .slider.theme nb-attrs {
-   @class += ' nb-slider_theme_{.}'
-}
-
-match .slider.orientation nb-attrs {
-   @class += ' nb-slider_orientation_{.}'
-}
-
-match .slider.handle.type nb-attrs {
-    @class += ' nb-slider__handle_type_{.}'
-}
-
-match .slider.handle.class nb-attrs {
-    @class += ' {.}'
 }

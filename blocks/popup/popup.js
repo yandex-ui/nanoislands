@@ -88,7 +88,7 @@
             this._super();
             var $tail = $('<div class="nb-popup__tail"><i/></div>');
 
-            if (this.options.tail != 'cnter') {
+            if (this.options.tail != 'center') {
                 $tail.addClass('nb-popup__tail_to_' + this.options.tail);
             }
 
@@ -282,6 +282,10 @@
 
 
     popup.onclose = function() {
+
+         //  Снимаем флаг о том, что попап открыт.
+        this.where = null;
+
         if (this.node && this.node.widget && this.node.widget.isOpen()) {
             this.node.widget.close();
         }
