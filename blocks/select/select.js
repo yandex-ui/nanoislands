@@ -51,6 +51,7 @@ nb.define('select', {
             minLength: 0,
             autoFocus: false,
             position: position,
+            appendTo: that.node,
             source: function(request, response) {
                 response(that.$fallback.children('option').map(function() {
                     return {
