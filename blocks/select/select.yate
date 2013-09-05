@@ -9,7 +9,7 @@ func nb-select(nodeset select) {
 }
 
 match .select nb {
-   <div class="nb-select _init  nb-select_size_{ .size } nb-select_theme_{ .theme }" data-nb="select"  data-nb-direction ="{ .direction }">
+   <div class="nb-select ui-front _init  nb-select_size_{ .size } nb-select_theme_{ .theme }" data-nb="select"  data-nb-direction ="{ .direction }">
        apply . nb-main-attrs
 
        <button class="nb-button nb-select__button _init nb-button_size_{ .size } nb-button_theme_{ .theme }" data-nb="button">
