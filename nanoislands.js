@@ -1683,7 +1683,6 @@ nb.define('radio-button', {
         this.where = where;
         var that = this;
         var using;
-        var onPositionComplete = $.noop;
 
         var data = this.data();
 
@@ -1700,10 +1699,6 @@ nb.define('radio-button', {
                         that.trigger('position.complete');
                     }
                 });
-            };
-        } else {
-            onPositionComplete = function() {
-                that.trigger('position.complete');
             };
         }
 
@@ -1730,8 +1725,6 @@ nb.define('radio-button', {
                 }
             });
 
-            onPositionComplete();
-
             return;
         }
 
@@ -1754,8 +1747,6 @@ nb.define('radio-button', {
                 that.trigger('close');
             }
         });
-
-        onPositionComplete();
     };
 
     nb.define('popup', popup);
