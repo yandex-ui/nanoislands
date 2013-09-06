@@ -308,7 +308,6 @@
         this.where = where;
         var that = this;
         var using;
-        var onPositionComplete = $.noop;
 
         var data = this.data();
 
@@ -325,10 +324,6 @@
                         that.trigger('position.complete');
                     }
                 });
-            };
-        } else {
-            onPositionComplete = function() {
-                that.trigger('position.complete');
             };
         }
 
@@ -355,8 +350,6 @@
                 }
             });
 
-            onPositionComplete();
-
             return;
         }
 
@@ -379,8 +372,6 @@
                 that.trigger('close');
             }
         });
-
-        onPositionComplete();
     };
 
     nb.define('popup', popup);
