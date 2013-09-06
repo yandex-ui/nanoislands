@@ -298,17 +298,31 @@
         this.where = where;
         var that = this;
         var using;
+        var onPositionComplete = $.noop;
 
         var data = this.data();
 
         if (params.animate) {
             using =  function(props) {
-                $(this).animate({
+                // без stop событие complete срабатывает дважды
+                $(this).stop().animate({
                     left : props.left,
                     top : props.top
-                }, 'fast');
+                }, {
+                    duration: 'fast',
+                    queue: false,
+                    complete: function() {
+                        that.trigger('position.complete');
+                    }
+                });
+            };
+        } else {
+            onPositionComplete = function() {
+                that.trigger('position.complete');
             };
         }
+
+
 
         //  Модальный попап двигать не нужно.
         if (this.modal) {
@@ -330,6 +344,8 @@
                     using: using
                 }
             });
+
+            onPositionComplete();
 
             return;
         }
@@ -353,6 +369,8 @@
                 that.trigger('close');
             }
         });
+
+        onPositionComplete();
     };
 
     nb.define('popup', popup);

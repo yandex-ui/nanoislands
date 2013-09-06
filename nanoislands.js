@@ -1204,6 +1204,7 @@ nb.define('select', {
             minLength: 0,
             autoFocus: false,
             position: position,
+            appendTo: that.node,
             source: function(request, response) {
                 response(that.$fallback.children('option').map(function() {
                     return {
@@ -1672,17 +1673,31 @@ nb.define('radio-button', {
         this.where = where;
         var that = this;
         var using;
+        var onPositionComplete = $.noop;
 
         var data = this.data();
 
         if (params.animate) {
             using =  function(props) {
-                $(this).animate({
+                // без stop событие complete срабатывает дважды
+                $(this).stop().animate({
                     left : props.left,
                     top : props.top
-                }, 'fast');
+                }, {
+                    duration: 'fast',
+                    queue: false,
+                    complete: function() {
+                        that.trigger('position.complete');
+                    }
+                });
+            };
+        } else {
+            onPositionComplete = function() {
+                that.trigger('position.complete');
             };
         }
+
+
 
         //  Модальный попап двигать не нужно.
         if (this.modal) {
@@ -1704,6 +1719,8 @@ nb.define('radio-button', {
                     using: using
                 }
             });
+
+            onPositionComplete();
 
             return;
         }
@@ -1727,6 +1744,8 @@ nb.define('radio-button', {
                 that.trigger('close');
             }
         });
+
+        onPositionComplete();
     };
 
     nb.define('popup', popup);
