@@ -1517,47 +1517,45 @@ nb.define('radio-button', {
         var mode = $.effects.setMode($this, o.mode || "hide");
         var tailDir = $this.data('nb-tail-dir');
 
-        if (tailDir)
-
-            var res = {
-                show: {
-                    'bottom': {
-                        opacity: 1,
-                        top: '-=' + $.nb.contextDialog.prototype.tailOffset
-                    },
-                    'top': {
-                        opacity: 1,
-                        top: '+=' + $.nb.contextDialog.prototype.tailOffset
-                    },
-                    'left': {
-                        opacity: 1,
-                        left: '+=' + $.nb.contextDialog.prototype.tailOffset
-                    },
-                    'right': {
-                        opacity: 1,
-                        left: '-=' + $.nb.contextDialog.prototype.tailOffset
-                    }
-
+        var res = {
+            show: {
+                'bottom': {
+                    opacity: 1,
+                    top: '-=' + $.nb.contextDialog.prototype.tailOffset
                 },
-                hide: {
-                    'bottom': {
-                        opacity: 0,
-                        top: '+=' + $.nb.contextDialog.prototype.tailOffset
-                    },
-                    'top': {
-                        opacity: 0,
-                        top: '-=' + $.nb.contextDialog.prototype.tailOffset
-                    },
-                    'left': {
-                        opacity: 0,
-                        left: '-=' + $.nb.contextDialog.prototype.tailOffset
-                    },
-                    'right': {
-                        opacity: 0,
-                        left: '+=' + $.nb.contextDialog.prototype.tailOffset
-                    }
+                'top': {
+                    opacity: 1,
+                    top: '+=' + $.nb.contextDialog.prototype.tailOffset
+                },
+                'left': {
+                    opacity: 1,
+                    left: '+=' + $.nb.contextDialog.prototype.tailOffset
+                },
+                'right': {
+                    opacity: 1,
+                    left: '-=' + $.nb.contextDialog.prototype.tailOffset
                 }
-            };
+
+            },
+            hide: {
+                'bottom': {
+                    opacity: 0,
+                    top: '+=' + $.nb.contextDialog.prototype.tailOffset
+                },
+                'top': {
+                    opacity: 0,
+                    top: '-=' + $.nb.contextDialog.prototype.tailOffset
+                },
+                'left': {
+                    opacity: 0,
+                    left: '-=' + $.nb.contextDialog.prototype.tailOffset
+                },
+                'right': {
+                    opacity: 0,
+                    left: '+=' + $.nb.contextDialog.prototype.tailOffset
+                }
+            }
+        };
 
         if (mode == 'show') {
             $this.show();
@@ -1619,9 +1617,19 @@ nb.define('radio-button', {
 
     // ----------------------------------------------------------------------------------------------------------------- //
 
-    popup.onopen = function(e, params) {
+    /**
+     *
+     * @param {String} evtName название события
+     * @param {Object} params
+     * @param {Boolean} [params.closeOpened=true] закрыть ранее открытые окна
+     */
+    popup.onopen = function(evtName, params) {
         var where = params.where;
         var how = params.how;
+
+        if (typeof params.closeOpened === 'undefined') {
+            params.closeOpened = true;
+        }
 
         //  Специальный флаг-костыль.
         //  Если он true, то это значит, что мы только что передвинули открытый попап в другое место
@@ -1642,8 +1650,10 @@ nb.define('radio-button', {
         } else {
             //  Попап закрыт. Будем открывать.
 
-            //  На всякий случай даем сигнал, что нужно закрыть все открытые попапы.
-            nb.trigger('popup-close');
+            // закрыть все открытые попапы
+            if (params.closeOpened) {
+                nb.trigger('popup-close');
+            }
 
             $(this.node).removeClass('_hidden');
             //  Передвигаем попап.
