@@ -707,6 +707,7 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child)
   zoom: 1;
   vertical-align: top;
   max-width: 100%;
+  vertical-align: baseline;
 }
 .nb-select__fallback {
   display: inline;
