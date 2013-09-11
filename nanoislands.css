@@ -1074,6 +1074,7 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child)
   display: inline-block;
   vertical-align: top;
   max-width: 100%;
+  vertical-align: baseline;
 }
 
 .nb-select__fallback {
