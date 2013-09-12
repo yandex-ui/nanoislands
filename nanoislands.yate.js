@@ -2801,10 +2801,18 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<div";
         a0.a = {
-            'class': new yr.scalarAttr("nb-popup _hidden"),
-            'data-nb': new yr.scalarAttr("popup")
+            'class': new yr.scalarAttr("nb-popup")
         };
         a0.s = 'div';
+        if (!simpleBoolean('static', c0)) {
+            a0.a[ "data-nb" ] = new yr.scalarAttr("popup");
+            var tmp0 = a0.a[ "class" ];
+            if (tmp0) {
+                a0.a[ "class" ] = tmp0.addscalar(" _hidden");
+            } else {
+                a0.a[ "class" ] = new yr.scalarAttr(" _hidden");
+            }
+        }
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('tail', c0)) {
             a0.a[ "data-nb-tail" ] = new yr.scalarAttr(simpleScalar('tail', c0));

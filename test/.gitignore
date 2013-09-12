@@ -1,0 +1,7 @@
+*.tmp
+screenshots
+origin
+report.json
+tests.json
+report.html
+html/
