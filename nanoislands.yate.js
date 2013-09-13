@@ -2916,7 +2916,6 @@ var yr = yr || require('yate/lib/runtime.js');
                 }
             }
             r0 += closeAttrs(a0);
-            r0 += m.f('f11', c0, i0, l0, a0, "close");
             r0 += "</a>";
         }
         if (simpleBoolean('title', c0)) {
