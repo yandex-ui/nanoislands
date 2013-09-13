@@ -3157,7 +3157,7 @@ var yr = yr || require('yate/lib/runtime.js');
         }
         r0 += closeAttrs(a0);
         r0 += '';
-        r0 += "<span class=\"" + "nb-checkbox__flag" + "\"><span class=\"" + "nb-checkbox__flag__icon" + "\"></span></span>";
+        r0 += "<span class=\"" + "nb-checkbox__flag nb-checkbox__flag_type_" + nodeset2attrvalue( ( selectNametest('type', c0, []) ) ) + "\"><span class=\"" + "nb-checkbox__flag__icon" + "\"></span></span>";
         r0 += "<span class=\"" + "nb-checkbox__label" + "\">";
         r0 += nodeset2xml( selectNametest('text', c0, []) );
         r0 += "</span>";

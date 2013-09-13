@@ -42,8 +42,8 @@
 .nb-popup__close,
 .nb-select .nb-button__text:before,
 .nb-select .nb-button_size_s .nb-button__text:before,
-.nb-checkbox_type_radio .nb-checkbox__flag,
-.nb-checkbox_type_checkbox .nb-checkbox__flag,
+.nb-checkbox__flag_type_radio,
+.nb-checkbox__flag_type_checkbox,
 .nb-icon {
   position: relative;
   display: inline;
@@ -868,7 +868,7 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child)
   line-height: 22px;
   cursor: pointer;
 }
-.nb-checkbox_type_radio .nb-checkbox__flag {
+.nb-checkbox__flag_type_radio {
   font: 15px/22px Arial, sans-serif;
   position: relative;
   vertical-align: middle;
@@ -883,7 +883,7 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child)
   text-align: center;
   margin-right: 6px;
 }
-.nb-checkbox_type_radio .nb-checkbox__flag:before {
+.nb-checkbox__flag_type_radio:before {
   content: "";
   position: absolute;
   top: 1px;
@@ -891,14 +891,14 @@ label.nb-radio-button .nb-radio-button__button:not(:last-child):not(:only-child)
   bottom: 1px;
   left: 1px;
 }
-.nb-checkbox_type_radio .nb-checkbox__flag .nb-button__text {
+.nb-checkbox__flag_type_radio .nb-button__text {
   position: relative;
   display: block;
 }
-button.nb-checkbox_type_radio .nb-checkbox__flag .nb-button__text {
+button.nb-checkbox__flag_type_radio .nb-button__text {
   margin: -1px -1px -3px;
 }
-.nb-checkbox_type_radio .nb-checkbox__flag:after {
+.nb-checkbox__flag_type_radio:after {
   content: "";
   position: absolute;
   top: 0;
@@ -906,15 +906,15 @@ button.nb-checkbox_type_radio .nb-checkbox__flag .nb-button__text {
   bottom: 0;
   left: 0;
 }
-input[type=file]:focus + .nb-checkbox_type_radio .nb-checkbox__flag,
-.nb-checkbox_type_radio .nb-checkbox__flag:not(.nb-button_disabled):focus {
+input[type=file]:focus + .nb-checkbox__flag_type_radio,
+.nb-checkbox__flag_type_radio:not(.nb-button_disabled):focus {
   outline: 0;
 }
-input[type=file]:focus + .nb-checkbox_type_radio .nb-checkbox__flag:after,
-.nb-checkbox_type_radio .nb-checkbox__flag:not(.nb-button_disabled):focus:after {
+input[type=file]:focus + .nb-checkbox__flag_type_radio:after,
+.nb-checkbox__flag_type_radio:not(.nb-button_disabled):focus:after {
   z-index: 9;
 }
-.nb-checkbox_type_radio .nb-checkbox__flag > .nb-checkbox__flag__icon {
+.nb-checkbox__flag_type_radio > .nb-checkbox__flag__icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -923,10 +923,10 @@ input[type=file]:focus + .nb-checkbox_type_radio .nb-checkbox__flag:after,
   margin: -3px;
   background: #000;
 }
-input:not(:checked) + .nb-checkbox_type_radio .nb-checkbox__flag > .nb-checkbox__flag__icon {
+input:not(:checked) + .nb-checkbox__flag_type_radio > .nb-checkbox__flag__icon {
   visibility: hidden;
 }
-.nb-checkbox_type_checkbox .nb-checkbox__flag {
+.nb-checkbox__flag_type_checkbox {
   font: 15px/22px Arial, sans-serif;
   position: relative;
   vertical-align: middle;
@@ -941,7 +941,7 @@ input:not(:checked) + .nb-checkbox_type_radio .nb-checkbox__flag > .nb-checkbox_
   text-align: center;
   margin-right: 6px;
 }
-.nb-checkbox_type_checkbox .nb-checkbox__flag:before {
+.nb-checkbox__flag_type_checkbox:before {
   content: "";
   position: absolute;
   top: 1px;
@@ -949,14 +949,14 @@ input:not(:checked) + .nb-checkbox_type_radio .nb-checkbox__flag > .nb-checkbox_
   bottom: 1px;
   left: 1px;
 }
-.nb-checkbox_type_checkbox .nb-checkbox__flag .nb-button__text {
+.nb-checkbox__flag_type_checkbox .nb-button__text {
   position: relative;
   display: block;
 }
-button.nb-checkbox_type_checkbox .nb-checkbox__flag .nb-button__text {
+button.nb-checkbox__flag_type_checkbox .nb-button__text {
   margin: -1px -1px -3px;
 }
-.nb-checkbox_type_checkbox .nb-checkbox__flag:after {
+.nb-checkbox__flag_type_checkbox:after {
   content: "";
   position: absolute;
   top: 0;
@@ -964,15 +964,15 @@ button.nb-checkbox_type_checkbox .nb-checkbox__flag .nb-button__text {
   bottom: 0;
   left: 0;
 }
-input[type=file]:focus + .nb-checkbox_type_checkbox .nb-checkbox__flag,
-.nb-checkbox_type_checkbox .nb-checkbox__flag:not(.nb-button_disabled):focus {
+input[type=file]:focus + .nb-checkbox__flag_type_checkbox,
+.nb-checkbox__flag_type_checkbox:not(.nb-button_disabled):focus {
   outline: 0;
 }
-input[type=file]:focus + .nb-checkbox_type_checkbox .nb-checkbox__flag:after,
-.nb-checkbox_type_checkbox .nb-checkbox__flag:not(.nb-button_disabled):focus:after {
+input[type=file]:focus + .nb-checkbox__flag_type_checkbox:after,
+.nb-checkbox__flag_type_checkbox:not(.nb-button_disabled):focus:after {
   z-index: 9;
 }
-.nb-checkbox_type_checkbox .nb-checkbox__flag > .nb-checkbox__flag__icon {
+.nb-checkbox__flag_type_checkbox > .nb-checkbox__flag__icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -983,7 +983,7 @@ input[type=file]:focus + .nb-checkbox_type_checkbox .nb-checkbox__flag:after,
   margin: -13px 0 0 -2px;
   color: #000;
 }
-input:not(:checked) + .nb-checkbox_type_checkbox .nb-checkbox__flag > .nb-checkbox__flag__icon {
+input:not(:checked) + .nb-checkbox__flag_type_checkbox > .nb-checkbox__flag__icon {
   visibility: hidden;
 }
 .nb-checkbox__input:checked + .nb-checkbox__flag,
