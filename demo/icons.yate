@@ -1,0 +1,58 @@
+func all-icons(size, boolean white) {
+    func nb-ico(icon) {
+        default = {
+            'icon': icon
+            'size': size
+        }
+        nb-block('icon', default)
+        " "
+    }
+
+    if white {
+        nb-ico('link_16_white')
+        nb-ico('download_16_white')
+        nb-ico('trash_16_white')
+    } else {
+        nb-ico('close_16')
+        nb-ico('link_16')
+        nb-ico('download_16')
+        nb-ico('eye_16')
+        nb-ico('trash_16')
+        nb-ico('three-dots_16')
+        nb-ico('play_16')
+        nb-ico('pause_16')
+        nb-ico('mail_16')
+        nb-ico('vk')
+        nb-ico('twitter')
+        nb-ico('odnoklassniki')
+    }
+}
+
+func icons() {
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: S '
+            <span class="demo-code demo-code_small">
+                '.nb-icon_size_s'
+            </span>
+        </div>
+        all-icons('s')
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: M '
+            <span class="demo-code demo-code_small">
+                '.nb-icon_size_m'
+            </span>
+        </div>
+        all-icons('m')
+    </div>
+    <div class="demo-section demo-section_dark">
+        <div class="demo-h3">
+            'White'
+        </div>
+        all-icons('s', true())
+        all-icons('m', true())
+    </div>
+}
+
