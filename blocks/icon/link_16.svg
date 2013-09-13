@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
-<g>
-	<g>
-		<path d="M10.939,12.882l-8.9-0.001V3.822h3.97l1.489-1.894H1.042C0.466,1.929,0,2.395,0,2.97v10.836
-			c0,0.575,0.466,1.041,1.042,1.041h10.905c0.576,0,1.041-0.466,1.041-1.041v-3.768l-2.049,1.488V12.882z M5.98,5.799
-			c-1.736,2.75-1.92,5.768-1.92,5.768c0.564-0.872,1.699-2.557,3.056-3.397c2.481-1.547,3.919-1.235,3.919-1.235v2.761l5.275-4.775
-			L11.057,0v2.76C11.057,2.76,8.151,2.362,5.98,5.799z"/>
-	</g>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m0 6a2 2 0 0 1 2-2h13l-3 4h-8v18h18v-3l4-3v8a2 2 0 0 1-2 2h-22a2 2 0 0 1-2-2zm22-6 10 10-10 10 0-6c-6 0-11 4-14 9 0-7 6-17 14-17z"/></svg>
