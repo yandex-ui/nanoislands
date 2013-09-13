@@ -101,6 +101,9 @@ match .buttonAttach nb {
         <span class="nb-file-intruder">
             <span class="nb-file-intruder__inner">
                 <input class="nb-file-intruder__input" type="file">
+                    if .multiple {
+                        @multiple = "multiple"
+                    }
                     if .attrs.name {
                         @name = "{.attrs.name}"
                     }
