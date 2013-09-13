@@ -41,7 +41,7 @@ func button-pseudo() {
 
 func button-images() {
     icon = {
-        'icon': 'eye_16'
+        'icon': 'eye'
     }
 
     nb-button(icon)
@@ -49,7 +49,7 @@ func button-images() {
     ' '
 
     button = {
-        'icon': 'link_16'
+        'icon': 'link'
         'content': 'Открыть'
     }
 

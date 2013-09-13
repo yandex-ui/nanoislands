@@ -1077,41 +1077,41 @@ input:not(:checked) + .nb-checkbox_type_checkbox .nb-checkbox__flag > .nb-checkb
   margin-right: -6px;
   margin-left: -6px;
 }
-.nb-icon_close_16 {
-  background-image: url("blocks/icon/close_16.svg");
+.nb-icon_close {
+  background-image: url("blocks/icon/close.svg");
 }
-.nb-icon_link_16 {
-  background-image: url("blocks/icon/link_16.svg");
+.nb-icon_download {
+  background-image: url("blocks/icon/download.svg");
 }
-.nb-icon_link_16_white {
-  background-image: url("blocks/icon/link_16_white.svg");
+.nb-icon_eye {
+  background-image: url("blocks/icon/eye.svg");
 }
-.nb-icon_download_16 {
-  background-image: url("blocks/icon/download_16.svg");
+.nb-icon_link {
+  background-image: url("blocks/icon/link.svg");
 }
-.nb-icon_download_16_white {
-  background-image: url("blocks/icon/download_16_white.svg");
+.nb-icon_trash {
+  background-image: url("blocks/icon/trash.svg");
 }
-.nb-icon_eye_16 {
-  background-image: url("blocks/icon/eye_16.svg");
+.nb-icon_three-dots {
+  background-image: url("blocks/icon/three-dots.svg");
 }
-.nb-icon_trash_16 {
-  background-image: url("blocks/icon/trash_16.svg");
+.nb-icon_play {
+  background-image: url("blocks/icon/play.svg");
 }
-.nb-icon_trash_16_white {
-  background-image: url("blocks/icon/trash_16_white.svg");
+.nb-icon_pause {
+  background-image: url("blocks/icon/pause.svg");
 }
-.nb-icon_three-dots_16 {
-  background-image: url("blocks/icon/three-dots_16.svg");
+.nb-icon_mail {
+  background-image: url("blocks/icon/mail.svg");
 }
-.nb-icon_play_16 {
-  background-image: url("blocks/icon/play_16.svg");
+.nb-icon_link_white {
+  background-image: url("blocks/icon/link_white.svg");
 }
-.nb-icon_pause_16 {
-  background-image: url("blocks/icon/pause_16.svg");
+.nb-icon_download_white {
+  background-image: url("blocks/icon/download_white.svg");
 }
-.nb-icon_mail_16 {
-  background-image: url("blocks/icon/mail_16.svg");
+.nb-icon_trash_white {
+  background-image: url("blocks/icon/trash_white.svg");
 }
 .nb-icon_vk {
   background-image: url("blocks/icon/vk.svg");
@@ -1122,7 +1122,7 @@ input:not(:checked) + .nb-checkbox_type_checkbox .nb-checkbox__flag > .nb-checkb
 .nb-icon_odnoklassniki {
   background-image: url("blocks/icon/odnoklassniki.svg");
 }
-.nb-icon_link_16 {
+.nb-icon_link {
   left: 2px;
 }
 .nb-icon_size_s {

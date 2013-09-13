@@ -663,13 +663,13 @@ var yr = yr || require('yate/lib/runtime.js');
         //  var icon : object
         var r1 = {};
         var a1 = { a: {} };
-        r1[ "icon" ] = "eye_16";
+        r1[ "icon" ] = "eye";
         var v53 = r1;
 
         //  var button : object
         var r1 = {};
         var a1 = { a: {} };
-        r1[ "icon" ] = "link_16";
+        r1[ "icon" ] = "link";
         r1[ "content" ] = "Открыть";
         var v54 = r1;
 
@@ -1446,7 +1446,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r2 = {};
         var a2 = { a: {} };
         r2[ "size" ] = "s";
-        r2[ "icon" ] = "link_16";
+        r2[ "icon" ] = "link";
         r1[ "button" ] = r2;
         var r2 = {};
         var a2 = { a: {} };
@@ -1674,19 +1674,19 @@ var yr = yr || require('yate/lib/runtime.js');
 
         r0 += closeAttrs(a0);
         if (v86) {
-            r0 += f63(m, c0, i0, l0, a0, "link_16_white");
-            r0 += f63(m, c0, i0, l0, a0, "download_16_white");
-            r0 += f63(m, c0, i0, l0, a0, "trash_16_white");
+            r0 += f63(m, c0, i0, l0, a0, "download_white");
+            r0 += f63(m, c0, i0, l0, a0, "link_white");
+            r0 += f63(m, c0, i0, l0, a0, "trash_white");
         } else {
-            r0 += f63(m, c0, i0, l0, a0, "close_16");
-            r0 += f63(m, c0, i0, l0, a0, "link_16");
-            r0 += f63(m, c0, i0, l0, a0, "download_16");
-            r0 += f63(m, c0, i0, l0, a0, "eye_16");
-            r0 += f63(m, c0, i0, l0, a0, "trash_16");
-            r0 += f63(m, c0, i0, l0, a0, "three-dots_16");
-            r0 += f63(m, c0, i0, l0, a0, "play_16");
-            r0 += f63(m, c0, i0, l0, a0, "pause_16");
-            r0 += f63(m, c0, i0, l0, a0, "mail_16");
+            r0 += f63(m, c0, i0, l0, a0, "close");
+            r0 += f63(m, c0, i0, l0, a0, "download");
+            r0 += f63(m, c0, i0, l0, a0, "eye");
+            r0 += f63(m, c0, i0, l0, a0, "link");
+            r0 += f63(m, c0, i0, l0, a0, "pause");
+            r0 += f63(m, c0, i0, l0, a0, "play");
+            r0 += f63(m, c0, i0, l0, a0, "three-dots");
+            r0 += f63(m, c0, i0, l0, a0, "trash");
+            r0 += f63(m, c0, i0, l0, a0, "mail");
             r0 += f63(m, c0, i0, l0, a0, "vk");
             r0 += f63(m, c0, i0, l0, a0, "twitter");
             r0 += f63(m, c0, i0, l0, a0, "odnoklassniki");
@@ -2908,7 +2908,7 @@ var yr = yr || require('yate/lib/runtime.js');
                 }
             }
             r0 += closeAttrs(a0);
-            r0 += m.f('f11', c0, i0, l0, a0, "close_16");
+            r0 += m.f('f11', c0, i0, l0, a0, "close");
             r0 += "</a>";
         }
         if (simpleBoolean('title', c0)) {
