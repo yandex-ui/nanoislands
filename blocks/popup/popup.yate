@@ -14,7 +14,11 @@ func nb-popup-menu(nodeset options) {
 }
 
 match .popupMenu nb {
-    <div class="nb-popup _hidden" data-nb='popup'>
+    <div class="nb-popup">
+        if !.static {
+            @data-nb = "popup"
+            @class += " _hidden"
+        }
 
         apply . nb-main-attrs
 

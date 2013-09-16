@@ -1,0 +1,27 @@
+func toggle-default() {
+    default = {
+        'id': 'popup'
+        'static': 'true'
+        'menu': [
+            {
+                'href': '#'
+                'text': 'Скопировать'
+            }
+            {
+                'href': '#'
+                'text': 'Переместить'
+            }
+            {
+                'href': '#'
+                'text': 'Удалить'
+            }
+        ]
+    }
+
+    nb-popup-menu(default)
+}
+
+match / content {
+    @style="width: 150px; height: 150px; padding: 1em;"
+    toggle-default()
+}

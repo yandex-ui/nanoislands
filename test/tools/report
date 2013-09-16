@@ -1,0 +1,80 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var path = require('path');
+var args = require('optimist').argv;
+var cwd = process.cwd();
+
+var dirHtml = path.resolve(cwd, 'html');
+var dirShots = path.resolve(cwd, 'screenshots')
+
+var tests = JSON.parse(fs.readFileSync(args.tests, 'utf-8'));
+
+var color = (function() {
+    var reset = '\u001b[0m';
+    var red = '\u001b[31m';
+    var green = '\u001b[32m';
+    var yellow = '\u001b[33m';
+
+    return {
+        red: function(msg) {
+            return red + msg + reset;
+        },
+
+        green: function(msg) {
+            return green + msg + reset;
+        },
+
+        yellow: function(msg) {
+            return yellow + msg + reset;
+        }
+    }
+})();
+
+
+tests.forEach(function(test) {
+    var pathShotCurrent = path.resolve(
+        dirShots,
+        path.relative(dirHtml, test.html).replace(/\.html$/, '.html.png')
+    )
+
+    var pathShotOrigin = path.resolve(
+        dirShots,
+        pathShotCurrent.replace(/\.html\.png$/, '.origin.html.png')
+    )
+
+    var pathShotDiff = path.resolve(
+        dirShots,
+        pathShotCurrent.replace(/\.html\.png$/, '.diff.html.png')
+    )
+
+    var shotCurrent = fs.statSync(pathShotCurrent);
+    var shotOrigin = fs.statSync(pathShotOrigin);
+
+    test.screenshots = {
+        current: path.relative(cwd, pathShotCurrent),
+        origin: path.relative(cwd, pathShotOrigin),
+        diff: path.relative(cwd, pathShotDiff)
+    }
+
+    test.html = path.relative(cwd, test.html);
+    test.htmlOrigin = path.relative(cwd, test.htmlOrigin);
+    test.argsJSON = JSON.stringify(test.args, null, 4);
+
+    if (shotCurrent.size != shotOrigin.size) {
+        test.fail = true;
+        console.log(color.red('FAIL `%s`'), test.name);
+    } else {
+        console.log(color.green('PASS `%s`'), test.name);
+    }
+});
+
+if (args.output) {
+    fs.writeFileSync(args.output, JSON.stringify({ tests: tests }));
+} else {
+    console.log(JSON.stringify({ tests: tests }));
+}
+
+
+
+
