@@ -15,7 +15,7 @@ func input-groups() {
     blockDefault2 = {
         'button' : {
             'size': 's'
-            'icon': 'link_16'
+            'icon': 'link'
         }
         'input' : {
             'size': 's'
