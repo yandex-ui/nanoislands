@@ -1,12 +1,27 @@
 .nb-dropzone
-  color: $foregroundMuted
+  color: rgba(0,0,0,.8)
   position: relative
   padding: 20px
   text-align: center
+  border-radius: 10px
+  background: #e7e6e4
+  box-shadow:  0 8px 0 #dadada inset
+  margin: 0 $gapL $gapL $gapL
+  cursor: pointer
+
+.nb-dropzone:before
   border: 3px dashed rgba(0,0,0,.2)
   border-radius: 10px
-  box-shadow:  0 0  1px rgba(255, 255, 255, .8) inset
-  margin: 0 $gapL $gapL $gapL
+  content: ""
+  position: absolute
+  top: 0px
+  bottom: 0px
+  left: 0px
+  right: 0px
+
+.nb-dropzone:hover
+  background: $background
+  box-shadow:  0 8px 0 $backgroundPrimary inset
 
 .nb-dropzone__head
   margin-bottom: 8px
