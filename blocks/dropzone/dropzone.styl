@@ -1,15 +1,17 @@
 .nb-dropzone
-  color: rgba(0,0,0,.8)
+  margin: 0 $gapL $gapL $gapL
+  border-radius: 10px
   position: relative
   padding: 20px
   text-align: center
-  border-radius: 10px
+
+.nb-dropzone_type_static
+  color: rgba(0,0,0,.8)
   background: #e7e6e4
   box-shadow:  0 8px 0 #dadada inset
-  margin: 0 $gapL $gapL $gapL
   cursor: pointer
 
-.nb-dropzone:before
+.nb-dropzone_type_static:before
   border: 3px dashed rgba(0,0,0,.2)
   border-radius: 10px
   content: ""
@@ -19,7 +21,7 @@
   left: 0px
   right: 0px
 
-.nb-dropzone:hover
+.nb-dropzone_type_static:hover
   background: $background
   box-shadow:  0 8px 0 $backgroundPrimary inset
 
