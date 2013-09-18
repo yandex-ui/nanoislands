@@ -3224,10 +3224,11 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<div";
         a0.a = {
+            'class': new yr.scalarAttr("nb-input-group"),
+            'data-nb': new yr.scalarAttr("input-group")
         };
         a0.s = 'div';
-        a0.a[ "class" ] = new yr.scalarAttr(nodeset2scalar( ( selectNametest('class', c0, []) ) ) + " nb-input-group");
-        a0.a[ "data-nb" ] = new yr.scalarAttr("input-group");
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         var items0 = selectNametest('*', c0, []);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
