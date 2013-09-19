@@ -19,6 +19,10 @@ match .dropzone nb {
     <div class="nb-dropzone">
         apply . nb-main-attrs
 
+        if .type != 'modal' {
+            @class+= ' nb-dropzone_type_static'
+        }
+
         if .type {
             @class += ' nb-dropzone_type_{.type}'
         }
