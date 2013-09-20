@@ -1756,14 +1756,34 @@ label.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input
 }
 
 .nb-dropzone {
-  color: #888;
+  margin: 0 20px 20px 20px;
+  border-radius: 10px;
   position: relative;
   padding: 20px;
   text-align: center;
+}
+
+.nb-dropzone_type_static {
+  color: rgba(0,0,0,0.8);
+  background: #e7e6e4;
+  box-shadow: 0 8px 0 #dadada inset;
+  cursor: pointer;
+}
+
+.nb-dropzone_type_static:before {
   border: 3px dashed rgba(0,0,0,0.2);
   border-radius: 10px;
-  box-shadow: 0 0 1px rgba(255,255,255,0.8) inset;
-  margin: 0 20px 20px 20px;
+  content: "";
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.nb-dropzone_type_static:hover {
+  background: #fff;
+  box-shadow: 0 8px 0 #f6f5f3 inset;
 }
 
 .nb-dropzone__head {
@@ -2583,6 +2603,10 @@ input[type=file]:hover + .nb-slider__small-handle:before,
 
 .nb-suggest__container {
   display: inline-block;
+}
+
+.nb-suggest__input .nb-input {
+  width: 100%;
 }
 
 .nb-suggest {

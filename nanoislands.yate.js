@@ -3372,6 +3372,14 @@ var yr = yr || require('yate/lib/runtime.js');
         };
         a0.s = 'div';
         r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
+        if (!(cmpSN("modal", selectNametest('type', c0, [])))) {
+            var tmp0 = a0.a[ "class" ];
+            if (tmp0) {
+                a0.a[ "class" ] = tmp0.addscalar(" nb-dropzone_type_static");
+            } else {
+                a0.a[ "class" ] = new yr.scalarAttr(" nb-dropzone_type_static");
+            }
+        }
         if (simpleBoolean('type', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -3873,6 +3881,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var a1 = { a: {} };
         r1[ "size" ] = yr.nodeset2data(selectNametest('size', c0, []));
         r1[ "content" ] = yr.nodeset2data(selectNametest('content', c0, []));
+        r1[ "class" ] = "nb-suggest__input";
         r1[ "attrs" ] = yr.nodeset2data(selectNametest('attrsInput', c0, []));
         var v118 = r1;
 
