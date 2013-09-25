@@ -15,7 +15,7 @@ func toggle-to-right() {
 }
 
 func toggle-to-left() {
-    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup2', how: {{ where: 'right', what: 'left' }}}}" href="#left">
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup2', how: {{ where: 'right top', what: 'left' }}}}" href="#left">
         <span class="link__inner">
             "Попап слева"
         </span>
@@ -77,6 +77,7 @@ func popups() {
 
     toLeft = {
         'id': 'popup2'
+        'tail': 'top'
         'menu': [
             {
                 'href': '#'
@@ -95,6 +96,7 @@ func popups() {
 
     toTop = {
         'id': 'popup3'
+        'tail': 'left'
         'menu': [
             {
                 'href': '#'

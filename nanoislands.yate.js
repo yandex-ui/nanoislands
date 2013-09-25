@@ -59,9 +59,8 @@ var yr = yr || require('yate/lib/runtime.js');
         return r0;
     };
 
-    // func nb-popup-menu(nodeset options) : xml
+    // func nb-popup-menu(object options) : xml
     M.f2 = function f2(m, c0, i0, l0, a0, v4) {
-        v4 = (v4 === undefined) ? [] : v4;
         var r0 = '';
 
         //  var default : object
@@ -71,14 +70,13 @@ var yr = yr || require('yate/lib/runtime.js');
         var v5 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f0', c0, i0, l0, a0, "popupMenu", (yr.externals['nb-extend'])(yr.object2nodeset( v5 ), v4));
+        r0 += m.f('f0', c0, i0, l0, a0, "popupMenu", (yr.externals['nb-extend'])(yr.object2nodeset( v5 ), yr.object2nodeset( v4 )));
 
         return r0;
     };
 
-    // func nb-popup(nodeset options) : xml
+    // func nb-popup(object options) : xml
     M.f3 = function f3(m, c0, i0, l0, a0, v6) {
-        v6 = (v6 === undefined) ? [] : v6;
         var r0 = '';
 
         //  var default : object
@@ -88,14 +86,13 @@ var yr = yr || require('yate/lib/runtime.js');
         var v7 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f0', c0, i0, l0, a0, "popup", (yr.externals['nb-extend'])(yr.object2nodeset( v7 ), v6));
+        r0 += m.f('f0', c0, i0, l0, a0, "popup", (yr.externals['nb-extend'])(yr.object2nodeset( v7 ), yr.object2nodeset( v6 )));
 
         return r0;
     };
 
-    // func nb-popup-modal(nodeset options) : xml
+    // func nb-popup-modal(object options) : xml
     M.f4 = function f4(m, c0, i0, l0, a0, v8) {
-        v8 = (v8 === undefined) ? [] : v8;
         var r0 = '';
 
         //  var default : object
@@ -115,7 +112,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var v9 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f0', c0, i0, l0, a0, "modalPopup", (yr.externals['nb-deep-extend'])(yr.object2nodeset( v9 ), v8));
+        r0 += m.f('f0', c0, i0, l0, a0, "modalPopup", (yr.externals['nb-deep-extend'])(yr.object2nodeset( v9 ), yr.object2nodeset( v8 )));
 
         return r0;
     };
@@ -1011,7 +1008,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += "<a class=\"" + "nb link link_wrapper link_pseudo" + "\" data-nb=\"" + "popup-toggler" + "\" data-nb-popup-toggler=\"" + "{id: 'popup2', how: { where: 'right', what: 'left' }}" + "\" href=\"" + "#left" + "\">";
+        r0 += "<a class=\"" + "nb link link_wrapper link_pseudo" + "\" data-nb=\"" + "popup-toggler" + "\" data-nb-popup-toggler=\"" + "{id: 'popup2', how: { where: 'right top', what: 'left' }}" + "\" href=\"" + "#left" + "\">";
         r0 += "<span class=\"" + "link__inner" + "\">";
         r0 += "Попап слева";
         r0 += "</span>";
@@ -1104,6 +1101,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r1 = {};
         var a1 = { a: {} };
         r1[ "id" ] = "popup2";
+        r1[ "tail" ] = "top";
         var r2 = [];
         var a2 = { a: {} };
         var r3 = {};
@@ -1128,6 +1126,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r1 = {};
         var a1 = { a: {} };
         r1[ "id" ] = "popup3";
+        r1[ "tail" ] = "left";
         var r2 = [];
         var a2 = { a: {} };
         var r3 = {};
@@ -1189,41 +1188,41 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-group" + "\">";
         r0 += m.f('f22', c0, i0, l0, a0, m.f('f41', c0, i0, l0, a0));
         r0 += m.f('f23', c0, i0, l0, a0, m.f('f41', c0, i0, l0, a0));
-        r0 += m.f('f23', c0, i0, l0, a0, m.f('f2', c0, i0, l0, a0, yr.object2nodeset( v65 )));
+        r0 += m.f('f23', c0, i0, l0, a0, m.f('f2', c0, i0, l0, a0, v65));
         r0 += "</div>";
-        r0 += m.f('f2', c0, i0, l0, a0, yr.object2nodeset( v65 ));
+        r0 += m.f('f2', c0, i0, l0, a0, v65);
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-group" + "\">";
         r0 += m.f('f22', c0, i0, l0, a0, m.f('f42', c0, i0, l0, a0));
         r0 += m.f('f23', c0, i0, l0, a0, m.f('f42', c0, i0, l0, a0));
-        r0 += m.f('f23', c0, i0, l0, a0, m.f('f2', c0, i0, l0, a0, yr.object2nodeset( v66 )));
+        r0 += m.f('f23', c0, i0, l0, a0, m.f('f2', c0, i0, l0, a0, v66));
         r0 += "</div>";
-        r0 += m.f('f2', c0, i0, l0, a0, yr.object2nodeset( v66 ));
+        r0 += m.f('f2', c0, i0, l0, a0, v66);
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-group" + "\">";
         r0 += m.f('f22', c0, i0, l0, a0, m.f('f43', c0, i0, l0, a0));
         r0 += m.f('f23', c0, i0, l0, a0, m.f('f43', c0, i0, l0, a0));
-        r0 += m.f('f23', c0, i0, l0, a0, m.f('f2', c0, i0, l0, a0, yr.object2nodeset( v67 )));
+        r0 += m.f('f23', c0, i0, l0, a0, m.f('f2', c0, i0, l0, a0, v67));
         r0 += "</div>";
-        r0 += m.f('f2', c0, i0, l0, a0, yr.object2nodeset( v67 ));
+        r0 += m.f('f2', c0, i0, l0, a0, v67);
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-group" + "\">";
         r0 += m.f('f22', c0, i0, l0, a0, m.f('f44', c0, i0, l0, a0));
         r0 += m.f('f23', c0, i0, l0, a0, m.f('f44', c0, i0, l0, a0));
-        r0 += m.f('f23', c0, i0, l0, a0, m.f('f2', c0, i0, l0, a0, yr.object2nodeset( v68 )));
+        r0 += m.f('f23', c0, i0, l0, a0, m.f('f2', c0, i0, l0, a0, v68));
         r0 += "</div>";
-        r0 += m.f('f2', c0, i0, l0, a0, yr.object2nodeset( v68 ));
+        r0 += m.f('f2', c0, i0, l0, a0, v68);
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-group" + "\">";
         r0 += m.f('f22', c0, i0, l0, a0, m.f('f45', c0, i0, l0, a0));
         r0 += m.f('f23', c0, i0, l0, a0, m.f('f45', c0, i0, l0, a0));
-        r0 += m.f('f23', c0, i0, l0, a0, m.f('f4', c0, i0, l0, a0, yr.object2nodeset( v69 )));
+        r0 += m.f('f23', c0, i0, l0, a0, m.f('f4', c0, i0, l0, a0, v69));
         r0 += "</div>";
-        r0 += m.f('f4', c0, i0, l0, a0, yr.object2nodeset( v69 ));
+        r0 += m.f('f4', c0, i0, l0, a0, v69);
         r0 += "</div>";
 
         return r0;

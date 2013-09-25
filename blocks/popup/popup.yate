@@ -1,4 +1,4 @@
-func nb-popup-menu(nodeset options) {
+func nb-popup-menu(object options) {
     default = {
        'none': 'none'
        //'tail': 'left|right|top|bottom'
@@ -40,7 +40,7 @@ match .popupMenu nb {
 }
 
 
-func nb-popup(nodeset options) {
+func nb-popup(object options) {
     default = {
        'none': 'none'
         // 'title': 'Some modal popup'
@@ -72,7 +72,7 @@ match .popup nb {
     </div>
 }
 
-func nb-popup-modal(nodeset options) {
+func nb-popup-modal(object options) {
     default = {
         'data-nb': {
             'modal': 'true'

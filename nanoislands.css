@@ -992,6 +992,26 @@ input[type=file]:hover:not(:checked) + .nb-button_theme_action.nb-button_size_s:
   padding: 0;
 }
 
+.nb-popup_to_bottom .nb-popup__tail_to_right,
+.nb-popup_to_top .nb-popup__tail_to_right {
+  left: 75%;
+}
+
+.nb-popup_to_bottom .nb-popup__tail_to_left,
+.nb-popup_to_top .nb-popup__tail_to_left {
+  left: 25%;
+}
+
+.nb-popup_to_left .nb-popup__tail_to_bottom,
+.nb-popup_to_right .nb-popup__tail_to_bottom {
+  top: 75%;
+}
+
+.nb-popup_to_left .nb-popup__tail_to_top,
+.nb-popup_to_right .nb-popup__tail_to_top {
+  top: 25%;
+}
+
 .nb-popup-outer .nb-popup {
   position: static;
 }
