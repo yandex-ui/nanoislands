@@ -1783,7 +1783,7 @@ label.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input
 
 .nb-dropzone_type_static:hover {
   background: #e2e1df;
-  box-shadow: 0 8px 0 #f6f5f3 inset;
+  box-shadow: 0 8px 0 #d6d6d6 inset;
 }
 
 .nb-dropzone__head {
