@@ -12,7 +12,7 @@ match .checkbox nb {
 
     <label class="nb-checkbox nb-checkbox_size_{ .size } nb-checkbox_type_{ .type }" for="{ uniq }">
         if .disabled  {
-             @class += ' nb-checkbox_state_disabled'
+             @class += ' nb-checkbox_disabled'
         }
 
         <input class="nb-checkbox__input" type="{ .type }" id="{ uniq }">

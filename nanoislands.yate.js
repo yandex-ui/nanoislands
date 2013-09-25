@@ -3146,9 +3146,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-checkbox_state_disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" nb-checkbox_disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-checkbox_state_disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" nb-checkbox_disabled");
             }
         }
         r0 += closeAttrs(a0);
