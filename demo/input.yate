@@ -15,9 +15,7 @@ func input-medium() {
 
 func input-disabled() {
     block = {
-        'attrs': {
-            'disabled': true()
-        }
+        'disabled': true()
         'content': 'Москва'
     }
     nb-input(block)

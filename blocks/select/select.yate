@@ -14,7 +14,7 @@ match .select nb {
 
        <button class="nb-button nb-select__button _init nb-button_size_{ .size } nb-button_theme_{ .theme }" data-nb="button">
 
-              if ( .disabled ) {
+              if .disabled  {
                   @class += ' nb-button_disabled'
                   @disabled = 'disabled'
               }

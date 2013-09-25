@@ -11,8 +11,16 @@ match .checkbox nb {
     uniq = 'nb-checkbox_{nb-uniq()}'
 
     <label class="nb-checkbox nb-checkbox_size_{ .size } nb-checkbox_type_{ .type }" for="{ uniq }">
+        if .disabled  {
+             @class += ' nb-checkbox_state_disabled'
+        }
+
         <input class="nb-checkbox__input" type="{ .type }" id="{ uniq }">
             apply . nb-main-attrs
+
+            if .disabled  {
+                 @disabled = 'disabled'
+            }
 
             if .checked {
                 @checked = 'checked'

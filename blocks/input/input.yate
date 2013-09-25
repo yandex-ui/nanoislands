@@ -13,7 +13,7 @@ match .input nb {
             @class += ' nb-input_size_{.size}'
         }
 
-        if .attrs.disabled {
+        if .disabled {
             @class += ' nb-input_disabled js-disabled'
         }
 
@@ -21,6 +21,10 @@ match .input nb {
             for .attrs.* {
                 @{name()} = .
             }
+
+            if .disabled {
+               @disabled = 'disabled'
+           }
 
             apply .* nb-content
         </input>
