@@ -1804,9 +1804,9 @@ nb.define('input', {
     },
 
     oninit: function() {
-
         this.$node = $(this.node);
-        this.$nodeInput = this.$node.find('.nb-input__input')
+        this.$nodeInput = this.$node.find('.nb-input__input');
+        this.disabled = this.$nodeInput.prop('disabled');
         this.value = this.$nodeInput.val();
         this.focused = false;
         nb.on('input-focusout', function() {
@@ -1838,7 +1838,7 @@ nb.define('input', {
      */
     onDisable: function() {
         this.$node.addClass('nb-input_disabled');
-        this.$nodeInput.attr('disabled', 'disabled');
+        this.$nodeInput.prop('disabled', true);
         this.trigger('disabled');
     },
 
@@ -1847,7 +1847,7 @@ nb.define('input', {
      */
     onEnable: function() {
         this.$node.removeClass('nb-input_disabled');
-        this.$nodeInput.removeAttr('disabled');
+        this.$nodeInput.prop('disabled', false);
         this.trigger('enabled');
     },
 
@@ -1863,8 +1863,6 @@ nb.define('input', {
         this.value = params.value;
         this.$nodeInput.val(this.value)
     }
-
-
 });
 
 /* input/input.js end */
