@@ -3206,6 +3206,7 @@ var yr = yr || require('yate/lib/runtime.js');
             } else {
                 a0.a[ "class" ] = new yr.scalarAttr(" nb-input_disabled");
             }
+            a0.a[ "data-nb-disabled" ] = new yr.scalarAttr("true");
         }
         r0 += closeAttrs(a0);
         r0 += "<input";
@@ -3244,6 +3245,15 @@ var yr = yr || require('yate/lib/runtime.js');
         };
         a0.s = 'div';
         r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        if (simpleBoolean('disabled', c0)) {
+            var tmp0 = a0.a[ "class" ];
+            if (tmp0) {
+                a0.a[ "class" ] = tmp0.addscalar(" nb-input-group_disabled");
+            } else {
+                a0.a[ "class" ] = new yr.scalarAttr(" nb-input-group_disabled");
+            }
+            a0.a[ "data-nb-disabled" ] = new yr.scalarAttr("true");
+        }
         r0 += closeAttrs(a0);
         var items0 = selectNametest('*', c0, []);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {

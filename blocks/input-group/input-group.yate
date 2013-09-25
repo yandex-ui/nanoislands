@@ -6,6 +6,11 @@ match .input-group nb {
     <div class = 'nb-input-group' data-nb = 'input-group'>
         apply . nb-main-attrs
 
+        if .disabled {
+            @class += ' nb-input-group_disabled'
+            @data-nb-disabled = 'true'
+        }
+
         for .* {
                    if name() == 'button'       { nb-button(.)
             } else if name() == 'input'        { nb-input(.)

@@ -15,6 +15,7 @@ match .input nb {
 
         if .disabled {
             @class += ' nb-input_disabled'
+            @data-nb-disabled = 'true'
         }
 
         <input value="{.content}" class="nb-input__input">

@@ -1870,21 +1870,39 @@ nb.define('input', {
 /* input-group/input-group.js begin */
 nb.define('input-group', {
     events: {
-        'click': 'click',
-        'focusout': 'blur'
+        'click': 'oninit',
+        'disable': 'onDisable',
+        'enable': 'onEnable'
     },
 
-    click: function(e, input) {
-        var $node = $(this.node);
-
-        if (!$node.hasClass('nb-input_focus')) {
-            $node.addClass('nb-input_focus');
-            $node.children('.nb-input').select();
-        }
+    oninit: function() {
+        var that = this
+        that.$node = $(this.node);
+        that.disabled = this.data()['disabled']
+        $(this.children()).each(function() {
+            if (this.$node.hasClass('nb-input')) {
+                that.input = this;
+            } else {
+                that.button = this;
+            }
+        })
+    },
+    /**
+     * Disables the input-group
+     */
+    onDisable: function() {
+        this.input.trigger('disable');
+        this.button.trigger('disable');
+        this.disabled = true;
     },
 
-    blur: function() {
-        $(this.node).removeClass('nb-input_focus');
+    /**
+     * Enables the input-group
+     */
+    onEnable: function() {
+        this.input.trigger('enable');
+        this.button.trigger('enable');
+        this.disabled = false;
     }
 });
 /* input-group/input-group.js end */

@@ -81,8 +81,8 @@
 .nb-radio-button .nb-radio-button__button:last-child:not(:only-child),
 .nb-input-group .nb-button:not(:first-child):not(:last-child),
 .nb-input-group .nb-button:last-child:not(:only-child),
-.nb-input-group .nb-input-box:not(:first-child):not(:last-child),
-.nb-input-group .nb-input-box:last-child:not(:only-child) {
+.nb-input-group .nb-input:not(:first-child):not(:last-child),
+.nb-input-group .nb-input:last-child:not(:only-child) {
   margin-left: -1px;
 }
 .nb-input .nb-input__input {
@@ -1184,11 +1184,11 @@ input.nb-input-group .nb-button:not(:first-child):not(:last-child),
 label.nb-input-group .nb-button:not(:first-child):not(:last-child) {
   border-right-color: transparent;
 }
-.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input:before {
+.nb-input-group .nb-input:not(:last-child):not(:only-child) > .nb-input__input:before {
   right: 0;
 }
-input.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input,
-label.nb-input-group .nb-input-box:not(:last-child):not(:only-child) > .nb-input {
+input.nb-input-group .nb-input:not(:last-child):not(:only-child) > .nb-input__input,
+label.nb-input-group .nb-input:not(:last-child):not(:only-child) > .nb-input__input {
   border-right-color: transparent;
 }
 .nb-island {
