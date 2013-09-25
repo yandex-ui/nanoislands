@@ -13,17 +13,29 @@
         "url": "git://github.yandex-team.ru/UFO/nanoislands.git"
     },
     "dependencies": {
+        "stylobate": "0.13.x",
+        "stylobate-islands": "0.11.x"
+    },
+    "devDependencies": {
         "yate": "0.0.61",
         "borschik": "0.3.5",
         "autoprefixer": "0.7.x",
         "stylus": "0.37.x",
-        "csso": "1.3.x",
-        "stylobate": "0.13.x",
-        "stylobate-islands": "0.11.x"
+        "csso": "1.3.x"
     },
     "engines": {
         "node": "*"
     },
+    "files": [
+        "blocks",
+        "libs",
+        "nanoislands.js",
+        "nanoislands.yate.js",
+        "nanoislands.styl",
+        "nanoislands.css",
+        "nanoislands.ie.css",
+        "externals.yate.js"
+    ],
     "scripts": {
         "prepublish": "make"
     }
