@@ -3187,7 +3187,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<span";
         a0.a = {
             'data-nb': new yr.scalarAttr("input"),
-            'class': new yr.scalarAttr("nb-input-box")
+            'class': new yr.scalarAttr("nb-input")
         };
         a0.s = 'span';
         r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
@@ -3202,16 +3202,16 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-input_disabled js-disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" nb-input_disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-input_disabled js-disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" nb-input_disabled");
             }
         }
         r0 += closeAttrs(a0);
         r0 += "<input";
         a0.a = {
             'value': new yr.scalarAttr(nodeset2scalar( ( selectNametest('content', c0, []) ) )),
-            'class': new yr.scalarAttr("nb-input")
+            'class': new yr.scalarAttr("nb-input__input")
         };
         a0.s = 'input';
         var items0 = m.s(j8, c0);
