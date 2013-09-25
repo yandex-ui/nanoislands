@@ -1765,7 +1765,7 @@ label.nb-input-group .nb-input:not(:last-child):not(:only-child) > .nb-input__in
 
 .nb-dropzone_type_static {
   color: rgba(0,0,0,0.8);
-  background: #e7e6e4;
+  background: #ecebe9;
   box-shadow: 0 8px 0 #dadada inset;
   cursor: pointer;
 }
@@ -1782,8 +1782,8 @@ label.nb-input-group .nb-input:not(:last-child):not(:only-child) > .nb-input__in
 }
 
 .nb-dropzone_type_static:hover {
-  background: #fff;
-  box-shadow: 0 8px 0 #f6f5f3 inset;
+  background: #e2e1df;
+  box-shadow: 0 8px 0 #d6d6d6 inset;
 }
 
 .nb-dropzone__head {
