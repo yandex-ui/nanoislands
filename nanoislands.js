@@ -1734,13 +1734,13 @@ nb.define('radio-button', {
             tail: data.tail,
             position: {
                 // где попап
-                at: (how.where ? how.where : 'center bottom'),// + ' center',
+                at: (how.at ? how.at : 'center bottom'),// + ' center',
                 // где ссылка, которая открыла попап
-                my: (how.what ? how.what : 'center top'),// + ' center',
+                my: (how.my ? how.my : 'center top'),// + ' center',
                 of: $(this.where),
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
-                collision: "fit flip",
+                collision: (how.collision ? how.collision : 'fit flip'),
                 using: using
             },
             close: function() {

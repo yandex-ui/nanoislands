@@ -994,7 +994,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += "<a class=\"" + "nb link link_wrapper link_pseudo" + "\" data-nb=\"" + "popup-toggler" + "\" data-nb-popup-toggler=\"" + "{id: 'popup1', how: { where: 'left', what: 'right' }}" + "\" href=\"" + "#right" + "\">";
+        r0 += "<a class=\"" + "nb link link_wrapper link_pseudo" + "\" data-nb=\"" + "popup-toggler" + "\" data-nb-popup-toggler=\"" + "{id: 'popup1', how: { at: 'left', my: 'right' }}" + "\" href=\"" + "#right" + "\">";
         r0 += "<span class=\"" + "link__inner" + "\">";
         r0 += "Попап справа";
         r0 += "</span>";
@@ -1008,7 +1008,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += "<a class=\"" + "nb link link_wrapper link_pseudo" + "\" data-nb=\"" + "popup-toggler" + "\" data-nb-popup-toggler=\"" + "{id: 'popup2', how: { where: 'right top', what: 'left' }}" + "\" href=\"" + "#left" + "\">";
+        r0 += "<a class=\"" + "nb link link_wrapper link_pseudo" + "\" data-nb=\"" + "popup-toggler" + "\" data-nb-popup-toggler=\"" + "{id: 'popup2', how: { at: 'right top', my: 'left' }}" + "\" href=\"" + "#left" + "\">";
         r0 += "<span class=\"" + "link__inner" + "\">";
         r0 += "Попап слева";
         r0 += "</span>";
@@ -1022,7 +1022,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += "<a class=\"" + "nb link link_wrapper link_pseudo" + "\" data-nb=\"" + "popup-toggler" + "\" data-nb-popup-toggler=\"" + "{id: 'popup3', how: { where: 'top', what: 'bottom' }}" + "\" href=\"" + "#top" + "\">";
+        r0 += "<a class=\"" + "nb link link_wrapper link_pseudo" + "\" data-nb=\"" + "popup-toggler" + "\" data-nb-popup-toggler=\"" + "{id: 'popup3', how: { at: 'top', my: 'bottom' }}" + "\" href=\"" + "#top" + "\">";
         r0 += "<span class=\"" + "link__inner" + "\">";
         r0 += "Попап сверху";
         r0 += "</span>";
