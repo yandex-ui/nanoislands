@@ -1,6 +1,7 @@
 nb.define('input-group', {
     events: {
         'click': 'oninit',
+        'init': 'oninit',
         'disable': 'onDisable',
         'enable': 'onEnable'
     },
