@@ -1870,6 +1870,7 @@ nb.define('input', {
 /* input-group/input-group.js begin */
 nb.define('input-group', {
     events: {
+        'init': 'oninit',
         'click': 'oninit',
         'init': 'oninit',
         'disable': 'onDisable',
@@ -1887,6 +1888,8 @@ nb.define('input-group', {
                 that.button = this;
             }
         })
+
+        console.log(that)
     },
     /**
      * Disables the input-group

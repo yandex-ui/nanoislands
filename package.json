@@ -1,6 +1,12 @@
 {
+    "author": {
+        "name": "Vadim Patsev",
+        "email": "basvasilich@yandex.ru",
+        "url": "https://github.com/basvasilich"
+    },
     "name": "nanoislands",
-    "version": "0.0.0",
+    "description": "Yate/Stylus/jQuery-UI library for Yandex corporate style",
+    "version": "0.0.1",
     "homepage": "https://github.yandex-team.ru/UFO/nanoislands",
     "repository": {
         "type": "git",
@@ -17,6 +23,9 @@
     },
     "engines": {
         "node": "*"
+    },
+    "scripts": {
+        "prepublish": "make"
     }
 }
 
