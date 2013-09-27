@@ -12,9 +12,9 @@ nanoislands.ie.css: $(shell find . -name '*.styl')
 	node build/build-styl.js ie > $@
 
 nanoislands.yate.js: $(shell find . -name '*.yate')
-	$(NPM_BIN)/yate demo/nanoislands.yate > $@
+	$(NPM_BIN)/yate $(CURDIR)/demo/nanoislands.yate > $@
 
-nanoislands.js: blocks/nanoislands.js $(shell find blocks -name '*.js') node_modules
+nanoislands.js: $(CURDIR)/blocks/nanoislands.js $(shell find $(CURDIR)/blocks -name '*.js')
 	$(NPM_BIN)/borschik --input=blocks/nanoislands.js --minimize=no --output=nanoislands.js
 
 clean:

@@ -2166,7 +2166,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Шапка с поисковой стрелкой";
         r0 += "</div>";
-        r0 += m.f('f24', c0, i0, l0, a0, m.f('f19', c0, i0, l0, a0, yr.object2nodeset( m.v('v102', c0.doc.root) )));
+        r0 += m.f('f24', c0, i0, l0, a0, m.f('f19', c0, i0, l0, a0, yr.object2nodeset( m.v('v102', c0) )));
         r0 += "</div>";
 
         return r0;
@@ -2236,29 +2236,29 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок информации о пользователе L";
         r0 += "</div>";
-        r0 += m.f('f24', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( m.v('v103', c0.doc.root) )));
+        r0 += m.f('f24', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( m.v('v103', c0) )));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок информации о пользователе справа налево";
         r0 += "</div>";
-        r0 += m.f('f24', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( m.v('v104', c0.doc.root) )));
+        r0 += m.f('f24', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( m.v('v104', c0) )));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок информации о пользователе S";
         r0 += "</div>";
-        r0 += m.f('f24', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( m.v('v105', c0.doc.root) )));
+        r0 += m.f('f24', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( m.v('v105', c0) )));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок информации о пользователе растянутый и с имейлом";
         r0 += "</div>";
         r0 += "<div style=\"" + "width: 200px" + "\">";
-        r0 += m.f('f24', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( m.v('v106', c0.doc.root) )));
+        r0 += m.f('f24', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( m.v('v106', c0) )));
         r0 += "</div>";
         r0 += "<div style=\"" + "width: 200px" + "\">";
-        r0 += m.f('f24', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( m.v('v107', c0.doc.root) )));
+        r0 += m.f('f24', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( m.v('v107', c0) )));
         r0 += "</div>";
         r0 += "</div>";
 
@@ -2538,7 +2538,7 @@ var yr = yr || require('yate/lib/runtime.js');
     M.t0 = function t0(m, c0, i0, l0, a0) {
         var r0 = '';
 
-        r0 += m.a(m, m.s(j3, c0), 'nb-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-attrs', a0)
         r0 += m.a(m, selectNametest('*', c0, []), 'nb-attrs', a0)
         if (simpleBoolean('id', c0)) {
             a0.a[ "id" ] = new yr.scalarAttr(simpleScalar('id', c0));
@@ -2548,7 +2548,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var items0 = selectNametest('class', c0, []);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
-            r1 += " " + nodeset2scalar( ( m.s(j3, c1) ) );
+            r1 += " " + nodeset2scalar( ( [ c1 ] ) );
         }
         var tmp0 = a0.a[ "class" ];
         if (tmp0) {
@@ -2561,7 +2561,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var items0 = selectNametest('mixin-nb', c0, []);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
-            r1 += " " + nodeset2scalar( ( m.s(j3, c1) ) );
+            r1 += " " + nodeset2scalar( ( [ c1 ] ) );
         }
         var tmp0 = a0.a[ "data-nb" ];
         if (tmp0) {
@@ -2572,12 +2572,12 @@ var yr = yr || require('yate/lib/runtime.js');
         var items0 = m.s(j7, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
-            a0.a[ "data-nb-" + ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j3, c1) ));
+            a0.a[ "data-nb-" + ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( [ c1 ] ));
         }
         var items0 = m.s(j8, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
-            a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j3, c1) ));
+            a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( [ c1 ] ));
         }
 
         return r0;
@@ -2589,7 +2589,7 @@ var yr = yr || require('yate/lib/runtime.js');
     M.t1 = function t1(m, c0, i0, l0, a0) {
         var r0 = '';
 
-        r0 += m.a(m, m.s(j3, c0), 'nb-content', a0)
+        r0 += m.a(m, [ c0 ], 'nb-content', a0)
 
         return r0;
     };
@@ -2609,7 +2609,7 @@ var yr = yr || require('yate/lib/runtime.js');
         if (!nodeset2boolean( (selectNametest('static', c0, [])) )) {
             a0.a[ "data-nb" ] = new yr.scalarAttr("button");
         }
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -2662,7 +2662,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-button _init nb-button_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ) + "  nb-button_theme_" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ))
         };
         a0.s = 'a';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -2721,7 +2721,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-button _init nb-button_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ) + " nb-button_type_attach  nb-button_theme_" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ))
         };
         a0.s = 'label';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -2808,7 +2808,7 @@ var yr = yr || require('yate/lib/runtime.js');
                 a0.a[ "class" ] = new yr.scalarAttr(" _hidden");
             }
         }
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('tail', c0)) {
             a0.a[ "data-nb-tail" ] = new yr.scalarAttr(simpleScalar('tail', c0));
         }
@@ -2824,7 +2824,7 @@ var yr = yr || require('yate/lib/runtime.js');
             if (simpleBoolean('href', c1)) {
                 a0.a[ "href" ] = new yr.scalarAttr(simpleScalar('href', c1));
             }
-            r0 += m.a(m, m.s(j3, c1), 'nb-main-attrs', a0)
+            r0 += m.a(m, [ c1 ], 'nb-main-attrs', a0)
             r0 += closeAttrs(a0);
             r0 += simpleScalar('text', c1);
             r0 += "</a>";
@@ -2847,7 +2847,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'data-nb': new yr.scalarAttr("popup")
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('tail', c0)) {
             a0.a[ "data-nb-tail" ] = new yr.scalarAttr(simpleScalar('tail', c0));
         }
@@ -2894,7 +2894,7 @@ var yr = yr || require('yate/lib/runtime.js');
                 a0.a[ "class" ] = new yr.scalarAttr(" nb-popup_theme_" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ));
             }
         }
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "nb-popup__i" + "\">";
         if (simpleBoolean('close', c0)) {
@@ -2907,7 +2907,7 @@ var yr = yr || require('yate/lib/runtime.js');
                 var items0 = m.s(j30, c0);
                 for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
                     var c1 = items0[ i1 ];
-                    a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j3, c1) ));
+                    a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( [ c1 ] ));
                 }
             }
             r0 += closeAttrs(a0);
@@ -2927,7 +2927,7 @@ var yr = yr || require('yate/lib/runtime.js');
                 var items0 = selectNametest('buttons', c0, []);
                 for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
                     var c1 = items0[ i1 ];
-                    r0 += m.f('f1', c1, i1, l1, a0, m.s(j3, c1));
+                    r0 += m.f('f1', c1, i1, l1, a0, [ c1 ]);
                     r0 += " ";
                 }
             } else {
@@ -2954,7 +2954,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-radio-button nb-radio-button_theme_" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + " nb-radio-button_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ) + " _init")
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         var items0 = selectNametest('group', c0, []);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
@@ -2987,7 +2987,7 @@ var yr = yr || require('yate/lib/runtime.js');
                 'data-value': new yr.scalarAttr(nodeset2scalar( ( selectNametest('value', c1, []) ) ))
             };
             a0.s = 'label';
-            r0 += m.a(m, m.s(j3, c1), 'nb-main-attrs', a0)
+            r0 += m.a(m, [ c1 ], 'nb-main-attrs', a0)
             if (simpleBoolean('checked', c1)) {
                 var tmp1 = a0.a[ "class" ];
                 if (tmp1) {
@@ -3063,7 +3063,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'data-nb-direction': new yr.scalarAttr(nodeset2scalar( ( selectNametest('direction', c0, []) ) ))
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         r0 += "<button";
         a0.a = {
@@ -3159,7 +3159,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'id': new yr.scalarAttr(( v112 ))
         };
         a0.s = 'input';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('disabled', c0)) {
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
@@ -3190,7 +3190,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-input")
         };
         a0.s = 'span';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('size', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -3218,7 +3218,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var items0 = m.s(j8, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
-            a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j3, c1) ));
+            a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( [ c1 ] ));
         }
         if (simpleBoolean('disabled', c0)) {
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
@@ -3244,7 +3244,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'data-nb': new yr.scalarAttr("input-group")
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -3259,9 +3259,9 @@ var yr = yr || require('yate/lib/runtime.js');
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             if (c1.name == "button") {
-                r0 += m.f('f1', c1, i1, l1, a0, m.s(j3, c1));
+                r0 += m.f('f1', c1, i1, l1, a0, [ c1 ]);
             } else if (c1.name == "input") {
-                r0 += m.f('f8', c1, i1, l1, a0, m.s(j3, c1));
+                r0 += m.f('f8', c1, i1, l1, a0, [ c1 ]);
             }
         }
         r0 += "</div>";
@@ -3284,7 +3284,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'data-nb-progress': new yr.scalarAttr(nodeset2scalar( ( selectNametest('start', c0, []) ) ))
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         if (simpleBoolean('bar', c0)) {
             r0 += "<div class=\"" + "nb-progress__bar js-bar" + "\" style=\"" + "width: " + nodeset2attrvalue( ( selectNametest('start', c0, []) ) ) + "%" + "\"></div>";
@@ -3310,7 +3310,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += "<img src=\"" + "//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" + "\" class=\"" + "nb-icon nb-icon_" + nodeset2attrvalue( ( m.s(j3, c0) ) ) + "\"/>";
+        r0 += "<img src=\"" + "//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" + "\" class=\"" + "nb-icon nb-icon_" + nodeset2attrvalue( ( [ c0 ] ) ) + "\"/>";
 
         return r0;
     };
@@ -3340,7 +3340,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'data-nb': new yr.scalarAttr("paranja")
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         r0 += simpleScalar('content', c0);
         r0 += "</div>";
@@ -3360,7 +3360,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-island")
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('padding', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -3396,7 +3396,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-dropzone")
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (!(cmpSN("modal", selectNametest('type', c0, [])))) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -3447,7 +3447,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-loader nb-loader_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ))
         };
         a0.s = 'span';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         r0 += "<span";
         a0.a = {
@@ -3482,7 +3482,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'data-nb-value': new yr.scalarAttr(nodeset2scalar( ( selectNametest('value', c0, []) ) ))
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (!simpleBoolean('static', c0)) {
             a0.a[ "data-nb" ] = new yr.scalarAttr("slider");
         }
@@ -3551,7 +3551,7 @@ var yr = yr || require('yate/lib/runtime.js');
                 a0.a[ "class" ] = new yr.scalarAttr(" nb-tabs_rise_" + nodeset2scalar( ( selectNametest('rise', c0, []) ) ));
             }
         }
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         r0 += "<ul class=\"" + "nb-tabs__tabs" + "\">";
         var items0 = selectNametest('items', c0, []);
@@ -3602,7 +3602,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'data-nb': new yr.scalarAttr("arrow")
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (!(cmpSN("true", selectNametest('search', c0, [])))) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -3713,7 +3713,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'data-nb': new yr.scalarAttr("header")
         };
         a0.s = 'div';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "nb-header__actions" + "\">";
         if (cmpSN("true", selectNametest('settings', c0, []))) {
@@ -3786,7 +3786,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'data-nb': new yr.scalarAttr("user")
         };
         a0.s = 'span';
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         if (simpleBoolean('justify', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -3802,8 +3802,8 @@ var yr = yr || require('yate/lib/runtime.js');
             } else {
                 a0.a[ "class" ] = new yr.scalarAttr(" nb-user_direction_ltr");
             }
-            r0 += m.a(m, m.s(j3, c0), 'nb-user-pic', a0)
-            r0 += m.a(m, m.s(j3, c0), 'nb-user-name', a0)
+            r0 += m.a(m, [ c0 ], 'nb-user-pic', a0)
+            r0 += m.a(m, [ c0 ], 'nb-user-name', a0)
         } else {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
@@ -3811,8 +3811,8 @@ var yr = yr || require('yate/lib/runtime.js');
             } else {
                 a0.a[ "class" ] = new yr.scalarAttr(" nb-user_direction_rtl");
             }
-            r0 += m.a(m, m.s(j3, c0), 'nb-user-name', a0)
-            r0 += m.a(m, m.s(j3, c0), 'nb-user-pic', a0)
+            r0 += m.a(m, [ c0 ], 'nb-user-name', a0)
+            r0 += m.a(m, [ c0 ], 'nb-user-pic', a0)
         }
         r0 += closeAttrs(a0);
         r0 += "</span>";
@@ -3878,7 +3878,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += nodeset2xml( m.s(j3, c0) );
+        r0 += nodeset2xml( [ c0 ] );
 
         return r0;
     };
@@ -3890,7 +3890,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += nodeset2xml( m.s(j3, c0) );
+        r0 += nodeset2xml( [ c0 ] );
 
         return r0;
     };
@@ -3931,7 +3931,7 @@ var yr = yr || require('yate/lib/runtime.js');
                 a0.a[ "data-class-suggest" ] = new yr.scalarAttr(" " + nodeset2scalar( ( selectNametest('class-suggest', c0, []) ) ));
             }
         }
-        r0 += m.a(m, m.s(j3, c0), 'nb-main-attrs', a0)
+        r0 += m.a(m, [ c0 ], 'nb-main-attrs', a0)
         r0 += closeAttrs(a0);
         r0 += m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v118 ));
         r0 += "</div>";
