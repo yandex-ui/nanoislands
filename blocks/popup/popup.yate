@@ -1,4 +1,4 @@
-func nb-popup-menu(object options) {
+func nb-popup-menu(nodeset options) {
     default = {
        'none': 'none'
        //'tail': 'left|right|top|bottom'
@@ -40,7 +40,7 @@ match .popupMenu nb {
 }
 
 
-func nb-popup(object options) {
+func nb-popup(nodeset options) {
     default = {
        'none': 'none'
         // 'title': 'Some modal popup'
@@ -60,19 +60,17 @@ match .popup nb {
         }
 
         if .title {
-            <div class="nb-popup__title">
-                html(.title)
-            </div>
+           _nb-popup-title(.title)
         }
 
-        <div class="nb-popup__content">
-            html(.content)
-        </div>
+        if .content {
+           _nb-popup-content(.content)
+        }
 
     </div>
 }
 
-func nb-popup-modal(object options) {
+func nb-popup-modal(nodeset options) {
     default = {
         'data-nb': {
             'modal': 'true'
@@ -121,27 +119,77 @@ match .modalPopup nb {
             }
 
             if .title {
-                <div class="nb-popup__title">
-                    html(.title)
-                </div>
+                _nb-popup-title(.title)
             }
 
-            <div class="nb-popup__content">
-                html(.content)
-            </div>
+            if .content {
+                _nb-popup-content(.content)
+            }
 
             if .buttons {
-                <div class="nb-popup__buttons">
-                    if count(.buttons.*) {
-                        for .buttons {
-                            nb-button(.)
-                            ' '
-                        }
-                    } else {
-                        html(.buttons)
-                    }
-                </div>
+                _nb-popup-buttons(.buttons)
             }
+
         </div>
     </div>
+}
+
+
+func _nb-popup-content(nodeset content) {
+    if content.data {
+        <div class="nb-popup__content">
+            apply content nb-main-attrs
+
+            html( content.data )
+
+        </div>
+    } else {
+        <div class="nb-popup__content">
+            html(content)
+        </div>
+    }
+}
+
+func _nb-popup-title(nodeset title) {
+    if title.data {
+        <div class="nb-popup__title">
+            apply title nb-main-attrs
+
+            html( title.data )
+
+        </div>
+    } else {
+        <div class="nb-popup__title">
+            html(title)
+        </div>
+    }
+}
+
+
+func _nb-popup-buttons(nodeset buttons) {
+    if buttons.data {
+        <div class="nb-popup__buttons">
+            apply buttons nb-main-attrs
+
+            if count(buttons.data.*) {
+               for buttons.data {
+                   nb-button(.)
+                   ' '
+               }
+            } else {
+               html(buttons.data)
+            }
+        </div>
+    } else {
+        <div class="nb-popup__buttons">
+            if count(buttons.*) {
+               for buttons {
+                   nb-button(.)
+                   ' '
+               }
+            } else {
+               html(buttons)
+            }
+        </div>
+    }
 }
