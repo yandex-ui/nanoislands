@@ -126,7 +126,9 @@ func popups() {
                 'data-params': '123'
             }
        }
-       'buttons': [
+       'buttons': {
+            'class': 'ns-subliew-buttons'
+            'data': [
             {
                'content': 'Отправить'
                'size': 'm'
@@ -138,7 +140,7 @@ func popups() {
                'size': 'm'
                'class': 'nb-popup__button'
             }
-        ]
+        ]}
 
    }
 
