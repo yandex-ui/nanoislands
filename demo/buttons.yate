@@ -39,6 +39,15 @@ func button-pseudo() {
     nb-button(buttonM)
 }
 
+func button-dark() {
+    buttonM = {
+        'content': 'Готово'
+        'size': 'm'
+        'theme': 'dark'
+    }
+    nb-button(buttonM)
+}
+
 func button-images() {
     icon = {
         'icon': 'eye'
@@ -143,6 +152,16 @@ func buttons() {
         </div>
 
         show(button-pseudo())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Theme: Dark '
+            <span class="demo-code demo-code_small">
+                '.nb-button_theme_dark'
+            </span>
+        </div>
+
+        show(button-dark())
     </div>
     <div class="demo-section">
         <div class="demo-h3">

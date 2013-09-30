@@ -2,6 +2,8 @@
     Кнопка.
 */
 
+@import '_skin-dark'
+
 $skin-islands-button-content = '.nb-button__text'
 $skin-islands-button-disabled = '.nb-button_disabled'
 
@@ -30,6 +32,15 @@ $skin-islands-button-disabled = '.nb-button_disabled'
 // Маленькая кнопка-действие
 .nb-button_theme_action.nb-button_size_s
   skin: action-button small
+
+// Темная кнопка
+.nb-button_theme_dark
+  kind: button
+  skin: dark-button
+
+// Little black --dress-- button
+.nb-button_theme_dark.nb-button_size_s
+  skin: dark-button small
 
 // Псевдо-кнопка
 .nb-button_theme_pseudo
