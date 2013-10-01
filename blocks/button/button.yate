@@ -1,4 +1,4 @@
-func nb-button(nodeset options) {
+func nb-button-old(nodeset options) {
     default = {
         'size': 'm'
         'theme': 'normal'
@@ -10,6 +10,21 @@ func nb-button(nodeset options) {
         nb-block('buttonLink', nb-extend(default, options))
     } else {
         nb-block('button', nb-extend(default, options))
+    }
+}
+
+func nb-button(object options) {
+    default = {
+        'size': 'm'
+        'theme': 'normal'
+    }
+
+    if options.type == 'file' {
+        nb-block-obj('buttonAttach', nb-extend-obj(default, options))
+    } else if options.href {
+        nb-block-obj('buttonLink', nb-extend-obj(default, options))
+    } else {
+        nb-block-obj('button', nb-extend-obj(default, options))
     }
 }
 

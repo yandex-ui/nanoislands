@@ -52,7 +52,7 @@ match .arrow nb {
                         @action = .action
                     }
 
-                    nb-button(button)
+                    nb-button-old(button)
                     if .text {
                         <div class="nb-arrow__name__wrap">
                             <a href="{.href}" class="nb-arrow__name _link">{.text}</a>

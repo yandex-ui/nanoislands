@@ -1,80 +1,67 @@
 func button-medium() {
-    block = {
+    nb-button({
         'content': 'Применить'
-    }
-    nb-button(block)
+    })
 
     ' '
-
-    link = {
+    nb-button({
         'content': 'Проверить'
         'href': '#'
-    }
-    nb-button(link)
+    })
 }
 
 func button-small() {
-    button = {
+    nb-button({
         'content': 'Применить'
         'size': 's'
-    }
-    nb-button(button)
+    })
 }
 
 func button-action() {
-    buttonM = {
+    nb-button({
         'content': 'Отправить'
         'size': 'm'
         'theme': 'action'
-    }
-    nb-button(buttonM)
+    })
 }
 
 func button-pseudo() {
-    buttonM = {
+    nb-button({
         'content': 'Выбрать&hellip;'
         'size': 'm'
         'theme': 'pseudo'
-    }
-    nb-button(buttonM)
+    })
 }
 
 func button-dark() {
-    buttonM = {
+    nb-button({
         'content': 'Готово'
         'size': 'm'
         'theme': 'dark'
-    }
-    nb-button(buttonM)
+    })
 }
 
 func button-images() {
-    icon = {
+    nb-button({
         'icon': 'eye'
-    }
-
-    nb-button(icon)
+    })
 
     ' '
-
-    button = {
-        'icon': 'link'
-        'content': 'Открыть'
-    }
-
-    nb-button(button)
+    nb-button({
+          'icon': 'link'
+          'content': 'Открыть'
+    })
 }
 
 func button-disabled() {
-    disabled = {
+    nb-button({
         'content': 'Кнопка'
         'disabled': true()
-    }
-    nb-button(disabled)
+    })
 }
 
 func radio-button() {
-    radioGroup = {
+    nb-radio-button({
         'size': 'm'
         'name': 'btn'
         'group':  [
@@ -97,18 +84,14 @@ func radio-button() {
                 'disabled': true()
             }
         ]
-    }
-
-    nb-radio-button(radioGroup)
+    })
 }
 
 func attach-button() {
-    attach = {
+    nb-button({
         'content': 'Прикрепить файл'
         'type': 'file'
-    }
-
-    nb-button(attach)
+    })
 }
 
 

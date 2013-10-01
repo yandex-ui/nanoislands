@@ -173,7 +173,7 @@ func _nb-popup-buttons(nodeset buttons) {
 
             if count(buttons.data.*) {
                for buttons.data {
-                   nb-button(.)
+                   nb-button-old(.)
                    ' '
                }
             } else {
@@ -184,7 +184,7 @@ func _nb-popup-buttons(nodeset buttons) {
         <div class="nb-popup__buttons">
             if count(buttons.*) {
                for buttons {
-                   nb-button(.)
+                   nb-button-old(.)
                    ' '
                }
             } else {

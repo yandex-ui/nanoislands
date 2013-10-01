@@ -37,7 +37,7 @@ match .dropzone nb {
             <div class="nb-dropzone__text">
                 html(.text)
                 if .button != 'false'{
-                    nb-button(.button)
+                    nb-button-old(.button)
                 }
             </div>
         }

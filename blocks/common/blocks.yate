@@ -34,3 +34,8 @@ match .* nb-main-content {
 func nb-block(name, nodeset options) {
     apply nb-wrap(name, options).* nb
 }
+
+func nb-block-obj(name, object options) {
+    log(options)
+    apply nb-wrap-obj(name, options).* nb
+}

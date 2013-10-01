@@ -1,5 +1,8 @@
 external nodeset nb-extend(nodeset, nodeset)
 external nodeset nb-deep-extend(nodeset, nodeset)
 external nodeset nb-wrap(scalar, nodeset)
+external object nb-extend-obj(object, object)
+external object nb-deep-extend-obj(nodeset, object)
+external object nb-wrap-obj(scalar, object)
 external scalar nb-warn(scalar)
 external scalar nb-uniq()

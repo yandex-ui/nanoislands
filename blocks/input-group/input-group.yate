@@ -12,7 +12,7 @@ match .input-group nb {
         }
 
         for .* {
-                   if name() == 'button'       { nb-button(.)
+                   if name() == 'button'       { nb-button-old(.)
             } else if name() == 'input'        { nb-input(.)
             }
         }
