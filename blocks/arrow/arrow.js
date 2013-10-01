@@ -9,7 +9,7 @@ nb.define('arrow', {
         this.$node = $(this.node);
         this.$wrap = this.$node.find('.nb-arrow__name__wrap');
         this.$requests =  this.$node.find('.nb-arrow__requests');
-        this.$node.find('.nb-arrow__input_fake').text(this.$node.find('.nb-input').val());
+        this.$node.find('.nb-arrow__input_fake').text(this.$node.find('.nb-input').attr('value'));
     },
 
     focus: function(){
@@ -21,7 +21,7 @@ nb.define('arrow', {
     },
     blur: function() {
         this.$wrap.removeClass('nb-arrow__name__wrap_focus');
-        this.$node.find('.nb-arrow__input_fake').text(this.$node.find('.nb-input').val());
+        this.$node.find('.nb-arrow__input_fake').text(this.$node.find('.nb-input').attr('value'));
         this.$requests.fadeIn('fast');
     }
 })

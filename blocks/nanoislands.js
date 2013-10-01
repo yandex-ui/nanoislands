@@ -15,3 +15,4 @@
 /* borschik:include:header/header.js  */
 /* borschik:include:user/user.js  */
 /* borschik:include:suggest/suggest.js  */
+/* borschik:include:toggler/toggler.js  */
