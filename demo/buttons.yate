@@ -90,6 +90,11 @@ func radio-button() {
 func attach-button() {
     nb-button({
         'content': 'Прикрепить файл'
+        'theme': 'action'
+        'class': [
+            'myclass1'
+            'myclass2'
+        ]
         'type': 'file'
     })
 }

@@ -36,6 +36,5 @@ func nb-block(name, nodeset options) {
 }
 
 func nb-block-obj(name, object options) {
-    log(options)
     apply nb-wrap-obj(name, options).* nb
 }
