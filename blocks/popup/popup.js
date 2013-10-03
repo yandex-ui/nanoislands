@@ -327,8 +327,6 @@
             };
         }
 
-
-
         //  Модальный попап двигать не нужно.
         if (this.modal) {
             $(this.node).baseDialog({
@@ -366,7 +364,7 @@
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
                 collision: (how.collision ? how.collision : 'fit flip'),
-                using: using
+                using: using,
             },
             close: function() {
                 that.trigger('close');
