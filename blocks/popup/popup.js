@@ -327,8 +327,6 @@
             };
         }
 
-
-
         //  Модальный попап двигать не нужно.
         if (this.modal) {
             $(this.node).baseDialog({
@@ -340,7 +338,7 @@
                 modal: true,
                 resizable: false,
                 draggable: false,
-                dialogClass: 'nb-popup-outer ui-dialog-fixed',
+                dialogClass: 'nb-popup-outer ui-dialog-fixed ' + (params.extraClass || ''),
                 close: function() {
                     that.trigger('close');
                 },
@@ -366,11 +364,12 @@
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
                 collision: (how.collision ? how.collision : 'fit flip'),
-                using: using
+                using: using,
             },
             close: function() {
                 that.trigger('close');
-            }
+            },
+            dialogClass: 'nb-popup-outer ' + (params.extraClass || '')
         });
     };
 
@@ -405,7 +404,11 @@ nb.define('popup-toggler', {
                 where: data.where || this.node,
 
                 //  Как позиционировать попап.
-                how: data.how
+                how: data.how,
+
+                // Дополнительный класс для ui-dialog
+                // чтобы кастомизовать поведение попапа
+                extraClass: data.extraClass || false
             });
 
             return false;
