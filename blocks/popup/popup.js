@@ -327,8 +327,6 @@
             };
         }
 
-
-
         //  Модальный попап двигать не нужно.
         if (this.modal) {
             $(this.node).baseDialog({
