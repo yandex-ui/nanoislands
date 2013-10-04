@@ -29,6 +29,7 @@
     "files": [
         "blocks",
         "libs",
+        "demo",
         "nanoislands.js",
         "nanoislands.yate.js",
         "nanoislands.styl",
