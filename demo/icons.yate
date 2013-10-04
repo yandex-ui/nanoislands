@@ -15,6 +15,8 @@ func all-icons(size, boolean white) {
     } else {
         nb-ico('close')
         nb-ico('download')
+        nb-ico('people')
+        nb-ico('help')
         nb-ico('eye')
         nb-ico('link')
         nb-ico('pause')
