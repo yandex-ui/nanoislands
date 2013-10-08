@@ -1,12 +1,17 @@
 # Yate/Stylus/jQuery-UI library for Yandex corporate style
 #### Changelog
 
-##### 0.1.4
+##### 0.1.6
+* Removed console.log in input-group
 
+##### 0.1.5
+* New icons
+* Update stylobate
+
+##### 0.1.4
 * Fixes for toggler
 
 ##### 0.1.3
-
 * Toggler added
 
 ##### 0.1.2

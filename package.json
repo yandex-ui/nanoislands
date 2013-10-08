@@ -6,15 +6,15 @@
     },
     "name": "nanoislands",
     "description": "Yate/Stylus/jQuery-UI library for Yandex corporate style",
-    "version": "0.1.4",
+    "version": "0.1.6",
     "homepage": "https://github.yandex-team.ru/UFO/nanoislands",
     "repository": {
         "type": "git",
         "url": "git://github.yandex-team.ru/UFO/nanoislands.git"
     },
     "dependencies": {
-        "stylobate": "0.13.x",
-        "stylobate-islands": "0.11.x"
+        "stylobate": "0.17.x",
+        "stylobate-islands": "0.14.x"
     },
     "devDependencies": {
         "yate": "0.0.61",
@@ -29,6 +29,7 @@
     "files": [
         "blocks",
         "libs",
+        "demo",
         "nanoislands.js",
         "nanoislands.yate.js",
         "nanoislands.styl",

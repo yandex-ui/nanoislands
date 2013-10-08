@@ -18,8 +18,6 @@ nb.define('input-group', {
                 that.button = this;
             }
         })
-
-        console.log(that)
     },
     /**
      * Disables the input-group
