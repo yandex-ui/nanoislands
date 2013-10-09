@@ -37,7 +37,6 @@ nb.define('select', {
         position.collision = 'flip';
 
         if (that.data.within) {
-            console.log(that.data.within);
             position.within = that.data.within;
         }
 
