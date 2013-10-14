@@ -14,11 +14,17 @@ nb.define('tooltip-jq-toggler', {
 
         var data = this.data()[this.name];
 
-        $(this.node).tooltip({
+        var params = {
             content: data.content,
             items: '*',
             tooltipClass: "nb-tooltip nb-island nb-island_type_fly nb-island_padding_s"
-        });
+        };
+
+        if (data.position) {
+            params.position = data.position;
+        }
+
+        $(this.node).tooltip(params);
         $(this.node).tooltip("open");
     }
 
