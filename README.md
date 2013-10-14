@@ -1,6 +1,9 @@
 # Yate/Stylus/jQuery-UI library for Yandex corporate style
 #### Changelog
 
+##### 0.1.7
+* Add collision detection to selects
+
 ##### 0.1.6
 * Removed console.log in input-group
 

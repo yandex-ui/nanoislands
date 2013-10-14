@@ -10,6 +10,8 @@ match .paranja nb {
     <div class="nb-paranja nb-paranja_theme_{ .theme }" data-nb='paranja'>
         apply . nb-main-attrs
         
-        html( .content )
+        if .content {
+            html( .content )
+        }
     </div>
 }

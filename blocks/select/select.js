@@ -36,6 +36,10 @@ nb.define('select', {
         var position = {};
         position.collision = 'flip';
 
+        if (that.data.within) {
+            position.within = that.data.within;
+        }
+
         if (that.data.direction == 'top') {
             position.my = "left bottom";
             position.at = "left top";
