@@ -2,13 +2,15 @@ func nb-popup-menu(nodeset options) {
     default = {
        'none': 'none'
        //'tail': 'left|right|top|bottom'
+       //'data-nb': {
+       //   'outer-extra-class': 'Some extra class for popup-outer'
+       //}
        //'menu': [
        //    {
        //        'href': '#'
        //        'text': 'Скопировать'
        //     }
        //]
-       // 'outerExtraClass': 'Some extra class for popup-outer'
     }
 
     nb-block('popupMenu', nb-extend(default, options))
