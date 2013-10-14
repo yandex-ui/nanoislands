@@ -8,6 +8,7 @@ func nb-popup-menu(nodeset options) {
        //        'text': 'Скопировать'
        //     }
        //]
+       // 'outerExtraClass': 'Some extra class for popup-outer'
     }
 
     nb-block('popupMenu', nb-extend(default, options))

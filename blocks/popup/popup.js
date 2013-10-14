@@ -338,7 +338,7 @@
                 modal: true,
                 resizable: false,
                 draggable: false,
-                dialogClass: 'nb-popup-outer ui-dialog-fixed ' + (params.extraClass || ''),
+                dialogClass: 'nb-popup-outer ui-dialog-fixed ' + (data['outer-extra-class'] || ''),
                 close: function() {
                     that.trigger('close');
                 },
@@ -369,7 +369,7 @@
             close: function() {
                 that.trigger('close');
             },
-            dialogClass: 'nb-popup-outer ' + (params.extraClass || '')
+            dialogClass: 'nb-popup-outer ' + (data['outer-extra-class'] || '')
         });
     };
 
@@ -404,11 +404,7 @@ nb.define('popup-toggler', {
                 where: data.where || this.node,
 
                 //  Как позиционировать попап.
-                how: data.how,
-
-                // Дополнительный класс для ui-dialog
-                // чтобы кастомизовать поведение попапа
-                extraClass: data.extraClass || false
+                how: data.how
             });
 
             return false;
