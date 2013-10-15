@@ -43,6 +43,7 @@
         },
         _create: function() {
             this.options.dialogClass += _getUIDialogExtraClass.call(this);
+            this.options.dialogClass += (this.options.position.fixed) ? ' ui-dialog-fixed' : '';
             this._super();
             this.element[0].widget = this;
         },
@@ -311,6 +312,7 @@
         var using;
 
         var data = this.data();
+        var isFixed = !!((how && how.fixed) ? how.fixed : data.how);
 
         if (params.animate) {
             using =  function(props) {
@@ -363,6 +365,7 @@
                 at: (how.at ? how.at : 'center bottom'),// + ' center',
                 // где ссылка, которая открыла попап
                 my: (how.my ? how.my : 'center top'),// + ' center',
+                fixed: isFixed,
                 of: $(this.where),
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
