@@ -42,6 +42,7 @@
             nb.off('popup-close', this._onpopupclose);
         },
         _create: function() {
+            this.options.dialogClass += _getUIDialogExtraClass.call(this);
             this._super();
             this.element[0].widget = this;
         },
@@ -327,6 +328,8 @@
             };
         }
 
+
+
         //  Модальный попап двигать не нужно.
         if (this.modal) {
             $(this.node).baseDialog({
@@ -338,7 +341,7 @@
                 modal: true,
                 resizable: false,
                 draggable: false,
-                dialogClass: 'nb-popup-outer ui-dialog-fixed ' + (data['outer-extra-class'] || ''),
+                dialogClass: 'nb-popup-outer ui-dialog-fixed',
                 close: function() {
                     that.trigger('close');
                 },
@@ -368,12 +371,35 @@
             },
             close: function() {
                 that.trigger('close');
-            },
-            dialogClass: 'nb-popup-outer ' + (data['outer-extra-class'] || '')
+            }
         });
     };
 
     nb.define('popup', popup);
+
+    /** 
+     *  Функция возвращает строку с модификаторами
+     *  для обертки попапа, которую добавляет jquery ui,
+     *  в соответсвии с модификаторами самого попапа
+     *
+     *  Например, для попапа заданы классы-модификаторы nb-popup_mod и nb-popup_another-mod,
+     *  функция вернет строку 'nb-popup-outer_mod nb-popup-outer_another-mod'
+     *  
+     */
+    function _getUIDialogExtraClass() {
+        var popupClasses = this.element.attr('class').split(' ') || [];
+        // не матчимся на _ в начале слова
+        // иначе это глобальный класс
+        var modRe = /\w+\_/;
+
+        return $.map(popupClasses, function(item) {
+            var bemParts = item.split(modRe);
+            var l = bemParts.length;
+
+            return (l > 1) ? 'nb-popup-outer_' + bemParts[l-1] : '';
+
+        }).join(' ');
+    }
 
 })();
 
