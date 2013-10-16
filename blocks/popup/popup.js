@@ -312,7 +312,7 @@
         var using;
 
         var data = this.data();
-        var isFixed = !!((how && how.fixed) ? how.fixed : data.how);
+        var isFixed = !!(how && how.fixed || data.how);
 
         if (params.animate) {
             using =  function(props) {
@@ -392,16 +392,27 @@
     function _getUIDialogExtraClass() {
         var popupClasses = this.element.attr('class').split(' ') || [];
         // не матчимся на _ в начале слова
-        // иначе это глобальный класс
-        var modRe = /\w+\_/;
+        // иначе это глобальный класс,
+        // не мачимся на __, чтобы ислючить элемент
+        var modRe = /\w+\_(?!_)/;
+        var uiDialogClasses;
 
-        return $.map(popupClasses, function(item) {
-            var bemParts = item.split(modRe);
-            var l = bemParts.length;
+        uiDialogClasses = $.map(popupClasses, function(item) {
+            var parts = item.split(modRe);
+            var l = parts.length;
+            var modifier = parts.pop();
+            var newClass = '';
 
-            return (l > 1) ? 'nb-popup-outer_' + bemParts[l-1] : '';
+            // в массиве должно быть больше 1 элемента
+            // иначе модификатора не было
+            if (l > 1) {
+                newClass = 'nb-popup-outer_' + modifier;
+            }
 
-        }).join(' ');
+            return newClass;
+        });
+
+        return uiDialogClasses.join(' ');
     }
 
 })();
