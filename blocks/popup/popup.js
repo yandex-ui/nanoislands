@@ -312,7 +312,19 @@
         var using;
 
         var data = this.data();
-        var isFixed = !!(how && how.fixed || data.how);
+        // по умолчанию попап позиционирова абсолютно
+        var isFixed = false;
+
+        // сделаем попап фиксированным, если
+        // у popup-toggler задан how.fixed = true
+        if (how && how.fixed) {
+            isFixed = true;
+        }
+        // или если был задан атрибут data-nb-how = 'fixed'
+        // в настройках самого попапа
+        if (data.how == 'fixed') {
+            isFixed = true;
+        }
 
         if (params.animate) {
             using =  function(props) {
