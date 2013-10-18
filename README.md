@@ -1,4 +1,9 @@
 # Yate/Stylus/jQuery-UI library for Yandex corporate style
+
+## Documentation
+* [Button](https://github.yandex-team.ru/UFO/nanoislands/wiki/Buttons)
+* [Input](blocks/input/input.md)
+
 #### Changelog
 
 ##### 0.1.7
