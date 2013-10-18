@@ -10,6 +10,7 @@ nb-input(options)
 
 ### Options
  * `'attrs'` {object} - attrubutes for input node
+ * `'content'` {string} - `value` of the input
  * `'disabled'` {boolean}
  * `'size'` {string}  - input size. `'s'` (no other sizes supported)
 
