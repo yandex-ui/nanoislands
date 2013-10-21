@@ -6,6 +6,13 @@
 
 #### Changelog
 
+##### 0.1.8
+
+* Fix <input type="search"/> appearence
+* Now additional mods for popup will be added to the wrapper
+* position for tooltip fix
+* fixes to paranja
+
 ##### 0.1.7
 * Add collision detection to selects
 
