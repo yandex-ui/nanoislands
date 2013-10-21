@@ -42,6 +42,8 @@
             nb.off('popup-close', this._onpopupclose);
         },
         _create: function() {
+            this.options.dialogClass += _getUIDialogExtraClass.call(this);
+            this.options.dialogClass += (this.options.position.fixed) ? ' ui-dialog-fixed' : '';
             this._super();
             this.element[0].widget = this;
         },
@@ -310,6 +312,19 @@
         var using;
 
         var data = this.data();
+        // по умолчанию попап позиционирова абсолютно
+        var isFixed = false;
+
+        // сделаем попап фиксированным, если
+        // у popup-toggler задан how.fixed = true
+        if (how && how.fixed) {
+            isFixed = true;
+        }
+        // или если был задан атрибут data-nb-how = 'fixed'
+        // в настройках самого попапа
+        if (data.how == 'fixed') {
+            isFixed = true;
+        }
 
         if (params.animate) {
             using =  function(props) {
@@ -362,6 +377,7 @@
                 at: (how.at ? how.at : 'center bottom'),// + ' center',
                 // где ссылка, которая открыла попап
                 my: (how.my ? how.my : 'center top'),// + ' center',
+                fixed: isFixed,
                 of: $(this.where),
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
@@ -375,6 +391,41 @@
     };
 
     nb.define('popup', popup);
+
+    /** 
+     *  Функция возвращает строку с модификаторами
+     *  для обертки попапа, которую добавляет jquery ui,
+     *  в соответсвии с модификаторами самого попапа
+     *
+     *  Например, для попапа заданы классы-модификаторы nb-popup_mod и nb-popup_another-mod,
+     *  функция вернет строку 'nb-popup-outer_mod nb-popup-outer_another-mod'
+     *  
+     */
+    function _getUIDialogExtraClass() {
+        var popupClasses = this.element.attr('class').split(' ') || [];
+        // не матчимся на _ в начале слова
+        // иначе это глобальный класс,
+        // не мачимся на __, чтобы ислючить элемент
+        var modRe = /\w+\_(?!_)/;
+        var uiDialogClasses;
+
+        uiDialogClasses = $.map(popupClasses, function(item) {
+            var parts = item.split(modRe);
+            var l = parts.length;
+            var modifier = parts.pop();
+            var newClass = '';
+
+            // в массиве должно быть больше 1 элемента
+            // иначе модификатора не было
+            if (l > 1) {
+                newClass = 'nb-popup-outer_' + modifier;
+            }
+
+            return newClass;
+        });
+
+        return uiDialogClasses.join(' ');
+    }
 
 })();
 

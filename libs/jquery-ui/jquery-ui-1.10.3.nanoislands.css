@@ -363,6 +363,10 @@
   outline: 0
 }
 
+.ui-dialog-fixed {
+  position: fixed;
+}
+
 .ui-menu {
   list-style: none;
   padding: 2px;
