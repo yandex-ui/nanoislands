@@ -6,6 +6,9 @@
 
 #### Changelog
 
+##### 0.1.9
+* disabled checkbox
+
 ##### 0.1.8
 
 * Fix <input type="search"/> appearence
