@@ -16,45 +16,44 @@ match .radio-button nb {
             uniq = 'nb-radio-button_{nb-uniq()}'
             <span class="nb-radio-button__button">
                 <input class="nb-radio-button__radio" type="radio" name="{ ..name }" value="{ .value }" id="{ uniq }">
-                   if .checked {
-                       @checked = 'checked'
-                   }
-                   if .disabled {
-                       @disabled = 'disabled'
-                   }
+                    if .checked {
+                        @checked = 'checked'
+                    }
+                    if .disabled {
+                        @disabled = 'disabled'
+                    }
                 </input>
 
                 <label for="{ uniq }" class = 'nb-button  js-button nb-button_theme_{ ..theme } nb-button_size_{ ..size }' data-value='{ .value }'>
-                   apply . nb-main-attrs
+                    apply . nb-main-attrs
 
-                   if .checked {
-                       @class += ' nb-button_type_checked'
-                   }
+                    if .checked {
+                        @class += ' nb-button_type_checked'
+                    }
 
-                   if .disabled {
-                      @class += ' nb-button_disabled js-disabled'
-                      @disabled = 'disabled'
-                  }
+                    if .disabled {
+                        @class += ' nb-button_disabled js-disabled'
+                        @disabled = 'disabled'
+                    }
 
-                   if !(.content) && .icon {
-                       @class += ' nb-button_only-icon'
-                   }
+                    if !(.content) && .icon {
+                        @class += ' nb-button_only-icon'
+                    }
 
-                   if .type == 'round' {
-                       @class += " nb-button_type_round"
-                   }
+                    if .type == 'round' {
+                        @class += " nb-button_type_round"
+                    }
 
-                   <span class="nb-button__text">
-                       if (.content && .icon) {
-                           apply .icon nb
-                           html(.content)
-                       } else if (!.content && .icon){
-                           html('&nbsp;')
-                           apply .icon nb
-                       } else {
-                           html(.content)
-                       }
-                   </span>
+                    <span class="nb-button__text">
+                        if (.content && .icon) {
+                            apply .icon nb
+                            html(.content)
+                        } else if (!.content && .icon){
+                            apply .icon nb
+                        } else {
+                            html(.content)
+                        }
+                    </span>
                 </label>
             </span>
 
