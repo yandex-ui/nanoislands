@@ -6,6 +6,11 @@
 
 #### Changelog
 
+
+##### 0.1.10
+* added separator in popup
+* recalculate fixed popups offsets
+
 ##### 0.1.9
 * disabled checkbox
 
