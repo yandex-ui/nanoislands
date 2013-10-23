@@ -4,6 +4,8 @@
      * @fileOverview Надстройки nb над jQueryUI
      */
 
+    var $window = $(window);
+
     $.nb = {};
 
     $.widget('nb.baseDialog', $.ui.dialog, {
@@ -104,6 +106,13 @@
 
             var $handler = position.of;
             var handlerOffset = $handler.offset();
+
+            // Когда попап расположен фиксированно, при вычислении его положения
+            // необходимо вычитать текущее положение скролла.
+            if (position.fixed) {
+                handlerOffset.top -= $window.scrollTop();
+                handlerOffset.left -= $window.scrollLeft();
+            }
 
             //TODO: вот этого this.uiDialog.css('top', '+=13px'); можно не делать, если сразу в position писать {at: 'center top+13'}
             // положение надо вычислять все руками, потому что jquery-ui никак не сообщает о том, была ли коллизия
