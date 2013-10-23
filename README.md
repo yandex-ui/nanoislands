@@ -7,6 +7,10 @@
 #### Changelog
 
 
+##### 0.1.11
+* Fix color for links in popup-menu
+* Fix whitespace in radio-button block
+
 ##### 0.1.10
 * added separator in popup
 * recalculate fixed popups offsets
