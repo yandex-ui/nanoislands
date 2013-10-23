@@ -3,6 +3,8 @@
   position: absolute
   skin: popup (-content '&__content') (-close '&__close') (-tail '&__tail')
 
+  overflow: hidden
+
 // popup
 
 .nb-popup
@@ -12,18 +14,22 @@
     outline: 0 none
 
   .nb-popup__line:first-child
-    padding: $islands_s $islands_s ($islands_s / 2) $islands_s
+    margin-top: ($islands_s / 2)
 
   .nb-popup__line:last-child
-    padding: ($islands_s / 2) $islands_s $islands_s $islands_s
+    margin-bottom: ($islands_s / 2)
 
 
-  .nb-popup__line._link
+  .nb-popup__line
     display: block
+    color: $foreground
 
     text-decoration: none
 
     white-space: nowrap // Inline-only
+
+  .nb-popup__line:hover
+    background-color: $bgMenuItemSelected
 
   .nb-popup__separator
     border-top: 1px solid rgba(0, 0, 0, 0.1)
