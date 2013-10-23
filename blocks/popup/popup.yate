@@ -27,14 +27,18 @@ match .popupMenu nb {
         }
 
         for .menu {
-            <a class="nb-popup__line _link">
-                if .href {
-                    @href = .href
-                }
+            if .separator {
+                <div class="nb-popup__separator"></div>
+            } else {
+                <a class="nb-popup__line _link">
+                    if .href {
+                        @href = .href
+                    }
 
-                apply . nb-main-attrs
-                html(.text)
-            </a>
+                    apply . nb-main-attrs
+                    html(.text)
+                </a>
+            }
         }
     </div>
 }
