@@ -1,4 +1,6 @@
-# Yate/Stylus/jQuery-UI library for Yandex corporate style
+# Library for Yandex corporate style [![NPM version](https://badge.fury.io/js/nanoislands.png)](http://badge.fury.io/js/nanoislands)
+
+
 
 ## Documentation
 * [Button](https://github.yandex-team.ru/UFO/nanoislands/wiki/Buttons)
