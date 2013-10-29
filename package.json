@@ -10,7 +10,7 @@
   "homepage": "https://github.yandex-team.ru/UFO/nanoislands",
   "repository": {
     "type": "git",
-    "url": "git://github.yandex-team.ru/UFO/nanoislands.git"
+    "url": "git://github.com/yandex-ui/nanoislands.git"
   },
   "dependencies": {
     "stylobate": "0.17.x",
