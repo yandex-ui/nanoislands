@@ -1,0 +1,34 @@
+.nb-paranja
+    z-index: 99
+    position: fixed // Need to add iOS/IE6 fallback
+    top: 0
+    left: 0
+
+    // Can be replaced with padding+bottom+right
+    width: 100%
+    height: 100%
+
+    overflow: auto // So big popups could be scrolled
+
+    text-align: center
+    white-space: nowrap
+
+    // Need transparent clickable background (for IE clickable)
+    // Tranparent by default so we could create unclickable layer
+
+.nb-paranja:after
+    content: ""
+    display: inline-block
+    height: 100%
+    width: 0
+
+    vertical-align: middle
+
+.nb-paranja_theme_light
+    background: #B3B3B3
+    background: rgba(255,255,255,0.9)
+
+
+.nb-paranja_theme_dark
+    background: #FFF
+    background: rgba(0,0,0,0.3)

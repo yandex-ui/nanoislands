@@ -1,0 +1,61 @@
+func nb-header(nodeset header) {
+    default = {
+        'arrow': {
+            'search': 'true'
+            'buttonContent': 'Найти'
+            'class': 'nb-header__arrow'
+        }
+        'services': 'true'
+        'settings': 'true'
+        'yaHref': 'http://yandex.ru'
+    }
+
+    nb-block('header', nb-deep-extend(default, header))
+}
+
+match .header nb {
+    <div class="nb-header _init" data-nb="header">
+        apply . nb-main-attrs
+        <div class="nb-header__actions">
+
+            if .settings == 'true' {
+
+                <div class="nb-header__button">
+                    <div class="nb-header__button__icon">
+
+                        iconSettings = {
+                            'icon': {
+                                'icon': 'settings'
+                                'size': 'm'
+                            }
+                        }
+
+                        apply iconSettings.icon nb
+                    </div>
+                </div>
+            }
+
+            if .services == 'true' {
+                iconServices = {
+                    'icon': {
+                        'icon': 'services'
+                        'size': 'm'
+                    }
+                }
+
+                <div class="nb-header__button">
+                    <div class="nb-header__button__icon">
+                        apply iconServices.icon nb
+                    </div>
+                </div>
+            }
+            if .user {
+                nb-user(.user)
+            }
+        </div>
+        <div class="nb-header__main">
+            <a href="{.yaHref}" class="nb-header__logo"></a>
+            nb-arrow(.arrow)
+        </div>
+    </div>
+}

@@ -1,0 +1,69 @@
+.nb-header
+  min-width: 700px
+
+.nb-header__actions
+  float: right
+  margin-right: $gapS
+
+.nb-header__main
+  overflow: hidden
+
+.nb-header__logo
+  display: inline-block
+  background: url('yandex.svg') 50% 50% no-repeat
+  width: 138px
+  height: 42px
+
+.nb-header__arrow
+  display: inline-block
+
+.nb-header__arrow.nb-arrow_search
+  width: 60%
+
+.nb-header__button
+  display: inline-block
+
+  margin-right: $gapS
+  vertical-align: middle
+
+  width: 38px
+  height: 38px
+
+  box-shadow: none
+  border-radius: 3px
+
+  position: relative
+
+  cursor: pointer
+
+.nb-header__button:hover
+  background: #cecece
+
+.nb-header__button:before
+  position: absolute
+  top: 1px
+  right: 1px
+  bottom: 1px
+  left: 1px
+
+  content: ''
+
+  border-radius: 2px
+  background: $background
+
+.nb-header__button .nb-header__button__icon
+  opacity: 0.25
+  display: inline-block
+  margin-left: 3px
+
+.nb-header__button_pressed
+  background: #fff7db
+  box-shadow: 0 1px 7px rgba(30, 23, 0, 0.8) inset,0 2px 0 -1px rgba(255, 255, 255, 0.2)
+
+.nb-header__button_pressed:before
+  background: #ffeca6
+  background: linear-gradient(top,#ffeca6 0,#fff6d5 100%)
+  box-shadow: 0 1px 3px -1px rgba(0,0,0,.45) inset
+
+.nb-header__button_pressed .nb-header__button__icon
+  opacity: 1

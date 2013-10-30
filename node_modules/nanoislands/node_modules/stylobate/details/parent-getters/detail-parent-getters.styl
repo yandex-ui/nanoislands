@@ -1,0 +1,26 @@
+parent_get($where, $key = false, $fallback = false)
+  return utilus_get(utilus_get($where, parent), $key, $fallback)
+
+parent_get_n($where, $fallback = false, $index = 0, $type = 'any')
+  return utilus_get_n(utilus_get($where, parent), $fallback, $index, $type)
+
+parent_get_string($where, $fallback = false, $index = 0)
+  return utilus_get_string(utilus_get($where, parent), $fallback, $index)
+
+parent_get_ident($where, $fallback = false, $index = 0)
+  return utilus_get_ident(utilus_get($where, parent), $fallback, $index)
+
+parent_get_unit($where, $fallback = false, $index = 0)
+  return utilus_get_unit(utilus_get($where, parent), $fallback, $index)
+
+parent_get_color($where, $fallback = false, $index = 0)
+  return utilus_get_color(utilus_get($where, parent), $fallback, $index)
+
+parent_alike($where, $fallback, $index = 0)
+  return utilus_alike(utilus_get($where, parent), $fallback, $index)
+
+parent_retrieve($where, $what, $fallback = false)
+  return utilus_retrieve(utilus_get($where, parent), $what, $fallback)
+
+parent_get_sides($where, $fallback = 0)
+  return utilus_get_sides(utilus_get($where, parent), $fallback)

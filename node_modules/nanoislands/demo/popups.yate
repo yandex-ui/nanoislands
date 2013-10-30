@@ -1,0 +1,195 @@
+func toggle-default() {
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup'}}" href="#default">
+        <span class="link__inner">
+            "Попап по умолчанию"
+        </span>
+    </a>
+}
+
+func toggle-to-right() {
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup1', how: {{ at: 'left', my: 'right' }}}}" href="#right">
+        <span class="link__inner">
+            "Попап справа"
+        </span>
+    </a>
+}
+
+func toggle-to-left() {
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup2', how: {{ at: 'right top', my: 'left' }}}}" href="#left">
+        <span class="link__inner">
+            "Попап слева"
+        </span>
+    </a>
+}
+
+func toggle-to-top() {
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup3', how: {{ at: 'top', my: 'bottom' }}}}" href="#top">
+        <span class="link__inner">
+            "Попап сверху"
+        </span>
+    </a>
+}
+
+func toggle-modal() {
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup4'}}" href="#modal">
+        <span class="link__inner">
+            "Модальный Попап"
+        </span>
+    </a>
+}
+
+func popups() {
+    default = {
+        'id': 'popup'
+        'menu': [
+            {
+                'href': '#'
+                'text': 'Скопировать'
+            }
+            {
+                'href': '#'
+                'text': 'Переместить'
+            }
+            {
+                'separator': true()
+            }
+            {
+                'href': '#'
+                'text': 'Удалить'
+            }
+        ]
+    }
+
+    toRight = {
+        'id': 'popup1'
+        'menu': [
+            {
+                'href': '#'
+                'text': 'Скопировать'
+            }
+            {
+                'href': '#'
+                'text': 'Переместить'
+            }
+            {
+                'href': '#'
+                'text': 'Удалить'
+            }
+        ]
+    }
+
+    toLeft = {
+        'id': 'popup2'
+        'tail': 'top'
+        'menu': [
+            {
+                'href': '#'
+                'text': 'Скопировать'
+            }
+            {
+                'href': '#'
+                'text': 'Переместить'
+            }
+            {
+                'href': '#'
+                'text': 'Удалить'
+            }
+        ]
+    }
+
+    toTop = {
+        'id': 'popup3'
+        'tail': 'left'
+        'menu': [
+            {
+                'href': '#'
+                'text': 'Скопировать'
+            }
+            {
+                'href': '#'
+                'text': 'Переместить'
+            }
+            {
+                'href': '#'
+                'text': 'Удалить'
+            }
+        ]
+    }
+
+    modal = {
+       'id': 'popup4'
+       'title': 'Some modal popup'
+       'content': 'Some text for that popup'
+       'data-nb': {
+            'width': '300px'
+       }
+       'close': {
+            'class': 'ns-action'
+            'attrs': {
+                'data-params': '123'
+            }
+       }
+       'buttons': {
+            'class': 'ns-subliew-buttons'
+            'data': [
+            {
+               'content': 'Отправить'
+               'size': 'm'
+               'theme': 'action'
+               'class': 'nb-popup__button'
+            }
+            {
+               'content': 'Сохранить'
+               'size': 'm'
+               'class': 'nb-popup__button'
+            }
+        ]}
+
+   }
+
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-default())
+            code(toggle-default())
+            code(nb-popup-menu(default))
+        </div>
+
+        nb-popup-menu(default)
+    </div>
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-to-right())
+            code(toggle-to-right())
+            code(nb-popup-menu(toRight))
+        </div>
+
+        nb-popup-menu(toRight)
+    </div>
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-to-left())
+            code(toggle-to-left())
+            code(nb-popup-menu(toLeft))
+        </div>
+
+        nb-popup-menu(toLeft)
+    </div>
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-to-top())
+            code(toggle-to-top())
+            code(nb-popup-menu(toTop))
+        </div>
+
+        nb-popup-menu(toTop)
+    </div>
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-modal())
+            code(toggle-modal())
+            code(nb-popup-modal(modal))
+        </div>
+
+        nb-popup-modal(modal)
+    </div>
+}

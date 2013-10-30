@@ -1,0 +1,3 @@
+nb.define('paranja', {
+    events: {}
+});
