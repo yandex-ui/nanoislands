@@ -3,7 +3,7 @@
 
 
 ## Documentation
-* [Button](https://github.yandex-team.ru/UFO/nanoislands/wiki/Buttons)
+* [Button](blocks/button/button.md)
 * [Input](blocks/input/input.md)
 
 #### Changelog
