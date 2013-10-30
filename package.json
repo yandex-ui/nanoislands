@@ -31,13 +31,10 @@
     "libs",
     "demo",
     "nanoislands.js",
-    "nanoislands.yate.js",
+    "nanoislands.yate",
     "nanoislands.styl",
     "nanoislands.css",
     "nanoislands.ie.css",
     "externals.yate.js"
-  ],
-  "scripts": {
-    "prepublish": "make"
-  }
+  ]
 }
