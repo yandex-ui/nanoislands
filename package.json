@@ -4,40 +4,19 @@
     "email": "basvasilich@yandex.ru",
     "url": "https://github.com/basvasilich"
   },
-  "name": "nanoislands",
-  "description": "Yate/Stylus/jQuery-UI library for Yandex corporate style",
-  "version": "0.1.11",
+  "name": "nanoislands-demo",
+  "description": "Demo for nanoislands project",
+  "version": "0.1.12",
   "homepage": "https://github.yandex-team.ru/UFO/nanoislands",
   "repository": {
     "type": "git",
     "url": "git://github.com/yandex-ui/nanoislands.git"
   },
   "dependencies": {
-    "stylobate": "0.17.x",
-    "stylobate-islands": "0.14.x"
-  },
-  "devDependencies": {
-    "yate": "0.0.64",
-    "borschik": "0.3.5",
-    "autoprefixer": "0.7.x",
-    "stylus": "0.37.x",
-    "csso": "1.3.x"
+    "nanoislands": "~0.1.11",
+    "yate": "0.0.64"
   },
   "engines": {
     "node": "*"
-  },
-  "files": [
-    "blocks",
-    "libs",
-    "demo",
-    "nanoislands.js",
-    "nanoislands.yate.js",
-    "nanoislands.styl",
-    "nanoislands.css",
-    "nanoislands.ie.css",
-    "externals.yate.js"
-  ],
-  "scripts": {
-    "prepublish": "make"
   }
 }
