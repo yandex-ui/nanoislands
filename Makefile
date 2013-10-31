@@ -3,10 +3,13 @@ export NPM_BIN
 
 MAKEFLAGS+=-j 4
 
-all: node_modules nanoislands.css nanoislands.ie.css nanoislands.js
+all: node_modules demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js
 
 nanoislands.css: $(shell find . -name '*.styl') node_modules
 	node build/build-styl.js > $@
+
+demo/demo.yate.js: $(shell find . -name '*.yate') node_modules
+	$(NPM_BIN)/yate $(CURDIR)/demo/nanoislands.yate > $@
 
 nanoislands.ie.css: $(shell find . -name '*.styl') node_modules
 	node build/build-styl.js ie > $@
@@ -18,6 +21,6 @@ node_modules:
 	npm install
 
 clean:
-	rm -rf nanoislands.css nanoislands.ie.css nanoislands.js
+	rm -rf demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js
 
 .PHONY: all clean

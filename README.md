@@ -9,6 +9,10 @@
 #### Changelog
 
 
+##### 0.1.12
+    nb-button-old removed
+    /blocks/nanoisnands.yate was moved to  /nanoislands.yate.
+
 ##### 0.1.11
 * Fix color for links in popup-menu
 * Fix whitespace in radio-button block
