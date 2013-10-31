@@ -171,29 +171,15 @@ func _nb-popup-title(nodeset title) {
 
 
 func _nb-popup-buttons(nodeset buttons) {
-    if buttons.data {
-        <div class="nb-popup__buttons">
-            apply buttons nb-main-attrs
+    <div class="nb-popup__buttons">
+        apply buttons nb-main-attrs
 
-            if count(buttons.data.*) {
-               for buttons.data {
-                   nb-button(.)
-                   ' '
-               }
-            } else {
-               html(buttons.data)
-            }
-        </div>
-    } else {
-        <div class="nb-popup__buttons">
-            if count(buttons.*) {
-               for buttons {
-                   nb-button(.)
-                   ' '
-               }
-            } else {
-               html(buttons)
-            }
-        </div>
-    }
+        if count(buttons.data.*) {
+           for buttons.data {
+               nb-button(.)
+           }
+        } else {
+           html(buttons.data)
+        }
+    </div>
 }
