@@ -8,10 +8,11 @@
 
 #### Changelog
 
-
 ##### 0.1.12
-    nb-button-old removed
-    /blocks/nanoisnands.yate was moved to  /nanoislands.yate.
+* nb-button-old removed
+* nanoisnands.yate.js was removed because this file usless. We can't compile project's yate and NI's yate separately.
+* /blocks/nanoisnands.yate was moved to /nanoislands.yate
+* print icon
 
 ##### 0.1.11
 * Fix color for links in popup-menu
