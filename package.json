@@ -6,8 +6,8 @@
   },
   "name": "nanoislands",
   "description": "Yate/Stylus/jQuery-UI library for Yandex corporate style",
-  "version": "0.1.11",
-  "homepage": "https://github.yandex-team.ru/UFO/nanoislands",
+  "version": "0.1.12",
+  "homepage": "https://github.com/yandex-ui/nanoislands",
   "repository": {
     "type": "git",
     "url": "git://github.com/yandex-ui/nanoislands.git"
