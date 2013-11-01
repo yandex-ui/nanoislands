@@ -6,11 +6,10 @@ func input-small() {
 }
 
 func input-medium() {
-    block = {
-        'size': 'm'
-        'content': 'Москва'
-    }
-    nb-input(block)
+    nb-input({
+         'size': 'm'
+         'content': 'Москва11'
+    })
 }
 
 func input-disabled() {

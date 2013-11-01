@@ -1,7 +1,10 @@
 func button-medium() {
-    nb-button({
+
+    button = {
         'content': 'Применить'
-    })
+ }
+
+    nb-button(button)
 
     ' '
     nb-button({

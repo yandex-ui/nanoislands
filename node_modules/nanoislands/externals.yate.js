@@ -72,18 +72,6 @@ yr.externals['nb-extend'] = function(parent, node) {
     return parent;
 }
 
-yr.externals['nb-extend-obj'] = function(parent, node) {
-    if (node) {
-        if (typeof node == 'string') {
-            parent.content = node;
-        } else {
-            parent = extend(false, parent, node);
-        }
-    }
-
-    return parent;
-}
-
 yr.externals['nb-deep-extend'] = function(parent, node) {
     if (node && node[0]) {
         if (typeof node == 'string') {
@@ -93,18 +81,6 @@ yr.externals['nb-deep-extend'] = function(parent, node) {
             var dataNode = node[0].data;
             var dataNew = extend(true, dataParent, dataNode);
             parent[0].data = dataNew;
-        }
-    }
-
-    return parent;
-}
-
-yr.externals['nb-deep-extend-obj'] = function(parent, node) {
-    if (node) {
-        if (typeof node == 'string') {
-            parent.content = node;
-        } else {
-            parent = extend(true, parent, node);
         }
     }
 
@@ -127,17 +103,6 @@ yr.externals['nb-wrap'] = function(name, options) {
         doc: options[0].doc
     }];
 }
-
-yr.externals['nb-wrap-obj'] = function(name, options) {
-    var data = {};
-
-    if (options) {
-        data[name] = options
-    }
-
-    return data;
-}
-
 
 yr.externals['nb-uniq'] = (function(){
     var uniq = 0;

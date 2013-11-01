@@ -1,11 +1,11 @@
-func nb-radio-button(object options) {
+func nb-radio-button(nodeset options) {
     default = {
         'size': 'm'
         'theme': 'normal'
         'type': 'radio'
     }
 
-    nb-block-obj('radio-button', nb-extend-obj(default, options))
+    nb-block('radio-button', nb-extend(default, options))
 }
 
 match .radio-button nb {
