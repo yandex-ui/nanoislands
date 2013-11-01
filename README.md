@@ -1,4 +1,4 @@
-# Library for Yandex corporate style [![NPM version](https://badge.fury.io/js/nanoislands.png)](http://badge.fury.io/js/nanoislands)
+# Library for Yandex corporate style [![NPM version](https://badge.fury.io/js/nanoislands.png)](http://badge.fury.io/js/nanoislands) [![Build Status](https://travis-ci.org/yandex-ui/nanoislands.png?branch=master)](https://travis-ci.org/yandex-ui/nanoislands)
 
 
 
