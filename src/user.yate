@@ -1,7 +1,6 @@
 userNormal = {
     'username': 'sweetlush'
     'notices': '7'
-    'userpic': 'http://center.yandex-team.ru/api/v1/user/sweetlush/photo_10670/300.jpg'
 }
 userRtL = {
     'username': 'Username'
@@ -11,24 +10,21 @@ userRtL = {
 userSmall = {
     'username': 'basvasilich'
     'size': 's'
-    'userpic': 'http://center.yandex-team.ru/api/v1/user/basvasilich/photo_6631/300.jpg?0.5863942694850266'
 }
 
 userEmail = {
     'username': 'Константин Леонидович Васильев'
-    'email': 'mctep@yandex-team.ru'
+    'email': 'pupkin@yandex.ru'
     'justify': true()
     'rightToLeft': true()
     'size': 's'
-    'userpic': 'https://center.yandex-team.ru/api/v1/user/mctep/avatar/36.jpg'
 }
 
 userEmail2 = {
     'username': 'Константин Леонидович Васильев'
-    'email': 'mctep@yandex-team.ru'
+    'email': 'pupkin@yandex.ru'
     'justify': true()
     'size': 'm'
-    'userpic': 'https://center.yandex-team.ru/api/v1/user/mctep/avatar/36.jpg'
 }
 
 
