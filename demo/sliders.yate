@@ -1,0 +1,38 @@
+func slider-small() {
+    slider = {
+        'id': 's2'
+        'size': 's'
+        'handle': {
+            'class': 'js-custom-class'
+        }
+        'value': 20
+    }
+    nb-slider(slider)
+}
+
+func slider-medium() {
+    slider = {
+        'size': 'm'
+        'class': 'js-super-class'
+        'value': 50
+        'id': 's1'
+    }
+    nb-slider(slider)
+}
+
+func sliders() {
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: S'
+        </div>
+
+        show(slider-small())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: M'
+        </div>
+
+        show(slider-medium())
+    </div>
+}

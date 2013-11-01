@@ -1,0 +1,191 @@
+func button-medium() {
+
+    button = {
+        'content': 'Применить'
+ }
+
+    nb-button(button)
+
+    ' '
+    nb-button({
+        'content': 'Проверить'
+        'href': '#'
+    })
+}
+
+func button-small() {
+    nb-button({
+        'content': 'Применить'
+        'size': 's'
+    })
+}
+
+func button-action() {
+    nb-button({
+        'content': 'Отправить'
+        'size': 'm'
+        'theme': 'action'
+    })
+}
+
+func button-pseudo() {
+    nb-button({
+        'content': 'Выбрать&hellip;'
+        'size': 'm'
+        'theme': 'pseudo'
+    })
+}
+
+func button-dark() {
+    nb-button({
+        'content': 'Готово'
+        'size': 'm'
+        'theme': 'dark'
+    })
+}
+
+func button-images() {
+    nb-button({
+        'icon': 'eye'
+    })
+
+    ' '
+    nb-button({
+          'icon': 'link'
+          'content': 'Открыть'
+    })
+}
+
+func button-disabled() {
+    nb-button({
+        'content': 'Кнопка'
+        'disabled': true()
+    })
+}
+
+func radio-button() {
+    nb-radio-button({
+        'size': 'm'
+        'name': 'btn'
+        'group':  [
+            {
+                'content': 'Все'
+                'value': 'btn1'
+            }
+            {
+                'content': 'Непрочитанные'
+                'value': 'btn3'
+                'checked': true()
+            }
+            {
+                'content': 'Прочитанные'
+                'value': 'btn4'
+            }
+            {
+                'content': 'Удаленные'
+                'value': 'btn2'
+                'disabled': true()
+            }
+        ]
+    })
+}
+
+func attach-button() {
+    nb-button({
+        'content': 'Прикрепить файл'
+        'theme': 'action'
+        'class': [
+            'myclass1'
+            'myclass2'
+        ]
+        'type': 'file'
+    })
+}
+
+
+func buttons() {
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: M '
+            <span class="demo-code demo-code_small">
+                '.nb-button_size_m'
+            </span>
+        </div>
+
+        show(button-medium())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: S '
+            <span class="demo-code demo-code_small">
+                '.nb-button_size_s'
+            </span>
+        </div>
+
+        show(button-small())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Theme: Action '
+            <span class="demo-code demo-code_small">
+                '.nb-button_theme_action'
+            </span>
+        </div>
+
+        show(button-action())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Theme: Pseudo '
+            <span class="demo-code demo-code_small">
+                '.nb-button_theme_pseudo'
+            </span>
+        </div>
+
+        show(button-pseudo())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Theme: Dark '
+            <span class="demo-code demo-code_small">
+                '.nb-button_theme_dark'
+            </span>
+        </div>
+
+        show(button-dark())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Disabled '
+            <span class="demo-code demo-code_small">
+                '.nb-button_disabled'
+            </span>
+        </div>
+
+        show(button-disabled())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Кнопка с иконкой'
+        </div>
+
+        show(button-images())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Радио-группа'
+        </div>
+
+        show(radio-button())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Type: Attach '
+            <span class="demo-code demo-code_small">
+                '.nb-button_type_attach'
+            </span>
+        </div>
+
+        show(attach-button())
+    </div>
+}

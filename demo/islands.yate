@@ -1,0 +1,50 @@
+func island-simple() {
+    island = {
+        'content': 'Остров миу-миу'
+        'attrs': {
+            'style': 'height: 100px; width: 200px'
+        }
+    }
+    nb-island(island)
+}
+
+func island-fly() {
+    island = {
+        'content': 'Летающий остров'
+        'type': 'fly'
+        'padding': 'm'
+        'attrs': {
+            'style': 'height: 100px; width: 200px'
+        }
+    }
+    nb-island(island)
+}
+
+
+func island-padding() {
+    island = {
+        'content': 'Остров с паддингами и инлайном'
+        'padding': 'l'
+        'type':  'inline'
+    }
+    nb-island(island)
+}
+
+func islands() {
+    <div class="demo-section">
+        show(island-simple())
+    </div>
+    <div class="demo-section">
+        show(island-fly())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Padding: L, Inline '
+            <span class="demo-code demo-code_small">
+                '.nb-island_padding_l.nb-island_inline'
+            </span>
+        </div>
+
+        show(island-padding())
+    </div>
+}

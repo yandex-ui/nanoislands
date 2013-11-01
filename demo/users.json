@@ -1,0 +1,44 @@
+[
+	{
+		"value": "Константин Васильев",
+		"label": "Константин Васильев mctep",
+		"username": "Константин Васильев",
+		"email": "mctep@yandex-team.ru",
+		"userpic": "https://center.yandex-team.ru/api/v1/user/mctep/avatar/54.jpg"
+	},
+	{
+		"value": "Евгений Дорошенко",
+		"label": "Евгений Дорошенко esdoroshenko",
+		"username": "Евгений Дорошенко",
+		"email": "esdoroshenko@yandex-team.ru",
+		"userpic": "https://center.yandex-team.ru/api/v1/user/esdoroshenko/avatar/54.jpg"
+	},
+	{
+		"value": "Вадим Пацев",
+		"label": "Вадим Пацев basvasilich",
+		"username": "Вадим Пацев",
+		"email": "basvasilich@yandex-team.ru",
+		"userpic": "https://center.yandex-team.ru/api/v1/user/basvasilich/avatar/54.jpg"
+	},
+	{
+		"value": "Светлана Блыщак",
+		"label": "Светлана Блыщак sweetlush",
+		"username": "Светлана Блыщак",
+		"email": "sweetlush@yandex-team.ru",
+		"userpic": "https://center.yandex-team.ru/api/v1/user/sweetlush/avatar/54.jpg"
+	},
+	{
+		"value": "Яна Недоросткова",
+		"label": "Яна Недоросткова yanann11",
+		"username": "Яна Недоросткова",
+		"email": "yanann11@yandex-team.ru",
+		"userpic": "https://center.yandex-team.ru/api/v1/user/yanann11/avatar/54.jpg"
+	},
+	{
+		"value": "Азиз Йулдошев",
+		"label": "Азиз Йулдошев lapple",
+		"username": "Азиз Йулдошев",
+		"email": "lapple@yandex-team.ru",
+		"userpic": "https://center.yandex-team.ru/api/v1/user/lapple/avatar/54.jpg"
+	}
+]

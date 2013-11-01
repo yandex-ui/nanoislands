@@ -1,0 +1,13 @@
+func public_url-small() {
+    block = {
+        'disabled': '1'
+        'content': 'http://yadi.sk/d/12nTh-4p4h9lm'
+    }
+    nb-public_url(block)
+}
+
+func public() {
+    <div>
+        public_url-small()
+    </div>
+}
