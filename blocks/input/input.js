@@ -11,20 +11,25 @@ nb.define('input', {
 
     oninit: function() {
 
-        console.log(this.data())
+        this.data = this.data()
         this.$node = $(this.node);
-        this.$nodeInput = this.$node.find('.nb-input__input');
+
+        if (this.data.type == 'simple'){
+            this.$nodeInput = this.$node
+        } else {
+            this.$nodeInput = this.$node.find('.nb-input__input');
+        }
+
         this.disabled = this.$nodeInput.prop('disabled');
         this.value = this.$nodeInput.val();
         this.focused = false;
         nb.on('input-focusout', function() {
             this.trigger('focusout');
-
         });
     },
 
     makeFocus: function() {
-        if (this.$node.is('.nb-input_disabled')) {
+        if (this.$node.is('.is-disabled')) {
             return false;
         }
 
@@ -32,7 +37,7 @@ nb.define('input', {
             nb.trigger('input-focusout');
             this.$node.addClass('nb-input_focus');
             this.focused = true;
-            this.$node.find('input').get(0).focus();
+            this.$nodeInput.get(0).focus();
         }
     },
 
@@ -45,7 +50,7 @@ nb.define('input', {
      * Disables the input
      */
     onDisable: function() {
-        this.$node.addClass('nb-input_disabled');
+        this.$node.addClass('is-disabled');
         this.$nodeInput.prop('disabled', true);
         this.trigger('disabled');
     },
@@ -54,7 +59,7 @@ nb.define('input', {
      * Enables the input
      */
     onEnable: function() {
-        this.$node.removeClass('nb-input_disabled');
+        this.$node.removeClass('is-disabled');
         this.$nodeInput.prop('disabled', false);
         this.trigger('enabled');
     },
