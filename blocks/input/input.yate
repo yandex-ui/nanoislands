@@ -3,7 +3,11 @@ func nb-input(nodeset options) {
         'size': 's'
     }
 
-    nb-block('input', nb-extend(default, options))
+    if options.fieldLeft || options.fieldRight || options.fieldLabel {
+        nb-block('input', nb-extend(default, options))
+    } else {
+        nb-block('inputSimple', nb-extend(default, options))
+    }
 }
 
 match .input nb {
@@ -30,4 +34,19 @@ match .input nb {
             apply .* nb-content
         </input>
     </span>
+}
+match .inputSimple nb {
+    <input data-nb='input' data-nb-type='simple' class='nb-input nb-input_type_simple'>
+        apply . nb-main-attrs
+
+        if .size {
+            @class += ' nb-input_size_{.size}'
+        }
+
+        if .disabled {
+            @class += ' is-disabled'
+            @disabled = 'disabled'
+            @data-nb-disabled = 'true'
+        }
+    </input>
 }

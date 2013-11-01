@@ -10,6 +10,8 @@ nb.define('input', {
     },
 
     oninit: function() {
+
+        console.log(this.data())
         this.$node = $(this.node);
         this.$nodeInput = this.$node.find('.nb-input__input');
         this.disabled = this.$nodeInput.prop('disabled');
