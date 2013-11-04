@@ -13,14 +13,14 @@
     "url": "git://github.com/yandex-ui/nanoislands.git"
   },
   "dependencies": {
-    "stylobate": "0.17.x",
-    "stylobate-islands": "0.14.x"
+    "stylobate": "0.19.x",
+    "stylobate-islands": "0.16.x"
   },
   "devDependencies": {
     "yate": "0.0.64",
-    "borschik": "0.3.5",
+    "borschik": "0.4.x",
     "autoprefixer": "0.7.x",
-    "stylus": "0.37.x",
+    "stylus": "0.39.x",
     "csso": "1.3.x"
   },
   "engines": {
