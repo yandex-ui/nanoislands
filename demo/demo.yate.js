@@ -2095,6 +2095,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r4 = {};
         var a4 = { a: {} };
         r4[ "placeholder" ] = "Серийный номер";
+        r4[ "style" ] = "width: 90%";
         r3[ "attrs" ] = r4;
         r2[ "input" ] = r3;
         var r3 = {};
