@@ -14,30 +14,41 @@ nb-input(options)
  * `'disabled'` {boolean}
  * `'size'` {string}  - input size. `'s'` (no other sizes supported)
 
-
-## Проблемы
-
-Есть проблемка с заданием ширины инпута
-Сейчас делают вот так
+### Examples
 
 ```
-.b-intruder__search-filter-input
-  margin-right: 8px
-
-  .nb-input__input
-    width: 400px
-
-.b-intruder__search
-  .nb-input
-    padding-right: 8px
-
-    .nb-input__input
-      width: 400px
+nb-input({
+    'size': 's'
+    'attrs': {
+        'placeholder': 'Введите пароль'
+        'type': 'password'
+    }
+})
 ```
 
-это неправильно, потому что мы лезим в потроха блока
 
-Придумали с Антоном варианты:
-  1. через `attrs.style` делаем `width:400px`
-  2. добавить свойство `width` у блока, которое будет влиять на инпунт
-  3. добавить собственный класс блоку, а у input сделать `width: 100%`
+## JS
+
+### Initialization
+
+Initialize nb block on DOM node:
+```
+    nb.block(node);
+```
+Initialize all nb blocks with class '_init' within DOM node
+```
+    nb.init(node);
+```
+### Input methods
+
+input — nb block
+```
+    input.trigger('disable');
+    input.trigger('enable');
+
+    /* @param params — {
+     *     value: '..'
+     * }
+     */
+    input.trigger('changeValue', params);
+```

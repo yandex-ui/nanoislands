@@ -8,7 +8,7 @@ reset-skin-namespace()
   utilus_reassign($skin_namespace, '')
 
 skin()
-  stylobate('skin-' + $skin_namespace, arguments)
+  stylobate('skin-' + $skin_namespace[0], arguments)
 
 global_skin()
   stylobate('skin-', arguments)

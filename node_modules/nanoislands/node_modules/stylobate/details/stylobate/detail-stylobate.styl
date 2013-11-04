@@ -1,7 +1,7 @@
-$stylobate_extends = ('' '') ('' '')
+$stylobate_extends = {}
 
 stylobate_extends($what, $target)
-  push($stylobate_extends, utilus_ident($what) utilus_ident($target))
+  $stylobate_extends[''+utilus_ident($what)] = $target
 
 called_from($where, $what)
   return utilus_get($where, called_from) == utilus_ident($what)
@@ -24,7 +24,7 @@ _stylobate($name, $params)
   // Check if the called stylobate extends anything, if so, call it first,
   // and use the extended stylobate for subitems.
   $extended_name_ending = replace('.*[^-_]+', '', $skin_name)
-  $extended_name = utilus_or(utilus_get($stylobate_extends, $name + $skin_name), utilus_get($stylobate_extends, $name + replace('[_-]+$', '', $skin_name)))
+  $extended_name = $stylobate_extends[$name + $skin_name] || $stylobate_extends[$name + replace('[_-]+$', '', $skin_name)]
   $extended_name = $extended_name + $extended_name_ending if $extended_name
   if $extended_name
     push($subparams, is_extended)

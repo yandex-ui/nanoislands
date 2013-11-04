@@ -81,6 +81,7 @@ func tabs-island() {
             'input': {
                 'attrs': {
                     'placeholder': 'Серийный номер'
+                    'style': 'width: 90%'
                 }
             }
             'button': {

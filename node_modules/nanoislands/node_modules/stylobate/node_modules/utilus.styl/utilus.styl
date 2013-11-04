@@ -185,6 +185,9 @@ utilus_ident($what)
 // Hash getter with possible fallback.
 // Returns `false` if nothing found, or no `fallback` given
 utilus_get($hash, $keys = false, $fallback = false)
+  if type($hash) == 'object'
+    return $hash['' + utilus_ident($keys)] || $fallback
+
   if utilus_ident($hash[0]) == 'any'
     $any_result = false
     $hash = utilus_remove_first($hash)
@@ -227,45 +230,72 @@ utilus_get($hash, $keys = false, $fallback = false)
 
 get ?= utilus_get
 
+$utilus_collect_by_type_cache = {}
+utilus_collect_by_type($where)
+  if ('' + $where) in $utilus_collect_by_type_cache
+    return $utilus_collect_by_type_cache['' + $where]
+
+  $result = {
+    strings: (),
+    idents: (),
+    units: (),
+    rgbas: (),
+    booleans: (),
+    functions: (),
+    objects: (),
+    arrays: ()
+  }
+
+  for $item in $where
+    if length($item) > 1 and type($item) != 'object'
+      push($result['arrays'], $item)
+    else
+      push($result[type($item) + 's'], $item)
+
+  $result['colors'] = $result['rgbas']
+
+  $utilus_collect_by_type_cache['' + $where] = $result
+  return $result
+
+collect_by_type ?= utilus_collect_by_type
+
 
 // Getter of an argument at the given index
 //   Should it be merged with either simple `get` or `or`?
 utilus_get_n($where, $fallback = false, $index = 0, $type = 'any')
-  $i = 0
-  for $arg in $where
-    if $type == 'any' or $type == type($arg)
-      if $i == $index
-        return $arg
-      else
-        $i = $i + 1
-  return $fallback
+  if $type == 'any'
+    return $where[$index] || $fallback
+  else
+    return utilus_collect_by_type($where)[$type + 's'][$index] || $fallback
 
 get_n ?= utilus_get_n
 
 utilus_get_string($where, $fallback = false, $index = 0)
-  utilus_get_n($where, $fallback, $index, 'string')
+  return utilus_collect_by_type($where)['strings'][$index] || $fallback
 
 get_string ?= utilus_get_string
 
 utilus_get_ident($where, $fallback = false, $index = 0)
-  utilus_get_n($where, $fallback, $index, 'ident')
+  return utilus_collect_by_type($where)['idents'][$index] || $fallback
 
 get_ident ?= utilus_get_ident
 
 utilus_get_unit($where, $fallback = false, $index = 0)
-  utilus_get_n($where, $fallback, $index, 'unit')
+  return utilus_collect_by_type($where)['units'][$index] || $fallback
 
 get_unit ?= utilus_get_unit
 
 utilus_get_color($where, $fallback = false, $index = 0)
-  utilus_get_n($where, $fallback, $index, 'rgba')
+  return utilus_collect_by_type($where)['rgbas'][$index] || $fallback
 
 get_color ?= utilus_get_color
 
 
 // Get the item from arguments with the same type of the given fallback
 utilus_alike($where, $fallback, $index = 0)
-  utilus_get_n($where, $fallback, $index, type($fallback))
+  $result = utilus_collect_by_type($where)[type($fallback) + 's'][$index]
+  return $result if type($result == 'boolean') and $result == false
+  return $result || ($fallback)
 
 alike ?= utilus_alike
 
@@ -273,9 +303,17 @@ alike ?= utilus_alike
 // Retrieve one of the given items with optional fallback
 utilus_retrieve($where, $what, $fallback = false)
   if utilus_is_array($what)
-    for $what_item in $what
-      if $what_item in $where
-        return $what_item
+    if type($where) == 'object'
+      for $what_item in $what
+        if $what_item in $where
+          if type($where[''+$what_item]) == 'boolean' and $where[''+$what_item] == true
+            return $what_item
+          else
+            return $where[''+$what_item]
+    else
+      for $what_item in $what
+        if $what_item in $where
+          return $what_item
   else
     if $what in $where
       return $what
@@ -298,18 +336,24 @@ count ?= utilus_count
 // retrieve the sides array, like in paddings, margins, borders etc.
 utilus_get_sides($where, $fallback = 0)
   // Could be refactored to have only one for running
-  $top = utilus_alike($where, $fallback)
-  $right = utilus_alike($where, $top, 1)
-  $bottom = utilus_alike($where, $top, 2)
-  $left = utilus_alike($where, $right, 3)
+  $found_units = utilus_collect_by_type($where).units
+  if !length($found_units)
+    $found_units = $fallback $fallback $fallback $fallback
+  else if length($found_units) == 1
+    $found_units[$i] = $found_units[0] for $i in 1..3
+  else if length($found_units) == 2
+    $found_units[2] = $found_units[0]
+    $found_units[3] = $found_units[1]
+  else if length($found_units) == 3
+    $found_units[3] = $found_units[1]
 
   // Could use `auto` from arguments instead of using `trbl` keywords
-  $top = auto if bottom in $where
-  $right = auto if left in $where
-  $bottom = auto if top in $where
-  $left = auto if right in $where
+  $found_units[0] = auto if bottom in $where
+  $found_units[1] = auto if left in $where
+  $found_units[2] = auto if top in $where
+  $found_units[3] = auto if right in $where
 
-  return $top $right $bottom $left
+  return $found_units
 
 get_sides ?= utilus_get_sides
 

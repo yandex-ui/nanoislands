@@ -2,6 +2,13 @@
 # Stylobate Changelog
 ---
 
+## v0.18.0 — v0.19.0 (2013-10-31)
+
+- Using the latest Stylus with hashes.
+- Caching grid results.
+- Using hash for extends.
+- Fixed namespace bug.
+
 ## v0.17.0 (2013-09-23)
 
 - Added defaults setter.

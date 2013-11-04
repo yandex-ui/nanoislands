@@ -2,6 +2,17 @@
 # Utilus.styl Changelog
 ---
 
+## v0.7.0
+
+- Using new Stylus with hashes.
+- Better getters (use hash if possible).
+- Added `collect_by_type` function.
+- Fixed non-found sides.
+
+## v0.6.1
+
+- Fixed `is_function` to be native js plug-in for better performance.
+
 ## v0.6.0
 
 - Added `is_function` func, for checking existance of interpolated functions.

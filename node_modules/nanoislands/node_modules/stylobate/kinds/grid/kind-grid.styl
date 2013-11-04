@@ -1,4 +1,11 @@
+$process-grid-cols_cache = {}
+
 process-grid-cols($where)
+  // Look at the cache
+  if ('' + $where) in $process-grid-cols_cache
+    return $process-grid-cols_cache['' + $where]
+
+  // Otherwise do all those things
   $initial_gutter = utilus_get($where, 'gutter')
   $result = 'total_count' 0,
             'cols_widths' (),
@@ -67,6 +74,8 @@ process-grid-cols($where)
           $current_unit_width = round($current_unit_width + $gap, 9)
       if $current_unit_width > 0
         push($result[4][1], $current_unit_width)
+
+  $process-grid-cols_cache['' + $where] = $result
 
   return $result
 
