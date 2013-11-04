@@ -3,7 +3,7 @@ func nb-input(nodeset options) {
         'size': 's'
     }
 
-    if options.fieldLeft || options.fieldRight || options.fieldLabel || options.fieldReset {
+    if options.left || options.right || options.label || options.reset {
         nb-block('input', nb-extend(default, options))
     } else {
         nb-block('inputSimple', nb-extend(default, options))
@@ -11,30 +11,37 @@ func nb-input(nodeset options) {
 }
 
 match .input nb {
-    <span data-nb='input' class='nb-input'>
+
+    <label data-nb='input' class='nb-input nb-input_type_complex'>
         apply . nb-main-attrs
         if .size {
             @class += ' nb-input_size_{.size}'
         }
 
         if .disabled {
-            @class += ' nb-input_disabled'
+            @class += ' is-disabled'
             @data-nb-disabled = 'true'
         }
 
-        <input value="{.content}" class="nb-input__input">
-            for .attrs.* {
-                @{name()} = .
-            }
+        if .reset {
+            <span class="nb-input__reset"></span>
+        }
 
-            if .disabled {
-                @disabled = 'disabled'
-            }
+        <span class="nb-input__content">
+            <input class="nb-input__controller" value="{.content}">
+                for .attrs.* {
+                    @{name()} = .
+                }
 
-            apply .* nb-content
-        </input>
-    </span>
+                if .disabled {
+                    @disabled = 'disabled'
+                }
+            </input>
+            <span class="nb-input__view">&nbsp;</span>
+        </span>
+    </label>
 }
+
 match .inputSimple nb {
     <input data-nb='input' value="{.content}" data-nb-type='simple' class='nb-input _init nb-input_type_simple'>
         apply . nb-main-attrs

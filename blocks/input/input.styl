@@ -7,3 +7,41 @@
     // reset default styles for <input type="search"/>
     -webkit-appearance: textfield
 
+  &.nb-input_size_l
+    skin: input large
+    // reset default styles for <input type="search"/>
+    -webkit-appearance: textfield
+
+.nb-input_type_complex
+  kind: field $islands_s $islands_s
+  skin: input-box
+
+  .nb-input__content
+    kind: field-content
+
+  .nb-input__controller
+    kind: input
+    z-index: 9
+    width: 100%
+    height: 100%
+
+  textarea&
+    vertical-align: top
+    resize: none
+
+  .nb-input__view
+    border: 1px solid transparent
+    kind: fill -1px
+    skin: input-view no-focus
+
+  :not(.is-disabled):focus + .nb-input__view
+    skin: input_focus
+
+  .nb-input__reset
+    kind: field-right 0.5*$islands_s
+    skin: icon _remove with-hover
+    margin-right: $islands_s * -1
+    height: auto
+
+    &:before
+      content: " "

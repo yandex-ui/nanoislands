@@ -17,7 +17,7 @@ nb.define('input', {
         if (this.data.type == 'simple'){
             this.$nodeInput = this.$node
         } else {
-            this.$nodeInput = this.$node.find('.nb-input__input');
+            this.$nodeInput = this.$node.find('.nb-input__controller');
         }
 
         this.disabled = this.$nodeInput.prop('disabled');
