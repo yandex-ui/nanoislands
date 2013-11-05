@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="../nanoislands.ie.css" /><![endif]-->
 
         <link rel="stylesheet" type="text/css" href="demo.css" />
-        <script src="http://yandex.st/jquery/1.10.1/jquery.min.js"></script>
+        <script src="http://yandex.st/jquery/1.10.2/jquery.min.js"></script>
         <script src="../libs/jquery-ui/jquery-ui-1.10.3.nanoislands.min.js"></script>
         <script src="../node_modules/yate/lib/runtime.js"></script>
         <script src="../externals.yate.js"></script>
@@ -29,7 +29,6 @@
 
         </script>
 
-        <script type="text/javascript" src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
         <script type="text/javascript" src="beautify-html.js"></script>
         <script type="text/javascript">
 
@@ -48,21 +47,10 @@
                         wrap_line_length: 80
                     }));
                 });
-                hljs.initHighlightingOnLoad();
 
                 var $content = $('.content');
                 var TOGGLE_HTML = 'content_hide-html';
                 var TOGGLE_COMPACT = 'content_compact';
-
-                if (parseInt(localStorage.getItem('html'), 10)) {
-                    $content.removeClass(TOGGLE_HTML);
-                    $('.js-toggle-html').prop('checked', true);
-                }
-
-                if (!parseInt(localStorage.getItem('compact'), 10)) {
-                    $content.addClass(TOGGLE_COMPACT);
-                    $('.js-toggle-compact').prop('checked', true);
-                }
 
                 $(document)
                     .on('change', '.js-toggle-html', function() {

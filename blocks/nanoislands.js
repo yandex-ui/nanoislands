@@ -1,4 +1,5 @@
 /* borschik:include:../libs/nanoblocks.js */
+/* borschik:include:../libs/polyfills.js */
 
 /* borschik:include:button/button.js */
 /* borschik:include:tooltip/tooltip.js */
