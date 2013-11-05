@@ -13,3 +13,22 @@ for gap-side in 'top' 'left' 'bottom' 'right'
 
   .nb-gap_{gap-side}_l
     margin-{gap-side}: $islands_l
+
+// global hidden class
+._hidden
+  display: none !important
+
+// global class for links
+._link
+  color: #22C
+  cursor: pointer
+  transition: color .15s ease-out
+
+a._link
+  text-decoration: none
+
+._link:hover
+  color: #D00
+
+._link_outer
+  color: #070
