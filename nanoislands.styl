@@ -30,5 +30,20 @@ set-skin-namespace('islands')
 @import "blocks/toggler/toggler.styl"
 @import "global.styl"
 
-IMG
-  border: 0
+._hidden
+  display: none !important
+
+
+._link
+  color: #22C
+  cursor: pointer
+  transition: color .15s ease-out
+
+a._link
+  text-decoration: none
+
+._link:hover
+  color: #D00
+
+._link_outer
+  color: #070
