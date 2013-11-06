@@ -19,7 +19,7 @@ match .input nb {
         }
 
         if .disabled {
-            @class += ' is-disabled'
+            @class += ' is-nb-disabled'
             @data-nb-disabled = 'true'
         }
 
@@ -51,7 +51,7 @@ match .inputSimple nb {
         }
 
         if .disabled {
-            @class += ' is-disabled'
+            @class += ' is-nb-disabled'
             @disabled = 'disabled'
             @data-nb-disabled = 'true'
         }

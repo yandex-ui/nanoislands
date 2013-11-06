@@ -949,7 +949,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Disabled ";
         r0 += "<span class=\"" + "demo-code demo-code_small" + "\">";
-        r0 += ".nb-button_disabled";
+        r0 += "is-nb-disabled";
         r0 += "</span>";
         r0 += "</div>";
         r0 += m.f('f28', c0, i0, l0, a0, m.f('f38', c0, i0, l0, a0));
@@ -1557,7 +1557,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Disabled ";
         r0 += "<span class=\"" + "demo-code demo-code_small" + "\">";
-        r0 += ".nb-input_disabled";
+        r0 += ".is-nb-disabled";
         r0 += "</span>";
         r0 += "</div>";
         r0 += m.f('f28', c0, i0, l0, a0, m.f('f56', c0, i0, l0, a0));
@@ -2835,9 +2835,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-button_disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled");
             }
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
@@ -2888,9 +2888,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-button_disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled");
             }
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
@@ -2947,9 +2947,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-button_disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled");
             }
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
@@ -3210,9 +3210,9 @@ var yr = yr || require('yate/lib/runtime.js');
             if (simpleBoolean('disabled', c1)) {
                 var tmp1 = a0.a[ "class" ];
                 if (tmp1) {
-                    a0.a[ "class" ] = tmp1.addscalar(" nb-button_disabled js-disabled");
+                    a0.a[ "class" ] = tmp1.addscalar(" is-nb-disabled js-disabled");
                 } else {
-                    a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled js-disabled");
+                    a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled js-disabled");
                 }
                 a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
             }
@@ -3286,9 +3286,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-button_disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-button_disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled");
             }
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
@@ -3358,9 +3358,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-checkbox_disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-checkbox_disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled");
             }
         }
         r0 += closeAttrs(a0);
@@ -3414,9 +3414,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" is-disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" is-disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled");
             }
             a0.a[ "data-nb-disabled" ] = new yr.scalarAttr("true");
         }
@@ -3475,9 +3475,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" is-disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" is-disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled");
             }
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
             a0.a[ "data-nb-disabled" ] = new yr.scalarAttr("true");
@@ -3505,9 +3505,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-input-group_disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-input-group_disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled");
             }
             a0.a[ "data-nb-disabled" ] = new yr.scalarAttr("true");
         }
@@ -4320,9 +4320,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-toggler_disabled");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-disabled");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-toggler_disabled");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled");
             }
         }
         r0 += closeAttrs(a0);

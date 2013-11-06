@@ -13,7 +13,7 @@ nb.define('toggler', {
     },
 
     onToggle: function(){
-        if (!this.$node.hasClass('nb-toggler_disabled')) {
+        if (!this.$node.hasClass('is-nb-disabled')) {
             this.$node.toggleClass('nb-toggler_checked');
             if (this.$checkbox.attr('checked')) {
                 this.$checkbox.removeAttr('checked');
@@ -25,12 +25,12 @@ nb.define('toggler', {
 
     onDisable: function() {
         this.$checkbox.attr('disabled', 'disabled');
-        this.$node.addClass('nb-toggler_disabled');
+        this.$node.addClass('is-nb-disabled');
     },
 
     onEnable: function() {
         this.$checkbox.removeAttr('disabled');
-        this.$node.removeClass('nb-toggler_disabled');
+        this.$node.removeClass('is-nb-disabled');
 
     }
 })

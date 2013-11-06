@@ -32,7 +32,7 @@ nb.define('button', {
     onDisable: function () {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('disable');
-            this.$node.addClass('nb-button_disabled');
+            this.$node.addClass('is-nb-disabled');
         }
     },
 
@@ -42,7 +42,7 @@ nb.define('button', {
     onEnable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('enable');
-            this.$node.removeClass('nb-button_disabled');
+            this.$node.removeClass('is-nb-disabled');
         }
     },
 
