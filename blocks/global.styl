@@ -2,17 +2,9 @@
 // Example: .nb-gap_top_s .nb-gap_right_m
 
 for gap-side in 'top' 'left' 'bottom' 'right'
-  .nb-gap_{gap-side}_xs
-    margin-{gap-side}: $islands_xs
-
-  .nb-gap_{gap-side}_s
-    margin-{gap-side}: $islands_s
-
-  .nb-gap_{gap-side}_m
-    margin-{gap-side}: $islands_m
-
-  .nb-gap_{gap-side}_l
-    margin-{gap-side}: $islands_l
+  for $size_name, $size in $islands.sizes
+    .nb-gap_{gap-side}_{$size_name}
+      margin-{gap-side}: $size
 
 // global hidden class
 ._hidden
