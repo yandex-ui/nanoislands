@@ -1,3 +1,7 @@
+##### 0.1.14
+* IE8 js fixes. Bind polyfill added
+* Removed global img reset
+* Global classes for block margins
 
 ##### 0.1.13
 
