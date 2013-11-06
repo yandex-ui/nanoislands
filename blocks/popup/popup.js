@@ -291,7 +291,7 @@
                 nb.trigger('popup-close');
             }
 
-            $(this.node).removeClass('_hidden');
+            $(this.node).removeClass('is-nb-hidden');
             //  Передвигаем попап.
             this._move(where, how, params);
             this.trigger('show');

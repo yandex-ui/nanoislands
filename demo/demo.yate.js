@@ -3025,9 +3025,9 @@ var yr = yr || require('yate/lib/runtime.js');
             a0.a[ "data-nb" ] = new yr.scalarAttr("popup");
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" _hidden");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-hidden");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" _hidden");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-hidden");
             }
         }
         r0 += m.a(m, m.s(j5, c0), 'nb-main-attrs', a0)
@@ -3069,7 +3069,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<div";
         a0.a = {
-            'class': new yr.scalarAttr("nb-popup _hidden"),
+            'class': new yr.scalarAttr("nb-popup is-nb-hidden"),
             'data-nb': new yr.scalarAttr("popup")
         };
         a0.s = 'div';
@@ -3105,9 +3105,9 @@ var yr = yr || require('yate/lib/runtime.js');
             a0.a[ "data-nb" ] = new yr.scalarAttr("popup");
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" _hidden");
+                a0.a[ "class" ] = tmp0.addscalar(" is-nb-hidden");
             } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" _hidden");
+                a0.a[ "class" ] = new yr.scalarAttr(" is-nb-hidden");
             }
         }
         if (simpleBoolean('theme', c0)) {

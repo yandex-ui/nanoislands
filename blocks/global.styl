@@ -7,8 +7,10 @@ for gap-side in 'top' 'left' 'bottom' 'right'
       margin-{gap-side}: $size
 
 // global hidden class
-._hidden
-  display: none !important
+// FIXME: change `_hidden` from nanoblocks to proper `is-nb-hidden`
+._hidden,
+.is-nb-hidden
+  kind: hidden
 
 // global class for links
 ._link
