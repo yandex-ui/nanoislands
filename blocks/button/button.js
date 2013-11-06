@@ -22,7 +22,7 @@ nb.define('button', {
      */
     onTextChange: function (name, params) {
         if (this.$node && this.$node.data('uiButton')) {
-            this.$node.find('.nb-button__text').html(params.text);
+            this.$node.find('.nb-button-content').html(params.text);
         }
     },
 

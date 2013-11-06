@@ -27,7 +27,7 @@ match .select nb {
                   @class = 'nb-button nb-button_type_round'
               }
 
-              <span class="nb-button__text">
+              <span class="nb-button-content">
                   for .items {
                         if .selected {
                          .text

@@ -4,57 +4,63 @@
 
 @import '_skin-dark'
 
-$skin-islands-button-content = '.nb-button__text'
+$skin-islands-button-content = '.nb-button-content'
 $skin-islands-button-disabled = '.is-nb-disabled'
 
 // Обычная кнопка
-.nb-button_theme_normal
+.nb-button
   kind: button
   skin: button
 
 // Маленькая обычная кнопка
-.nb-button_theme_normal.nb-button_size_s
+.nb-small-button
+  kind: button
   skin: button small
 
 // Летающая кнопка
-.nb-button_flying
+.nb-flying-button
+  kind: button
   skin: button fly
 
 // Маленькая летающая кнопка
-.nb-button_flying.nb-button_size_s
+.nb-small-flying-button
+  kind: button
   skin: button fly small
 
 // Кнопка-действие
-.nb-button_theme_action
+.nb-action-button
   kind: button
   skin: action-button
 
 // Маленькая кнопка-действие
-.nb-button_theme_action.nb-button_size_s
+.nb-small-action-button
+  kind: button
   skin: action-button small
 
 // Темная кнопка
-.nb-button_theme_dark
+.nb-dark-button
   kind: button
   skin: dark-button
 
 // Little black --dress-- button
-.nb-button_theme_dark.nb-button_size_s
+.nb-small-dark-button
+  kind: button
   skin: dark-button small
 
 // Псевдо-кнопка
-.nb-button_theme_pseudo
+.nb-pseudo-button
   kind: button
   skin: pseudo-button
 
 // Маленькая псевдо-кнопка
-.nb-button_theme_pseudo.nb-button_size_s
+.nb-small-pseudo-button
+  kind: button
   skin: pseudo-button small
 
 // Кнопка аттача
 
 .nb-file-intruder
   kind: file-intruder \
-    (-inner '&__inner') \
-    (-input '&__input') \
-    (-focus '&__focus' 'islands-button_focus_style')
+    (-inner '&-inner') \
+    (-input '&-input') \
+    (-focus '&-focus' 'islands-button_focus_style')
