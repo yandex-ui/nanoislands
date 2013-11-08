@@ -104,9 +104,9 @@ var yr = yr || require('yate/lib/runtime.js');
             if (!(cmpSN("s", selectNametest('size', c0, [])))) {
                 var tmp0 = a0.a[ "class" ];
                 if (tmp0) {
-                    a0.a[ "class" ] = tmp0.addscalar(" nb-button");
+                    a0.a[ "class" ] = tmp0.addscalar(" nb-normal-button");
                 } else {
-                    a0.a[ "class" ] = new yr.scalarAttr(" nb-button");
+                    a0.a[ "class" ] = new yr.scalarAttr(" nb-normal-button");
                 }
             } else {
                 var tmp0 = a0.a[ "class" ];
@@ -2883,7 +2883,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<button";
         a0.a = {
-            'class': new yr.scalarAttr("_init")
+            'class': new yr.scalarAttr("nb-button _init")
         };
         a0.s = 'button';
         r0 += m.a(m, m.s(j11, c0), 'nb-main-attrs', a0)
@@ -2923,7 +2923,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<a";
         a0.a = {
-            'class': new yr.scalarAttr("_init")
+            'class': new yr.scalarAttr("nb-button _init")
         };
         a0.s = 'a';
         r0 += m.a(m, m.s(j11, c0), 'nb-main-attrs', a0)
@@ -2963,7 +2963,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<label";
         a0.a = {
-            'class': new yr.scalarAttr("_init")
+            'class': new yr.scalarAttr("nb-button _init")
         };
         a0.s = 'label';
         r0 += m.a(m, m.s(j11, c0), 'nb-main-attrs', a0)
