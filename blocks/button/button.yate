@@ -22,19 +22,17 @@ func _nb-button-attributes() {
         @class += ' is-nb-disabled'
     }
 
-    // FIXME: можно ли как-то сделать тут переменную, хранящую `-small` если .size == 's'
-    //        и пустую строку в противном случае?
-    if .theme != 'normal' {
-        if .size != 's' {
-            @class += ' nb-{ .theme }-button'
-        } else {
-            @class += ' nb-small-{ .theme }-button'
-        }
-    } else {
+    if .theme == 'normal' {
         if .size != 's' {
             @class += ' nb-normal-button'
         } else {
             @class += ' nb-small-button'
+        }
+    } else {
+        if .size != 's' {
+            @class += ' nb-{ .theme }-button'
+        } else {
+            @class += ' nb-small-{ .theme }-button'
         }
     }
 

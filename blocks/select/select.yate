@@ -9,49 +9,63 @@ func nb-select(nodeset select) {
 }
 
 match .select nb {
-   <div class="nb-select _init  nb-select_size_{ .size } nb-select_theme_{ .theme }" data-nb="select"  data-nb-direction ="{ .direction }">
-       apply . nb-main-attrs
+    <div class="nb-select _init  nb-select_size_{ .size } nb-select_theme_{ .theme }" data-nb="select"  data-nb-direction ="{ .direction }">
+        apply . nb-main-attrs
 
-       if .within {
-          @data-nb-within = .within
-       }
+        if .within {
+           @data-nb-within = .within
+        }
 
-       <button class="nb-button nb-select__button _init nb-button_size_{ .size } nb-button_theme_{ .theme }" data-nb="button">
+        <button class="nb-button nb-select__button _init" data-nb="button">
 
-              if .disabled  {
-                  @class += ' is-nb-disabled'
-                  @disabled = 'disabled'
-              }
+            if .theme == 'normal' {
+                if .size != 's' {
+                    @class += ' nb-normal-button'
+                } else {
+                    @class += ' nb-small-button'
+                }
+            } else {
+                if .size != 's' {
+                    @class += ' nb-{ .theme }-button'
+                } else {
+                    @class += ' nb-small-{ .theme }-button'
+                }
+            }
 
-              if .mod == 'round' {
-                  @class = 'nb-button nb-button_type_round'
-              }
+            if .disabled  {
+                @class += ' is-nb-disabled'
+                @disabled = 'disabled'
+            }
 
-              <span class="nb-button-content">
-                  for .items {
-                        if .selected {
-                         .text
-                    }
+            if .mod == 'round' {
+                @class = 'nb-button nb-button_type_round'
+            }
+
+            <span class="nb-button-content">
+                for .items {
+                      if .selected {
+                       .text
                   }
-              </span>
-          </button>
-          <select id="nb-select_{ .id }" class="nb-select__fallback" name ="{ .id }">
-              if ( .disabled ) {
-                  @disabled = 'disabled'
-              }
+                }
+            </span>
+        </button>
+        <select id="nb-select_{ .id }" class="nb-select__fallback" name ="{ .id }">
+            if ( .disabled ) {
+                @disabled = 'disabled'
+            }
 
-              for .items {
-                  <option>
-                      @label = .text
-                      @value = .value
+            for .items {
+                <option>
+                    @label = .text
+                    @value = .value
 
-                      if (.selected) {
-                            @selected = ''
-                      }
+                    if (.selected) {
+                          @selected = ''
+                    }
 
-                      .text
-                  </option>
-              }
-         </select>
-   </div>
+                    .text
+                </option>
+            }
+        </select>
+    </div>
 }

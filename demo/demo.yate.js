@@ -63,9 +63,9 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j4 = [ 0, 'disabled' ];
 
-    var j5 = [ 0, 'size' ];
+    var j5 = [ 0, 'theme' ];
 
-    var j6 = [ 0, 'theme' ];
+    var j6 = [ 0, 'size' ];
 
     var j7 = [ 0, 'content' ];
 
@@ -84,23 +84,7 @@ var yr = yr || require('yate/lib/runtime.js');
                 a0.a[ "class" ] = new yr.scalarAttr(" is-nb-disabled");
             }
         }
-        if (!(cmpSN("normal", selectNametest('theme', c0, [])))) {
-            if (!(cmpSN("s", selectNametest('size', c0, [])))) {
-                var tmp0 = a0.a[ "class" ];
-                if (tmp0) {
-                    a0.a[ "class" ] = tmp0.addscalar(" nb-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
-                } else {
-                    a0.a[ "class" ] = new yr.scalarAttr(" nb-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
-                }
-            } else {
-                var tmp0 = a0.a[ "class" ];
-                if (tmp0) {
-                    a0.a[ "class" ] = tmp0.addscalar(" nb-small-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
-                } else {
-                    a0.a[ "class" ] = new yr.scalarAttr(" nb-small-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
-                }
-            }
-        } else {
+        if (cmpSN("normal", selectNametest('theme', c0, []))) {
             if (!(cmpSN("s", selectNametest('size', c0, [])))) {
                 var tmp0 = a0.a[ "class" ];
                 if (tmp0) {
@@ -114,6 +98,22 @@ var yr = yr || require('yate/lib/runtime.js');
                     a0.a[ "class" ] = tmp0.addscalar(" nb-small-button");
                 } else {
                     a0.a[ "class" ] = new yr.scalarAttr(" nb-small-button");
+                }
+            }
+        } else {
+            if (!(cmpSN("s", selectNametest('size', c0, [])))) {
+                var tmp0 = a0.a[ "class" ];
+                if (tmp0) {
+                    a0.a[ "class" ] = tmp0.addscalar(" nb-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
+                } else {
+                    a0.a[ "class" ] = new yr.scalarAttr(" nb-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
+                }
+            } else {
+                var tmp0 = a0.a[ "class" ];
+                if (tmp0) {
+                    a0.a[ "class" ] = tmp0.addscalar(" nb-small-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
+                } else {
+                    a0.a[ "class" ] = new yr.scalarAttr(" nb-small-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
                 }
             }
         }
@@ -3166,7 +3166,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div";
         a0.a = {
             'data-nb': new yr.scalarAttr("radio-button"),
-            'class': new yr.scalarAttr("nb-radio-button nb-radio-button_theme_" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + " nb-radio-button_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ) + " _init")
+            'class': new yr.scalarAttr("nb-radio-button _init")
         };
         a0.s = 'div';
         r0 += m.a(m, m.s(j11, c0), 'nb-main-attrs', a0)
@@ -3198,11 +3198,44 @@ var yr = yr || require('yate/lib/runtime.js');
             r0 += "<label";
             a0.a = {
                 'for': new yr.scalarAttr(( v109 )),
-                'class': new yr.scalarAttr("nb-button  js-button nb-button_theme_" + nodeset2scalar( ( m.s(j44, c1) ) ) + " nb-button_size_" + nodeset2scalar( ( m.s(j45, c1) ) )),
+                'class': new yr.scalarAttr("nb-button  js-button"),
                 'data-value': new yr.scalarAttr(nodeset2scalar( ( selectNametest('value', c1, []) ) ))
             };
             a0.s = 'label';
             r0 += m.a(m, m.s(j11, c1), 'nb-main-attrs', a0)
+            if (cmpSN("normal", m.s(j44, c1))) {
+                if (!(cmpSN("s", m.s(j45, c1)))) {
+                    var tmp1 = a0.a[ "class" ];
+                    if (tmp1) {
+                        a0.a[ "class" ] = tmp1.addscalar(" nb-normal-button");
+                    } else {
+                        a0.a[ "class" ] = new yr.scalarAttr(" nb-normal-button");
+                    }
+                } else {
+                    var tmp1 = a0.a[ "class" ];
+                    if (tmp1) {
+                        a0.a[ "class" ] = tmp1.addscalar(" nb-small-button");
+                    } else {
+                        a0.a[ "class" ] = new yr.scalarAttr(" nb-small-button");
+                    }
+                }
+            } else {
+                if (!(cmpSN("s", m.s(j45, c1)))) {
+                    var tmp1 = a0.a[ "class" ];
+                    if (tmp1) {
+                        a0.a[ "class" ] = tmp1.addscalar(" nb-" + nodeset2scalar( ( m.s(j44, c1) ) ) + "-button");
+                    } else {
+                        a0.a[ "class" ] = new yr.scalarAttr(" nb-" + nodeset2scalar( ( m.s(j44, c1) ) ) + "-button");
+                    }
+                } else {
+                    var tmp1 = a0.a[ "class" ];
+                    if (tmp1) {
+                        a0.a[ "class" ] = tmp1.addscalar(" nb-small-" + nodeset2scalar( ( m.s(j44, c1) ) ) + "-button");
+                    } else {
+                        a0.a[ "class" ] = new yr.scalarAttr(" nb-small-" + nodeset2scalar( ( m.s(j44, c1) ) ) + "-button");
+                    }
+                }
+            }
             if (simpleBoolean('checked', c1)) {
                 var tmp1 = a0.a[ "class" ];
                 if (tmp1) {
@@ -3283,10 +3316,43 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<button";
         a0.a = {
-            'class': new yr.scalarAttr("nb-button nb-select__button _init nb-button_size_" + nodeset2scalar( ( selectNametest('size', c0, []) ) ) + " nb-button_theme_" + nodeset2scalar( ( selectNametest('theme', c0, []) ) )),
+            'class': new yr.scalarAttr("nb-button nb-select__button _init"),
             'data-nb': new yr.scalarAttr("button")
         };
         a0.s = 'button';
+        if (cmpSN("normal", selectNametest('theme', c0, []))) {
+            if (!(cmpSN("s", selectNametest('size', c0, [])))) {
+                var tmp0 = a0.a[ "class" ];
+                if (tmp0) {
+                    a0.a[ "class" ] = tmp0.addscalar(" nb-normal-button");
+                } else {
+                    a0.a[ "class" ] = new yr.scalarAttr(" nb-normal-button");
+                }
+            } else {
+                var tmp0 = a0.a[ "class" ];
+                if (tmp0) {
+                    a0.a[ "class" ] = tmp0.addscalar(" nb-small-button");
+                } else {
+                    a0.a[ "class" ] = new yr.scalarAttr(" nb-small-button");
+                }
+            }
+        } else {
+            if (!(cmpSN("s", selectNametest('size', c0, [])))) {
+                var tmp0 = a0.a[ "class" ];
+                if (tmp0) {
+                    a0.a[ "class" ] = tmp0.addscalar(" nb-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
+                } else {
+                    a0.a[ "class" ] = new yr.scalarAttr(" nb-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
+                }
+            } else {
+                var tmp0 = a0.a[ "class" ];
+                if (tmp0) {
+                    a0.a[ "class" ] = tmp0.addscalar(" nb-small-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
+                } else {
+                    a0.a[ "class" ] = new yr.scalarAttr(" nb-small-" + nodeset2scalar( ( selectNametest('theme', c0, []) ) ) + "-button");
+                }
+            }
+        }
         if (simpleBoolean('disabled', c0)) {
             var tmp0 = a0.a[ "class" ];
             if (tmp0) {

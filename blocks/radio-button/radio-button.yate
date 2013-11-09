@@ -9,7 +9,7 @@ func nb-radio-button(nodeset options) {
 }
 
 match .radio-button nb {
-    <div data-nb='radio-button' class='nb-radio-button nb-radio-button_theme_{ .theme } nb-radio-button_size_{ .size } _init'>
+    <div data-nb='radio-button' class='nb-radio-button _init'>
         apply . nb-main-attrs
         for .group {
 
@@ -24,8 +24,22 @@ match .radio-button nb {
                     }
                 </input>
 
-                <label for="{ uniq }" class = 'nb-button  js-button nb-button_theme_{ ..theme } nb-button_size_{ ..size }' data-value='{ .value }'>
+                <label for="{ uniq }" class = 'nb-button  js-button' data-value='{ .value }'>
                     apply . nb-main-attrs
+
+                    if ..theme == 'normal' {
+                        if ..size != 's' {
+                            @class += ' nb-normal-button'
+                        } else {
+                            @class += ' nb-small-button'
+                        }
+                    } else {
+                        if ..size != 's' {
+                            @class += ' nb-{ ..theme }-button'
+                        } else {
+                            @class += ' nb-small-{ ..theme }-button'
+                        }
+                    }
 
                     if .checked {
                         @class += ' nb-button_type_checked'
