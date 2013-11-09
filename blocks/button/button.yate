@@ -13,24 +13,47 @@ func nb-button(nodeset options) {
     }
 }
 
-match .button nb {
-    <button class="nb-button _init nb-button_size_{ .size }  nb-button_theme_{ .theme }">
-        if !( .static ) {
-            @data-nb = 'button'
-        }
+func _nb-button-attributes() {
+    if !( .static ) {
+        @data-nb = 'button'
+    }
 
+    if .disabled {
+        @class += ' is-nb-disabled'
+    }
+
+    if .theme == 'normal' {
+        if .size != 's' {
+            @class += ' nb-normal-button'
+        } else {
+            @class += ' nb-small-button'
+        }
+    } else {
+        if .size != 's' {
+            @class += ' nb-{ .theme }-button'
+        } else {
+            @class += ' nb-small-{ .theme }-button'
+        }
+    }
+
+    if !( .content ) && .icon {
+        @class += ' nb-button_only-icon'
+    }
+
+    // TODO: Как перенести сюда nb-button-content? Ну и `apply . nb-main-attrs`, раз уж на то пошло?
+}
+
+match .button nb {
+    <button class="nb-button _init">
         apply . nb-main-attrs
 
+        _nb-button-attributes()
+
         if .disabled {
-            @class += ' nb-button_disabled'
             @disabled = 'disabled'
         }
 
-        if !( .content ) && .icon {
-            @class += ' nb-button_only-icon'
-        }
-
-        <span class="nb-button__text">
+        <span class="nb-button-content">
             if (.content && .icon) {
                 apply .icon nb
                 html(.content)
@@ -44,27 +67,17 @@ match .button nb {
 }
 
 match .buttonLink nb {
-    <a class="nb-button _init nb-button_size_{ .size }  nb-button_theme_{ .theme }">
+    <a class="nb-button _init">
+
         apply . nb-main-attrs
 
-        if .disabled {
-            @class += ' nb-button_disabled'
-            @disabled = 'disabled'
-        }
+        _nb-button-attributes()
 
         if !( .disabled ) && .href {
             @href="{ .href }"
         }
 
-        if !( .static ) {
-            @data-nb = 'button'
-        }
-
-        if !( .content ) && .icon {
-            @class += ' nb-button_only-icon'
-        }
-
-        <span class="nb-button__text">
+        <span class="nb-button-content">
             if (.content && .icon) {
                 apply .icon nb
                 html(.content)
@@ -78,40 +91,29 @@ match .buttonLink nb {
 }
 
 match .buttonAttach nb {
-    <label class="nb-button _init nb-button_size_{ .size } nb-button_type_attach  nb-button_theme_{ .theme }">
+    <label class="nb-button _init">
+
         apply . nb-main-attrs
 
-        if .disabled {
-            @class += ' nb-button_disabled'
-            @disabled = 'disabled'
-        }
-
-        if !( .disabled ) && .href {
-            @href="{ .href }"
-        }
-
-        if !( .static ) {
-            @data-nb = 'button'
-        }
-
-        if !( .content ) && .icon {
-            @class += ' nb-button_only-icon'
-        }
+        _nb-button-attributes()
 
         <span class="nb-file-intruder">
-            <span class="nb-file-intruder__inner">
-                <input class="nb-file-intruder__input" type="file">
+            <span class="nb-file-intruder-inner">
+                <input class="nb-file-intruder-input" type="file">
                     if .multiple {
                         @multiple = "multiple"
                     }
                     if .attrs.name {
                         @name = "{.attrs.name}"
                     }
+                    if .disabled {
+                        @disabled = 'disabled'
+                    }
                 </input>
-                <span class="nb-file-intruder__focus"></span>
+                <span class="nb-file-intruder-focus"></span>
             </span>
         </span>
-        <span class="nb-button__text">
+        <span class="nb-button-content">
             if (.content && .icon) {
                 apply .icon nb
                 html(.content)

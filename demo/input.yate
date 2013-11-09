@@ -56,7 +56,7 @@ func inputs() {
         <div class="demo-h3">
             'Disabled '
             <span class="demo-code demo-code_small">
-                '.nb-input_disabled'
+                '.is-nb-disabled'
             </span>
         </div>
 

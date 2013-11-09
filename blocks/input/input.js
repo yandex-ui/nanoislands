@@ -29,7 +29,7 @@ nb.define('input', {
     },
 
     makeFocus: function() {
-        if (this.$node.is('.is-disabled')) {
+        if (this.$node.is('.is-nb-disabled')) {
             return false;
         }
 
@@ -50,7 +50,7 @@ nb.define('input', {
      * Disables the input
      */
     onDisable: function() {
-        this.$node.addClass('is-disabled');
+        this.$node.addClass('is-nb-disabled');
         this.$nodeInput.prop('disabled', true);
         this.trigger('disabled');
     },
@@ -59,7 +59,7 @@ nb.define('input', {
      * Enables the input
      */
     onEnable: function() {
-        this.$node.removeClass('is-disabled');
+        this.$node.removeClass('is-nb-disabled');
         this.$nodeInput.prop('disabled', false);
         this.trigger('enabled');
     },
