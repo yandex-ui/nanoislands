@@ -1,3 +1,6 @@
+##### 0.1.15
+* Stylobate update. IE8 input fixes.
+
 ##### 0.1.14
 * IE8 js fixes. Bind polyfill added
 * Removed global img reset
