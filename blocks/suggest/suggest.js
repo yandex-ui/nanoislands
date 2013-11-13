@@ -106,6 +106,14 @@
             return this.$input.suggest.apply(this.$input, args);
         },
 
+        /**
+         * Скрывает список предложений
+         * http://api.jqueryui.com/autocomplete/#method-close
+         */
+        close: function() {
+            return this.$input.suggest('close');
+        },
+
         value: function() {
             return this.$input.val();
         }
