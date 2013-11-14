@@ -4,8 +4,6 @@
      * @fileOverview Надстройки nb над jQueryUI
      */
 
-    var $window = $(window);
-
     $.nb = {};
 
     $.widget('nb.baseDialog', $.ui.dialog, {
@@ -34,6 +32,11 @@
                 this.document.on('mousedown', this._onmousedown);
             }
 
+            if (this.options.position.fixed) {
+                this._onresize = $.proxy(this._position, this, true);
+                this.window.on('resize', this._onresize);
+            }
+
             this._onpopupclose = nb.on('popup-close', function() {
                 that.close();
             });
@@ -41,6 +44,11 @@
         close: function() {
             this._super();
             this.document.off('mousedown', this._onmousedown);
+
+            if (this._onresize) {
+                this.window.off('resize', this._onresize);
+            }
+
             nb.off('popup-close', this._onpopupclose);
         },
         _create: function() {
@@ -100,22 +108,32 @@
             $tail.prependTo(this.uiDialog);
         },
 
-        _position: function() {
+        _position: function(noEffect) {
             var position = this.options.position;
             this._super();
 
             var $handler = position.of;
             var handlerOffset = $handler.offset();
+            var tailOffsetMultiplier = 2;
+
+            // При повторном позиционировании попапа без его скрытия
+            // не произойдет вызова эффекта `nb`. Поэтому нет необходимости
+            // дополнительно смещать попап, чтобы обеспечить простор для
+            // анимации.
+            if (noEffect) {
+                tailOffsetMultiplier = 1;
+            }
 
             // Когда попап расположен фиксированно, при вычислении его положения
             // необходимо вычитать текущее положение скролла.
             if (position.fixed) {
-                handlerOffset.top -= $window.scrollTop();
-                handlerOffset.left -= $window.scrollLeft();
+                handlerOffset.top -= this.window.scrollTop();
+                handlerOffset.left -= this.window.scrollLeft();
             }
 
             //TODO: вот этого this.uiDialog.css('top', '+=13px'); можно не делать, если сразу в position писать {at: 'center top+13'}
             // положение надо вычислять все руками, потому что jquery-ui никак не сообщает о том, была ли коллизия
+            var tailSpace = this.tailOffset * tailOffsetMultiplier;
 
             // позиционирования слева или справа
             if (position.at && /^\s*(left|right)/.test(position.at)) {
@@ -124,12 +142,12 @@
                     // попап находится справа
                     nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'right');
                     this.uiDialog.data('nb-tail-dir', 'right');
-                    this.uiDialog.css('left', '+=' + this.tailOffset * 2);
+                    this.uiDialog.css('left', '+=' + tailSpace);
 
                 } else {
                     nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'left');
                     this.uiDialog.data('nb-tail-dir', 'left');
-                    this.uiDialog.css('left', '-=' + this.tailOffset * 2);
+                    this.uiDialog.css('left', '-=' + tailSpace);
                 }
 
             } else {
@@ -137,12 +155,12 @@
                 if (popupTop > handlerOffset.top) {
                     nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'bottom');
                     this.uiDialog.data('nb-tail-dir', 'bottom');
-                    this.uiDialog.css('top', '+=' + this.tailOffset * 2);
+                    this.uiDialog.css('top', '+=' + tailSpace);
 
                 } else {
                     nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'top');
                     this.uiDialog.data('nb-tail-dir', 'top');
-                    this.uiDialog.css('top', '-=' + this.tailOffset * 2);
+                    this.uiDialog.css('top', '-=' + tailSpace);
                 }
             }
         }
