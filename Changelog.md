@@ -1,3 +1,8 @@
+##### 0.1.16
+ * Add .close method to suggest
+ * Added static param to nb-input options
+ * Fixed checkboxes in IE8
+
 ##### 0.1.15
 * Stylobate update. IE8 input fixes.
 
