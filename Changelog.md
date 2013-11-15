@@ -1,3 +1,7 @@
+##### 0.1.17
+ * Reposition fixed popup on window resize
+ * Fixed js for popups in IE8
+
 ##### 0.1.16
  * Add .close method to suggest
  * Added static param to nb-input options
