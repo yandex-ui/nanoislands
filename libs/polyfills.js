@@ -1,5 +1,5 @@
-
-;(function() {
+;
+(function () {
     // Mozilla bind polyfill
     if (!Function.prototype.bind) {
         Function.prototype.bind = function (oThis) {
@@ -20,6 +20,44 @@
             fBound.prototype = new fNOP();
 
             return fBound;
+        };
+    }
+})();
+
+(function () {
+    ''.trim || (String.prototype.trim = // Use the native method if available, otherwise define a polyfill:
+        function () { // trim returns a new string (which replace supports)
+            return this.replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '') // trim the left and right sides of the string
+        })
+})();
+
+(function () {
+    if (!Array.prototype.indexOf) {
+        Array.prototype.indexOf = function (searchElement, fromIndex) {
+            var i,
+                pivot = (fromIndex) ? fromIndex : 0,
+                length;
+
+            if (!this) {
+                throw new TypeError();
+            }
+
+            length = this.length;
+
+            if (length === 0 || pivot >= length) {
+                return -1;
+            }
+
+            if (pivot < 0) {
+                pivot = length - Math.abs(pivot);
+            }
+
+            for (i = pivot; i < length; i++) {
+                if (this[i] === searchElement) {
+                    return i;
+                }
+            }
+            return -1;
         };
     }
 })();
