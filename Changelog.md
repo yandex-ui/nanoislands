@@ -1,3 +1,6 @@
+##### 0.1.18
+ * Stylobate-islands update. v0.16.9
+
 ##### 0.1.17
  * Reposition fixed popup on window resize
  * Fixed js for popups in IE8
