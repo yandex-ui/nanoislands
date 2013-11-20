@@ -1,3 +1,7 @@
+##### 0.1.19
+ * Upload, attention icons
+ * Droppable added in jQuery UI build
+
 ##### 0.1.18
  * Stylobate-islands update. v0.16.9
 
