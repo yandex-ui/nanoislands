@@ -25,6 +25,7 @@ func all-icons(size, boolean white) {
         nb-ico('play')
         nb-ico('three-dots')
         nb-ico('trash')
+        nb-ico('attention')
         nb-ico('mail')
         nb-ico('vk')
         nb-ico('twitter')
