@@ -1,7 +1,9 @@
 nb.define('slider', {
     events: {
         'init': 'onInit',
-        'changeValue': 'onChangeValue'
+        'changeValue': 'onChangeValue',
+        'disable': 'onDisable',
+        'enable': 'onEnable'
     },
 
     onInit: function() {
@@ -12,6 +14,8 @@ nb.define('slider', {
 
         that.$fallback.attr('readonly','readonly');
         that.$control.show();
+
+        that.$node = $(that.node);
 
         that.$control.slider({
             range: 'min',
@@ -33,5 +37,15 @@ nb.define('slider', {
         // Adjust the width of an input to its content
         this.$fallback.width(0);
         this.$fallback.width(this.$fallback[0].scrollWidth);
+    },
+
+    onDisable: function() {
+        this.$node.addClass('nb-slider_disabled');
+        this.$control.slider('disable');
+    },
+
+    onEnable: function() {
+        this.$node.removeClass('nb-slider_disabled');
+        this.$control.slider('enable');
     }
 });

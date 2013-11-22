@@ -9,6 +9,9 @@ nb-slider()
 
     position: relative
 
+  .nb-slider_disabled
+    cursor: default
+
   .nb-slider__handle
     kind: button
     skin: button fly no-active
@@ -35,7 +38,7 @@ nb-slider()
     -moz-user-select: none
     user-select: none
 
-  .nb-slider_disabled_yes .nb-slider__body
+  .nb-slider_disabled .nb-slider__body
     opacity: 0.5
 
   .nb-slider__body:before
