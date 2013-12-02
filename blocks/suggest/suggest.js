@@ -1,4 +1,5 @@
-;(function() {
+;
+(function () {
 
     /**
      * Саджест
@@ -22,11 +23,11 @@
      * Опции инициализации саджеста
      * @description
      *     Эти опции могут быть определены в yate шаблонах при описании наноблока.
-     *     Опции можно менять в рантайме через метод option
+     *     Опции можно менять в рантайме через событие setOption
      *
      * @example
      *     var sug = nb.find('#mysuggest');
-     *     sug.option('source', 'http://mydomain.com/user/search');
+     *     sug.trigger('setOption', { 'source','http://mydomain.com/user/search'});
      *
      * @type {Object}
      */
@@ -78,68 +79,26 @@
         minLength: 2
     }
 
-    /**
-     * Внешние методы саджеста
-     * @interface
-     * @type {Object}
-     */
-    var apiSuggest = {
-        /**
-         * Возвращает выбранный в саджесте элемент данных из истоника.
-         * @return {Object}
-         */
-        getItemSelected: function() {
-            return this.$input.data().uiSuggest.selectedItem;
-        },
-
-        /**
-         * Устанавливает опцию для виджета.
-         * По сути является аналогом jq.ui.option
-         * http://api.jqueryui.com/autocomplete/#method-option
-         *
-         * @param  {String} name  Имя опции
-         * @param  [value] Значение опции
-         */
-        option: function(name, value) {
-            var args = Array.prototype.slice.call(arguments);
-            args.unshift('option');
-            return this.$input.suggest.apply(this.$input, args);
-        },
-
-        /**
-         * Скрывает список предложений
-         * http://api.jqueryui.com/autocomplete/#method-close
-         */
-        close: function() {
-            return this.$input.suggest('close');
-        },
-
-        value: function() {
-            return this.$input.val();
-        }
-    }
-
-
 
     $.widget("ui.suggest", $.ui.autocomplete, {
         options: optionsSuggest,
 
-        _renderMenu: function( ul, items ) {
+        _renderMenu: function (ul, items) {
             var that = this;
             var html = '';
 
-            $.each( items, function(index, item) {
+            $.each(items, function (index, item) {
                 html += that._renderItem(item);
             });
 
             $(html).appendTo(ul);
 
-            ul.children('li').each(function(index) {
+            ul.children('li').each(function (index) {
                 $(this).data("ui-autocomplete-item", items[index]);
             });
         },
 
-        _renderItem: function(item) {
+        _renderItem: function (item) {
             var clone = $.extend({}, item);
 
             if (this.options.highlight) {
@@ -157,7 +116,7 @@
             }, 'nb-suggest');
         },
 
-        _suggest: function(items) {
+        _suggest: function (items) {
             this._super(items);
 
             if (this.options.countMax && !this._heightMax) {
@@ -170,7 +129,7 @@
             }
         },
 
-        search: function(value, event) {
+        search: function (value, event) {
             this._trigger('_search');
 
             return this._super(value, event);
@@ -178,13 +137,13 @@
     });
 
     var highlightings = {
-        'default': function(item, term) {
-            var matcher = new RegExp( '(' + $.ui.autocomplete.escapeRegex(term) + ')', "i" );
+        'default': function (item, term) {
+            var matcher = new RegExp('(' + $.ui.autocomplete.escapeRegex(term) + ')', "i");
             item.label = item.label.replace(matcher, '<b>$1</b>');
         },
 
-        'username': function(item, term) {
-            var matcher = new RegExp( '(' + $.ui.autocomplete.escapeRegex(term) + ')', "ig" );
+        'username': function (item, term) {
+            var matcher = new RegExp('(' + $.ui.autocomplete.escapeRegex(term) + ')', "ig");
             var matches = item.label.match(matcher);
 
             item.usernameHighlighted = item.username.replace(matcher, '<b>$1</b>');
@@ -195,22 +154,26 @@
         }
     }
 
-    nb.define('suggest', $.extend({
+    nb.define('suggest', {
         events: {
-            'init': 'oninit'
+            'init': 'oninit',
+            'getSelected': 'onGetItemSelected',
+            'setOption': 'onSetOption',
+            'close': 'onClose',
+            'getValue': 'onGetValue'
         },
 
-        oninit: function() {
+        oninit: function () {
             this.$node = $(this.node);
 
             var source = this.$node.data('source');
 
-            this.$node.find('input').on('keydown', function(e) {
+            this.$node.find('input').on('keydown', function (e) {
                 var keyCode = $.ui.keyCode;
 
                 if ($.inArray(e.keyCode, [ keyCode.ENTER, keyCode.NUMPAD_ENTER ]) !== -1) {
                     if (!this.$input.data().uiSuggest.menu.active) {
-                        this.trigger('nb-keypress-enter', this.value());
+                        this.trigger('nb-keypress-enter', this.onGetValue());
                     }
                 }
             }.bind(this));
@@ -228,16 +191,52 @@
 
             this.$suggest.addClass(this.$node.data('class-suggest'));
 
-            this.$input.on('suggest_search', function(e) {
-                this.trigger('nb-type', this.value());
+            this.$input.on('suggest_search', function (e) {
+                this.trigger('nb-type', this.onGetValue());
             }.bind(this));
 
-            this.$input.on('suggestselect', function(e, item) {
+            this.$input.on('suggestselect', function (e, item) {
                 this.trigger('nb-select', item.item);
             }.bind(this));
+        },
+
+        /**
+         * Возвращает выбранный в саджесте элемент данных из истоника.
+         * @return {Object}
+         */
+        onGetItemSelected: function () {
+            return this.$input.data().uiSuggest.selectedItem;
+        },
+
+        /**
+         * Устанавливает опцию для виджета.
+         * По сути является аналогом jq.ui.option
+         * http://api.jqueryui.com/autocomplete/#method-option
+         * @param  {String} name  Имя события
+         * @param  {Object.<string, number>} params — {
+         *      name: value —  имя  и значение опцииопции
+         * }
+         */
+        onSetOption: function (name, params) {
+            var args = ['option', params]
+            return this.$input.suggest.apply(this.$input, args);
+        },
+
+        /**
+         * Скрывает список предложений
+         * http://api.jqueryui.com/autocomplete/#method-close
+         */
+        onClose: function () {
+            return this.$input.suggest('close');
+        },
+
+        onGetValue: function () {
+            return this.$input.val();
         }
-    }, apiSuggest));
+    });
 
 })();
+
+
 
 
