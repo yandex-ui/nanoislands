@@ -61,6 +61,36 @@
             this._super();
             delete this.element[0].widget;
         },
+        _position: function() {
+            var that = this;
+            var using = this.options.position.using;
+
+            // Перестановка базового опорного свойства.
+            this.options.position.using = function(props, ui) {
+                var position = $.extend({}, props);
+                var width, height;
+
+                if (ui.vertical == 'bottom') {
+                    height = that.window.height();
+
+                    position.bottom = height - (position.top + ui.element.height);
+                    position.top = 'auto';
+                }
+
+                if (ui.horizontal == 'right') {
+                    width = that.window.width();
+
+                    position.right = width - (position.left + ui.element.width);
+                    position.left = 'auto';
+                }
+
+                return using.call(ui.element.element[0], position, ui);
+            };
+
+            this._super();
+
+            this.options.position.using = using;
+        },
         _createTitlebar: function() {
             this.uiDialogTitlebarClose = $();
         }
@@ -107,62 +137,41 @@
             //TODO: проверить, что вызывается один раз
             $tail.prependTo(this.uiDialog);
         },
-
         _position: function(noEffect) {
-            var position = this.options.position;
-            this._super();
-
-            var $handler = position.of;
-            var handlerOffset = $handler.offset();
-            var tailOffsetMultiplier = 2;
+            var that = this;
+            var using = this.options.position.using;
 
             // При повторном позиционировании попапа без его скрытия
             // не произойдет вызова эффекта `nb`. Поэтому нет необходимости
             // дополнительно смещать попап, чтобы обеспечить простор для
             // анимации.
-            if (noEffect) {
-                tailOffsetMultiplier = 1;
-            }
+            var offsetMultiplier = noEffect ? 1 : 2;
 
-            // Когда попап расположен фиксированно, при вычислении его положения
-            // необходимо вычитать текущее положение скролла.
-            if (position.fixed) {
-                handlerOffset.top -= this.window.scrollTop();
-                handlerOffset.left -= this.window.scrollLeft();
-            }
+            var inversion = {
+                top: 'bottom',
+                bottom: 'top',
+                left: 'right',
+                right: 'left'
+            };
 
-            //TODO: вот этого this.uiDialog.css('top', '+=13px'); можно не делать, если сразу в position писать {at: 'center top+13'}
-            // положение надо вычислять все руками, потому что jquery-ui никак не сообщает о том, была ли коллизия
-            var tailSpace = this.tailOffset * tailOffsetMultiplier;
+            this.options.position.using = function(props, ui) {
+                var $el = ui.element.element;
+                var el = $el[0];
 
-            // позиционирования слева или справа
-            if (position.at && /^\s*(left|right)/.test(position.at)) {
-                var popupLeft = parseInt(this.uiDialog.css('left'), 10);
-                if (popupLeft > handlerOffset.left) {
-                    // попап находится справа
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'right');
-                    this.uiDialog.data('nb-tail-dir', 'right');
-                    this.uiDialog.css('left', '+=' + tailSpace);
+                var tail = ui[ui.important];
+                var direction = inversion[tail];
 
-                } else {
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'left');
-                    this.uiDialog.data('nb-tail-dir', 'left');
-                    this.uiDialog.css('left', '-=' + tailSpace);
-                }
+                nb.node.setMod(el, 'nb-popup_to', direction);
+                $el.data('nb-tail-dir', direction);
 
-            } else {
-                var popupTop = parseInt(this.uiDialog.css('top'), 10);
-                if (popupTop > handlerOffset.top) {
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'bottom');
-                    this.uiDialog.data('nb-tail-dir', 'bottom');
-                    this.uiDialog.css('top', '+=' + tailSpace);
+                props[tail] += (that.tailOffset * offsetMultiplier);
 
-                } else {
-                    nb.node.setMod(this.uiDialog[0], 'nb-popup_to', 'top');
-                    this.uiDialog.data('nb-tail-dir', 'top');
-                    this.uiDialog.css('top', '-=' + tailSpace);
-                }
-            }
+                return using.call(el, props, ui);
+            };
+
+            this._super();
+
+            this.options.position.using = using;
         }
     });
 
@@ -179,17 +188,16 @@
                 },
                 'top': {
                     opacity: 1,
-                    top: '+=' + $.nb.contextDialog.prototype.tailOffset
+                    bottom: '-=' + $.nb.contextDialog.prototype.tailOffset
                 },
                 'left': {
                     opacity: 1,
-                    left: '+=' + $.nb.contextDialog.prototype.tailOffset
+                    right: '-=' + $.nb.contextDialog.prototype.tailOffset
                 },
                 'right': {
                     opacity: 1,
                     left: '-=' + $.nb.contextDialog.prototype.tailOffset
                 }
-
             },
             hide: {
                 'bottom': {
@@ -198,11 +206,11 @@
                 },
                 'top': {
                     opacity: 0,
-                    top: '-=' + $.nb.contextDialog.prototype.tailOffset
+                    bottom: '+=' + $.nb.contextDialog.prototype.tailOffset
                 },
                 'left': {
                     opacity: 0,
-                    left: '-=' + $.nb.contextDialog.prototype.tailOffset
+                    right: '+=' + $.nb.contextDialog.prototype.tailOffset
                 },
                 'right': {
                     opacity: 0,
@@ -336,7 +344,6 @@
         //  Запоминаем, на какой ноде мы открываем попап.
         this.where = where;
         var that = this;
-        var using;
 
         var data = this.data();
         // по умолчанию попап позиционирова абсолютно
@@ -353,23 +360,19 @@
             isFixed = true;
         }
 
-        if (params.animate) {
-            using =  function(props) {
-                // без stop событие complete срабатывает дважды
-                $(this).stop().animate({
-                    left : props.left,
-                    top : props.top
-                }, {
+        var using = function(props) {
+            var $el = $(this);
+
+            if (params.animate) {
+                $el.stop().animate(props, {
                     duration: 'fast',
                     queue: false,
-                    complete: function() {
-                        that.trigger('position.complete');
-                    }
+                    complete: $.proxy(that.trigger, that, 'position.complete')
                 });
-            };
-        }
-
-
+            } else {
+                $el.css(props);
+            }
+        };
 
         //  Модальный попап двигать не нужно.
         if (this.modal) {
