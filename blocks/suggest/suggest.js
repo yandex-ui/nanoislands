@@ -146,10 +146,10 @@
             var matcher = new RegExp('(' + $.ui.autocomplete.escapeRegex(term) + ')', "ig");
             var matches = item.label.match(matcher);
 
-            item.usernameHighlighted = item.username.replace(matcher, '<b>$1</b>');
+            item.usernameHighlighted = item.username.replace(matcher, '<span class="nb-suggest__hl">$1</span>');
 
             if (typeof item.email == 'string') {
-                item.emailHighlighted = item.email.replace(matcher, '<b>$1</b>');
+                item.emailHighlighted = item.email.replace(matcher, '<span class="nb-suggest__hl">$1</span>');
             }
         }
     }
