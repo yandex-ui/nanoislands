@@ -99,6 +99,9 @@ func attach-button() {
             'myclass2'
         ]
         'type': 'file'
+        'attrs': {
+            'title': 'Выберите файл'
+        }
     })
 }
 
