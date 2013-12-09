@@ -1,6 +1,6 @@
-# Input
+# Suggest
 
-HTML input element.
+Suggest element.
 
 ## Yate
 
