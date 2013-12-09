@@ -1,3 +1,9 @@
+##### 0.1.20
+ * [API: Suggest] Events and methods have been refactored
+ * Disable/Enable events added to slider
+ * Position popup off its base positioning property
+ * Attrs.title added to file input
+
 ##### 0.1.19
  * Upload, attention icons
  * Droppable added in jQuery UI build

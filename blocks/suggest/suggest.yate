@@ -16,8 +16,8 @@ match .suggest nb {
         @data-source = .source
         @data-highlight = .highlight
         @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest nb-suggest_size_{.size}'
-        if .class-suggest {
-            @data-class-suggest += ' {.class-suggest}'
+        if .class {
+            @data-class-suggest += ' {.classSuggest}'
         }
 
         apply . nb-main-attrs
@@ -27,6 +27,8 @@ match .suggest nb {
             'content': .content
             'class': 'nb-suggest__input'
             'attrs': .attrsInput
+            'disabled': .disabled
+
         }
 
         nb-input(input)

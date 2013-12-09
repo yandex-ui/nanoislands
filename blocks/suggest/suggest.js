@@ -27,7 +27,7 @@
      *
      * @example
      *     var sug = nb.find('#mysuggest');
-     *     sug.trigger('setOption', { 'source','http://mydomain.com/user/search'});
+     *     sug.setOption({ 'source','http://mydomain.com/user/search'});
      *
      * @type {Object}
      */
@@ -157,14 +157,15 @@
     nb.define('suggest', {
         events: {
             'init': 'oninit',
-            'getSelected': 'onGetItemSelected',
-            'setOption': 'onSetOption',
             'close': 'onClose',
-            'getValue': 'onGetValue'
+            'disable': 'onDisable',
+            'enable': 'onEnable'
         },
 
         oninit: function () {
             this.$node = $(this.node);
+
+            this.input = this.children()[0];
 
             var source = this.$node.data('source');
 
@@ -173,7 +174,7 @@
 
                 if ($.inArray(e.keyCode, [ keyCode.ENTER, keyCode.NUMPAD_ENTER ]) !== -1) {
                     if (!this.$input.data().uiSuggest.menu.active) {
-                        this.trigger('nb-keypress-enter', this.onGetValue());
+                        this.trigger('nb-keypress-enter', this.getValue());
                     }
                 }
             }.bind(this));
@@ -192,7 +193,7 @@
             this.$suggest.addClass(this.$node.data('class-suggest'));
 
             this.$input.on('suggest_search', function (e) {
-                this.trigger('nb-type', this.onGetValue());
+                this.trigger('nb-type', this.getValue());
             }.bind(this));
 
             this.$input.on('suggestselect', function (e, item) {
@@ -204,7 +205,7 @@
          * Возвращает выбранный в саджесте элемент данных из истоника.
          * @return {Object}
          */
-        onGetItemSelected: function () {
+        getSelected: function () {
             return this.$input.data().uiSuggest.selectedItem;
         },
 
@@ -212,13 +213,12 @@
          * Устанавливает опцию для виджета.
          * По сути является аналогом jq.ui.option
          * http://api.jqueryui.com/autocomplete/#method-option
-         * @param  {String} name  Имя события
-         * @param  {Object.<string, number>} params — {
+         * @param  {Object.<string, number>} option — {
          *      name: value —  имя  и значение опцииопции
          * }
          */
-        onSetOption: function (name, params) {
-            var args = ['option', params]
+        setOption: function (option) {
+            var args = ['option', option]
             return this.$input.suggest.apply(this.$input, args);
         },
 
@@ -230,8 +230,35 @@
             return this.$input.suggest('close');
         },
 
-        onGetValue: function () {
+        /**
+         * Disable input
+         */
+        onDisable: function () {
+            console.log('Disable')
+            this.input.trigger('disable');
+        },
+
+        /**
+         * Enable input
+         */
+        onEnable: function () {
+            this.input.trigger('enable');
+        },
+
+        /**
+         * Get current value oj the suggest
+         * @returns {String | Number}
+         */
+        getValue: function () {
             return this.$input.val();
+        },
+
+        /**
+         * Searcch value in the source array and open suggest popup
+         * @param  {string | number} value
+         */
+        search: function (value) {
+            this.$input.suggest( "search", value );
         }
     });
 
