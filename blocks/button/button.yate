@@ -107,6 +107,9 @@ match .buttonAttach nb {
                     if .attrs.name {
                         @name = "{.attrs.name}"
                     }
+                    if .attrs.title {
+                        @title += "{.attrs.title}"
+                    }
                 </input>
                 <span class="nb-file-intruder__focus"></span>
             </span>
