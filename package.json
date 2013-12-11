@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "stylobate": "0.19.x",
-    "stylobate-islands": "0.16.x"
+    "stylobate-islands": "0.18.x"
   },
   "devDependencies": {
     "yate": "0.0.64",
