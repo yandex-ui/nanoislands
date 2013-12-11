@@ -1,6 +1,5 @@
 func nb-suggest(nodeset options) {
     defaults = {
-        'size': 's'
         'countMax': '10'
         'type': 'default'
     }

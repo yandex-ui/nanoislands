@@ -2,20 +2,17 @@ nb-suggest()
 
   .nb-suggest__container
     display: inline-block
-    
+
   .nb-suggest__input .nb-input
     width: 100%
 
   .nb-suggest
     padding: 0
 
-  .nb-suggest_size_s .ui-menu-item a
-    font-size: 13px
-    line-height: 28px
+  .nb-suggest__item__link
+    skin: menu-item (-hover '&.ui-state-focus')
 
-  .nb-suggest_size_m .ui-menu-item a
-    font-size: 15px
-    line-height: 32px
-
+  .nb-suggest_size_s .nb-suggest__item__link
+    skin: menu-item small no-hover
 
 nb-suggest()
