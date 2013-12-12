@@ -1,3 +1,16 @@
+##### 0.1.21
+
+* Replaced menu-separators with s-i
+* Updates for the newest s-i
+* Using stylobate-islands skin for suggests
+* Using stylobate-islands skin for dropdowns
+* Using stylobate-islands skin for select
+* Fix for suggest width bug
+* [API: Button] Events and methods have been refactored
+* [API: Toggler] Events and methods have been refactored
+* [API: Select] Events and methods have been refactored
+* Add toggler's doc
+
 ##### 0.1.20
  * [API: Suggest] Events and methods have been refactored
  * Disable/Enable events added to slider
