@@ -20,7 +20,7 @@
     "yate": "0.0.64",
     "borschik": "0.4.x",
     "autoprefixer": "0.7.x",
-    "stylus": "0.39.x",
+    "stylus": "0.41.x",
     "csso": "1.3.x"
   },
   "engines": {
