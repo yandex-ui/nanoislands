@@ -25,6 +25,8 @@ nb.define('toggler', {
 
     /**
      * Set value of the checked state
+     * Do nothing if toggler is disabled
+     * @param {Boolean} value of the check state
      * @fires 'nb-toggler_checked'
      */
     setValue: function(state) {
@@ -41,6 +43,8 @@ nb.define('toggler', {
 
     /**
      * Toggle to the oppocite value
+     * Do nothing if toggler is disabled
+     * @fires 'nb-toggler_checked'
      */
     toggle: function(){
         if (this.$node.hasClass('nb-toggler_disabled')) {
