@@ -174,7 +174,7 @@
 
                 if ($.inArray(e.keyCode, [ keyCode.ENTER, keyCode.NUMPAD_ENTER ]) !== -1) {
                     if (!this.$input.data().uiSuggest.menu.active) {
-                        this.trigger('nb-keypress-enter', this.getValue());
+                        this.trigger('nb-suggest_keypress-enter', this.getValue());
                     }
                 }
             }.bind(this));
@@ -193,11 +193,11 @@
             this.$suggest.addClass(this.$node.data('class-suggest'));
 
             this.$input.on('suggest_search', function (e) {
-                this.trigger('nb-type', this.getValue());
+                this.trigger('nb-suggest_type', this.getValue());
             }.bind(this));
 
             this.$input.on('suggestselect', function (e, item) {
-                this.trigger('nb-select', item.item);
+                this.trigger('nb-suggest_select', item.item);
             }.bind(this));
         },
 
