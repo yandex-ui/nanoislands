@@ -24,7 +24,7 @@ nb.define('input-group', {
      */
     onDisable: function() {
         this.input.trigger('disable');
-        this.button.trigger('disable');
+        this.button.disable();
         this.disabled = true;
     },
 
@@ -33,7 +33,7 @@ nb.define('input-group', {
      */
     onEnable: function() {
         this.input.trigger('enable');
-        this.button.trigger('enable');
+        this.button.enable();
         this.disabled = false;
     }
 });

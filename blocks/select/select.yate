@@ -16,7 +16,7 @@ match .select nb {
           @data-nb-within = .within
        }
 
-       <button class="nb-button nb-select__button _init nb-button_size_{ .size } nb-button_theme_{ .theme }" data-nb="button">
+       <span class="nb-button nb-select__button _init nb-button_size_{ .size } nb-button_theme_{ .theme }" data-nb="button" tabindex="0">
 
               if .disabled  {
                   @class += ' nb-button_disabled'
@@ -34,7 +34,7 @@ match .select nb {
                     }
                   }
               </span>
-          </button>
+          </span>
           <select id="nb-select_{ .id }" class="nb-select__fallback" name ="{ .id }">
               if ( .disabled ) {
                   @disabled = 'disabled'

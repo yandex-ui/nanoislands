@@ -1,12 +1,11 @@
 nb.define('select', {
     events: {
-        'init': 'onInit',
-        'changeValue': 'onChangeValue' // { value, text }
+        'init': 'onInit'
         //'open' { event, ui}
         //'close' { event, ui}
     },
 
-    onInit: function() {
+    onInit: function () {
         var that = this;
         nb.init(that);
         that.data = that.data();
@@ -19,9 +18,8 @@ nb.define('select', {
 
         that.value = that.$selected.val() ? that.$selected.text() : '';
 
-        this.button.trigger('textChange', {
-            text: that.value
-        });
+        this.button.setText(that.value)
+
 
         // preparing control depending on configuration and content
         that.controlPrepare();
@@ -30,7 +28,7 @@ nb.define('select', {
     /**
      * preparing control depending on configuration and content
      */
-    controlPrepare: function() {
+    controlPrepare: function () {
         var that = this;
         // preparing position parameters for popup from direction data
         var position = {};
@@ -56,8 +54,8 @@ nb.define('select', {
             autoFocus: false,
             position: position,
             appendTo: that.node,
-            source: function(request, response) {
-                response(that.$fallback.children('option').map(function() {
+            source: function (request, response) {
+                response(that.$fallback.children('option').map(function () {
                     return {
                         label: $(this).text(),
                         value: $(this).val(),
@@ -65,7 +63,7 @@ nb.define('select', {
                     };
                 }));
             },
-            select: function(event, ui) {
+            select: function (event, ui) {
                 ui.item.option.selected = true;
 
                 that.$jUI._trigger('selected', event, {
@@ -73,10 +71,10 @@ nb.define('select', {
                 });
             },
             // delegate handler on 'outer' click on open
-            open: function(event, ui) {
+            open: function (event, ui) {
                 that.$jUI._on(that.$jUI.document, {
                     // on 'outer' mousedown close control
-                    mousedown: function(e) {
+                    mousedown: function (e) {
                         if (e.which == 1 && !$.contains(that.$jUI.element.get(0), e.target)) {
                             this.close();
                         }
@@ -88,9 +86,9 @@ nb.define('select', {
                 });
             },
 
-            close: function(event, ui) {
+            close: function (event, ui) {
                 that.$jUI._off(that.$jUI.document, 'mousedown');
-                that.trigger('close',  {
+                that.trigger('close', {
                     event: event,
                     ui: ui
                 });
@@ -100,7 +98,7 @@ nb.define('select', {
         that.$jUI = $(that.node).data('uiAutocomplete')
 
         // redefine one menu item rendering method, fires every time, then popup opening
-        that.$jUI._renderItem = function(ul, item) {
+        that.$jUI._renderItem = function (ul, item) {
             var $itemNode = $('<li class="nb-select__item"></li>');
 
             if (item.option.selected) {
@@ -116,19 +114,19 @@ nb.define('select', {
 
         // redefine valueMethod, extend with button text changing and fallback select value changing
         // if value not provided, return current value of fallback select
-        that.$jUI.valueMethod = function(value) {
+        that.$jUI.valueMethod = function (value) {
             if (value) {
-               var text = that.$fallback.children('[value="' + value + '"]').text()
-               that.trigger('changeValue',{
-                   value: value,
-                   text: text
-               })
+                var text = that.$fallback.children('[value="' + value + '"]').text()
+                that.setValue({
+                    value: value,
+                    text: text
+                });
             }
             return that.$selected.val();
         };
 
         // add click event for button
-        $(that.button.node).click(function(evt) {
+        $(that.button.node).click(function (evt) {
             // иначе сабмитит форму при клике
             evt.preventDefault();
             // close if already visible
@@ -151,19 +149,26 @@ nb.define('select', {
          *     value: '..'
          * }
      */
-    onChangeValue: function(name, params) {
+    setValue: function (params) {
         this.value = params.value;
         this.text = params.text;
         this.$selected.removeAttr('selected');
 
 
         this.$selected = this.$fallback.children('[value="' + this.value + '"]').attr('selected', 'selected');
-        this.button.trigger('textChange', {
-            text: this.text
-        });
+        this.button.setText(this.text)
 
         this.$fallback.val(params.value);
+        return this
+    },
+
+    getValue: function () {
+        return {
+            value: this.value,
+            text: this.text
+        }
     }
+
 });
 
 
