@@ -12,6 +12,7 @@ nb.define('toggler', {
         this.$node = $(this.node);
         this.$checkbox = this.$node.find('.nb-toggler__checkbox');
         this.trigger('nb-toggler_inited');
+        return this;
     },
 
     /**
@@ -35,6 +36,7 @@ nb.define('toggler', {
             this.$checkbox.removeAttr('checked');
         }
         this.trigger('nb-toggler_checked', this.getValue());
+        return this;
     },
 
     /**
@@ -42,10 +44,10 @@ nb.define('toggler', {
      */
     toggle: function(){
         if (this.$node.hasClass('nb-toggler_disabled')) {
-            return false;
+            return this;
         }
 
-        this.setValue(!this.getValue());
+        return this.setValue(!this.getValue());
     },
 
     /**
@@ -56,6 +58,7 @@ nb.define('toggler', {
         this.$checkbox.attr('disabled', 'disabled');
         this.$node.addClass('nb-toggler_disabled');
         this.trigger('nb-toggler_disabled');
+        return this;
     },
 
     /**
@@ -66,5 +69,6 @@ nb.define('toggler', {
         this.$checkbox.removeAttr('disabled');
         this.$node.removeClass('nb-toggler_disabled');
         this.trigger('nb-toggler_enabled');
+        return this;
     }
 });
