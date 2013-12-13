@@ -8,40 +8,18 @@
 // popup
 
 .nb-popup
-  .nb-popup__line
-    display: block
-    padding: ($islands_s / 2) $islands_s
-    outline: 0 none
+  & .nb-popup__line
+    skin: menu-item (_hover '&:hover, &:focus')
+    outline: none
 
-  .nb-popup__line:first-child
-    margin-top: ($islands_s / 2)
+    &:first-child
+      margin-top: ($islands_s / 2)
 
-  .nb-popup__line:last-child
-    margin-bottom: ($islands_s / 2)
+    &:last-child
+      margin-bottom: ($islands_s / 2)
 
-
-  .nb-popup__line
-    display: block
-    color: $foreground
-
-    text-decoration: none
-
-    cursor: pointer
-
-    white-space: nowrap // Inline-only
-
-  .nb-popup__line:hover
-    background-color: $bgMenuItemSelected
-
-  .nb-popup__separator
-    border-top: 1px solid rgba(0, 0, 0, 0.1)
-
-  // popup's separator
-  .nb-popup__hr
-    margin: 3px 0
-    height: 1px
-    background: #DDD
-    overflow: hidden
+  & .nb-popup__separator
+    skin: menu-separator padded
 
 .nb-popup__title
   font: $font-h3

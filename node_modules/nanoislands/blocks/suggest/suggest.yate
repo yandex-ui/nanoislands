@@ -1,6 +1,5 @@
 func nb-suggest(nodeset options) {
     defaults = {
-        'size': 's'
         'countMax': '10'
         'type': 'default'
     }
@@ -36,8 +35,8 @@ match .suggest nb {
 }
 
 match / nb-suggest {
-    <li>
-        <a>
+    <li class="nb-suggest__item">
+        <a class="nb-suggest__item__link">
             apply .item nb-suggest
         </a>
     </li>
