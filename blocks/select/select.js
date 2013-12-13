@@ -148,6 +148,7 @@ nb.define('select', {
          *     text: '..'
          *     value: '..'
          * }
+     * @fires 'nb-select_changed'
      */
     setValue: function (params) {
         this.value = params.value;
@@ -156,7 +157,9 @@ nb.define('select', {
 
 
         this.$selected = this.$fallback.children('[value="' + this.value + '"]').attr('selected', 'selected');
-        this.button.setText(this.text)
+        this.button.setText(this.text);
+
+        this.trigger('nb-select_changed');
 
         this.$fallback.val(params.value);
         return this
