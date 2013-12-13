@@ -1,3 +1,7 @@
+##### 0.1.23
+
+* build
+
 ##### 0.1.22
 
 * adds nb-select_changed event
