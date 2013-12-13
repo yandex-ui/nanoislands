@@ -1,3 +1,7 @@
+##### 0.1.22
+
+* adds nb-select_changed event
+
 ##### 0.1.21
 
 * Replaced menu-separators with s-i
