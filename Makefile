@@ -20,7 +20,13 @@ nanoislands.js: $(CURDIR)/blocks/nanoislands.js $(shell find $(CURDIR)/blocks -n
 node_modules:
 	npm install
 
+publish:
+	rm -rf node_modules
+	make clean
+	make all
+	npm publish
+
 clean:
 	rm -rf demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js
 
-.PHONY: all clean
+.PHONY: all publish clean

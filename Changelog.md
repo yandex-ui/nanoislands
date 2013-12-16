@@ -1,6 +1,7 @@
-##### 0.1.23
+##### 0.1.24
 
-* build
+* [API: Button] Skin for promo button — 'theme': 'promo'
+* 'make publish' for npm build in development
 
 ##### 0.1.22
 
