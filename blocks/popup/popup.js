@@ -1,3 +1,14 @@
+ /*
+  * jQuery UI Depends:
+  *        jquery.ui.dialog.js
+  *        jquery.ui.core.js
+  *        jquery.ui.widget.js
+  *        jquery.ui.button.js
+  *        jquery.ui.draggable.js
+  *        jquery.ui.mouse.js
+  *        jquery.ui.position.js
+ */
+
 (function() {
 
     /**

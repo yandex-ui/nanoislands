@@ -1,3 +1,13 @@
+/*
+* jQuery UI Depends:
+*        jquery.ui.autocomplete.js
+*        jquery.ui.button.js
+*        jquery.ui.core.js
+*        jquery.ui.widget.js
+*        jquery.ui.position.js
+*        jquery.ui.menu.js
+*/
+
 nb.define('select', {
     events: {
         'init': 'onInit'
