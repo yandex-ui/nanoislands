@@ -8,7 +8,7 @@
 
 ### Optional attributes
 * size: s / m / l
-* theme: normal / action (yellow) / dark / pseudo
+* theme: normal / action (yellow) / dark / pseudo / promo (big yellow)
 * id: ...
 * class: ['my_class1', 'my_class2'] — additional classes
 * disabled: true() — disabled button
