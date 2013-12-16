@@ -175,7 +175,16 @@ nb.define('select', {
         return this
     },
 
-    getValue: function () {
+    /**
+     * Returns state of the select
+     *
+     * @return {Object} -
+         * {
+         *     value: '..'
+         *     text: '..'
+         * }
+     */
+    getState: function () {
         return {
             value: this.value,
             text: this.text
