@@ -127,7 +127,7 @@ nb.define('select', {
         that.$jUI.valueMethod = function (value) {
             if (value) {
                 var text = that.$fallback.children('[value="' + value + '"]').text()
-                that.setValue({
+                that.setState({
                     value: value,
                     text: text
                 });
@@ -160,7 +160,7 @@ nb.define('select', {
          * }
      * @fires 'nb-select_changed'
      */
-    setValue: function (params) {
+    setState: function (params) {
         this.value = params.value;
         this.text = params.text;
         this.$selected.removeAttr('selected');
@@ -175,7 +175,16 @@ nb.define('select', {
         return this
     },
 
-    getValue: function () {
+    /**
+     * Returns state of the select
+     *
+     * @return {Object} -
+         * {
+         *     value: '..'
+         *     text: '..'
+         * }
+     */
+    getState: function () {
         return {
             value: this.value,
             text: this.text
