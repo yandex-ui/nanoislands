@@ -1,3 +1,11 @@
+ /*
+ * jQuery UI Depends:
+ *        jquery.ui.core.js
+ *        jquery.ui.widget.js
+ *        jquery.ui.position.js
+ *        jquery.ui.tooltip.js
+ */
+
 nb.define('tooltip-jq-toggler', {
 
     //NOTES: из-за такого определения Factory._onevent постоянно долбится событиями

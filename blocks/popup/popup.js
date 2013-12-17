@@ -7,6 +7,7 @@
   *        jquery.ui.draggable.js
   *        jquery.ui.mouse.js
   *        jquery.ui.position.js
+  *        jquery.ui.resizable.js
  */
 
 (function() {
