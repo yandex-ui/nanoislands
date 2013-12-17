@@ -6,6 +6,7 @@
 * [Button](blocks/button/button.md)
 * [Input](blocks/input/input.md)
 * [Suggest](blocks/suggest/suggest.md)
+* [Select](blocks/select/select.md)
 * [Toggler](blocks/toggler/toggler.md)
 
 #### [Changelog](Changelog.md)
