@@ -3,11 +3,11 @@
 [http://yandex-ui.github.io/nanoislands/](http://yandex-ui.github.io/nanoislands/)
 
 ## Documentation
-* [Button](blocks/button/button.md)
-* [Checkbox](blocks/checkbox/checkbox.md)
-* [Input](blocks/input/input.md)
-* [Suggest](blocks/suggest/suggest.md)
-* [Select](blocks/select/select.md)
-* [Toggler](blocks/toggler/toggler.md)
+* [Button]https://github.com/yandex-ui/nanoislands/blob/master/blocks/button/button.md)
+* [Checkbox]https://github.com/yandex-ui/nanoislands/blob/master/blocks/checkbox/checkbox.md)
+* [Input]https://github.com/yandex-ui/nanoislands/blob/master/blocks/input/input.md)
+* [Suggest]https://github.com/yandex-ui/nanoislands/blob/master/blocks/suggest/suggest.md)
+* [Select]https://github.com/yandex-ui/nanoislands/blob/master/blocks/select/select.md)
+* [Toggler]https://github.com/yandex-ui/nanoislands/blob/master/blocks/toggler/toggler.md)
 
 #### [Changelog](Changelog.md)
