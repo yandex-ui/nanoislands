@@ -1,3 +1,10 @@
+##### 0.1.25
+
+* [API: Checkbox] events, methods, docs
+* [API: Input] refactoring: events, methods, docs
+* [API: Select] refactoring: events, methods, docs
+* .mod attr with roundremoved
+
 ##### 0.1.24
 
 * [API: Button] Skin for promo button — 'theme': 'promo'
