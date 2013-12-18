@@ -40,21 +40,12 @@ match .user nb-user-pic {
 match .user nb-user-name {
     <span class="nb-user__label">
         <span class="nb-user__name _link" title="{.username}">
-            apply .username nb-user-name
+            .username
         </span>
         if .email {
             <span class="nb-user__email" title="{.email}">
-                apply .email nb-user-name
+               .email
             </span>
         }
-
     </span>
-}
-
-match .user.username nb-user-name {
-    .
-}
-
-match .user.email nb-user-name {
-    .
 }

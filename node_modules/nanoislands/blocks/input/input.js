@@ -1,79 +1,125 @@
 nb.define('input', {
     events: {
         'init': 'oninit',
-        'click': 'makeFocus',
-        'changeValue': 'onChangeValue',
-        'focusout': 'blur',
-        'focusin': 'makeFocus',
-        'disable': 'onDisable',
-        'enable': 'onEnable'
+        'click': 'focus'
     },
 
+    /**
+    * Init input
+    * @fires 'nb-input_inited'
+    */
     oninit: function() {
+        var that = this;
 
         this.data = this.data()
         this.$node = $(this.node);
 
         if (this.data.type == 'simple'){
-            this.$nodeInput = this.$node
+            this.$control = this.$node
         } else {
-            this.$nodeInput = this.$node.find('.nb-input__controller');
+            this.$control = this.$node.find('.nb-input__controller');
         }
 
-        this.disabled = this.$nodeInput.prop('disabled');
-        this.value = this.$nodeInput.val();
+        this.disabled = this.$control.prop('disabled');
+        this.value = this.$control.val();
         this.focused = false;
-        nb.on('input-focusout', function() {
-            this.trigger('focusout');
+        nb.on('nb-input_focusout', function() {
+            that.blur();
         });
+        this.trigger('nb-input_inited');
     },
 
-    makeFocus: function() {
+    /**
+     * Focus the input
+     * @fires 'nb-input_focused'
+     * @returns {nb.block}
+     */
+    focus: function() {
         if (this.$node.is('.is-disabled')) {
-            return false;
+            return this;
         }
 
         if (!this.$node.hasClass('nb-input_focus')) {
-            nb.trigger('input-focusout');
+            nb.trigger('nb-input_focusout');
             this.$node.addClass('nb-input_focus');
             this.focused = true;
-            this.$nodeInput.get(0).focus();
+            this.$control.get(0).focus();
+            this.trigger('nb-input_focused');
+            return this;
         }
+
     },
 
+    /**
+     * Blur the input
+     * @fires 'nb-input_blured'
+     * @returns {nb.block}
+     */
     blur: function() {
         this.$node.removeClass('nb-input_focus');
         this.focused = false;
+        this.trigger('nb-input_blured');
+        return this;
     },
 
     /**
      * Disables the input
+     * @fires 'nb-input_disabled'
+     * @returns {nb.block}
      */
-    onDisable: function() {
+    disable: function() {
         this.$node.addClass('is-disabled');
-        this.$nodeInput.prop('disabled', true);
-        this.trigger('disabled');
+        this.$control.prop('disabled', true);
+        this.trigger('nb-input_disabled');
+        return this;
     },
 
     /**
      * Enables the input
+     * @fires 'nb-input_enabled'
+     * @returns {nb.block}
      */
-    onEnable: function() {
+    enable: function() {
         this.$node.removeClass('is-disabled');
-        this.$nodeInput.prop('disabled', false);
-        this.trigger('enabled');
+        this.$control.prop('disabled', false);
+        this.trigger('nb-input_enabled');
+        return this;
     },
 
     /**
-     * Changes a value of input
-     *
-     * @param name — event id that caused the change
-     * @param params — {
-     *     value: '..'
-     * }
-     */
-    onChangeValue: function(name, params) {
-        this.value = params.value;
-        this.$nodeInput.val(this.value)
-    }
+     * Set value of the input
+     * @param {String|Object} value
+     * @fires 'nb-input_value-setted'
+     * @returns {nb.block}
+    */
+    setValue: function(value) {
+        this.value = value;
+        this.$control.val(value)
+        this.trigger('nb-input_value-setted');
+        return this;
+    },
+
+    /**
+     * Get value of the input
+     * @returns {String|Object} value
+    */
+    getValue: function() {
+        return this.value
+    },
+
+    /**
+     * Get name of the input
+     * @returns {String|Object} name
+    */
+    getName: function() {
+        return this.$control.prop('name');
+    },
+
+    /**
+    * Return state of the input
+    * @returns {Boolean}
+    */
+   isEnabled: function () {
+       return !this.$control.prop('disabled');
+   }
 });

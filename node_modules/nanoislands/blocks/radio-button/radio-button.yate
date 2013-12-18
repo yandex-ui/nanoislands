@@ -40,19 +40,9 @@ match .radio-button nb {
                         @class += ' nb-button_only-icon'
                     }
 
-                    if .type == 'round' {
-                        @class += " nb-button_type_round"
-                    }
-
                     <span class="nb-button__text">
-                        if (.content && .icon) {
                             apply .icon nb
                             html(.content)
-                        } else if (!.content && .icon){
-                            apply .icon nb
-                        } else {
-                            html(.content)
-                        }
                     </span>
                 </label>
             </span>

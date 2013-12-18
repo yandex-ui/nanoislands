@@ -1,3 +1,10 @@
+ /*
+ * jQuery UI Depends:
+ *        jquery.ui.button.js
+ *        jquery.ui.core.js
+ *        jquery.ui.widget.js
+ */
+
 nb.define('button', {
     events: {
         'init': 'oninit',
