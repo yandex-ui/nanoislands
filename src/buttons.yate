@@ -44,6 +44,14 @@ func button-dark() {
     })
 }
 
+func button-promo() {
+    nb-button({
+        'content': 'Скачать'
+        'size': 'm'
+        'theme': 'promo'
+    })
+}
+
 func button-images() {
     nb-button({
         'icon': 'eye'
@@ -99,6 +107,9 @@ func attach-button() {
             'myclass2'
         ]
         'type': 'file'
+        'attrs': {
+            'title': 'Выберите файл'
+        }
     })
 }
 
@@ -154,6 +165,16 @@ func buttons() {
 
         show(button-dark())
     </div>
+     <div class="demo-section">
+            <div class="demo-h3">
+                'Theme: Promo'
+                <span class="demo-code demo-code_small">
+                    '.nb-button_theme_promo'
+                </span>
+            </div>
+
+            show(button-promo())
+        </div>
     <div class="demo-section">
         <div class="demo-h3">
             'Disabled '

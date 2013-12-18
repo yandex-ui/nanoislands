@@ -1,26 +1,92 @@
 func select-medium() {
-    block = {
-        'size': 'm'
-        'id': 'select1'
-        'class': 'my-test-class'
-        'items': [
-            {
-                'text': 'Карта'
-                'value': 'option1'
-                'selected': 'true'
-            }
-            {
-                'text': 'Спутник'
-                'value': 'option2'
-            }
-            {
-                'text': 'Гибрид'
-                'value': 'option3'
-            }
-        ]
-    }
+    nb-select( {
+      'size': 'm'
+      'id': 'select1'
+      'class': 'my-test-class'
+      'items': [
+          {
+              'text': 'Карта'
+              'value': 'option1'
+              'selected': 'true'
+          }
+          {
+              'text': 'Спутник'
+              'value': 'option2'
+          }
+          {
+              'text': 'Гибрид'
+              'value': 'option3'
+          }
+      ]
+    })
+    ' '
+    nb-select( {
+      'size': 'm'
+      'id': 'select3'
+      'class': 'my-test-class'
+      'theme': 'pseudo'
+      'items': [
+          {
+              'text': 'Карта'
+              'value': 'option1'
+              'selected': 'true'
+          }
+          {
+              'text': 'Спутник'
+              'value': 'option2'
+          }
+          {
+              'text': 'Гибрид'
+              'value': 'option3'
+          }
+      ]
+    })
 
-    nb-select(block)
+    ' '
+    nb-select( {
+      'size': 'm'
+      'id': 'select4'
+      'class': 'my-test-class'
+      'theme': 'dark'
+      'items': [
+          {
+              'text': 'Карта'
+              'value': 'option1'
+              'selected': 'true'
+          }
+          {
+              'text': 'Спутник'
+              'value': 'option2'
+          }
+          {
+              'text': 'Гибрид'
+              'value': 'option3'
+          }
+      ]
+    })
+
+    ' '
+    nb-select( {
+      'size': 'm'
+      'id': 'select5'
+      'class': 'my-test-class'
+      'theme': 'action'
+      'items': [
+          {
+              'text': 'Карта'
+              'value': 'option1'
+              'selected': 'true'
+          }
+          {
+              'text': 'Спутник'
+              'value': 'option2'
+          }
+          {
+              'text': 'Гибрид'
+              'value': 'option3'
+          }
+      ]
+    })
 }
 func select-small() {
     block = {

@@ -10,11 +10,13 @@ func all-icons(size, boolean white) {
 
     if white {
         nb-ico('download_white')
+        nb-ico('upload_white')
         nb-ico('link_white')
         nb-ico('trash_white')
     } else {
         nb-ico('close')
         nb-ico('download')
+        nb-ico('upload')
         nb-ico('people')
         nb-ico('help')
         nb-ico('eye')
@@ -23,6 +25,7 @@ func all-icons(size, boolean white) {
         nb-ico('play')
         nb-ico('three-dots')
         nb-ico('trash')
+        nb-ico('attention')
         nb-ico('mail')
         nb-ico('vk')
         nb-ico('twitter')

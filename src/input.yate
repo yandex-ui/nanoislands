@@ -8,7 +8,7 @@ func input-small() {
 func input-medium() {
     nb-input({
          'size': 'm'
-         'content': 'Москва11'
+         'content': 'Москва и Питер'
     })
 }
 
