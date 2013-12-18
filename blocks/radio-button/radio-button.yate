@@ -41,14 +41,8 @@ match .radio-button nb {
                     }
 
                     <span class="nb-button__text">
-                        if (.content && .icon) {
                             apply .icon nb
                             html(.content)
-                        } else if (!.content && .icon){
-                            apply .icon nb
-                        } else {
-                            html(.content)
-                        }
                     </span>
                 </label>
             </span>
