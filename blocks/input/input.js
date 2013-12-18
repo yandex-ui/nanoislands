@@ -4,6 +4,10 @@ nb.define('input', {
         'click': 'focus'
     },
 
+    /**
+    * Init input
+    * @fires 'nb-input_inited'
+    */
     oninit: function() {
         var that = this;
 
@@ -11,17 +15,18 @@ nb.define('input', {
         this.$node = $(this.node);
 
         if (this.data.type == 'simple'){
-            this.$nodeInput = this.$node
+            this.$control = this.$node
         } else {
-            this.$nodeInput = this.$node.find('.nb-input__controller');
+            this.$control = this.$node.find('.nb-input__controller');
         }
 
-        this.disabled = this.$nodeInput.prop('disabled');
-        this.value = this.$nodeInput.val();
+        this.disabled = this.$control.prop('disabled');
+        this.value = this.$control.val();
         this.focused = false;
         nb.on('nb-input_focusout', function() {
             that.blur();
         });
+        this.trigger('nb-input_inited');
     },
 
     /**
@@ -38,7 +43,7 @@ nb.define('input', {
             nb.trigger('nb-input_focusout');
             this.$node.addClass('nb-input_focus');
             this.focused = true;
-            this.$nodeInput.get(0).focus();
+            this.$control.get(0).focus();
             this.trigger('nb-input_focused');
             return this;
         }
@@ -64,7 +69,7 @@ nb.define('input', {
      */
     disable: function() {
         this.$node.addClass('is-disabled');
-        this.$nodeInput.prop('disabled', true);
+        this.$control.prop('disabled', true);
         this.trigger('nb-input_disabled');
         return this;
     },
@@ -76,7 +81,7 @@ nb.define('input', {
      */
     enable: function() {
         this.$node.removeClass('is-disabled');
-        this.$nodeInput.prop('disabled', false);
+        this.$control.prop('disabled', false);
         this.trigger('nb-input_enabled');
         return this;
     },
@@ -89,7 +94,7 @@ nb.define('input', {
     */
     setValue: function(value) {
         this.value = value;
-        this.$nodeInput.val(value)
+        this.$control.val(value)
         this.trigger('nb-input_value-setted');
         return this;
     },
@@ -107,7 +112,7 @@ nb.define('input', {
      * @returns {String|Object} name
     */
     getName: function() {
-        return this.$nodeInput.prop('name');
+        return this.$control.prop('name');
     },
 
     /**
@@ -115,6 +120,6 @@ nb.define('input', {
     * @returns {Boolean}
     */
    isEnabled: function () {
-       return !this.$nodeInput.prop('disabled');
+       return !this.$control.prop('disabled');
    }
 });

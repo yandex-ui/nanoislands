@@ -4,6 +4,7 @@
 
 ## Documentation
 * [Button](blocks/button/button.md)
+* [Checkbox](blocks/checkbox/checkbox.md)
 * [Input](blocks/input/input.md)
 * [Suggest](blocks/suggest/suggest.md)
 * [Select](blocks/select/select.md)

@@ -10,10 +10,11 @@ func nb-checkbox(nodeset options) {
 match .checkbox nb {
     uniq = 'nb-checkbox_{nb-uniq()}'
 
-    <label class="nb-checkbox nb-checkbox_size_{ .size } nb-checkbox_type_{ .type }" for="{ uniq }">
+    <label data-nb='checkbox' class="nb-checkbox nb-checkbox_size_{ .size } nb-checkbox_type_{ .type } _init" for="{ uniq }">
         if .disabled  {
              @class += ' nb-checkbox_disabled'
         }
+
 
         <input class="nb-checkbox__input" type="{ .type }" id="{ uniq }">
             apply . nb-main-attrs

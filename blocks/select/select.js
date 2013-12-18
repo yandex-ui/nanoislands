@@ -15,6 +15,11 @@ nb.define('select', {
         //'close' { event, ui}
     },
 
+    /**
+    * Init select
+    * @fires 'nb-select_inited'
+    */
+
     onInit: function () {
         var that = this;
         nb.init(that);
@@ -33,6 +38,7 @@ nb.define('select', {
 
         // preparing control depending on configuration and content
         that.controlPrepare();
+        this.trigger('nb-select_inited');
     },
 
     /**

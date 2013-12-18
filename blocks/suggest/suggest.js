@@ -171,6 +171,10 @@
             'enable': 'onEnable'
         },
 
+        /**
+        * Init select
+        * @fires 'nb-suggest_inited'
+        */
         oninit: function () {
             this.$node = $(this.node);
 
@@ -208,6 +212,8 @@
             this.$input.on('suggestselect', function (e, item) {
                 this.trigger('nb-suggest_select', item.item);
             }.bind(this));
+
+            this.trigger('nb-suggest_inited');
         },
 
         /**
