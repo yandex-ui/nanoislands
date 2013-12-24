@@ -20,6 +20,9 @@ nanoislands.js: $(CURDIR)/blocks/nanoislands.js $(shell find $(CURDIR)/blocks -n
 node_modules:
 	npm install
 
+jquery-ui:
+	node build/build-jqueryui.js
+
 publish:
 	rm -rf node_modules
 	make clean
@@ -29,4 +32,4 @@ publish:
 clean:
 	rm -rf demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js
 
-.PHONY: all publish clean
+.PHONY: all publish clean jquery-ui
