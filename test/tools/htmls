@@ -35,8 +35,8 @@ var argv = require('optimist').argv;
 
 var pathYate = path.resolve(argv.yate || cwd, '../node_modules/yate');
 var pathYateIndexTpl = path.resolve('tools/index.yate');
-var pathYateNanoTpl = path.resolve('../blocks/nanoislands.yate');
-var pathYateNanoOriginTpl = path.resolve('origin/blocks/nanoislands.yate');
+var pathYateNanoTpl = path.resolve('../nanoislands.yate');
+var pathYateNanoOriginTpl = path.resolve('origin/nanoislands.yate');
 
 if (argv.files) {
 
