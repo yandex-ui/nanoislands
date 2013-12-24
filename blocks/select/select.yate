@@ -25,7 +25,7 @@ match .select nb {
 
               <span class="nb-button__text">
                   for .items {
-                        if .selected {
+                        if .selected || index() == 0 {
                          .text
                     }
                   }

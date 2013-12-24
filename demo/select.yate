@@ -7,7 +7,6 @@ func select-medium() {
           {
               'text': 'Карта'
               'value': 'option1'
-              'selected': 'true'
           }
           {
               'text': 'Спутник'
