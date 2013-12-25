@@ -18,7 +18,7 @@
 * items: [ {...}, {...}, ... ] - each object in array could have text, value and selected fields
     * text: 'Карта'
     * value: 'option1'
-    * selected: 'true'
+    * selected: true() / false()
 
 #### Example
 
