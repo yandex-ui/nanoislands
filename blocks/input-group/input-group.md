@@ -4,11 +4,13 @@
 
     nb-input-group()
 
-Accepts hash containing options for button and input field (in any order), outputs them accordingly.
+Renders compound group of text input field and button, ordered accordingly to `options`.
 
-### Optional attributes
+### Options
 
-* disabled: true() — disabled inputs
+* disabled: true() — disable both inputs
+* input — options for text input field
+* button — options for button
 
 NB: For description of `button` and `input` see corresponding docs
 
@@ -49,10 +51,23 @@ A group of an input field and a button with text, disabled altogether as a whole
 
 ## JS
 
-### Initialisation
+### Initialization
 
-/!\ TODO
+Initialize nb block on DOM node:
+```
 
-### Group methods
+    nb.block(node);
 
-/!\ TODO
+```
+
+Initialize all nb blocks with class '_init' within DOM node
+
+```
+
+    nb.init(node);
+
+```
+
+### Input group methods
+
+None declared.
