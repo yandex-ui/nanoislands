@@ -1,0 +1,4 @@
+match / content {
+    @style="width: 200px; height: 100px"
+    nb-checkbox(.args)
+}

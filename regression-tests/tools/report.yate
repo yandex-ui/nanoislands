@@ -1,0 +1,88 @@
+match / {
+    html('<!doctype>')
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <base href="/test/" />
+            <link rel="stylesheet" type="text/css" href="tools/index.css" />
+        </head>
+        <body>
+            apply . tests
+        </body>
+    </html>
+}
+
+match / tests {
+    <div class="tests">
+        apply .tests
+    </div>
+}
+
+match .tests {
+    <div class="test">
+        if (.fail) {
+            @class += " test_failed"
+        }
+        <div class="test__name">
+            '#{.id}. '
+            if (.fail) {
+                'FAILED'
+            } else {
+                'SUCCESS'
+            }
+            ' {.name}'
+        </div>
+
+        apply . result
+    </div>
+}
+
+match .tests result {
+    <div class="test__line">
+        'Yate template: '
+        <pre>
+            .tpl
+        </pre>
+        <div>
+            <pre>
+                .yate
+            </pre>
+        </div>
+    </div>
+    <div class="test__line">
+        'Arguments:'
+        <div>
+            <pre>
+                .argsJSON
+            </pre>
+        </div>
+    </div>
+    <div class="test__line">
+        <a href="{.html}">Current page</a>
+        ' '
+        <a href="{.htmlOrigin}">Origin page</a>
+    </div>
+    apply .screenshots.*
+}
+
+match .screenshots.* {
+    <div class="test__line screenshot">
+        apply . name
+        <br/>
+        <a href="{.}">
+            <img src="{.}" />
+        </a>
+    </div>
+}
+
+match .screenshots.current name {
+    'Current screenshot'
+}
+
+match .screenshots.origin name {
+    'Original screenshot'
+}
+
+match .screenshots.fail name {
+    'Fail screenshot'
+}

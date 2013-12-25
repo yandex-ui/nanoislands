@@ -1,0 +1,16 @@
+match / {
+    html('<!doctype html>')
+    <html>
+        <head>
+            <meta charset="utf-8"/>
+            <style>body {{ font-family: 'Times New Roman' }}</style>
+            <style>{.css}</style>
+        </head>
+
+        <body>
+            <div id="test">
+                apply . content
+            </div>
+        </body>
+    </html>
+}

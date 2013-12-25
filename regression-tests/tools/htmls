@@ -1,0 +1,171 @@
+#!/usr/bin/env node
+/**
+ * Входные переменные
+ *     --files – файлы, в которых описаны тесты
+ *         module.exports = {
+ *             'test name': {
+ *                 tpl: 'path/to/template.yate',
+ *                 args: {
+ *                     // данные, с которыми будет вызван шаблон
+ *                 }
+ *             }
+ *         }
+ *
+ *     --dir – директория, куда будут складываться готоые html файлы
+ *
+ *     --result – файл, куда будет выведен результат выполнения скрипта в виде json
+ *         [{
+ *             id: 1,
+ *             name: 'test name',
+ *             tpl: 'path/to/template.yate',
+ *             html: 'html/1.html',
+ *             htmlOrigin: 'html/1.origin.html',
+ *             args: {
+ *                 // данные, с которыми будет вызван шаблон
+ *             }
+ *         }]
+ */
+
+var path = require('path');
+var fs = require('fs');
+var cwd = process.cwd();
+var id = 0;
+
+var argv = require('optimist').argv;
+
+var pathYate = path.resolve(argv.yate || cwd, '../node_modules/yate');
+var pathYateIndexTpl = path.resolve('tools/index.yate');
+var pathYateNanoTpl = path.resolve('../nanoislands.yate');
+var pathYateNanoOriginTpl = path.resolve('origin/nanoislands.yate');
+
+if (argv.files) {
+
+    var files = argv.files.split(' ');
+
+    var json = makeJsonForTests(files);
+
+
+    var yate = require(path.join(pathYate, 'lib/yate.js'));
+    require(path.join(pathYate, 'lib/actions.js'));
+
+
+    var jsRuntime = fs.readFileSync(path.join(pathYate, 'lib/runtime.js'), 'utf-8');
+
+
+    var jsExternals = fs.readFileSync(path.resolve('../externals.yate.js'), 'utf-8');
+    var jsExternalsOrigin = fs.readFileSync(path.resolve('origin/externals.yate.js'), 'utf-8');
+
+    var css = fs.readFileSync(path.resolve(cwd, '../nanoislands.css'), 'utf-8')
+        .replace(/:hover/ig, '._hover').replace(/:active/ig, '._active');
+    var cssOrigin = fs.readFileSync(path.resolve(cwd, 'origin/nanoislands.css'), 'utf-8')
+        .replace(/:hover/ig, '._hover').replace(/:active/ig, '._active');
+
+    // var script = fs.readFileSync(path.resolve(cwd, '../nanoislands.js'), 'utf-8');
+    // var scriptOrigin = fs.readFileSync(path.resolve(cwd, 'origin/nanoislands.js'), 'utf-8');
+
+    var jsYate = {};
+
+    json.forEach(function(test) {
+        if (!jsYate[test.tpl]) {
+
+            jsYate[test.tpl] = {
+                current: compileYate(test.tpl, test.yate, [ pathYateNanoTpl , pathYateIndexTpl ], jsExternals, jsRuntime),
+                origin: compileYate(test.tpl, test.yate, [ pathYateNanoOriginTpl , pathYateIndexTpl ], jsExternalsOrigin, jsRuntime)
+            }
+        }
+
+        var funcsTpl = jsYate[test.tpl];
+
+        var html = funcsTpl.current({
+            css: css,
+            args: test.args
+        });
+
+        var htmlOrigin = funcsTpl.origin({
+            css: cssOrigin,
+            args: test.args
+        });
+
+        fs.writeFileSync(test.html, html);
+        fs.writeFileSync(test.htmlOrigin, htmlOrigin);
+    });
+
+    if (argv.json) {
+        fs.writeFileSync(argv.json, JSON.stringify(json));
+    } else {
+        console.log(JSON.stringify(json));
+    }
+
+
+} else {
+    throw 'Argument `--file` has not defined.';
+}
+
+
+function compileYate(path, yateTest, pathesInclude, jsExternals, jsRuntime) {
+    var yateMod = [
+        'include "' + pathesInclude[0] + '"',
+        'include "' + pathesInclude[1] + '"',
+        yateTest
+    ].join('\n');
+
+    var pathYateTemp = path + '.tmp';
+
+    fs.writeFileSync(pathYateTemp, yateMod);
+
+    var nameTimer = 'Compile `' + path + '`';
+    console.time(nameTimer);
+    var jsCompiled = yate.compile(pathYateTemp).js;
+    console.timeEnd(nameTimer);
+
+    fs.unlinkSync(pathYateTemp);
+
+
+    var js = [
+        jsRuntime,
+        jsExternals,
+        jsCompiled,
+        'return yr.run("main", data, "")'
+    ].join(';');
+
+    return new Function('data', js);
+}
+
+function makeJsonForTests(files) {
+    var result = [];
+
+    files.forEach(function(file) {
+        var pathTest = path.resolve(cwd, file);
+        var dirTest = path.dirname(pathTest);
+        var tests = require(pathTest);
+
+        for (var nameTest in tests) {
+            var paramsTest = tests[nameTest];
+
+            if (paramsTest.tpl) {
+                var idTest = id++;
+                var pathHTML = path.join(cwd, 'html', idTest + '.html');
+                var pathHTMLOrigin = path.join(cwd, 'html', idTest + '.origin.html');
+                var pathYate = path.join(dirTest, paramsTest.tpl);
+                var argsTest = paramsTest.args;
+
+                result.push({
+                    id: idTest,
+                    name: nameTest,
+                    tpl: pathYate,
+                    yate: fs.readFileSync(pathYate, 'utf-8'),
+                    html: pathHTML,
+                    htmlOrigin: pathHTMLOrigin,
+                    args: argsTest || {},
+                    click: paramsTest.click
+                });
+            } else {
+                throw 'Param `tpl` has not defined for `' + nameTest + '` test in ' + pathTest;
+            }
+        }
+    });
+
+    return result;
+}
+
+

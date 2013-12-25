@@ -1,6 +1,4 @@
 [submodule "test/phantomcss"]
 	path = test/phantomcss
 	url = git://github.com/Huddle/PhantomCSS.git
-[submodule "demo"]
-	path = demo
-	url = https://github.com/yandex-ui/nanoislands.git
+
