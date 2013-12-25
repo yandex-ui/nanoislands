@@ -23,6 +23,7 @@ func checkbox-radio() {
 func checkbox-check() {
     radio = {
         'text': 'Дерево'
+        'id': 'task'
         'checked': true()
         'attrs': {
             'name': 'task'
