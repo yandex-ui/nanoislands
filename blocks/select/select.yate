@@ -31,7 +31,7 @@ match .select nb {
                   }
               </span>
           </span>
-          <select id="nb-select_{ .id }" class="nb-select__fallback" name ="{ .id }">
+          <select id="nb-select_{ .id }" class="nb-select__fallback" name ="{ .attrs.name }">
               if ( .disabled ) {
                   @disabled = 'disabled'
               }

@@ -27,6 +27,9 @@ nb-select( {
   'size': 's'
   'id': 'select1'
   'class': 'my-sp-class'
+  'attrs': {
+        'name': 'my-name'
+   }
   'theme': 'dark'
   'items': [
       {

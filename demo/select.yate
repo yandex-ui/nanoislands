@@ -2,6 +2,9 @@ func select-medium() {
     nb-select( {
       'size': 'm'
       'id': 'select1'
+      'attrs': {
+        'name': 'myname'
+      }
       'class': 'my-test-class'
       'items': [
           {
