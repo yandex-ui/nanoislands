@@ -1,12 +1,12 @@
 /*
-* jQuery UI Depends:
-*        jquery.ui.autocomplete.js
-*        jquery.ui.button.js
-*        jquery.ui.core.js
-*        jquery.ui.widget.js
-*        jquery.ui.position.js
-*        jquery.ui.menu.js
-*/
+ * jQuery UI Depends:
+ *        jquery.ui.autocomplete.js
+ *        jquery.ui.button.js
+ *        jquery.ui.core.js
+ *        jquery.ui.widget.js
+ *        jquery.ui.position.js
+ *        jquery.ui.menu.js
+ */
 
 nb.define('select', {
     events: {
@@ -16,28 +16,28 @@ nb.define('select', {
     },
 
     /**
-    * Init select
-    * @fires 'nb-select_inited'
-    */
+     * Init select
+     * @fires 'nb-select_inited'
+     */
 
     onInit: function () {
-        var that = this;
-        nb.init(that);
-        that.data = that.data();
+        nb.init(this);
+        this.$node = $(this.node)
+        this.data = this.data();
 
         // find elements and values
-        var c = that.children();
-        that.button = c[0];
-        that.$fallback = $(that.node).find('.nb-select__fallback');
-        that.$selected = that.$fallback.children(':selected');
+        this.button = this.children()[0];
 
-        that.value = that.$selected.val() ? that.$selected.text() : '';
+        this.$fallback = this.$node.find('.nb-select__fallback');
+        this.$selected = this.$fallback.children(':selected');
 
-        this.button.setText(that.value)
+        this.value = this.$selected.val() ? this.$selected.text() : '';
+
+        this.button.setText(this.value)
 
 
         // preparing control depending on configuration and content
-        that.controlPrepare();
+        this.controlPrepare();
         this.trigger('nb-select_inited');
     },
 
@@ -64,7 +64,7 @@ nb.define('select', {
         }
 
         // select JUI control init
-        $(that.node).autocomplete({
+        this.$node.autocomplete({
             delay: 0,
             minLength: 0,
             autoFocus: false,
@@ -111,7 +111,7 @@ nb.define('select', {
             }
         }).addClass('ui-widget ui-widget-content');
 
-        that.$jUI = $(that.node).data('uiAutocomplete')
+        that.$jUI = that.$node.data('uiAutocomplete')
 
         // redefine one menu item rendering method, fires every time, then popup opening
         that.$jUI._renderItem = function (ul, item) {
@@ -142,17 +142,17 @@ nb.define('select', {
         };
 
         // add click event for button
-        $(that.button.node).click(function (evt) {
+        $(this.button.node).on('click', function (evt) {
             // иначе сабмитит форму при клике
             evt.preventDefault();
             // close if already visible
-            if ($(that.node).autocomplete('widget').css('display') == 'block') {
-                $(that.node).autocomplete('close');
+            if (that.$node.autocomplete('widget').css('display') == 'block') {
+                that.$node.autocomplete('close');
                 return;
             }
             // pass empty string as value to search for, displaying all results
-            $(that.node).autocomplete('search', '');
-            $(that.node).focus();
+            that.$node.autocomplete('search', '');
+            that.$node.focus();
         });
     },
 
@@ -185,7 +185,7 @@ nb.define('select', {
      * Returns state of the select
      *
      * @return {Object} -
-         * {
+     * {
          *     value: '..'
          *     text: '..'
          * }
@@ -195,8 +195,82 @@ nb.define('select', {
             value: this.value,
             text: this.text
         }
-    }
+    },
 
+    /**
+     * Disables the select
+     * @fires 'nb-select_disabled'
+     * @returns {nb.block}
+     */
+    disable: function () {
+        if (this.isEnabled()) {
+            this.button.disable();
+            this.trigger('nb-select_disabled');
+        }
+        return this;
+    },
+
+    /**
+     * Enables the select
+     * @fires 'nb-select_enabled'
+     * @returns {nb.block}
+     */
+    enable: function () {
+        if (!this.isEnabled()) {
+            this.button.enable();
+            this.trigger('nb-select_enabled');
+        }
+        return this;
+    },
+
+    /**
+     * Return state of the select
+     * @returns {Boolean}
+     */
+    isEnabled: function () {
+        return this.button.isEnabled();
+    },
+
+    /**
+     * Focus the select
+     * @fires 'nb-select_focused'
+     * @returns {nb.block}
+     */
+    focus: function () {
+        if (this.isEnabled()) {
+            this.button.focus();
+        }
+        this.trigger('nb-select_focused');
+        return this;
+    },
+
+    /**
+     * Blur the select
+     * @fires 'nb-select_blured'
+     * @returns {nb.block}
+     */
+    blur: function () {
+        if (this.isEnabled()) {
+            this.button.blur();
+        }
+        this.trigger('nb-select_blured');
+        return this;
+    },
+
+    /**
+     * Destroy the select
+     * @fires 'nb-select_destroyed'
+     */
+    destroy: function () {
+        if (this.$node && this.$node.data('uiAutocomplete')) {
+            this.button.destroy();
+            $(this.button.node).off('click');
+            this.$node.autocomplete('destroy');
+        }
+
+        this.trigger('nb-select_destroyed');
+        nb.destroy(this.node.getAttribute('id'));
+    }
 });
 
 
