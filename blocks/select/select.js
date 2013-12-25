@@ -29,13 +29,8 @@ nb.define('select', {
         this.button = this.children()[0];
 
         this.$fallback = this.$node.find('.nb-select__fallback');
-        this.$selected = this.$fallback.children(':selected');
 
-        that.value = that.$selected.val();
-        that.text = that.value ? that.$selected.text() : '';
-
-        this.button.setText(this.text)
-
+        this._updateFromSelect();
 
         // preparing control depending on configuration and content
         this.controlPrepare();
@@ -231,6 +226,44 @@ nb.define('select', {
     isEnabled: function () {
         return this.button.isEnabled();
     },
+
+    /*
+     * Set new items for select
+     * @params {Array} source New source
+     */
+    setSource: function(source) {
+        var html = [];
+        for (var i = 0, j = source.length; i < j; i++) {
+            var item = source[i];
+            html.push(
+                '<option' +
+                    ' label="' + item.text + '"' +
+                    ' value="' + item.value + '"' +
+                    (item.selected ? ' selected="selected"' : '') +
+                '>' + item.text + '</option>'
+            );
+        }
+
+        // set new source for select
+        this.$fallback.empty().append(html);
+
+        this._updateFromSelect();
+    },
+
+    /**
+     * Save value and text from <select> node.
+     * @private
+     */
+    _updateFromSelect: function() {
+        // get selected <option/>
+        this.$selected = this.$fallback.children(':selected');
+
+        this.value = this.$selected.val();
+        // &nbsp; - to prevent button from collapse if no text on <option/>
+        this.text = this.$selected.text() || '&nbsp;';
+
+        this.button.setText(this.text)
+    }
 
     /**
      * Focus the select
