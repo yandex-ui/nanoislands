@@ -10,7 +10,7 @@
 ### Optional attributes
 * size: m / s
 * theme: normal / action (yellow) / dark / pseudo
-* id: ...
+* id: block@id and select@name
 * direction: bottom / top — open default direction
 * class: ['my_class1', 'my_class2']
 * disabled: true()
