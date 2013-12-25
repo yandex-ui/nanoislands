@@ -1,5 +1,4 @@
-include 'blocks/common/externals.yate'
-include 'blocks/common/blocks.yate'
+include 'blocks/common/common.yate'
 
 include 'blocks/button/button.yate'
 include 'blocks/popup/popup.yate'
