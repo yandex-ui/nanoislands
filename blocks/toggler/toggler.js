@@ -1,14 +1,14 @@
 nb.define('toggler', {
     events: {
-        'init'  : 'oninit',
-        'click' : 'toggle'
+        'init': 'oninit',
+        'click': 'toggle'
     },
 
     /**
      * Init the toggler
      * @fires 'nb-toggler_inited'
      */
-    oninit: function(){
+    oninit: function() {
         this.$node = $(this.node);
         this.$checkbox = this.$node.find('.nb-toggler__checkbox');
         this.trigger('nb-toggler_inited');
@@ -26,7 +26,7 @@ nb.define('toggler', {
     /**
      * Set value of the checked state
      * Do nothing if toggler is disabled
-     * @param {Boolean} value of the check state
+     * @param {Boolean} state of the check state
      * @fires 'nb-toggler_checked'
      */
     setValue: function(state) {
@@ -46,7 +46,7 @@ nb.define('toggler', {
      * Do nothing if toggler is disabled
      * @fires 'nb-toggler_checked'
      */
-    toggle: function(){
+    toggle: function() {
         if (this.$node.hasClass('nb-toggler_disabled')) {
             return this;
         }

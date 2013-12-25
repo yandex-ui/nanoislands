@@ -21,7 +21,13 @@
     "borschik": "0.4.x",
     "autoprefixer": "0.7.x",
     "stylus": "0.41.x",
-    "csso": "1.3.x"
+    "csso": "1.3.x",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-mocha": "*",
+    "jscs": "1.0.11",
+    "grunt-jscs-checker": "~0.3.0"
   },
   "engines": {
     "node": "*"

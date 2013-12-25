@@ -26,7 +26,10 @@ publish:
 	make all
 	npm publish
 
+grunt: node_modules
+	$(NPM_BIN)/grunt
+
 clean:
-	rm -rf demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js
+	rm -rf demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js grunt
 
 .PHONY: all publish clean

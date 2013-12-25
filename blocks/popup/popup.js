@@ -1,12 +1,12 @@
- /*
-  * jQuery UI Depends:
-  *        jquery.ui.dialog.js
-  *        jquery.ui.core.js
-  *        jquery.ui.widget.js
-  *        jquery.ui.button.js
-  *        jquery.ui.draggable.js
-  *        jquery.ui.mouse.js
-  *        jquery.ui.position.js
+/*
+ * jQuery UI Depends:
+ *        jquery.ui.dialog.js
+ *        jquery.ui.core.js
+ *        jquery.ui.widget.js
+ *        jquery.ui.button.js
+ *        jquery.ui.draggable.js
+ *        jquery.ui.mouse.js
+ *        jquery.ui.position.js
  */
 
 (function() {
@@ -79,7 +79,8 @@
             // Перестановка базового опорного свойства.
             this.options.position.using = function(props, ui) {
                 var position = $.extend({}, props);
-                var width, height;
+                var width;
+                var height;
 
                 if (ui.vertical == 'bottom') {
                     height = that.window.height();
@@ -338,10 +339,9 @@
         }
     };
 
-
     popup.onclose = function() {
 
-         //  Снимаем флаг о том, что попап открыт.
+        //  Снимаем флаг о том, что попап открыт.
         this.where = null;
 
         if (this.node && this.node.widget && this.node.widget.isOpen()) {
@@ -433,14 +433,14 @@
 
     nb.define('popup', popup);
 
-    /** 
+    /**
      *  Функция возвращает строку с модификаторами
      *  для обертки попапа, которую добавляет jquery ui,
      *  в соответсвии с модификаторами самого попапа
      *
      *  Например, для попапа заданы классы-модификаторы nb-popup_mod и nb-popup_another-mod,
      *  функция вернет строку 'nb-popup-outer_mod nb-popup-outer_another-mod'
-     *  
+     *
      */
     function _getUIDialogExtraClass() {
         var popupClasses = this.element.attr('class').split(' ') || [];

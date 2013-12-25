@@ -1,4 +1,4 @@
- /*
+/*
  * jQuery UI Depends:
  *        jquery.ui.button.js
  *        jquery.ui.core.js
@@ -7,7 +7,7 @@
 
 nb.define('button', {
     events: {
-        'init': 'oninit',
+        'init': 'oninit'
     },
 
     /**
@@ -15,7 +15,7 @@ nb.define('button', {
      * @fires 'nb-button_inited'
      */
 
-    oninit: function () {
+    oninit: function() {
         this.$node = $(this.node);
         $(this.node).button();
         this.trigger('nb-button_inited');
@@ -23,11 +23,11 @@ nb.define('button', {
 
     /**
      * Set text of the button
-     * @param text {String} — text for the button
+     * @param {String} text  — text for the button
      * @fires 'nb-button_text-setted'
      * @returns {nb.block}
      */
-    setText: function (text) {
+    setText: function(text) {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.find('.nb-button__text').html(text);
             this.trigger('nb-button_text-setted');
@@ -40,17 +40,17 @@ nb.define('button', {
      * @returns {String} — text of the button
      *
      */
-    getText: function () {
+    getText: function() {
         return this.querySelector('.nb-button__text').innerHTML();
     },
 
     /**
      * Set href of the link button
-     * @param href {String} — link for the button
+     * @param {String} href — link for the button
      * @fires 'nb-button_href-setted'
      * @returns {nb.block}
      */
-    setUrl: function (href) {
+    setUrl: function(href) {
         this.setAttribute('href');
         this.trigger('nb-button_href-setted');
         return this;
@@ -60,7 +60,7 @@ nb.define('button', {
      * Get href of the link button
      * @returns {String} — text of the button
      */
-    getUrl: function () {
+    getUrl: function() {
         return this.getAttribute('href');
     },
 
@@ -69,7 +69,7 @@ nb.define('button', {
      * @fires 'nb-button_disabled'
      * @returns {nb.block}
      */
-    disable: function () {
+    disable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('disable');
             this.$node.addClass('nb-button_disabled');
@@ -83,7 +83,7 @@ nb.define('button', {
      * @fires 'nb-button_enabled'
      * @returns {nb.block}
      */
-    enable: function () {
+    enable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('enable');
             this.$node.removeClass('nb-button_disabled');
@@ -96,7 +96,7 @@ nb.define('button', {
      * Return state of the button
      * @returns {Boolean}
      */
-    isEnabled: function () {
+    isEnabled: function() {
 
         return !this.node.hasAttribute('disabled');
     },
@@ -106,8 +106,8 @@ nb.define('button', {
      * @fires 'nb-button_focused'
      * @returns {nb.block}
      */
-    focus: function () {
-        if(this.isEnabled()){
+    focus: function() {
+        if (this.isEnabled()) {
             this.$node.focusin();
         }
         this.trigger('nb-button_focused');
@@ -119,8 +119,8 @@ nb.define('button', {
      * @fires 'nb-button_blured'
      * @returns {nb.block}
      */
-    blur: function () {
-        if(this.isEnabled()){
+    blur: function() {
+        if (this.isEnabled()) {
             this.$node.focusout();
         }
         this.trigger('nb-button_blured');
@@ -131,7 +131,7 @@ nb.define('button', {
      * Destroy the button
      * @fires 'nb-button_destroyed'
      */
-    destroy: function () {
+    destroy: function() {
         // вызвали destroy в одном методе, но ссылка на кнопку была сохранена в другом
         // в результате повторный вызов и ошибка в консоли
         if (this.$node && this.$node.data('uiButton')) {

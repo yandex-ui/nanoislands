@@ -16,29 +16,31 @@ nb.define('progress', {
 
     /**
      * Изменяет значение прогресс бара
-     * @param {String} Новое значение.
+     * @param {String|Number} newVal —  Новое значение.
      */
 
     update: function(newVal) {
-        var newVal = parseFloat(newVal, 10)
+        var val = parseFloat(newVal);
 
-        this.$bar.css({width: newVal + '%'})
+        this.$bar.css({width: val + '%'});
 
-        if (this.type == 'percentage'){
-            this.$title.html(newVal + '%')
+        if (this.type == 'percentage') {
+            this.$title.html(val + '%');
         }
 
-        this.data('progress', newVal)
+        this.data('progress', val);
     },
 
     /**
      * Меняет значение на единицу
      */
     tick: function() {
-        var newVal = parseFloat(this.data('progress'), 10)
+        var newVal = parseFloat(this.data('progress'));
 
-        newVal < 100 ? newVal++ : newVal
+        if (newVal < 100) {
+            newVal++;
+        }
 
-        this.update(newVal)
+        this.update(newVal);
     }
-})
+});

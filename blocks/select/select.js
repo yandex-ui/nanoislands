@@ -20,9 +20,9 @@ nb.define('select', {
      * @fires 'nb-select_inited'
      */
 
-    onInit: function () {
+    onInit: function() {
         nb.init(this);
-        this.$node = $(this.node)
+        this.$node = $(this.node);
         this.data = this.data();
 
         // find elements and values
@@ -40,7 +40,7 @@ nb.define('select', {
     /**
      * preparing control depending on configuration and content
      */
-    controlPrepare: function () {
+    controlPrepare: function() {
         var that = this;
         // preparing position parameters for popup from direction data
         var position = {};
@@ -66,8 +66,8 @@ nb.define('select', {
             autoFocus: false,
             position: position,
             appendTo: that.node,
-            source: function (request, response) {
-                response(that.$fallback.children('option').map(function () {
+            source: function(request, response) {
+                response(that.$fallback.children('option').map(function() {
                     return {
                         label: $(this).text(),
                         value: $(this).val(),
@@ -75,7 +75,7 @@ nb.define('select', {
                     };
                 }));
             },
-            select: function (event, ui) {
+            select: function(event, ui) {
                 ui.item.option.selected = true;
 
                 that.$jUI._trigger('selected', event, {
@@ -83,22 +83,22 @@ nb.define('select', {
                 });
             },
             // delegate handler on 'outer' click on open
-            open: function (event, ui) {
+            open: function(event, ui) {
                 that.$jUI._on(that.$jUI.document, {
                     // on 'outer' mousedown close control
-                    mousedown: function (e) {
+                    mousedown: function(e) {
                         if (e.which == 1 && !$.contains(that.$jUI.element.get(0), e.target)) {
                             this.close();
                         }
                     }
-                })
+                });
                 that.trigger('open', {
                     event: event,
                     ui: ui
                 });
             },
 
-            close: function (event, ui) {
+            close: function(event, ui) {
                 that.$jUI._off(that.$jUI.document, 'mousedown');
                 that.trigger('close', {
                     event: event,
@@ -107,10 +107,10 @@ nb.define('select', {
             }
         }).addClass('ui-widget ui-widget-content');
 
-        that.$jUI = that.$node.data('uiAutocomplete')
+        that.$jUI = that.$node.data('uiAutocomplete');
 
         // redefine one menu item rendering method, fires every time, then popup opening
-        that.$jUI._renderItem = function (ul, item) {
+        that.$jUI._renderItem = function(ul, item) {
             var $itemNode = $('<li class="nb-select__item"></li>');
 
             if (item.option.selected) {
@@ -126,9 +126,9 @@ nb.define('select', {
 
         // redefine valueMethod, extend with button text changing and fallback select value changing
         // if value not provided, return current value of fallback select
-        that.$jUI.valueMethod = function (value) {
+        that.$jUI.valueMethod = function(value) {
             if (value) {
-                var text = that.$fallback.children('[value="' + value + '"]').text()
+                var text = that.$fallback.children('[value="' + value + '"]').text();
                 that.setState({
                     value: value,
                     text: text
@@ -138,7 +138,7 @@ nb.define('select', {
         };
 
         // add click event for button
-        $(this.button.node).on('click', function (evt) {
+        $(this.button.node).on('click', function(evt) {
             // иначе сабмитит форму при клике
             evt.preventDefault();
             // close if already visible
@@ -156,7 +156,7 @@ nb.define('select', {
      * Save value and text from <select> node.
      * @private
      */
-    _updateFromSelect: function () {
+    _updateFromSelect: function() {
         // get selected <option/>
         this.$selected = this.$fallback.children(':selected');
 
@@ -164,24 +164,21 @@ nb.define('select', {
         // &nbsp; - to prevent button from collapse if no text on <option/>
         this.text = this.$selected.text() || '&nbsp;';
 
-        this.button.setText(this.text)
+        this.button.setText(this.text);
     },
 
     /**
      * Changes a value of control, text on the button and select value it the fallback
-     *
-     * @param name — event id that caused the change
-     * @param params — {
+     * @param {Object} params — {
          *     text: '..'
          *     value: '..'
          * }
      * @fires 'nb-select_changed'
      */
-    setState: function (params) {
+    setState: function(params) {
         this.value = params.value;
         this.text = params.text;
         this.$selected.removeAttr('selected');
-
 
         this.$selected = this.$fallback.children('[value="' + this.value + '"]').attr('selected', 'selected');
         this.button.setText(this.text);
@@ -189,7 +186,7 @@ nb.define('select', {
         this.trigger('nb-select_changed');
 
         this.$fallback.val(params.value);
-        return this
+        return this;
     },
 
     /**
@@ -201,11 +198,11 @@ nb.define('select', {
          *     text: '..'
          * }
      */
-    getState: function () {
+    getState: function() {
         return {
             value: this.value,
             text: this.text
-        }
+        };
     },
 
     /**
@@ -213,7 +210,7 @@ nb.define('select', {
      * @fires 'nb-select_disabled'
      * @returns {nb.block}
      */
-    disable: function () {
+    disable: function() {
         if (this.isEnabled()) {
             this.button.disable();
             this.trigger('nb-select_disabled');
@@ -226,7 +223,7 @@ nb.define('select', {
      * @fires 'nb-select_enabled'
      * @returns {nb.block}
      */
-    enable: function () {
+    enable: function() {
         if (!this.isEnabled()) {
             this.button.enable();
             this.trigger('nb-select_enabled');
@@ -238,7 +235,7 @@ nb.define('select', {
      * Return state of the select
      * @returns {Boolean}
      */
-    isEnabled: function () {
+    isEnabled: function() {
         return this.button.isEnabled();
     },
 
@@ -248,7 +245,7 @@ nb.define('select', {
      * @fires 'nb-select_enabled'
      * @returns {nb.block}
      */
-    setSource: function (source) {
+    setSource: function(source) {
         var html = [];
         for (var i = 0, j = source.length; i < j; i++) {
             var item = source[i];
@@ -273,23 +270,21 @@ nb.define('select', {
      * Get items from select
      * @returns {Array} source
      */
-    getSource: function () {
-        var source = this.$fallback.children('option').map(function () {
+    getSource: function() {
+        return this.$fallback.children('option').map(function() {
             return {
                 label: $(this).text(),
                 value: $(this).val()
             };
-        })
-        return source;
+        });
     },
-
 
     /**
      * Focus the select
      * @fires 'nb-select_focused'
      * @returns {nb.block}
      */
-    focus: function () {
+    focus: function() {
         if (this.isEnabled()) {
             this.button.focus();
         }
@@ -302,7 +297,7 @@ nb.define('select', {
      * @fires 'nb-select_blured'
      * @returns {nb.block}
      */
-    blur: function () {
+    blur: function() {
         if (this.isEnabled()) {
             this.button.blur();
         }
@@ -314,7 +309,7 @@ nb.define('select', {
      * Destroy the select
      * @fires 'nb-select_destroyed'
      */
-    destroy: function () {
+    destroy: function() {
         if (this.$node && this.$node.data('uiAutocomplete')) {
             this.button.destroy();
             $(this.button.node).off('click');
@@ -325,5 +320,3 @@ nb.define('select', {
         nb.destroy(this.node.getAttribute('id'));
     }
 });
-
-
