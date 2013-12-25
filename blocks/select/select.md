@@ -51,6 +51,7 @@ nb-select( {
 ### Select methods
 
 ```
+
 var select = nb.block(node);
 
 /**
@@ -78,4 +79,46 @@ select.setState({
      * }
  */
 select.getState();
+
+/**
+ * Disables the select
+ * @fires 'nb-select_disabled'
+ * @returns {nb.block}
+ */
+select.disable()
+
+/**
+ * Enables the select
+ * @fires 'nb-select_enabled'
+ * @returns {nb.block}
+ */
+select.enable();
+
+/**
+ * Return state of the select
+ * @returns {Boolean}
+ */
+select.isEnabled()
+
+/**
+ * Focus the select
+ * @fires 'nb-select_focused'
+ * @returns {nb.block}
+ */
+select.focus()
+
+/**
+ * Blur the select
+ * @fires 'nb-select_blured'
+ * @returns {nb.block}
+ */
+select.blur()
+
+/**
+ * Destroy the select
+ * @fires 'nb-select_destroyed'
+ */
+select.destroy()
+
+
 ```
