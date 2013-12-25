@@ -1,5 +1,5 @@
+/* borschik:include:../node_modules/es5-shim/es5-shim.js */
 /* borschik:include:../libs/nanoblocks.js */
-/* borschik:include:../libs/polyfills.js */
 
 /* borschik:include:button/button.js */
 /* borschik:include:tooltip/tooltip.js */
