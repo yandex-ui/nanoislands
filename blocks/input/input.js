@@ -104,6 +104,8 @@ nb.define('input', {
      * @returns {String|Object} value
     */
     getValue: function() {
+        // get actual value from <input/> and save it to instance
+        this.value = this.$control.val();
         return this.value
     },
 
