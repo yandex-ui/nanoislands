@@ -153,6 +153,21 @@ nb.define('select', {
     },
 
     /**
+     * Save value and text from <select> node.
+     * @private
+     */
+    _updateFromSelect: function () {
+        // get selected <option/>
+        this.$selected = this.$fallback.children(':selected');
+
+        this.value = this.$selected.val();
+        // &nbsp; - to prevent button from collapse if no text on <option/>
+        this.text = this.$selected.text() || '&nbsp;';
+
+        this.button.setText(this.text)
+    },
+
+    /**
      * Changes a value of control, text on the button and select value it the fallback
      *
      * @param name — event id that caused the change
@@ -230,8 +245,10 @@ nb.define('select', {
     /*
      * Set new items for select
      * @params {Array} source New source
+     * @fires 'nb-select_enabled'
+     * @returns {nb.block}
      */
-    setSource: function(source) {
+    setSource: function (source) {
         var html = [];
         for (var i = 0, j = source.length; i < j; i++) {
             var item = source[i];
@@ -240,7 +257,7 @@ nb.define('select', {
                     ' label="' + item.text + '"' +
                     ' value="' + item.value + '"' +
                     (item.selected ? ' selected="selected"' : '') +
-                '>' + item.text + '</option>'
+                    '>' + item.text + '</option>'
             );
         }
 
@@ -248,22 +265,24 @@ nb.define('select', {
         this.$fallback.empty().append(html);
 
         this._updateFromSelect();
+        this.trigger('nb-select_source-setted');
+        return this;
     },
 
-    /**
-     * Save value and text from <select> node.
-     * @private
+    /*
+     * Get items from select
+     * @returns {Array} source
      */
-    _updateFromSelect: function() {
-        // get selected <option/>
-        this.$selected = this.$fallback.children(':selected');
+    getSource: function () {
+        var source = this.$fallback.children('option').map(function () {
+            return {
+                label: $(this).text(),
+                value: $(this).val()
+            };
+        })
+        return source;
+    },
 
-        this.value = this.$selected.val();
-        // &nbsp; - to prevent button from collapse if no text on <option/>
-        this.text = this.$selected.text() || '&nbsp;';
-
-        this.button.setText(this.text)
-    }
 
     /**
      * Focus the select
