@@ -31,9 +31,10 @@ nb.define('select', {
         this.$fallback = this.$node.find('.nb-select__fallback');
         this.$selected = this.$fallback.children(':selected');
 
-        this.value = this.$selected.val() ? this.$selected.text() : '';
+        that.value = that.$selected.val();
+        that.text = that.value ? that.$selected.text() : '';
 
-        this.button.setText(this.value)
+        this.button.setText(this.text)
 
 
         // preparing control depending on configuration and content
