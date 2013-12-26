@@ -1,4 +1,3 @@
-
 describe("Buttton Tests", function() {
     beforeEach(function() {
         var result = yr.run('main', { username: 'bs' });
@@ -8,16 +7,21 @@ describe("Buttton Tests", function() {
 
         this.button = nb.find('button');
     });
+
+    afterEach(function() {
+        delete this.button;
+    });
+
     describe("Init", function() {
         it("Init", function() {
             expect(this.button).to.not.equal(null);
         });
     });
-    describe("setText()", function() {
+    describe("#setText()", function() {
 
         it("check text", function() {
             this.button.setText("Privet");
-            expect($(this.button.node).find('.nb-button__text').html()).to.equal("Privet");
+            expect($(this.button.node).find('.nb-button__text').html()).to.be.equal("Privet");
         });
 
         it("check event", function() {
@@ -32,17 +36,20 @@ describe("Buttton Tests", function() {
         });
     });
 
-    describe("getText()", function() {
-        it("check text", function() {
+    describe("#getText()", function() {
+        it("should return text", function() {
+            expect(this.button.getText()).to.equal("Button");
+        });
+        it("should return new text after setText()", function() {
             this.button.setText("SetText");
             expect(this.button.getText()).to.equal("SetText");
         });
     });
 
-    describe("setUrl()", function() {
+    describe("#setUrl()", function() {
         it("check url", function() {
             this.button.setUrl("http://ya.ru");
-            expect($(this.button.node).attr('href')).to.equal("http://ya.ru");
+            expect($(this.button.node).attr('href')).to.be.equal("http://ya.ru");
         });
 
         it("check event", function() {
@@ -56,14 +63,18 @@ describe("Buttton Tests", function() {
         });
     });
 
-    describe("getUrl()", function() {
-        it("check url", function() {
+    describe("#getUrl()", function() {
+        it("should return url", function() {
+            expect(this.button.getUrl()).to.not.ok();
+        });
+
+        it("should return new url after setUrl()", function() {
             this.button.setUrl("http://yandex.ru");
-            expect(this.button.getUrl()).to.equal("http://yandex.ru");
+            expect(this.button.getUrl()).to.be.equal("http://yandex.ru");
         });
     });
 
-    describe("disable()", function() {
+    describe("#disable()", function() {
         it("check state", function() {
             this.button.disable();
             expect(this.button.isEnabled()).to.not.ok();
@@ -82,7 +93,7 @@ describe("Buttton Tests", function() {
         });
     });
 
-    describe("enable()", function() {
+    describe("#enable()", function() {
         it("check state", function() {
             this.button.disable();
             this.button.enable();
@@ -101,8 +112,5 @@ describe("Buttton Tests", function() {
         });
     });
 
-    afterEach(function() {
-        delete this.button;
-    });
 
 });
