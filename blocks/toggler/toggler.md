@@ -11,9 +11,12 @@ nb-toggler()
 * size — s
 
 ### Optional settings
-
-* disabled — false()
-* checked — false()
+* `'id'` {string}
+* `'name'` {string}
+* `'disabled'` {boolean}
+* `'checked'` {boolean}
+* `'leftText'` {string} 'On'
+* `'rightText'` {string} 'Off'
 
 ### Example
 

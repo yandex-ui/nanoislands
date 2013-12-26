@@ -9,6 +9,8 @@ nb-input(options)
 ```
 
 ### Options
+ * `'id'` {string}
+ * `'name'` {string}
  * `'attrs'` {object} - attrubutes for input node
  * `'content'` {string} - `value` of the input
  * `'disabled'` {boolean}
