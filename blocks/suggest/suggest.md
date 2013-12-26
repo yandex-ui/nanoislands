@@ -9,6 +9,8 @@ nb-suggest(options)
 ```
 
 ### Options
+ * `'id'` {string}
+ * `'name'` {string}
  * `'attrs'` {object} - attrubutes for suggest node
  * `'attrsInput'` {object} - attrubutes for input node
  * `'disabled'` {boolean}

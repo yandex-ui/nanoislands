@@ -1,6 +1,6 @@
 nb.define('checkbox', {
     events: {
-        'init': 'oninit',
+        'init': 'oninit'
     },
 
     /**

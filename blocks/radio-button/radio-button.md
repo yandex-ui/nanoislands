@@ -40,20 +40,19 @@ Default options:
 
 * size: m
 * theme: normal
-* type: radio — **ujin@: looks obsolete — we never check `.type`**
 
 ### Options
-
-* size: s / m / l
-* theme: normal / action (yellow) / dark / pseudo / promo (big yellow)
-* name: ... — name for radio-button group
-* class: [ 'foo' 'bar' 'baz' ] — additional classes for radio-button 
-* group: [] — array of hashes, each hash describes a button: 
-    * content: ... — string of button's content 
-    * value:... — corresponding value
-    * icon: ... — icon name
-    * checked: true() — checked element of radio-group
-    * disabled: true() — for disabled element
+* `'id'` {string}
+* `'size'` {string} `s / m / l`
+* `'theme'` {string} `normal / action (yellow) / dark / pseudo / promo (big yellow)`
+* `'class'` {array}  — additional classes for radio-button
+* `'group'` {array} — array of hashes, each hash describes a button:
+    * `'content'` {string} ... — string of button's content
+    * `'value'` {string}... — corresponding value
+    * `'name'` {string} ... — name for radio-button
+    * `'icon'` {string} ... — icon name
+    * `'checked'` {boolean} — checked element of radio-group
+    * `'disabled'` {boolean}  — for disabled element
 
 ### Initialization
 

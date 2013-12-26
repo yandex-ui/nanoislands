@@ -31,9 +31,17 @@ match .select nb {
                   }
               </span>
           </span>
-          <select id="nb-select_{ .id }" class="nb-select__fallback" name ="{ .attrs.name }">
+          <select id="nb-select_{ .id }" class="nb-select__fallback">
               if ( .disabled ) {
                   @disabled = 'disabled'
+              }
+
+              if .name {
+                  @name = .name
+              }
+
+              if .attrs.name {
+                  @name = .attrs.name
               }
 
               for .items {

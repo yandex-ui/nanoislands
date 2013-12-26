@@ -26,6 +26,14 @@ match .button nb {
             @disabled = 'disabled'
         }
 
+        if .name {
+            @name = .name
+        }
+
+        if .attrs.name {
+            @name = .attrs.name
+        }
+
         if !( .content ) && .icon {
             @class += ' nb-button_only-icon'
         }
@@ -101,9 +109,14 @@ match .buttonAttach nb {
         <span class="nb-file-intruder">
             <span class="nb-file-intruder__inner">
                 <input class="nb-file-intruder__input" type="file">
-                    if .multiple {
+                    if .attrs.multiple || .multiple {
                         @multiple = "multiple"
                     }
+
+                    if .name {
+                        @name = .name
+                    }
+
                     if .attrs.name {
                         @name = "{.attrs.name}"
                     }

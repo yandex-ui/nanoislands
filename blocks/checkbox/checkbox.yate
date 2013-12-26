@@ -27,6 +27,14 @@ match .checkbox nb {
                @{name()} = .
             }
 
+            if .name {
+                @name = .name
+            }
+
+            if .attrs.name {
+                @name = .attrs.name
+            }
+
             if .disabled  {
                  @disabled = 'disabled'
             }

@@ -27,6 +27,7 @@ match .suggest nb {
             'class': 'nb-suggest__input'
             'attrs': .attrsInput
             'disabled': .disabled
+            'name': .name
 
         }
 

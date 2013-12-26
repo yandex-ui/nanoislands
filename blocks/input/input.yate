@@ -37,6 +37,10 @@ match .input nb {
                     @{name()} = .
                 }
 
+                if .name {
+                    @name = .name
+                }
+
                 if .disabled {
                     @disabled = 'disabled'
                 }
@@ -49,6 +53,14 @@ match .input nb {
 match .inputSimple nb {
     <input value="{.content}" data-nb-type='simple' class='nb-input _init nb-input_type_simple'>
         apply . nb-main-attrs
+
+        if .name {
+            @name = .name
+        }
+
+        if .attrs.name {
+            @name = .attrs.name
+        }
 
         if !( .static ){
             @data-nb='input'

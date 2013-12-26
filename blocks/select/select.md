@@ -8,17 +8,18 @@
 * direction: bottom
 
 ### Optional attributes
-* size: m / s
-* theme: normal / action (yellow) / dark / pseudo
-* id: block@id and select@name
-* direction: bottom / top — open default direction
-* class: ['my_class1', 'my_class2']
-* disabled: true()
-* within: '...' - id attr of the container where listing tries to fit in (window default)
-* items: [ {...}, {...}, ... ] - each object in array could have text, value and selected fields
-    * text: 'Карта'
-    * value: 'option1'
-    * selected: true() / false()
+* `'size'` {string} `m / s`
+* `'theme'` {string} `normal / action (yellow) / dark / pseudo`
+* `'id'` {string} block@id and select@name
+* `'name'` {string}
+* `'direction'` {string} bottom / top — open default direction
+* `'class'` {array} `['my_class1', 'my_class2']`
+* `'disabled'` {boolean}
+* `'within'` {string} '...' - id attr of the container where listing tries to fit in (window default)
+* `'items'` {array}  - each object in array could have text, value and selected fields
+    * `'text'` {string} 'Карта'
+    * `'value'` {string} 'option1'
+    * `'selected'` {boolean}
 
 #### Example
 
