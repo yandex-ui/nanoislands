@@ -3,7 +3,7 @@ describe("Checkbox Tests", function () {
     beforeEach(function() {
         var result = yr.run('main', { username: 'bs' });
 
-        $('.content').append(result);
+        $('.content').html(result);
         nb.init();
 
         this.checkbox = nb.find('checkbox');
@@ -11,6 +11,7 @@ describe("Checkbox Tests", function () {
 
     afterEach(function() {
         delete this.checkbox;
+        $('.content').html();
     });
 
     describe("#getValue()", function () {

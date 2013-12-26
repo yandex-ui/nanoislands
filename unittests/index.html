@@ -18,11 +18,12 @@
 
     <script type="text/javascript" src="../node_modules/mocha-phantomjs/node_modules/mocha/mocha.js"></script>
     <script type="text/javascript" src="../node_modules/expect.js/expect.js"></script>
-    <script src="../libs/jquery-ui/jquery-ui-1.10.3.nanoislands.min.js"></script>
-
+    <script type="text/javascript" src="../node_modules/sinon/pkg/sinon.js"></script>
     <script src="../node_modules/yate/lib/runtime.js"></script>
-    <script src="../externals.yate.js"></script>
-    <script src="../nanoislands.js"></script>
+
+    <script type="text/javascript" src="../libs/jquery-ui/jquery-ui-1.10.3.nanoislands.min.js"></script>
+    <script type="text/javascript" src="../externals.yate.js"></script>
+    <script type="text/javascript" src="../nanoislands.js"></script>
 
 
 </head>
@@ -32,7 +33,7 @@
 
     <script type="text/javascript">
         mocha.setup('bdd');
-        mocha.reporter('spec');
+        mocha.reporter('html');
     </script>
     <script src="tests.yate.js"></script>
 

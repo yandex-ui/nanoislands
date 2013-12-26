@@ -1,7 +1,7 @@
 describe("Buttton Tests", function() {
     beforeEach(function() {
         var result = yr.run('main', { username: 'bs' });
-        $('.content').append(result);
+        $('.content').html(result);
 
         nb.init();
 
@@ -10,6 +10,7 @@ describe("Buttton Tests", function() {
 
     afterEach(function() {
         delete this.button;
+        $('.content').html();
     });
 
     describe("Init", function() {
@@ -109,6 +110,21 @@ describe("Buttton Tests", function() {
             this.button.disable();
             this.button.enable();
             expect(flag).to.ok();
+        });
+    });
+
+    describe("#destroy()", function() {
+        var jquspy = sinon.spy($.fn, 'button');
+        var nbspy = sinon.spy(nb, 'destroy');
+
+        it("should call $.fn.button('destroy')", function() {
+            this.button.destroy();
+            sinon.assert.calledWith(jquspy, 'destroy');
+        });
+
+        it("should call nb.destroy('button')", function() {
+            this.button.destroy();
+            sinon.assert.calledWith(nbspy, 'button');
         });
     });
 
