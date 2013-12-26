@@ -173,6 +173,22 @@ nb.define('checkbox', {
      */
     getName: function() {
         return this.$control.prop('name');
+    },
+
+    /**
+     * Returns checkbox value
+     * @returns {String}
+     */
+    getValue: function() {
+        return this.$control.attr('value');
+    },
+
+    /**
+     * Set checkbox value
+     * @returns {String}
+     */
+    setValue: function(value) {
+        return this.$control.attr('value', value);
     }
 
 });

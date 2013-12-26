@@ -5,4 +5,12 @@ match / {
         "content": "Button"
         "id": "button"
     })
+
+    nb-checkbox({
+        "attrs": {
+            "value": "my-value"
+        }
+        "content": "Button"
+        "id": "checkbox"
+    })
 }
