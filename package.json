@@ -29,6 +29,7 @@
         "grunt-mocha-phantomjs": "*",
         "grunt-jscs-checker": "~0.3.0",
         "mocha-phantomjs": "*",
+        "mocha": "*",
         "phantomjs": "*",
         "jscs": "1.0.11",
         "expect.js": "*"
