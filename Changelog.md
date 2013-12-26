@@ -1,3 +1,8 @@
+##### 0.1.27
+
+* fix #81 — Блоку Select нельзя задать ширину
+* [API: Select] nb.select methods getSource and setSource have to operate the same data
+
 ##### 0.1.26
 
 * Unittests suit
