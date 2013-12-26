@@ -13,12 +13,12 @@
         "url": "git://github.com/yandex-ui/nanoislands.git"
     },
     "dependencies": {
+        "es5-shim": "2.1.0",
         "stylobate": "0.19.x",
         "stylobate-islands": "0.18.x"
     },
     "devDependencies": {
         "yate": "0.0.64",
-        "es5-shim": "2.1.0",
         "borschik": "0.4.x",
         "autoprefixer": "0.7.x",
         "stylus": "0.41.x",

@@ -26,7 +26,7 @@ node_modules:
 publish:
 	rm -rf node_modules
 	make clean
-	make all
+	npm test
 	npm publish
 
 grunt: node_modules
