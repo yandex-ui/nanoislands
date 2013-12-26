@@ -3,16 +3,26 @@
 [http://yandex-ui.github.io/nanoislands/](http://yandex-ui.github.io/nanoislands/)
 
 ## Tests
-* `npm test`
+
+```
+
+npm test
+
+```
 
 ## Build package
-* `vim Changelog.md`
-* `vim package.json`
-* `git commit -a -m 'v...'`
-* `git tag 'v...'`
-* `git push origin master`
-* `git push origin 'v...'`
-* `make publish`
+
+```
+
+vim Changelog.md
+vim package.json
+git commit -a -m 'v...'
+git tag 'v...'
+git push origin master
+git push origin 'v...'
+make publish
+
+```
 
 ## Documentation
 * [Button](https://github.com/yandex-ui/nanoislands/blob/master/blocks/button/button.md)
