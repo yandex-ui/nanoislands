@@ -105,14 +105,4 @@ describe("Buttton Tests", function() {
         delete this.button;
     });
 
-    it("setUrl()", function () {
-       button.setUrl("http://ya.ru");
-       expect($(button.node).attr('href')).to.equal("http://ya.ru");
-    });
-
-    it("getUrl()", function () {
-       $(button.node).removeAttr('href');
-       button.setUrl("http://yandex.ru");
-       expect(button.getUrl()).to.equal("http://yandex.ru");
-    });
 });
