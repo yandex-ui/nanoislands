@@ -51,7 +51,7 @@ nb.define('button', {
      * @returns {nb.block}
      */
     setUrl: function(href) {
-        this.setAttribute('href');
+        this.$node.attr('href', href);
         this.trigger('nb-button_href-setted');
         return this;
     },
@@ -61,7 +61,7 @@ nb.define('button', {
      * @returns {String} — text of the button
      */
     getUrl: function() {
-        return this.getAttribute('href');
+        return this.$node.attr('href');
     },
 
     /**
