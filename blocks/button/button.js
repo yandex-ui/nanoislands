@@ -52,7 +52,7 @@ nb.define('button', {
      */
     setUrl: function(href) {
         this.$node.attr('href', href);
-        this.trigger('nb-button_href-setted');
+        this.trigger('nb-button_url-setted');
         return this;
     },
 
@@ -97,8 +97,7 @@ nb.define('button', {
      * @returns {Boolean}
      */
     isEnabled: function() {
-
-        return !this.node.hasAttribute('disabled');
+        return !this.$node.prop("disabled");
     },
 
     /**
