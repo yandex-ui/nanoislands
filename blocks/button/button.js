@@ -51,8 +51,8 @@ nb.define('button', {
      * @returns {nb.block}
      */
     setUrl: function(href) {
-        this.setAttribute('href');
-        this.trigger('nb-button_href-setted');
+        this.$node.attr('href', href);
+        this.trigger('nb-button_url-setted');
         return this;
     },
 
@@ -61,7 +61,7 @@ nb.define('button', {
      * @returns {String} — text of the button
      */
     getUrl: function() {
-        return this.getAttribute('href');
+        return this.$node.attr('href');
     },
 
     /**
@@ -97,8 +97,7 @@ nb.define('button', {
      * @returns {Boolean}
      */
     isEnabled: function() {
-
-        return !this.node.hasAttribute('disabled');
+        return !this.$node.prop("disabled");
     },
 
     /**

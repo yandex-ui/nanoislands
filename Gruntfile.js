@@ -32,4 +32,4 @@ module.exports = function (grunt) {
     grunt.initConfig(gruntConfig);
 
     grunt.registerTask('default', ['jshint', 'jscs', 'mocha_phantomjs']);
-}
+};
