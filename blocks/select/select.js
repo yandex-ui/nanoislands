@@ -271,11 +271,11 @@ nb.define('select', {
      * @returns {Array} source
      */
     getSource: function() {
-        return this.$fallback.children('option').map(function() {
+        return $.map(this.$fallback.children('option'), function(node) {
             return {
-                text: $(this).text(),
-                value: $(this).val()
-            };
+                text: $(node).text(),
+                value: $(node).val()
+            }
         });
     },
 
