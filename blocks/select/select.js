@@ -273,7 +273,7 @@ nb.define('select', {
     getSource: function() {
         return this.$fallback.children('option').map(function() {
             return {
-                label: $(this).text(),
+                text: $(this).text(),
                 value: $(this).val()
             };
         });
