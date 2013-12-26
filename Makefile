@@ -3,13 +3,16 @@ export NPM_BIN
 
 MAKEFLAGS+=-j 4
 
-all: node_modules demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js
+all: node_modules demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js unittests/tests.yate.js
 
 nanoislands.css: $(shell find . -name '*.styl') node_modules
 	node build/build-styl.js > $@
 
 demo/demo.yate.js: $(shell find . -name '*.yate') node_modules
 	$(NPM_BIN)/yate $(CURDIR)/demo/nanoislands.yate > $@
+
+unittests/tests.yate.js: $(shellshell find $(CURDIR)/unittests -name '*.yate') node_modules
+	$(NPM_BIN)/yate $(CURDIR)/unittests/tests.yate > $@
 
 nanoislands.ie.css: $(shell find . -name '*.styl') node_modules
 	node build/build-styl.js ie > $@
@@ -30,6 +33,6 @@ grunt: node_modules
 	$(NPM_BIN)/grunt
 
 clean:
-	rm -rf demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js grunt
+	rm -rf demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js unittests/tests.yate.js grunt
 
 .PHONY: all publish clean

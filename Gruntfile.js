@@ -4,9 +4,10 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks("grunt-jscs-checker");
-//    grunt.loadNpmTasks('grunt-mocha');
+    grunt.loadNpmTasks('grunt-mocha-phantomjs');
 
     var gruntConfig = {};
+
     gruntConfig.jshint = {
         options: {
             jshintrc: '.jshintrc'
@@ -24,15 +25,11 @@ module.exports = function (grunt) {
         }
     };
 
-  /*  gruntConfig.mocha = {
-        options: {
-            bail: true,
-            log: true
-        },
-        index: ['unittest/index.html']
-    };*/
+    gruntConfig.mocha_phantomjs = {
+        all: ['unittests/index.html']
+    };
 
     grunt.initConfig(gruntConfig);
 
-    grunt.registerTask('default', ['jshint', 'jscs']);
+    grunt.registerTask('default', ['jshint', 'jscs', 'mocha_phantomjs']);
 }

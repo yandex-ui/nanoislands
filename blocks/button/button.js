@@ -41,7 +41,7 @@ nb.define('button', {
      *
      */
     getText: function() {
-        return this.querySelector('.nb-button__text').innerHTML();
+        return this.$node.find('.nb-button__text').html();
     },
 
     /**

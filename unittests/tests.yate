@@ -1,0 +1,8 @@
+include '../nanoislands.yate'
+
+match / {
+    nb-button({
+        "content": "Button"
+        "id": "button"
+    })
+}

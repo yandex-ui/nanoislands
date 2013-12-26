@@ -26,9 +26,12 @@
         "grunt": "*",
         "grunt-cli": "*",
         "grunt-contrib-jshint": "*",
-        "grunt-mocha": "*",
+        "grunt-mocha-phantomjs": "*",
+        "grunt-jscs-checker": "~0.3.0",
+        "mocha-phantomjs": "*",
+        "phantomjs": "*",
         "jscs": "1.0.11",
-        "grunt-jscs-checker": "~0.3.0"
+        "expect.js": "*"
     },
     "engines": {
         "node": "*"
