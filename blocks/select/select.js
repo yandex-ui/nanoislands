@@ -275,7 +275,7 @@ nb.define('select', {
             return {
                 text: $(node).text(),
                 value: $(node).val()
-            }
+            };
         });
     },
 
