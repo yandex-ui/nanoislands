@@ -152,6 +152,18 @@ checkbox — nb block
      */
     checkbox.getName();
 
+    /**
+     * Returns checkbox value
+     * @returns {String}
+     */
+    getValue: function()
+
+    /**
+     * Set checkbox value
+     * @returns {String}
+     */
+    setValue: function(value)
+
 ```
 
 
