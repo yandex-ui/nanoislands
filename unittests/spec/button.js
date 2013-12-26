@@ -1,22 +1,30 @@
 describe("Buttton Tests", function () {
-    var result = yr.run('main', { username: 'bs' });
 
-    $('.content').append(result);
-    nb.init();
+    beforeEach(function() {
+        var result = yr.run('main', { username: 'bs' });
 
-    var button = nb.find('button');
+        $('.content').append(result);
+        nb.init();
+
+        this.button = nb.find('button');
+    });
+
+    afterEach(function() {
+        delete this.button;
+    });
 
     it("Init", function () {
-        expect(button).to.not.equal(null);
+        expect(this.button).to.not.equal(null);
     });
 
     it("setText()", function () {
-        button.setText("Privet");
-        expect($(button.node).find('.nb-button__text').html()).to.equal("Privet");
+        this.button.setText("Privet");
+        expect($(this.button.node).find('.nb-button__text').html()).to.equal("Privet");
     });
 
     it("getText()", function () {
-        button.setText("SetText");
-        expect(button.getText()).to.equal("SetText");
+        this.button.setText("SetText");
+        expect(this.button.getText()).to.equal("SetText");
     });
+
 });
