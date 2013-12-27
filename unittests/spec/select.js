@@ -8,6 +8,15 @@ describe("Select Tests", function() {
         delete this.select;
     });
 
+    beforeEach(function() {
+        this.select = nb.find('select');
+    });
+
+    afterEach(function() {
+        delete this.select;
+    });
+
+
     describe("init", function () {
 
         it('should has disabled button after init', function() {

@@ -319,14 +319,12 @@ nb.define('select', {
         var source = this.getSource();
         var index;
 
-        console.log('param', param)
         if (typeof param == 'number' || typeof param == 'string') {
             index = parseInt(param);
         } else if (!(param instanceof Array)) {
             param = [param];
         }
 
-        console.log(index);
         if (index || index == 0) {
             source.splice(index, 1);
         } else {
