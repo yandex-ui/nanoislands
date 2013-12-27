@@ -26,6 +26,25 @@ match / {
         "items": []
     })
 
+    nb-select( {
+      'size': 'm'
+      'id': 'select'
+      'attrs': {
+        'name': 'myname'
+      }
+      'class': 'my-test-class'
+      'items': [
+          {
+              'text': 'Карта'
+              'value': 'option1'
+          }
+          {
+              'text': 'Гибрид'
+              'value': 'option3'
+          }
+      ]
+    })
+
     nb-input({
         "size": "s"
         "attrs": {
@@ -34,5 +53,6 @@ match / {
         "content": "Viktor"
         "id": "input"
         "name": "last-name"
+
     })
 }
