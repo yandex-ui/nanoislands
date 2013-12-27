@@ -329,8 +329,8 @@ nb.define('select', {
             source.splice(index, 1);
         } else {
             param.forEach(function(item) {
-                source = source.filter(function(obj){
-                   return obj.text != item.text && obj.value != item.value;
+                source = source.filter(function(obj) {
+                    return obj.text != item.text && obj.value != item.value;
                 });
             }, this);
         }
