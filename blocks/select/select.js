@@ -127,7 +127,7 @@ nb.define('select', {
         // redefine valueMethod, extend with button text changing and fallback select value changing
         // if value not provided, return current value of fallback select
         that.$jUI.valueMethod = function(value) {
-            if (value) {
+            if (typeof value === 'string') {
                 var text = that.$fallback.children('[value="' + value + '"]').text();
                 that.setState({
                     value: value,
