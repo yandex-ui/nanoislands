@@ -1,3 +1,10 @@
+##### 0.1.28
+
+* fix for #83 — name attr
+* nb.select return common js Array
+* fix for #86 nb-select text bug
+* nb-checkbox use $.fn.prop
+
 ##### 0.1.27
 
 * fix #81 — Блоку Select нельзя задать ширину
