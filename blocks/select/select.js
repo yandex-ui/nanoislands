@@ -242,7 +242,7 @@ nb.define('select', {
     /*
      * Set new items for select
      * @params {Array} source New source
-     * @fires 'nb-select_enabled'
+     * @fires 'nb-select_source-changed'
      * @returns {nb.block}
      */
     setSource: function(source) {
@@ -262,7 +262,7 @@ nb.define('select', {
         this.$fallback.empty().append(html);
 
         this._updateFromSelect();
-        this.trigger('nb-select_source-setted');
+        this.trigger('nb-select_source-changed');
         return this;
     },
 
@@ -277,6 +277,66 @@ nb.define('select', {
                 value: $(node).val()
             };
         });
+    },
+
+    /*
+     * Add items to select
+     * @param {Array|Object} items
+     * @param {Number} index to insert
+     * @fires 'nb-select_source-changed'
+     * @returns {nb.block}
+     */
+    addToSource: function(items, index) {
+        var source = this.getSource();
+
+        if (!(items instanceof Array)) {
+            items = [items];
+        }
+
+        var insertion = items.filter(function(item) {
+            return source.indexOf(item) === -1;
+        }, this);
+
+        if (isNaN(index)) {
+            index = source.length;
+        }
+
+        insertion.forEach(function(item, i) {
+            source.splice(index + i, 0, item);
+        }, this);
+
+        this.setSource(source);
+        return this;
+    },
+
+    /*
+     * Remove items to select
+     * @param {Array|Object|number} items or index
+     * @fires 'nb-select_source-changed'
+     * @returns {nb.block}
+     */
+    removeFromSource: function(param) {
+        var source = this.getSource();
+        var index;
+
+        if (typeof param == 'number' || typeof param == 'string') {
+            index = parseInt(param);
+        } else if (!(param instanceof Array)) {
+            param = [param];
+        }
+
+        if (index || index == 0) {
+            source.splice(index, 1);
+        } else {
+            param.forEach(function(item) {
+                source = source.filter(function(obj){
+                   return obj.text != item.text && obj.value != item.value
+                });
+            }, this);
+        }
+
+        this.setSource(source);
+        return this;
     },
 
     /**
