@@ -1,10 +1,5 @@
 describe("Buttton Tests", function() {
     beforeEach(function() {
-        var result = yr.run('main', { username: 'bs' });
-        $('.content').html(result);
-
-        nb.init();
-
         this.button = nb.find('button');
     });
 
