@@ -1,6 +1,7 @@
 nb.define('checkbox', {
     events: {
-        'init': 'oninit'
+        'init': 'oninit',
+        'click': '_onclick'
     },
 
     /**
@@ -11,7 +12,7 @@ nb.define('checkbox', {
     oninit: function() {
         this.$node = $(this.node);
         this.$control = this.$node.find('input[type]');
-        this.type = this.$node.find('input[type]').attr('type');
+        this.type = this.$control.attr('type');
         if (!this.isChecked()) {
             this.$control.prop('indeterminate', true);
         }
@@ -56,6 +57,19 @@ nb.define('checkbox', {
             this.trigger('nb-' + this.type + '_unchecked');
         }
         return this;
+    },
+
+    _onclick: function(e) {
+        // <label><input/></label> may fires event twice
+        // @see http://www.w3.org/TR/html5/forms.html#labeled-control
+        if (e.target.nodeName === 'INPUT') {
+            // fires block events
+            if (this.$control.prop('checked')) {
+                this.check();
+            } else {
+                this.uncheck();
+            }
+        }
     },
 
     /**
