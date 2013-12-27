@@ -11,6 +11,11 @@ describe("Buttton Tests", function() {
         it("Init", function() {
             expect(this.button).to.not.equal(null);
         });
+
+        it('should be disabled after init', function() {
+            var button = nb.find('button-disabled');
+            expect(button.isEnabled()).to.be.equal(false);
+        });
     });
     describe("#setText()", function() {
 

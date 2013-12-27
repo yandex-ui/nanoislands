@@ -17,7 +17,10 @@ nb.define('button', {
 
     oninit: function() {
         this.$node = $(this.node);
-        $(this.node).button();
+        this.$node.button({
+            // set ui button disabled on init
+            disabled: this.node.hasAttribute('disabled')
+        });
         this.trigger('nb-button_inited');
     },
 
