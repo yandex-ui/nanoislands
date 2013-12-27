@@ -113,17 +113,25 @@ describe("Buttton Tests", function() {
     });
 
     describe("#destroy()", function() {
-        var jquspy = sinon.spy($.fn, 'button');
-        var nbspy = sinon.spy(nb, 'destroy');
+
+        beforeEach(function() {
+            sinon.spy($.fn, 'button');
+            sinon.spy(nb, 'destroy');
+        });
+
+        afterEach(function() {
+            $.fn.button.restore();
+            nb.destroy.restore();
+        });
 
         it("should call $.fn.button('destroy')", function() {
             this.button.destroy();
-            sinon.assert.calledWith(jquspy, 'destroy');
+            expect($.fn.button.calledWithExactly('destroy')).to.be.equal(true);
         });
 
         it("should call nb.destroy('button')", function() {
             this.button.destroy();
-            sinon.assert.calledWith(nbspy, 'button');
+            expect(nb.destroy.calledWithExactly('button')).to.be.equal(true);
         });
     });
 
