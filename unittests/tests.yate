@@ -6,11 +6,23 @@ match / {
         "id": "button"
     })
 
+    nb-button({
+        "content": "Disbaled button"
+        "disabled": true()
+        "id": "button-disabled"
+    })
+
     nb-checkbox({
         "attrs": {
             "value": "my-value"
         }
         "content": "Button"
         "id": "checkbox"
+    })
+
+    nb-select({
+        "disabled": true()
+        "id": "select-disabled"
+        "items": []
     })
 }
