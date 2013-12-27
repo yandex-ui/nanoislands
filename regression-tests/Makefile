@@ -46,6 +46,7 @@ $(FILE_TESTS_JSON): origin $(FILES_TESTS)
 
 origin:
 	(cd .. && rm -rf test/$(DIR_ORIGIN) && git archive --prefix=test/$(DIR_ORIGIN)/ $(commit) | tar x)
+	cd $(DIR_ORIGIN) && $(MAKE)
 
 compare:
 	$(MAKE) $(subst origin,diff,$(wildcard $(DIR_SCREENSHOTS)/*.origin.html.png))

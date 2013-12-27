@@ -2,12 +2,14 @@ func select-medium() {
     nb-select( {
       'size': 'm'
       'id': 'select1'
+      'attrs': {
+        'name': 'myname'
+      }
       'class': 'my-test-class'
       'items': [
           {
               'text': 'Карта'
               'value': 'option1'
-              'selected': 'true'
           }
           {
               'text': 'Спутник'
@@ -71,11 +73,18 @@ func select-medium() {
       'id': 'select5'
       'class': 'my-test-class'
       'theme': 'action'
+      'attrs': {
+        'style': 'width: 120px'
+      }
       'items': [
+          {
+              'text': 'Народная карта'
+              'value': 'option0'
+              'selected': 'true'
+          }
           {
               'text': 'Карта'
               'value': 'option1'
-              'selected': 'true'
           }
           {
               'text': 'Спутник'

@@ -10,12 +10,12 @@ HTML input element.
 
 ### Options
 
-* `id` {string}
-* `class` {array} — additional classes
-* `attrs` {object} — custom DOM attrubutes for input node
-* `content` {string} — `value` of the input
-* `disabled` {boolean}
-* `size` {string} — input size, `s` only (no other sizes supported)
+* `'id'` {string}
+* `'name'` {string}
+* `'attrs'` {object} - attrubutes for input node
+* `'content'` {string} - `value` of the input
+* `'disabled'` {boolean}
+* `'size'` {string}  - input size. `'s'` (no other sizes supported)
 
 ### Examples
 

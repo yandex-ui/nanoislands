@@ -1,3 +1,35 @@
+##### 0.1.28
+
+* fix for #83 — name attr
+* nb.select return common js Array
+* fix for #86 nb-select text bug
+* nb-checkbox use $.fn.prop
+
+##### 0.1.27
+
+* fix #81 — Блоку Select нельзя задать ширину
+* [API: Select] nb.select methods getSource and setSource have to operate the same data
+
+##### 0.1.26
+
+* Unittests suit
+* es5-shim added
+* JShint + jscs + codestyle fixes
+* [API: Select]
+    * API fixes
+    * getSource, setSource methods
+    * item.selected has boolean type
+    * docs
+    * fix #75 — nb.select Одинаковые @id и @name - это плохо
+    * fix #54 — nb.select Empty select block if no selected items in options
+    * fix #73 — nb-checkbox никак нельзя найти через nb.find()
+* [API: Input]
+    * get proper this.value and this.text on init
+    * fix #76 nb.input.getValue() returns this.value, not input.value
+* Arrow Fix background for Firefox
+* Externals declaration moved to nanoislands.yate
+* merged external.yate and blocks.yate
+
 ##### 0.1.25
 
 * [API: Checkbox] events, methods, docs

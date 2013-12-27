@@ -8,14 +8,15 @@
 
 ### Optional attributes
 
-* `id` {string}
-* `class` {array} — additional classes ['my_class1', 'my_class2']
-* `size` {string} — size, `s` or `m`
-* `type` {string} — type, `checkbox` or `radio`
-* `disabled` {boolean} — `true()` to disable button
-* `checked` {boolean} — `true()` for checked button
-* `text` {string} — text of the label
-* `attrs` {object} — — custom DOM attributes for checkbox input, e.g. `{ 'attr2: 'value2' }`
+* `'size'` {string} `'s'` / `'m'`
+* `'id'` {string}...
+* `'name'` {string}...
+* `'class'` {array} `['my_class1', 'my_class2']` — additional classes
+* `'type'` {string} `'checkbox'` / `'radio'`
+* `'disabled'` {boolean} — disabled button
+* `'checked'` {boolean} — checked button
+* `'text'` {string} — text of the label
+* `'attrs'` {object} `{'attr2': 'value2'}` — custom DOM attributes for checkbox input
 
 
 #### Example
@@ -150,6 +151,18 @@ checkbox — nb block
      * @returns {String|Object} name
      */
     checkbox.getName();
+
+    /**
+     * Returns checkbox value
+     * @returns {String}
+     */
+    getValue: function()
+
+    /**
+     * Set checkbox value
+     * @returns {String}
+     */
+    setValue: function(value)
 
 ```
 

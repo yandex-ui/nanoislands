@@ -5,17 +5,17 @@ nb.define('input', {
     },
 
     /**
-    * Init input
-    * @fires 'nb-input_inited'
-    */
+     * Init input
+     * @fires 'nb-input_inited'
+     */
     oninit: function() {
         var that = this;
 
-        this.data = this.data()
+        this.data = this.data();
         this.$node = $(this.node);
 
-        if (this.data.type == 'simple'){
-            this.$control = this.$node
+        if (this.data.type == 'simple') {
+            this.$control = this.$node;
         } else {
             this.$control = this.$node.find('.nb-input__controller');
         }
@@ -91,10 +91,10 @@ nb.define('input', {
      * @param {String|Object} value
      * @fires 'nb-input_value-setted'
      * @returns {nb.block}
-    */
+     */
     setValue: function(value) {
         this.value = value;
-        this.$control.val(value)
+        this.$control.val(value);
         this.trigger('nb-input_value-setted');
         return this;
     },
@@ -102,24 +102,26 @@ nb.define('input', {
     /**
      * Get value of the input
      * @returns {String|Object} value
-    */
+     */
     getValue: function() {
-        return this.value
+        // get actual value from <input/> and save it to instance
+        this.value = this.$control.val();
+        return this.value;
     },
 
     /**
      * Get name of the input
      * @returns {String|Object} name
-    */
+     */
     getName: function() {
         return this.$control.prop('name');
     },
 
     /**
-    * Return state of the input
-    * @returns {Boolean}
-    */
-   isEnabled: function () {
-       return !this.$control.prop('disabled');
-   }
+     * Return state of the input
+     * @returns {Boolean}
+     */
+    isEnabled: function() {
+        return !this.$control.prop('disabled');
+    }
 });

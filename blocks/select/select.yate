@@ -25,15 +25,23 @@ match .select nb {
 
               <span class="nb-button__text">
                   for .items {
-                        if .selected {
+                        if .selected || index() == 0 {
                          .text
                     }
                   }
               </span>
           </span>
-          <select id="nb-select_{ .id }" class="nb-select__fallback" name ="{ .id }">
+          <select id="nb-select_{ .id }" class="nb-select__fallback">
               if ( .disabled ) {
                   @disabled = 'disabled'
+              }
+
+              if .name {
+                  @name = .name
+              }
+
+              if .attrs.name {
+                  @name = .attrs.name
               }
 
               for .items {

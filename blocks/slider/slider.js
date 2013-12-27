@@ -1,9 +1,9 @@
 /* jQuery UI Depends:
-*        jquery.ui.slider.js
-*        jquery.ui.core.js
-*        jquery.ui.mouse.js
-*        jquery.ui.widget.js
-*/
+ *        jquery.ui.slider.js
+ *        jquery.ui.core.js
+ *        jquery.ui.mouse.js
+ *        jquery.ui.widget.js
+ */
 
 nb.define('slider', {
     events: {
@@ -19,7 +19,7 @@ nb.define('slider', {
         that.$fallback = $(that.node).find('.nb-slider__fallback');
         that.$control = $(that.node).children('.nb-slider__body');
 
-        that.$fallback.attr('readonly','readonly');
+        that.$fallback.attr('readonly', 'readonly');
         that.$control.show();
 
         that.$node = $(that.node);
@@ -35,7 +35,7 @@ nb.define('slider', {
         that.onChangeValue();
     },
 
-    onChangeValue: function(value){
+    onChangeValue: function(value) {
         if (value) {
             this.data.value = this.$control.slider("option", "value", value);
         }

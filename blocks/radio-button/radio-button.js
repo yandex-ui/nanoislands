@@ -1,4 +1,4 @@
- /*
+/*
  * jQuery UI Depends:
  *        jquery.ui.button.js
  *        jquery.ui.core.js
@@ -7,10 +7,10 @@
 
 nb.define('radio-button', {
     events: {
-         'init': 'onInit'
-     },
+        'init': 'onInit'
+    },
 
     onInit: function() {
-         this.control = $(this.node).buttonset();
+        this.control = $(this.node).buttonset();
     }
 });
