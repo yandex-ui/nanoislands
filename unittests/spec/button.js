@@ -1,4 +1,4 @@
-describe("Buttton Tests", function() {
+describe("Button Tests", function() {
     beforeEach(function() {
         this.button = nb.find('button');
     });

@@ -25,4 +25,14 @@ match / {
         "id": "select-disabled"
         "items": []
     })
+
+    nb-input({
+        "size": "s"
+        "attrs": {
+            "placeholder": "Please, enter your name"
+        }
+        "content": "Viktor"
+        "id": "input"
+        "name": "last-name"
+    })
 }
