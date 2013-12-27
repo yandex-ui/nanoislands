@@ -1,6 +1,9 @@
 /* borschik:include:../node_modules/es5-shim/es5-shim.js */
 /* borschik:include:../libs/nanoblocks.js */
 
+/* borschik:include:../src/emitter.js */
+/* borschik:include:dom-emitter.js */
+
 /* borschik:include:button/button.js */
 /* borschik:include:tooltip/tooltip.js */
 /* borschik:include:checkbox/checkbox.js */

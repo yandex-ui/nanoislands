@@ -31,7 +31,11 @@
         "mocha-phantomjs": "*",
         "phantomjs": "*",
         "jscs": "1.0.11",
-        "expect.js": "*"
+        "expect.js": "*",
+        "grunt-contrib-watch": "~0.5.3",
+        "grunt-shell": "~0.6.1",
+        "matchdep": "~0.3.0",
+        "sinon": "~1.7.3"
     },
     "engines": {
         "node": "*"

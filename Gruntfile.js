@@ -2,9 +2,7 @@
 module.exports = function (grunt) {
     'use strict';
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks("grunt-jscs-checker");
-    grunt.loadNpmTasks('grunt-mocha-phantomjs');
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
 
     var gruntConfig = {};
 
@@ -13,7 +11,8 @@ module.exports = function (grunt) {
             jshintrc: '.jshintrc'
         },
         files: [
-            'blocks/*/*.js'
+            'blocks/**/**.js',
+            'src/**/**.js'
         ]
     };
 
@@ -27,6 +26,25 @@ module.exports = function (grunt) {
 
     gruntConfig.mocha_phantomjs = {
         all: ['unittests/index.html']
+    };
+
+    gruntConfig.shell = {
+        rebuildNanoislands: {
+            command: "make"
+        }
+    };
+
+    gruntConfig.watch = {
+        test: {
+            files: [
+                "<%= jshint.files %>",
+                "unittests/**/*.js"
+            ],
+            tasks: [
+                "shell:rebuildNanoislands",
+                "mocha_phantomjs"
+            ]
+        }
     };
 
     grunt.initConfig(gruntConfig);

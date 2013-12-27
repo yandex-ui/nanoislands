@@ -17,7 +17,7 @@ unittests/tests.yate.js: $(shellshell find $(CURDIR)/unittests -name '*.yate') n
 nanoislands.ie.css: $(shell find . -name '*.styl') node_modules
 	node build/build-styl.js ie > $@
 
-nanoislands.js: $(CURDIR)/blocks/nanoislands.js $(shell find $(CURDIR)/blocks -name '*.js') node_modules
+nanoislands.js: $(CURDIR)/blocks/nanoislands.js $(shell find $(CURDIR)/blocks -name '*.js') $(shell find $(CURDIR)/src -name '*.js') node_modules
 	$(NPM_BIN)/borschik --input=blocks/nanoislands.js --minimize=no --output=nanoislands.js
 
 node_modules:
