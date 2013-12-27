@@ -13,14 +13,13 @@
 
 ### Options
 
-* type: modal — render
-* id: ...
-* class: ['my_class1', 'my_class2'] — additional classes
-* head: ... — drop zone title
-* text: ... — text to the left of the "Select file" button
-* button: false — render dropzone without 'select file' button
 
-NB: See 'button' documentation for the list of the corresponding options.
+* `id` {string}
+* `class` {string} — additional classes['my_class1', 'my_class2'] 
+* `type` {string} — `modal` (use with _paranja_)
+* `head` {string} — drop zone title
+* `text` {string} — text to the left of the "Select file" button
+* `button` {nodeset|boolean} — `false()` to render dropzone without 'select file' button; check out _button_ documentation for list of options
 
 ### Example
 

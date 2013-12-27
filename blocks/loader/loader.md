@@ -4,12 +4,12 @@
 
     nb-loader()
     
-* size: m
+* `size`: `m`
 
 ### Options
 
-* `'color'` {string} — spinner color, black by default, `'while'` is the only alternate option
-* `'size'` {string} — s / m / l, spinner size
+* `color` {string} — spinner color, black by default, `while` is the only alternate option
+* `size` {string} — spinner size — s / m / l
 
 ### Examples
 

@@ -8,9 +8,9 @@ Default options: none.
 
 ### Options
 
-* `'padding'` {string} — s / m / l
-* `'type'` {string} — inline / fly
-* `'content'` {string} — island's content (HTML or plaintext)
+* `padding` {string} — s / m / l
+* `type` {string} — inline / fly
+* `content` {string} — island's content (HTML or plaintext)
 
 ### Examples
 

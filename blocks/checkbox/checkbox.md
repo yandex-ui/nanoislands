@@ -3,21 +3,19 @@
 
     nb-checkbox()
 
-* size — m
-* type — checkbox
+* `size` — m
+* `type` — checkbox
 
 ### Optional attributes
 
-* size: s / m
-* id: ...
-* class: ['my_class1', 'my_class2'] — additional classes
-* type: checkbox / radio
-* disabled: true() — disabled button
-* checked: true() —checked button
-* text: ... — text of the label
-* attrs: {
-   'attr2: 'value2'
-} — custom DOM attributes for checkbox input
+* `id` {string}
+* `class` {array} — additional classes ['my_class1', 'my_class2']
+* `size` {string} — size, `s` or `m`
+* `type` {string} — type, `checkbox` or `radio`
+* `disabled` {boolean} — `true()` to disable button
+* `checked` {boolean} — `true()` for checked button
+* `text` {string} — text of the label
+* `attrs` {object} — — custom DOM attributes for checkbox input, e.g. `{ 'attr2: 'value2' }`
 
 
 #### Example

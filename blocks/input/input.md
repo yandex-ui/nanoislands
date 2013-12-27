@@ -5,28 +5,28 @@ HTML input element.
 ## Yate
 
 ```
-nb-input(options)
+    nb-input(options)
 ```
 
 ### Options
 
-* `'attrs'` {object} — attrubutes for input node
-* `'content'` {string} — `value` of the input
-* `'disabled'` {boolean}
-* `'size'` {string} — input size. `'s'` (no other sizes supported)
-* `'id'` {string}
-* `'class'` {array} — additional classes
+* `id` {string}
+* `class` {array} — additional classes
+* `attrs` {object} — custom DOM attrubutes for input node
+* `content` {string} — `value` of the input
+* `disabled` {boolean}
+* `size` {string} — input size, `s` only (no other sizes supported)
 
 ### Examples
 
 ```
-nb-input({
-    'size': 's'
-    'attrs': {
-        'placeholder': 'Введите пароль'
-        'type': 'password'
-    }
-})
+    nb-input({
+        'size': 's'
+        'attrs': {
+            'placeholder': 'Введите пароль'
+            'type': 'password'
+        }
+    })
 ```
 
 

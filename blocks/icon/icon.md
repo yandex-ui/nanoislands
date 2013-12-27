@@ -4,16 +4,14 @@
 
 NB: You have to explicitly pass icon name to nb-icon();
 
-* size: m
+* `size` — `m`
 
 ### Options
 
-* size: s / m
-* icon: ... — icon name
-* id: ...
-* class: ['my_class1', 'my_class2'] — additional classes
-
-_TODO: Available icon names?_
+* `id` {string}
+* `class` {array} — additional classes ['my_class1', 'my_class2']
+* `icon` {string} — icon name (_TODO: List available icon names with descriptions)
+* `size` {string} — icon size, `s` or `m`
 
 ### Examples
 
