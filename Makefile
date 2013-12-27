@@ -11,7 +11,7 @@ nanoislands.css: $(shell find . -name '*.styl') node_modules
 demo/demo.yate.js: $(shell find . -name '*.yate') node_modules
 	$(NPM_BIN)/yate $(CURDIR)/demo/nanoislands.yate > $@
 
-unittests/tests.yate.js: $(shellshell find $(CURDIR)/unittests -name '*.yate') node_modules
+unittests/tests.yate.js: $(shell find $(CURDIR)/unittests -name '*.yate') node_modules
 	$(NPM_BIN)/yate $(CURDIR)/unittests/tests.yate > $@
 
 nanoislands.ie.css: $(shell find . -name '*.styl') node_modules
