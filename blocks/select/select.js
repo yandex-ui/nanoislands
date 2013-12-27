@@ -319,4 +319,4 @@ nb.define('select', {
         this.trigger('nb-select_destroyed');
         nb.destroy(this.node.getAttribute('id'));
     }
-});
+}, 'DomEmitter');
