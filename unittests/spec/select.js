@@ -1,5 +1,4 @@
 describe("Select Tests", function() {
-
     beforeEach(function() {
         this.select = nb.find('select');
     });
@@ -15,7 +14,6 @@ describe("Select Tests", function() {
     afterEach(function() {
         delete this.select;
     });
-
 
     describe("init", function () {
 
@@ -24,6 +22,12 @@ describe("Select Tests", function() {
             expect(select.button.isEnabled()).to.be.equal(false);
         });
 
+    });
+
+    describe("#getName()", function() {
+        it('should return name of select control', function() {
+            expect(this.select.getName()).to.be.equal('myname');
+        });
     });
 
     describe("#addToSource()", function() {
