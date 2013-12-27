@@ -11,7 +11,6 @@ describe("Checkbox Tests", function () {
 
     afterEach(function() {
         delete this.checkbox;
-        $('.content').html();
     });
 
     describe("#getValue()", function () {

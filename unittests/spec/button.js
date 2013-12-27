@@ -10,7 +10,6 @@ describe("Buttton Tests", function() {
 
     afterEach(function() {
         delete this.button;
-        $('.content').html();
     });
 
     describe("Init", function() {
