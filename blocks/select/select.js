@@ -325,12 +325,12 @@ nb.define('select', {
             param = [param];
         }
 
-        if (index || index == 0) {
+        if (index || index === 0) {
             source.splice(index, 1);
         } else {
             param.forEach(function(item) {
                 source = source.filter(function(obj){
-                   return obj.text != item.text && obj.value != item.value
+                   return obj.text != item.text && obj.value != item.value;
                 });
             }, this);
         }
