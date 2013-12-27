@@ -10,6 +10,8 @@ NB: You have to explicitly pass icon name to nb-icon();
 
 * size: s / m
 * icon: ... — icon name
+* id: ...
+* class: ['my_class1', 'my_class2'] — additional classes
 
 _TODO: Available icon names?_
 

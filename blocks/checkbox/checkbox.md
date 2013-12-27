@@ -7,6 +7,7 @@
 * type — checkbox
 
 ### Optional attributes
+
 * size: s / m
 * id: ...
 * class: ['my_class1', 'my_class2'] — additional classes

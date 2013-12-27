@@ -3,26 +3,23 @@
 
     nb-button()
 
-* size — m
-* theme — normal
+* `'size': 'm'`
+* `'theme': 'normal'`
 
 ### Optional attributes
-* size: s / m / l
-* theme: normal / action (yellow) / dark / pseudo / promo (big yellow)
-* id: ...
-* class: ['my_class1', 'my_class2'] — additional classes
-* disabled: true() — disabled button
-* icon: ... — link to icon
-* content: ... — content of button
-* attrs: {
-   'type': 'submit',
-   'attr2: 'value2'
-} — custom DOM attributes for button
-* static: true() — block without nanoblocks functionality (JavaScript API)
-* type: 'file' — attach button. This is not DOM type aka `<input type=""/>`, this is instance type.
-* multiple: true() — multiple attach button **aandrosov: i think we should delete this option and use attrs instead**
-* href: '...' — button with `<a href=''>`
 
+* `'size'` {string} — s / m / l
+* `'theme'` {string} — normal / action (yellow) / dark / pseudo / promo (big yellow)
+* `'id'` {string}
+* `'class'` {array} — additional classes
+* `'disabled'` {boolean} — disabled button
+* `'icon'` {string} — link to icon
+* `'content'` {string} — ... — content of button (HTML or plaintext)
+* `'attrs'` {object} — custom DOM attributes for button, e.g.: `{ 'type': 'submit', 'attr2: 'value2' }`
+* `'static'` {boolean} — block without nanoblocks functionality (JavaScript API)
+* `'type'` {string} — `'file'` for attach button. This is not DOM type aka `<input type=""/>`, but an internal type of NB instance.
+* `'multiple'` {boolean} — `true()` for multiple file attach button **aandrosov@: I think we should delete this option and use attrs instead**
+* `'href'` {string} — for buttons with `<a href=''>`
 
 #### Example
 

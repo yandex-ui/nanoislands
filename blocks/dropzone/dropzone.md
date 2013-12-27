@@ -14,7 +14,8 @@
 ### Options
 
 * type: modal — render
-* class: ['foo' 'bar' 'baz'] — (optional) additional classes
+* id: ...
+* class: ['my_class1', 'my_class2'] — additional classes
 * head: ... — drop zone title
 * text: ... — text to the left of the "Select file" button
 * button: false — render dropzone without 'select file' button
