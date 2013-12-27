@@ -3,10 +3,11 @@
 
     nb-checkbox()
 
-* size — m
-* type — checkbox
+* `size` — m
+* `type` — checkbox
 
 ### Optional attributes
+
 * `'size'` {string} `'s'` / `'m'`
 * `'id'` {string}...
 * `'name'` {string}...

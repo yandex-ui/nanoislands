@@ -8,9 +8,11 @@ Renders compound group of text input field and button, ordered accordingly to `o
 
 ### Options
 
-* disabled: true() — disable both inputs
-* input — options for text input field
-* button — options for button
+* `id` {string}
+* `class` {array} — additional classes
+* `disabled` {boolean} — disable both inputs
+* `input` {string} — options for text input field
+* `button` {string} — options for button
 
 NB: For description of `button` and `input` see corresponding docs
 

@@ -3,10 +3,11 @@
 
     nb-button()
 
-* size — m
-* theme — normal
+* `size: m`
+* `theme: normal`
 
 ### Optional attributes
+
 * `'size'` {string} `'s' / 'm' / 'l'`
 * `'theme'` {string} `'normal' / 'action' (yellow) / 'dark' / 'pseudo' / 'promo' (big yellow)`
 * `'id'` {string} ...
@@ -19,7 +20,6 @@
 * `'static'` {boolean} — block without nanoblocks functionality (JavaScript API)
 * `'type'` {string} `'file'` — attach button. This is not DOM type aka `<input type=""/>`, this is instance type.
 * `'href'` {string} — button with `<a href=''>`
-
 
 #### Example
 
