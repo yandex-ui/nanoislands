@@ -22,13 +22,13 @@ match / {
     })
 
     nb-checkbox({
-            "attrs": {
-                "value": "my-value"
-            }
-            "disabled": true()
-            "content": "Button"
-            "id": "checkbox-disabled"
-        })
+        "attrs": {
+            "value": "my-value"
+        }
+        "disabled": true()
+        "content": "Button"
+        "id": "checkbox-disabled"
+    })
 
      nb-checkbox({
             "attrs": {
@@ -72,5 +72,22 @@ match / {
         "id": "input"
         "name": "last-name"
 
+    })
+
+    nb-toggler({
+        "id": "toggler"
+        "attrs": {
+            "value": "value"
+        }
+    })
+
+    nb-toggler({
+        "disabled": true()
+        "id": "toggler-disabled"
+    })
+
+    nb-toggler({
+        "checked": true()
+        "id": "toggler-checked"
     })
 }
