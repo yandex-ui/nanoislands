@@ -49,7 +49,7 @@ describe("Input Tests", function() {
 
         it("should throws nb-input_blured event", function() {
             var handlerWorks = false;
-            this.input.on('nb-input_blured', function(){
+            this.input.on('nb-input_blured', function() {
                 handlerWorks = true;
             });
             this.input.blur();
@@ -92,12 +92,30 @@ describe("Input Tests", function() {
             expect(this.input.$control.val()).to.be.equal('Vadim');
         });
 
-        it("should throws nb-input_value-setted event", function() {
+        it("should throws nb-input_value-set event", function() {
             var handlerWorks = false;
-            this.input.on('nb-input_value-setted', function(){
+            this.input.on('nb-input_value-set', function() {
                 handlerWorks = true;
             });
             this.input.setValue('Vadim');
+
+            expect(handlerWorks).to.be.ok();
+        });
+    });
+
+    describe("#setName()", function() {
+        it("should change the value", function() {
+            this.input.setName('Vadim');
+
+            expect(this.input.$control.attr('name')).to.be.equal('Vadim');
+        });
+
+        it("should throws nb-input_name-set event", function() {
+            var handlerWorks = false;
+            this.input.on('nb-input_name-set', function() {
+                handlerWorks = true;
+            });
+            this.input.setName('Vadim');
 
             expect(handlerWorks).to.be.ok();
         });
@@ -112,6 +130,22 @@ describe("Input Tests", function() {
     describe("#getName()", function() {
         it("should return the name", function() {
             expect(this.input.getName()).to.be.equal('last-name');
+        });
+    });
+
+    describe("#destroy()", function() {
+
+        beforeEach(function() {
+            sinon.spy(nb, 'destroy');
+        });
+
+        afterEach(function() {
+            nb.destroy.restore();
+        });
+
+        it("should call nb.destroy('input')", function() {
+            this.input.destroy();
+            expect(nb.destroy.calledWithExactly('input')).to.be.equal(true);
         });
     });
 
