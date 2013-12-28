@@ -1,8 +1,9 @@
 {
+    "forin": true,
+    "camelcase": true,
     "browser": true,
     "devel": true,
     "jquery": true,
-    "node": false,
     "globals": {
         "Modernizr": false,
         "no": false,
@@ -13,22 +14,23 @@
         "$": true,
         "_": false
     },
-
-    "forin" :true,
-    "camelcase":true,
+    "immed": true,
+    "latedef": true,
+    "loopfunc": true,
     "bitwise": true,
     "curly": true,
     "eqnull": true,
-    "immed":true,
-    "latedef": true,
-    "loopfunc": true,
+    "indent": 4,
+    "multistr": false,
     "newcap": true,
     "noarg": true,
     "noempty": true,
     "nonew": true,
-    "onevar": false,
     "shadow": true,
+    "onevar": false,
     "sub": true,
     "trailing": true,
-    "undef": true
+    "undef": true,
+    "unused": true,
+    "white": false
 }

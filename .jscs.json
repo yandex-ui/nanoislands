@@ -53,20 +53,20 @@
 
     "requireRightStickedOperators": ["!"],
     "requireLeftStickedOperators": [","],
-    "disallowImplicitTypeConversion": [
-        "numeric",
-        "binary",
-        "string"
-    ],
+
+    "disallowImplicitTypeConversion": ["numeric", "binary", "string"],
+
     "disallowKeywords": ["with"],
-    "disallowMultipleLineBreaks": true,
     "disallowKeywordsOnNewLine": ["else", "catch"],
+    "requireLineFeedAtFileEnd": true,
     "validateJSDoc": {
         "checkParamNames": true,
         "requireParamTypes": true,
         "checkRedundantParams": true
     },
     "disallowSpaceAfterObjectKeys": true,
+    "disallowYodaConditions": true,
+    "safeContextKeyword": "that",
     "excludeFiles": [
         "Gruntfile.js",
         "unittests",

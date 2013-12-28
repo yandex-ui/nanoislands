@@ -7,8 +7,7 @@
  *        jquery.ui.position.js
  *        jquery.ui.menu.js
  */
-
-;(function() {
+(function() {
 
     /**
      * Саджест
@@ -152,7 +151,6 @@
 
         'username': function(item, term) {
             var matcher = new RegExp('(' + $.ui.autocomplete.escapeRegex(term) + ')', "ig");
-            var matches = item.label.match(matcher);
 
             item.usernameHighlighted = item.username.replace(matcher, '<span class="nb-suggest__hl">$1</span>');
 
@@ -204,7 +202,7 @@
 
             this.$suggest.addClass(this.$node.data('class-suggest'));
 
-            this.$input.on('suggest_search', function(e) {
+            this.$input.on('suggest_search', function() {
                 this.trigger('nb-suggest_type', this.getValue());
             }.bind(this));
 
