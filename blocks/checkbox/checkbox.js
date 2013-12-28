@@ -168,12 +168,12 @@ nb.define('checkbox', {
     /**
      * Sets label of the checkbox or radio
      * @param {String|Number} label
-     * @fires 'nb-checkbox_label-setted' | 'nb-radio_label-setted'
+     * @fires 'nb-checkbox_label-set' | 'nb-radio_label-set'
      * @returns {nb.block}
      */
     setLabel: function(label) {
         this.$node.find('.nb-checkbox__label').html(label);
-        this.trigger('nb-' + this.type + '_label-setted');
+        this.trigger('nb-' + this.type + '_label-set');
         return this;
     },
 
@@ -194,6 +194,18 @@ nb.define('checkbox', {
     },
 
     /**
+     * Set checkbox value
+     * @param {String|Number} value
+     * @fires 'nb-checkbox_name-set' | 'nb-radio_name-set'
+     * @returns {nb.block}
+     */
+    setName: function(value) {
+        this.$control.attr('name', value);
+        this.trigger('nb-' + this.type + '_name-set');
+        return this;
+    },
+
+    /**
      * Returns checkbox value
      * @returns {String}
      */
@@ -203,10 +215,14 @@ nb.define('checkbox', {
 
     /**
      * Set checkbox value
-     * @returns {String}
+     * @param {String|Number} value
+     * @fires 'nb-checkbox_value-set' | 'nb-radio_value-set'
+     * @returns {nb.block}
      */
     setValue: function(value) {
-        return this.$control.attr('value', value);
+        this.$control.attr('value', value);
+        this.trigger('nb-' + this.type + '_value-set');
+        return this;
     }
 
 });

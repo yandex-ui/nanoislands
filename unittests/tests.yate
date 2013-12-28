@@ -16,9 +16,27 @@ match / {
         "attrs": {
             "value": "my-value"
         }
+        "checked": true()
         "content": "Button"
-        "id": "checkbox"
+        "id": "checkbox-checked"
     })
+
+    nb-checkbox({
+            "attrs": {
+                "value": "my-value"
+            }
+            "disabled": true()
+            "content": "Button"
+            "id": "checkbox-disabled"
+        })
+
+     nb-checkbox({
+            "attrs": {
+                "value": "my-value"
+            }
+            "content": "Button"
+            "id": "checkbox"
+        })
 
     nb-select({
         "disabled": true()
