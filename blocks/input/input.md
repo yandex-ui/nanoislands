@@ -58,36 +58,36 @@ input — nb block
   /**
     * Focus the input
     * @fires 'nb-input_focused'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
     input.focus();
 
     /**
     * Blur the input
     * @fires 'nb-input_blured'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
     input.blur();
 
     /**
     * Disables the input
     * @fires 'nb-input_disabled'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
     input.disable();
 
     /**
     * Enables the input
     * @fires 'nb-input_enabled'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
     input.enable();
 
     /**
     * Set value of the input
     * @param {String|Object} value
-    * @fires 'nb-input_value-setted'
-    * @returns {nb.block}
+    * @fires 'nb-input_value-set'
+    * @returns {Object} nb.block
     */
     input.setValue('value');
 
@@ -95,7 +95,7 @@ input — nb block
     * Set name of the input
     * @param {String|Object} value
     * @fires 'nb-input_name-set'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
     input.setName('value');
 

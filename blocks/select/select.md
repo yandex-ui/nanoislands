@@ -87,14 +87,14 @@ select.getState();
 /**
  * Disables the select
  * @fires 'nb-select_disabled'
- * @returns {nb.block}
+ * @returns {Object} nb.block
  */
 select.disable()
 
 /**
  * Enables the select
  * @fires 'nb-select_enabled'
- * @returns {nb.block}
+ * @returns {Object} nb.block
  */
 select.enable();
 
@@ -107,14 +107,14 @@ select.isEnabled()
 /**
  * Focus the select
  * @fires 'nb-select_focused'
- * @returns {nb.block}
+ * @returns {Object} nb.block
  */
 select.focus()
 
 /**
  * Blur the select
  * @fires 'nb-select_blured'
- * @returns {nb.block}
+ * @returns {Object} nb.block
  */
 select.blur()
 

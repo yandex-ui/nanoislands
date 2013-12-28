@@ -27,13 +27,13 @@ nb.define('button', {
     /**
      * Set text of the button
      * @param {String} text  — text for the button
-     * @fires 'nb-button_text-setted'
-     * @returns {nb.block}
+     * @fires 'nb-button_text-set'
+     * @returns {Object} nb.block
      */
     setText: function(text) {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.find('.nb-button__text').html(text);
-            this.trigger('nb-button_text-setted');
+            this.trigger('nb-button_text-set');
         }
         return this;
     },
@@ -50,12 +50,12 @@ nb.define('button', {
     /**
      * Set href of the link button
      * @param {String} href — link for the button
-     * @fires 'nb-button_href-setted'
-     * @returns {nb.block}
+     * @fires 'nb-button_href-set'
+     * @returns {Object} nb.block
      */
     setUrl: function(href) {
         this.$node.attr('href', href);
-        this.trigger('nb-button_url-setted');
+        this.trigger('nb-button_url-set');
         return this;
     },
 
@@ -70,7 +70,7 @@ nb.define('button', {
     /**
      * Disables the button
      * @fires 'nb-button_disabled'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     disable: function() {
         if (this.$node && this.$node.data('uiButton')) {
@@ -84,7 +84,7 @@ nb.define('button', {
     /**
      * Enables the button
      * @fires 'nb-button_enabled'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     enable: function() {
         if (this.$node && this.$node.data('uiButton')) {
@@ -106,11 +106,11 @@ nb.define('button', {
     /**
      * Focus the button
      * @fires 'nb-button_focused'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     focus: function() {
         if (this.isEnabled()) {
-            this.$node.focusin();
+            this.$node.focus();
         }
         this.trigger('nb-button_focused');
         return this;
@@ -119,11 +119,11 @@ nb.define('button', {
     /**
      * Blur the button
      * @fires 'nb-button_blured'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     blur: function() {
         if (this.isEnabled()) {
-            this.$node.focusout();
+            this.$node.blur();
         }
         this.trigger('nb-button_blured');
         return this;

@@ -67,14 +67,14 @@ checkbox — nb block
     /**
      * Checking checkbox or radio
      * @fires 'nb-checkbox_checked' | 'nb-radio_checked'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.check();
 
     /**
      * Unchecking checkbox or radio
      * @fires 'nb-checkbox_unchecked' | 'nb-radio_unchecked'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.uncheck();
 
@@ -87,14 +87,14 @@ checkbox — nb block
     /**
      * Set indeterminate state of the checkbox or radio
      * @fires 'nb-checkbox_indeterminated' | 'nb-radio_indeterminated'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.setIndeterminate();
 
     /**
      * Set determinate state of the checkbox or radio
      * @fires 'nb-checkbox_determinated' | 'nb-radio_determinated'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.setDeterminate();
 
@@ -107,28 +107,28 @@ checkbox — nb block
     /**
      * Enable the checkbox or radio
      * @fires 'nb-checkbox_enabled' | 'nb-radio_enabled'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.enable();
 
     /**
      * Disable the checkbox or radio
      * @fires 'nb-checkbox_disabled' | 'nb-radio_disabled'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.disable();
 
     /**
      * Focus the checkbox or radio
      * @fires 'nb-checkbox_focused' | 'nb-radio_focused'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.focus();
 
     /**
      * Blur the checkbox or radio
      * @fires 'nb-checkbox_blured' | 'nb-radio_blured'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.blur();
 
@@ -137,7 +137,7 @@ checkbox — nb block
      * Sets label of the checkbox or radio
      * @param {String|Number} label
      * @fires 'nb-checkbox_label-set' | 'nb-radio_label-set'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.setLabel()
 
@@ -157,7 +157,7 @@ checkbox — nb block
      * Set checkbox value
      * @param {String|Number} value
      * @fires 'nb-checkbox_name-set' | 'nb-radio_name-set'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.setName()
 
@@ -171,7 +171,7 @@ checkbox — nb block
      * Set checkbox value
      * @param {String|Number} value
      * @fires 'nb-checkbox_value-set' | 'nb-radio_value-set'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
     checkbox.setValue()
 
