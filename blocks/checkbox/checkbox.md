@@ -132,37 +132,48 @@ checkbox — nb block
      */
     checkbox.blur();
 
+
     /**
      * Sets label of the checkbox or radio
      * @param {String|Number} label
-     * @fires 'nb-checkbox_label-setted' | 'nb-radio_label-setted'
+     * @fires 'nb-checkbox_label-set' | 'nb-radio_label-set'
      * @returns {nb.block}
      */
-    checkbox.setLabel('New label');
+    checkbox.setLabel()
 
     /**
      * Gets label of the checkbox or radio
      * @returns {String | Number}
      */
-    checkbox.getLabel();
+    checkbox.getLabel()
 
     /**
      * Get name of the checkbox or radio
      * @returns {String|Object} name
      */
-    checkbox.getName();
+    checkbox.getName()
+
+    /**
+     * Set checkbox value
+     * @param {String|Number} value
+     * @fires 'nb-checkbox_name-set' | 'nb-radio_name-set'
+     * @returns {nb.block}
+     */
+    checkbox.setName()
 
     /**
      * Returns checkbox value
      * @returns {String}
      */
-    getValue: function()
 
+    checkbox.getValue()
     /**
      * Set checkbox value
-     * @returns {String}
+     * @param {String|Number} value
+     * @fires 'nb-checkbox_value-set' | 'nb-radio_value-set'
+     * @returns {nb.block}
      */
-    setValue: function(value)
+    checkbox.setValue()
 
 ```
 
