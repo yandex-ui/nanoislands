@@ -23,6 +23,7 @@ nb.define('select', {
     onInit: function() {
         nb.init(this);
         this.$node = $(this.node);
+        this.$control = this.$node.find('select');
         this.data = this.data();
 
         // find elements and values
@@ -203,6 +204,14 @@ nb.define('select', {
             value: this.value,
             text: this.text
         };
+    },
+
+    /**
+     * Get name of the select
+     * @returns {String|Object} name
+     */
+    getName: function() {
+        return this.$control.prop('name');
     },
 
     /**
