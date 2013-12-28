@@ -89,13 +89,13 @@ nb.define('input', {
     /**
      * Set value of the input
      * @param {String|Object} value
-     * @fires 'nb-input_value-setted'
+     * @fires 'nb-input_value-set'
      * @returns {nb.block}
      */
     setValue: function(value) {
         this.value = value;
         this.$control.val(value);
-        this.trigger('nb-input_value-setted');
+        this.trigger('nb-input_value-set');
         return this;
     },
 
@@ -118,10 +118,29 @@ nb.define('input', {
     },
 
     /**
+     * Set name of the input
+     * @param {String|Object} value
+     * @fires 'nb-input_name-set'
+     * @returns {nb.block}
+     */
+    setName: function(value) {
+        this.$control.attr('name', value);
+        this.trigger('nb-input_name-set');
+        return this;
+    },
+    
+    /**
      * Return state of the input
      * @returns {Boolean}
      */
     isEnabled: function() {
         return !this.$control.prop('disabled');
+    },
+
+    /**
+     * Destroy the button
+     */
+    destroy: function() {
+        nb.destroy(this.node.getAttribute('id'));
     }
 });

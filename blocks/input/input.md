@@ -92,6 +92,14 @@ input — nb block
     input.setValue('value');
 
     /**
+    * Set name of the input
+    * @param {String|Object} value
+    * @fires 'nb-input_name-set'
+    * @returns {nb.block}
+    */
+    input.setName('value');
+
+    /**
     * Get value of the input
     * @returns {String|Object} value
     */
@@ -108,5 +116,10 @@ input — nb block
     * @returns {Boolean}
     */
     input.isEnabled();
+
+    /**
+    * Destroy the input
+    */
+    input.destroy()
 
 ```
