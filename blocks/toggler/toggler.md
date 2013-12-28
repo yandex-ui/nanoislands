@@ -35,39 +35,102 @@ nb-toggler({
 ### Toggler methods
 
 ```
+
 // init component
 var toggler = nb.block(node);
 
-/**
- * Returns value of the checked state
- * @return {Boolean} value
- */
-toggler.getValue();
+    /**
+     * Set value of the toggler
+     * @param {String} value of the check state
+     * @fires 'nb-toggler_value-set'
+     * @returns {Object} nb.block
+     */
+    toggler.setValue('value');
 
-/**
- * Set value of the checked state
- * @param {Boolean} value of the check state 
- * @fires 'nb-toggler_checked'
- */
-toggler.setValue(true);
+    /**
+     * Returns value of the toggler
+     * @return {String} value
+     */
+    toggler.getValue();
 
-/**
- * Toggle to the oppocite value
- * Do nothing if toggler is disabled
- * @fires 'nb-toggler_checked'
- */
-toggler.toggle();
+    /**
+     * Toggle to the oppocite value
+     * Do nothing if toggler is disabled
+     * @returns {Object} nb.block
+     */
+    toggler.toggle();
 
-/**
- * Disable toggler
- * @fires 'nb-toggler_disabled'
- */
-toggler.disable();
+    /**
+     * Returns name of the toggler
+     * @return {String} value
+     */
+    toggler.getName();
 
-/**
- * Enable toggler
- * @fires 'nb-toggler_enabled'
- */
-toggler.enable();
+    /**
+     * Set name of the toggler
+     * @param {String} value
+     * @fires 'nb-toggler_name-set'
+     * @returns {Object} nb.block
+     */
+    toggler.setName(value);
+
+    /**
+     * Disable toggler
+     * @fires 'nb-toggler_disabled'
+     */
+    toggler.disable()
+
+    /**
+     * Enable toggler
+     * @fires 'nb-toggler_enabled'
+     */
+    enable()
+
+    /**
+     * Return enable state of the toggler
+     * @returns {Boolean}
+     */
+    toggler.isEnabled()
+
+
+    /**
+     * Focus the input
+     * @fires 'nb-toggler_focused'
+     * @returns {Object} nb.block
+     */
+    toggler.focus();
+
+    /**
+     * Blur the input
+     * @fires 'nb-toggler_blured'
+     * @returns {Object} nb.block
+     */
+    toggler.blur();
+
+    /**
+     * Return check state of the toggler
+     * @returns {Boolean}
+     */
+    toggler.isChecked();
+
+    /**
+     * Checking toggler
+     * @fires 'nb-toggler_checked'
+     * @returns {Object} nb.block
+     */
+    toggler.check();
+
+    /**
+     * Unchecking toggler
+     * @fires 'nb-toggler_unchecked'
+     * @returns {Object} nb.block
+     */
+    toggler.uncheck();
+
+    /**
+     * Destroy the toggler
+     */
+    toggler.destroy();
+
 ```
 

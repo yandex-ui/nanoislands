@@ -17,7 +17,7 @@ nb.define('toggler', {
 
     /**
      * Set value of the toggler
-     * @param {Boolean} value of the check state
+     * @param {String} value of the check state
      * @fires 'nb-toggler_value-set'
      * @returns {Object} nb.block
      */
