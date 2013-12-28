@@ -21,14 +21,14 @@ match .toggler nb {
         }
         <label class="nb-toggler__label">
             <input type="checkbox" class="nb-toggler__checkbox" >
+                for .attrs.* {
+                   @{name()} = .
+                }
+
                 if .name {
                     @name = .name
                 }
 
-                if .attrs.name {
-                    @name = .attrs.name
-                }
-                
                 if .checked {
                     @checked = 'checked'
                 }

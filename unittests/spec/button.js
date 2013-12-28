@@ -27,7 +27,7 @@ describe("Button Tests", function() {
         it("check event", function() {
 
             var flag = false;
-            this.button.on('nb-button_text-setted', function() {
+            this.button.on('nb-button_text-set', function() {
                 flag = true;
             });
 
@@ -54,7 +54,7 @@ describe("Button Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.button.on('nb-button_url-setted', function() {
+            this.button.on('nb-button_url-set', function() {
                 flag = true;
             });
 

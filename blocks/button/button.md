@@ -70,8 +70,8 @@ button — nb block
     /**
     * Set text of the button
     * @param text {String} — text for the button
-    * @fires 'nb-button_text-setted'
-    * @returns {nb.block}
+    * @fires 'nb-button_text-set'
+    * @returns {Object} nb.block
     */
    button.setText('Button');
 
@@ -84,8 +84,8 @@ button — nb block
    /**
     * Set href of the link button
     * @param href {String} — link for the link button
-    * @fires 'nb-button_href-setted'
-    * @returns {nb.block}
+    * @fires 'nb-button_href-set'
+    * @returns {Object} nb.block
     */
    button.setUrl('http://ya.ru');
 
@@ -98,14 +98,14 @@ button — nb block
    /**
     * Disables the button
     * @fires 'nb-button_disabled'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
    button.disable();
 
    /**
      * Enables the button
      * @fires 'nb-button_enabled'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
    button.enable();
 
@@ -119,14 +119,14 @@ button — nb block
    /**
     * Focus the button
     * @fires 'nb-button_focused'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
    button.focus();
 
    /**
     * Blur the button
     * @fires 'nb-button_blured'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
    button.blur();
 
