@@ -24,6 +24,8 @@ nb.define('select', {
         nb.init(this);
         this.$node = $(this.node);
         this.$control = this.$node.find('select');
+        this.$dropdown = this.$node.children('.nb-select__dropdown')
+                                   .appendTo('body');
         this.data = this.data();
 
         // find elements and values
@@ -66,7 +68,7 @@ nb.define('select', {
             minLength: 0,
             autoFocus: false,
             position: position,
-            appendTo: that.node,
+            appendTo: that.$dropdown,
             source: function(request, response) {
                 response(that.$fallback.children('option').map(function() {
                     return {
@@ -88,7 +90,7 @@ nb.define('select', {
                 that.$jUI._on(that.$jUI.document, {
                     // on 'outer' mousedown close control
                     mousedown: function(e) {
-                        if (e.which == 1 && !$.contains(that.$jUI.element.get(0), e.target)) {
+                        if (e.which == 1 && !$.contains(that.$jUI.element.get(0), e.target) && !$.contains(that.$dropdown[0], e.target)) {
                             this.close();
                         }
                     }
@@ -383,6 +385,7 @@ nb.define('select', {
             this.button.destroy();
             $(this.button.node).off('click');
             this.$node.autocomplete('destroy');
+            this.$dropdown.remove();
         }
 
         this.trigger('nb-select_destroyed');
