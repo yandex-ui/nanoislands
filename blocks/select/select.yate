@@ -56,6 +56,7 @@ match .select nb {
                       .text
                   </option>
               }
-         </select>
+          </select>
+          <div class="nb-select__dropdown nb-select_theme_{ .theme }"></div>
    </div>
 }
