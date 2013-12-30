@@ -46,7 +46,16 @@ match .checkbox nb {
         <span class="nb-checkbox__flag nb-checkbox__flag_type_{ .type }"><span class="nb-checkbox__flag__icon"></span></span>
 
         <span class="nb-checkbox__label">
-            .text
+            if (.text-id) {
+                labelRoot = {
+                    'checkbox-label': .text-id
+                }
+
+                apply labelRoot nb-checkbox-label
+
+            } else {
+                .text
+            }
         </span>
     </label>
 }

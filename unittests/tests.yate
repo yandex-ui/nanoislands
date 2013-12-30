@@ -30,6 +30,11 @@ match / {
         "id": "checkbox-disabled"
     })
 
+    nb-checkbox({
+        "text-id": 'uniq-str'
+        "id": "checkbox-with-html-label"
+    })
+
      nb-checkbox({
             "attrs": {
                 "value": "my-value"
@@ -90,4 +95,10 @@ match / {
         "checked": true()
         "id": "toggler-checked"
     })
+}
+
+match .*[.checkbox-label == 'uniq-str'] nb-checkbox-label {
+    <span>
+        "1"
+    </span>
 }
