@@ -32,5 +32,6 @@ make publish
 * [Select](https://github.com/yandex-ui/nanoislands/blob/master/blocks/select/select.md)
 * [Toggler](https://github.com/yandex-ui/nanoislands/blob/master/blocks/toggler/toggler.md)
 * [Popup](https://github.com/yandex-ui/nanoislands/blob/master/blocks/popup/popup.md)
+* [Slider](https://github.com/yandex-ui/nanoislands/blob/master/blocks/slider/slider.md)
 
 #### [Changelog](Changelog.md)
