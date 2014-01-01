@@ -2,6 +2,7 @@ func nb-slider(nodeset options) {
     default = {
         'value': 0
         'type': 'range'
+        'size': 's'
         'orientation': 'horiz'
     }
 
@@ -9,14 +10,20 @@ func nb-slider(nodeset options) {
 }
 
 match .slider nb {
-    <div class='nb-slider _init nb-slider_size_{ .size }  nb-slider_theme_{ .theme } nb-slider_orientation_{ .orientation }  nb-slider__handle_type_{ .type }' data-nb-value='{ .value }'>
+    <div class='nb-slider _init nb-slider_size_{ .size } nb-slider_orientation_{ .orientation }  nb-slider__handle_type_{ .type }'>
         apply . nb-main-attrs
 
+        @data-nb-value = '{ .value }'
+
         if !.static {
-            @data-nb='slider'
+            @data-nb = 'slider'
         }
 
-        <div class="nb-slider__body nb-slider__body_type_{ .type }">
+        if .disabled {
+            @class += ' nb-slider_disabled'
+        }
+
+        <div class='nb-slider__body nb-slider__body_type_{ .type }'>
             <label class='ui-slider-handle'>
                 if .size == 's' {
                     @class += ' nb-slider__small-handle'
@@ -28,8 +35,8 @@ match .slider nb {
                     @class += ' { .handle.class }'
                 }
 
-                <span class="nb-button__text">
-                    <input class="nb-slider__fallback" type="text" value="{.value}" id="{.id}__value" />
+                <span class='nb-button__text'>
+                    <input class='nb-slider__fallback' type='text' value='{.value}' id='{.id}__value' readonly='readonly' />
                 </span>
             </label>
         </div>
