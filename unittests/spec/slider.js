@@ -47,24 +47,34 @@ describe('Slider Tests', function() {
     });
 
     describe('#disable()', function() {
-        it('should not to change the value', function() {
-            var input = this.slider.node.querySelector('.nb-slider__fallback');
+        it('should set disable state', function() {
+            var $conrol = this.slider.$node.find('.nb-slider__body');
 
             this.slider.disable();
-            this.slider.setValue(80);
 
-            expect(input.value).not.to.be.equal('80');
+            expect($conrol.slider('option', 'disabled')).to.be.ok();
+        });
+
+        it('should has disabled mod', function() {
+            this.slider.disable();
+
+            expect(this.slider.$node.hasClass('nb-slider_disabled')).to.be.ok();
         });
     });
 
     describe('#enable()', function() {
         it('should reset disabled state', function() {
-            var input = this.sliderDisabled.node.querySelector('.nb-slider__fallback');
+            var $conrol = this.slider.$node.find('.nb-slider__body');
 
             this.sliderDisabled.enable();
-            this.sliderDisabled.setValue(80);
 
-            expect(input.value).to.be.equal('80');
+            expect($conrol.slider('option', 'disabled')).not.to.be.ok();
+        });
+
+        it('should not has disabled mod', function() {
+            this.sliderDisabled.enable();
+
+            expect(this.slider.$node.hasClass('nb-slider_disabled')).not.to.be.ok();
         });
     });
 
