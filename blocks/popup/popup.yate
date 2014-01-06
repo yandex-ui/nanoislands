@@ -36,7 +36,7 @@ match .popupMenu nb {
                     }
 
                     apply . nb-main-attrs
-                    html(.text)
+                    html(.content)
                 </a>
             }
         }
@@ -47,8 +47,6 @@ match .popupMenu nb {
 func nb-popup(nodeset options) {
     default = {
        'none': 'none'
-        // 'title': 'Some modal popup'
-        // 'content': 'Some text for that popup'
     }
 
     nb-block('popup', nb-extend(default, options))
@@ -63,8 +61,8 @@ match .popup nb {
             @data-nb-tail = .tail
         }
 
-        if .title {
-           _nb-popup-title(.title)
+        if .titleContent {
+           _nb-popup-title(.titleContent)
         }
 
         if .content {
@@ -86,13 +84,6 @@ func nb-popup-modal(nodeset options) {
         'close': {
             'none':'none'
         }
-     // 'close': {
-     //       'class': ''
-     //       'attrs': {}
-     //   }
-     // 'title': 'Some modal popup'
-     // 'content': 'Some text for that popup'
-     // 'buttons':
     }
 
     nb-block('modalPopup', nb-deep-extend(default, options))
@@ -122,8 +113,8 @@ match .modalPopup nb {
                 </a>
             }
 
-            if .title {
-                _nb-popup-title(.title)
+            if .titleContent {
+                _nb-popup-title(.titleContent)
             }
 
             if .content {
@@ -140,33 +131,15 @@ match .modalPopup nb {
 
 
 func _nb-popup-content(nodeset content) {
-    if content.data {
-        <div class="nb-popup__content">
-            apply content nb-main-attrs
-
-            html( content.data )
-
-        </div>
-    } else {
-        <div class="nb-popup__content">
-            html(content)
-        </div>
-    }
+    <div class="nb-popup__content">
+        html(content)
+    </div>
 }
 
 func _nb-popup-title(nodeset title) {
-    if title.data {
-        <div class="nb-popup__title">
-            apply title nb-main-attrs
-
-            html( title.data )
-
-        </div>
-    } else {
-        <div class="nb-popup__title">
-            html(title)
-        </div>
-    }
+    <div class="nb-popup__title">
+        html(title)
+    </div>
 }
 
 

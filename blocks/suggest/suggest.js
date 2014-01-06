@@ -116,6 +116,9 @@
                 }
             }
 
+            clone.labelContent = clone.label;
+            delete clone.label;
+
             return yr.run('main', {
                 item: clone,
                 type: this.options.type,

@@ -15,7 +15,7 @@
 * `'type'` {string} `'checkbox'` / `'radio'`
 * `'disabled'` {boolean} — disabled button
 * `'checked'` {boolean} — checked button
-* `'content'` {string} — text (or custom html) of the label
+* `'content'` {string} — text (or custom html) of the label, can be string or `xml` _xss warning!_
 * `'attrs'` {object} `{'attr2': 'value2'}` — custom DOM attributes for checkbox input
 
 

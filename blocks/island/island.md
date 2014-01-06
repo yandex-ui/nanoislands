@@ -10,7 +10,7 @@ Default options: none.
 
 * `padding` {string} — s / m / l
 * `type` {string} — inline / fly
-* `content` {string} — island's content (HTML or plaintext)
+* `content` {xml|string} — island's content, can be string or `xml` _xss warning!_
 
 ### Examples
 

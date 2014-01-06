@@ -12,8 +12,8 @@
 * `class` {array} — additional classes
 * `attrs` {object} — custom DOM attributes, e.g.: `{ 'attr2: 'value2', 'attr2: 'value2' }`
 * `tail` {string} — position of 'tail' widget — left|right|top|bottom
-* `title` {nodeset|string} — modal's title
-* `content` {nodeset|string} — modal's content
+* `titleContent` {xml|string} —  modal's title, can be string or `xml` _xss warning!_
+* `content` {xml|string} — modal's content, can be string or `xml` _xss warning!_
 
 ### Example of generic popup
 
@@ -86,11 +86,9 @@
 * `id` {string}
 * `class` {array} — additional classes
 * `attrs` {object} — custom DOM attributes
-* `title` {nodeset|string} — modal's title
-* `content` {nodeset|string} — modal's content
-* `buttons` {nodeset} — popup's buttons:
-    * `class` {array} — additional classes for buttons wrapper
-    * `data` {object|array} — data for one or more buttons
+* `titleContent` {xml|string} — modal's title, can be string or `xml` _xss warning!_
+* `content` {xml|string} — modal's content, can be string or `xml` _xss warning!_
+* `buttons` {xml|array} — popup's buttons:
 * `close` {nodeset} — popup's close button:
     * `attrs` {object} — custom DOM attributes for close button
 * `data-nb` {object} — popup display paramenters, renteded as `data-nb-*` attributes
