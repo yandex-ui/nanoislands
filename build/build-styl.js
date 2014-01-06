@@ -18,7 +18,7 @@ style.render(function(err, css) {
         process.exit(1);
     }
     if (!ie) {
-        css = autoprefixer.compile(css);
+        css = autoprefixer.process(css).css;
     }
     process.stdout.write(css);
 });
