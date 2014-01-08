@@ -36,7 +36,11 @@ match .slider nb {
                 }
 
                 <span class='nb-button__text'>
-                    <input class='nb-slider__fallback' type='text' value='{.value}' readonly='readonly' />
+                    <input class='nb-slider__fallback' type='text' value='{ .value }' readonly='readonly'>
+                        if .name {
+                            @name = '{ .name }'
+                        }
+                    </input>
                 </span>
             </label>
         </div>

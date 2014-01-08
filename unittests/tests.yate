@@ -99,6 +99,7 @@ match / {
 
     nb-slider({
       "value": 40
+      "name": "price"
       "disabled": true()
       "id": "slider-disabled"
     })

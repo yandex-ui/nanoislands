@@ -57,6 +57,26 @@ nb.define('slider', {
     },
 
     /**
+     * Set name of the fallback input
+     * @param {String|Number} value
+     * @fires 'nb-slider_name-set'
+     * @return {Object} nb.block
+     */
+    setName: function(value) {
+        this.$fallback.attr('name', value);
+        this.trigger('nb-slider_name-set');
+        return this;
+    },
+
+    /**
+     * Get name of the fallback input
+     * @return {String|Boolean} name
+     */
+    getName: function() {
+        return this.$fallback.prop('name');
+    },
+
+    /**
      * Set disabled state
      * @fires 'nb-slider_disabled'
      */
