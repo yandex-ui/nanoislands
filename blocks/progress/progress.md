@@ -63,15 +63,24 @@ Initialize all nb blocks with class '_init' within DOM node
 
 
 ```
-    /**
-     * Изменяет значение прогресс бара
-     * @param {String} Новое значение.
-     */
+/**
+* Set value of the progress
+* @param {String|Number} value
+* @fires 'nb-progress_value-set'
+* @returns {Object} nb.block
+*/
+progress.setValue(30)
 
-    progressBar.update();
+/**
+* Get value of the progress
+* @returns {String} value
+*/
+progress.getValue();
 
-    /**
-     * Меняет значение на единицу
-     */
-    progressBar.tick();
+/**
+* Change value of the progress by 1
+* @fires 'nb-progress_value-changed'
+* @returns {Object} nb.block
+*/
+progress.tick();
 ```

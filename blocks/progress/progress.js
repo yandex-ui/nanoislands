@@ -11,36 +11,52 @@ nb.define('progress', {
         }
 
         this.$title = $(this.node).find('.js-title');
+        this.$control = $(this.node).find('input');
         this.$bar = $(this.node).find('.js-bar');
     },
 
     /**
-     * Изменяет значение прогресс бара
-     * @param {String|Number} newVal —  Новое значение.
+     * Set value of the progress
+     * @param {String|Number} value
+     * @fires 'nb-progress_value-set'
+     * @returns {Object} nb.block
      */
+    setValue: function(value) {
+        var val = parseFloat(value);
 
-    update: function(newVal) {
-        var val = parseFloat(newVal);
-
+        this.$control.val(val);
         this.$bar.css({width: val + '%'});
 
         if (this.type == 'percentage') {
             this.$title.html(val + '%');
         }
-
-        this.data('progress', val);
+        this.trigger('nb-progress_value-set');
+        return this;
     },
 
     /**
-     * Меняет значение на единицу
+     * Get value of the progress
+     * @returns {String} value
      */
-    tick: function() {
-        var newVal = parseFloat(this.data('progress'));
+    getValue: function() {
+        return this.$control.val();
+    },
 
-        if (newVal < 100) {
-            newVal++;
+    /**
+    * Change value of the progress by 1
+    * @fires 'nb-progress_value-changed'
+    * @returns {Object} nb.block
+    */
+    tick: function() {
+        var val = parseFloat(this.getValue());
+
+        if (val < 100) {
+            val++;
         }
 
-        this.update(newVal);
+        this.setValue(val);
+        this.trigger('nb-progress_value-changed');
+
+        return this;
     }
 });

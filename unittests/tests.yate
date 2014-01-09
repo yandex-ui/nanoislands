@@ -104,4 +104,9 @@ match / {
       "disabled": true()
       "id": "slider-disabled"
     })
+
+    nb-progress({
+        'id': 'progress'
+        'start': '20'
+    })
 }
