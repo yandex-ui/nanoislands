@@ -60,10 +60,10 @@ slider.disable();
  */
  slider.enable();
 
-/**
- * Return state of the slider
- * @return {Boolean}
+ /**
+ * Destroy the slider
+ * @fires 'nb-slider_destroyed'
  */
-slider.isEnabled();
+slider.destroy();
 
 ```

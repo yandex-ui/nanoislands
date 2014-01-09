@@ -109,7 +109,7 @@ nb.define('slider', {
     },
 
     /**
-     * Destroy the button
+     * Destroy the slider
      * @fires 'nb-slider_destroyed'
      */
     destroy: function() {
