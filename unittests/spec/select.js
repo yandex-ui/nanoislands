@@ -30,20 +30,116 @@ describe("Select Tests", function() {
         });
     });
 
+    describe("#setName()", function() {
+        it('should set name', function() {
+            this.select.setName('Vadim');
+            expect(this.select.getName()).to.be.equal('Vadim');
+        });
+
+        it("check event", function() {
+            var flag = true;
+
+            this.select.on('nb-select_name-set', function() {
+                flag = false;
+            });
+
+            this.select.setName('Vadim');
+
+            expect(flag).to.not.ok();
+        });
+    });
+
+
+    describe("#setState()", function() {
+        it('should set state by text', function() {
+            this.select.setState({text: 'Гибрид'});
+            expect(this.select.getState().value == 'option3').to.be.ok();
+        });
+        it('should set state by value', function() {
+            this.select.setState({value: 'option3'});
+            expect(this.select.getState().text == 'Гибрид').to.be.ok();
+        });
+
+        it("shouldn't change if trying to set nonexistent option", function() {
+            var flag = true;
+
+            this.select.on('nb-select_changed', function() {
+                flag = false;
+            });
+
+            this.select.setState({value: 'option5'});
+
+            expect(flag).to.ok();
+        });
+
+        it("check event", function() {
+            var flag = true;
+
+            this.select.on('nb-select_changed', function() {
+                flag = false;
+            });
+
+            this.select.setState({value: 'option3'});
+
+            expect(flag).to.not.ok();
+        });
+    });
+
     describe("#getState()", function() {
-        it('should return name of select control', function() {
+        it('should return state of select control', function() {
             expect(this.select.getState().text == 'Карта' && this.select.getState().value == 'option1').to.be.ok();
         });
     });
 
+    describe("#getSource()", function() {
+        it('should return state of select control', function() {
+            expect(this.select.getSource()[0].value == 'option1' && this.select.getSource()[1].text == 'Гибрид').to.ok();
+        });
+    });
+
+    describe("#setSource()", function() {
+        it('should replace source', function() {
+            this.select.setSource([
+                {'text': 'test', 'value': 'test'},
+                {'text': 'test2', 'value': 'test2'}
+            ]);
+            expect(this.select.getSource()[0].value == 'test' && this.select.getSource()[1].text == 'test2').to.ok();
+        });
+
+        it('should set new source', function() {
+            this.select.setSource();
+
+            this.select.setSource([
+                {'text': 'test', 'value': 'test'},
+                {'text': 'test2', 'value': 'test2'}
+            ]);
+            expect(this.select.getSource()[0].value == 'test' && this.select.getSource()[1].text == 'test2').to.ok();
+        });
+
+        it("check event", function() {
+            var flag = true;
+
+            this.select.on('nb-select_source-set', function() {
+                flag = false;
+            });
+
+            this.select.setSource([
+                {'text': 'test', 'value': 'test'},
+                {'text': 'test2', 'value': 'test2'}
+            ]);
+
+            expect(flag).to.not.ok();
+        });
+    });
+
     describe("#addToSource()", function() {
-        it('Shoul add item', function() {
+        it('Should add item', function() {
             this.select.addToSource({'text': 'test', 'value': 'test'});
             var item = this.select.getSource().pop();
             expect(item.text == 'test' && item.value == 'test').to.ok();
         });
 
-        it('Shoul add array of items', function() {
+        it('Should add array of items', function() {
             var len = this.select.getSource().length;
             this.select.addToSource([
                 {'text': 'test', 'value': 'test'},
@@ -52,10 +148,22 @@ describe("Select Tests", function() {
             expect(this.select.getSource().length).to.equal(len + 2);
         });
 
-        it('Shoul add item with index', function() {
+        it('Should add item with index', function() {
             this.select.addToSource({'text': 'test', 'value': 'test'}, 1);
             var item = this.select.getSource()[1];
             expect(item.text == 'test' && item.value == 'test').to.ok();
+        });
+
+        it("check event", function() {
+            var flag = true;
+
+            this.select.on('nb-select_source-changed', function() {
+                flag = false;
+            });
+
+            this.select.addToSource({'text': 'test', 'value': 'test'}, 1);
+
+            expect(flag).to.not.ok();
         });
     });
 
@@ -72,6 +180,18 @@ describe("Select Tests", function() {
             this.select.removeFromSource(0);
             var item = this.select.getSource()[0];
             expect(item.text == 'test' && item.value == 'test').to.not.ok();
+        });
+
+        it("check event", function() {
+            var flag = true;
+
+            this.select.on('nb-select_source-changed', function() {
+                flag = false;
+            });
+
+            this.select.removeFromSource(0);
+
+            expect(flag).to.not.ok();
         });
     });
 

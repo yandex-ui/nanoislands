@@ -24,14 +24,11 @@ nb.define('select', {
         nb.init(this);
         this.$node = $(this.node);
         this.$control = this.$node.find('select');
-        this.$dropdown = this.$node.children('.nb-select__dropdown')
-                                   .appendTo('body');
+        this.$dropdown = this.$node.children('.nb-select__dropdown').appendTo('body');
         this.data = this.data();
 
         // find elements and values
         this.button = this.children()[0];
-
-        this.$fallback = this.$node.find('.nb-select__fallback');
 
         this._updateFromSelect();
 
@@ -161,7 +158,7 @@ nb.define('select', {
      */
     _updateFromSelect: function() {
         // get selected <option/>
-        this.$selected = this.$fallback.children(':selected');
+        this.$selected = this.$control.children(':selected');
 
         this.value = this.$selected.val();
         // &nbsp; - to prevent button from collapse if no text on <option/>
@@ -179,16 +176,32 @@ nb.define('select', {
      * @fires 'nb-select_changed'
      */
     setState: function(params) {
-        this.value = params.value;
-        this.text = params.text;
-        this.$selected.removeAttr('selected');
+        params = params || {};
+        var selected;
+        if (params.value) {
+            selected = this.$control.children('option[value="' + params.value + '"]');
+        } else {
+            selected = this.$control.children('option:contains(' + params.text + ')');
+        }
 
-        this.$selected = this.$fallback.children('[value="' + this.value + '"]').attr('selected', 'selected');
-        this.button.setText(this.text);
+        if (selected.length !== 0) {
+            this.$selected.prop('selected', false);
 
-        this.trigger('nb-select_changed');
+            this.$selected = selected;
 
-        this.$fallback.val(params.value);
+            this.$selected.prop('selected', true);
+
+            this.value = this.$selected.val();
+
+            this.text = this.$selected.html();
+
+            this.button.setText(this.text);
+
+            this.trigger('nb-select_changed');
+
+            this.$control.val(params.value);
+
+        }
         return this;
     },
 
@@ -214,6 +227,18 @@ nb.define('select', {
      */
     getName: function() {
         return this.$control.prop('name');
+    },
+
+    /**
+     * Changes a value of control, text on the button and select value it the fallback
+     * @param {string} name
+     * @fires 'nb-select_name-set'
+     * @returns {Object} nb.block
+     */
+    setName: function(name) {
+        this.$control.prop('name', name);
+        this.trigger('nb-select_name-set');
+        return this;
     },
 
     /**
@@ -257,6 +282,15 @@ nb.define('select', {
      * @returns {Object} nb.block
      */
     setSource: function(source) {
+
+        if (!source) {
+            return this;
+        }
+
+        if (!(source instanceof Array)) {
+            source = [source];
+        }
+
         var html = [];
         for (var i = 0, j = source.length; i < j; i++) {
             var item = source[i];
@@ -270,10 +304,10 @@ nb.define('select', {
         }
 
         // set new source for select
-        this.$fallback.empty().append(html);
+        this.$control.empty().append(html);
 
         this._updateFromSelect();
-        this.trigger('nb-select_source-changed');
+        this.trigger('nb-select_source-set');
         return this;
     },
 
@@ -282,7 +316,7 @@ nb.define('select', {
      * @returns {Array} source
      */
     getSource: function() {
-        return $.map(this.$fallback.children('option'), function(node) {
+        return $.map(this.$control.children('option'), function(node) {
             return {
                 text: $(node).text(),
                 value: $(node).val()
@@ -317,6 +351,7 @@ nb.define('select', {
         }, this);
 
         this.setSource(source);
+        this.trigger('nb-select_source-changed');
         return this;
     },
 
@@ -347,6 +382,7 @@ nb.define('select', {
         }
 
         this.setSource(source);
+        this.trigger('nb-select_source-changed');
         return this;
     },
 
