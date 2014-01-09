@@ -26,7 +26,7 @@ Action buttom, size L with custom classes
 ```
     nb-checkbox({
         'type': 'radio'
-        'text': 'Паук'
+        'content': 'Паук'
         'attrs': {
             'name': 'biotype'
         }
