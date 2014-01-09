@@ -28,9 +28,9 @@ describe('Slider Tests', function() {
             expect(input.value).to.be.equal('30');
         });
 
-        it('should throws nb-slider_changed event', function() {
+        it('should throws nb-slider_value-set event', function() {
             var checked = false;
-            this.slider.on('nb-slider_changed', function() {
+            this.slider.on('nb-slider_value-set', function() {
                 checked = true;
             });
 

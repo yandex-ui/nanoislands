@@ -38,7 +38,7 @@ var slider = nb.block(node);
 /**
  * Set specified value to slider
  * @param {Number} value
- * @fires 'nb-slider_changed'
+ * @fires 'nb-slider_value-set'
  */
 slider.setValue(45);
 

@@ -17,17 +17,17 @@ nb.define('slider', {
     oninit: function() {
         this.data = this.data();
         this.$node = $(this.node);
-        this.$fallback = this.$node.find('.nb-slider__fallback');
-        this.$control = this.$node.children('.nb-slider__body');
+        this.$control = this.$node.find('.nb-slider__fallback');
+        this.$body = this.$node.children('.nb-slider__body');
 
-        this.$control.show();
+        this.$body.show();
 
-        this.$control.slider({
+        this.$body.slider({
             range: 'min',
             disabled: this.$node.hasClass('nb-slider_disabled'),
             value: parseFloat(this.data.value),
             change: function(e, ui) {
-                this.$fallback.attr('value', ui.value);
+                this.$control.val(ui.value);
             }.bind(this)
         });
         this.trigger('nb-slider_inited');
@@ -40,11 +40,11 @@ nb.define('slider', {
      * @fires 'nb-slider_changed'
      */
     setValue: function(value) {
-        if (this.$control.slider('option', 'disabled')) {
+        if (this.$body.slider('option', 'disabled')) {
             return this;
         }
-        this.$control.slider('value', value);
-        this.trigger('nb-slider_changed');
+        this.$body.slider('value', value);
+        this.trigger('nb-slider_value-set');
         return this;
     },
 
@@ -53,7 +53,7 @@ nb.define('slider', {
      * @return {Number} value
      */
     getValue: function() {
-        return this.$control.slider('option', 'value');
+        return this.$body.slider('option', 'value');
     },
 
     /**
@@ -63,7 +63,7 @@ nb.define('slider', {
      * @return {Object} nb.block
      */
     setName: function(value) {
-        this.$fallback.attr('name', value);
+        this.$control.prop('name', value);
         this.trigger('nb-slider_name-set');
         return this;
     },
@@ -73,26 +73,30 @@ nb.define('slider', {
      * @return {String|Boolean} name
      */
     getName: function() {
-        return this.$fallback.prop('name');
+        return this.$control.prop('name');
     },
 
     /**
      * Set disabled state
      * @fires 'nb-slider_disabled'
+     * @return {Object} nb.block
      */
     disable: function() {
         this.$node.addClass('nb-slider_disabled');
-        this.$control.slider('disable');
+        this.$body.slider('disable');
+        this.trigger('nb-slider_disabled');
         return this;
     },
 
     /**
      * Reset disabled state
      * @fires 'nb-slider_enabled'
+     * @return {Object} nb.block
      */
     enable: function() {
         this.$node.removeClass('nb-slider_disabled');
-        this.$control.slider('enable');
+        this.$body.slider('enable');
+        this.trigger('nb-slider_enabled');
         return this;
     },
 
@@ -101,6 +105,18 @@ nb.define('slider', {
      * @return {Boolean}
      */
     isEnabled: function() {
-        return !this.$control.slider('option', 'disabled');
+        return !this.$body.slider('option', 'disabled');
+    },
+
+    /**
+     * Destroy the button
+     * @fires 'nb-slider_destroyed'
+     */
+    destroy: function() {
+        if (this.$node && this.$node.data('uiSlider')) {
+            this.$node.slider('destroy');
+        }
+        this.trigger('nb-slider_destroyed');
+        nb.destroy(this.node.getAttribute('id'));
     }
 });
