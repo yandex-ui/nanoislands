@@ -1,3 +1,24 @@
+##### 0.1.29
+###### Fixes
+* Change container of the select's dropdown.
+* set nb.button disabled on init
+* nb.checkbox must fires block events when change state
+* Parameters which used with html() in internal realisation now have "content" postfix
+* Fixed nb-slider's text is broken in FF
+
+###### API changes
+* [All] All "-getted" events renamed to "-get". Check documentation.
+* [Toggler] JS API refactoring. Check documentation
+* [Input] destroy() setName()
+* [Select] Added:
+    * getName()
+    * addToSource()
+    * removeFromSource()
+* [Popup] .title -> .titleContent
+* [Checkbox] .text -> .content
+* [Suggest] in source item .label -> labelContent
+* [Slider] Yate, JS API + docs
+
 ##### 0.1.28
 
 * fix for #83 — name attr
