@@ -85,6 +85,51 @@ select.setState({
 select.getState();
 
 /**
+ * Get name of the select
+ * @returns {String|Object} name
+ */
+select.getName();
+
+/**
+ * Changes a value of control, text on the button and select value it the fallback
+ * @param {string} name
+ * @fires 'nb-select_name-set'
+ * @returns {Object} nb.block
+ */
+select.setName('Vadim');
+
+/**
+ * Set new items for select
+ * @params {Array|Object} source New source
+ * @fires 'nb-select_source-changed'
+ * @returns {Object} nb.block
+ */
+select.setSource([{value: 'val', text: 'text'}])
+
+/**
+ * Get items from select
+ * @returns {Array} source
+ */
+select.getSource();
+
+/**
+ * Add items to select
+ * @param {Array|Object} items
+ * @param {Number} index to insert
+ * @fires 'nb-select_source-changed'
+ * @returns {Object} nb.block
+ */
+select.addToSource([{value: 'val', text: 'text'}]);
+
+/**
+ * Remove items to select
+ * @param {Array|Object|number} items or index
+ * @fires 'nb-select_source-changed'
+ * @returns {Object} nb.block
+ */
+select.removeFromSource();
+
+/**
  * Disables the select
  * @fires 'nb-select_disabled'
  * @returns {Object} nb.block
@@ -123,6 +168,8 @@ select.blur()
  * @fires 'nb-select_destroyed'
  */
 select.destroy()
+
+
 
 
 ```
