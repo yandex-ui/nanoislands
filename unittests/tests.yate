@@ -55,6 +55,7 @@ match / {
           {
               'text': 'Карта'
               'value': 'option1'
+              'selected': true()
           }
           {
               'text': 'Гибрид'

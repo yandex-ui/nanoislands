@@ -30,6 +30,12 @@ describe("Select Tests", function() {
         });
     });
 
+    describe("#getState()", function() {
+        it('should return name of select control', function() {
+            expect(this.select.getState().text == 'Карта' && this.select.getState().value == 'option1').to.be.ok();
+        });
+    });
+
     describe("#addToSource()", function() {
         it('Shoul add item', function() {
             this.select.addToSource({'text': 'test', 'value': 'test'});
