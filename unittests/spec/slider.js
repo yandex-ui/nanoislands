@@ -117,4 +117,28 @@ describe('Slider Tests', function() {
             expect(this.sliderDisabled.isEnabled()).not.to.be.ok();
         });
     });
+
+    describe("#destroy()", function() {
+
+        beforeEach(function() {
+            sinon.spy($.fn, 'slider');
+            sinon.spy(nb, 'destroy');
+        });
+
+        afterEach(function() {
+            $.fn.slider.restore();
+            nb.destroy.restore();
+        });
+
+        it("should call $.fn.slider('destroy')", function() {
+            this.slider.destroy();
+            expect($.fn.slider.calledWithExactly('destroy')).to.be.equal(true);
+        });
+
+        it("should call nb.destroy('slider')", function() {
+            this.slider.destroy();
+            expect(nb.destroy.calledWithExactly('slider')).to.be.equal(true);
+        });
+    });
+
 });

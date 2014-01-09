@@ -113,8 +113,8 @@ nb.define('slider', {
      * @fires 'nb-slider_destroyed'
      */
     destroy: function() {
-        if (this.$node && this.$node.data('uiSlider')) {
-            this.$node.slider('destroy');
+        if (this.$body && this.$body.data('uiSlider')) {
+            this.$body.slider('destroy');
         }
         this.trigger('nb-slider_destroyed');
         nb.destroy(this.node.getAttribute('id'));
