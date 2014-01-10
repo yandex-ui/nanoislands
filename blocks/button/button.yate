@@ -117,7 +117,9 @@ match .buttonAttach nb {
         </span>
         <span class="nb-button__text">
             apply .icon nb
-            html(.content)
+            if (.content) {
+                html(.content)
+            }
         </span>
     </label>
 }

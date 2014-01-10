@@ -50,7 +50,9 @@ match .radio-button nb {
 
                     <span class="nb-button__text">
                             apply .icon nb
-                            html(.content)
+                            if (.content) {
+                                html(.content)
+                            }
                     </span>
                 </label>
             </span>
