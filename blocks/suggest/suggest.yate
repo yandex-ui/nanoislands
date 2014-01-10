@@ -44,7 +44,9 @@ match / nb-suggest {
 }
 
 match /[.type == 'default'].item nb-suggest {
-    html(.labelContent)
+    if .labelContent {
+        html(.labelContent)
+    }
 }
 
 match /[.type == 'username'].item nb-suggest {

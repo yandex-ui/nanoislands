@@ -40,7 +40,9 @@ match .button nb {
 
         <span class="nb-button__text">
            apply .icon nb
-           html(.content)
+               if .content {
+                   html(.content)
+               }
         </span>
     </button>
 }
@@ -68,7 +70,9 @@ match .buttonLink nb {
 
         <span class="nb-button__text">
            apply .icon nb
-           html(.content)
+               if .content {
+                   html(.content)
+               }
         </span>
     </a>
 }
