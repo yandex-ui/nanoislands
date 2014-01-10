@@ -1,6 +1,7 @@
 describe('Progress Tests', function() {
     beforeEach(function() {
         this.nbProgress = nb.find('progress');
+        console.log(this.nbProgress);
     });
     afterEach(function() {
         delete this.nbProgress;

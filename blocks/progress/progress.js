@@ -6,7 +6,7 @@ nb.define('progress', {
     oninit: function() {
         var data = this.data();
 
-        if ('type' in data) {
+        if (data && data.type) {
             this.type = data.type;
         }
 
