@@ -23,10 +23,6 @@ match .checkbox nb {
 
 
         <input class="nb-checkbox__input" type="{ .type }" id="nb-checkbox_{ uniq }">
-            for .attrs.* {
-               @{name()} = .
-            }
-
             if .name {
                 @name = .name
             }
