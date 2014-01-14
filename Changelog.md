@@ -1,3 +1,22 @@
+##### 0.1.30
+###### Fixes
+* fix #132
+* fix #128
+* fix #127
+* fix #130
+* fix #131
+* Select's dropdown z-index bug fixed
+
+###### API changes
+* [Select]
+  * setName()
+  * `nb-select_source-changed` event renamed to `nb-select_source-set`
+* [Progress] JS API
+* [Slider] `nb-slider_changed` event renamed to `nb-slider_value-set`
+* [Input]
+  * type multiline
+  * ghost mode
+
 ##### 0.1.29
 ###### Fixes
 * Change container of the select's dropdown.
