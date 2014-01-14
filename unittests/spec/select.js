@@ -19,7 +19,7 @@ describe("Select Tests", function() {
 
         it('should has disabled button after init', function() {
             var select = nb.find('select-disabled');
-            expect(select.button.isEnabled()).to.be.equal(false);
+            expect(select.isEnabled()).to.be.equal(false);
         });
 
     });
@@ -197,12 +197,12 @@ describe("Select Tests", function() {
 
     describe("#isEnabled()", function() {
         it("should return true when enabled", function() {
-            expect(this.select.button.isEnabled()).to.be.ok();
+            expect(this.select.isEnabled()).to.be.ok();
         });
 
         it("should return false when disabled", function() {
             this.select.disable();
-            expect(this.select.button.isEnabled()).not.to.be.ok();
+            expect(this.select.isEnabled()).not.to.be.ok();
         });
     });
 
@@ -267,12 +267,5 @@ describe("Select Tests", function() {
             this.select.destroy();
             expect(nb.destroy.calledWithExactly('select')).to.be.equal(true);
         });
-
-        it("should off() clicks", function() {
-            this.select.destroy();
-            expect($.fn.off.calledWithExactly('click')).to.be.equal(true);
-        });
-
-
     });
 });

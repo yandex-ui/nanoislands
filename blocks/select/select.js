@@ -10,7 +10,8 @@
 
 nb.define('select', {
     events: {
-        'init': 'onInit'
+        'init': 'onInit',
+        'click': '_onclick'
         //'open' { event, ui}
         //'close' { event, ui}
     },
@@ -26,9 +27,6 @@ nb.define('select', {
         this.$control = this.$node.find('select');
         this.$dropdown = this.$node.children('.nb-select__dropdown').appendTo('body');
         this.data = this.data();
-
-        // find elements and values
-        this.button = this.children()[0];
 
         this._updateFromSelect();
 
@@ -67,7 +65,7 @@ nb.define('select', {
             position: position,
             appendTo: that.$dropdown,
             source: function(request, response) {
-                response(that.$fallback.children('option').map(function() {
+                response(that.$control.children('option').map(function() {
                     return {
                         label: $(this).text(),
                         value: $(this).val(),
@@ -128,7 +126,7 @@ nb.define('select', {
         // if value not provided, return current value of fallback select
         that.$jUI.valueMethod = function(value) {
             if (typeof value === 'string') {
-                var text = that.$fallback.children('[value="' + value + '"]').text();
+                var text = that.$control.children('[value="' + value + '"]').text();
                 that.setState({
                     value: value,
                     text: text
@@ -136,20 +134,6 @@ nb.define('select', {
             }
             return that.$selected.val();
         };
-
-        // add click event for button
-        $(this.button.node).on('click', function(evt) {
-            // иначе сабмитит форму при клике
-            evt.preventDefault();
-            // close if already visible
-            if (that.$node.autocomplete('widget').css('display') == 'block') {
-                that.$node.autocomplete('close');
-                return;
-            }
-            // pass empty string as value to search for, displaying all results
-            that.$node.autocomplete('search', '');
-            that.$node.focus();
-        });
     },
 
     /**
@@ -164,7 +148,24 @@ nb.define('select', {
         // &nbsp; - to prevent button from collapse if no text on <option/>
         this.text = this.$selected.text() || '&nbsp;';
 
-        this.button.setText(this.text);
+        this._setText(this.text);
+    },
+
+    _onclick: function(evt) {
+        // иначе сабмитит форму при клике
+        evt.preventDefault();
+        // close if already visible
+        if (this.$node.autocomplete('widget').css('display') == 'block') {
+            this.$node.autocomplete('close');
+            return;
+        }
+        // pass empty string as value to search for, displaying all results
+        this.$node.autocomplete('search', '');
+        this.$node.focus();
+    },
+
+    _setText: function(text) {
+        this.$node.find('.nb-button__text').html(text);
     },
 
     /**
@@ -195,7 +196,7 @@ nb.define('select', {
 
             this.text = this.$selected.html();
 
-            this.button.setText(this.text);
+            this._setText(this.text);
 
             this.trigger('nb-select_changed');
 
@@ -248,7 +249,7 @@ nb.define('select', {
      */
     disable: function() {
         if (this.isEnabled()) {
-            this.button.disable();
+            this.$node.addClass('nb-button_disabled');
             this.trigger('nb-select_disabled');
         }
         return this;
@@ -261,7 +262,7 @@ nb.define('select', {
      */
     enable: function() {
         if (!this.isEnabled()) {
-            this.button.enable();
+            this.$node.removeClass('nb-button_disabled');
             this.trigger('nb-select_enabled');
         }
         return this;
@@ -272,7 +273,7 @@ nb.define('select', {
      * @returns {Boolean}
      */
     isEnabled: function() {
-        return this.button.isEnabled();
+        return !this.$node.hasClass('nb-button_disabled');
     },
 
     /*
@@ -393,7 +394,7 @@ nb.define('select', {
      */
     focus: function() {
         if (this.isEnabled()) {
-            this.button.focus();
+            this.$node.focus();
         }
         this.trigger('nb-select_focused');
         return this;
@@ -406,7 +407,7 @@ nb.define('select', {
      */
     blur: function() {
         if (this.isEnabled()) {
-            this.button.blur();
+            this.$node.blur();
         }
         this.trigger('nb-select_blured');
         return this;
@@ -418,8 +419,6 @@ nb.define('select', {
      */
     destroy: function() {
         if (this.$node && this.$node.data('uiAutocomplete')) {
-            this.button.destroy();
-            $(this.button.node).off('click');
             this.$node.autocomplete('destroy');
             this.$dropdown.remove();
         }
