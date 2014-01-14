@@ -1,7 +1,9 @@
 nb.define('toggler', {
     events: {
         'init': 'oninit',
-        'click': 'toggle'
+        'click': 'toggle',
+        'focusin': 'focus',
+        'focusout': 'blur'
     },
 
     /**
