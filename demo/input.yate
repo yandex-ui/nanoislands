@@ -31,6 +31,13 @@ func input-length() {
     nb-input(block)
 }
 
+func input-multiline() {
+    block = {
+        'type': 'multiline'
+    }
+    nb-input(block)
+}
+
 func inputs() {
     <div class="demo-section">
         <div class="demo-h3">
@@ -68,5 +75,12 @@ func inputs() {
         </div>
 
         show(input-length())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Multiline'
+        </div>
+
+        show(input-multiline())
     </div>
 }

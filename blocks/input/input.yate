@@ -5,13 +5,14 @@ func nb-input(nodeset options) {
 
     if options.left || options.right || options.label || options.reset {
         nb-block('input', nb-extend(default, options))
+    } else if options.type == 'multiline' {
+        nb-block('textarea', nb-extend(default, options))
     } else {
         nb-block('inputSimple', nb-extend(default, options))
     }
 }
 
 match .input nb {
-
     <label class='nb-input nb-input_type_complex'>
         apply . nb-main-attrs
 
@@ -75,4 +76,36 @@ match .inputSimple nb {
             @data-nb-disabled = 'true'
         }
     </input>
+}
+
+match .textarea nb {
+    <textarea data-nb-type='simple' class='nb-input _init nb-input_type_simple'>
+        apply . nb-main-attrs
+
+        if .name {
+            @name = .name
+        }
+
+        if .attrs.name {
+            @name = .attrs.name
+        }
+
+        if !( .static ){
+            @data-nb='input'
+        }
+        if .size {
+            @class += ' nb-input_size_{.size}'
+        }
+
+        if .disabled {
+            @class += ' is-disabled'
+            @disabled = 'disabled'
+            @data-nb-disabled = 'true'
+        }
+
+        if .content {
+            html(.content)
+        }
+
+    </textarea>
 }

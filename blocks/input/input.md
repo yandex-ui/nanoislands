@@ -13,7 +13,8 @@ HTML input element.
 * `'id'` {string}
 * `'name'` {string}
 * `'attrs'` {object} - attrubutes for input node
-* `'content'` {string} - `value` of the input
+* `'content'` {string|xml} - `value` of the input
+* `'type'` {string} — `'multiline'` textarea
 * `'disabled'` {boolean}
 * `'size'` {string}  - input size. `'s'` (no other sizes supported)
 
