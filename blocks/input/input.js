@@ -1,7 +1,11 @@
 nb.define('input', {
     events: {
         'init': 'oninit',
-        'click': 'focus'
+        'click': 'focus',
+        'focusin': 'focus',
+        'focusout': 'blur',
+        'mouseover': '_hover',
+        'mouseout': '_hover'
     },
 
     /**
@@ -23,15 +27,20 @@ nb.define('input', {
         this.disabled = this.$control.prop('disabled');
         this.value = this.$control.val();
         this.focused = false;
-        nb.on('nb-input_focusout', function() {
+        nb.on('is-focusedout', function() {
             that.blur();
         });
         this.trigger('nb-input_inited');
     },
 
+    _hover: function() {
+        if (this.data.ghost) {
+            this.$node.toggleClass('is-ghost');
+        }
+    },
     /**
      * Focus the input
-     * @fires 'nb-input_focused'
+     * @fires 'is-focuseded'
      * @returns {Object} nb.block
      */
     focus: function() {
@@ -39,9 +48,14 @@ nb.define('input', {
             return this;
         }
 
-        if (!this.$node.hasClass('nb-input_focus')) {
+        if (!this.$node.hasClass('is-focused')) {
             nb.trigger('nb-input_focusout');
-            this.$node.addClass('nb-input_focus');
+            this.$node.addClass('is-focused');
+
+            if (this.data.ghost) {
+                this.$node.removeClass('is-ghost');
+            }
+
             this.focused = true;
             this.$control.get(0).focus();
             this.trigger('nb-input_focused');
@@ -56,9 +70,15 @@ nb.define('input', {
      * @returns {Object} nb.block
      */
     blur: function() {
-        this.$node.removeClass('nb-input_focus');
+        this.$node.removeClass('is-focused');
+
+        if (this.data.ghost) {
+            this.$node.addClass('is-ghost');
+        }
+
         this.focused = false;
         this.trigger('nb-input_blured');
+
         return this;
     },
 
@@ -128,7 +148,7 @@ nb.define('input', {
         this.trigger('nb-input_name-set');
         return this;
     },
-    
+
     /**
      * Return state of the input
      * @returns {Boolean}

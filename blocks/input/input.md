@@ -15,6 +15,7 @@ HTML input element.
 * `'attrs'` {object} - attrubutes for input node
 * `'content'` {string|xml} - `value` of the input
 * `'type'` {string} — `'multiline'` textarea
+* `'ghost'` {boolean} — ghost mode input
 * `'disabled'` {boolean}
 * `'size'` {string}  - input size. `'s'` (no other sizes supported)
 

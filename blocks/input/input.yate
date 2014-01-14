@@ -3,7 +3,7 @@ func nb-input(nodeset options) {
         'size': 's'
     }
 
-    if options.left || options.right || options.label || options.reset {
+    if options.left || options.right || options.label || options.reset || options.ghost {
         nb-block('input', nb-extend(default, options))
     } else if options.type == 'multiline' {
         nb-block('textarea', nb-extend(default, options))
@@ -26,6 +26,11 @@ match .input nb {
         if .disabled {
             @class += ' is-disabled'
             @data-nb-disabled = 'true'
+        }
+
+        if .ghost {
+            @class += ' is-ghost'
+            @data-nb-ghost = 'true'
         }
 
         if .reset {

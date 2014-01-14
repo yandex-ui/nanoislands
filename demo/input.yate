@@ -38,6 +38,13 @@ func input-multiline() {
     nb-input(block)
 }
 
+func input-ghost() {
+    block = {
+        'ghost': true()
+    }
+    nb-input(block)
+}
+
 func inputs() {
     <div class="demo-section">
         <div class="demo-h3">
@@ -82,5 +89,12 @@ func inputs() {
         </div>
 
         show(input-multiline())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Ghost'
+        </div>
+
+        show(input-ghost())
     </div>
 }
