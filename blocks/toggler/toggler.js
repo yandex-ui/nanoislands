@@ -79,7 +79,7 @@ nb.define('toggler', {
      */
     disable: function() {
         this.$control.prop('disabled', true);
-        this.$node.addClass('nb-toggler_disabled');
+        this.$node.addClass('is-disabled');
         this.trigger('nb-toggler_disabled');
         return this;
     },
@@ -90,7 +90,7 @@ nb.define('toggler', {
      */
     enable: function() {
         this.$control.prop('disabled', false);
-        this.$node.removeClass('nb-toggler_disabled');
+        this.$node.removeClass('is-disabled');
         this.trigger('nb-toggler_enabled');
         return this;
     },

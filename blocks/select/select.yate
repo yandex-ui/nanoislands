@@ -17,7 +17,7 @@ match .select nb {
            }
 
           if .disabled  {
-              @class += ' nb-button_disabled'
+              @class += ' is-disabled'
               @disabled = 'disabled'
           }
 

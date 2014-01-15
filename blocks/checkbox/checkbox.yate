@@ -18,7 +18,7 @@ match .checkbox nb {
         apply . nb-main-attrs
 
         if .disabled  {
-             @class += ' nb-checkbox_disabled'
+             @class += ' is-disabled'
         }
 
 

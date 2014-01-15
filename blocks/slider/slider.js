@@ -24,7 +24,7 @@ nb.define('slider', {
 
         this.$body.slider({
             range: 'min',
-            disabled: this.$node.hasClass('nb-slider_disabled'),
+            disabled: this.$node.hasClass('is-disabled'),
             value: parseFloat(this.data.value),
             change: function(e, ui) {
                 this.$control.val(ui.value);
@@ -82,7 +82,7 @@ nb.define('slider', {
      * @return {Object} nb.block
      */
     disable: function() {
-        this.$node.addClass('nb-slider_disabled');
+        this.$node.addClass('is-disabled');
         this.$body.slider('disable');
         this.trigger('nb-slider_disabled');
         return this;
@@ -94,7 +94,7 @@ nb.define('slider', {
      * @return {Object} nb.block
      */
     enable: function() {
-        this.$node.removeClass('nb-slider_disabled');
+        this.$node.removeClass('is-disabled');
         this.$body.slider('enable');
         this.trigger('nb-slider_enabled');
         return this;

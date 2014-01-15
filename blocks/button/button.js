@@ -75,7 +75,7 @@ nb.define('button', {
     disable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('disable');
-            this.$node.addClass('nb-button_disabled');
+            this.$node.addClass('is-disabled');
             this.trigger('nb-button_disabled');
         }
         return this;
@@ -89,7 +89,7 @@ nb.define('button', {
     enable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('enable');
-            this.$node.removeClass('nb-button_disabled');
+            this.$node.removeClass('is-disabled');
             this.trigger('nb-button_enabled');
         }
         return this;

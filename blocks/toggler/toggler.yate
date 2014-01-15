@@ -17,7 +17,7 @@ match .toggler nb {
             @class += ' nb-toggler_checked'
         }
         if .disabled {
-            @class += ' nb-toggler_disabled'
+            @class += ' is-disabled'
         }
         <label class="nb-toggler__label">
             <input type="checkbox" class="nb-toggler__checkbox" >

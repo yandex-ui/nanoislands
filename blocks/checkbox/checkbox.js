@@ -121,7 +121,7 @@ nb.define('checkbox', {
      */
     enable: function() {
         if (!this.isEnabled()) {
-            this.$node.removeClass('nb-checkbox_disabled');
+            this.$node.removeClass('is-disabled');
             this.$control.removeAttr('disabled');
             this.trigger('nb-' + this.type + '_enabled');
         }
@@ -136,7 +136,7 @@ nb.define('checkbox', {
     disable: function() {
         if (this.isEnabled()) {
             this.blur();
-            this.$node.addClass('nb-checkbox_disabled');
+            this.$node.addClass('is-disabled');
             this.$control.attr('disabled', 'disabled');
             this.trigger('nb-' + this.type + '_disabled');
         }

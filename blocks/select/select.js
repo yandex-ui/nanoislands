@@ -283,7 +283,7 @@ nb.define('select', {
      */
     disable: function() {
         if (this.isEnabled()) {
-            this.$node.addClass('nb-button_disabled');
+            this.$node.addClass('is-disabled');
             this.trigger('nb-select_disabled');
         }
         return this;
@@ -296,7 +296,7 @@ nb.define('select', {
      */
     enable: function() {
         if (!this.isEnabled()) {
-            this.$node.removeClass('nb-button_disabled');
+            this.$node.removeClass('is-disabled');
             this.trigger('nb-select_enabled');
         }
         return this;
@@ -307,7 +307,7 @@ nb.define('select', {
      * @returns {Boolean}
      */
     isEnabled: function() {
-        return !this.$node.hasClass('nb-button_disabled');
+        return !this.$node.hasClass('is-disabled');
     },
 
     /*

@@ -479,7 +479,7 @@ nb.define('popup-toggler', {
     },
 
     'onclick': function() {
-        if (this.getMod('_disabled')) {
+        if (this.$node.hasClass('is-disabled')) {
             return;
         }
 
