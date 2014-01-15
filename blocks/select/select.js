@@ -156,16 +156,49 @@ nb.define('select', {
         evt.preventDefault();
         // close if already visible
         if (this.$node.autocomplete('widget').css('display') == 'block') {
-            this.$node.autocomplete('close');
+            this.close();
             return;
         }
-        // pass empty string as value to search for, displaying all results
-        this.$node.autocomplete('search', '');
+        this.open();
         this.$node.focus();
     },
 
     _setText: function(text) {
         this.$node.find('.nb-button__text').html(text);
+    },
+
+    /**
+     * Render dropdown of the select
+     * @fires 'nb-select_rendered'
+     * @returns {Object} nb.block
+     */
+    render: function() {
+        // pass empty string as value to search for, displaying all results
+        this.$node.autocomplete('search', '');
+        this.trigger('nb-select_rendered');
+        return this;
+    },
+
+    /**
+     * Open dropdown of the select
+     * @fires 'nb-select_opened'
+     * @returns {Object} nb.block
+     */
+    open: function() {
+        this.render();
+        this.trigger('nb-select_opened');
+        return this;
+    },
+
+    /**
+     * Close dropdown of the select
+     * @fires 'nb-select_closed'
+     * @returns {Object} nb.block
+     */
+    close: function() {
+        this.$node.autocomplete('close');
+        this.trigger('nb-select_closed');
+        return this;
     },
 
     /**
@@ -175,6 +208,7 @@ nb.define('select', {
          *     value: '..'
          * }
      * @fires 'nb-select_changed'
+     * @returns {Object} nb.block
      */
     setState: function(params) {
         params = params || {};

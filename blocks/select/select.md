@@ -58,6 +58,26 @@ nb-select( {
 
 var select = nb.block(node);
 
+ /**
+ * Render dropdown of the select
+ * @fires 'nb-select_rendered'
+ * @returns {Object} nb.block
+ */
+select.render();
+
+/**
+ * Open dropdown of the select
+ * @fires 'nb-select_opened'
+ * @returns {Object} nb.block
+ */
+select.open();
+
+/**
+ * Close dropdown of the select
+ * @fires 'nb-select_closed'
+ * @returns {Object} nb.block
+ */
+select.close();
 /**
  * Changes a value of control, text on the button and select value it the fallback
  *

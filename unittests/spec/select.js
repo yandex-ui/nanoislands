@@ -49,6 +49,69 @@ describe("Select Tests", function() {
         });
     });
 
+    describe("#render()", function() {
+        it('should open select', function() {
+            this.select.render();
+            expect(this.select.$node.autocomplete('widget').css('display')).to.equal('block');
+        });
+
+        it('shouldn\'t close select', function() {
+            this.select.render();
+            this.select.render();
+            expect(this.select.$node.autocomplete('widget').css('display')).to.equal('block');
+        });
+
+        it("check event", function() {
+            var flag = true;
+
+            this.select.on('nb-select_rendered', function() {
+                flag = false;
+            });
+
+            this.select.render();
+
+            expect(flag).to.not.ok();
+        });
+    });
+
+    describe("#open()", function() {
+        it('should open select', function() {
+            this.select.open();
+            expect(this.select.$node.autocomplete('widget').css('display')).to.equal('block');
+        });
+
+        it("check event", function() {
+            var flag = true;
+
+            this.select.on('nb-select_opened', function() {
+                flag = false;
+            });
+
+            this.select.open();
+
+            expect(flag).to.not.ok();
+        });
+    });
+
+    describe("#close()", function() {
+        it('should close select', function() {
+            this.select.close();
+            expect(this.select.$node.autocomplete('widget').css('display')).to.not.equal('block');
+        });
+
+        it("check event", function() {
+            var flag = true;
+
+            this.select.on('nb-select_closed', function() {
+                flag = false;
+            });
+
+            this.select.close();
+
+            expect(flag).to.not.ok();
+        });
+    });
+
 
     describe("#setState()", function() {
         it('should set state by text', function() {
