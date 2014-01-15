@@ -32,7 +32,9 @@ match .tabs nb {
 
         for .items {
             <div class="nb-tabs__panel" id="{prefix}-{index()}">
-                html( .content )
+                if .content {
+                    html( .content )
+                }
             </div>
         }
     </div>

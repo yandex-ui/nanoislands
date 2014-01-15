@@ -33,9 +33,11 @@ match .dropzone nb {
             </div>
         }
 
-        if .text {
+        if .content {
             <div class="nb-dropzone__text">
-                html(.text)
+            if .content {
+                html(.content)
+            }
                 if .button != 'false'{
                     nb-button(.button)
                 }

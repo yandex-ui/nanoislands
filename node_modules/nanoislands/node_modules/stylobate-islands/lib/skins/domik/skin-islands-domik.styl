@@ -1,0 +1,46 @@
+// TODO: move bg, shadow and sizes to options
+
+skin-islands-domik()
+  if inline in arguments
+    display: inline-block
+  else
+    display: block
+
+skin-islands-domik-roof()
+  kind: block
+
+  overflow: hidden
+
+  padding-top: 3px /* Showing top part */
+  transform: translate(0, 1px) /* Fixing gap */
+
+  // Should I move something of this outside?
+  if !ie
+    &:before
+      content: ""
+
+      display: block
+
+      padding-top: 17.1875%
+
+    &:after
+      content: ""
+      position: absolute
+      top: 0
+      left: 0
+
+      display: block
+      width: 100%
+      padding-bottom: 100%
+
+      background: #FFF
+
+      // Magic numbers, I know, it should be calculated using some math, yep
+      transform: translate(0, -25.65%) scale(1, 0.345) rotate(45deg) translate(2px, 2px)
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.13), 0 0 0 1px #FFF
+
+skin-islands-domik-content()
+  padding: 2*$islands_s 2*$islands_m
+
+  background: #FFF
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1)

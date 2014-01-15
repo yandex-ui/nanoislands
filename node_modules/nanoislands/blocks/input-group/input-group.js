@@ -2,22 +2,21 @@ nb.define('input-group', {
     events: {
         'init': 'oninit',
         'click': 'oninit',
-        'init': 'oninit',
         'disable': 'onDisable',
         'enable': 'onEnable'
     },
 
     oninit: function() {
-        var that = this
+        var that = this;
         that.$node = $(this.node);
-        that.disabled = this.data()['disabled']
+        that.disabled = this.data()['disabled'];
         $(this.children()).each(function() {
             if (this.$node.hasClass('nb-input')) {
                 that.input = this;
             } else {
                 that.button = this;
             }
-        })
+        });
     },
     /**
      * Disables the input-group

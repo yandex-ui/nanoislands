@@ -6,39 +6,57 @@ nb.define('progress', {
     oninit: function() {
         var data = this.data();
 
-        if ('type' in data) {
+        if (data && data.type) {
             this.type = data.type;
         }
 
         this.$title = $(this.node).find('.js-title');
+        this.$control = $(this.node).find('input');
         this.$bar = $(this.node).find('.js-bar');
     },
 
     /**
-     * Изменяет значение прогресс бара
-     * @param {String} Новое значение.
+     * Set value of the progress
+     * @param {String|Number} value
+     * @fires 'nb-progress_value-set'
+     * @returns {Object} nb.block
      */
+    setValue: function(value) {
+        var val = parseFloat(value);
 
-    update: function(newVal) {
-        var newVal = parseFloat(newVal, 10)
+        this.$control.val(val);
+        this.$bar.css({width: val + '%'});
 
-        this.$bar.css({width: newVal + '%'})
-
-        if (this.type == 'percentage'){
-            this.$title.html(newVal + '%')
+        if (this.type == 'percentage') {
+            this.$title.html(val + '%');
         }
-
-        this.data('progress', newVal)
+        this.trigger('nb-progress_value-set');
+        return this;
     },
 
     /**
-     * Меняет значение на единицу
+     * Get value of the progress
+     * @returns {String} value
      */
+    getValue: function() {
+        return this.$control.val();
+    },
+
+    /**
+    * Change value of the progress by 1
+    * @fires 'nb-progress_value-changed'
+    * @returns {Object} nb.block
+    */
     tick: function() {
-        var newVal = parseFloat(this.data('progress'), 10)
+        var val = parseFloat(this.getValue());
 
-        newVal < 100 ? newVal++ : newVal
+        if (val < 100) {
+            val++;
+        }
 
-        this.update(newVal)
+        this.setValue(val);
+        this.trigger('nb-progress_value-changed');
+
+        return this;
     }
-})
+});

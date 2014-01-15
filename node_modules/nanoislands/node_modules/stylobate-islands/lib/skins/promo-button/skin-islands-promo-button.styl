@@ -1,0 +1,85 @@
+skin-islands-promo-button()
+  skin-islands-check-font()
+
+  position: relative
+
+  cursor: pointer
+  text-align: center
+
+  border: none
+  outline: 0
+  background-color: #f9c400
+  background: linear-gradient(to bottom, #ffe025, #f9c400 92%, #be8c05)
+  text-shadow: 0 1px 0 rgba(#fff, 0.36)
+
+  color: #473e09
+
+  user-select: none
+
+  if fly in arguments
+    box-shadow: 0 0 1px 0 #ffffff,
+                0 9px 18px 0 rgba(#99782e, 0.36)
+
+    &:active
+      box-shadow: 0 0 1px 0 #ffffff,
+                  0 3px 9px 0 rgba(#99782e, 0.36)
+
+      transform: translateY(2px)
+
+  else
+    box-shadow: 0 0 1px 0 #ffffff
+
+    &:active
+      background-color: #ffe652
+      background: linear-gradient(to bottom, #c69007, #f8c106 8%, #dec35e)
+
+      &:before
+        background: linear-gradient(to bottom, #ffe349, #ffdb01)
+        box-shadow: inset 0 2px 4px 0 rgba(#663400, 0.2)
+
+      & { utilus_alike(arguments, $skin-islands-button-content) }
+        top: 3px
+
+  if small in arguments
+    font-size: $islands_text_h3
+
+    padding: .9 * $islands_s 1.8 * $islands_s
+
+    border-radius: 4px
+
+  else if large in arguments
+    font-size: 2 * $islands_text_m
+    padding: $islands_l 1.8 * $islands_l
+
+    border-radius: 6px
+
+  else if xlarge in arguments
+    font-size: 1.5 * $islands_text_h2
+    padding: 1.5 * $islands_m 2.25 * $islands_l
+
+    border-radius: 8px
+
+  else
+    font-size: $islands_text_h2
+
+    padding: 1.3 * $islands_s 2.7 * $islands_s
+
+    border-radius: 4px
+
+  &:before
+    content: ""
+    kind: fill 1px
+
+    background: linear-gradient(to bottom, #ffe34a, #ffdb03)
+    box-shadow: inset 0 -0.085em 0 0 rgba(#663400, 0.2),
+                inset 0 0 3px 0 rgba(#feffbb, 0.5)
+
+    border-radius: inherit
+
+  &:hover:before
+    background: linear-gradient(to bottom, #ffe86a, #ffe130)
+
+  & { utilus_alike(arguments, $skin-islands-button-content) }
+    kind: block
+
+

@@ -4,7 +4,7 @@ nb.define('header', {
         'click .nb-header__button': 'togglePress'
     },
 
-    oninit: function () {
+    oninit: function() {
         this.$node = $(this.node);
     },
 
@@ -16,13 +16,12 @@ nb.define('header', {
         var $target = $(e.target);
         $target.closest('.nb-header__button').toggleClass('nb-header__button_pressed');
 
-        if ( $target.hasClass('nb-icon_services') ) {
+        if ($target.hasClass('nb-icon_services')) {
             nb.trigger('services-click');
         }
 
-        if ( $target.hasClass('nb-icon_settings') ) {
+        if ($target.hasClass('nb-icon_settings')) {
             nb.trigger('settings-click');
         }
     }
-
 });

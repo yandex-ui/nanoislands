@@ -3,32 +3,30 @@
 
     nb-button()
 
-* size — m
-* theme — normal
+* `size: m`
+* `theme: normal`
 
 ### Optional attributes
-* size: s / m / l
-* theme: normal / action (yellow) / dark / pseudo / promo (big yellow)
-* id: ...
-* class: ['my_class1', 'my_class2'] — additional classes
-* disabled: true() — disabled button
-* icon: ... — link to icon
-* content: ... — content of button
-* attrs: {
-   'type': 'submit',
-   'attr2: 'value2'
-} — custom DOM attributes for button
-* static: true() — block without nanoblocks functionality (JavaScript API)
-* type: 'file' — attach button. This is not DOM type aka `<input type=""/>`, this is instance type.
-* multiple: true() — multiple attach button **aandrosov: i think we should delete this option and use attrs instead**
-* href: '...' — button with `<a href=''>`
 
+* `'size'` {string} `'s' / 'm' / 'l'`
+* `'theme'` {string} `'normal' / 'action' (yellow) / 'dark' / 'pseudo' / 'promo' (big yellow)`
+* `'id'` {string} ...
+* `'name'` {string} ...
+* `'class'` {array} `['my_class1', 'my_class2']` — additional classes
+* `'disabled'` {boolean} — disabled button
+* `'icon'` {string} ... — link to icon
+* `'content'` {string} ... — content of button
+* `'attrs'` {object} `{'type': 'submit', 'attr2: 'value2' }` — custom DOM attributes for button
+* `'static'` {boolean} — block without nanoblocks functionality (JavaScript API)
+* `'type'` {string} `'file'` — attach button. This is not DOM type aka `<input type=""/>`, this is instance type.
+* `'href'` {string} — button with `<a href=''>`
 
 #### Example
 
 Action buttom, size L with custom classes
 
 ```
+
     nb-button({
         'size': 'l'
         'theme': 'action'
@@ -72,8 +70,8 @@ button — nb block
     /**
     * Set text of the button
     * @param text {String} — text for the button
-    * @fires 'nb-button_text-setted'
-    * @returns {nb.block}
+    * @fires 'nb-button_text-set'
+    * @returns {Object} nb.block
     */
    button.setText('Button');
 
@@ -86,8 +84,8 @@ button — nb block
    /**
     * Set href of the link button
     * @param href {String} — link for the link button
-    * @fires 'nb-button_href-setted'
-    * @returns {nb.block}
+    * @fires 'nb-button_href-set'
+    * @returns {Object} nb.block
     */
    button.setUrl('http://ya.ru');
 
@@ -100,14 +98,14 @@ button — nb block
    /**
     * Disables the button
     * @fires 'nb-button_disabled'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
    button.disable();
 
    /**
      * Enables the button
      * @fires 'nb-button_enabled'
-     * @returns {nb.block}
+     * @returns {Object} nb.block
      */
    button.enable();
 
@@ -121,14 +119,14 @@ button — nb block
    /**
     * Focus the button
     * @fires 'nb-button_focused'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
    button.focus();
 
    /**
     * Blur the button
     * @fires 'nb-button_blured'
-    * @returns {nb.block}
+    * @returns {Object} nb.block
     */
    button.blur();
 

@@ -26,19 +26,23 @@ match .button nb {
             @disabled = 'disabled'
         }
 
+        if .name {
+            @name = .name
+        }
+
+        if .attrs.name {
+            @name = .attrs.name
+        }
+
         if !( .content ) && .icon {
             @class += ' nb-button_only-icon'
         }
 
         <span class="nb-button__text">
-            if (.content && .icon) {
-                apply .icon nb
-                html(.content)
-            } else if (!.content && .icon){
-                apply .icon nb
-            } else {
-                html(.content)
-            }
+           apply .icon nb
+               if .content {
+                   html(.content)
+               }
         </span>
     </button>
 }
@@ -65,14 +69,10 @@ match .buttonLink nb {
         }
 
         <span class="nb-button__text">
-            if (.content && .icon) {
-                apply .icon nb
-                html(.content)
-            } else if (!.content && .icon ){
-                apply .icon nb
-            } else {
-                html(.content)
-            }
+           apply .icon nb
+               if .content {
+                   html(.content)
+               }
         </span>
     </a>
 }
@@ -101,9 +101,14 @@ match .buttonAttach nb {
         <span class="nb-file-intruder">
             <span class="nb-file-intruder__inner">
                 <input class="nb-file-intruder__input" type="file">
-                    if .multiple {
+                    if .attrs.multiple || .multiple {
                         @multiple = "multiple"
                     }
+
+                    if .name {
+                        @name = .name
+                    }
+
                     if .attrs.name {
                         @name = "{.attrs.name}"
                     }
@@ -115,8 +120,10 @@ match .buttonAttach nb {
             </span>
         </span>
         <span class="nb-button__text">
-                apply .icon nb
+            apply .icon nb
+            if (.content) {
                 html(.content)
+            }
         </span>
     </label>
 }

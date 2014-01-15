@@ -20,6 +20,13 @@ func slider-medium() {
     nb-slider(slider)
 }
 
+func slider-disabled() {
+    slider = {
+        'disabled': true()
+    }
+    nb-slider(slider)
+}
+
 func sliders() {
     <div class="demo-section">
         <div class="demo-h3">
@@ -34,5 +41,12 @@ func sliders() {
         </div>
 
         show(slider-medium())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Disabled'
+        </div>
+
+        show(slider-disabled())
     </div>
 }

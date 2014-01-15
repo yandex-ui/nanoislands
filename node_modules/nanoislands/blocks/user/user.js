@@ -3,7 +3,7 @@ nb.define('user', {
         'init': 'oninit'
     },
 
-    oninit: function () {
+    oninit: function() {
 
     }
 

@@ -19,7 +19,9 @@ match .island nb {
             @class += ' nb-island_type_{ .type }'
         }
 
-        html(.content)
+        if .content {
+            html(.content)
+        }
     </div>
 }
 

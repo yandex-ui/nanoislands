@@ -22,6 +22,14 @@ match .radio-button nb {
                     if .disabled {
                         @disabled = 'disabled'
                     }
+
+                    if .name {
+                        @name = .name
+                    }
+
+                    if .attrs.name {
+                        @name = .attrs.name
+                    }
                 </input>
 
                 <label for="{ uniq }" class = 'nb-button  js-button nb-button_theme_{ ..theme } nb-button_size_{ ..size }' data-value='{ .value }'>
@@ -42,7 +50,9 @@ match .radio-button nb {
 
                     <span class="nb-button__text">
                             apply .icon nb
-                            html(.content)
+                            if (.content) {
+                                html(.content)
+                            }
                     </span>
                 </label>
             </span>

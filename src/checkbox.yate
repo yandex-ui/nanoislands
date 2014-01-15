@@ -1,7 +1,7 @@
 func checkbox-radio() {
     radio = {
         'type': 'radio'
-        'text': 'Человек'
+        'content': 'Человек'
         'attrs': {
             'name': 'biotype'
         }
@@ -9,7 +9,7 @@ func checkbox-radio() {
 
     radio2 = {
         'type': 'radio'
-        'text': 'Паук'
+        'content': 'Паук'
         'attrs': {
             'name': 'biotype'
         }
@@ -22,7 +22,8 @@ func checkbox-radio() {
 
 func checkbox-check() {
     radio = {
-        'text': 'Дерево'
+        'content': 'Дерево'
+        'id': 'task'
         'checked': true()
         'attrs': {
             'name': 'task'
@@ -30,14 +31,14 @@ func checkbox-check() {
     }
 
     radio2 = {
-        'text': 'Сын'
+        'content': 'Сын'
         'attrs': {
             'name': 'task'
         }
     }
 
     radio3 = {
-        'text': 'Дом'
+        'content': 'Дом'
         'attrs': {
             'name': 'task'
         }
@@ -54,7 +55,7 @@ func checkbox-small() {
     radio = {
         'type': 'radio'
         'size': 's'
-        'text': 'JavaScript'
+        'content': 'JavaScript'
         'checked': true()
         'attrs': {
             'name': 'language'
@@ -64,7 +65,7 @@ func checkbox-small() {
     radio2 = {
         'type': 'radio'
         'size': 's'
-        'text': 'Java'
+        'content': 'Java'
         'attrs': {
             'name': 'language'
         }

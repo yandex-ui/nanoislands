@@ -2,6 +2,28 @@
 ##Demo
 [http://yandex-ui.github.io/nanoislands/](http://yandex-ui.github.io/nanoislands/)
 
+## Tests
+
+```
+
+npm test
+
+```
+
+## Build package
+
+```
+
+vim Changelog.md
+vim package.json
+git commit -a -m 'v...'
+git tag 'v...'
+git push origin master
+git push origin 'v...'
+make publish
+
+```
+
 ## Documentation
 * [Button](https://github.com/yandex-ui/nanoislands/blob/master/blocks/button/button.md)
 * [Checkbox](https://github.com/yandex-ui/nanoislands/blob/master/blocks/checkbox/checkbox.md)
@@ -9,5 +31,8 @@
 * [Suggest](https://github.com/yandex-ui/nanoislands/blob/master/blocks/suggest/suggest.md)
 * [Select](https://github.com/yandex-ui/nanoislands/blob/master/blocks/select/select.md)
 * [Toggler](https://github.com/yandex-ui/nanoislands/blob/master/blocks/toggler/toggler.md)
+* [Progress](https://github.com/yandex-ui/nanoislands/blob/master/blocks/progress/progress.md)
+* [Popup](https://github.com/yandex-ui/nanoislands/blob/master/blocks/popup/popup.md)
+* [Slider](https://github.com/yandex-ui/nanoislands/blob/master/blocks/slider/slider.md)
 
 #### [Changelog](Changelog.md)

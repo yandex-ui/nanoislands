@@ -27,6 +27,7 @@ match .suggest nb {
             'class': 'nb-suggest__input'
             'attrs': .attrsInput
             'disabled': .disabled
+            'name': .name
 
         }
 
@@ -43,7 +44,9 @@ match / nb-suggest {
 }
 
 match /[.type == 'default'].item nb-suggest {
-    html(.label)
+    if .labelContent {
+        html(.labelContent)
+    }
 }
 
 match /[.type == 'username'].item nb-suggest {
