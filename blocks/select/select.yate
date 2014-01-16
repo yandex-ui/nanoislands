@@ -9,7 +9,7 @@ func nb-select(nodeset select) {
 }
 
 match .select nb {
-   <span class="nb-select _init nb-button nb-select__button nb-button_size_{ .size } nb-button_theme_{ .theme }" data-nb-direction ="{ .direction }" data-nb="select" tabindex="0">
+    <span class="nb-select _init nb-button nb-select__button nb-button_size_{ .size } nb-button_theme_{ .theme }" data-nb-direction ="{ .direction }" data-nb="select" tabindex="0">
           apply . nb-main-attrs
 
            if .within {
@@ -54,6 +54,13 @@ match .select nb {
                     </option>
                 }
             </select>
-            <div class="nb-select__dropdown nb-select_theme_{ .theme }"></div>
+
+            // pseudo-buttons are smaller, so we should
+            size = if (.theme == 'pseudo') {
+              's'
+            } else {
+              .size
+            }
+            <div class="nb-select__dropdown nb-select__dropdown_size_{ size } nb-select_theme_{ .theme }"></div>
       </span>
 }
