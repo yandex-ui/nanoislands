@@ -31,10 +31,10 @@ nb.define('toggler', {
 
     /**
      * Returns value of the toggler
-     * @return {String} value
+     * @return {Boolean} value
      */
     getValue: function() {
-        return this.$control.attr('value');
+        return this.$control.prop('value');
     },
 
     /**
