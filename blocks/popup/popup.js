@@ -475,10 +475,15 @@
 nb.define('popup-toggler', {
 
     events: {
+        'init': 'oninit',
         'click': 'onclick'
     },
 
-    'onclick': function() {
+    oninit: function() {
+        this.$node = $(this.node);
+    },
+
+    onclick: function() {
         if (this.$node.hasClass('is-disabled')) {
             return;
         }
