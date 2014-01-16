@@ -156,17 +156,24 @@ describe('Slider Tests', function() {
 
         beforeEach(function() {
             sinon.spy($.fn, 'slider');
+            sinon.spy($.fn, 'off');
             sinon.spy(nb, 'destroy');
         });
 
         afterEach(function() {
             $.fn.slider.restore();
+            $.fn.off.restore();
             nb.destroy.restore();
         });
 
         it("should call $.fn.slider('destroy')", function() {
             this.slider.destroy();
             expect($.fn.slider.calledWithExactly('destroy')).to.be.equal(true);
+        });
+
+        it("should call $.fn.off('slidestart slidestop slide')", function() {
+            this.slider.destroy();
+            expect($.fn.off.calledWithExactly('slidestart slidestop slide')).to.be.equal(true);
         });
 
         it("should call nb.destroy('slider')", function() {
