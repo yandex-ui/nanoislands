@@ -16,6 +16,18 @@
     padding-right: 4px
     margin-right: - @padding-right
 
+    float: left // For baseline alignment
+
+// For baseline alignment,
+// TODO: move to Stylobate
+.nb-select-helper
+  display: inline-block
+  width: 0
+  overflow: hidden
+
+  &:before
+    content: " "
+
 .nb-select .nb-select__button
   box-sizing: border-box
   display: inline-block

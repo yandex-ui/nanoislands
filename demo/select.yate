@@ -96,6 +96,7 @@ func select-medium() {
           }
       ]
     })
+    " Текст рядом с селектами"
 }
 func select-small() {
     block = {
@@ -123,6 +124,7 @@ func select-small() {
         ]
     }
     nb-select(block)
+    " Текст рядом с селектами"
 }
 
 //func select-disable() {
