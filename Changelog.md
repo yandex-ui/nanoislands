@@ -1,3 +1,20 @@
+##### 0.1.31
+
+###### Fixes
+* fix #136 — We need to add method of the nb-select for updating position of the select's dropdown.
+* fix #142 — Select does not aligns with text baseline
+* fix #141 —  Fixed the size of the dropdowns for small selects and pseudo-selects
+* fix #139 — jQuery UI slider's events in nb-slider
+
+###### API changes
+* [Select]
+  * added open()
+  * added close()
+  * added render()
+* [Slider]
+  *  jQuery UI slider's events
+
+
 ##### 0.1.30
 ###### Fixes
 * fix #132
