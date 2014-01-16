@@ -15,6 +15,8 @@ nb.define('slider', {
      * @fires 'nb-slider_inited'
      */
     oninit: function() {
+        var that = this;
+
         this.data = this.data();
         this.$node = $(this.node);
         this.$control = this.$node.find('.nb-slider__fallback');
@@ -30,6 +32,20 @@ nb.define('slider', {
                 this.$control.val(ui.value);
             }.bind(this)
         });
+
+        this.$body.on('slidestop', function(event, ui) {
+            that.trigger('nb-slider_slidestop', ui.value);
+        });
+
+        this.$body.on('slidestart', function(event, ui) {
+            that.trigger('nb-slider_slidestart', ui.value);
+        });
+
+        this.$body.on('slide', function(event, ui) {
+            that.trigger('nb-slider_slide', ui.value);
+        });
+
+
         this.trigger('nb-slider_inited');
         return this;
     },
@@ -115,6 +131,7 @@ nb.define('slider', {
     destroy: function() {
         if (this.$body && this.$body.data('uiSlider')) {
             this.$body.slider('destroy');
+            this.$body.off('slidestart slidestop slide');
         }
         this.trigger('nb-slider_destroyed');
         nb.destroy(this.node.getAttribute('id'));
