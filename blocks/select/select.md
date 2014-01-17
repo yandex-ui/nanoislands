@@ -86,7 +86,7 @@ select.close();
      *     text: '..'
      *     value: '..'
      * }
- * @fires 'nb-select_changed'
+ * @fires 'nb-select_changed' event with param {value, text}
  */
 select.setState({
     text: 'Hello, world!',

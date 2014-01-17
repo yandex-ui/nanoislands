@@ -11,6 +11,9 @@ nb.define('base', {
         }
     },
 
+    /**
+     * @returns {String} type of block
+     */
     getType: function() {
         return this.$node.attr('data-nb');
     }

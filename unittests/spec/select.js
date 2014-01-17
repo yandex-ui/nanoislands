@@ -338,4 +338,24 @@ describe("Select Tests", function() {
             expect(nb.destroy.calledWithExactly('select')).to.be.equal(true);
         });
     });
+
+    describe("Specific", function() {
+        afterEach(function() {
+            $(document).off('click');
+        });
+
+        it("Selects's dropdown click event shouldn't propagate to document", function() {
+            var flag = false;
+
+            $(document).on('click', function() {
+                flag = true;
+            });
+
+            this.select.open();
+            this.select.$jUI.menu.element.click();
+            expect(flag).to.not.ok();
+        });
+
+    });
+
 });

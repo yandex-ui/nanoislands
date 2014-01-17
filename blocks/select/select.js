@@ -130,6 +130,10 @@ nb.define('select', {
             }
             return that.$selected.val();
         };
+
+        that.$jUI.menu.element.on('click', function(evt) {
+            evt.stopPropagation();
+        });
     },
 
     /**
