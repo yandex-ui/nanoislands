@@ -10,7 +10,6 @@
 
 nb.define('select', {
     events: {
-        'init': 'onInit',
         'click': '_onclick'
         //'open' { event, ui}
         //'close' { event, ui}
@@ -20,10 +19,7 @@ nb.define('select', {
      * Init select
      * @fires 'nb-select_inited'
      */
-
-    onInit: function() {
-        nb.init(this);
-        this.$node = $(this.node);
+    oninit: function() {
         this.$control = this.$node.find('select');
         this.$dropdown = this.$node.children('.nb-select__dropdown').appendTo('body');
         this.data = this.data();
@@ -460,4 +456,4 @@ nb.define('select', {
         this.trigger('nb-select_destroyed');
         nb.destroy(this.node.getAttribute('id'));
     }
-});
+}, 'base');

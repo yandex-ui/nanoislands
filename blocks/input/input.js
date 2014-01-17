@@ -1,6 +1,5 @@
 nb.define('input', {
     events: {
-        'init': 'oninit',
         'click': 'focus',
         'focusin': 'focus',
         'focusout': 'blur',
@@ -16,7 +15,6 @@ nb.define('input', {
         var that = this;
 
         this.data = this.data();
-        this.$node = $(this.node);
 
         if (this.data.type == 'simple') {
             this.$control = this.$node;
@@ -163,4 +161,4 @@ nb.define('input', {
     destroy: function() {
         nb.destroy(this.node.getAttribute('id'));
     }
-});
+}, 'base');

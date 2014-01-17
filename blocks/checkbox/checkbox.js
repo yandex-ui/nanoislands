@@ -1,6 +1,5 @@
 nb.define('checkbox', {
     events: {
-        'init': 'oninit',
         'click': '_onclick'
     },
 
@@ -10,13 +9,20 @@ nb.define('checkbox', {
      */
 
     oninit: function() {
-        this.$node = $(this.node);
         this.$control = this.$node.find('input[type]');
-        this.type = this.$control.attr('type');
         if (!this.isChecked()) {
             this.$control.prop('indeterminate', true);
         }
-        this.trigger('nb-' + this.type + '_inited');
+        this.trigger('nb-' + this.getType() + '_inited');
+    },
+
+    /**
+     * Override base getType()
+     * @returns {String} — type of control
+     */
+
+    getType: function() {
+        return this.$control.attr('type');
     },
 
     /**
@@ -38,7 +44,7 @@ nb.define('checkbox', {
                 'indeterminate': false,
                 'checked': true
             });
-            this.trigger('nb-' + this.type + '_checked');
+            this.trigger('nb-' + this.getType() + '_checked');
         }
         return this;
     },
@@ -54,7 +60,7 @@ nb.define('checkbox', {
                 'indeterminate': false,
                 'checked': false
             });
-            this.trigger('nb-' + this.type + '_unchecked');
+            this.trigger('nb-' + this.getType() + '_unchecked');
         }
         return this;
     },
@@ -88,7 +94,7 @@ nb.define('checkbox', {
     setIndeterminate: function() {
         if (this.isEnabled()) {
             this.$control.prop('indeterminate', true);
-            this.trigger('nb-' + this.type + '_indeterminated');
+            this.trigger('nb-' + this.getType() + '_indeterminated');
         }
         return this;
     },
@@ -101,7 +107,7 @@ nb.define('checkbox', {
     setDeterminate: function() {
         if (this.isEnabled()) {
             this.$control.prop('indeterminate', false);
-            this.trigger('nb-' + this.type + '_determinated');
+            this.trigger('nb-' + this.getType() + '_determinated');
         }
         return this;
     },
@@ -123,7 +129,7 @@ nb.define('checkbox', {
         if (!this.isEnabled()) {
             this.$node.removeClass('is-disabled');
             this.$control.removeAttr('disabled');
-            this.trigger('nb-' + this.type + '_enabled');
+            this.trigger('nb-' + this.getType() + '_enabled');
         }
         return this;
     },
@@ -138,7 +144,7 @@ nb.define('checkbox', {
             this.blur();
             this.$node.addClass('is-disabled');
             this.$control.attr('disabled', 'disabled');
-            this.trigger('nb-' + this.type + '_disabled');
+            this.trigger('nb-' + this.getType() + '_disabled');
         }
         return this;
     },
@@ -150,7 +156,7 @@ nb.define('checkbox', {
      */
     focus: function() {
         this.$control.focus();
-        this.trigger('nb-' + this.type + '_focused');
+        this.trigger('nb-' + this.getType() + '_focused');
         return this;
     },
 
@@ -161,7 +167,7 @@ nb.define('checkbox', {
      */
     blur: function() {
         this.$control.blur();
-        this.trigger('nb-' + this.type + '_blured');
+        this.trigger('nb-' + this.getType() + '_blured');
         return this;
     },
 
@@ -173,7 +179,7 @@ nb.define('checkbox', {
      */
     setLabel: function(label) {
         this.$node.find('.nb-checkbox__label').html(label);
-        this.trigger('nb-' + this.type + '_label-set');
+        this.trigger('nb-' + this.getType() + '_label-set');
         return this;
     },
 
@@ -201,7 +207,7 @@ nb.define('checkbox', {
      */
     setName: function(value) {
         this.$control.attr('name', value);
-        this.trigger('nb-' + this.type + '_name-set');
+        this.trigger('nb-' + this.getType() + '_name-set');
         return this;
     },
 
@@ -221,8 +227,8 @@ nb.define('checkbox', {
      */
     setValue: function(value) {
         this.$control.attr('value', value);
-        this.trigger('nb-' + this.type + '_value-set');
+        this.trigger('nb-' + this.getType() + '_value-set');
         return this;
     }
 
-});
+}, 'base');

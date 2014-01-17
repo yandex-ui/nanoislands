@@ -14,6 +14,12 @@ describe("Input Tests", function() {
         });
     });
 
+    describe('#getType()', function() {
+        it('should return input type', function() {
+            expect(this.input.getType()).to.be.equal('input');
+        });
+    });
+
     describe("#focus()", function() {
         it("should throws nb-input_focused event", function() {
             var handlerWorks = false;

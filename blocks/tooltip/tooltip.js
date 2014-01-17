@@ -24,8 +24,8 @@ nb.define('tooltip-jq-toggler', {
             params.position = data.position;
         }
 
-        $(this.node).tooltip(params);
-        $(this.node).tooltip("open");
+        this.$node.tooltip(params);
+        this.$node.tooltip("open");
     }
 
-});
+}, 'base');

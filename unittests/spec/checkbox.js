@@ -19,7 +19,12 @@ describe("Checkbox Tests", function() {
             var checkbox = nb.find('checkbox-disabled');
             expect(checkbox.isEnabled()).to.be.equal(false);
         });
+    });
 
+    describe('#getType()', function() {
+        it('should return checkbox type', function() {
+            expect(this.checkbox.getType()).to.be.equal('checkbox');
+        });
     });
 
     describe("#getValue()", function() {

@@ -1,8 +1,5 @@
 nb.define('progress', {
-    events: {
-        'init': 'oninit'
-    },
-
+   
     oninit: function() {
         var data = this.data();
 
@@ -10,9 +7,9 @@ nb.define('progress', {
             this.type = data.type;
         }
 
-        this.$title = $(this.node).find('.js-title');
-        this.$control = $(this.node).find('input');
-        this.$bar = $(this.node).find('.js-bar');
+        this.$title = this.$node.find('.js-title');
+        this.$control = this.$node.find('input');
+        this.$bar = this.$node.find('.js-bar');
     },
 
     /**
@@ -59,4 +56,4 @@ nb.define('progress', {
 
         return this;
     }
-});
+}, 'base');

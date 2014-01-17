@@ -22,6 +22,13 @@ describe("Select Tests", function() {
             expect(select.isEnabled()).to.be.equal(false);
         });
 
+
+    });
+
+    describe('#getType()', function() {
+        it('should return select type', function() {
+            expect(this.select.getType()).to.be.equal('select');
+        });
     });
 
     describe("#getName()", function() {

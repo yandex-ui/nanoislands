@@ -255,7 +255,6 @@
     // ----------------------------------------------------------------------------------------------------------------- //
 
     popup.events = {
-        'init': 'oninit',
         'open': 'onopen',
         'click .nb-popup__close': 'onclose',
         'close': 'onclose',
@@ -431,7 +430,7 @@
         });
     };
 
-    nb.define('popup', popup);
+    nb.define('popup', popup, 'base');
 
     /**
      *  Функция возвращает строку с модификаторами
@@ -475,7 +474,6 @@
 nb.define('popup-toggler', {
 
     events: {
-        'init': 'oninit',
         'click': 'onclick'
     },
 
@@ -509,4 +507,4 @@ nb.define('popup-toggler', {
         }
     }
 
-});
+}, 'base');

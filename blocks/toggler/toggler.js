@@ -1,6 +1,5 @@
 nb.define('toggler', {
     events: {
-        'init': 'oninit',
         'click': 'toggle',
         'focusin': 'focus',
         'focusout': 'blur'
@@ -11,7 +10,6 @@ nb.define('toggler', {
      * @fires 'nb-toggler_inited'
      */
     oninit: function() {
-        this.$node = $(this.node);
         this.$control = this.$node.find('.nb-toggler__checkbox');
         this.trigger('nb-toggler_inited');
         return this;
@@ -181,4 +179,4 @@ nb.define('toggler', {
     destroy: function() {
         nb.destroy(this.node.getAttribute('id'));
     }
-});
+}, 'base');

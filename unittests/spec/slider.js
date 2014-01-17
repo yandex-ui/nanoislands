@@ -54,6 +54,13 @@ describe('Slider Tests', function() {
         });
     });
 
+    describe('#getType()', function() {
+        it('should return slider type', function() {
+            expect(this.slider.getType()).to.be.equal('slider');
+        });
+    });
+
+
     describe('#setValue()', function() {
         it('should change the value', function() {
             var input = this.slider.node.querySelector('.nb-slider__fallback');

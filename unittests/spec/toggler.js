@@ -22,6 +22,12 @@ describe("Toggler Tests", function() {
 
     });
 
+    describe('#getType()', function() {
+        it('should return toggler type', function() {
+            expect(this.toggler.getType()).to.be.equal('toggler');
+        });
+    });
+
     describe("#getValue()", function() {
 
         it('should return value', function() {
@@ -42,7 +48,7 @@ describe("Toggler Tests", function() {
             expect(this.toggler.$control.attr('name')).to.be.equal('new-name');
         });
 
-        it("should throws nb-input_value-set event", function() {
+        it("should throws nb-toggler_value-set event", function() {
             var handlerWorks = false;
             this.toggler.on('nb-toggler_value-set', function() {
                 handlerWorks = true;
@@ -69,7 +75,7 @@ describe("Toggler Tests", function() {
             expect(this.toggler.$control.attr('name')).to.be.equal('new-name');
         });
 
-        it("should throws nb-input_name-set event", function() {
+        it("should throws nb-toggler_name-set event", function() {
             var handlerWorks = false;
             this.toggler.on('nb-toggler_name-set', function() {
                 handlerWorks = true;

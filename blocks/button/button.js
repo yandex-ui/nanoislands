@@ -6,17 +6,12 @@
  */
 
 nb.define('button', {
-    events: {
-        'init': 'oninit'
-    },
-
     /**
      * Init a button
      * @fires 'nb-button_inited'
      */
 
     oninit: function() {
-        this.$node = $(this.node);
         this.$node.button({
             // set ui button disabled on init
             disabled: this.node.hasAttribute('disabled')
@@ -142,4 +137,4 @@ nb.define('button', {
         nb.destroy(this.node.getAttribute('id'));
         this.trigger('nb-button_destroyed');
     }
-});
+}, 'base');

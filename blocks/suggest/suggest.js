@@ -165,7 +165,6 @@
 
     nb.define('suggest', {
         events: {
-            'init': 'oninit',
             'close': 'onClose',
             'disable': 'onDisable',
             'enable': 'onEnable'
@@ -176,7 +175,6 @@
          * @fires 'nb-suggest_inited'
          */
         oninit: function() {
-            this.$node = $(this.node);
 
             this.input = this.children()[0];
 
@@ -275,6 +273,6 @@
         search: function(value) {
             this.$input.suggest("search", value);
         }
-    });
+    }, 'base');
 
 })();

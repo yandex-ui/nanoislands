@@ -6,10 +6,6 @@
  */
 
 nb.define('slider', {
-    events: {
-        'init': 'oninit'
-    },
-
     /**
      * Init the slider
      * @fires 'nb-slider_inited'
@@ -18,7 +14,6 @@ nb.define('slider', {
         var that = this;
 
         this.data = this.data();
-        this.$node = $(this.node);
         this.$control = this.$node.find('.nb-slider__fallback');
         this.$body = this.$node.children('.nb-slider__body');
 
@@ -136,4 +131,4 @@ nb.define('slider', {
         this.trigger('nb-slider_destroyed');
         nb.destroy(this.node.getAttribute('id'));
     }
-});
+}, 'base');
