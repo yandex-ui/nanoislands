@@ -183,5 +183,28 @@ describe("Checkbox Tests", function() {
         });
     });
 
+    describe("#toggle()", function() {
+        it("shoud check if checkbox is unchecked", function() {
+            this.checkbox.toggle();
+            expect(this.checkbox.isChecked()).to.ok();
+        });
+
+        it("check uncheck if checkbox is checked", function() {
+            this.checkbox.check();
+            this.checkbox.toggle();
+            expect(this.checkbox.isChecked()).not.to.ok();
+        });
+
+        it("check event", function() {
+            var flag = false;
+            this.checkbox.on('nb-checkbox_changed', function() {
+                flag = true;
+            });
+
+            this.checkbox.toggle();
+            expect(flag).to.ok();
+        });
+    });
+
 
 });
