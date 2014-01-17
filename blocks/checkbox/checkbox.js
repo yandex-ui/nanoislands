@@ -65,6 +65,26 @@ nb.define('checkbox', {
         return this;
     },
 
+    /**
+     * Toggle to the opposite state checkbox or radio
+     * @fires 'nb-checkbox_changed' | 'nb-radio_changed'
+     * @return {Object} nb.block
+     */
+    toggle: function() {
+        if (!this.isEnabled()) {
+            return this;
+        }
+
+        this.trigger('nb-' + this.getType() + '_changed');
+
+        if (this.isChecked()) {
+            this.uncheck();
+        } else {
+            this.check();
+        }
+        return this;
+    },
+
     _onclick: function(e) {
         // <label><input/></label> may fires event twice
         // @see http://www.w3.org/TR/html5/forms.html#labeled-control

@@ -79,6 +79,13 @@ checkbox — nb block
     checkbox.uncheck();
 
     /**
+     * Toggle to the opposite state checkbox or radio
+     * @fires 'nb-checkbox_changed' | 'nb-radio_changed'
+     * @return {Object} nb.block
+     */
+    checkbox.toggle();
+
+    /**
      * Return indeterminate state of the checkbox or radio
      * @returns {Boolean}
      */
