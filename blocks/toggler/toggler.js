@@ -29,7 +29,7 @@ nb.define('toggler', {
 
     /**
      * Returns value of the toggler
-     * @return {Boolean} value
+     * @return {String} value
      */
     getValue: function() {
         return this.$control.prop('value');
