@@ -31,6 +31,10 @@ match .checkbox nb {
                 @name = .attrs.name
             }
 
+            if .value {
+                @value = .value
+            }
+
             if .disabled  {
                  @disabled = 'disabled'
             }

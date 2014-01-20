@@ -14,6 +14,7 @@
 * `'class'` {array} `['my_class1', 'my_class2']` — additional classes
 * `'type'` {string} `'checkbox'` / `'radio'`
 * `'disabled'` {boolean} — disabled button
+* `'value'` {string} — value
 * `'checked'` {boolean} — checked button
 * `'content'` {string} — text (or custom html) of the label, can be string or `xml` _xss warning!_
 * `'attrs'` {object} `{'attr2': 'value2'}` — custom DOM attributes for checkbox input
