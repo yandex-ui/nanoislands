@@ -1,3 +1,24 @@
+##### 0.1.32
+
+* update jQuery UI to v1.10.4
+* getType() method in all controls
+
+###### Fixes
+* fix #85 — Нужна возможность добавить scroll для списка элементов в select-е
+* fix #87 — Autofocus for first menu item in popup-menu
+* fix #152 — Выбор пункта в select'e генерирует клик на выпадушке
+* fix #150 — Restored the broken width for the wide selects
+* fix #151 — z-index for close button in modal popup
+* fix #148 — How do I determine block type?
+
+###### API changes
+* [Checkbox]
+  * tabindex param
+  * value param
+  * toggle() method
+* [Select]
+  * maxHeight param
+
 ##### 0.1.31
 
 ###### Fixes
