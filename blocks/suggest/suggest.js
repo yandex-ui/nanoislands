@@ -267,12 +267,28 @@
         },
 
         /**
-         * Searcch value in the source array and open suggest popup
+         * Search value in the source array and open suggest popup
          * @param  {string | number} value
          */
         search: function(value) {
             this.$input.suggest("search", value);
+        },
+
+        /**
+         * Destroy the suggest
+         * @fires 'nb-select_destroyed'
+         */
+        destroy: function() {
+            this.$node.off('click');
+
+            if (this.$input && this.$input.data('ui.suggest')) {
+                this.$input.suggest('destroy');
+            }
+
+            this.trigger('nb-suggest_destroyed');
+            nb.destroy(this.node.getAttribute('id'));
         }
+
     }, 'base');
 
 })();

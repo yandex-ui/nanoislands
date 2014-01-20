@@ -159,6 +159,7 @@ nb.define('input', {
      * Destroy the button
      */
     destroy: function() {
+        this.$node.off('click focusin focusout mouseover mouseout');
         nb.destroy(this.node.getAttribute('id'));
     }
 }, 'base');

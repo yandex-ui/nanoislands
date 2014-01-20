@@ -249,6 +249,11 @@ nb.define('checkbox', {
         this.$control.attr('value', value);
         this.trigger('nb-' + this.getType() + '_value-set');
         return this;
+    },
+
+    destroy: function() {
+        nb.destroy(this.node.getAttribute('id'));
+        this.$node.off('click');
     }
 
 }, 'base');

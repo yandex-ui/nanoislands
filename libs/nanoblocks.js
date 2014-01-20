@@ -1015,6 +1015,7 @@ nb.destroy = function(where) {
     for (var i = 0, l = nodes.length; i < l; i++) {
         var id = nodes[i].getAttribute('id');
         delete _cache[id];
+        $(nodes[i]).removeClass('_init');
     }
 };
 //  ---------------------------------------------------------------------------------------------------------------  //

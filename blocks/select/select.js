@@ -153,15 +153,16 @@ nb.define('select', {
     },
 
     _onclick: function(evt) {
-        // иначе сабмитит форму при клике
-        evt.preventDefault();
-        // close if already visible
-        if (this.$node.autocomplete('widget').css('display') == 'block') {
-            this.close();
-            return;
+        if (this.$node && this.$node.data('uiAutocomplete')) {
+            evt.preventDefault();
+            // close if already visible
+            if (this.$node.data('uiAutocomplete') && this.$node.autocomplete('widget').css('display') == 'block') {
+                this.close();
+                return;
+            }
+            this.open();
+            this.$node.focus();
         }
-        this.open();
-        this.$node.focus();
     },
 
     _setText: function(text) {
@@ -470,6 +471,8 @@ nb.define('select', {
      * @fires 'nb-select_destroyed'
      */
     destroy: function() {
+        this.$node.off('click');
+
         if (this.$node && this.$node.data('uiAutocomplete')) {
             this.$node.autocomplete('destroy');
             this.$dropdown.remove();

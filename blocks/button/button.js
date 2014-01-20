@@ -135,6 +135,5 @@ nb.define('button', {
             this.$node.button('destroy');
         }
         nb.destroy(this.node.getAttribute('id'));
-        this.trigger('nb-button_destroyed');
     }
 }, 'base');

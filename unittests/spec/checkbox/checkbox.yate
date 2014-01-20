@@ -1,28 +1,22 @@
  match .checkbox{
 
   nb-checkbox({
-        "attrs": {
-            "value": "my-value"
-        }
+        "value": "my-value"
         "checked": true()
         "content": "Button"
         "id": "checkbox-checked"
     })
 
     nb-checkbox({
-        "attrs": {
-            "value": "my-value"
-        }
+        "value": "my-value"
         "disabled": true()
         "content": "Button"
         "id": "checkbox-disabled"
     })
 
      nb-checkbox({
-            "attrs": {
-                "value": "my-value"
-            }
-            "content": "Button"
-            "id": "checkbox"
-        })
+        "value": "my-value"
+        "content": "Button"
+        "id": "checkbox"
+    })
 }

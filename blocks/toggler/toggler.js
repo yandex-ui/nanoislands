@@ -177,6 +177,7 @@ nb.define('toggler', {
      * Destroy the toggler
      */
     destroy: function() {
+        this.$node.off('click focusin focusout');
         nb.destroy(this.node.getAttribute('id'));
     }
 }, 'base');
