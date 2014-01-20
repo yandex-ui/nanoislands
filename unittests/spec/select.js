@@ -7,14 +7,6 @@ describe("Select Tests", function() {
         delete this.select;
     });
 
-    beforeEach(function() {
-        this.select = nb.find('select');
-    });
-
-    afterEach(function() {
-        delete this.select;
-    });
-
     describe("init", function() {
 
         it('should has disabled button after init', function() {
@@ -354,6 +346,18 @@ describe("Select Tests", function() {
             this.select.open();
             this.select.$jUI.menu.element.click();
             expect(flag).to.not.ok();
+        });
+
+        it("If maxHeight = 1 should be visilbe only one item", function() {
+            var select = nb.find('select-mw1');
+            select.open();
+            expect(select.$jUI.menu.element.height()).to.equal(select.$jUI.menu.element.find('.nb-select__item').first().height());
+        });
+
+        it("If maxHeight = 10px should be visilbe only 10px", function() {
+            var select = nb.find('select-mw2');
+            select.open();
+            expect(select.$jUI.menu.element.height()).to.equal(10);
         });
 
     });

@@ -21,6 +21,10 @@ match .select nb {
               @disabled = 'disabled'
           }
 
+          if .maxHeight {
+            @data-nb-maxheight = .maxHeight
+          }
+
           <span class="nb-button__text">
               for .items {
                     if .selected || index() == 0 {
