@@ -1,6 +1,11 @@
 describe("Checkbox Tests", function() {
 
     beforeEach(function() {
+        var result = yr.run('main', {checkbox: true});
+        $('.content').html(result);
+
+        nb.init();
+
         this.checkbox = nb.find('checkbox');
     });
 

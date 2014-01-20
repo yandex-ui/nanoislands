@@ -1,0 +1,12 @@
+match .button {
+    nb-button({
+        "content": "Button"
+        "id": "button"
+    })
+
+    nb-button({
+        "content": "Disbaled button"
+        "disabled": true()
+        "id": "button-disabled"
+    })
+}

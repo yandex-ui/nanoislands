@@ -1,0 +1,6 @@
+match .progress {
+    nb-progress({
+        'id': 'progress'
+        'start': '20'
+    })
+}

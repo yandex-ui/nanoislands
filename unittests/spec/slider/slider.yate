@@ -1,0 +1,14 @@
+match .slider {
+  nb-slider({
+      "value": 25
+      "id": "slider"
+    })
+
+    nb-slider({
+      "value": 40
+      "name": "price"
+      "disabled": true()
+      "id": "slider-disabled"
+    })
+
+}

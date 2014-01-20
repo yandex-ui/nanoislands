@@ -1,0 +1,19 @@
+match .toggler {
+  nb-toggler({
+        "id": "toggler"
+        "attrs": {
+            "value": "value"
+        }
+    })
+
+    nb-toggler({
+        "disabled": true()
+        "id": "toggler-disabled"
+    })
+
+    nb-toggler({
+        "checked": true()
+        "id": "toggler-checked"
+    })
+
+}

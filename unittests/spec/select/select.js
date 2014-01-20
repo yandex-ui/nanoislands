@@ -1,5 +1,9 @@
 describe("Select Tests", function() {
     beforeEach(function() {
+        var result = yr.run('main', {select: true});
+        $('.content').html(result);
+
+        nb.init();
         this.select = nb.find('select');
     });
 

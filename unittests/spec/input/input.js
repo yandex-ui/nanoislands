@@ -1,6 +1,10 @@
 describe("Input Tests", function() {
 
     beforeEach(function() {
+        var result = yr.run('main', {input: true});
+        $('.content').html(result);
+
+        nb.init();
         this.input = nb.find('input');
     });
 

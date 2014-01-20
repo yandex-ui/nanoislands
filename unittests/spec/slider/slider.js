@@ -1,5 +1,9 @@
 describe('Slider Tests', function() {
     beforeEach(function() {
+        var result = yr.run('main', {slider: true});
+        $('.content').html(result);
+
+        nb.init();
         this.slider = nb.find('slider');
         this.sliderDisabled = nb.find('slider-disabled');
     });

@@ -1,5 +1,9 @@
 describe('Progress Tests', function() {
     beforeEach(function() {
+        var result = yr.run('main', {progress: true});
+        $('.content').html(result);
+
+        nb.init();
         this.nbProgress = nb.find('progress');
     });
     afterEach(function() {

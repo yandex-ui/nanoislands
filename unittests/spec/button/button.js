@@ -1,5 +1,10 @@
 describe("Button Tests", function() {
     beforeEach(function() {
+        var result = yr.run('main', {button: true});
+        $('.content').html(result);
+
+        nb.init();
+
         this.button = nb.find('button');
     });
 
