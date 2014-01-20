@@ -26,6 +26,13 @@ describe("Checkbox Tests", function() {
         });
     });
 
+    describe("YATE API", function() {
+        it('should has tabindex = -1', function() {
+            expect(this.checkbox.$control.attr('tabindex')).to.be.equal('-1');
+        })
+    });
+
+
     describe('#getType()', function() {
         it('should return checkbox type', function() {
             expect(this.checkbox.getType()).to.be.equal('checkbox');

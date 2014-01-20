@@ -27,12 +27,12 @@ match .checkbox nb {
                 @name = .name
             }
 
-            if .attrs.name {
-                @name = .attrs.name
-            }
-
             if .value {
                 @value = .value
+            }
+
+            if .tabindex {
+                @tabindex = .tabindex
             }
 
             if .disabled  {

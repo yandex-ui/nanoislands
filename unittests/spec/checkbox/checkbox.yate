@@ -18,5 +18,6 @@
         "value": "my-value"
         "content": "Button"
         "id": "checkbox"
+        "tabindex": "-1"
     })
 }
