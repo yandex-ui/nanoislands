@@ -29,6 +29,15 @@ nb-slider({
 
 ## JS
 
+### Slider events
+
+* `nb-slider_slide` — Triggered on every mouse move during slide.
+    * @param {Number} value  — The current value of the slider.
+* `nb-slider_slidestart` — Triggered when the user starts sliding.
+    * @param {Number} value  — The current value of the slider.
+* `nb-slider_slidestop` — Triggered when the user starts sliding.
+    * @param {Number} value  — The current value of the slider.
+
 ### Slider methods
 
 ```

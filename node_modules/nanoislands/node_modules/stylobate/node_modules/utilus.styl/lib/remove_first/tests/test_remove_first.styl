@@ -1,0 +1,19 @@
+$foo0 = 'a'
+$foo1 = 'a' 'b'
+$foo2 = 'a', 'b'
+$foo3 = 'a' 'b', 'c'
+$foo4 = 'a', 'b' 'c'
+$foo5 = 'a' 'b', 'c' 'd'
+
+.foo
+  {val}: remove_first($foo0)
+.foo
+  {val}: remove_first($foo1)
+.foo
+  {val}: remove_first($foo2)
+.foo
+  {val}: remove_first($foo3)
+.foo
+  {val}: remove_first($foo4)
+.foo
+  {val}: remove_first($foo5)

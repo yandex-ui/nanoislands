@@ -1,0 +1,29 @@
+foo(a, b, c)
+  val_a: a
+  val_b: b
+  val_c: c
+
+foo2()
+  val_a: arguments[0]
+  val_b: arguments[1]
+  val_c: arguments[2]
+
+foo_counted()
+  val{length(arguments)}: arguments
+
+.foo
+  proxy(foo2, 'a')
+
+.foo
+  proxy(foo, 'a' 'b' 'c')
+
+.foo2
+  proxy(foo2, 'a', 'b', 'c')
+
+.counted
+  foo_counted(a)
+  foo_counted(a b)
+  foo_counted(a b, c)
+  foo_counted(a, b c)
+  foo_counted(a, b, c)
+  foo_counted(a b c d e f)

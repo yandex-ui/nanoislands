@@ -1,0 +1,67 @@
+$foo = ()
+.had-none
+  val: utilus_append($foo,'a')
+
+$foo = 'b'
+.was-string
+  val: utilus_append($foo, 'a')
+
+$foo = 'b' 'c'
+.array
+  val: utilus_append($foo, 'a')
+
+$foo = 'b', 'c'
+.comma-list
+  val: utilus_append($foo, 'a')
+
+$foo = 'b', 'c' 'd'
+.mixed1
+  val: utilus_append($foo, 'a')
+
+$foo = 'b' 'c', 'd'
+.mixed2
+  val: utilus_append($foo, 'a')
+
+// Not sure this should be without comma
+$foo = 'c' 'd'
+.append_array
+  val: utilus_append($foo, 'a' 'b')
+
+$foo = 'c', 'd'
+.append_list
+  val: utilus_append($foo, 'a' 'b')
+
+$foo = 'e', 'f' 'g'
+.super_mixed
+  temp = 'a' 'b', 'c'
+  temp = temp 'd'
+  val: utilus_append($foo, temp)
+
+$foo = 'b'
+.through_comma
+  val: utilus_append($foo, 'a', true)
+
+$foo = 'b' 'c'
+.through_comma2
+  val: utilus_append($foo, 'a', true)
+
+$foo = 'b', 'c'
+.through_comma3
+  val: utilus_append($foo, 'a', true)
+
+$foo = 'b'
+.through_space
+  val: utilus_append($foo, 'a', false)
+
+$foo = 'b' 'c'
+.through_space2
+  val: utilus_append($foo, 'a', false)
+
+$foo = 'b', 'c'
+.through_space3
+  val: utilus_append($foo, 'a', false)
+
+$foo = 'c', 'd'
+.through_space4
+  val: utilus_append($foo, 'a' 'b', false)
+

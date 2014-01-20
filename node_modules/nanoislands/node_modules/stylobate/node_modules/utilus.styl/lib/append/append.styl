@@ -1,0 +1,21 @@
+// Proper append the given array with given item
+utilus_append($first, $second, $use_comma = auto)
+  $result = clone($first)
+
+  if length($first) == 0
+    $result = $second
+  else
+    if $use_comma != false
+      if utilus_is_comma_list($first) or (!utilus_is_array($second) and $use_comma != true)
+        push($result, $second)
+      else
+        $result = $first, $second
+        $result[0] = $first
+        $result[1] = $second
+    else
+      if utilus_is_comma_list($first)
+        push($result[length($result) - 1], $second)
+      else
+        push($result, $second)
+
+  return $result

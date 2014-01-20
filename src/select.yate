@@ -73,6 +73,7 @@ func select-medium() {
       'id': 'select5'
       'class': 'my-test-class'
       'theme': 'action'
+      'maxHeight': '3'
       'attrs': {
         'style': 'width: 120px'
       }
@@ -92,10 +93,19 @@ func select-medium() {
           }
           {
               'text': 'Гибрид'
-              'value': 'option3'
+              'value': 'option33'
+          }
+          {
+              'text': 'Гибрид1'
+              'value': 'option32'
+          }
+          {
+              'text': 'Гибрид2'
+              'value': 'option31'
           }
       ]
     })
+    " Текст рядом с селектами"
 }
 func select-small() {
     block = {
@@ -123,6 +133,7 @@ func select-small() {
         ]
     }
     nb-select(block)
+    " Текст рядом с селектами"
 }
 
 //func select-disable() {

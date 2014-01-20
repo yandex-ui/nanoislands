@@ -1,0 +1,22 @@
+// Proxy for throwing arguments into some function
+utilus_proxy(func, args...)
+  // If we get a single nested array, make it not nested
+  if length(args) == 1
+    args = args[0]
+
+  if length(args) == 1
+    func(args)
+  else if length(args) == 2
+    func(args[0],args[1])
+  else if length(args) == 3
+    func(args[0],args[1],args[2])
+  else if length(args) == 4
+    func(args[0],args[1],args[2],args[3])
+  else if length(args) == 5
+    func(args[0],args[1],args[2],args[3],args[4])
+  else if length(args) == 6
+    func(args[0],args[1],args[2],args[3],args[4],args[5])
+  else if length(args) == 7
+    func(args[0],args[1],args[2],args[3],args[4],args[5],args[6])
+
+proxy ?= utilus_proxy

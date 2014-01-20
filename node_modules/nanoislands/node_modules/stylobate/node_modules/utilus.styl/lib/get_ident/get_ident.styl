@@ -1,0 +1,4 @@
+utilus_get_ident($where, $fallback = false, $index = 0)
+  return utilus_collect_by_type($where)['idents'][$index] || $fallback
+
+get_ident ?= utilus_get_ident

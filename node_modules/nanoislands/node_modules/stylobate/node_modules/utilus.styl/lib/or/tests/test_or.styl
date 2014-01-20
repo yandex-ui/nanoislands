@@ -1,0 +1,30 @@
+foo()
+  return 10px
+
+foo2()
+  return ''
+
+foo3()
+  return false
+foo4()
+  if false
+    return true
+
+.foo
+  val: utilus_or(0, 1)
+.foo
+  val: utilus_or(10px, 20px)
+.foo
+  val: utilus_or(false, 20px)
+.foo
+  val: utilus_or(foo3(), foo2(), foo())
+.foo
+  val: utilus_or(false 10px, 10px false)
+.foo
+  val: utilus_or(0 0, 100px 100px)
+.foo
+  val: utilus_or(null)
+.foo
+  val: utilus_or(10px)
+.foo
+  val: utilus_or(foo4()) if utilus_or(foo4())

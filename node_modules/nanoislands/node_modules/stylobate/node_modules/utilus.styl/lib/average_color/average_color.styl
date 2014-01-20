@@ -1,0 +1,22 @@
+// Get just the average color from the given colors.
+utilus_average_color()
+  $l = length(arguments)
+  $r = 0
+  $g = 0
+  $b = 0
+  $a = 0
+
+  for $color in arguments
+    $r = $r + red($color)
+    $g = $g + green($color)
+    $b = $b + blue($color)
+    $a = $a + alpha($color)
+
+  $r = $r / $l
+  $g = $g / $l
+  $b = $b / $l
+  $a = $a / $l
+
+  return rgba($r,$g,$b,$a)
+
+average_color ?= utilus_average_color

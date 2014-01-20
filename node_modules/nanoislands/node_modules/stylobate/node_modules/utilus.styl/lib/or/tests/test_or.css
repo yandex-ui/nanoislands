@@ -1,0 +1,24 @@
+.foo {
+  val: 0;
+}
+.foo {
+  val: 10px;
+}
+.foo {
+  val: 20px;
+}
+.foo {
+  val: 10px;
+}
+.foo {
+  val: false 10px;
+}
+.foo {
+  val: 0 0;
+}
+.foo {
+  val: ;
+}
+.foo {
+  val: 10px;
+}

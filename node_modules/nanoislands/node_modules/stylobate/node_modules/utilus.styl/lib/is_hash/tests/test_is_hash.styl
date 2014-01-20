@@ -1,0 +1,28 @@
+$foo0 = 'a'
+$foo1 = 'a' 'b'
+$foo2 = 'a', 'b'
+$foo3 = 'a' 'b', 'c'
+$foo4 = 'a', 'b' 'c'
+$foo5 = 'a' 'b', 'c' 'd'
+$foo6 = 'a' ('b' 'c')
+$foo7 = ('a' 'b') 'c'
+$foo8 = ('a' 'b') ('c' 'd')
+
+.foo0
+  {val}: is_hash($foo0)
+.foo1
+  {val}: is_hash($foo1)
+.foo2
+  {val}: is_hash($foo2)
+.foo3
+  {val}: is_hash($foo3)
+.foo4
+  {val}: is_hash($foo4)
+.foo5
+  {val}: is_hash($foo5)
+.foo6
+  {val}: is_hash($foo6)
+.foo7
+  {val}: is_hash($foo7)
+.foo8
+  {val}: is_hash($foo8)

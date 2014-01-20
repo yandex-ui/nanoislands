@@ -1,0 +1,20 @@
+// Retrieve one of the given items with optional fallback
+utilus_retrieve($where, $what, $fallback = false)
+  if utilus_is_array($what)
+    if type($where) == 'object'
+      for $what_item in $what
+        if $what_item in $where
+          if type($where[''+$what_item]) == 'boolean' and $where[''+$what_item] == true
+            return $what_item
+          else
+            return $where[''+$what_item]
+    else
+      for $what_item in $what
+        if $what_item in $where
+          return $what_item
+  else
+    if $what in $where
+      return $what
+  return $fallback
+
+retrieve ?= utilus_retrieve

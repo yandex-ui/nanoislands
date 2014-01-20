@@ -6,19 +6,11 @@ skin-islands-checkbox()
 
   margin-right: $islands_xs
 
-  unless no-modifiers or ie
-    &_m
-      width: $islands_m
-      height: $islands_m
-      padding: 0
-    &_m
-      width: $islands_m - 0.2*rem
-      height: $islands_m - 0.2*rem
-      padding: 0
+  unless ie or (no-elements in arguments)
+    stylobate_defaults(arguments,
+      -icon '& > &-icon')
 
-  unless no-elements in arguments or utilus_get(arguments, '-icon') or ie
-    & > &-icon
-      skin-islands-checkbox-icon()
+  deprecate(arguments, no-elements)
 
 skin-islands-checkbox-icon()
   if !ie

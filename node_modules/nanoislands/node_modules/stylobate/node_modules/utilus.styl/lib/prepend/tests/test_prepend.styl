@@ -1,0 +1,62 @@
+$foo = ()
+.had-none
+  val: utilus_prepend($foo,'a')
+
+$foo = 'b'
+.was-string
+  val: utilus_prepend($foo, 'a')
+
+$foo = 'b' 'c'
+.array
+  val: utilus_prepend($foo, 'a')
+
+$foo = 'b', 'c'
+.comma-list
+  val: utilus_prepend($foo, 'a')
+
+$foo = 'b', 'c' 'd'
+.mixed1
+  val: utilus_prepend($foo, 'a')
+
+$foo = 'b' 'c', 'd'
+.mixed2
+  val: utilus_prepend($foo, 'a')
+
+$foo = 'c' 'd'
+.prepend_array
+  val: utilus_prepend($foo, 'a' 'b')
+
+$foo = 'c', 'd'
+.prepend_list
+  val: utilus_prepend($foo, 'a' 'b')
+
+$foo = 'e', 'f' 'g'
+.super_mixed
+  temp = 'a' 'b', 'c'
+  temp = temp 'd'
+  val: utilus_prepend($foo, temp)
+
+$foo = 'b'
+.through_comma
+  val: utilus_prepend($foo, 'a', true)
+
+$foo = 'b' 'c'
+.through_comma2
+  val: utilus_prepend($foo, 'a', true)
+
+$foo = 'b', 'c'
+.through_comma3
+  val: utilus_prepend($foo, 'a', true)
+
+$foo = 'b'
+.through_space
+  val: utilus_prepend($foo, 'a', false)
+
+$foo = 'b' 'c'
+.through_space2
+  val: utilus_prepend($foo, 'a', false)
+
+$foo = 'b', 'c'
+.through_space3
+  val: utilus_prepend($foo, 'a', false)
+

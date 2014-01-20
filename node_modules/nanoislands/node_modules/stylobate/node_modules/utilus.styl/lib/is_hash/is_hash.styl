@@ -1,0 +1,10 @@
+// Simple shortcut to check if the argument is a hash
+utilus_is_hash()
+  return false unless utilus_is_array(arguments)
+
+  for $item in arguments
+    return true if utilus_is_array($item)
+
+  return false
+
+is_hash ?= utilus_is_hash

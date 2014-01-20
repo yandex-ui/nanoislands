@@ -1,0 +1,86 @@
+$a = { a: 1, b: 1 }
+$b = { a: true, b: 1 }
+$c = { a: 1, b: true }
+$d = { a: true, b: true }
+$e = { a: 1 }
+$f = { a: 1 2 3, b: $a }
+$h = { a: 1, b: 1 }
+$i = { a: true, b: 1 }
+$j = { a: true, b: 1 }
+
+c()
+  width: 10px
+
+d()
+  height: 10px
+
+$k = { c: true, d: 1 }
+
+.foo_a
+  val_a: $a.a
+  val_b: $a.b
+
+.foo_b
+  val_a: $b.a
+  val_b: $b.b
+
+.foo_c
+  val_a: $c.a
+  val_b: $c.b
+
+.foo_d
+  val_a: $d.a
+  val_b: $d.b
+
+.foo_e
+  val_a: $e.a
+  val_b: $e.b
+
+.foo_f
+  val_a: $f.a
+  val_b: $f.b
+
+.foo_g
+  val_a: $a.c || 2
+  val_b: $e.b || $d
+
+.foo_h
+  val_a: $h.a
+  val_b: $h.b
+
+.foo_i
+  val_a: $i.a
+  val_b: $i.b
+
+.foo_j
+  val_a: $j.a
+  val_b: $j.b
+
+.foo_j2
+  val_a: $j.a
+  val_b: $j.b
+
+.foo_k
+  val_a: $k.c
+  val_b: $k.d
+
+.foo_k2
+  val_a: $k.c
+  val_b: $k.d
+
+$par = {
+  a: b,
+  c: {
+    d: 'e',
+    f: 'g'
+  }
+}
+
+.par_1
+  val_a: $par.c
+  val_b: $par.d
+  val_c: $par.c.f
+  val_d: $par.c.e
+
+.any
+  val_a: $e.b || $a.b

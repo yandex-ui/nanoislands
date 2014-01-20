@@ -1,0 +1,4 @@
+utilus_get_unit($where, $fallback = false, $index = 0)
+  return utilus_collect_by_type($where)['units'][$index] || $fallback
+
+get_unit ?= utilus_get_unit

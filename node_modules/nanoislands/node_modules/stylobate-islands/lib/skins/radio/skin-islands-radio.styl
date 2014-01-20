@@ -12,9 +12,11 @@ skin-islands-radio()
     &:before
       border-radius: 50%
 
-  unless no-elements in arguments or utilus_get(arguments, '-icon') or ie
-    & > &-icon
-      skin-islands-radio-icon()
+  unless ie or (no-elements in arguments)
+    stylobate_defaults(arguments,
+      -icon '& > &-icon')
+
+  deprecate(arguments, no-elements)
 
 skin-islands-radio-icon()
   if !ie

@@ -1,0 +1,11 @@
+// Returns first defined variable or entity, false otherwise
+//   predefined arguments are needed so the function would
+//   return an array if it's the only argument
+utilus_or($arg1, $arg2 = false, args...)
+  for $arg in arguments
+    return $arg if $arg != false and (typeof($arg) != 'ident' or utilus_is_array($arg) or $arg == 0)
+  return false
+
+// Don't work as there is `or` in Stylus.
+// Also: ||
+// or ?= utilus_or

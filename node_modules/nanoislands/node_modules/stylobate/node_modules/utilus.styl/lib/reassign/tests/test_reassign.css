@@ -1,0 +1,36 @@
+.default {
+  val: 10;
+}
+.without-clone {
+  val: 50;
+}
+.normal-assign {
+  val: 20;
+}
+.initial-scope {
+  val: 10;
+}
+.foo-asign {
+  val: 10;
+}
+.foo-reassign {
+  val: 40;
+}
+.foo-reassign2 {
+  val: 50;
+}
+.b-default {
+  val: two words, with commas;
+}
+.b-reassign1 {
+  val: uno;
+}
+.b-reassign2 {
+  val: have, comma;
+}
+.b-reassign3 {
+  val: three words yay;
+}
+.b-reassign-complex {
+  val: a b, c d, e;
+}

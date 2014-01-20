@@ -1,0 +1,47 @@
+// Hash getter with possible fallback.
+// Returns `false` if nothing found, or no `fallback` given
+utilus_get($hash, $keys = false, $fallback = false)
+  if type($hash) == 'object'
+    return $hash['' + utilus_ident($keys)] || $fallback
+
+  if utilus_ident($hash[0]) == 'any'
+    $any_result = false
+    $hash = utilus_remove_first($hash)
+    for $where in $hash
+      unless $any_result
+        $any_result = utilus_get($where, $keys, $fallback)
+    return $any_result
+  else
+    if utilus_is_array($keys)
+      $key = pop($keys)
+      for $subkey in $keys
+        $hash = utilus_get($hash, $subkey)
+    else
+      $key = $keys
+
+    $key = utilus_ident($key)
+    $result = false
+    if utilus_is_array($hash) and $key
+      if utilus_is_hash($hash)
+        for $pair in $hash
+          if $result == false and type($result) == 'boolean'
+            if utilus_is_array($pair)
+              $result = $pair[1..length($pair)] if utilus_ident($pair[0]) == $key
+            else
+              $result = true if utilus_ident($pair) == $key
+      else
+        if utilus_is_comma_list($hash)
+          for $item in $hash
+            $result = true if utilus_ident($item) == $key
+        else
+          $result = $hash[1..length($hash)] if utilus_ident($hash[0]) == $key
+
+    if $result == null
+      $result = true
+    if $result == false and type($result) == 'boolean'
+      $result = $fallback
+
+    return $result
+    // What if hash contains multiple items with the same key?
+
+get ?= utilus_get

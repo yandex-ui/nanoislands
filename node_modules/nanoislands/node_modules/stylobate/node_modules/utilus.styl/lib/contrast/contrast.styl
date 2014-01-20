@@ -1,0 +1,25 @@
+// Determining contrast ratio,
+//   based on https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js#L108
+//       .. 3   == bad for any text
+//   3   .. 4.5 == bad for small text
+//   4.5 .. 7   == perfect for big text
+//   7   ..     == perfect for any size
+utilus_contrast($top,$bottom = #FFF)
+  if alpha($bottom) >= 1
+    $l1 = utilus_luminance($bottom) + .05
+    $l2 = utilus_luminance( alpha($top) < 1 ? utilus_blend($top,$bottom) : $top ) + .05
+    $ratio = $l1 / $l2
+    if $l2 > $l1
+      $ratio = 1 / $ratio
+    return round($ratio,1)
+  else
+    // FIXME: some minor difference there with http://leaverou.github.com/contrast-ratio/
+    $closest = \
+      rgb(min(max(0, (red($top)   - red($bottom)   * alpha($bottom)) / (1 - alpha($bottom))),255), \
+          min(max(0, (green($top) - green($bottom) * alpha($bottom)) / (1 - alpha($bottom))),255), \
+          min(max(0, (blue($top)  - blue($bottom)  * alpha($bottom)) / (1 - alpha($bottom))),255))
+    $max = max(utilus_contrast($top,utilus_blend($bottom,#FFF)),utilus_contrast($top,utilus_blend($bottom,#000)))
+    $min = utilus_contrast($top,$closest)
+    return (round(($min + $max) / 2, 2) $min $max)
+
+contrast ?= utilus_contrast

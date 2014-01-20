@@ -1,0 +1,18 @@
+.foo {
+  val: ;
+}
+.foo {
+  val: 'b';
+}
+.foo {
+  val: 'b';
+}
+.foo {
+  val: 'c';
+}
+.foo {
+  val: 'b' 'c';
+}
+.foo {
+  val: 'c' 'd';
+}

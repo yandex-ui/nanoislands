@@ -1,0 +1,28 @@
+$utilus_collect_by_type_cache = {}
+utilus_collect_by_type($where)
+  if ('' + $where) in $utilus_collect_by_type_cache
+    return $utilus_collect_by_type_cache['' + $where]
+
+  $result = {
+    strings: (),
+    idents: (),
+    units: (),
+    rgbas: (),
+    booleans: (),
+    functions: (),
+    objects: (),
+    arrays: ()
+  }
+
+  for $item in $where
+    if length($item) > 1 and type($item) != 'object'
+      push($result['arrays'], $item)
+    else
+      push($result[type($item) + 's'], $item)
+
+  $result['colors'] = $result['rgbas']
+
+  $utilus_collect_by_type_cache['' + $where] = $result
+  return $result
+
+collect_by_type ?= utilus_collect_by_type

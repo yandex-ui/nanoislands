@@ -1,0 +1,10 @@
+// Stylus don't allow us to reassign global variables in functions, so I made this:
+//   `reassign($foo,"new")` is like `$foo = "new"`, but now works in functions, yays!
+// However, you need to use this variable like `clone($var)`, or it would get the ressigned value everywhere
+utilus_reassign($where, $what)
+  $where[0] = '' // So if there is a multidimensional array, the pop would pop the appropriate item at last
+  for i in $where
+    $void = pop($where)
+  push($where,$what)
+
+reassign ?= utilus_reassign

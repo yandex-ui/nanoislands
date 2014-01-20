@@ -1,0 +1,19 @@
+// Flatten nested arrays to a flat one-level array
+// Use as
+//   a: flatten(1..5, 7..10, 14..15, 17..18)
+//   a: flatten(1..5 7..10 14..15 17..18)
+
+utilus_flatten()
+  result = ()
+
+  compute()
+    for arg in arguments
+      if length(arg) > 1
+        compute(arg)
+      else
+        push(result, arg)
+
+  compute(arguments)
+  return result
+
+flatten ?= utilus_flatten

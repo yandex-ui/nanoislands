@@ -1,0 +1,48 @@
+.had-none {
+  val: 'a';
+}
+.was-string {
+  val: 'b' 'a';
+}
+.array {
+  val: 'b' 'c' 'a';
+}
+.comma-list {
+  val: 'b', 'c', 'a';
+}
+.mixed1 {
+  val: 'b', 'c' 'd', 'a';
+}
+.mixed2 {
+  val: 'b' 'c', 'd', 'a';
+}
+.append_array {
+  val: 'c' 'd', 'a' 'b';
+}
+.append_list {
+  val: 'c', 'd', 'a' 'b';
+}
+.super_mixed {
+  val: 'e', 'f' 'g', 'a' 'b', 'c' 'd';
+}
+.through_comma {
+  val: 'b', 'a';
+}
+.through_comma2 {
+  val: 'b' 'c', 'a';
+}
+.through_comma3 {
+  val: 'b', 'c', 'a';
+}
+.through_space {
+  val: 'b' 'a';
+}
+.through_space2 {
+  val: 'b' 'c' 'a';
+}
+.through_space3 {
+  val: 'b', 'c' 'a';
+}
+.through_space4 {
+  val: 'c', 'd' 'a' 'b';
+}

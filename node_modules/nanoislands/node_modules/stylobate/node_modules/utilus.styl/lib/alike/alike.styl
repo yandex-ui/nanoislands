@@ -1,0 +1,7 @@
+// Get the item from arguments with the same type of the given fallback
+utilus_alike($where, $fallback, $index = 0)
+  $result = utilus_collect_by_type($where)[type($fallback) + 's'][$index]
+  return $result if type($result == 'boolean') and $result == false
+  return $result || ($fallback)
+
+alike ?= utilus_alike

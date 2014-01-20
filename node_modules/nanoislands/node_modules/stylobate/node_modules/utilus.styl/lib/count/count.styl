@@ -1,0 +1,9 @@
+// Count the arguments by the given type
+utilus_count($where, $what = 'unit')
+  $count = 0
+  for $item in $where
+    if type($item) == $what
+      $count = $count + 1
+  return $count
+
+count ?= utilus_count

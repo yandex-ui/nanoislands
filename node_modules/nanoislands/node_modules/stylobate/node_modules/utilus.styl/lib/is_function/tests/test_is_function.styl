@@ -1,0 +1,19 @@
+foo1()
+  return 'foo1'
+
+.foo
+  {val}: is_function(foo1)
+.foo
+  {val}: is_function('foo1')
+.foo
+  {val}: is_function('fo' + 'o1')
+.foo
+  {val}: is_function(unquote('fo' + 'o1'))
+.foo
+  {val}: is_function(foo2)
+.foo
+  {val}: is_function('foo2')
+.foo
+  {val}: is_function('fo' + 'o2')
+.foo
+  {val}: is_function(unquote('fo' + 'o2'))

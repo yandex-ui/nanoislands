@@ -1,0 +1,9 @@
+deprecate($where, $what, $throw_error = false, $text = '`%s` param is deprecated, replace it with the appropriate setter.')
+  if $what in $where
+    if $throw_error
+      error('' + ($text % $what))
+    else
+      warn('' + ($text % $what))
+
+deprecate_removed($where, $what)
+  deprecate($where, $what, true, '`%s` param was deprecated and removed, replace it with the appropriate setter.')

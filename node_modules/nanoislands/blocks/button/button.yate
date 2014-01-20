@@ -22,7 +22,7 @@ match .button nb {
         apply . nb-main-attrs
 
         if .disabled {
-            @class += ' nb-button_disabled'
+            @class += ' is-disabled'
             @disabled = 'disabled'
         }
 

@@ -1,0 +1,13 @@
+// Do some func on every item of the given argument (second)
+utilus_mass(func, args...)
+  what = args[0]
+  if !utilus_is_array(what)
+    what = utilus_proxy(func, args)
+  else
+    for w,i in what
+      newargs = arguments
+      newargs[1] = w
+      what[i] = utilus_proxy(mass, newargs)
+  return what
+
+mass ?= utilus_mass

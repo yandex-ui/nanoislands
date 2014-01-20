@@ -1,0 +1,16 @@
+// Prepend the given array with given value
+utilus_prepend($where, $what, $use_comma = auto)
+  $result = $what
+  if utilus_is_comma_list($where)
+    for $item, $index in $where
+      if $index == 0 and $use_comma == false
+        $result = $result $item
+      else
+        $result = $result, $item
+  else
+    for $item, $index in $where
+      if $index == 0 and $use_comma == true
+        $result = $result, $item
+      else
+        $result = $result $item
+  return $result

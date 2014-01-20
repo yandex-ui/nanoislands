@@ -1,0 +1,61 @@
+$a = 10
+
+.default
+  val: clone($a)
+
+.without-clone
+  val: $a
+
+.normal-assign
+  $a = 20
+  val: clone($a)
+
+.initial-scope
+  val: clone($a)
+
+foo()
+  $a = 30
+
+.foo-asign
+  foo()
+  val: clone($a)
+
+foo-reassigned(val)
+  reassign($a,val)
+
+.foo-reassign
+  foo-reassigned(40)
+  val: clone($a)
+
+.foo-reassign2
+  foo-reassigned(50)
+  val: clone($a)
+
+$b = two words, with commas
+
+.b-default
+  val: clone($b)
+
+b-foo-reassigned(val)
+  reassign($b,val)
+
+b-foo-reassigned-complex()
+  $thu = a b, c d, e
+  reassign($b,$thu)
+
+.b-reassign1
+  b-foo-reassigned(uno)
+  val: clone($b)
+
+.b-reassign2
+  zz = have, comma
+  b-foo-reassigned(zz)
+  val: clone($b)
+
+.b-reassign3
+  b-foo-reassigned(three words yay)
+  val: clone($b)
+
+.b-reassign-complex
+  b-foo-reassigned-complex()
+  val: clone($b)

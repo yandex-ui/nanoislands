@@ -1,11 +1,6 @@
 nb.define('header', {
     events: {
-        'init': 'oninit',
         'click .nb-header__button': 'togglePress'
-    },
-
-    oninit: function() {
-        this.$node = $(this.node);
     },
 
     /**
@@ -24,4 +19,4 @@ nb.define('header', {
             nb.trigger('settings-click');
         }
     }
-});
+}, 'base');

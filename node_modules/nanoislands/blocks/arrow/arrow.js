@@ -1,12 +1,10 @@
 nb.define('arrow', {
     events: {
-        'init': 'oninit',
         'focusin .nb-arrow__input__wrap': 'focus',
         'focusout .nb-arrow__input__wrap': 'blur'
     },
 
     oninit: function() {
-        this.$node = $(this.node);
         this.$wrap = this.$node.find('.nb-arrow__name__wrap');
         this.$requests = this.$node.find('.nb-arrow__requests');
         this.$node.find('.nb-arrow__input_fake').text(this.$node.find('.nb-input').attr('value'));
@@ -24,4 +22,4 @@ nb.define('arrow', {
         this.$node.find('.nb-arrow__input_fake').text(this.$node.find('.nb-input').attr('value'));
         this.$requests.fadeIn('fast');
     }
-});
+}, 'base');

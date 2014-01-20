@@ -1,0 +1,9 @@
+// Getter of an argument at the given index
+//   Should it be merged with either simple `get` or `or`?
+utilus_get_n($where, $fallback = false, $index = 0, $type = 'any')
+  if $type == 'any'
+    return $where[$index] || $fallback
+  else
+    return utilus_collect_by_type($where)[$type + 's'][$index] || $fallback
+
+get_n ?= utilus_get_n

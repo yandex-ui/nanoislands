@@ -1,0 +1,26 @@
+$ar = 10px #FFF false 'lol' foobar 0.5
+$non = ()
+
+.foo
+  val: alike($ar, #000)
+  val_no: alike($non, #000)
+
+.foo
+  val: alike($ar, 5px)
+  val_no: alike($non, 5px)
+
+.foo
+  val: alike($ar, 5px, 1)
+  val_no: alike($non, 5px, 1)
+
+.foo
+  val: alike($ar, 'string')
+  val_no: alike($non, 'string')
+
+.foo
+  val: alike($ar, identy)
+  val_no: alike($non, identy)
+
+.foo
+  val: alike($ar, true)
+  val_no: alike($non, true)

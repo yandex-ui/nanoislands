@@ -30,7 +30,7 @@ match .popupMenu nb {
             if .separator {
                 <div class="nb-popup__separator"></div>
             } else {
-                <a class="nb-popup__line">
+                <a class="nb-popup__line" tabindex="-1">
                     if .href {
                         @href = .href
                     }

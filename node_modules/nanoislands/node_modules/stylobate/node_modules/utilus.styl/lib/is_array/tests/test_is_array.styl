@@ -1,0 +1,19 @@
+$foo0 = 'a'
+$foo1 = 'a' 'b'
+$foo2 = 'a', 'b'
+$foo3 = 'a' 'b', 'c'
+$foo4 = 'a', 'b' 'c'
+$foo5 = 'a' 'b', 'c' 'd'
+
+.foo
+  {val}: is_array($foo0)
+.foo
+  {val}: is_array($foo1)
+.foo
+  {val}: is_array($foo2)
+.foo
+  {val}: is_array($foo3)
+.foo
+  {val}: is_array($foo4)
+.foo
+  {val}: is_array($foo5)

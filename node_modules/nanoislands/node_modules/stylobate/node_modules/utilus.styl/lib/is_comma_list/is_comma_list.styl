@@ -1,0 +1,12 @@
+// Simple shortcut to check if the arguments are separated by comma
+utilus_is_comma_list()
+  return false unless utilus_is_array(arguments)
+
+  for $item, $index in arguments
+    if $index == 0
+      $test = $item
+    else
+      $test = $test, $item
+  return s('%s',arguments) == s('%s',$test)
+
+is_comma_list ?= utilus_is_comma_list
