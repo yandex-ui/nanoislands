@@ -22,6 +22,10 @@ nb.define('input', {
             this.$control = this.$node.find('.nb-input__controller');
         }
 
+        this.$control.on('change', function(e) {
+            that.trigger('nb-input_change', e);
+        });
+
         this.disabled = this.$control.prop('disabled');
         this.value = this.$control.val();
         this.focused = false;
