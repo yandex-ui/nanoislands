@@ -7,23 +7,23 @@ nb.define('toggler', {
 
     /**
      * Init the toggler
-     * @fires 'nb-toggler_inited'
+     * @fires 'nb-inited'
      */
     oninit: function() {
         this.$control = this.$node.find('.nb-toggler__checkbox');
-        this.trigger('nb-toggler_inited');
+        this.trigger('nb-inited', this);
         return this;
     },
 
     /**
      * Set value of the toggler
      * @param {String} value of the check state
-     * @fires 'nb-toggler_value-set'
+     * @fires 'nb-value-set'
      * @returns {Object} nb.block
      */
     setValue: function(value) {
         this.$control.attr('value', value);
-        this.trigger('nb-toggler_value-set');
+        this.trigger('nb-value-set', this);
         return this;
     },
 
@@ -38,6 +38,7 @@ nb.define('toggler', {
     /**
      * Toggle to the oppocite value
      * Do nothing if toggler is disabled
+     * @fires 'nb-changed'
      * @returns {Object} nb.block
      */
     toggle: function() {
@@ -47,6 +48,7 @@ nb.define('toggler', {
             } else {
                 this.check();
             }
+            this.trigger('nb-changed', this);
         }
         return this;
     },
@@ -62,34 +64,34 @@ nb.define('toggler', {
     /**
      * Set name of the toggler
      * @param {String} value
-     * @fires 'nb-toggler_name-set'
+     * @fires 'nb-name-set'
      * @returns {Object} nb.block
      */
     setName: function(value) {
         this.$control.attr('name', value);
-        this.trigger('nb-toggler_name-set');
+        this.trigger('nb-name-set', this);
         return this;
     },
 
     /**
      * Disable toggler
-     * @fires 'nb-toggler_disabled'
+     * @fires 'nb-disabled'
      */
     disable: function() {
         this.$control.prop('disabled', true);
         this.$node.addClass('is-disabled');
-        this.trigger('nb-toggler_disabled');
+        this.trigger('nb-disabled', this);
         return this;
     },
 
     /**
      * Enable toggler
-     * @fires 'nb-toggler_enabled'
+     * @fires 'nb-enabled'
      */
     enable: function() {
         this.$control.prop('disabled', false);
         this.$node.removeClass('is-disabled');
-        this.trigger('nb-toggler_enabled');
+        this.trigger('nb-enabled', this);
         return this;
     },
 
@@ -104,7 +106,7 @@ nb.define('toggler', {
 
     /**
      * Focus the input
-     * @fires 'nb-toggler_focused'
+     * @fires 'nb-focused'
      * @returns {Object} nb.block
      */
     focus: function() {
@@ -114,7 +116,7 @@ nb.define('toggler', {
                 this.$node.addClass('nb-toggler_focus');
                 this.focused = true;
                 this.$control.focus();
-                this.trigger('nb-toggler_focused');
+                this.trigger('nb-focused', this);
             }
         }
 
@@ -123,13 +125,13 @@ nb.define('toggler', {
 
     /**
      * Blur the input
-     * @fires 'nb-toggler_blured'
+     * @fires 'nb-blured'
      * @returns {Object} nb.block
      */
     blur: function() {
         this.$node.removeClass('nb-toggler_focus');
         this.focused = false;
-        this.trigger('nb-toggler_blured');
+        this.trigger('nb-blured', this);
         return this;
     },
 
@@ -143,7 +145,7 @@ nb.define('toggler', {
 
     /**
      * Checking toggler
-     * @fires 'nb-toggler_checked'
+     * @fires 'nb-checked'
      * @returns {Object} nb.block
      */
     check: function() {
@@ -151,15 +153,15 @@ nb.define('toggler', {
             this.$control.prop({
                 'checked': true
             });
-            this.$node.addClass('nb-toggler_checked');
-            this.trigger('nb-toggler_checked');
+            this.$node.addClass('is-checked');
+            this.trigger('nb-checked', this);
         }
         return this;
     },
 
     /**
      * Unchecking toggler
-     * @fires 'nb-toggler_unchecked'
+     * @fires 'nb-unchecked'
      * @returns {Object} nb.block
      */
     uncheck: function() {
@@ -167,16 +169,18 @@ nb.define('toggler', {
             this.$control.prop({
                 'checked': false
             });
-            this.$node.removeClass('nb-toggler_checked');
-            this.trigger('nb-toggler_unchecked');
+            this.$node.removeClass('is-checked');
+            this.trigger('nb-unchecked', this);
         }
         return this;
     },
 
     /**
      * Destroy the toggler
+     * @fires 'nb-destroyed'
      */
     destroy: function() {
+        this.trigger('nb-destroyed', this);
         this.nbdestroy();
     }
 }, 'base');

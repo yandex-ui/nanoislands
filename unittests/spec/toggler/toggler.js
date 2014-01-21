@@ -52,9 +52,9 @@ describe("Toggler Tests", function() {
             expect(this.toggler.$control.attr('name')).to.be.equal('new-name');
         });
 
-        it("should throws nb-toggler_value-set event", function() {
+        it("should throws nb-value-set event", function() {
             var handlerWorks = false;
-            this.toggler.on('nb-toggler_value-set', function() {
+            this.toggler.on('nb-value-set', function() {
                 handlerWorks = true;
             });
             this.toggler.setValue('Vadim');
@@ -79,9 +79,9 @@ describe("Toggler Tests", function() {
             expect(this.toggler.$control.attr('name')).to.be.equal('new-name');
         });
 
-        it("should throws nb-toggler_name-set event", function() {
+        it("should throws nb-name-set event", function() {
             var handlerWorks = false;
-            this.toggler.on('nb-toggler_name-set', function() {
+            this.toggler.on('nb-name-set', function() {
                 handlerWorks = true;
             });
             this.toggler.setName('new-name');
@@ -123,7 +123,7 @@ describe("Toggler Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.toggler.on('nb-toggler_disabled', function() {
+            this.toggler.on('nb-disabled', function() {
                 flag = false;
             });
 
@@ -142,7 +142,7 @@ describe("Toggler Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.toggler.on('nb-toggler_enabled', function() {
+            this.toggler.on('nb-enabled', function() {
                 flag = true;
             });
 
@@ -160,7 +160,7 @@ describe("Toggler Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.toggler.on('nb-toggler_checked', function() {
+            this.toggler.on('nb-checked', function() {
                 flag = true;
             });
 
@@ -178,7 +178,7 @@ describe("Toggler Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.toggler.on('nb-toggler_unchecked', function() {
+            this.toggler.on('nb-unchecked', function() {
                 flag = true;
             });
 

@@ -17,7 +17,7 @@ nb.define('select', {
 
     /**
      * Init select
-     * @fires 'nb-select_inited'
+     * @fires 'nb-inited'
      */
     oninit: function() {
         this.$control = this.$node.find('select');
@@ -28,7 +28,7 @@ nb.define('select', {
 
         // preparing control depending on configuration and content
         this.controlPrepare();
-        this.trigger('nb-select_inited');
+        this.trigger('nb-inited', this);
     },
 
     /**
@@ -183,7 +183,7 @@ nb.define('select', {
 
     /**
      * Render dropdown of the select
-     * @fires 'nb-select_rendered'
+     * @fires 'nb-rendered'
      * @returns {Object} nb.block
      */
     render: function() {
@@ -194,32 +194,32 @@ nb.define('select', {
             this._setMaxHeight(this.data.maxheight);
         }
 
-        this.trigger('nb-select_rendered');
+        this.trigger('nb-rendered', this);
         return this;
     },
 
     /**
      * Open dropdown of the select
-     * @fires 'nb-select_opened'
+     * @fires 'nb-opened'
      * @returns {Object} nb.block
      */
     open: function() {
         if (this.$node && this.$node.data('uiAutocomplete')) {
             this.render();
-            this.trigger('nb-select_opened');
+            this.trigger('nb-opened', this);
         }
         return this;
     },
 
     /**
      * Close dropdown of the select
-     * @fires 'nb-select_closed'
+     * @fires 'nb-closed'
      * @returns {Object} nb.block
      */
     close: function() {
         if (this.$node && this.$node.data('uiAutocomplete')) {
             this.$node.autocomplete('close');
-            this.trigger('nb-select_closed');
+            this.trigger('nb-closed', this);
         }
         return this;
     },
@@ -230,7 +230,7 @@ nb.define('select', {
          *     text: '..'
          *     value: '..'
          * }
-     * @fires 'nb-select_changed'
+     * @fires 'nb-changed'
      * @returns {Object} nb.block
      */
     setState: function(params) {
@@ -255,7 +255,7 @@ nb.define('select', {
 
             this._setText(this.text);
 
-            this.trigger('nb-select_changed');
+            this.trigger('nb-changed', this);
 
             this.$control.val(params.value);
 
@@ -290,37 +290,37 @@ nb.define('select', {
     /**
      * Changes a value of control, text on the button and select value it the fallback
      * @param {string} name
-     * @fires 'nb-select_name-set'
+     * @fires 'nb-name-set'
      * @returns {Object} nb.block
      */
     setName: function(name) {
         this.$control.prop('name', name);
-        this.trigger('nb-select_name-set');
+        this.trigger('nb-name-set', this);
         return this;
     },
 
     /**
      * Disables the select
-     * @fires 'nb-select_disabled'
+     * @fires 'nb-disabled'
      * @returns {Object} nb.block
      */
     disable: function() {
         if (this.isEnabled()) {
             this.$node.addClass('is-disabled');
-            this.trigger('nb-select_disabled');
+            this.trigger('nb-disabled', this);
         }
         return this;
     },
 
     /**
      * Enables the select
-     * @fires 'nb-select_enabled'
+     * @fires 'nb-enabled'
      * @returns {Object} nb.block
      */
     enable: function() {
         if (!this.isEnabled()) {
             this.$node.removeClass('is-disabled');
-            this.trigger('nb-select_enabled');
+            this.trigger('nb-enabled', this);
         }
         return this;
     },
@@ -336,7 +336,7 @@ nb.define('select', {
     /*
      * Set new items for select
      * @params {Array} source New source
-     * @fires 'nb-select_source-changed'
+     * @fires 'nb-source-changed'
      * @returns {Object} nb.block
      */
     setSource: function(source) {
@@ -365,7 +365,7 @@ nb.define('select', {
         this.$control.empty().append(html);
 
         this._updateFromSelect();
-        this.trigger('nb-select_source-set');
+        this.trigger('nb-source-changed', this);
         return this;
     },
 
@@ -386,7 +386,7 @@ nb.define('select', {
      * Add items to select
      * @param {Array|Object} items
      * @param {Number} index to insert
-     * @fires 'nb-select_source-changed'
+     * @fires 'nb-source-changed'
      * @returns {Object} nb.block
      */
     addToSource: function(items, index) {
@@ -409,14 +409,14 @@ nb.define('select', {
         }, this);
 
         this.setSource(source);
-        this.trigger('nb-select_source-changed');
+        this.trigger('nb-source-changed', this);
         return this;
     },
 
     /*
      * Remove items to select
      * @param {Array|Object|number} items or index
-     * @fires 'nb-select_source-changed'
+     * @fires 'nb-source-changed'
      * @returns {Object} nb.block
      */
     removeFromSource: function(param) {
@@ -440,45 +440,46 @@ nb.define('select', {
         }
 
         this.setSource(source);
-        this.trigger('nb-select_source-changed');
+        this.trigger('nb-source-changed', this);
         return this;
     },
 
     /**
      * Focus the select
-     * @fires 'nb-select_focused'
+     * @fires 'nb-focused'
      * @returns {Object} nb.block
      */
     focus: function() {
         if (this.isEnabled()) {
             this.$node.focus();
         }
-        this.trigger('nb-select_focused');
+        this.trigger('nb-focused', this);
         return this;
     },
 
     /**
      * Blur the select
-     * @fires 'nb-select_blured'
+     * @fires 'nb-blured'
      * @returns {Object} nb.block
      */
     blur: function() {
         if (this.isEnabled()) {
             this.$node.blur();
         }
-        this.trigger('nb-select_blured');
+        this.trigger('nb-blured', this);
         return this;
     },
 
     /**
      * Destroy the select
-     * @fires 'nb-select_destroyed'
+     * @fires 'nb-destroyed'
      */
     destroy: function() {
         if (this.$node && this.$node.data('uiAutocomplete')) {
             this.$node.autocomplete('destroy');
             this.$dropdown.empty().appendTo(this.$node);
         }
+        this.trigger('nb-destroyed', this);
         this.nbdestroy();
     }
 }, 'base');

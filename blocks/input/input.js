@@ -9,7 +9,7 @@ nb.define('input', {
 
     /**
      * Init input
-     * @fires 'nb-input_inited'
+     * @fires 'nb-inited'
      */
     oninit: function() {
         var that = this;
@@ -23,7 +23,7 @@ nb.define('input', {
         }
 
         this.$control.on('change', function(e) {
-            that.trigger('nb-input_change', e);
+            that.trigger('nb-change', this, e);
         });
 
         this.disabled = this.$control.prop('disabled');
@@ -32,7 +32,7 @@ nb.define('input', {
         nb.on('is-focusedout', function() {
             that.blur();
         });
-        this.trigger('nb-input_inited');
+        this.trigger('nb-inited', this);
     },
 
     _hover: function() {
@@ -40,9 +40,10 @@ nb.define('input', {
             this.$node.toggleClass('is-ghost');
         }
     },
+
     /**
      * Focus the input
-     * @fires 'is-focuseded'
+     * @fires 'nb-focused'
      * @returns {Object} nb.block
      */
     focus: function() {
@@ -60,7 +61,7 @@ nb.define('input', {
 
             this.focused = true;
             this.$control.get(0).focus();
-            this.trigger('nb-input_focused');
+            this.trigger('nb-focused', this);
             return this;
         }
 
@@ -68,7 +69,7 @@ nb.define('input', {
 
     /**
      * Blur the input
-     * @fires 'nb-input_blured'
+     * @fires 'nb-blured'
      * @returns {Object} nb.block
      */
     blur: function() {
@@ -79,45 +80,45 @@ nb.define('input', {
         }
 
         this.focused = false;
-        this.trigger('nb-input_blured');
+        this.trigger('nb-blured', this);
 
         return this;
     },
 
     /**
      * Disables the input
-     * @fires 'nb-input_disabled'
+     * @fires 'nb-disabled'
      * @returns {Object} nb.block
      */
     disable: function() {
         this.$node.addClass('is-disabled');
         this.$control.prop('disabled', true);
-        this.trigger('nb-input_disabled');
+        this.trigger('nb-disabled', this);
         return this;
     },
 
     /**
      * Enables the input
-     * @fires 'nb-input_enabled'
+     * @fires 'nb-enabled'
      * @returns {Object} nb.block
      */
     enable: function() {
         this.$node.removeClass('is-disabled');
         this.$control.prop('disabled', false);
-        this.trigger('nb-input_enabled');
+        this.trigger('nb-enabled', this);
         return this;
     },
 
     /**
      * Set value of the input
      * @param {String|Object} value
-     * @fires 'nb-input_value-set'
+     * @fires 'nb-value-set'
      * @returns {Object} nb.block
      */
     setValue: function(value) {
         this.value = value;
         this.$control.val(value);
-        this.trigger('nb-input_value-set');
+        this.trigger('nb-value-set', this);
         return this;
     },
 
@@ -142,12 +143,12 @@ nb.define('input', {
     /**
      * Set name of the input
      * @param {String|Object} value
-     * @fires 'nb-input_name-set'
+     * @fires 'nb-name-set'
      * @returns {Object} nb.block
      */
     setName: function(value) {
         this.$control.attr('name', value);
-        this.trigger('nb-input_name-set');
+        this.trigger('nb-name-set', this);
         return this;
     },
 
@@ -163,6 +164,7 @@ nb.define('input', {
      * Destroy the button
      */
     destroy: function() {
+        this.trigger('nb-destroyed', this);
         this.nbdestroy();
     }
 }, 'base');

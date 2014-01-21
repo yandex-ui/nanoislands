@@ -45,7 +45,7 @@ describe("Checkbox Tests", function() {
             expect(this.checkbox.getValue()).to.be.equal('my-value');
         });
 
-        it('should return empty string for checbox without value', function() {
+        it('should return empty string for checkbox without value', function() {
             var checkbox = nb.find('checkbox-without-attr-value');
             expect(checkbox.getValue()).to.be.equal('');
         });
@@ -64,9 +64,9 @@ describe("Checkbox Tests", function() {
             expect(this.checkbox.$control.attr('name')).to.be.equal('new-name');
         });
 
-        it("should throws nb-input_value-set event", function() {
+        it("should throws nb-value-set event", function() {
             var handlerWorks = false;
-            this.checkbox.on('nb-checkbox_value-set', function() {
+            this.checkbox.on('nb-value-set', function() {
                 handlerWorks = true;
             });
             this.checkbox.setValue('Vadim');
@@ -91,9 +91,9 @@ describe("Checkbox Tests", function() {
             expect(this.checkbox.$control.attr('name')).to.be.equal('new-name');
         });
 
-        it("should throws nb-input_name-set event", function() {
+        it("should throws nb-name-set event", function() {
             var handlerWorks = false;
-            this.checkbox.on('nb-checkbox_name-set', function() {
+            this.checkbox.on('nb-name-set', function() {
                 handlerWorks = true;
             });
             this.checkbox.setName('new-name');
@@ -135,7 +135,7 @@ describe("Checkbox Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.checkbox.on('nb-checkbox_disabled', function() {
+            this.checkbox.on('nb-disabled', function() {
                 flag = false;
             });
 
@@ -154,7 +154,7 @@ describe("Checkbox Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.checkbox.on('nb-checkbox_enabled', function() {
+            this.checkbox.on('nb-enabled', function() {
                 flag = true;
             });
 
@@ -172,7 +172,7 @@ describe("Checkbox Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.checkbox.on('nb-checkbox_checked', function() {
+            this.checkbox.on('nb-checked', function() {
                 flag = true;
             });
 
@@ -190,7 +190,7 @@ describe("Checkbox Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.checkbox.on('nb-checkbox_unchecked', function() {
+            this.checkbox.on('nb-unchecked', function() {
                 flag = true;
             });
 
@@ -214,12 +214,49 @@ describe("Checkbox Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.checkbox.on('nb-checkbox_changed', function() {
+            this.checkbox.on('nb-change', function() {
                 flag = true;
             });
 
             this.checkbox.toggle();
             expect(flag).to.ok();
+        });
+    });
+
+    describe("#focus()", function() {
+        it("should throws nb-focused event", function() {
+            var handlerWorks = false;
+            this.checkbox.on('nb-focused', function() {
+                handlerWorks = true;
+            });
+
+            this.checkbox.focus();
+
+            expect(handlerWorks).to.be.ok();
+        });
+
+
+        it("should be in focus", function() {
+            this.checkbox.focus();
+            expect($(document.activeElement).attr('id')).to.equal('nb-checkbox_checkbox');
+        });
+    });
+
+    describe("#blur()", function() {
+        it("should not to be in focus", function() {
+            this.checkbox.focus();
+            this.checkbox.blur();
+            expect($(document.activeElement)).not.equal('nb-checkbox_checkbox');
+        });
+
+        it("should throws nb-blured event", function() {
+            var handlerWorks = false;
+            this.checkbox.on('nb-blured', function() {
+                handlerWorks = true;
+            });
+            this.checkbox.blur();
+
+            expect(handlerWorks).to.be.ok();
         });
     });
 

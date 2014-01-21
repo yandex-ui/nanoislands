@@ -27,9 +27,10 @@ describe("Input Tests", function() {
     describe("#focus()", function() {
         it("should throws nb-input_focused event", function() {
             var handlerWorks = false;
-            this.input.on('nb-input_focused', function() {
+            this.input.on('nb-focused', function() {
                 handlerWorks = true;
             });
+
             this.input.focus();
 
             expect(handlerWorks).to.be.ok();
@@ -57,9 +58,9 @@ describe("Input Tests", function() {
             expect(this.input.focused).not.to.be.ok();
         });
 
-        it("should throws nb-input_blured event", function() {
+        it("should throws blur event", function() {
             var handlerWorks = false;
-            this.input.on('nb-input_blured', function() {
+            this.input.on('nb-blured', function() {
                 handlerWorks = true;
             });
             this.input.blur();
@@ -102,9 +103,9 @@ describe("Input Tests", function() {
             expect(this.input.$control.val()).to.be.equal('Vadim');
         });
 
-        it("should throws nb-input_value-set event", function() {
+        it("should throws nb-value-set event", function() {
             var handlerWorks = false;
-            this.input.on('nb-input_value-set', function() {
+            this.input.on('nb-value-set', function() {
                 handlerWorks = true;
             });
             this.input.setValue('Vadim');
@@ -120,9 +121,9 @@ describe("Input Tests", function() {
             expect(this.input.$control.attr('name')).to.be.equal('Vadim');
         });
 
-        it("should throws nb-input_name-set event", function() {
+        it("should throws nb-name-set event", function() {
             var handlerWorks = false;
-            this.input.on('nb-input_name-set', function() {
+            this.input.on('nb-name-set', function() {
                 handlerWorks = true;
             });
             this.input.setName('Vadim');

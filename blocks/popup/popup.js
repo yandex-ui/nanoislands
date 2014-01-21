@@ -289,7 +289,6 @@
 
     /**
      *
-     * @param {String} evtName название события
      * @param {Object} params
      * @param {Boolean} [params.closeOpened=true] закрыть ранее открытые окна
      */

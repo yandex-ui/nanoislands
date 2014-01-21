@@ -32,7 +32,7 @@ describe("Button Tests", function() {
         it("check event", function() {
 
             var flag = false;
-            this.button.on('nb-button_text-set', function() {
+            this.button.on('nb-text-set', function() {
                 flag = true;
             });
 
@@ -59,7 +59,7 @@ describe("Button Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.button.on('nb-button_url-set', function() {
+            this.button.on('nb-url-set', function() {
                 flag = true;
             });
 
@@ -88,7 +88,7 @@ describe("Button Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.button.on('nb-button_disabled', function() {
+            this.button.on('nb-disabled', function() {
                 flag = false;
             });
 
@@ -107,13 +107,50 @@ describe("Button Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.button.on('nb-button_enabled', function() {
+            this.button.on('nb-enabled', function() {
                 flag = true;
             });
 
             this.button.disable();
             this.button.enable();
             expect(flag).to.ok();
+        });
+    });
+
+    describe("#focus()", function() {
+        it("should throws nb-focused event", function() {
+            var handlerWorks = false;
+            this.button.on('nb-focused', function() {
+                handlerWorks = true;
+            });
+
+            this.button.focus();
+
+            expect(handlerWorks).to.be.ok();
+        });
+
+
+        it("should be in focus", function() {
+            this.button.focus();
+            expect($(document.activeElement).attr('id')).to.equal('button');
+        });
+    });
+
+    describe("#blur()", function() {
+        it("should not to be in focus", function() {
+            this.button.focus();
+            this.button.blur();
+            expect($(document.activeElement)).not.equal('button');
+        });
+
+        it("should throws nb-blured event", function() {
+            var handlerWorks = false;
+            this.button.on('nb-blured', function() {
+                handlerWorks = true;
+            });
+            this.button.blur();
+
+            expect(handlerWorks).to.be.ok();
         });
     });
 

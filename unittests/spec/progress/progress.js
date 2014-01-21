@@ -24,9 +24,9 @@ describe('Progress Tests', function() {
             expect(control.$bar.attr('style').replace(/\s/g, '')).to.equal("width:10%;");
         });
 
-        it('should throws nb-progress_value-set event', function() {
+        it('should throws nb-value-set event', function() {
             var checked = false;
-            this.nbProgress.on('nb-progress_value-set', function() {
+            this.nbProgress.on('nb-value-set', function() {
                 checked = true;
             });
 

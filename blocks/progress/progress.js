@@ -15,7 +15,7 @@ nb.define('progress', {
     /**
      * Set value of the progress
      * @param {String|Number} value
-     * @fires 'nb-progress_value-set'
+     * @fires 'nb-value-set'
      * @returns {Object} nb.block
      */
     setValue: function(value) {
@@ -27,7 +27,7 @@ nb.define('progress', {
         if (this.type == 'percentage') {
             this.$title.html(val + '%');
         }
-        this.trigger('nb-progress_value-set');
+        this.trigger('nb-value-set', this);
         return this;
     },
 
@@ -41,7 +41,7 @@ nb.define('progress', {
 
     /**
     * Change value of the progress by 1
-    * @fires 'nb-progress_value-changed'
+    * @fires 'nb-changed'
     * @returns {Object} nb.block
     */
     tick: function() {
@@ -52,7 +52,7 @@ nb.define('progress', {
         }
 
         this.setValue(val);
-        this.trigger('nb-progress_value-changed');
+        this.trigger('nb-changed', this);
 
         return this;
     }

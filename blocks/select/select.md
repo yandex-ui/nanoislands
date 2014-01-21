@@ -61,21 +61,21 @@ var select = nb.block(node);
 
  /**
  * Render dropdown of the select
- * @fires 'nb-select_rendered'
+ * @fires 'nb-rendered'
  * @returns {Object} nb.block
  */
 select.render();
 
 /**
  * Open dropdown of the select
- * @fires 'nb-select_opened'
+ * @fires 'nb-opened'
  * @returns {Object} nb.block
  */
 select.open();
 
 /**
  * Close dropdown of the select
- * @fires 'nb-select_closed'
+ * @fires 'nb-closed'
  * @returns {Object} nb.block
  */
 select.close();
@@ -87,7 +87,7 @@ select.close();
      *     text: '..'
      *     value: '..'
      * }
- * @fires 'nb-select_changed' event with param {value, text}
+ * @fires 'nb-changed' event with param {value, text}
  */
 select.setState({
     text: 'Hello, world!',
@@ -114,7 +114,7 @@ select.getName();
 /**
  * Changes a value of control, text on the button and select value it the fallback
  * @param {string} name
- * @fires 'nb-select_name-set'
+ * @fires 'nb-name-set'
  * @returns {Object} nb.block
  */
 select.setName('Vadim');
@@ -122,7 +122,7 @@ select.setName('Vadim');
 /**
  * Set new items for select
  * @params {Array|Object} source New source
- * @fires 'nb-select_source-changed'
+ * @fires 'nb-source-changed'
  * @returns {Object} nb.block
  */
 select.setSource([{value: 'val', text: 'text'}])
@@ -137,7 +137,7 @@ select.getSource();
  * Add items to select
  * @param {Array|Object} items
  * @param {Number} index to insert
- * @fires 'nb-select_source-changed'
+ * @fires 'nb-source-changed'
  * @returns {Object} nb.block
  */
 select.addToSource([{value: 'val', text: 'text'}]);
@@ -145,21 +145,21 @@ select.addToSource([{value: 'val', text: 'text'}]);
 /**
  * Remove items to select
  * @param {Array|Object|number} items or index
- * @fires 'nb-select_source-changed'
+ * @fires 'nb-source-changed'
  * @returns {Object} nb.block
  */
 select.removeFromSource();
 
 /**
  * Disables the select
- * @fires 'nb-select_disabled'
+ * @fires 'nb-disabled'
  * @returns {Object} nb.block
  */
 select.disable()
 
 /**
  * Enables the select
- * @fires 'nb-select_enabled'
+ * @fires 'nb-enabled'
  * @returns {Object} nb.block
  */
 select.enable();
@@ -172,14 +172,14 @@ select.isEnabled()
 
 /**
  * Focus the select
- * @fires 'nb-select_focused'
+ * @fires 'nb-focused'
  * @returns {Object} nb.block
  */
 select.focus()
 
 /**
  * Blur the select
- * @fires 'nb-select_blured'
+ * @fires 'nb-blured'
  * @returns {Object} nb.block
  */
 select.blur()

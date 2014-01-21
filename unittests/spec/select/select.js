@@ -42,7 +42,7 @@ describe("Select Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-select_name-set', function() {
+            this.select.on('nb-name-set', function() {
                 flag = false;
             });
 
@@ -67,7 +67,7 @@ describe("Select Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-select_rendered', function() {
+            this.select.on('nb-rendered', function() {
                 flag = false;
             });
 
@@ -86,7 +86,7 @@ describe("Select Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-select_opened', function() {
+            this.select.on('nb-opened', function() {
                 flag = false;
             });
 
@@ -105,7 +105,7 @@ describe("Select Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-select_closed', function() {
+            this.select.on('nb-closed', function() {
                 flag = false;
             });
 
@@ -129,7 +129,7 @@ describe("Select Tests", function() {
         it("shouldn't change if trying to set nonexistent option", function() {
             var flag = true;
 
-            this.select.on('nb-select_changed', function() {
+            this.select.on('nb-changed', function() {
                 flag = false;
             });
 
@@ -141,7 +141,7 @@ describe("Select Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-select_changed', function() {
+            this.select.on('nb-changed', function() {
                 flag = false;
             });
 
@@ -185,7 +185,7 @@ describe("Select Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-select_source-set', function() {
+            this.select.on('nb-source-changed', function() {
                 flag = false;
             });
 
@@ -223,7 +223,7 @@ describe("Select Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-select_source-changed', function() {
+            this.select.on('nb-source-changed', function() {
                 flag = false;
             });
 
@@ -251,7 +251,7 @@ describe("Select Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-select_source-changed', function() {
+            this.select.on('nb-source-changed', function() {
                 flag = false;
             });
 
@@ -281,7 +281,7 @@ describe("Select Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-select_disabled', function() {
+            this.select.on('nb-disabled', function() {
                 flag = false;
             });
 
@@ -300,7 +300,7 @@ describe("Select Tests", function() {
 
         it("check event", function() {
             var flag = false;
-            this.select.on('nb-select_enabled', function() {
+            this.select.on('nb-enabled', function() {
                 flag = true;
             });
 

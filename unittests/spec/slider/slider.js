@@ -73,9 +73,9 @@ describe('Slider Tests', function() {
             expect(input.value).to.be.equal('30');
         });
 
-        it('should throws nb-slider_value-set event', function() {
+        it('should throws nb-value-set event', function() {
             var checked = false;
-            this.slider.on('nb-slider_value-set', function() {
+            this.slider.on('nb-value-set', function() {
                 checked = true;
             });
 
@@ -99,9 +99,9 @@ describe('Slider Tests', function() {
             expect(input.name).to.be.equal('price');
         });
 
-        it('should throws nb-slider_name-set event', function() {
+        it('should throws nb-name-set event', function() {
             var checked = false;
-            this.slider.on('nb-slider_name-set', function() {
+            this.slider.on('nb-name-set', function() {
                 checked = true;
             });
 
@@ -149,7 +149,7 @@ describe('Slider Tests', function() {
         it('should not has disabled mod', function() {
             this.sliderDisabled.enable();
 
-            expect(this.slider.$node.hasClass('nb-slider_disabled')).not.to.be.ok();
+            expect(this.slider.$node.hasClass('nb-disabled')).not.to.be.ok();
         });
     });
 
@@ -177,6 +177,7 @@ describe('Slider Tests', function() {
             this.slider.destroy();
             expect($.fn.slider.calledWithExactly('destroy')).to.be.equal(true);
         });
+
         it("should destroy nb.block", function() {
             this.slider.destroy();
             expect(nb.hasBlock($('#slider')[0])).to.be.equal(false);
