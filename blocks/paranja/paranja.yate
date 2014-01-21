@@ -7,7 +7,7 @@ func nb-paranja(nodeset options) {
 }
 
 match .paranja nb {
-    <div class="nb-paranja nb-paranja_theme_{ .theme }" data-nb='paranja'>
+    <div class="nb-paranja nb-paranja_theme_{ .theme }">
         apply . nb-main-attrs
         
         if .content {

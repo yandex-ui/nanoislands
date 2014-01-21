@@ -90,6 +90,9 @@ func nb-popup-modal(nodeset options) {
 }
 
 match .modalPopup nb {
+    if .static {
+        nb-paranja()
+    }
     <div class="nb-popup nb-popup_type_modal">
         if !.static {
             @data-nb = "popup"
