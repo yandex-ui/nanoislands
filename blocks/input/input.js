@@ -23,7 +23,7 @@ nb.define('input', {
         }
 
         this.$control.on('change', function(e) {
-            that.trigger('nb-change', e);
+            that.trigger('nb-input_change', e);
         });
 
         this.disabled = this.$control.prop('disabled');
