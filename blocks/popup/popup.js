@@ -255,10 +255,7 @@
     // ----------------------------------------------------------------------------------------------------------------- //
 
     popup.events = {
-        'open': 'onopen',
-        'click .nb-popup__close': 'onclose',
-        'close': 'onclose',
-        'destroy': 'ondestroy',
+        'click .nb-popup__close': 'close',
         'position': 'onposition'
     };
 
@@ -270,7 +267,7 @@
         this._move(where, how, params);
     };
 
-    popup.ondestroy = function() {
+    popup.destroy = function() {
         if (this.node && this.node.widget) {
             this.node.widget.destroy();
         }
@@ -296,7 +293,7 @@
      * @param {Object} params
      * @param {Boolean} [params.closeOpened=true] закрыть ранее открытые окна
      */
-    popup.onopen = function(evtName, params) {
+    popup.open = function(params) {
         var where = params.where;
         var how = params.how;
 
@@ -314,7 +311,7 @@
             //  FIXME: Буэээ. Уродливое условие для варианта, когда заданы координаты вместо ноды.
             if (where === this.where || ( (where instanceof Array) && where[0] === this.where[0] && where[1] === this.where[1] )) {
                 //  На той же ноде. Значит закрываем его.
-                this.trigger('close');
+                this.close();
             } else {
                 this.moved = true;
                 //  На другой ноде. Передвигаем его в нужное место.
@@ -331,14 +328,14 @@
             $(this.node).removeClass('_hidden');
             //  Передвигаем попап.
             this._move(where, how, params);
-            this.trigger('show');
+            this.trigger('nb-showed');
 
             // Сообщаем в космос, что открылся попап
             nb.trigger('popup-opened', this);
         }
     };
 
-    popup.onclose = function() {
+    popup.close = function() {
 
         //  Снимаем флаг о том, что попап открыт.
         this.where = null;
@@ -397,7 +394,7 @@
                 draggable: false,
                 dialogClass: 'nb-popup-outer ui-dialog-fixed',
                 close: function() {
-                    that.trigger('close');
+                    that.close();
                 },
                 appendTo: params.appendTo,
                 position: {
@@ -425,7 +422,7 @@
                 using: using
             },
             close: function() {
-                that.trigger('close');
+                that.close();
             }
         });
     };
@@ -493,7 +490,7 @@ nb.define('popup-toggler', {
         var popup = nb.find(data['id']);
 
         if (popup) {
-            popup.trigger('open', {
+            popup.open({
                 //  Относительно чего позиционировать попап.
                 //  Если заданы точные координаты в `data.where`, то по ним.
                 //  Иначе относительно ноды этого блока.
