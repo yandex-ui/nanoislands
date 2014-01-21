@@ -1,8 +1,6 @@
 nb.define('toggler', {
     events: {
-        'click': 'toggle',
-        'focusin': 'focus',
-        'focusout': 'blur'
+        'click': 'toggle'
     },
 
     /**
@@ -111,15 +109,13 @@ nb.define('toggler', {
      */
     focus: function() {
         if (this.isEnabled()) {
-            if (!this.$node.hasClass('nb-toggler_focus')) {
-                nb.trigger('nb-toggler_focusout');
-                this.$node.addClass('nb-toggler_focus');
+            if (!this.$node.hasClass('is-focused')) {
+                this.$node.addClass('is-focused').focus();
                 this.focused = true;
                 this.$control.focus();
                 this.trigger('nb-focused', this);
             }
         }
-
         return this;
     },
 
@@ -129,7 +125,7 @@ nb.define('toggler', {
      * @returns {Object} nb.block
      */
     blur: function() {
-        this.$node.removeClass('nb-toggler_focus');
+        this.$node.removeClass('is-focused').blur();
         this.focused = false;
         this.trigger('nb-blured', this);
         return this;

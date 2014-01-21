@@ -330,6 +330,44 @@ describe("Select Tests", function() {
         });
     });
 
+    describe("#focus()", function() {
+        it("should throws nb-focused event", function() {
+            var handlerWorks = false;
+            this.select.on('nb-focused', function() {
+                handlerWorks = true;
+            });
+
+            this.select.focus();
+
+            expect(handlerWorks).to.be.ok();
+        });
+
+
+        it("should be in focus", function() {
+            this.select.focus();
+            expect($(document.activeElement).attr('id')).to.equal('select');
+        });
+    });
+
+    describe("#blur()", function() {
+        it("should not to be in focus", function() {
+            this.select.focus();
+            this.select.blur();
+            expect($(document.activeElement)).not.equal('select');
+        });
+
+        it("should throws nb-blured event", function() {
+            var handlerWorks = false;
+            this.button.on('nb-blured', function() {
+                handlerWorks = true;
+            });
+            this.button.blur();
+
+            expect(handlerWorks).to.be.ok();
+        });
+    });
+
+
     describe("Specific", function() {
         afterEach(function() {
             $(document).off('click');

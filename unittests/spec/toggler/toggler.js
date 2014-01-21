@@ -212,6 +212,43 @@ describe("Toggler Tests", function() {
         });
 
     });
+    describe("#focus()", function() {
+        it("should throws nb-focused event", function() {
+            var handlerWorks = false;
+            this.toggler.on('nb-focused', function() {
+                handlerWorks = true;
+            });
+
+            this.toggler.focus();
+
+            expect(handlerWorks).to.be.ok();
+        });
+
+
+        it("should be in focus", function() {
+            this.toggler.focus();
+            expect($(document.activeElement)[0]).to.equal(this.toggler.$control[0]);
+        });
+    });
+
+    describe("#blur()", function() {
+        it("should not to be in focus", function() {
+            this.toggler.focus();
+            this.toggler.blur();
+            expect($(document.activeElement)).not.equal('toggler');
+        });
+
+        it("should throws nb-blured event", function() {
+            var handlerWorks = false;
+            this.toggler.on('nb-blured', function() {
+                handlerWorks = true;
+            });
+            this.toggler.blur();
+
+            expect(handlerWorks).to.be.ok();
+        });
+    });
+
 
     describe("#destroy()", function() {
         it("should destroy nb.block", function() {
