@@ -236,7 +236,7 @@ nb.define('checkbox', {
      * @returns {String}
      */
     getValue: function() {
-        return this.$control.attr('value');
+        return this.$control.attr('value') || '';
     },
 
     /**

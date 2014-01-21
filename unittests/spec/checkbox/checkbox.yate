@@ -20,4 +20,9 @@
         "id": "checkbox"
         "tabindex": "-1"
     })
+
+    nb-checkbox({
+        "content": "Button"
+        "id": "checkbox-without-attr-value"
+    })
 }
