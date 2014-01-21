@@ -59,6 +59,11 @@ func button-images() {
 
     ' '
     nb-button({
+        'iconText': '▼'
+    })
+
+    ' '
+    nb-button({
           'icon': 'link'
           'content': 'Открыть'
     })

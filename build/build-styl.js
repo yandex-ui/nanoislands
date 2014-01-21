@@ -10,7 +10,7 @@ var autoprefixer = require('autoprefixer');
 var style = stylus(content)
     .set('filename', ie ? 'nanoislands.ie.css' : 'nanoislands.css')
     .set('resolve url', true)
-    .define('url', stylus.resolver())
+    .define('url', stylus.resolver());
 
 style.render(function(err, css) {
     if (err) {

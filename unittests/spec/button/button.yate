@@ -9,4 +9,9 @@ match .button {
         "disabled": true()
         "id": "button-disabled"
     })
+
+    nb-button({
+        "iconText": '▼'
+        "id": "button-icon-text"
+    })
 }

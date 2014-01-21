@@ -22,6 +22,15 @@ describe("Button Tests", function() {
             expect(button.isEnabled()).to.be.equal(false);
         });
     });
+
+
+    describe("YATE API", function() {
+        it('iconText', function() {
+            var button = nb.find('button-icon-text');
+            expect(button.$node.find('.nb-button__text .nb-icon').html()).to.be.equal('▼');
+        });
+    });
+
     describe("#setText()", function() {
 
         it("check text", function() {

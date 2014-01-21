@@ -34,15 +34,21 @@ match .button nb {
             @name = .attrs.name
         }
 
-        if !( .content ) && .icon {
+        if !( .content ) && (.icon || .iconText) {
             @class += ' nb-button_only-icon'
         }
 
         <span class="nb-button__text">
            apply .icon nb
-               if .content {
-                   html(.content)
-               }
+
+           if .iconText {
+                <span class="nb-icon nb-icon_text">
+                  .iconText
+                </span>
+            }
+            if .content {
+                html(.content)
+            }
         </span>
     </button>
 }
@@ -64,15 +70,22 @@ match .buttonLink nb {
             @data-nb = 'button'
         }
 
-        if !( .content ) && .icon {
+        if !( .content ) && (.icon || .iconText)  {
             @class += ' nb-button_only-icon'
         }
 
         <span class="nb-button__text">
            apply .icon nb
-               if .content {
-                   html(.content)
-               }
+
+           if .iconText {
+               <span class="nb-icon nb-icon_text">
+                   .iconText
+               </span>
+           }
+
+           if .content {
+               html(.content)
+           }
         </span>
     </a>
 }
@@ -94,7 +107,7 @@ match .buttonAttach nb {
             @data-nb = 'button'
         }
 
-        if !( .content ) && .icon {
+        if !( .content ) && (.icon || .iconText) {
             @class += ' nb-button_only-icon'
         }
 
@@ -121,6 +134,13 @@ match .buttonAttach nb {
         </span>
         <span class="nb-button__text">
             apply .icon nb
+
+            if .iconText {
+                <span class="nb-icon nb-icon_text">
+                    .iconText
+                </span>
+            }
+
             if (.content) {
                 html(.content)
             }

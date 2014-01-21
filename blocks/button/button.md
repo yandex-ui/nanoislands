@@ -15,6 +15,7 @@
 * `'class'` {array} `['my_class1', 'my_class2']` — additional classes
 * `'disabled'` {boolean} — disabled button
 * `'icon'` {string} ... — link to icon
+* `'iconText'` {string} ... — symbol for icon
 * `'content'` {string} ... — content of button
 * `'attrs'` {object} `{'type': 'submit', 'attr2: 'value2' }` — custom DOM attributes for button
 * `'static'` {boolean} — block without nanoblocks functionality (JavaScript API)

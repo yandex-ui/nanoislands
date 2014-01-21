@@ -1,5 +1,5 @@
 afterEach(function() {
 //    clear blocks
-    nb.destroy();
-    $('.content').empty();
+//    nb.destroy();
+//    $('.content').empty();
 });
