@@ -314,24 +314,19 @@ describe("Select Tests", function() {
 
         beforeEach(function() {
             sinon.spy($.fn, 'autocomplete');
-            sinon.spy($.fn, 'off');
-            sinon.spy(nb, 'destroy');
         });
 
         afterEach(function() {
             $.fn.autocomplete.restore();
-            $.fn.off.restore();
-            nb.destroy.restore();
         });
 
         it("should call $.fn.autocomplete('destroy')", function() {
             this.select.destroy();
             expect($.fn.autocomplete.calledWithExactly('destroy')).to.be.equal(true);
         });
-
-        it("should call nb.destroy('select')", function() {
+        it("should destroy nb.block", function() {
             this.select.destroy();
-            expect(nb.destroy.calledWithExactly('select')).to.be.equal(true);
+            expect(nb.hasBlock($('#select')[0])).to.be.equal(false);
         });
     });
 

@@ -143,20 +143,10 @@ describe("Input Tests", function() {
         });
     });
 
-    describe("#destroy()", function() {
-
-        beforeEach(function() {
-            sinon.spy(nb, 'destroy');
-        });
-
-        afterEach(function() {
-            nb.destroy.restore();
-        });
-
-        it("should call nb.destroy('input')", function() {
+    describe('#destroy()', function() {
+        it("should destroy nb.block", function() {
             this.input.destroy();
-            expect(nb.destroy.calledWithExactly('input')).to.be.equal(true);
+            expect(nb.hasBlock($('#input')[0])).to.be.equal(false);
         });
-    });
-
+    })
 });

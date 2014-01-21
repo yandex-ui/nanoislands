@@ -252,8 +252,7 @@ nb.define('checkbox', {
     },
 
     destroy: function() {
-        nb.destroy(this.node.getAttribute('id'));
-        this.$node.off('click');
+        this.nbdestroy();
     }
 
 }, 'base');

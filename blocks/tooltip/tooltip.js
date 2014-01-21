@@ -12,7 +12,7 @@ nb.define('tooltip-jq-toggler', {
             return true;
         }
 
-        var data = this.data()[this.name];
+        var data = this.nbdata()[this.name];
 
         var params = {
             content: data.content,

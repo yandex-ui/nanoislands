@@ -279,14 +279,11 @@
          * @fires 'nb-select_destroyed'
          */
         destroy: function() {
-            this.$node.off('click');
-
             if (this.$input && this.$input.data('ui.suggest')) {
                 this.$input.suggest('destroy');
             }
-
             this.trigger('nb-suggest_destroyed');
-            nb.destroy(this.node.getAttribute('id'));
+            this.nbdestroy();
         }
 
     }, 'base');

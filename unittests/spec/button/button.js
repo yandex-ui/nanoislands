@@ -9,7 +9,7 @@ describe("Button Tests", function() {
     });
 
     afterEach(function() {
-        delete this.button;
+        this.button.destroy();
     });
 
     describe("Init", function() {
@@ -121,12 +121,10 @@ describe("Button Tests", function() {
 
         beforeEach(function() {
             sinon.spy($.fn, 'button');
-            sinon.spy(nb, 'destroy');
         });
 
         afterEach(function() {
             $.fn.button.restore();
-            nb.destroy.restore();
         });
 
         it("should call $.fn.button('destroy')", function() {
@@ -134,11 +132,9 @@ describe("Button Tests", function() {
             expect($.fn.button.calledWithExactly('destroy')).to.be.equal(true);
         });
 
-        it("should call nb.destroy('button')", function() {
+        it("should destroy nb.block", function() {
             this.button.destroy();
-            expect(nb.destroy.calledWithExactly('button')).to.be.equal(true);
+            expect(nb.hasBlock($('#button')[0])).to.be.equal(false);
         });
     });
-
-
 });

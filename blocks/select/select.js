@@ -22,7 +22,7 @@ nb.define('select', {
     oninit: function() {
         this.$control = this.$node.find('select');
         this.$dropdown = this.$node.children('.nb-select__dropdown').appendTo('body');
-        this.data = this.data();
+        this.data = this.nbdata();
 
         this._updateFromSelect();
 
@@ -204,8 +204,10 @@ nb.define('select', {
      * @returns {Object} nb.block
      */
     open: function() {
-        this.render();
-        this.trigger('nb-select_opened');
+        if (this.$node && this.$node.data('uiAutocomplete')) {
+            this.render();
+            this.trigger('nb-select_opened');
+        }
         return this;
     },
 
@@ -215,8 +217,10 @@ nb.define('select', {
      * @returns {Object} nb.block
      */
     close: function() {
-        this.$node.autocomplete('close');
-        this.trigger('nb-select_closed');
+        if (this.$node && this.$node.data('uiAutocomplete')) {
+            this.$node.autocomplete('close');
+            this.trigger('nb-select_closed');
+        }
         return this;
     },
 
@@ -471,14 +475,10 @@ nb.define('select', {
      * @fires 'nb-select_destroyed'
      */
     destroy: function() {
-        this.$node.off('click');
-
         if (this.$node && this.$node.data('uiAutocomplete')) {
             this.$node.autocomplete('destroy');
-            this.$dropdown.remove();
+            this.$dropdown.empty().appendTo(this.$node);
         }
-
-        this.trigger('nb-select_destroyed');
-        nb.destroy(this.node.getAttribute('id'));
+        this.nbdestroy();
     }
 }, 'base');

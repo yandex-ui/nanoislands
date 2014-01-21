@@ -7,7 +7,7 @@ nb.define('input-group', {
 
     oninit: function() {
         var that = this;
-        that.disabled = this.data()['disabled'];
+        that.disabled = this.nbdata()['disabled'];
         $(this.children()).each(function() {
             if (this.$node.hasClass('nb-input')) {
                 that.input = this;

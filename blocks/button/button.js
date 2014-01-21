@@ -134,6 +134,6 @@ nb.define('button', {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('destroy');
         }
-        nb.destroy(this.node.getAttribute('id'));
+        this.nbdestroy();
     }
 }, 'base');

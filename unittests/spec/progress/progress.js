@@ -61,4 +61,11 @@ describe('Progress Tests', function() {
             expect(checked).to.ok();
         });
     });
+
+    describe('#destroy()', function() {
+        it("should destroy nb.block", function() {
+            this.progress.destroy();
+            expect(nb.hasBlock($('#progress')[0])).to.be.equal(false);
+        });
+    })
 });

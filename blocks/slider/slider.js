@@ -13,7 +13,7 @@ nb.define('slider', {
     oninit: function() {
         var that = this;
 
-        this.data = this.data();
+        this.data = this.nbdata();
         this.$control = this.$node.find('.nb-slider__fallback');
         this.$body = this.$node.children('.nb-slider__body');
 
@@ -126,9 +126,8 @@ nb.define('slider', {
     destroy: function() {
         if (this.$body && this.$body.data('uiSlider')) {
             this.$body.slider('destroy');
-            this.$body.off('slidestart slidestop slide');
         }
         this.trigger('nb-slider_destroyed');
-        nb.destroy(this.node.getAttribute('id'));
+        this.nbdestroy();
     }
 }, 'base');

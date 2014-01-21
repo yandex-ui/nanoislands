@@ -223,5 +223,13 @@ describe("Checkbox Tests", function() {
         });
     });
 
+    describe('#destroy()', function() {
+        it("should destroy nb.block", function() {
+            this.checkbox.destroy();
+            expect(nb.hasBlock($('#checkbox')[0])).to.be.equal(false);
+        });
+
+    })
+
 
 });

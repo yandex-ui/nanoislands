@@ -214,19 +214,9 @@ describe("Toggler Tests", function() {
     });
 
     describe("#destroy()", function() {
-
-        beforeEach(function() {
-            sinon.spy(nb, 'destroy');
-        });
-
-        afterEach(function() {
-            nb.destroy.restore();
-        });
-
-        it("should call nb.destroy('input')", function() {
+        it("should destroy nb.block", function() {
             this.toggler.destroy();
-            expect(nb.destroy.calledWithExactly('toggler')).to.be.equal(true);
+            expect(nb.hasBlock($('#toggler')[0])).to.be.equal(false);
         });
     });
-
 });

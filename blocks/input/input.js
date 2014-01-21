@@ -14,7 +14,7 @@ nb.define('input', {
     oninit: function() {
         var that = this;
 
-        this.data = this.data();
+        this.data = this.nbdata();
 
         if (this.data.type == 'simple') {
             this.$control = this.$node;
@@ -163,7 +163,6 @@ nb.define('input', {
      * Destroy the button
      */
     destroy: function() {
-        this.$node.off('click focusin focusout mouseover mouseout');
-        nb.destroy(this.node.getAttribute('id'));
+        this.nbdestroy();
     }
 }, 'base');
