@@ -14,8 +14,8 @@
     },
     "dependencies": {
         "es5-shim": "2.1.0",
-        "stylobate": "0.20.x",
-        "stylobate-islands": "0.19.x"
+        "stylobate": "0.21.x",
+        "stylobate-islands": "0.21.x"
     },
     "devDependencies": {
         "yate": "0.0.64",
