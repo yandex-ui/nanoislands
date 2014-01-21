@@ -45,6 +45,11 @@ describe("Checkbox Tests", function() {
             expect(this.checkbox.getValue()).to.be.equal('my-value');
         });
 
+        it('should return empty string for checbox without value', function() {
+            var checkbox = nb.find('checkbox-without-attr-value');
+            expect(checkbox.getValue()).to.be.equal('');
+        });
+
         it('should return new value after setValue', function() {
             this.checkbox.setValue('new-value');
             expect(this.checkbox.getValue()).to.be.equal('new-value');
