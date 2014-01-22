@@ -1,7 +1,6 @@
 func nb-user(nodeset user) {
     default = {
         'size': 'm'
-        'userpic': '/libs/nanoislands/blocks/header/avatar.png'
     }
 
     nb-block('user', nb-extend(default, user))
@@ -28,7 +27,11 @@ match .user nb {
 }
 
 match .user nb-user-pic {
-    <span class="nb-user__avatar nb-user__avatar_size_{.size}" style="background-image: url('{.userpic}')">
+    <span class="nb-user__avatar nb-user__avatar_size_{.size}" >
+        if .userpic {
+            @style+= " background-image: url('{.userpic}')"
+        }
+
         if .notices > 0 {
             <span class="nb-user__notice-count">
                 .notices
