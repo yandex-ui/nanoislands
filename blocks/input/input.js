@@ -3,8 +3,6 @@ nb.define('input', {
         'click': 'focus',
         'focusin': 'focus',
         'focusout': 'blur',
-        'mouseover': '_hover',
-        'mouseout': '_hover'
     },
 
     /**
@@ -23,23 +21,85 @@ nb.define('input', {
         }
 
         this.$control.on('change', function(e) {
-            that.trigger('nb-change', this, e);
+            that.trigger('nb-changed', this, e);
         });
 
         this.disabled = this.$control.prop('disabled');
         this.value = this.$control.val();
         this.focused = false;
+        if (this.data.ghost) {
+            this.$node.on('mouseover mouseout', function() {
+                that.$node.toggleClass('is-ghost');
+            });
+        }
+
+        if (this.data.error) {
+            this.error = nb.find(this.data.error.id);
+        }
+
         nb.on('is-focusedout', function() {
             that.blur();
         });
+
         this.trigger('nb-inited', this);
     },
 
-    _hover: function() {
-        if (this.data.ghost) {
-            this.$node.toggleClass('is-ghost');
+    /**
+     * Show inputs error
+     * @returns {Object} nb.block
+     */
+    showError: function() {
+        if (this.data.error) {
+            this.$node.addClass('is-wrong');
+            var how = {
+                collision: 'flip flip',
+                autoclose: false
+            };
+
+            if (this.data.error.direction && this.data.error.direction == 'left') {
+                how.at = "left";
+                how.my = "right";
+
+            } else {
+                how.at = "right";
+                how.my = "left";
+            }
+
+            this.error.open({
+                autoclose: false,
+                where: this.node,
+                how: how
+            });
         }
+        return this;
     },
+
+    /**
+     * Hide inputs error
+     * @returns {Object} nb.block
+     */
+    hideError: function() {
+        if (this.data.error) {
+            this.$node.removeClass('is-wrong');
+            this.error.close();
+        }
+        return this;
+    },
+
+    /**
+     * Set content of inputs error
+     * @param {string} content - content for error
+     * @fires 'nb-error-content-set'
+     * @returns {Object} nb.block
+     */
+    setErrorContent: function(content) {
+        if (this.data.error) {
+            this.error.$node.find('.nb-popup__content').html(content);
+            this.trigger('nb-error-content-set', this);
+        }
+        return this;
+    },
+
 
     /**
      * Focus the input

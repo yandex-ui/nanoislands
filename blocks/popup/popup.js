@@ -36,8 +36,9 @@
                     if ($.contains(that.uiDialog[0], e.target)) {
                         return;
                     }
-
-                    that.close();
+                    if (that.options.autoclose) {
+                        that.close();
+                    }
                 };
 
                 this.document.on('mousedown', this._onmousedown);
@@ -48,8 +49,11 @@
                 this.window.on('resize', this._onresize);
             }
 
+
             this._onpopupclose = nb.on('popup-close', function() {
-                that.close();
+                if (that.options.autoclose) {
+                    that.close();
+                }
             });
         },
         close: function() {
@@ -109,7 +113,7 @@
     });
 
     // диалог с хвостиком
-    jQuery.widget('nb.contextDialog', $.nb.baseDialog, {
+    $.widget('nb.contextDialog', $.nb.baseDialog, {
 
         tailOffset: 13,
 
@@ -135,7 +139,8 @@
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
                 collision: "fit flip"
-            }
+            },
+            autoclose: true
         },
 
         _create: function() {
@@ -420,6 +425,7 @@
                 collision: (how.collision ? how.collision : 'fit flip'),
                 using: using
             },
+            autoclose: how.autoclose,
             close: function() {
                 that.close();
             }

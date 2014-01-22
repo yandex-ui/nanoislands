@@ -3,7 +3,7 @@ func nb-input(nodeset options) {
         'size': 's'
     }
 
-    if options.left || options.right || options.label || options.reset || options.ghost {
+    if options.left || options.right || options.label || options.reset || options.ghost || options.error {
         nb-block('input', nb-extend(default, options))
     } else if options.type == 'multiline' {
         nb-block('textarea', nb-extend(default, options))
@@ -13,6 +13,9 @@ func nb-input(nodeset options) {
 }
 
 match .input nb {
+
+    errorId = 'nb-input_error' + nb-uniq()
+
     <label class='nb-input nb-input_type_complex'>
         apply . nb-main-attrs
 
@@ -29,14 +32,26 @@ match .input nb {
         }
 
         if .ghost {
-            @class += ' is-ghost'
+            @class += ' is-ghost _init'
             @data-nb-ghost = 'true'
+        }
+
+
+
+        if .error {
+           @class += ' _init'
+           @data-nb-error ='{{ "id": "{ errorId }", "direction":"{ .error.direction}" }}'
+
+           nb-popup({
+                "class": "nb-popup_type_error"
+                "content": .error.content
+                "id": errorId
+           })
         }
 
         if .reset {
             <span class="nb-input__reset"></span>
         }
-
         <span class="nb-input__content">
             <input class="nb-input__controller" value="{.content}">
                 for .attrs.* {
@@ -53,6 +68,9 @@ match .input nb {
             </input>
             <span class="nb-input__view">&nbsp;</span>
         </span>
+
+
+
     </label>
 }
 

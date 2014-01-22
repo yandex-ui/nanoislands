@@ -11,4 +11,11 @@ match .input {
 
     })
 
+    nb-input({
+        'id': 'input-error'
+        'error': {
+            'direction': 'right'
+            'content': 'error'
+        }
+    })
 }

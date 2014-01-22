@@ -29,7 +29,7 @@
 
         </script>
 
-        <script type="text/javascript" src="beautify-html.js"></script>
+        <!--<script type="text/javascript" src="beautify-html.js"></script>-->
         <script type="text/javascript">
 
             $(function() {
@@ -38,15 +38,6 @@
                   e.innerHTML = input;
                   return e.childNodes.length === 0 ? '' : e.childNodes[0].nodeValue;
                 }
-
-                $('.js-beautify').each(function() {
-                    var $el = $(this);
-
-                    $el.text(html_beautify(unescapeHTML($el.html()), {
-                        unformatted: [],
-                        wrap_line_length: 80
-                    }));
-                });
 
                 var $content = $('.content');
                 var TOGGLE_HTML = 'content_hide-html';

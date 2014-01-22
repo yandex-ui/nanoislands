@@ -18,14 +18,75 @@ describe("Input Tests", function() {
         });
     });
 
+    describe("#YATE API", function() {
+        it("error params", function() {
+            var input = nb.find('input-error');
+            var data = this.input.nbdata();
+            expect(input.$node.attr('data-nb-error')).to.be.ok();
+        });
+        it("error dropdown", function() {
+            var input = nb.find('input-error');
+            var data = input.nbdata();
+            expect($('#' + data.error.id)).to.be.ok();
+        });
+
+        it("error dropdown content", function() {
+            var input = nb.find('input-error');
+            var data = input.nbdata();
+            expect($('#' + data.error.id + ' .nb-popup__content').html()).to.be.equal('error');
+        });
+    });
+
+
     describe('#getType()', function() {
         it('should return input type', function() {
             expect(this.input.getType()).to.be.equal('input');
         });
     });
 
+    describe("showError()", function() {
+        it("error should be visible", function() {
+            var input = nb.find('input-error');
+            var data = input.nbdata();
+            input.showError();
+            expect($(nb.find(data.error.id).node).contextDialog("isOpen")).to.be.ok();
+        });
+    });
+
+    describe("hideError()", function() {
+        it("error should be hidden", function() {
+            var input = nb.find('input-error');
+            var data = input.nbdata();
+            input.showError();
+            input.hideError();
+            expect($(nb.find(data.error.id).node).contextDialog("isOpen")).to.not.be.ok();
+        });
+    });
+
+    describe("setErrorContent()", function() {
+        it("should set a new content for error", function() {
+            var input = nb.find('input-error');
+            var data = input.nbdata();
+            input.setErrorContent('1');
+            expect(nb.find(data.error.id).$node.find('.nb-popup__content').html()).to.equal('1');
+        });
+
+        it("should throws nb-error-content-set event", function() {
+            var handlerWorks = false;
+            var input = nb.find('input-error');
+
+            input.on('nb-error-content-set', function() {
+                handlerWorks = true;
+            });
+
+            input.setErrorContent('1');
+
+            expect(handlerWorks).to.be.ok();
+        });
+    });
+
     describe("#focus()", function() {
-        it("should throws nb-input_focused event", function() {
+        it("should throws nb-focused event", function() {
             var handlerWorks = false;
             this.input.on('nb-focused', function() {
                 handlerWorks = true;

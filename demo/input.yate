@@ -45,6 +45,18 @@ func input-ghost() {
     nb-input(block)
 }
 
+func input-error() {
+    block = {
+        'content': 'Здесь будет ошибка'
+        'error': {
+            'direction': 'right'
+            'content': 'Все плохо!!!'
+        }
+    }
+
+    nb-input(block)
+}
+
 func inputs() {
     <div class="demo-section">
         <div class="demo-h3">
@@ -96,5 +108,13 @@ func inputs() {
         </div>
 
         show(input-ghost())
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Error'
+        </div>
+
+        show(input-error())
     </div>
 }

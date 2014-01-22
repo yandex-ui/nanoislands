@@ -18,6 +18,7 @@ HTML input element.
 * `'ghost'` {boolean} — ghost mode input
 * `'disabled'` {boolean}
 * `'size'` {string}  - input size. `'s'` (no other sizes supported)
+* `error` {object} `{content: 'error content', direction: 'right|left'}`
 
 ### Examples
 
@@ -57,6 +58,27 @@ Initialize all nb blocks with class '_init' within DOM node
 input — nb block
 
 ```
+
+/**
+ * Show inputs error
+ * @returns {Object} nb.block
+ */
+input.showError()
+
+/**
+ * Hide inputs error
+ * @returns {Object} nb.block
+ */
+input.hideError()
+
+/**
+ * Set content of inputs error
+ * @param {string} content - content for error
+ * @fires 'nb-error-content-set'
+ * @returns {Object} nb.block
+ */
+input.setErrorContent();
+
   /**
     * Focus the input
     * @fires 'nb-focused'
