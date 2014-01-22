@@ -38,6 +38,22 @@ describe("Input Tests", function() {
     });
 
 
+    describe("Events", function() {
+        it("should fire nb-changed event", function() {
+            var result = false;
+
+            this.input.setValue("Zzzzap!");
+            
+            this.input.on('nb-changed', function(){
+                result = true;
+            });
+
+            this.input.$control.trigger('change');
+
+            expect(result).to.be.ok();
+        });
+    });
+
     describe('#getType()', function() {
         it('should return input type', function() {
             expect(this.input.getType()).to.be.equal('input');

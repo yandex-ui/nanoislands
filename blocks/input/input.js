@@ -2,7 +2,7 @@ nb.define('input', {
     events: {
         'click': 'focus',
         'focusin': 'focus',
-        'focusout': 'blur',
+        'focusout': 'blur'
     },
 
     /**
