@@ -19,11 +19,12 @@ describe("Input Tests", function() {
     });
 
     describe("Events", function() {
-        it("should fire nb-input_change event", function() {
+        it("should fire nb-changed event", function() {
             var result = false;
 
             this.input.setValue("Zzzzap!");
-            this.input.on('nb-input_change', function(){
+            
+            this.input.on('nb-changed', function(){
                 result = true;
             });
 
