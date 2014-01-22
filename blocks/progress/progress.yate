@@ -14,7 +14,7 @@ func nb-progress(nodeset options) {
 }
 
 match .progress nb {
-    <div class='nb-progress _init nb-progress_type_{ .type }' data-nb-type='{ .type }'>
+    <div data-nb='progress' class='nb-progress _init nb-progress_type_{ .type }' data-nb-type='{ .type }'>
 
         apply . nb-main-attrs
 
