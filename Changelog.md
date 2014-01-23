@@ -1,3 +1,6 @@
+##### 0.1.34
+* stylobate "0.22.x"
+
 ##### 0.1.33
 
 * stylobate "0.21.x"
@@ -10,8 +13,7 @@
 * fix #161 — Для nb-button с иконкой надо иметь возможность задать иконку как текст
 * fix #160 — Унификация событий
 * Toggler focus/blur fixes
-
-checkbox.getValue() should return empty string for inpt without value
+* checkbox.getValue() should return empty string for inpt without value
 
 ###### API changes
 * !!All event was renamed for unification!! Check documentation
