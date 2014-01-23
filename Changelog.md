@@ -1,3 +1,22 @@
+##### 0.1.33
+
+* stylobate "0.21.x"
+* stylobate-islands "0.21.x"
+* stylus "0.42.x"
+* **All event has been renamed for unification.** Check documentation.
+
+###### Fixes
+* fix #133 — Возможность вывода ошибки.
+* fix #161 — Для nb-button с иконкой надо иметь возможность задать иконку как текст
+* fix #160 — Унификация событий
+* Toggler focus/blur fixes
+
+checkbox.getValue() should return empty string for inpt without value
+
+###### API changes
+* !!All event was renamed for unification!! Check documentation
+* #163 Событие change в блок input
+
 ##### 0.1.32
 
 * update jQuery UI to v1.10.4
