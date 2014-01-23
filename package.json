@@ -14,7 +14,7 @@
     },
     "dependencies": {
         "es5-shim": "2.1.0",
-        "stylobate": "0.21.x",
+        "stylobate": "0.22.x",
         "stylobate-islands": "0.21.x"
     },
     "devDependencies": {
