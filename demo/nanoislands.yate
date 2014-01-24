@@ -32,6 +32,7 @@ include 'progress.yate'
 include 'input.yate'
 include 'input-group.yate'
 include 'islands.yate'
+include 'loaders.yate'
 include 'icons.yate'
 include 'sliders.yate'
 include 'tooltips-jq.yate'
@@ -112,7 +113,16 @@ match / {
             islands()
         </div>
     </div>
-
+    <div class="demo-pane">
+        <div class="demo-pane__desc">
+            <div class="demo-h2">
+                "Крутилки"
+            </div>
+        </div>
+        <div class="demo-pane__content">
+            loaders()
+        </div>
+    </div>
     <div class="demo-pane">
         <div class="demo-pane__desc">
             <div class="demo-h2">
