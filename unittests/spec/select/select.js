@@ -21,6 +21,16 @@ describe("Select Tests", function() {
 
     });
 
+    describe("#YATE API", function() {
+        it("option should has data-icon attribute if icon of item is specified", function() {
+            var select = nb.find('select-with-icons-in-options');
+            var $options = select.$control.find('option');
+            var firstOptionData = $options.first().data();
+
+            expect(firstOptionData.icon).to.be.equal('close');
+        });
+    });
+
     describe('#getType()', function() {
         it('should return select type', function() {
             expect(this.select.getType()).to.be.equal('select');

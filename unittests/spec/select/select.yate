@@ -59,4 +59,20 @@ match .select {
                   }
               ]
             })
+
+    nb-select({
+        'id': 'select-with-icons-in-options'
+        'items': [
+            {
+                'icon': 'close'
+                'text': 'Входящие'
+                'value': 'option0'
+                'selected': 'true'
+            }
+            {
+                'text': 'Социальные сети'
+                'value': 'option1'
+            }
+        ]
+    })
 }
