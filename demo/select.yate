@@ -108,10 +108,9 @@ func select-medium() {
 
     ' '
     nb-select( {
-      'size': 'l'
+      'size': 'm'
       'id': 'select6'
       'class': 'my-test-class'
-      'theme': 'pseudo'
       'attrs': {
         'style': 'max-width: 200px'
       }
