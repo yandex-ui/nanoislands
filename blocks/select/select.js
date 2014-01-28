@@ -122,15 +122,14 @@ nb.define('select', {
 
             $itemNode.data('ui-autocomplete-item', item);
 
-            var itemNodeHtml = '';
-            itemNodeHtml += '<a><span class="nb-select__text">';
-
+            var $itemNodeContent = $('<a></a>');
+            var $itemText = $('<span class="nb-select__text"></span>').html(item.label).appendTo($itemNodeContent);
             if (item.icon) {
-                itemNodeHtml += '<img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_' + item.icon + '">';
+                $itemText.prepend('<img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_' + item.icon + '">');
             }
-            itemNodeHtml += item.label + '</span></a>';
-            $itemNode.append(itemNodeHtml);
-            $itemNode.appendTo(ul);
+            $itemNode
+                .append($itemNodeContent)
+                .appendTo(ul);
 
             return $itemNode;
         };
