@@ -127,6 +127,11 @@ func select-medium() {
               'text': 'VK'
               'value': 'option1'
           }
+          {
+              'text': 'Ещё'
+              'value': 'option4'
+              'icon': 'three-dots'
+          }
       ]
     })
     " Текст рядом с селектами"
