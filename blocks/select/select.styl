@@ -35,11 +35,17 @@
   display: inline-block
 
 .nb-select .nb-button__text:before
+.nb-select__dropdown .nb-select__item_type_group > .nb-select__a > .nb-select__text:before
   content: ""
   skin: icon_dropdown selecty
 
-.nb-select .nb-button_size_s .nb-button__text:before
+.nb-select.nb-button_size_s .nb-button__text:before
+.nb-select__dropdown_size_s .nb-select__item_type_group > .nb-select__a  > .nb-select__text:before
   skin: icon_dropdown selecty small
+
+.nb-select__dropdown .nb-select__item_type_group > .nb-select__a  > .nb-select__text:before
+.nb-select__dropdown_size_s .nb-select__item_type_group > .nb-select__a  > .nb-select__text:before
+  transform: scale(0.75) rotate(-45deg) translate(3px, 5px)
 
 .nb-select__dropdown .ui-menu
   skin: isle fly, menu no-elements
@@ -76,9 +82,9 @@
 .nb-select__dropdown_size_s .nb-select__item .nb-select__text
   skin: menu-item_size small
 
-.nb-select_theme_normal .ui-state-focus .nb-select__text,
-.nb-select_theme_normal .ui-menu-item_hovered_yes .nb-select__text,
-.nb-select_theme_normal .ui-menu-item:hover .nb-select__text
+.nb-select_theme_normal .ui-state-focus > .nb-select__text,
+.nb-select_theme_normal .ui-menu-item_hovered_yes > a > .nb-select__text,
+.nb-select_theme_normal .ui-menu-item:hover > a > .nb-select__text
   skin: menu-item_hover
 
 .nb-select_theme_normal .ui-menu-item_disabled_yes

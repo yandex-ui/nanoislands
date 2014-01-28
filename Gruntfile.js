@@ -1,10 +1,12 @@
 /*global module*/
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     'use strict';
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks("grunt-jscs-checker");
     grunt.loadNpmTasks('grunt-mocha-phantomjs');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-shell');
 
     var gruntConfig = {};
 
@@ -25,6 +27,28 @@ module.exports = function (grunt) {
         }
     };
 
+    gruntConfig.shell = {
+        rebuildNanoislands: {
+            command: "make"
+        }
+    };
+
+    gruntConfig.watch = {
+        test: {
+            files: [
+                "<%= jshint.files %>",
+                "blocks/*/*.yate"
+            ],
+            tasks: [
+                "shell:rebuildNanoislands"
+            ],
+            options: {
+                // Start a live reload server on the default port 35729
+                livereload: true
+            }
+        }
+    };
+
     gruntConfig.mocha_phantomjs = {
         all: ['unittests/index.html']
     };
@@ -32,4 +56,5 @@ module.exports = function (grunt) {
     grunt.initConfig(gruntConfig);
 
     grunt.registerTask('default', ['jshint', 'jscs', 'mocha_phantomjs']);
+    grunt.registerTask('watch_make', ['shell', 'watch']);
 };

@@ -47,17 +47,15 @@ match .select nb {
                 }
 
                 for .items {
-                    <option>
-                        @label = .text
-                        @value = .value
-                        @data-icon = .icon
-
-                        if (.selected) {
-                              @selected = ''
-                        }
-
-                        .text
-                    </option>
+                    if .group {
+                        <optgroup label="{ .text }" data-nb-type="{ .type }">
+                            for .group {
+                                _select-option(.)
+                            }
+                        </optgroup>
+                    } else {
+                        _select-option(.)
+                    }
                 }
             </select>
 
@@ -69,4 +67,18 @@ match .select nb {
             }
             <div class="nb-select__dropdown nb-select__dropdown_size_{ size } nb-select_theme_{ .theme }"></div>
       </span>
+}
+
+func _select-option(nodeset item) {
+    <option>
+        @label = item.text
+        @value = item.value
+        @data-icon = .icon
+
+        if (item.selected) {
+              @selected = ''
+        }
+
+        item.text
+    </option>
 }

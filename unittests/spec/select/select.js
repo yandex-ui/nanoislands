@@ -21,7 +21,19 @@ describe("Select Tests", function() {
 
     });
 
-    describe("#YATE API", function() {
+    describe("#Yate API", function() {
+
+        it('Select with group should have optgroup', function() {
+            var select = nb.find('select-group');
+            expect(select.$control.find('optgroup').length).to.be.ok();
+        });
+
+        it('Select with group should have second level menu in dropdown', function() {
+            var select = nb.find('select-group');
+            select.open();
+            expect(select.$jUI.menu.element.find('li > ul').length).to.be.equal(1);
+        });
+
         it("option should have data-icon attribute, if icon of item is specified", function() {
             var select = nb.find('select-with-icons-in-options');
             var $options = select.$control.find('option');
@@ -29,6 +41,7 @@ describe("Select Tests", function() {
 
             expect(firstOptionData.icon).to.be.equal('close');
         });
+
     });
 
     describe('#getType()', function() {

@@ -61,31 +61,51 @@ nb.define('select', {
             position: position,
             appendTo: that.$dropdown,
             source: function(request, response) {
-                response(that.$control.children('option').map(function() {
+                response(that.$control.children(['option', 'optgroup']).map(function() {
+                    var returnObj;
                     var $this = $(this);
-                    var icon = $this.data('icon');
-                    var returnObj = {
-                        label: $this.text(),
-                        value: $this.val(),
-                        option: this
-                    };
 
-                    if (icon) {
-                        returnObj['icon'] = icon;
+                    if (this.tagName == 'OPTGROUP') {
+                        returnObj = {
+                            type: 'group',
+                            label: $this.attr('label'),
+                            option: this,
+                            group: $this.children('option').map(function() {
+                                return {
+                                    label: $this.text(),
+                                    value: $this.val(),
+                                    option: this
+                                };
+                            })
+                        };
+                    } else {
+                        var icon = $this.data('icon');
+                        returnObj = {
+                            label: $this.text(),
+                            value: $this.val(),
+                            option: this
+                        };
+
+                        if (icon) {
+                            returnObj['icon'] = icon;
+                        }
                     }
 
                     return returnObj;
                 }));
             },
             select: function(event, ui) {
-                ui.item.option.selected = true;
 
-                that.$jUI._trigger('selected', event, {
-                    item: ui.item.option
-                });
+                if (ui.item.type != 'group') {
+                    ui.item.option.selected = true;
+
+                    that.$jUI._trigger('selected', event, {
+                        item: ui.item.option
+                    });
+                }
             },
             // delegate handler on 'outer' click on open
-            open: function(event, ui) {
+            open: function() {
                 that.$jUI._on(that.$jUI.document, {
                     // on 'outer' mousedown close control
                     mousedown: function(e) {
@@ -94,18 +114,12 @@ nb.define('select', {
                         }
                     }
                 });
-                that.trigger('open', {
-                    event: event,
-                    ui: ui
-                });
+                that.trigger('nb-opened', that);
             },
 
-            close: function(event, ui) {
+            close: function() {
                 that.$jUI._off(that.$jUI.document, 'mousedown');
-                that.trigger('close', {
-                    event: event,
-                    ui: ui
-                });
+                that.trigger('nb-closed', that);
             }
         }).addClass('ui-widget ui-widget-content');
 
@@ -118,6 +132,18 @@ nb.define('select', {
 
             if (item.option.selected) {
                 $itemNode.addClass('nb-select__item_selected_yes');
+            }
+
+            if (item.type == 'group') {
+
+                $itemNode.addClass('nb-select__item_type_group');
+                var $innerUL = $('<ul></ul>');
+
+                item.group.each(function(index, item) {
+                    that.$jUI._renderItem($innerUL, item);
+                });
+
+                $itemNode.append($innerUL);
             }
 
             $itemNode.data('ui-autocomplete-item', item);
@@ -137,8 +163,9 @@ nb.define('select', {
         // redefine valueMethod, extend with button text changing and fallback select value changing
         // if value not provided, return current value of fallback select
         that.$jUI.valueMethod = function(value) {
+
             if (typeof value === 'string') {
-                var text = that.$control.children('[value="' + value + '"]').text();
+                var text = that.$control.find('option[value="' + value + '"]').text();
                 that.setState({
                     value: value,
                     text: text
@@ -146,7 +173,6 @@ nb.define('select', {
             }
             return that.$selected.val();
         };
-
         that.$jUI.menu.element.on('click', function(evt) {
             evt.stopPropagation();
         });
@@ -221,7 +247,6 @@ nb.define('select', {
     open: function() {
         if (this.$node && this.$node.data('uiAutocomplete')) {
             this.render();
-            this.trigger('nb-opened', this);
         }
         return this;
     },
@@ -252,9 +277,9 @@ nb.define('select', {
         params = params || {};
         var selected;
         if (params.value) {
-            selected = this.$control.children('option[value="' + params.value + '"]');
+            selected = this.$control.find('option[value="' + params.value + '"]');
         } else {
-            selected = this.$control.children('option:contains(' + params.text + ')');
+            selected = this.$control.find('option:contains(' + params.text + ')');
         }
 
         if (selected.length !== 0) {
@@ -322,8 +347,8 @@ nb.define('select', {
     disable: function() {
         if (this.isEnabled()) {
             this.$node
-                    .addClass('is-disabled')
-                    .autocomplete('disable');
+                .addClass('is-disabled')
+                .autocomplete('disable');
             this.trigger('nb-disabled', this);
         }
         return this;
@@ -337,8 +362,8 @@ nb.define('select', {
     enable: function() {
         if (!this.isEnabled()) {
             this.$node
-                    .removeClass('is-disabled')
-                    .autocomplete('enable');
+                .removeClass('is-disabled')
+                .autocomplete('enable');
             this.trigger('nb-enabled', this);
         }
         return this;

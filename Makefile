@@ -1,5 +1,7 @@
 NPM_BIN=$(CURDIR)/node_modules/.bin
+NPM=$(CURDIR)/node_modules/
 export NPM_BIN
+export NPM
 
 MAKEFLAGS+=-j 4
 
@@ -23,6 +25,9 @@ nanoislands.js: $(CURDIR)/blocks/nanoislands.js $(shell find $(CURDIR)/blocks -n
 node_modules:
 	npm install
 
+watch: node_modules
+	$(NPM)/grunt-cli/bin/grunt watch
+
 publish:
 	rm -rf node_modules
 	make clean
@@ -35,4 +40,4 @@ grunt: node_modules
 clean:
 	rm -rf demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js unittests/tests.yate.js grunt
 
-.PHONY: all publish clean
+.PHONY: all publish clean watch
