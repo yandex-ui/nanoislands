@@ -117,14 +117,14 @@ func select-medium() {
       }
       'items': [
           {
-              'icon': 'close'
-              'text': 'Входящие'
+              'icon': 'twitter'
+              'text': 'Twitter'
               'value': 'option0'
               'selected': 'true'
           }
           {
-              'icon': 'twitter'
-              'text': 'Социальные сети'
+              'icon': 'vk'
+              'text': 'VK'
               'value': 'option1'
           }
       ]
