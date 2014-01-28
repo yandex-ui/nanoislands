@@ -62,11 +62,19 @@ nb.define('select', {
             appendTo: that.$dropdown,
             source: function(request, response) {
                 response(that.$control.children('option').map(function() {
-                    return {
-                        label: $(this).text(),
-                        value: $(this).val(),
+                    var $this = $(this);
+                    var icon = $this.data('icon');
+                    var returnObj = {
+                        label: $this.text(),
+                        value: $this.val(),
                         option: this
                     };
+
+                    if (icon) {
+                        returnObj['icon'] = icon;
+                    }
+
+                    return returnObj;
                 }));
             },
             select: function(event, ui) {
@@ -113,7 +121,15 @@ nb.define('select', {
             }
 
             $itemNode.data('ui-autocomplete-item', item);
-            $itemNode.append('<a><span class="nb-select__text">' + item.label + '</span></a>');
+
+            var itemNodeHtml = '';
+            itemNodeHtml += '<a><span class="nb-select__text">';
+
+            if (item.icon) {
+                itemNodeHtml += '<img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_' + item.icon + '">';
+            }
+            itemNodeHtml += item.label + '</span></a>';
+            $itemNode.append(itemNodeHtml);
             $itemNode.appendTo(ul);
 
             return $itemNode;
