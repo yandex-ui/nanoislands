@@ -407,6 +407,11 @@ describe("Select Tests", function() {
             expect(select.$jUI.menu.element.height()).to.equal(10);
         });
 
+        it("Icon node should be presented in jUI dropdown menu item, if icon of item is specified", function() {
+            var select = nb.find('select-with-icons-in-options');
+            select.open();
+            expect(select.$jUI.menu.element.find('.nb-select__item').first().find('.nb-icon').length).to.be.equal(1);
+        });
     });
 
 });
