@@ -33,7 +33,7 @@ match .select nb {
               }
           </span>
           <span class="nb-select-helper"></span> // Helper for baseline alignment
-          <select id="nb-select_{ .id }" class="nb-select__fallback">
+          <select class="nb-select__fallback">
                 if ( .disabled ) {
                     @disabled = 'disabled'
                 }
