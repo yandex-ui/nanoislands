@@ -72,8 +72,8 @@ nb.define('select', {
                             option: this,
                             group: $this.children('option').map(function() {
                                 return {
-                                    label: $this.text(),
-                                    value: $this.val(),
+                                    label: $(this).text(),
+                                    value: $(this).val(),
                                     option: this
                                 };
                             })
