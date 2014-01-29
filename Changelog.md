@@ -1,3 +1,14 @@
+##### 0.1.35
+
+###### Fixes
+* #171 — Select: Неправильный id у ноды select
+* #172 — При вызове enable/disable селекта, мы должны вызывать enable/disable jUI-автокомплита
+
+###### API changes
+*  [Select]
+  * Select options group
+  * Селект с иконками в опциях
+
 ##### 0.1.34
 * stylobate "0.22.x"
 
