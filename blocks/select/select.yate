@@ -50,6 +50,7 @@ match .select nb {
                     <option>
                         @label = .text
                         @value = .value
+                        @data-icon = .icon
 
                         if (.selected) {
                               @selected = ''

@@ -105,6 +105,34 @@ func select-medium() {
           }
       ]
     })
+
+    ' '
+    nb-select( {
+      'size': 'm'
+      'id': 'select6'
+      'class': 'my-test-class'
+      'attrs': {
+        'style': 'max-width: 200px'
+      }
+      'items': [
+          {
+              'icon': 'twitter'
+              'text': 'Twitter'
+              'value': 'option0'
+              'selected': 'true'
+          }
+          {
+              'icon': 'vk'
+              'text': 'VK'
+              'value': 'option1'
+          }
+          {
+              'text': 'Ещё'
+              'value': 'option4'
+              'icon': 'three-dots'
+          }
+      ]
+    })
     " Текст рядом с селектами"
 }
 func select-small() {

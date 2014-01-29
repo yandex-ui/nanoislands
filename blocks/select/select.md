@@ -17,7 +17,8 @@
 * `'disabled'` {boolean}
 * `'maxHeight'` {Number|String} number of visible items or string value of the max-height like '10em'
 * `'within'` {string} '...' - id attr of the container where listing tries to fit in (window default)
-* `'items'` {array}  - each object in array could have text, value and selected fields
+* `'items'` {array}  - each object in array can have `text`, `value`, `selected` and `icon` fields
+    * `'icon'` {string} 'three-dots'
     * `'text'` {string} 'Карта'
     * `'value'` {string} 'option1'
     * `'selected'` {boolean}
@@ -46,6 +47,11 @@ nb-select( {
       {
           'text': 'Гибрид'
           'value': 'option3'
+      }
+      {
+          'text': 'Ещё'
+          'value': 'option4'
+          'icon': 'three-dots'
       }
   ]
 })
