@@ -283,6 +283,14 @@ describe("Select Tests", function() {
     });
 
     describe("#disable()", function() {
+        beforeEach(function() {
+            sinon.spy($.fn, 'autocomplete');
+        });
+
+        afterEach(function() {
+            $.fn.autocomplete.restore();
+        });
+
         it("check state", function() {
             this.select.disable();
             expect(this.select.isEnabled()).to.not.ok();
@@ -299,11 +307,25 @@ describe("Select Tests", function() {
 
             expect(flag).to.not.ok();
         });
+
+        it("should call $.fn.autocomplete('disable')", function() {
+            this.select.disable();
+            expect($.fn.autocomplete.calledWithExactly('disable')).to.be.equal(true);
+        });
     });
 
     describe("#enable()", function() {
-        it("check state", function() {
+        beforeEach(function() {
+            sinon.spy($.fn, 'autocomplete');
+
             this.select.disable();
+        });
+
+        afterEach(function() {
+            $.fn.autocomplete.restore();
+        });
+
+        it("check state", function() {
             this.select.enable();
             expect(this.select.isEnabled()).to.ok();
         });
@@ -314,9 +336,13 @@ describe("Select Tests", function() {
                 flag = true;
             });
 
-            this.select.disable();
             this.select.enable();
             expect(flag).to.ok();
+        });
+
+        it("should call $.fn.autocomplete('enable')", function() {
+            this.select.enable();
+            expect($.fn.autocomplete.calledWithExactly('enable')).to.be.equal(true);
         });
     });
 

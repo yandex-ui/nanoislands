@@ -321,7 +321,9 @@ nb.define('select', {
      */
     disable: function() {
         if (this.isEnabled()) {
-            this.$node.addClass('is-disabled');
+            this.$node
+                    .addClass('is-disabled')
+                    .autocomplete('disable');
             this.trigger('nb-disabled', this);
         }
         return this;
@@ -334,7 +336,9 @@ nb.define('select', {
      */
     enable: function() {
         if (!this.isEnabled()) {
-            this.$node.removeClass('is-disabled');
+            this.$node
+                    .removeClass('is-disabled')
+                    .autocomplete('enable');
             this.trigger('nb-enabled', this);
         }
         return this;
