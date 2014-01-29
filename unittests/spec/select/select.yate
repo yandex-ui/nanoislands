@@ -75,4 +75,26 @@ match .select {
             }
         ]
     })
+    nb-select( {
+      'id': 'select-group'
+      'items': [
+          {
+              'text': 'opt'
+              'value': 'option1'
+          }
+          {
+              'text': 'group'
+              'group': [
+                    {
+                        'text': 'opt1'
+                        'value': 'val4'
+                    }
+                    {
+                        'text': 'opt2'
+                        'value': 'val5'
+                    }
+              ]
+          }
+      ]
+    })
 }

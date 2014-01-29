@@ -1,54 +1,57 @@
 {
-    "author": {
-        "name": "Vadim Patsev",
-        "email": "basvasilich@yandex.ru",
-        "url": "https://github.com/basvasilich"
-    },
-    "name": "nanoislands",
-    "description": "Yate/Stylus/jQuery-UI library for Yandex corporate style",
-    "version": "0.1.34",
-    "homepage": "http://yandex-ui.github.io/nanoislands/",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/yandex-ui/nanoislands.git"
-    },
-    "dependencies": {
-        "es5-shim": "2.1.0",
-        "stylobate": "0.22.x",
-        "stylobate-islands": "0.21.x"
-    },
-    "devDependencies": {
-        "yate": "0.0.64",
-        "borschik": "0.4.x",
-        "autoprefixer": "1.x",
-        "stylus": "0.42.x",
-        "csso": "1.3.x",
-        "grunt": "*",
-        "grunt-cli": "*",
-        "grunt-contrib-jshint": "*",
-        "grunt-mocha-phantomjs": "*",
-        "grunt-jscs-checker": "~0.3.0",
-        "mocha-phantomjs": "*",
-        "phantomjs": "*",
-        "sinon": "*",
-        "jscs": "1.0.11",
-        "expect.js": "*"
-    },
-    "engines": {
-        "node": "*"
-    },
-    "files": [
-        "blocks",
-        "libs",
-        "demo",
-        "nanoislands.js",
-        "nanoislands.yate",
-        "nanoislands.styl",
-        "nanoislands.css",
-        "nanoislands.ie.css",
-        "externals.yate.js"
-    ],
-    "scripts": {
-        "test": "make all && grunt"
-    }
+  "author": {
+    "name": "Vadim Patsev",
+    "email": "basvasilich@yandex.ru",
+    "url": "https://github.com/basvasilich"
+  },
+  "name": "nanoislands",
+  "description": "Yate/Stylus/jQuery-UI library for Yandex corporate style",
+  "version": "0.1.34",
+  "homepage": "http://yandex-ui.github.io/nanoislands/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yandex-ui/nanoislands.git"
+  },
+  "dependencies": {
+    "es5-shim": "2.1.0",
+    "stylobate": "0.22.x",
+    "stylobate-islands": "0.21.x"
+  },
+  "devDependencies": {
+    "yate": "0.0.64",
+    "borschik": "0.4.x",
+    "autoprefixer": "1.x",
+    "stylus": "0.42.x",
+    "csso": "1.3.x",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-mocha-phantomjs": "*",
+    "grunt-jscs-checker": "~0.3.0",
+    "mocha-phantomjs": "*",
+    "phantomjs": "*",
+    "sinon": "*",
+    "jscs": "1.0.11",
+    "expect.js": "*",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-shell": "~0.6.4"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "files": [
+    "blocks",
+    "libs",
+    "demo",
+    "nanoislands.js",
+    "nanoislands.yate",
+    "nanoislands.styl",
+    "nanoislands.css",
+    "nanoislands.ie.css",
+    "externals.yate.js"
+  ],
+  "scripts": {
+    "test": "make all && grunt",
+    "start": "grunt watch_make"
+  }
 }
