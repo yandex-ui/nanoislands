@@ -58,14 +58,7 @@ match .select nb {
                     }
                 }
             </select>
-
-            // pseudo-buttons are smaller, so we should
-            size = if (.theme == 'pseudo') {
-              's'
-            } else {
-              .size
-            }
-            <div class="nb-select__dropdown nb-select__dropdown_size_{ size } nb-select_theme_{ .theme }"></div>
+            <div class="nb-select__dropdown nb-select__dropdown_size_{ .size } nb-select_theme_{ .theme }"></div>
       </span>
 }
 
