@@ -22,7 +22,13 @@ match .checkbox nb {
         }
 
 
-        <input class="nb-checkbox__input" type="{ .type }" id="nb-checkbox_{ uniq }">
+        <input class="nb-checkbox__input" id="nb-checkbox_{ uniq }">
+            if .type == 'button' {
+                @type = 'checkbox'
+            } else {
+                @type = .type
+            }
+
             if .name {
                 @name = .name
             }
@@ -43,13 +49,26 @@ match .checkbox nb {
                 @checked = 'checked'
             }
         </input>
-        <span class="nb-checkbox__flag nb-checkbox__flag_type_{ .type }"><span class="nb-checkbox__flag__icon"></span></span>
+
+        if .type != 'button' {
+            <span class="nb-checkbox__flag nb-checkbox__flag_type_{ .type }"><span class="nb-checkbox__flag__icon"></span></span>
+        }
 
         <span class="nb-checkbox__label">
-            if (.content) {
-                html(.content)
+            if .type == 'button' {
+                @class += ' nb-button_theme_normal nb-button'
+                <span class="nb-button__text">
+                    if (.content) {
+                        html(.content)
+                    }
+                </span>
+
+            } else {
+                if (.content) {
+                    html(.content)
+                }
             }
+
         </span>
     </label>
 }
-

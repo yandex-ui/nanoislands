@@ -41,7 +41,8 @@ module.exports = function(grunt) {
         test: {
             files: [
                 "<%= jshint.files %>",
-                "blocks/*/*.yate"
+                "blocks/*/*.yate",
+                "demo/*.yate"
             ],
             tasks: [
                 "shell:rebuildNanoislands"
