@@ -14,7 +14,7 @@ func nb-popup-menu(nodeset options) {
 }
 
 match .popupMenu nb {
-    <div class="nb-popup">
+    <div class="nb-popup _init">
         if !.static {
             @data-nb = "popup"
             @class += " _hidden"
@@ -53,7 +53,7 @@ func nb-popup(nodeset options) {
 }
 
 match .popup nb {
-    <div class="nb-popup _hidden" data-nb='popup'>
+    <div class="nb-popup _init _hidden" data-nb='popup'>
 
         apply . nb-main-attrs
 
@@ -93,7 +93,7 @@ match .modalPopup nb {
     if .static {
         nb-paranja()
     }
-    <div class="nb-popup nb-popup_type_modal">
+    <div class="nb-popup _init nb-popup_type_modal">
         if !.static {
             @data-nb = "popup"
             @class += " _hidden"

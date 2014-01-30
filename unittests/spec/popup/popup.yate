@@ -1,20 +1,17 @@
 match .popup {
-    popup = {
-        'id': 'popup'
-        'menu': [
-            {
-                'href': '#'
-                'content': 'Скопировать'
-            }
-            {
-                'href': '#'
-                'content': 'Переместить'
-            }
-            {
-                'href': '#'
-                'content': 'Удалить'
-            }
-        ]
-    }
-    nb-popup-menu(popup)
+    <a id="popup-toggler" class="_init" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup'}}" href="#default">
+        <span class="link__inner">
+            "popup"
+        </span>
+    </a>
+
+ nb-popup({
+    'id': 'popup'
+    'content': 'Удалить'
+ })
+
+ nb-popup({
+    'id': 'popup1'
+    'content': 'Удалить'
+ })
 }
