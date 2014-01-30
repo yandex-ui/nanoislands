@@ -31,6 +31,7 @@ func checkbox-button() {
     <br />
     <br />
     nb-checkbox(nb-extend(button, theme1))
+
 }
 
 func checkbox-check() {
@@ -111,4 +112,14 @@ func checkbox() {
 
         show(checkbox-small())
     </div>
+<<<<<<< HEAD
+=======
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Type: Button'
+        </div>
+
+        show(checkbox-button())
+    </div>
+>>>>>>> Добавлен тип button для nb-checkbox.
 }
