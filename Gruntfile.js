@@ -34,14 +34,6 @@ module.exports = function(grunt) {
                 stdout: true,
                 failOnError: true
             }
-        },
-
-        rebuildTests: {
-            command: "make unittests/tests.yate.js",
-            options: {
-                stdout: true,
-                failOnError: true
-            }
         }
     };
 
