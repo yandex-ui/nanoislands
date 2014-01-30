@@ -36,6 +36,7 @@
                     if ($.contains(that.uiDialog[0], e.target)) {
                         return;
                     }
+
                     if (that.options.autoclose) {
                         that.close();
                     }
@@ -139,8 +140,7 @@
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
                 collision: "fit flip"
-            },
-            autoclose: true
+            }
         },
 
         _create: function() {
@@ -385,6 +385,8 @@
             }
         };
 
+        how = how || {};
+
         //  Модальный попап двигать не нужно.
         if (this.modal) {
             $(this.node).baseDialog({
@@ -403,13 +405,13 @@
                 appendTo: params.appendTo,
                 position: {
                     using: using
-                }
+                },
+                autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
             });
 
             return;
         }
 
-        how = how || {};
 
         $(this.node).contextDialog({
             tail: data.tail,
@@ -425,10 +427,10 @@
                 collision: (how.collision ? how.collision : 'fit flip'),
                 using: using
             },
-            autoclose: how.autoclose,
             close: function() {
                 that.close();
-            }
+            },
+            autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
         });
     };
 
