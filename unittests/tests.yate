@@ -6,6 +6,7 @@ include 'spec/progress/progress.yate'
 include 'spec/select/select.yate'
 include 'spec/slider/slider.yate'
 include 'spec/toggler/toggler.yate'
+include 'spec/popup/popup.yate'
 
 match / {
     apply .*

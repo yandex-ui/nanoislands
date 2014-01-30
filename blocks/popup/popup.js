@@ -298,6 +298,7 @@
      * @param {Boolean} [params.closeOpened=true] закрыть ранее открытые окна
      */
     popup.open = function(params) {
+        var params = params || {};
         var where = params.where;
         var how = params.how;
 
@@ -332,7 +333,7 @@
             $(this.node).removeClass('_hidden');
             //  Передвигаем попап.
             this._move(where, how, params);
-            this.trigger('nb-showed');
+            this.trigger('nb-opened');
 
             // Сообщаем в космос, что открылся попап
             nb.trigger('popup-opened', this);
@@ -347,6 +348,8 @@
         if (this.node && this.node.widget && this.node.widget.isOpen()) {
             this.node.widget.close();
         }
+
+        this.trigger('nb-closed');
     };
 
     // ----------------------------------------------------------------------------------------------------------------- //
@@ -421,7 +424,7 @@
                 // где ссылка, которая открыла попап
                 my: (how.my ? how.my : 'center top'),// + ' center',
                 fixed: isFixed,
-                of: $(this.where),
+                of: (this.where) ? $(this.where) : null,
                 // horizontal: fit, пытаемся уместить в window
                 // vertical: flip - выбирает наилучший вариант - вверх или вних
                 collision: (how.collision ? how.collision : 'fit flip'),
