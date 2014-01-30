@@ -160,11 +160,13 @@ Initialize all nb blocks with class '_init' within DOM node
 
     /*
     * Displays popup element.
+    * @fires 'nb-showed'
     */
     popup.open();
 
     /*
     * Hides popup element.
+    * @fires 'nb-hidden'
     */
     popup.close();
 

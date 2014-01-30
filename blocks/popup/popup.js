@@ -347,6 +347,8 @@
         if (this.node && this.node.widget && this.node.widget.isOpen()) {
             this.node.widget.close();
         }
+
+        this.trigger('nb-hidden');
     };
 
     // ----------------------------------------------------------------------------------------------------------------- //
