@@ -1,0 +1,20 @@
+match .popup {
+    popup = {
+        'id': 'popup'
+        'menu': [
+            {
+                'href': '#'
+                'content': 'Скопировать'
+            }
+            {
+                'href': '#'
+                'content': 'Переместить'
+            }
+            {
+                'href': '#'
+                'content': 'Удалить'
+            }
+        ]
+    }
+    nb-popup-menu(popup)
+}
