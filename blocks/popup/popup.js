@@ -478,7 +478,10 @@ nb.define('popup-toggler', {
             where: this.data.where || this.node,
 
             //  Как позиционировать попап.
-            how: this.data.how
+            how: this.data.how,
+
+            // Куда его вставлять
+            appendTo: this.data.appendTo
         };
         this.trigger('nb-inited', this);
     },

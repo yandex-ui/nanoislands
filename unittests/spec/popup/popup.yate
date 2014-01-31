@@ -1,5 +1,5 @@
 match .popup {
-    <a id="popup-toggler" class="_init" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup'}}" href="#default">
+    <a id="popup-toggler" class="_init" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup', appendTo: '.content'}}" href="#default">
         <span class="link__inner">
             "popup"
         </span>
