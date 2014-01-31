@@ -1,3 +1,14 @@
+##### 0.1.36
+* unify jquery-ui files' name, adds symlinks for old names
+
+###### Fixes
+* #175 — Popup doesn't hide when click out of the toggler for the second time
+* #178 — Размер опций селекта с темой `pseudo` должен соответствовать настройке селекта `size`
+
+###### API changes
+*  [Popup]
+  * New JS API methods
+
 ##### 0.1.35
 
 ###### Fixes
