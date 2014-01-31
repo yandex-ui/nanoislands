@@ -1,5 +1,5 @@
 ##### 0.2.0
-* unify jquery-ui files' name, adds symlinks for old names
+* **unify jquery-ui files' name**
 
 ###### Fixes
 * #175 — Popup doesn't hide when click out of the toggler for the second time
