@@ -112,8 +112,6 @@ func checkbox() {
 
         show(checkbox-small())
     </div>
-<<<<<<< HEAD
-=======
     <div class="demo-section">
         <div class="demo-h3">
             'Type: Button'
@@ -121,5 +119,4 @@ func checkbox() {
 
         show(checkbox-button())
     </div>
->>>>>>> Добавлен тип button для nb-checkbox.
 }
