@@ -1,5 +1,7 @@
 ##### 0.2.0
 * **unify jquery-ui files' name**
+    * /libs/jquery-ui/jquery-ui.custom.css
+    * /libs/jquery-ui/jquery-ui.custom.js
 
 ###### Fixes
 * #175 — Popup doesn't hide when click out of the toggler for the second time
