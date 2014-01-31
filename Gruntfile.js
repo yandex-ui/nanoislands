@@ -29,7 +29,11 @@ module.exports = function(grunt) {
 
     gruntConfig.shell = {
         rebuildNanoislands: {
-            command: "make"
+            command: "make",
+            options: {
+                stdout: true,
+                failOnError: true
+            }
         }
     };
 

@@ -253,192 +253,6 @@
         });
     };
 
-    //TODO: не понимаю зачем this.moved и this._home
-
-    var popup = {};
-
-    // ----------------------------------------------------------------------------------------------------------------- //
-
-    popup.events = {
-        'click .nb-popup__close': 'close',
-        'position': 'onposition'
-    };
-
-    // ----------------------------------------------------------------------------------------------------------------- //
-
-    popup.onposition = function(e, params) {
-        var where = params.where;
-        var how = params.how;
-        this._move(where, how, params);
-    };
-
-    popup.destroy = function() {
-        if (this.node && this.node.widget) {
-            this.node.widget.destroy();
-        }
-    };
-
-    popup.oninit = function() {
-        var data = this.nbdata();
-
-        if ('modal' in data) {
-            this.modal = true;
-        }
-
-        // Храним исходное положение попапа, чтобы возвращать его на место
-        var previous = this.node.previousSibling;
-        this._home = previous ? { previous: previous } : { parent: this.node.parentNode };
-    };
-
-    // ----------------------------------------------------------------------------------------------------------------- //
-
-    /**
-     *
-     * @param {Object} params
-     * @param {Boolean} [params.closeOpened=true] закрыть ранее открытые окна
-     */
-    popup.open = function(params) {
-        var params = params || {};
-        var where = params.where;
-        var how = params.how;
-
-        if (typeof params.closeOpened === 'undefined') {
-            params.closeOpened = true;
-        }
-
-        //  Специальный флаг-костыль.
-        //  Если он true, то это значит, что мы только что передвинули открытый попап в другое место
-        //  и его не нужно закрывать на клик.
-        this.moved = false;
-
-        if (this.where) {
-            //  Попап уже открыт
-            //  FIXME: Буэээ. Уродливое условие для варианта, когда заданы координаты вместо ноды.
-            if (where === this.where || ( (where instanceof Array) && where[0] === this.where[0] && where[1] === this.where[1] )) {
-                //  На той же ноде. Значит закрываем его.
-                this.close();
-            } else {
-                this.moved = true;
-                //  На другой ноде. Передвигаем его в нужное место.
-                this._move(where, how, params);
-            }
-        } else {
-            //  Попап закрыт. Будем открывать.
-
-            // закрыть все открытые попапы
-            if (params.closeOpened) {
-                nb.trigger('popup-close');
-            }
-
-            $(this.node).removeClass('_hidden');
-            //  Передвигаем попап.
-            this._move(where, how, params);
-            this.trigger('nb-opened');
-
-            // Сообщаем в космос, что открылся попап
-            nb.trigger('popup-opened', this);
-        }
-    };
-
-    popup.close = function() {
-
-        //  Снимаем флаг о том, что попап открыт.
-        this.where = null;
-
-        if (this.node && this.node.widget && this.node.widget.isOpen()) {
-            this.node.widget.close();
-        }
-
-        this.trigger('nb-closed');
-    };
-
-    // ----------------------------------------------------------------------------------------------------------------- //
-
-    popup._move = function(where, how, params) {
-        //  Запоминаем, на какой ноде мы открываем попап.
-        this.where = where;
-        var that = this;
-
-        var data = this.nbdata();
-        // по умолчанию попап позиционирова абсолютно
-        var isFixed = false;
-
-        // сделаем попап фиксированным, если
-        // у popup-toggler задан how.fixed = true
-        if (how && how.fixed) {
-            isFixed = true;
-        }
-        // или если был задан атрибут data-nb-how = 'fixed'
-        // в настройках самого попапа
-        if (data.how == 'fixed') {
-            isFixed = true;
-        }
-
-        var using = function(props) {
-            var $el = $(this);
-
-            if (params.animate) {
-                $el.stop().animate(props, {
-                    duration: 'fast',
-                    queue: false,
-                    complete: $.proxy(that.trigger, that, 'position.complete')
-                });
-            } else {
-                $el.css(props);
-            }
-        };
-
-        how = how || {};
-
-        //  Модальный попап двигать не нужно.
-        if (this.modal) {
-            $(this.node).baseDialog({
-                height: data.height,
-                minHeight: data.minheight,
-                width: data.width,
-                show: 'fade',
-                hide: 'fade',
-                modal: true,
-                resizable: false,
-                draggable: false,
-                dialogClass: 'nb-popup-outer ui-dialog-fixed',
-                close: function() {
-                    that.close();
-                },
-                appendTo: params.appendTo,
-                position: {
-                    using: using
-                },
-                autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
-            });
-
-            return;
-        }
-
-
-        $(this.node).contextDialog({
-            tail: data.tail,
-            position: {
-                // где попап
-                at: (how.at ? how.at : 'center bottom'),// + ' center',
-                // где ссылка, которая открыла попап
-                my: (how.my ? how.my : 'center top'),// + ' center',
-                fixed: isFixed,
-                of: (this.where) ? $(this.where) : null,
-                // horizontal: fit, пытаемся уместить в window
-                // vertical: flip - выбирает наилучший вариант - вверх или вних
-                collision: (how.collision ? how.collision : 'fit flip'),
-                using: using
-            },
-            close: function() {
-                that.close();
-            },
-            autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
-        });
-    };
-
-    nb.define('popup', popup, 'base');
-
     /**
      *  Функция возвращает строку с модификаторами
      *  для обертки попапа, которую добавляет jquery ui,
@@ -474,6 +288,176 @@
         return uiDialogClasses.join(' ');
     }
 
+
+    nb.define('popup', {
+
+        events: {
+            'click .nb-popup__close': 'close',
+            'position': 'onposition'
+        },
+
+        // ----------------------------------------------------------------------------------------------------------------- //
+        oninit: function() {
+            var data = this.nbdata();
+
+            if ('modal' in data) {
+                this.modal = true;
+            }
+
+            // Храним исходное положение попапа, чтобы возвращать его на место
+            var previous = this.node.previousSibling;
+            this._home = previous ? { previous: previous } : { parent: this.node.parentNode };
+        },
+
+        onposition: function(e, params) {
+            var where = params.where;
+            var how = params.how;
+            this._move(where, how, params);
+        },
+
+
+        /**
+         *
+         * @param {Object} params
+         */
+        open: function(params) {
+            var where = params.where;
+            var how = params.how;
+
+            //  Специальный флаг-костыль.
+            //  Если он true, то это значит, что мы только что передвинули открытый попап в другое место
+            //  и его не нужно закрывать на клик.
+            this.moved = false;
+
+            if (this.where) {
+                //  Попап уже открыт
+                //  FIXME: Буэээ. Уродливое условие для варианта, когда заданы координаты вместо ноды.
+                if (where === this.where || ( (where instanceof Array) && where[0] === this.where[0] && where[1] === this.where[1] )) {
+                    //  На той же ноде. Значит закрываем его.
+                    this.close();
+                } else {
+                    this.moved = true;
+                    //  На другой ноде. Передвигаем его в нужное место.
+                    this._move(where, how, params);
+                }
+            } else {
+                //  Попап закрыт. Будем открывать.
+
+                $(this.node).removeClass('_hidden');
+                //  Передвигаем попап.
+                this._move(where, how, params);
+                this.trigger('nb-opened');
+            }
+            return this;
+        },
+
+        close: function() {
+
+            //  Снимаем флаг о том, что попап открыт.
+            this.where = null;
+
+            if (this.node && this.node.widget && this.node.widget.isOpen()) {
+                this.node.widget.close();
+                this.trigger('nb-closed');
+            }
+            return this;
+        },
+
+        destroy: function() {
+            if (this.node && this.node.widget) {
+                this.node.widget.destroy();
+            }
+
+            this.trigger('nb-destroyed', this);
+            this.nbdestroy();
+        },
+
+        // ----------------------------------------------------------------------------------------------------------------- //
+
+        _move: function(where, how, params) {
+            //  Запоминаем, на какой ноде мы открываем попап.
+            this.where = where;
+            var that = this;
+
+            var data = this.nbdata();
+            // по умолчанию попап позиционирова абсолютно
+            var isFixed = false;
+
+            // сделаем попап фиксированным, если
+            // у popup-toggler задан how.fixed = true
+            if (how && how.fixed) {
+                isFixed = true;
+            }
+            // или если был задан атрибут data-nb-how = 'fixed'
+            // в настройках самого попапа
+            if (data.how == 'fixed') {
+                isFixed = true;
+            }
+
+            var using = function(props) {
+                var $el = $(this);
+
+                if (params.animate) {
+                    $el.stop().animate(props, {
+                        duration: 'fast',
+                        queue: false,
+                        complete: $.proxy(that.trigger, that, 'position.complete')
+                    });
+                } else {
+                    $el.css(props);
+                }
+            };
+
+            how = how || {};
+
+            //  Модальный попап двигать не нужно.
+            if (this.modal) {
+                $(this.node).baseDialog({
+                    height: data.height,
+                    minHeight: data.minheight,
+                    width: data.width,
+                    show: 'fade',
+                    hide: 'fade',
+                    modal: true,
+                    resizable: false,
+                    draggable: false,
+                    dialogClass: 'nb-popup-outer ui-dialog-fixed',
+                    close: function() {
+                        that.close();
+                    },
+                    appendTo: params.appendTo,
+                    position: {
+                        using: using
+                    },
+                    autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
+                });
+
+                return;
+            }
+
+
+            $(this.node).contextDialog({
+                tail: data.tail,
+                position: {
+                    // где попап
+                    at: (how.at ? how.at : 'center bottom'),// + ' center',
+                    // где ссылка, которая открыла попап
+                    my: (how.my ? how.my : 'center top'),// + ' center',
+                    fixed: isFixed,
+                    of: $(this.where),
+                    // horizontal: fit, пытаемся уместить в window
+                    // vertical: flip - выбирает наилучший вариант - вверх или вних
+                    collision: (how.collision ? how.collision : 'fit flip'),
+                    using: using
+                },
+                close: function() {
+                    that.close();
+                },
+                appendTo: params.appendTo,
+                autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
+            });
+        }
+    }, 'base');
 })();
 
 // ----------------------------------------------------------------------------------------------------------------- //
@@ -481,37 +465,128 @@
 nb.define('popup-toggler', {
 
     events: {
-        'click': 'onclick'
+        'click': 'open'
     },
 
     oninit: function() {
-        this.$node = $(this.node);
+        this.data = this.nbdata()['popup-toggler'];
+        this.popup = nb.find(this.data['id']);
+        this.options = {
+            //  Относительно чего позиционировать попап.
+            //  Если заданы точные координаты в `data.where`, то по ним.
+            //  Иначе относительно ноды этого блока.
+            where: this.data.where || this.node,
+
+            //  Как позиционировать попап.
+            how: this.data.how,
+
+            // Куда его вставлять
+            appendTo: this.data.appendTo
+        };
+        this.trigger('nb-inited', this);
     },
 
-    onclick: function() {
-        if (this.$node.hasClass('is-disabled')) {
-            return;
+    /**
+     * Open popup
+     * @fires 'nb-opened'
+     * @returns {Object} nb.block
+     */
+    open: function(evt) {
+        if (evt) {
+            evt.preventDefault();
+        }
+        if (!this.$node.hasClass('is-disabled') && this.popup) {
+            this.popup.open(this.options);
+            this.trigger('nb-opened', this);
+        }
+        return this;
+    },
+
+    /**
+     * Close popup
+     * @fires 'nb-closed'
+     * @returns {Object} nb.block
+     */
+    close: function() {
+        if (!this.$node.hasClass('is-disabled') && this.popup) {
+            this.popup.close();
+            this.trigger('nb-closed', this);
+        }
+        return this;
+    },
+
+    /**
+     * Returns connected popup
+     * @returns {Object} nb.block
+     */
+    getPopup: function() {
+        return this.popup;
+    },
+
+    /**
+     * Sets connected popup
+     * @param {Object} params  - {
+    *       id : 'id' — popupID or link to nb.block
+    *       where: '#elem' — to what elem popup attached
+    *       how: { my: 'left', at:'right' } — to to open popup
+    *   }
+     * @returns {Object} nb.block
+     */
+    setPopup: function(params) {
+        if (typeof params === 'string') {
+            var obj = {};
+            obj.popup = params;
+            params = obj;
         }
 
-        var data = this.nbdata()['popup-toggler'];
+        if (arguments.length === 1 && typeof params === 'object' && params.popup) {
+            var id = params.popup;
+            delete params.popup;
 
-        //  Находим соответствующий попап.
-        //  Соответствие задается атрибутом `id`.
-        var popup = nb.find(data['id']);
+            if (params.where) {
+                this.options = params;
+            }
 
-        if (popup) {
-            popup.open({
-                //  Относительно чего позиционировать попап.
-                //  Если заданы точные координаты в `data.where`, то по ним.
-                //  Иначе относительно ноды этого блока.
-                where: data.where || this.node,
-
-                //  Как позиционировать попап.
-                how: data.how
-            });
-
-            return false;
+            if (typeof id === 'string') {
+                this.popup = nb.find(id);
+            } else {
+                this.popup = id;
+            }
+            this.trigger('nb-popup-set', this);
         }
+        return this;
+    },
+
+    /**
+     * Get connected popup  option
+     * @returns {Object} options
+     */
+    getOptions: function() {
+        return this.options;
+    },
+
+    /**
+     * Sets connected popup options
+     * @param {Object} params - {
+    *       where: '#elem' — to what elem popup attached
+    *       how: { my: 'left', at:'right' } — to to open popup
+    *   }
+     * @returns {Object} nb.block
+     */
+    setOptions: function(params) {
+        if (arguments.length === 1 && typeof params === 'object') {
+            this.options = params;
+            this.trigger('nb-options-set', this);
+        }
+        return this;
+    },
+
+    /**
+     * Destroy the popup toggler
+     * @fires 'nb-destroyed'
+     */
+    destroy: function() {
+        this.nbdestroy();
     }
 
 }, 'base');
