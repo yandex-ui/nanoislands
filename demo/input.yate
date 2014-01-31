@@ -45,6 +45,22 @@ func input-ghost() {
     nb-input(block)
 }
 
+func input-reset() {
+    block = {
+        'reset': true()
+        'size': 'm'
+    }
+    nb-input(block)
+}
+
+func input-small-reset() {
+    block = {
+        'reset': true()
+        'size': 's'
+    }
+    nb-input(block)
+}
+
 func input-error() {
     block = {
         'content': 'Здесь будет ошибка'
@@ -108,6 +124,20 @@ func inputs() {
         </div>
 
         show(input-ghost())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Reset'
+        </div>
+
+        show(input-reset())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Small reset'
+        </div>
+
+        show(input-small-reset())
     </div>
 
     <div class="demo-section">
