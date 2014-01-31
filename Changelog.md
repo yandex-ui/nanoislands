@@ -1,4 +1,4 @@
-##### 0.1.36
+##### 0.2.0
 * unify jquery-ui files' name, adds symlinks for old names
 
 ###### Fixes
