@@ -4,6 +4,13 @@
 
   cursor: pointer
 
+  &_type_button
+    .nb-checkbox__input
+      &:checked + .nb-checkbox__label
+        skin: button_checked
+      &:focus + .nb-checkbox__label
+        skin: button_focus
+
 if !ie
   .nb-checkbox__input
     kind: hidden visually

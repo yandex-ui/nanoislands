@@ -2,17 +2,13 @@ func checkbox-radio() {
     radio = {
         'type': 'radio'
         'content': 'Человек'
-        'attrs': {
-            'name': 'biotype'
-        }
+        'name': 'biotype'
     }
 
     radio2 = {
         'type': 'radio'
         'content': 'Паук'
-        'attrs': {
-            'name': 'biotype'
-        }
+        'name': 'biotype'
     }
 
     nb-checkbox(radio)
@@ -20,28 +16,40 @@ func checkbox-radio() {
     nb-checkbox(radio2)
 }
 
+func checkbox-button() {
+    button = {
+        'type': 'button'
+        'content': 'Залипающая кнопка'
+        'name': 'sticky-button'
+    }
+
+    theme1 = {
+        'theme': 'pseudo'
+        'content': 'Pseudo кнопка'
+    }
+    nb-checkbox(button)
+    <br />
+    <br />
+    nb-checkbox(nb-extend(button, theme1))
+
+}
+
 func checkbox-check() {
     radio = {
         'content': 'Дерево'
         'id': 'task'
         'checked': true()
-        'attrs': {
-            'name': 'task'
-        }
+        'name': 'task'
     }
 
     radio2 = {
         'content': 'Сын'
-        'attrs': {
-            'name': 'task'
-        }
+        'name': 'task'
     }
 
     radio3 = {
         'content': 'Дом'
-        'attrs': {
-            'name': 'task'
-        }
+        'name': 'task'
     }
 
     nb-checkbox(radio)
@@ -57,18 +65,14 @@ func checkbox-small() {
         'size': 's'
         'content': 'JavaScript'
         'checked': true()
-        'attrs': {
-            'name': 'language'
-        }
+        'name': 'language'
     }
 
     radio2 = {
         'type': 'radio'
         'size': 's'
         'content': 'Java'
-        'attrs': {
-            'name': 'language'
-        }
+        'name': 'language'
     }
 
     nb-checkbox(radio)
@@ -93,6 +97,13 @@ func checkbox() {
     </div>
     <div class="demo-section">
         <div class="demo-h3">
+            'Type: Button'
+        </div>
+
+        show(checkbox-button())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
             'Size: S '
             <span class="demo-code demo-code_small">
                 '.nb-checkbox_size_s'
@@ -100,5 +111,12 @@ func checkbox() {
         </div>
 
         show(checkbox-small())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Type: Button'
+        </div>
+
+        show(checkbox-button())
     </div>
 }

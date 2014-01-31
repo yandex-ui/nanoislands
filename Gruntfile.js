@@ -12,7 +12,8 @@ module.exports = function(grunt) {
 
     gruntConfig.jshint = {
         options: {
-            jshintrc: '.jshintrc'
+            jshintrc: '.jshintrc',
+            force: true
         },
         files: [
             'blocks/*/*.js'
@@ -23,7 +24,8 @@ module.exports = function(grunt) {
         src: "blocks/*/*.js",
         options: {
             config: ".jscs.json",
-            requireCurlyBraces: [ "if" ]
+            requireCurlyBraces: [ "if" ],
+            force: true
         }
     };
 
@@ -38,18 +40,39 @@ module.exports = function(grunt) {
     };
 
     gruntConfig.watch = {
-        test: {
+        build: {
             files: [
                 "<%= jshint.files %>",
-                "blocks/*/*.yate"
+                "blocks/*/*.yate",
+                "blocks/*/*.styl",
+                "demo/*.yate"
             ],
             tasks: [
+                'jshint',
+                'jscs',
                 "shell:rebuildNanoislands"
             ],
             options: {
                 // Start a live reload server on the default port 35729
                 livereload: true
             }
+        },
+        testYate: {
+            files: [
+                "unittests/spec/*/*.yate"
+            ],
+            tasks: [
+                "shell:rebuildTests",
+                "mocha_phantomjs:all"
+            ]
+        },
+        testJs: {
+            files: [
+                "unittests/spec/*/*.js"
+            ],
+            tasks: [
+                "mocha_phantomjs:all"
+            ]
         }
     };
 
@@ -60,5 +83,5 @@ module.exports = function(grunt) {
     grunt.initConfig(gruntConfig);
 
     grunt.registerTask('default', ['jshint', 'jscs', 'mocha_phantomjs']);
-    grunt.registerTask('watch_make', ['shell', 'watch']);
+    grunt.registerTask('watch_make', ['jshint', 'jscs', 'watch:build']);
 };
