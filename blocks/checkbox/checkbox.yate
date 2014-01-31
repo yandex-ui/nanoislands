@@ -2,6 +2,7 @@ func nb-checkbox(nodeset options) {
     default = {
         'size': 'm'
         'type': 'checkbox'
+        'theme': 'normal'
     }
 
     nb-block('checkbox', nb-extend(default, options))
@@ -53,10 +54,14 @@ match .checkbox nb {
         if .type != 'button' {
             <span class="nb-checkbox__flag nb-checkbox__flag_type_{ .type }"><span class="nb-checkbox__flag__icon"></span></span>
         }
-
         <span class="nb-checkbox__label">
             if .type == 'button' {
-                @class += ' nb-button_theme_normal nb-button'
+                @class += (
+                    ' nb-button nb-button_size_'
+                    .size
+                    ' nb-button_theme_'
+                    .theme
+                )
                 <span class="nb-button__text">
                     if (.content) {
                         html(.content)

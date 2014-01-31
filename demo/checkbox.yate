@@ -22,7 +22,15 @@ func checkbox-button() {
         'content': 'Залипающая кнопка'
         'name': 'sticky-button'
     }
+
+    theme1 = {
+        'theme': 'pseudo'
+        'content': 'Pseudo кнопка'
+    }
     nb-checkbox(button)
+    <br />
+    <br />
+    nb-checkbox(nb-extend(button, theme1))
 }
 
 func checkbox-check() {
@@ -88,6 +96,13 @@ func checkbox() {
     </div>
     <div class="demo-section">
         <div class="demo-h3">
+            'Type: Button'
+        </div>
+
+        show(checkbox-button())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
             'Size: S '
             <span class="demo-code demo-code_small">
                 '.nb-checkbox_size_s'
@@ -95,12 +110,5 @@ func checkbox() {
         </div>
 
         show(checkbox-small())
-    </div>
-    <div class="demo-section">
-        <div class="demo-h3">
-            'Type: Button'
-        </div>
-
-        show(checkbox-button())
     </div>
 }
