@@ -34,11 +34,19 @@ module.exports = function(grunt) {
                 stdout: true,
                 failOnError: true
             }
+        },
+
+        rebuildTests: {
+            command: "make unittests/tests.yate.js",
+            options: {
+                stdout: true,
+                failOnError: true
+            }
         }
     };
 
     gruntConfig.watch = {
-        test: {
+        build: {
             files: [
                 "<%= jshint.files %>",
                 "blocks/*/*.yate",
@@ -51,6 +59,23 @@ module.exports = function(grunt) {
                 // Start a live reload server on the default port 35729
                 livereload: true
             }
+        },
+        testYate: {
+            files: [
+                "unittests/spec/*/*.yate"
+            ],
+            tasks: [
+                "shell:rebuildTests",
+                "mocha_phantomjs:all"
+            ]
+        },
+        testJs: {
+            files: [
+                "unittests/spec/*/*.js"
+            ],
+            tasks: [
+                "mocha_phantomjs:all"
+            ]
         }
     };
 
