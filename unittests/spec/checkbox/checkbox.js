@@ -343,14 +343,15 @@ describe("Checkbox Tests", function() {
 
         it('repeat the method call should cause one changed event', function() {
             var flag = 0;
-            this.checkbox.check();
-
             this.checkbox.on('nb-changed', function() {
                 flag++;
             });
 
             this.checkbox.check();
-            expect(flag).to.be.equal(0);
+            this.checkbox.check();
+            this.checkbox.check();
+
+            expect(flag).to.be.equal(1);
         });
     });
 
@@ -382,26 +383,26 @@ describe("Checkbox Tests", function() {
 
         it('method call should cause one changed event', function() {
             var flag = 0;
-            this.checkbox.check();
-
             this.checkbox.on('nb-changed', function() {
                 flag++;
             });
 
+            this.checkbox.check();
             this.checkbox.uncheck();
-            expect(flag).to.be.equal(1);
+
+            expect(flag).to.be.equal(2);
         });
 
         it('repeat the method call should cause one changed event', function() {
             var flag = 0;
-            this.checkbox.check();
-            this.checkbox.uncheck();
-
             this.checkbox.on('nb-changed', function() {
                 flag++;
             });
 
             this.checkbox.uncheck();
+            this.checkbox.uncheck();
+            this.checkbox.uncheck();
+
             expect(flag).to.be.equal(0);
         });
     });
