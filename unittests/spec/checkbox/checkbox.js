@@ -330,6 +330,28 @@ describe("Checkbox Tests", function() {
             this.checkbox.check();
             expect(flag).to.ok();
         });
+
+        it('changed event', function() {
+            var flag = false;
+            this.checkbox.on('nb-changed', function() {
+                flag = true;
+            });
+
+            this.checkbox.check();
+            expect(flag).to.ok();
+        });
+
+        it('not changed event', function() {
+            var flag = false;
+            this.checkbox.check();
+
+            this.checkbox.on('nb-changed', function() {
+                flag = true;
+            });
+
+            this.checkbox.check();
+            expect(flag).to.not.ok();
+        });
     });
 
     describe("#uncheck()", function() {
@@ -356,6 +378,31 @@ describe("Checkbox Tests", function() {
             this.checkbox.check();
             this.checkbox.uncheck();
             expect(flag).to.ok();
+        });
+
+        it('changed event', function() {
+            var flag = false;
+            this.checkbox.check();
+
+            this.checkbox.on('nb-changed', function() {
+                flag = true;
+            });
+
+            this.checkbox.uncheck();
+            expect(flag).to.ok();
+        });
+
+        it('not changed event', function() {
+            var flag = false;
+            this.checkbox.check();
+            this.checkbox.uncheck();
+
+            this.checkbox.on('nb-changed', function() {
+                flag = true;
+            });
+
+            this.checkbox.uncheck();
+            expect(flag).to.not.ok();
         });
     });
 
