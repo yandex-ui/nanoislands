@@ -18,7 +18,9 @@ HTML input element.
 * `'ghost'` {boolean} — ghost mode input
 * `'disabled'` {boolean}
 * `'size'` {string}  - input size. `'s'` (no other sizes supported)
-* `error` {object} `{content: 'error content', direction: 'right|left'}`
+* `'error'` {object} `{content: 'error content', direction: 'right|left'}`
+* `'leftContent'` {string|xml} — content of the left field of input
+* `'rightContent'` {string|xml} — content of the right field of input
 
 ### Examples
 

@@ -49,6 +49,16 @@
     &:before
       content: " " // utf nbsp here
 
+  .nb-input__left
+    kind: field-left 0.5*$islands_s
+    margin-left: $islands_s * -1
+    height: auto
+
+  .nb-input__right
+    kind: field-right 0.5*$islands_s
+    margin-right: $islands_s * -1
+    height: auto
+
   &.is-ghost:not(.is-focused) .nb-input__view
     border: none
     background: none

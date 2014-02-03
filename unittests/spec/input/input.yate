@@ -9,19 +9,25 @@ match .input {
         "id": "input"
         "name": "last-name"
 
-    })
+   })
 
-    nb-input({
+   nb-input({
         'id': 'input-error'
         'error': {
             'direction': 'right'
             'content': 'error'
         }
-    })
+   })
 
-    nb-input({
+   nb-input({
          'id': 'input-reset'
          'reset': true()
          'content': 'vadim'
-    })
+   })
+
+   nb-input({
+        'id': 'input-left-right'
+        'leftContent': 'prefix'
+        'rightContent': 'postfix'
+   })
 }

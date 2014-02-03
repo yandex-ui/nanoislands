@@ -3,7 +3,7 @@ func nb-input(nodeset options) {
         'size': 's'
     }
 
-    if options.left || options.right || options.label || options.reset || options.ghost || options.error {
+    if options.leftContent || options.rightContent || options.labelContent || options.reset || options.ghost || options.error {
         nb-block('input', nb-extend(default, options))
     } else if options.type == 'multiline' {
         nb-block('textarea', nb-extend(default, options))
@@ -52,6 +52,19 @@ match .input nb {
         if .reset {
             <span class="nb-input__reset"></span>
         }
+
+        if .leftContent {
+            <span class="nb-input__left">
+                html(.leftContent)
+            </span>
+        }
+
+        if .rightContent {
+            <span class="nb-input__right">
+                html(.rightContent)
+            </span>
+        }
+
         <span class="nb-input__content">
             <input class="nb-input__controller" value="{.content}">
                 for .attrs.* {
@@ -68,9 +81,6 @@ match .input nb {
             </input>
             <span class="nb-input__view">&nbsp;</span>
         </span>
-
-
-
     </label>
 }
 

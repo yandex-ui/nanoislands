@@ -63,6 +63,14 @@ func input-small-reset() {
     nb-input(block)
 }
 
+func input-left-right() {
+    block = {
+        'leftContent': 'Prefix...'
+        'rightContent': '...postfix'
+    }
+    nb-input(block)
+}
+
 func input-error() {
     block = {
         'content': 'Здесь будет ошибка'
@@ -140,6 +148,14 @@ func inputs() {
         </div>
 
         show(input-small-reset())
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Postfix, prefix'
+        </div>
+
+        show(input-left-right())
     </div>
 
     <div class="demo-section">
