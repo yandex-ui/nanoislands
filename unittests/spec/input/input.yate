@@ -18,4 +18,10 @@ match .input {
             'content': 'error'
         }
     })
+
+    nb-input({
+         'id': 'input-reset'
+         'reset': true()
+         'content': 'vadim'
+    })
 }

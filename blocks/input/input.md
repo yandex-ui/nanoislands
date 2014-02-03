@@ -141,6 +141,14 @@ input.setErrorContent();
     */
     input.isEnabled();
 
+
+    /**
+     * Resets value of the input
+     * @fires 'nb-value-set'
+     * @returns {Object} nb.block
+     */
+    input.reset();
+
     /**
     * Destroy the input
     */

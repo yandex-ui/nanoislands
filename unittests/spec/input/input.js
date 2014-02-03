@@ -35,6 +35,15 @@ describe("Input Tests", function() {
             var data = input.nbdata();
             expect($('#' + data.error.id + ' .nb-popup__content').html()).to.be.equal('error');
         });
+
+        it("Input with reset param should have reset markup", function() {
+            var input = nb.find('input-reset');
+            expect(input.$node.find('.nb-input__reset').length).to.be.equal(1);
+        });
+        it("Input with reset param should be complex", function() {
+            var input = nb.find('input-reset');
+            expect(input.nbdata().type).to.not.equal('simple');
+        });
     });
 
 
@@ -43,8 +52,8 @@ describe("Input Tests", function() {
             var result = false;
 
             this.input.setValue("Zzzzap!");
-            
-            this.input.on('nb-changed', function(){
+
+            this.input.on('nb-changed', function() {
                 result = true;
             });
 
@@ -218,6 +227,36 @@ describe("Input Tests", function() {
     describe("#getName()", function() {
         it("should return the name", function() {
             expect(this.input.getName()).to.be.equal('last-name');
+        });
+    });
+
+    describe("#reset()", function() {
+        it("should reset value", function() {
+            var input = nb.find('input-reset');
+            input.setValue('privet');
+            input.reset();
+            expect(input.getValue()).to.be.equal('');
+        });
+
+        it("should reset value on click to reset element", function() {
+            var input = nb.find('input-reset');
+            input.setValue('privet');
+            input.$node.find('.nb-input__reset')[0].trigger('click')
+            expect(input.getValue()).to.be.equal('');
+        });
+
+        it("should throws nb-value-set", function() {
+            var input = nb.find('input-reset');
+            input.setValue('privet');
+
+            var handlerWorks = false;
+            input.on('nb-value-set', function() {
+                handlerWorks = true;
+            });
+
+            input.reset();
+
+            expect(handlerWorks).to.be.ok();
         });
     });
 
