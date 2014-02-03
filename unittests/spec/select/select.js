@@ -418,38 +418,56 @@ describe("Select Tests", function() {
 
 
     describe("Specific", function() {
-        afterEach(function() {
-            $(document).off('click');
+
+        describe("Issues", function() {
+
+            it("#189", function() {
+                var flag = 0;
+
+                this.select.on('nb-changed', function() {
+                    flag++
+                });
+
+                this.select.setState({'value': 'option3'});
+                this.select.setState({'value': 'option3'});
+                expect(flag).to.equal(1);
+            });
         });
 
-        it("Selects's dropdown click event shouldn't propagate to document", function() {
-            var flag = false;
-
-            $(document).on('click', function() {
-                flag = true;
+        describe("API", function() {
+            afterEach(function() {
+                $(document).off('click');
             });
 
-            this.select.open();
-            this.select.$jUI.menu.element.click();
-            expect(flag).to.not.ok();
-        });
+            it("Selects's dropdown click event shouldn't propagate to document", function() {
+                var flag = false;
 
-        it("If maxHeight = 1 should be visilbe only one item", function() {
-            var select = nb.find('select-mw1');
-            select.open();
-            expect(select.$jUI.menu.element.height()).to.equal(select.$jUI.menu.element.find('.nb-select__item').first().height());
-        });
+                $(document).on('click', function() {
+                    flag = true;
+                });
 
-        it("If maxHeight = 10px should be visilbe only 10px", function() {
-            var select = nb.find('select-mw2');
-            select.open();
-            expect(select.$jUI.menu.element.height()).to.equal(10);
-        });
+                this.select.open();
+                this.select.$jUI.menu.element.click();
+                expect(flag).to.not.ok();
+            });
 
-        it("Icon node should be presented in jUI dropdown menu item, if icon of item is specified", function() {
-            var select = nb.find('select-with-icons-in-options');
-            select.open();
-            expect(select.$jUI.menu.element.find('.nb-select__item').first().find('.nb-icon').length).to.be.equal(1);
+            it("If maxHeight = 1 should be visilbe only one item", function() {
+                var select = nb.find('select-mw1');
+                select.open();
+                expect(select.$jUI.menu.element.height()).to.equal(select.$jUI.menu.element.find('.nb-select__item').first().height());
+            });
+
+            it("If maxHeight = 10px should be visilbe only 10px", function() {
+                var select = nb.find('select-mw2');
+                select.open();
+                expect(select.$jUI.menu.element.height()).to.equal(10);
+            });
+
+            it("Icon node should be presented in jUI dropdown menu item, if icon of item is specified", function() {
+                var select = nb.find('select-with-icons-in-options');
+                select.open();
+                expect(select.$jUI.menu.element.find('.nb-select__item').first().find('.nb-icon').length).to.be.equal(1);
+            });
         });
     });
 
