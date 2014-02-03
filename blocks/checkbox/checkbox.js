@@ -10,9 +10,12 @@ nb.define('checkbox', {
 
     oninit: function() {
         this.$control = this.$node.find('input[type]');
-        if (!this.isChecked()) {
+        this._isChecked = this.$control.prop('checked');
+
+        if (!this._isChecked) {
             this.$control.prop('indeterminate', true);
         }
+
         this.trigger('nb-inited', this);
     },
 
@@ -30,7 +33,7 @@ nb.define('checkbox', {
      * @returns {Boolean}
      */
     isChecked: function() {
-        return this.$control.prop('checked');
+        return this._isChecked;
     },
 
     /**
@@ -39,18 +42,24 @@ nb.define('checkbox', {
      * @returns {Object} nb.block
      */
     check: function() {
-        if (this.isEnabled()) {
-            this.$control.prop({
-                'indeterminate': false,
-                'checked': true
-            });
-
-            this.trigger('nb-checked', this);
-
-            if (!this.isChecked()) {
-                this.trigger('nb-changed', this);
-            }
+        if (!this.isEnabled()) {
+            return this;
         }
+
+        var isChecked = this.isChecked();
+
+        this.$control.prop({
+            'indeterminate': false,
+            'checked': true
+        });
+
+        this._isChecked = true;
+        this.trigger('nb-checked', this);
+
+        if (!isChecked) {
+            this.trigger('nb-changed', this);
+        }
+
         return this;
     },
 
@@ -60,17 +69,24 @@ nb.define('checkbox', {
      * @returns {Object} nb.block
      */
     uncheck: function() {
-        if (this.isEnabled()) {
-            this.$control.prop({
-                'indeterminate': false,
-                'checked': false
-            });
-            this.trigger('nb-unchecked', this);
-
-            if (this.isChecked()) {
-                this.trigger('nb-changed', this);
-            }
+        if (!this.isEnabled()) {
+            return this;
         }
+
+        var isChecked = this.isChecked();
+
+        this.$control.prop({
+            'indeterminate': false,
+            'checked': false
+        });
+
+        this._isChecked = false;
+        this.trigger('nb-unchecked', this);
+
+        if (isChecked) {
+            this.trigger('nb-changed', this);
+        }
+
         return this;
     },
 
