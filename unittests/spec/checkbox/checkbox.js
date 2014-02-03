@@ -331,26 +331,26 @@ describe("Checkbox Tests", function() {
             expect(flag).to.ok();
         });
 
-        it('changed event', function() {
-            var flag = false;
+        it('method call should cause one changed event', function() {
+            var flag = 0;
             this.checkbox.on('nb-changed', function() {
-                flag = true;
+                flag++;
             });
 
             this.checkbox.check();
-            expect(flag).to.ok();
+            expect(flag).to.be.equal(1);
         });
 
-        it('not changed event', function() {
-            var flag = false;
+        it('repeat the method call should cause one changed event', function() {
+            var flag = 0;
             this.checkbox.check();
 
             this.checkbox.on('nb-changed', function() {
-                flag = true;
+                flag++;
             });
 
             this.checkbox.check();
-            expect(flag).to.not.ok();
+            expect(flag).to.be.equal(0);
         });
     });
 
@@ -380,29 +380,29 @@ describe("Checkbox Tests", function() {
             expect(flag).to.ok();
         });
 
-        it('changed event', function() {
-            var flag = false;
+        it('method call should cause one changed event', function() {
+            var flag = 0;
             this.checkbox.check();
 
             this.checkbox.on('nb-changed', function() {
-                flag = true;
+                flag++;
             });
 
             this.checkbox.uncheck();
-            expect(flag).to.ok();
+            expect(flag).to.be.equal(1);
         });
 
-        it('not changed event', function() {
-            var flag = false;
+        it('repeat the method call should cause one changed event', function() {
+            var flag = 0;
             this.checkbox.check();
             this.checkbox.uncheck();
 
             this.checkbox.on('nb-changed', function() {
-                flag = true;
+                flag++;
             });
 
             this.checkbox.uncheck();
-            expect(flag).to.not.ok();
+            expect(flag).to.be.equal(0);
         });
     });
 
