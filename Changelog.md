@@ -1,3 +1,20 @@
+##### 0.2.1
+
+###### Fixes
+* fix #183 — Complex textarea inputs
+* fix #189 — Uncaught SyntaxError: Invalid regular expression: /\s+/: Stack overflow
+* fix #28 — The Input field view is incorrect (reset: true, size: ’s’)
+
+###### API changes
+* [Input]
+  * `reset` field and method
+  * `leftContent` and `rightContent` filds
+  * complex `multiline` input
+* [Checkbox]
+  * Type `button`
+
+
+
 ##### 0.2.0
 * **unify jquery-ui files' name**
     * /libs/jquery-ui/jquery-ui.custom.css
