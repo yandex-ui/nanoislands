@@ -71,6 +71,16 @@ func input-left-right() {
     nb-input(block)
 }
 
+func input-textarea-reset() {
+    block = {
+        'reset': true()
+        'size': 'm'
+        'type': 'multiline'
+        'content': 'privet'
+    }
+    nb-input(block)
+}
+
 func input-error() {
     block = {
         'content': 'Здесь будет ошибка'
@@ -127,6 +137,13 @@ func inputs() {
         </div>
 
         show(input-multiline())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Multiline with reset'
+        </div>
+
+        show(input-textarea-reset())
     </div>
     <div class="demo-section">
         <div class="demo-h3">
