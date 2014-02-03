@@ -275,30 +275,34 @@ nb.define('select', {
      */
     setState: function(params) {
         params = params || {};
-        var selected;
-        if (params.value) {
-            selected = this.$control.find('option[value="' + params.value + '"]');
-        } else {
-            selected = this.$control.find('option:contains(' + params.text + ')');
-        }
 
-        if (selected.length !== 0) {
-            this.$selected.prop('selected', false);
+        if (this.value !== params.value) {
+            var selected;
 
-            this.$selected = selected;
+            if (params.value) {
+                selected = this.$control.find('option[value="' + params.value + '"]');
+            } else {
+                selected = this.$control.find('option:contains(' + params.text + ')');
+            }
 
-            this.$selected.prop('selected', true);
+            if (selected.length !== 0) {
+                this.$selected.prop('selected', false);
 
-            this.value = this.$selected.val();
+                this.$selected = selected;
 
-            this.text = this.$selected.html();
+                this.$selected.prop('selected', true);
 
-            this._setText(this.text);
+                this.value = this.$selected.val();
 
-            this.trigger('nb-changed', this);
+                this.text = this.$selected.html();
 
-            this.$control.val(params.value);
+                this._setText(this.text);
 
+                this.trigger('nb-changed', this);
+
+                this.$control.val(params.value);
+
+            }
         }
         return this;
     },
