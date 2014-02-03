@@ -1,6 +1,7 @@
 nb.define('input', {
     events: {
         'click': 'focus',
+        'mousedown .nb-input__reset': 'reset',
         'focusin': 'focus',
         'focusout': 'blur'
     },
@@ -218,6 +219,20 @@ nb.define('input', {
      */
     isEnabled: function() {
         return !this.$control.prop('disabled');
+    },
+
+    /**
+     * Resets value of the input
+     * @fires 'nb-value-set'
+     * @returns {Object} nb.block
+     */
+    reset: function(evt) {
+        if (evt && evt.preventDefault) {
+            evt.preventDefault();
+        }
+
+        this.setValue('');
+        return this;
     },
 
     /**

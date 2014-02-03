@@ -49,6 +49,7 @@ func input-reset() {
     block = {
         'reset': true()
         'size': 'm'
+        'content': 'privet'
     }
     nb-input(block)
 }
@@ -57,6 +58,7 @@ func input-small-reset() {
     block = {
         'reset': true()
         'size': 's'
+        'content': 'privet'
     }
     nb-input(block)
 }

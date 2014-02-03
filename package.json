@@ -52,6 +52,6 @@
   ],
   "scripts": {
     "test": "make all && grunt",
-    "start": "grunt watch_make"
+    "start": "make all && grunt watch_make"
   }
 }

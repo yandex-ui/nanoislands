@@ -83,5 +83,5 @@ module.exports = function(grunt) {
     grunt.initConfig(gruntConfig);
 
     grunt.registerTask('default', ['jshint', 'jscs', 'mocha_phantomjs']);
-    grunt.registerTask('watch_make', ['jshint', 'jscs', 'watch:build']);
+    grunt.registerTask('watch_make', ['jshint', 'jscs', 'watch']);
 };
