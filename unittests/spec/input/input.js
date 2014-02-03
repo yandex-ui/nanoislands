@@ -19,21 +19,42 @@ describe("Input Tests", function() {
     });
 
     describe("#YATE API", function() {
-        it("error params", function() {
-            var input = nb.find('input-error');
-            var data = this.input.nbdata();
-            expect(input.$node.attr('data-nb-error')).to.be.ok();
-        });
-        it("error dropdown", function() {
-            var input = nb.find('input-error');
-            var data = input.nbdata();
-            expect($('#' + data.error.id)).to.be.ok();
+        describe("reset", function() {
+            it("error params", function() {
+                var input = nb.find('input-error');
+                var data = this.input.nbdata();
+                expect(input.$node.attr('data-nb-error')).to.be.ok();
+            });
+            it("error dropdown", function() {
+                var input = nb.find('input-error');
+                var data = input.nbdata();
+                expect($('#' + data.error.id)).to.be.ok();
+            });
+
+            it("error dropdown content", function() {
+                var input = nb.find('input-error');
+                var data = input.nbdata();
+                expect($('#' + data.error.id + ' .nb-popup__content').html()).to.be.equal('error');
+            });
         });
 
-        it("error dropdown content", function() {
-            var input = nb.find('input-error');
-            var data = input.nbdata();
-            expect($('#' + data.error.id + ' .nb-popup__content').html()).to.be.equal('error');
+        describe("prefix postfix", function() {
+            it("markup left", function() {
+                var input = nb.find('input-left-right');
+                expect(input.$node.find('.nb-input__left').length).to.equal(1);
+            });
+            it("content left", function() {
+                var input = nb.find('input-left-right');
+                expect(input.$node.find('.nb-input__left').html()).to.equal('prefix');
+            });
+            it("markup right", function() {
+                var input = nb.find('input-left-right');
+                expect(input.$node.find('.nb-input__right').length).to.equal(1);
+            });
+            it("content right", function() {
+                var input = nb.find('input-left-right');
+                expect(input.$node.find('.nb-input__right').html()).to.equal('postfix');
+            });
         });
 
         it("Input with reset param should have reset markup", function() {
