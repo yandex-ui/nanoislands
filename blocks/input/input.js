@@ -1,7 +1,7 @@
 nb.define('input', {
     events: {
         'click': 'focus',
-        'click .nb-input__reset': 'reset',
+        'mousedown .nb-input__reset': 'reset',
         'focusin': 'focus',
         'focusout': 'blur'
     },
@@ -226,7 +226,11 @@ nb.define('input', {
      * @fires 'nb-value-set'
      * @returns {Object} nb.block
      */
-    reset: function() {
+    reset: function(evt) {
+        if (evt && evt.preventDefault) {
+            evt.preventDefault();
+        }
+
         this.setValue('');
         return this;
     },

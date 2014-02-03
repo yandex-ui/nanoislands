@@ -238,13 +238,6 @@ describe("Input Tests", function() {
             expect(input.getValue()).to.be.equal('');
         });
 
-        it("should reset value on click to reset element", function() {
-            var input = nb.find('input-reset');
-            input.setValue('privet');
-            input.$node.find('.nb-input__reset')[0].trigger('click')
-            expect(input.getValue()).to.be.equal('');
-        });
-
         it("should throws nb-value-set", function() {
             var input = nb.find('input-reset');
             input.setValue('privet');
