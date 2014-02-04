@@ -98,6 +98,25 @@ describe("Select Tests", function() {
 
             expect(flag).to.not.ok();
         });
+
+        it('shouldn\'t render disabled select', function() {
+            this.select.disable();
+            this.select.render();
+            expect(this.select.$node.autocomplete('widget').css('display')).to.equal('none');
+        });
+
+        it('no event for the disabled select', function() {
+            var flag = false;
+
+            this.select.on('nb-rendered', function() {
+                flag = true;
+            });
+
+            this.select.disable();
+            this.select.render();
+
+            expect(flag).to.not.ok();
+        });
     });
 
     describe("#open()", function() {
@@ -113,6 +132,25 @@ describe("Select Tests", function() {
                 flag = false;
             });
 
+            this.select.open();
+
+            expect(flag).to.not.ok();
+        });
+
+        it('shouldn\'t open disabled select', function() {
+            this.select.disable();
+            this.select.open();
+            expect(this.select.$node.autocomplete('widget').css('display')).to.equal('none');
+        });
+
+        it('no event for the disabled select', function() {
+            var flag = false;
+
+            this.select.on('nb-opened', function() {
+                flag = true;
+            });
+
+            this.select.disable();
             this.select.open();
 
             expect(flag).to.not.ok();

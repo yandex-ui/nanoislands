@@ -201,8 +201,11 @@ nb.define('select', {
                 this.close();
                 return;
             }
-            this.open();
-            this.$node.focus();
+
+            if (this.isEnabled()) {
+                this.open();
+                this.$node.focus();
+            }
         }
     },
 
@@ -228,6 +231,10 @@ nb.define('select', {
      * @returns {Object} nb.block
      */
     render: function() {
+        if (!this.isEnabled()) {
+            return this;
+        }
+
         // pass empty string as value to search for, displaying all results
         this.$node.autocomplete('search', '');
 
@@ -245,7 +252,7 @@ nb.define('select', {
      * @returns {Object} nb.block
      */
     open: function() {
-        if (this.$node && this.$node.data('uiAutocomplete')) {
+        if (this.$node && this.$node.data('uiAutocomplete') && this.isEnabled()) {
             this.render();
         }
         return this;
