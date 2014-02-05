@@ -230,8 +230,7 @@
          * @returns {Object} nb.block
          */
         setOption: function(option) {
-            var args = ['option', option];
-            this.$jUI.suggest.apply(this.$jUI, args);
+            this.$jUI.suggest('option', option);
             this.trigger('nb-option-set', this);
             return this;
         },
@@ -244,7 +243,7 @@
          * @returns {String} option value
          */
         getOption: function(option) {
-            return this.$jUI.suggest.call(this.$jUI, 'option', option);
+            return this.$jUI.suggest('option', option);
         },
 
         /*
