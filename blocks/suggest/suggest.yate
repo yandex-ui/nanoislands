@@ -21,17 +21,18 @@ match .suggest nb {
 
         apply . nb-main-attrs
 
-        input = {
-            'size': .size
-            'content': .content
-            'class': 'nb-suggest__input'
-            'attrs': .attrsInput
-            'disabled': .disabled
-            'name': .name
-
+        if .disabled  {
+          @class += ' is-disabled'
         }
 
-        nb-input(input)
+        nb-input({
+             'size': .size
+             'class': 'nb-suggest__input'
+             'attrs': .attrsInput
+             'disabled': .disabled
+             'name': .name
+             'content': .content
+         })
     </div>
 }
 

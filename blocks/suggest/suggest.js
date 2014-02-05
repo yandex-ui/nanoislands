@@ -185,7 +185,9 @@
                 }
             }.bind(this));
 
-            this.$jUI = this.$node.find('input').suggest({
+            this.$control = this.$node.find('input');
+
+            this.$jUI = this.$control.suggest({
                 source: source,
                 countMax: this.$node.data('countMax'),
                 type: this.$node.data('type'),
@@ -211,7 +213,7 @@
         },
 
         /**
-         * Возвращает выбранный в саджесте элемент данных из истоника.
+         * Get selected item from suggest
          * @return {Object}
          */
         getSelected: function() {
@@ -224,7 +226,7 @@
          * @param  {Object.<string, number>} option — {
          *      name: value —  имя и значение опцииопции
          * }
-         * @fires 'nb-closed'
+         * @fires 'nb-option-set'
          * @returns {Object} nb.block
          */
         setOption: function(option) {
@@ -328,6 +330,26 @@
         },
 
         /**
+         * Get name of the suggest
+         * @returns {String|Object} name
+         */
+        getName: function() {
+            return this.$control.prop('name');
+        },
+
+        /**
+         * Set name of the suggest
+         * @param {string} name
+         * @fires 'nb-name-set'
+         * @returns {Object} nb.block
+         */
+        setName: function(name) {
+            this.$control.prop('name', name);
+            this.trigger('nb-name-set', this);
+            return this;
+        },
+
+        /**
          * Blur the suggest
          * @fires 'nb-blured'
          * @returns {Object} nb.block
@@ -345,7 +367,7 @@
          * @returns {String | Number}
          */
         getValue: function() {
-            return this.$jUI.val();
+            return this.$control.val();
         },
 
         /**
@@ -355,8 +377,8 @@
          * @returns {Object} nb.block
          */
         setValue: function(value) {
-            if (!this.isEnabled()) {
-                this.$jUI.val(value);
+            if (this.isEnabled()) {
+                this.$control.val(value);
                 this.trigger('nb-value-set', this);
             }
             return this;
@@ -377,7 +399,7 @@
          * @fires 'nb-destroyed'
          */
         destroy: function() {
-            if (this.$jUI && this.$jUI.data('ui.suggest')) {
+            if (this.$jUI && this.$suggest) {
                 this.$jUI.suggest('destroy');
             }
             this.trigger('nb-destroyed', this);

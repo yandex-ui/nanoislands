@@ -1,5 +1,15 @@
 match .suggest {
     nb-suggest({
+        'id': 'suggest'
+        'name': 'myname'
+        'source': '["Variant1", "Variant2", "Variant3"]'
+        'content': 'myValue'
+    })
+
+    nb-suggest({
+        'id': 'suggest-disabled'
+
+        'disabled': true()
         'source': '["Variant1", "Variant2", "Variant3"]'
     })
 }
