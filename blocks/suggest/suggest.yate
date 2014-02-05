@@ -8,13 +8,13 @@ func nb-suggest(nodeset options) {
 }
 
 match .suggest nb {
-    <div class="nb-suggest__container _init" data-nb="suggest">
+    <div class="nb-suggest _init" data-nb="suggest">
         @data-countMax = .countMax
         @data-type = .type
         @data-size = .size
         @data-source = .source
         @data-highlight = .highlight
-        @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest nb-suggest_size_{.size}'
+        @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest__container nb-suggest_size_{.size}'
         if .class {
             @data-class-suggest += ' {.classSuggest}'
         }

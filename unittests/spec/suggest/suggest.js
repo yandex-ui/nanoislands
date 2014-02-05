@@ -1,21 +1,21 @@
-describe("Select Tests", function() {
+describe("suggest Tests", function() {
     beforeEach(function() {
-        var result = yr.run('main', {select: true});
+        var result = yr.run('main', {suggest: true});
         $('.content').html(result);
 
         nb.init();
-        this.select = nb.find('select');
+        this.suggest = nb.find('suggest');
     });
 
     afterEach(function() {
-        delete this.select;
+        delete this.suggest;
     });
 
     describe("init", function() {
 
         it('should has disabled button after init', function() {
-            var select = nb.find('select-disabled');
-            expect(select.isEnabled()).to.be.equal(false);
+            var suggest = nb.find('suggest-disabled');
+            expect(suggest.isEnabled()).to.be.equal(false);
         });
 
 
@@ -23,20 +23,20 @@ describe("Select Tests", function() {
 
     describe("#Yate API", function() {
 
-        it('Select with group should have optgroup', function() {
-            var select = nb.find('select-group');
-            expect(select.$control.find('optgroup').length).to.be.ok();
+        it('suggest with group should have optgroup', function() {
+            var suggest = nb.find('suggest-group');
+            expect(suggest.$control.find('optgroup').length).to.be.ok();
         });
 
-        it('Select with group should have second level menu in dropdown', function() {
-            var select = nb.find('select-group');
-            select.open();
-            expect(select.$jUI.menu.element.find('li > ul').length).to.be.equal(1);
+        it('suggest with group should have second level menu in dropdown', function() {
+            var suggest = nb.find('suggest-group');
+            suggest.open();
+            expect(suggest.$jUI.menu.element.find('li > ul').length).to.be.equal(1);
         });
 
         it("option should have data-icon attribute, if icon of item is specified", function() {
-            var select = nb.find('select-with-icons-in-options');
-            var $options = select.$control.find('option');
+            var suggest = nb.find('suggest-with-icons-in-options');
+            var $options = suggest.$control.find('option');
             var firstOptionData = $options.first().data();
 
             expect(firstOptionData.icon).to.be.equal('close');
@@ -45,132 +45,132 @@ describe("Select Tests", function() {
     });
 
     describe('#getType()', function() {
-        it('should return select type', function() {
-            expect(this.select.getType()).to.be.equal('select');
+        it('should return suggest type', function() {
+            expect(this.suggest.getType()).to.be.equal('suggest');
         });
     });
 
     describe("#getName()", function() {
-        it('should return name of select control', function() {
-            expect(this.select.getName()).to.be.equal('myname');
+        it('should return name of suggest control', function() {
+            expect(this.suggest.getName()).to.be.equal('myname');
         });
     });
 
     describe("#setName()", function() {
         it('should set name', function() {
-            this.select.setName('Vadim');
-            expect(this.select.getName()).to.be.equal('Vadim');
+            this.suggest.setName('Vadim');
+            expect(this.suggest.getName()).to.be.equal('Vadim');
         });
 
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-name-set', function() {
+            this.suggest.on('nb-name-set', function() {
                 flag = false;
             });
 
-            this.select.setName('Vadim');
+            this.suggest.setName('Vadim');
 
             expect(flag).to.not.ok();
         });
     });
 
     describe("#render()", function() {
-        it('should open select', function() {
-            this.select.render();
-            expect(this.select.$node.autocomplete('widget').css('display')).to.equal('block');
+        it('should open suggest', function() {
+            this.suggest.render();
+            expect(this.suggest.$node.autocomplete('widget').css('display')).to.equal('block');
         });
 
-        it('shouldn\'t close select', function() {
-            this.select.render();
-            this.select.render();
-            expect(this.select.$node.autocomplete('widget').css('display')).to.equal('block');
+        it('shouldn\'t close suggest', function() {
+            this.suggest.render();
+            this.suggest.render();
+            expect(this.suggest.$node.autocomplete('widget').css('display')).to.equal('block');
         });
 
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-rendered', function() {
+            this.suggest.on('nb-rendered', function() {
                 flag = false;
             });
 
-            this.select.render();
+            this.suggest.render();
 
             expect(flag).to.not.ok();
         });
 
-        it('shouldn\'t render disabled select', function() {
-            this.select.disable();
-            this.select.render();
-            expect(this.select.$node.autocomplete('widget').css('display')).to.equal('none');
+        it('shouldn\'t render disabled suggest', function() {
+            this.suggest.disable();
+            this.suggest.render();
+            expect(this.suggest.$node.autocomplete('widget').css('display')).to.equal('none');
         });
 
-        it('no event for the disabled select', function() {
+        it('no event for the disabled suggest', function() {
             var flag = false;
 
-            this.select.on('nb-rendered', function() {
+            this.suggest.on('nb-rendered', function() {
                 flag = true;
             });
 
-            this.select.disable();
-            this.select.render();
+            this.suggest.disable();
+            this.suggest.render();
 
             expect(flag).to.not.ok();
         });
     });
 
     describe("#open()", function() {
-        it('should open select', function() {
-            this.select.open();
-            expect(this.select.$node.autocomplete('widget').css('display')).to.equal('block');
+        it('should open suggest', function() {
+            this.suggest.open();
+            expect(this.suggest.$node.autocomplete('widget').css('display')).to.equal('block');
         });
 
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-opened', function() {
+            this.suggest.on('nb-opened', function() {
                 flag = false;
             });
 
-            this.select.open();
+            this.suggest.open();
 
             expect(flag).to.not.ok();
         });
 
-        it('shouldn\'t open disabled select', function() {
-            this.select.disable();
-            this.select.open();
-            expect(this.select.$node.autocomplete('widget').css('display')).to.equal('none');
+        it('shouldn\'t open disabled suggest', function() {
+            this.suggest.disable();
+            this.suggest.open();
+            expect(this.suggest.$node.autocomplete('widget').css('display')).to.equal('none');
         });
 
-        it('no event for the disabled select', function() {
+        it('no event for the disabled suggest', function() {
             var flag = false;
 
-            this.select.on('nb-opened', function() {
+            this.suggest.on('nb-opened', function() {
                 flag = true;
             });
 
-            this.select.disable();
-            this.select.open();
+            this.suggest.disable();
+            this.suggest.open();
 
             expect(flag).to.not.ok();
         });
     });
 
     describe("#close()", function() {
-        it('should close select', function() {
-            this.select.close();
-            expect(this.select.$node.autocomplete('widget').css('display')).to.not.equal('block');
+        it('should close suggest', function() {
+            this.suggest.close();
+            expect(this.suggest.$node.autocomplete('widget').css('display')).to.not.equal('block');
         });
 
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-closed', function() {
+            this.suggest.on('nb-closed', function() {
                 flag = false;
             });
 
-            this.select.close();
+            this.suggest.close();
 
             expect(flag).to.not.ok();
         });
@@ -179,22 +179,22 @@ describe("Select Tests", function() {
 
     describe("#setState()", function() {
         it('should set state by text', function() {
-            this.select.setState({text: 'Гибрид'});
-            expect(this.select.getState().value == 'option3').to.be.ok();
+            this.suggest.setState({text: 'Гибрид'});
+            expect(this.suggest.getState().value == 'option3').to.be.ok();
         });
         it('should set state by value', function() {
-            this.select.setState({value: 'option3'});
-            expect(this.select.getState().text == 'Гибрид').to.be.ok();
+            this.suggest.setState({value: 'option3'});
+            expect(this.suggest.getState().text == 'Гибрид').to.be.ok();
         });
 
         it("shouldn't change if trying to set nonexistent option", function() {
             var flag = true;
 
-            this.select.on('nb-changed', function() {
+            this.suggest.on('nb-changed', function() {
                 flag = false;
             });
 
-            this.select.setState({value: 'option5'});
+            this.suggest.setState({value: 'option5'});
 
             expect(flag).to.ok();
         });
@@ -202,55 +202,55 @@ describe("Select Tests", function() {
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-changed', function() {
+            this.suggest.on('nb-changed', function() {
                 flag = false;
             });
 
-            this.select.setState({value: 'option3'});
+            this.suggest.setState({value: 'option3'});
 
             expect(flag).to.not.ok();
         });
     });
 
     describe("#getState()", function() {
-        it('should return state of select control', function() {
-            expect(this.select.getState().text == 'Карта' && this.select.getState().value == 'option1').to.be.ok();
+        it('should return state of suggest control', function() {
+            expect(this.suggest.getState().text == 'Карта' && this.suggest.getState().value == 'option1').to.be.ok();
         });
     });
 
     describe("#getSource()", function() {
-        it('should return state of select control', function() {
-            expect(this.select.getSource()[0].value == 'option1' && this.select.getSource()[1].text == 'Гибрид').to.ok();
+        it('should return state of suggest control', function() {
+            expect(this.suggest.getSource()[0].value == 'option1' && this.suggest.getSource()[1].text == 'Гибрид').to.ok();
         });
     });
 
     describe("#setSource()", function() {
         it('should replace source', function() {
-            this.select.setSource([
+            this.suggest.setSource([
                 {'text': 'test', 'value': 'test'},
                 {'text': 'test2', 'value': 'test2'}
             ]);
-            expect(this.select.getSource()[0].value == 'test' && this.select.getSource()[1].text == 'test2').to.ok();
+            expect(this.suggest.getSource()[0].value == 'test' && this.suggest.getSource()[1].text == 'test2').to.ok();
         });
 
         it('should set new source', function() {
-            this.select.setSource();
+            this.suggest.setSource();
 
-            this.select.setSource([
+            this.suggest.setSource([
                 {'text': 'test', 'value': 'test'},
                 {'text': 'test2', 'value': 'test2'}
             ]);
-            expect(this.select.getSource()[0].value == 'test' && this.select.getSource()[1].text == 'test2').to.ok();
+            expect(this.suggest.getSource()[0].value == 'test' && this.suggest.getSource()[1].text == 'test2').to.ok();
         });
 
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-source-changed', function() {
+            this.suggest.on('nb-source-changed', function() {
                 flag = false;
             });
 
-            this.select.setSource([
+            this.suggest.setSource([
                 {'text': 'test', 'value': 'test'},
                 {'text': 'test2', 'value': 'test2'}
             ]);
@@ -261,34 +261,34 @@ describe("Select Tests", function() {
 
     describe("#addToSource()", function() {
         it('Should add item', function() {
-            this.select.addToSource({'text': 'test', 'value': 'test'});
-            var item = this.select.getSource().pop();
+            this.suggest.addToSource({'text': 'test', 'value': 'test'});
+            var item = this.suggest.getSource().pop();
             expect(item.text == 'test' && item.value == 'test').to.ok();
         });
 
         it('Should add array of items', function() {
-            var len = this.select.getSource().length;
-            this.select.addToSource([
+            var len = this.suggest.getSource().length;
+            this.suggest.addToSource([
                 {'text': 'test', 'value': 'test'},
                 {'text': 'test2', 'value': 'test2'}
             ]);
-            expect(this.select.getSource().length).to.equal(len + 2);
+            expect(this.suggest.getSource().length).to.equal(len + 2);
         });
 
         it('Should add item with index', function() {
-            this.select.addToSource({'text': 'test', 'value': 'test'}, 1);
-            var item = this.select.getSource()[1];
+            this.suggest.addToSource({'text': 'test', 'value': 'test'}, 1);
+            var item = this.suggest.getSource()[1];
             expect(item.text == 'test' && item.value == 'test').to.ok();
         });
 
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-source-changed', function() {
+            this.suggest.on('nb-source-changed', function() {
                 flag = false;
             });
 
-            this.select.addToSource({'text': 'test', 'value': 'test'}, 1);
+            this.suggest.addToSource({'text': 'test', 'value': 'test'}, 1);
 
             expect(flag).to.not.ok();
         });
@@ -296,27 +296,27 @@ describe("Select Tests", function() {
 
     describe("#removeFromSource()", function() {
         it('Should remove item', function() {
-            var len = this.select.getSource().length;
-            this.select.addToSource({'text': 'test', 'value': 'test'});
-            this.select.removeFromSource({'text': 'test', 'value': 'test'});
-            expect(this.select.getSource().length).to.equal(len);
+            var len = this.suggest.getSource().length;
+            this.suggest.addToSource({'text': 'test', 'value': 'test'});
+            this.suggest.removeFromSource({'text': 'test', 'value': 'test'});
+            expect(this.suggest.getSource().length).to.equal(len);
         });
 
         it('Should remove item with index', function() {
-            this.select.addToSource({'text': 'test', 'value': 'test'}, 0);
-            this.select.removeFromSource(0);
-            var item = this.select.getSource()[0];
+            this.suggest.addToSource({'text': 'test', 'value': 'test'}, 0);
+            this.suggest.removeFromSource(0);
+            var item = this.suggest.getSource()[0];
             expect(item.text == 'test' && item.value == 'test').to.not.ok();
         });
 
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-source-changed', function() {
+            this.suggest.on('nb-source-changed', function() {
                 flag = false;
             });
 
-            this.select.removeFromSource(0);
+            this.suggest.removeFromSource(0);
 
             expect(flag).to.not.ok();
         });
@@ -324,12 +324,12 @@ describe("Select Tests", function() {
 
     describe("#isEnabled()", function() {
         it("should return true when enabled", function() {
-            expect(this.select.isEnabled()).to.be.ok();
+            expect(this.suggest.isEnabled()).to.be.ok();
         });
 
         it("should return false when disabled", function() {
-            this.select.disable();
-            expect(this.select.isEnabled()).not.to.be.ok();
+            this.suggest.disable();
+            expect(this.suggest.isEnabled()).not.to.be.ok();
         });
     });
 
@@ -343,24 +343,24 @@ describe("Select Tests", function() {
         });
 
         it("check state", function() {
-            this.select.disable();
-            expect(this.select.isEnabled()).to.not.ok();
+            this.suggest.disable();
+            expect(this.suggest.isEnabled()).to.not.ok();
         });
 
         it("check event", function() {
             var flag = true;
 
-            this.select.on('nb-disabled', function() {
+            this.suggest.on('nb-disabled', function() {
                 flag = false;
             });
 
-            this.select.disable();
+            this.suggest.disable();
 
             expect(flag).to.not.ok();
         });
 
         it("should call $.fn.autocomplete('disable')", function() {
-            this.select.disable();
+            this.suggest.disable();
             expect($.fn.autocomplete.calledWithExactly('disable')).to.be.equal(true);
         });
     });
@@ -369,7 +369,7 @@ describe("Select Tests", function() {
         beforeEach(function() {
             sinon.spy($.fn, 'autocomplete');
 
-            this.select.disable();
+            this.suggest.disable();
         });
 
         afterEach(function() {
@@ -377,22 +377,22 @@ describe("Select Tests", function() {
         });
 
         it("check state", function() {
-            this.select.enable();
-            expect(this.select.isEnabled()).to.ok();
+            this.suggest.enable();
+            expect(this.suggest.isEnabled()).to.ok();
         });
 
         it("check event", function() {
             var flag = false;
-            this.select.on('nb-enabled', function() {
+            this.suggest.on('nb-enabled', function() {
                 flag = true;
             });
 
-            this.select.enable();
+            this.suggest.enable();
             expect(flag).to.ok();
         });
 
         it("should call $.fn.autocomplete('enable')", function() {
-            this.select.enable();
+            this.suggest.enable();
             expect($.fn.autocomplete.calledWithExactly('enable')).to.be.equal(true);
         });
     });
@@ -408,39 +408,39 @@ describe("Select Tests", function() {
         });
 
         it("should call $.fn.autocomplete('destroy')", function() {
-            this.select.destroy();
+            this.suggest.destroy();
             expect($.fn.autocomplete.calledWithExactly('destroy')).to.be.equal(true);
         });
         it("should destroy nb.block", function() {
-            this.select.destroy();
-            expect(nb.hasBlock($('#select')[0])).to.be.equal(false);
+            this.suggest.destroy();
+            expect(nb.hasBlock($('#suggest')[0])).to.be.equal(false);
         });
     });
 
     describe("#focus()", function() {
         it("should throws nb-focused event", function() {
             var handlerWorks = false;
-            this.select.on('nb-focused', function() {
+            this.suggest.on('nb-focused', function() {
                 handlerWorks = true;
             });
 
-            this.select.focus();
+            this.suggest.focus();
 
             expect(handlerWorks).to.be.ok();
         });
 
 
         it("should be in focus", function() {
-            this.select.focus();
-            expect($(document.activeElement).attr('id')).to.equal('select');
+            this.suggest.focus();
+            expect($(document.activeElement).attr('id')).to.equal('suggest');
         });
     });
 
     describe("#blur()", function() {
         it("should not to be in focus", function() {
-            this.select.focus();
-            this.select.blur();
-            expect($(document.activeElement)).not.equal('select');
+            this.suggest.focus();
+            this.suggest.blur();
+            expect($(document.activeElement)).not.equal('suggest');
         });
 
         it("should throws nb-blured event", function() {
@@ -457,28 +457,28 @@ describe("Select Tests", function() {
     describe("#setOption()", function() {
         it("should throws nb-option-set event", function() {
             var handlerWorks = false;
-            this.select.on('nb-option-set', function() {
+            this.suggest.on('nb-option-set', function() {
                 handlerWorks = true;
             });
 
-            this.select.setOption({'autoFocus': false});
+            this.suggest.setOption({'autoFocus': false});
 
             expect(handlerWorks).to.be.ok();
         });
 
 
         it("should set option to the jUI widget", function() {
-            this.select.setOption({'autoFocus': true});
-            expect(this.select.$node.autocomplete('option', 'autoFocus')).to.ok();
+            this.suggest.setOption({'autoFocus': true});
+            expect(this.suggest.$node.autocomplete('option', 'autoFocus')).to.ok();
         });
     });
 
     describe("#getOption()", function() {
 
         it("should return option from jUI widget", function() {
-            this.select.setOption({'autoFocus': true});
+            this.suggest.setOption({'autoFocus': true});
 
-            expect(this.select.getOption('autoFocus')).to.ok();
+            expect(this.suggest.getOption('autoFocus')).to.ok();
         });
     });
 
@@ -490,12 +490,12 @@ describe("Select Tests", function() {
             it("#189", function() {
                 var flag = 0;
 
-                this.select.on('nb-changed', function() {
+                this.suggest.on('nb-changed', function() {
                     flag++
                 });
 
-                this.select.setState({'value': 'option3'});
-                this.select.setState({'value': 'option3'});
+                this.suggest.setState({'value': 'option3'});
+                this.suggest.setState({'value': 'option3'});
                 expect(flag).to.equal(1);
             });
         });
@@ -505,34 +505,34 @@ describe("Select Tests", function() {
                 $(document).off('click');
             });
 
-            it("Selects's dropdown click event shouldn't propagate to document", function() {
+            it("suggests's dropdown click event shouldn't propagate to document", function() {
                 var flag = false;
 
                 $(document).on('click', function() {
                     flag = true;
                 });
 
-                this.select.open();
-                this.select.$jUI.menu.element.click();
+                this.suggest.open();
+                this.suggest.$jUI.menu.element.click();
                 expect(flag).to.not.ok();
             });
 
             it("If maxHeight = 1 should be visilbe only one item", function() {
-                var select = nb.find('select-mw1');
-                select.open();
-                expect(select.$jUI.menu.element.height()).to.equal(select.$jUI.menu.element.find('.nb-select__item').first().height());
+                var suggest = nb.find('suggest-mw1');
+                suggest.open();
+                expect(suggest.$jUI.menu.element.height()).to.equal(suggest.$jUI.menu.element.find('.nb-suggest__item').first().height());
             });
 
             it("If maxHeight = 10px should be visilbe only 10px", function() {
-                var select = nb.find('select-mw2');
-                select.open();
-                expect(select.$jUI.menu.element.height()).to.equal(10);
+                var suggest = nb.find('suggest-mw2');
+                suggest.open();
+                expect(suggest.$jUI.menu.element.height()).to.equal(10);
             });
 
             it("Icon node should be presented in jUI dropdown menu item, if icon of item is specified", function() {
-                var select = nb.find('select-with-icons-in-options');
-                select.open();
-                expect(select.$jUI.menu.element.find('.nb-select__item').first().find('.nb-icon').length).to.be.equal(1);
+                var suggest = nb.find('suggest-with-icons-in-options');
+                suggest.open();
+                expect(suggest.$jUI.menu.element.find('.nb-suggest__item').first().find('.nb-icon').length).to.be.equal(1);
             });
         });
     });

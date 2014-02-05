@@ -1,0 +1,5 @@
+match .suggest {
+    nb-suggest({
+        'source': '["Variant1", "Variant2", "Variant3"]'
+    })
+}
