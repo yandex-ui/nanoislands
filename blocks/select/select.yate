@@ -10,56 +10,58 @@ func nb-select(nodeset select) {
 
 match .select nb {
     <span class="nb-select _init nb-button nb-select__button nb-button_size_{ .size } nb-button_theme_{ .theme }" data-nb-direction ="{ .direction }" data-nb="select" tabindex="0">
-          apply . nb-main-attrs
+        apply . nb-main-attrs
 
-           if .within {
-              @data-nb-within = .within
-           }
+        if .within {
+            @data-nb-within = .within
+        }
 
-          if .disabled  {
-              @class += ' is-disabled'
-              @disabled = 'disabled'
-          }
+        if .disabled  {
+            @class += ' is-disabled'
+            @disabled = 'disabled'
+        }
 
-          if .maxHeight {
+        if .maxHeight {
             @data-nb-maxheight = .maxHeight
-          }
+        }
 
-          <span class="nb-button__text">
-              for .items {
-                    if .selected || index() == 0 {
-                     .text
-                }
-              }
-          </span>
-          <span class="nb-select-helper"></span> // Helper for baseline alignment
-          <select class="nb-select__fallback">
-                if ( .disabled ) {
-                    @disabled = 'disabled'
-                }
+        <span class="nb-button__text">
+            isSelected = count(.items[(.selected)]) > 0
 
-                if .name {
-                    @name = .name
+            for .items {
+                if (isSelected && .selected) || (!isSelected && index() == 0)  {
+                    .text
                 }
+            }
+        </span>
+        <span class="nb-select-helper"></span> // Helper for baseline alignment
+        <select class="nb-select__fallback">
+            if ( .disabled ) {
+                @disabled = 'disabled'
+            }
 
-                if .attrs.name {
-                    @name = .attrs.name
-                }
+            if .name {
+                @name = .name
+            }
 
-                for .items {
-                    if .group {
-                        <optgroup label="{ .text }" data-nb-type="{ .type }">
-                            for .group {
-                                _select-option(.)
-                            }
-                        </optgroup>
-                    } else {
+            if .attrs.name {
+                @name = .attrs.name
+            }
+
+            for .items {
+                if .group {
+                    <optgroup label="{ .text }" data-nb-type="{ .type }">
+                    for .group {
                         _select-option(.)
                     }
+                    </optgroup>
+                } else {
+                    _select-option(.)
                 }
-            </select>
-            <div class="nb-select__dropdown nb-select__dropdown_size_{ .size } nb-select_theme_{ .theme }"></div>
-      </span>
+            }
+        </select>
+        <div class="nb-select__dropdown nb-select__dropdown_size_{ .size } nb-select_theme_{ .theme }"></div>
+    </span>
 }
 
 func _select-option(nodeset item) {
