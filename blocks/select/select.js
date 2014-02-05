@@ -535,8 +535,7 @@ nb.define('select', {
      * @returns {Object} nb.block
      */
     setOption: function(option) {
-        var args = ['option', option];
-        this.$node.autocomplete.apply(this.$node, args);
+        this.$node.autocomplete('option', option);
         this.trigger('nb-option-set', this);
         return this;
     },
@@ -548,7 +547,7 @@ nb.define('select', {
      * @returns {String} option value
      */
     getOption: function(option) {
-        return this.$node.autocomplete.call(this.$node, 'option', option);
+        return this.$node.autocomplete('option', option);
     },
 
     /**
