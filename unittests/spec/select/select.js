@@ -42,6 +42,11 @@ describe("Select Tests", function() {
             expect(firstOptionData.icon).to.be.equal('close');
         });
 
+        it('Should substitute the name of the selected element', function() {
+            var select = nb.find('select-duplicate-title');
+            expect(select.$node.find('.nb-button__text').text()).to.be.equal('2');
+        });
+
     });
 
     describe('#getType()', function() {

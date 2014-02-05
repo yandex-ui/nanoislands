@@ -97,4 +97,22 @@ match .select {
           }
       ]
     })
+
+
+nb-select({
+    'id': 'select-duplicate-title'
+    'items': [
+        {
+            'text': '1'
+            'value': 'option1'
+        }
+        {
+            'text': '2'
+            'value': 'option2'
+            'selected': true()
+        }
+    ]
+})
+
+
 }
