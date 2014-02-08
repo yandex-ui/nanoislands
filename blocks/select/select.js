@@ -222,7 +222,11 @@ nb.define('select', {
             height = maxheight;
         }
 
-        this.$jUI.menu.element.css({"max-height": height, "overflow-y": "scroll"});
+        this.$jUI.menu.element.css({
+            'max-height': height,
+            'overflow-y': 'auto',
+            'overflow-x': 'hidden'
+        });
     },
 
     /**
