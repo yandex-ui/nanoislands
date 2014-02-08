@@ -1,8 +1,7 @@
 func input-small() {
-    block = {
-        'content': 'Москва'
-    }
-    nb-input(block)
+    nb-input({
+       'content': 'Москва'
+    })
 }
 
 func input-medium() {
@@ -13,84 +12,90 @@ func input-medium() {
 }
 
 func input-disabled() {
-    block = {
-        'disabled': true()
-        'content': 'Москва'
-    }
-    nb-input(block)
+    nb-input({
+       'disabled': true()
+       'content': 'Москва'
+    })
 }
 
 func input-length() {
-    block = {
+    nb-input({
         'attrs': {
             'length': 11
             'maxlength': 11
             'placeholder': '11 символов'
         }
-    }
-    nb-input(block)
+    })
 }
 
 func input-multiline() {
-    block = {
-        'type': 'multiline'
-    }
-    nb-input(block)
+    nb-input({
+       'type': 'multiline'
+    })
 }
 
 func input-ghost() {
-    block = {
+    nb-input({
         'ghost': true()
-    }
-    nb-input(block)
+    })
 }
 
 func input-reset() {
-    block = {
+    nb-input({
         'reset': true()
         'size': 'm'
         'content': 'privet'
-    }
-    nb-input(block)
+    })
 }
 
 func input-small-reset() {
-    block = {
+    nb-input({
         'reset': true()
         'size': 's'
         'content': 'privet'
-    }
-    nb-input(block)
+    })
 }
 
 func input-left-right() {
-    block = {
+    nb-input({
         'leftContent': 'Prefix...'
         'rightContent': '...postfix'
-    }
-    nb-input(block)
+    })
 }
 
 func input-textarea-reset() {
-    block = {
+    nb-input( {
         'reset': true()
         'size': 'm'
         'type': 'multiline'
         'content': 'privet'
-    }
-    nb-input(block)
+    })
 }
 
 func input-error() {
-    block = {
+    nb-input({
         'content': 'Здесь будет ошибка'
         'error': {
             'direction': 'right'
             'content': 'Все плохо!!!'
         }
-    }
+    })
+}
 
-    nb-input(block)
+func input-placeholder() {
+    nb-input({
+        'placeholder': 'Your Email or Name'
+    })
+}
+
+func input-placeholder-ghost() {
+    nb-input({
+        'content': 'hello@nano.is'
+        'placeholder': {
+            'ghost': true()
+            'text': ' — Your Email or Name'
+        }
+    })
 }
 
 func inputs() {
@@ -181,5 +186,19 @@ func inputs() {
         </div>
 
         show(input-error())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Placeholders'
+        </div>
+
+        show(input-placeholder())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Placeholders'
+        </div>
+
+        show(input-placeholder-ghost())
     </div>
 }

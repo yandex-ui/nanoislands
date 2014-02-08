@@ -21,12 +21,19 @@ nb.define('input', {
             this.$control = this.$node.find('.nb-input__controller');
         }
 
+        this.disabled = this.$control.prop('disabled');
+        that.getValue();
+
         this.$control.on('change', function(e) {
             that.trigger('nb-changed', this, e);
         });
 
-        this.disabled = this.$control.prop('disabled');
-        this.value = this.$control.val();
+        this.$placeholder = this.$node.find('.nb-input__placeholder');
+
+        if (this.$placeholder.length) {
+            this._initPlaceholder();
+        }
+
         this.focused = false;
         if (this.data.ghost) {
             this.$node.on('mouseover mouseout', function() {
@@ -43,6 +50,37 @@ nb.define('input', {
         });
 
         this.trigger('nb-inited', this);
+    },
+
+    _initPlaceholder: function() {
+        var that = this;
+
+        this.$placeholderGhost = this.$placeholder.find('.nb-input__placeholder-ghost');
+
+        if (this.$placeholderGhost.length) {
+
+            this.$placeholderGhost.html(that.getValue());
+
+            this.$control.on('input', function() {
+                that.$placeholderGhost.html(that.getValue());
+            });
+
+            this.$control.on('focus', function() {
+                that.$placeholder.css('visibility', 'hidden');
+            });
+
+            this.$control.on('blur', function() {
+                that.$placeholder.css('visibility', 'inherit');
+            });
+        } else {
+            this.$control.on('input', function() {
+                if (that.getValue() === '') {
+                    that.$placeholder.css('visibility', 'inherit');
+                } else {
+                    that.$placeholder.css('visibility', 'hidden');
+                }
+            });
+        }
     },
 
     /**
@@ -179,6 +217,7 @@ nb.define('input', {
     setValue: function(value) {
         this.value = value;
         this.$control.val(value);
+        this.$control.trigger('input');
         this.trigger('nb-value-set', this);
         return this;
     },
@@ -233,6 +272,43 @@ nb.define('input', {
 
         this.setValue('');
         return this;
+    },
+
+     /**
+     * Set placeholder of the input
+     * @param {String} value
+     * @fires 'nb-name-set'
+     * @returns {Object} nb.block
+     */
+    setPlaceholder: function(value) {
+        if (this.$placeholder.length) {
+            if (this.$placeholderGhost.length) {
+                this.$placeholder.find('.nb-input__placeholder-content').html(value);
+            } else {
+                this.$placeholder.find('.nb-input__placeholder-inner').html(value);
+            }
+            this.trigger('nb-placeholder-set', this);
+        }
+
+        return this;
+    },
+
+    /**
+     * Get placeholder of the input
+     * @returns {String} placeholder
+     */
+    getPlaceholder: function() {
+        var value = '';
+        if (this.$placeholder.length) {
+
+            if (this.$placeholderGhost.length) {
+                value = this.$placeholder.find('.nb-input__placeholder-content').html();
+            } else {
+                value = this.$placeholder.find('.nb-input__placeholder-inner').html();
+            }
+
+        }
+        return value;
     },
 
     /**

@@ -30,4 +30,17 @@ match .input {
         'leftContent': 'prefix'
         'rightContent': 'postfix'
    })
+
+   nb-input({
+        'id': 'input-placeholder'
+        'placeholder': 'email'
+   })
+
+   nb-input({
+        'id': 'input-placeholder-ghost'
+        'placeholder': {
+            'text': 'email'
+            'ghost': true()
+        }
+   })
 }
