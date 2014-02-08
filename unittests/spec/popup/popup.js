@@ -50,6 +50,17 @@ describe("Popup Tests", function() {
             expect(flag).to.ok();
         });
 
+        it("#Close event on popup if closed using toggler", function() {
+            var flag = false;
+            this.popup.on('nb-closed', function() {
+                flag = true;
+            });
+
+            this.toggler.open();
+            this.toggler.close();
+            expect(flag).to.ok();
+        });
+
         it("#setPopup", function() {
             this.toggler.setPopup('popup1');
             this.toggler.open();
@@ -116,27 +127,8 @@ describe("Popup Tests", function() {
         });
     });
 
-    describe("#Popup", function() {
-        it("#Open", function() {
-            this.popup.open({where: this.toggler.node, appendTo: '.content'});
-            this.popup.close();
-            expect(this.popup.$node.css('display')).to.equal('none');
-        });
-
-        it("#Open check event", function() {
-            var flag = false;
-            this.popup.on('nb-closed', function() {
-                flag = true;
-            });
-
-            this.popup.open({where: this.toggler.node, appendTo: '.content'});
-            this.popup.close();
-            expect(flag).to.ok();
-        });
-    });
 
     describe("#Popup destroy()", function() {
-
 
         it("should call $.fn.nbContextDialog('destroy')", function() {
             this.popup.destroy();
@@ -146,6 +138,20 @@ describe("Popup Tests", function() {
         it("should destroy nb.block", function() {
             this.popup.destroy();
             expect(nb.hasBlock($('#popup')[0])).to.be.equal(false);
+        });
+    });
+
+
+    describe("#Popup", function() {
+        it("#Close check event", function() {
+            var flag = false;
+            this.popup.on('nb-closed', function() {
+                flag = true;
+            });
+
+            this.popup.open({where: this.toggler.node, appendTo: '.content'});
+            this.popup.close();
+            expect(flag).to.ok();
         });
     });
 });
