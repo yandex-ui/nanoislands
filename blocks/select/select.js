@@ -526,6 +526,31 @@ nb.define('select', {
     },
 
     /**
+     * Sets option to the jUI widget
+     * http://api.jqueryui.com/autocomplete/#method-option
+     * @param  {Object.<string, number>} option — {
+           *      name: value —  имя и значение опцииопции
+           * }
+     * @fires 'nb-option-set'
+     * @returns {Object} nb.block
+     */
+    setOption: function(option) {
+        this.$node.autocomplete('option', option);
+        this.trigger('nb-option-set', this);
+        return this;
+    },
+
+    /**
+     * Gets option of the jUI widget
+     * http://api.jqueryui.com/autocomplete/#method-option
+     * @param {String} option
+     * @returns {String} option value
+     */
+    getOption: function(option) {
+        return this.$node.autocomplete('option', option);
+    },
+
+    /**
      * Destroy the select
      * @fires 'nb-destroyed'
      */

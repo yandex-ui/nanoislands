@@ -164,11 +164,6 @@
     };
 
     nb.define('suggest', {
-        events: {
-            'close': 'onClose',
-            'disable': 'onDisable',
-            'enable': 'onEnable'
-        },
 
         /**
          * Init select
@@ -184,13 +179,15 @@
                 var keyCode = $.ui.keyCode;
 
                 if ($.inArray(e.keyCode, [ keyCode.ENTER, keyCode.NUMPAD_ENTER ]) !== -1) {
-                    if (!this.$input.data().uiSuggest.menu.active) {
-                        this.trigger('nb-suggest_keypress-enter', this.getValue());
+                    if (!this.$jUI.data().uiSuggest.menu.active) {
+                        this.trigger('nb-keypress-enter', this, this.getValue());
                     }
                 }
             }.bind(this));
 
-            this.$input = this.$node.find('input').suggest({
+            this.$control = this.$node.find('input');
+
+            this.$jUI = this.$control.suggest({
                 source: source,
                 countMax: this.$node.data('countMax'),
                 type: this.$node.data('type'),
@@ -199,90 +196,212 @@
                 minLength: this.$node.data('minLength')
             });
 
-            this.$suggest = this.$input.data().uiSuggest.menu.element;
+            this.$suggest = this.$jUI.data().uiSuggest.menu.element;
 
             this.$suggest.addClass(this.$node.data('class-suggest'));
 
-            this.$input.on('suggest_search', function() {
-                this.trigger('nb-suggest_type', this.getValue());
+            this.$jUI.on('suggest_search', function() {
+                this.trigger('nb-type', this, this.getValue());
             }.bind(this));
 
-            this.$input.on('suggestselect', function(e, item) {
-                this.trigger('nb-suggest_select', item.item);
+            this.$jUI.on('suggestselect', function(e, item) {
+                this.$selected = item.item;
+                this.trigger('nb-select', this, item.item);
             }.bind(this));
 
-            this.trigger('nb-suggest_inited');
+            this.trigger('nb-inited', this);
         },
 
         /**
-         * Возвращает выбранный в саджесте элемент данных из истоника.
+         * Get selected item from suggest
          * @return {Object}
          */
         getSelected: function() {
-            return this.$input.data().uiSuggest.selectedItem;
+            return this.$selected;
         },
 
         /**
-         * Устанавливает опцию для виджета.
-         * По сути является аналогом jq.ui.option
+         * Sets option to the jUI widget
          * http://api.jqueryui.com/autocomplete/#method-option
          * @param  {Object.<string, number>} option — {
-         *      name: value —  имя  и значение опцииопции
+         *      name: value —  имя и значение опцииопции
          * }
+         * @fires 'nb-option-set'
+         * @returns {Object} nb.block
          */
         setOption: function(option) {
-            var args = ['option', option];
-            return this.$input.suggest.apply(this.$input, args);
+            this.$jUI.suggest('option', option);
+            this.trigger('nb-option-set', this);
+            return this;
+        },
+
+
+        /**
+         * Gets option of the jUI widget
+         * http://api.jqueryui.com/autocomplete/#method-option
+         * @param {String} option
+         * @returns {String} option value
+         */
+        getOption: function(option) {
+            return this.$jUI.suggest('option', option);
+        },
+
+        /*
+         * Set new items for suggest
+         * @params {Array} source New source
+         * @fires 'nb-source-changed'
+         * @returns {Object} nb.block
+         */
+        setSource: function(source) {
+            this.setOption({'source': source});
+            this.trigger('nb-source-set', this);
+            return this;
+        },
+
+        /*
+         * Get items from suggest
+         * @returns {Array} source
+         */
+        getSource: function() {
+            return this.getOption('source');
         },
 
         /**
          * Скрывает список предложений
-         * http://api.jqueryui.com/autocomplete/#method-close
+         * @fires 'nb-closed'
+         * @returns {Object} nb.block
          */
-        onClose: function() {
-            return this.$input.suggest('close');
+        close: function() {
+            this.$jUI.suggest('close');
+            this.trigger('nb-closed', this);
+            return this;
         },
 
         /**
-         * Disable input
+         * Disables the suggest
+         * @fires 'nb-disabled'
+         * @returns {Object} nb.block
          */
-        onDisable: function() {
-            console.log('Disable');
-            this.input.trigger('disable');
+        disable: function() {
+            if (this.isEnabled()) {
+                this.input.disable();
+                this.$node.addClass('is-disabled');
+                this.$jUI.suggest('disable');
+                this.trigger('nb-disabled', this);
+            }
+            return this;
         },
 
         /**
-         * Enable input
+         * Enables the suggest
+         * @fires 'nb-enabled'
+         * @returns {Object} nb.block
          */
-        onEnable: function() {
-            this.input.trigger('enable');
+        enable: function() {
+            if (!this.isEnabled()) {
+                this.input.enable();
+                this.$node.removeClass('is-disabled');
+                this.$jUI.suggest('enable');
+                this.trigger('nb-enabled', this);
+            }
+            return this;
         },
 
         /**
-         * Get current value oj the suggest
+         * Return state of the suggest
+         * @returns {Boolean}
+         */
+        isEnabled: function() {
+            return !this.$node.hasClass('is-disabled');
+        },
+
+        /**
+         * Focus the suggest
+         * @fires 'nb-focused'
+         * @returns {Object} nb.block
+         */
+        focus: function() {
+            if (this.isEnabled()) {
+                this.input.focus();
+            }
+            this.trigger('nb-focused', this);
+            return this;
+        },
+
+        /**
+         * Get name of the suggest
+         * @returns {String|Object} name
+         */
+        getName: function() {
+            return this.$control.prop('name');
+        },
+
+        /**
+         * Set name of the suggest
+         * @param {string} name
+         * @fires 'nb-name-set'
+         * @returns {Object} nb.block
+         */
+        setName: function(name) {
+            this.$control.prop('name', name);
+            this.trigger('nb-name-set', this);
+            return this;
+        },
+
+        /**
+         * Blur the suggest
+         * @fires 'nb-blured'
+         * @returns {Object} nb.block
+         */
+        blur: function() {
+            if (this.isEnabled()) {
+                this.input.blur();
+            }
+            this.trigger('nb-blured', this);
+            return this;
+        },
+
+        /**
+         * Get current value of the suggest
          * @returns {String | Number}
          */
         getValue: function() {
-            return this.$input.val();
+            return this.$control.val();
+        },
+
+        /**
+         * Get current value of the suggest
+         * @param {String} value
+         * @fires 'nb-value-set'
+         * @returns {Object} nb.block
+         */
+        setValue: function(value) {
+            if (this.isEnabled()) {
+                this.$control.val(value);
+                this.trigger('nb-value-set', this);
+            }
+            return this;
         },
 
         /**
          * Search value in the source array and open suggest popup
          * @param  {string | number} value
+         * @returns {Object} nb.block
          */
         search: function(value) {
-            this.$input.suggest("search", value);
+            this.$jUI.suggest("search", value);
+            return this;
         },
 
         /**
          * Destroy the suggest
-         * @fires 'nb-select_destroyed'
+         * @fires 'nb-destroyed'
          */
         destroy: function() {
-            if (this.$input && this.$input.data('ui.suggest')) {
-                this.$input.suggest('destroy');
+            if (this.$jUI && this.$suggest) {
+                this.$jUI.suggest('destroy');
             }
-            this.trigger('nb-suggest_destroyed');
+            this.trigger('nb-destroyed', this);
             this.nbdestroy();
         }
 

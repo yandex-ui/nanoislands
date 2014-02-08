@@ -459,6 +459,34 @@ describe("Select Tests", function() {
         });
     });
 
+    describe("#setOption()", function() {
+        it("should throws nb-option-set event", function() {
+            var handlerWorks = false;
+            this.select.on('nb-option-set', function() {
+                handlerWorks = true;
+            });
+
+            this.select.setOption({'autoFocus': false});
+
+            expect(handlerWorks).to.be.ok();
+        });
+
+
+        it("should set option to the jUI widget", function() {
+            this.select.setOption({'autoFocus': true});
+            expect(this.select.$node.autocomplete('option', 'autoFocus')).to.ok();
+        });
+    });
+
+    describe("#getOption()", function() {
+
+        it("should return option from jUI widget", function() {
+            this.select.setOption({'autoFocus': true});
+
+            expect(this.select.getOption('autoFocus')).to.ok();
+        });
+    });
+
 
     describe("Specific", function() {
 
