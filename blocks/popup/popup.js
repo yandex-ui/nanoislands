@@ -29,7 +29,7 @@
 
             if (!this.options.modal) {
                 this._onmousedown = function(e) {
-
+                    that.options.closedByOuterClick = true;
                     // e.which === 3 -> right mouse button
                     // e.which === 2 -> middle (wheel) mouse button
                     if (e.which === 2 || e.which === 3) {
@@ -365,6 +365,13 @@
                 this.node.widget.close();
                 this.trigger('nb-closed');
             }
+
+            // if popup closed by document click we also should fire event
+            if (this.node && this.node.widget && this.node.widget.options.closedByOuterClick) {
+                this.node.widget.options.closedByOuterClick = false;
+                this.trigger('nb-closed');
+            }
+
             return this;
         },
 
