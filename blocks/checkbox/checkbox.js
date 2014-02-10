@@ -20,6 +20,10 @@ nb.define('checkbox', {
         this.$control = this.$node.find('input[type]');
         this._isChecked = this.$control.prop('checked');
 
+        this.$control.on('click', function(evt) {
+            evt.stopPropagation();
+        });
+
         if (!this._isChecked) {
             this.$control.prop('indeterminate', true);
         }
@@ -276,6 +280,7 @@ nb.define('checkbox', {
      * @fires 'nb-destroyed'
      */
     destroy: function() {
+        this.$control.off('click');
         this.trigger('nb-destroyed', this);
         this.nbdestroy();
     }
