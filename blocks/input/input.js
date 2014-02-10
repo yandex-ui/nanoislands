@@ -277,7 +277,7 @@ nb.define('input', {
      /**
      * Set placeholder of the input
      * @param {String} value
-     * @fires 'nb-name-set'
+     * @fires 'nb-placeholder-set'
      * @returns {Object} nb.block
      */
     setPlaceholder: function(value) {

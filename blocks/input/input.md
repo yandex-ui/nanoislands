@@ -82,79 +82,93 @@ input.hideError()
  */
 input.setErrorContent();
 
-  /**
-    * Focus the input
-    * @fires 'nb-focused'
-    * @returns {Object} nb.block
-    */
-    input.focus();
+/**
+* Focus the input
+* @fires 'nb-focused'
+* @returns {Object} nb.block
+*/
+input.focus();
 
-    /**
-    * Blur the input
-    * @fires 'nb-blured'
-    * @returns {Object} nb.block
-    */
-    input.blur();
+/**
+* Blur the input
+* @fires 'nb-blured'
+* @returns {Object} nb.block
+*/
+input.blur();
 
-    /**
-    * Disables the input
-    * @fires 'nb-disabled'
-    * @returns {Object} nb.block
-    */
-    input.disable();
+/**
+* Disables the input
+* @fires 'nb-disabled'
+* @returns {Object} nb.block
+*/
+input.disable();
 
-    /**
-    * Enables the input
-    * @fires 'nb-enabled'
-    * @returns {Object} nb.block
-    */
-    input.enable();
+/**
+* Enables the input
+* @fires 'nb-enabled'
+* @returns {Object} nb.block
+*/
+input.enable();
 
-    /**
-    * Set value of the input
-    * @param {String|Object} value
-    * @fires 'nb-value-set'
-    * @returns {Object} nb.block
-    */
-    input.setValue('value');
+/**
+* Set value of the input
+* @param {String|Object} value
+* @fires 'nb-value-set'
+* @returns {Object} nb.block
+*/
+input.setValue('value');
 
-    /**
-    * Set name of the input
-    * @param {String|Object} value
-    * @fires 'nb-name-set'
-    * @returns {Object} nb.block
-    */
-    input.setName('value');
+/**
+* Set name of the input
+* @param {String|Object} value
+* @fires 'nb-name-set'
+* @returns {Object} nb.block
+*/
+input.setName('value');
 
-    /**
-    * Get value of the input
-    * @returns {String|Object} value
-    */
-    input.getValue();
+/**
+* Get value of the input
+* @returns {String|Object} value
+*/
+input.getValue();
 
-    /**
-    * Get name of the input
-    * @returns {String|Object} name
-    */
-    input.getName();
+/**
+* Get name of the input
+* @returns {String|Object} name
+*/
+input.getName();
 
-    /**
-    * Return state of the input
-    * @returns {Boolean}
-    */
-    input.isEnabled();
+/**
+* Return state of the input
+* @returns {Boolean}
+*/
+input.isEnabled();
 
 
-    /**
-     * Resets value of the input
-     * @fires 'nb-value-set'
-     * @returns {Object} nb.block
-     */
-    input.reset();
+/**
+ * Resets value of the input
+ * @fires 'nb-value-set'
+ * @returns {Object} nb.block
+ */
+input.reset();
 
-    /**
-    * Destroy the input
-    */
-    input.destroy()
+/**
+* Set placeholder of the input
+* @param {String} value
+* @fires 'nb-placeholder-set'
+* @returns {Object} nb.block
+*/
+input.setPlaceholder('new placeholder');
+
+/**
+* Get placeholder of the input
+* @returns {String} placeholder
+*/
+input.getPlaceholder()
+
+/**
+* Destroy the input
+*/
+input.destroy()
 
 ```
