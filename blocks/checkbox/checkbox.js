@@ -1,6 +1,14 @@
 nb.define('checkbox', {
     events: {
-        'click': '_onclick'
+        'change input': 'onchange'
+    },
+
+    onchange: function() {
+        if (this.$control.prop('checked')) {
+            this.check();
+        } else {
+            this.uncheck();
+        }
     },
 
     /**
@@ -108,19 +116,6 @@ nb.define('checkbox', {
             this.check();
         }
         return this;
-    },
-
-    _onclick: function(e) {
-        // <label><input/></label> may fires event twice
-        // @see http://www.w3.org/TR/html5/forms.html#labeled-control
-        if (e.target.nodeName === 'INPUT') {
-            // fires block events
-            if (this.$control.prop('checked')) {
-                this.check();
-            } else {
-                this.uncheck();
-            }
-        }
     },
 
     /**
