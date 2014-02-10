@@ -29,7 +29,10 @@
 
             if (!this.options.modal) {
                 this._onmousedown = function(e) {
-                    if (e.which !== 1) {
+
+                    // e.which === 3 -> right mouse button
+                    // e.which === 2 -> middle (wheel) mouse button
+                    if (e.which === 2 || e.which === 3) {
                         return;
                     }
 
@@ -43,6 +46,7 @@
                 };
 
                 this.document.on('mousedown', this._onmousedown);
+                this.document.on('touchstart', this._onmousedown);
             }
 
             if (this.options.position.fixed) {
@@ -60,6 +64,7 @@
         close: function() {
             this._super();
             this.document.off('mousedown', this._onmousedown);
+            this.document.off('touchstart', this._onmousedown);
 
             if (this._onresize) {
                 this.window.off('resize', this._onresize);
