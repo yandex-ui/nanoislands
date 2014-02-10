@@ -1,3 +1,19 @@
+##### 0.2.2 — "The Changeling"
+
+###### Fixes
+* select duplicate title fixed
+* disabled select don't open now
+* fix #202 — Двойной сlick на checkbox'e
+* Popup closing on mobile fixed
+* fix #198 — Popup's nb-closed event not working
+
+
+###### API changes
+* [Input]
+  * `placeholder` field and methods
+
+
+
 ##### 0.2.1
 
 ###### Fixes
