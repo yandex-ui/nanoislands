@@ -38,6 +38,29 @@ describe("Input Tests", function() {
             });
         });
 
+        describe("placeholder", function() {
+            it("markup for placeholder", function() {
+                var input = nb.find('input-placeholder');
+                expect(input.$placeholder.find('.nb-input__placeholder-inner').html()).to.equal('email');
+            });
+
+            it("markup for ghost placeholder", function() {
+                var input = nb.find('input-placeholder-ghost');
+                expect(input.$placeholder.find('.nb-input__placeholder-content').html()).to.equal('email');
+            });
+
+            it("Placeholder should be hidden then value set.", function() {
+                var input = nb.find('input-placeholder');
+                input.setValue('Vadim');
+                expect(input.$placeholder.css('visibility')).to.equal('hidden');
+            });
+            it("Placeholder should be hidden then input focused", function() {
+                var input = nb.find('input-placeholder-ghost');
+                input.focus();
+                expect(input.$placeholder.css('visibility')).to.equal('hidden');
+            });
+        });
+
         describe("prefix postfix", function() {
             it("markup left", function() {
                 var input = nb.find('input-left-right');
@@ -272,6 +295,52 @@ describe("Input Tests", function() {
 
             expect(handlerWorks).to.be.ok();
         });
+    });
+
+    describe("#getPlaceholder()", function() {
+        it("should return placeholder", function() {
+            var input = nb.find('input-placeholder');
+            expect(input.getPlaceholder()).to.equal('email');
+        });
+
+        it("should return ghost placeholder", function() {
+            var input = nb.find('input-placeholder-ghost');
+            expect(input.getPlaceholder()).to.equal('email');
+        });
+
+    });
+
+    describe("#setPlaceholder()", function() {
+        it("should set placeholder", function() {
+            var input = nb.find('input-placeholder');
+
+            input.setPlaceholder('new');
+
+            expect(input.getPlaceholder()).to.equal('new');
+        });
+
+        it("should set ghost placeholder", function() {
+            var input = nb.find('input-placeholder-ghost');
+
+            input.setPlaceholder('new');
+
+            expect(input.getPlaceholder()).to.equal('new');
+        });
+
+        it("should throws nb-placeholder-set", function() {
+            var input = nb.find('input-placeholder');
+
+
+            var handlerWorks = false;
+            input.on('nb-placeholder-set', function() {
+                handlerWorks = true;
+            });
+
+            input.setPlaceholder('new');
+
+            expect(handlerWorks).to.be.ok();
+        });
+
     });
 
     describe('#destroy()', function() {

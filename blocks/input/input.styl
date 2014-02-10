@@ -64,5 +64,16 @@
     background: none
     box-shadow: none
 
+  .nb-input__placeholder
+    skin: input-placeholder (-inner '&-inner') (-ghost '&-ghost')
+
+.nb-input_size_s
+  .nb-input__placeholder-inner
+    line-height: $islands_m
+    font-size: $islands_text_s
+
 .nb-input.is-wrong
   skin: input_error
+
+
+

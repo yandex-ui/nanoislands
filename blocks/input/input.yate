@@ -3,7 +3,7 @@ func nb-input(nodeset options) {
         'size': 's'
     }
 
-    if options.leftContent || options.rightContent || options.labelContent || options.reset || options.ghost || options.error {
+    if options.leftContent || options.rightContent || options.labelContent || options.reset || options.ghost || options.error || options.placeholder {
         if options.type == 'multiline' {
            nb-block('textarea', nb-extend(default, options))
         } else {
@@ -25,6 +25,10 @@ match .input nb {
     <label class='nb-input nb-input_type_complex'>
         apply . nb-main-attrs
 
+        if .placeholder || .error || .ghost {
+            @class += ' _init'
+        }
+
         if !( .static ){
             @data-nb='input'
         }
@@ -38,16 +42,30 @@ match .input nb {
         }
 
         if .ghost {
-            @class += ' is-ghost _init'
+            @class += ' is-ghost'
             @data-nb-ghost = 'true'
         }
 
+        if .error {
+            @data-nb-error ='{{ "id": "{ errorId }", "direction":"{ .error.direction}" }}'
+        }
 
+        if .placeholder {
+            <span class="nb-input__placeholder">
+                <span class="nb-input__placeholder-inner">
+                    if .placeholder.ghost {
+                        <span class="nb-input__placeholder-ghost"></span>
+                        <span class="nb-input__placeholder-content">
+                            .placeholder.text
+                        </span>
+                    } else {
+                        .placeholder
+                    }
+                </span>
+            </span>
+        }
 
         if .error {
-           @class += ' _init'
-           @data-nb-error ='{{ "id": "{ errorId }", "direction":"{ .error.direction}" }}'
-
            nb-popup({
                 "class": "nb-popup_type_error"
                 "content": .error.content
@@ -172,10 +190,6 @@ match .inputSimple nb {
             @name = .name
         }
 
-        if .attrs.name {
-            @name = .attrs.name
-        }
-
         if !( .static ){
             @data-nb='input'
         }
@@ -197,10 +211,6 @@ match .textareaSimple nb {
 
         if .name {
             @name = .name
-        }
-
-        if .attrs.name {
-            @name = .attrs.name
         }
 
         if !( .static ){
