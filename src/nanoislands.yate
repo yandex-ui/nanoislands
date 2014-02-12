@@ -1,4 +1,4 @@
-include '../nanoislands.yate'
+include '../node_modules/nanoislands/nanoislands.yate'
 
 func podium(xml markup) {
     <div class="demo-podium">
