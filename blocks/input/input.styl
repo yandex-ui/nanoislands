@@ -65,7 +65,8 @@
     box-shadow: none
 
   .nb-input__placeholder
-    skin: input-placeholder (-inner '&-inner') (-ghost '&-ghost')
+    // In quotes, 'cause there is conflict with nib's input function
+    skin: 'input-placeholder' (-inner '&-inner') (-ghost '&-ghost')
 
 .nb-input_size_s
   .nb-input__placeholder-inner
