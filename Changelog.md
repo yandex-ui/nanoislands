@@ -1,3 +1,8 @@
+##### 0.2.3 — patch
+
+###### Fixes
+* Fixed conflict with nib
+
 ##### 0.2.2 — "The Changeling"
 
 ###### Fixes
