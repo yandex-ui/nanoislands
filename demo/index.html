@@ -30,7 +30,8 @@
 
         </script>
 
-        <!--<script type="text/javascript" src="beautify-html.js"></script>-->
+        <script type="text/javascript" src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+        <script type="text/javascript" src="beautify-html.js"></script>
         <script type="text/javascript">
 
             $(function() {
@@ -40,21 +41,41 @@
                   return e.childNodes.length === 0 ? '' : e.childNodes[0].nodeValue;
                 }
 
+                $('.js-beautify').each(function() {
+                    var $el = $(this);
+
+                    $el.text(html_beautify(unescapeHTML($el.html()), {
+                        unformatted: [],
+                        wrap_line_length: 80
+                    }));
+                });
+                hljs.initHighlightingOnLoad();
+
                 var $content = $('.content');
                 var TOGGLE_HTML = 'content_hide-html';
                 var TOGGLE_COMPACT = 'content_compact';
+
+                if (localStorage.getItem('html') == 'on') {
+                    $content.removeClass(TOGGLE_HTML);
+                    $('.js-toggle-html').prop('checked', true);
+                }
+
+                if (localStorage.getItem('compact') == 'on') {
+                    $content.addClass(TOGGLE_COMPACT);
+                    $('.js-toggle-compact').prop('checked', true);
+                }
 
                 $(document)
                     .on('change', '.js-toggle-html', function() {
                         var on = this.checked;
 
-                        localStorage.setItem('html', +on);
-                        $content.toggleClass(TOGGLE_HTML, !on);
+                        localStorage.setItem('html', this.checked ? 'on': 'off');
+                        $content.toggleClass(TOGGLE_HTML, on);
                     })
                     .on('change', '.js-toggle-compact', function() {
                         var on = this.checked;
 
-                        localStorage.setItem('compact', +!on);
+                        localStorage.setItem('compact',  this.checked ? 'on' : 'off');
                         $content.toggleClass(TOGGLE_COMPACT, on);
                     });
 
