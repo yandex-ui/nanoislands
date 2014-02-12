@@ -37,6 +37,10 @@ body
 
 .demo-pane__desc
 {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+
     float: left;
     width: 150px;
 }

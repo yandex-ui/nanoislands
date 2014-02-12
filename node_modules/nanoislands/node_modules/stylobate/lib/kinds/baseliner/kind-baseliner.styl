@@ -1,0 +1,26 @@
+kind-baseliner()
+  display: inline-block
+
+  if !ie
+    vertical-align: baseline
+  else
+    vertical-align: middle
+
+  stylobate_defaults(arguments, -helper '&:before')
+
+kind-baseliner-content()
+  float: left
+  width: 100%
+
+kind-baseliner-helper()
+  display: inline-block
+  overflow: hidden
+
+  width: 0
+
+  // Inserting a space
+  if match(':(before|after)', selector())
+    content: " "
+  else
+    &:before
+      content: " "

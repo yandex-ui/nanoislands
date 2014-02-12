@@ -47,9 +47,23 @@ var slider = nb.block(node);
 /**
  * Set specified value to slider
  * @param {Number} value
- * @fires 'nb-slider_value-set'
+ * @fires 'nb-value-set'
  */
 slider.setValue(45);
+
+/**
+ * Set name of the fallback input
+ * @param {String|Number} value
+ * @fires 'nb-name-set'
+ * @return {Object} nb.block
+ */
+slider.setName('name')
+
+/**
+ * Get name of the fallback input
+ * @return {String|Boolean} name
+ */
+slider.getName(); // 'name'
 
 /**
  * Return slider's value
@@ -59,19 +73,19 @@ slider.getValue(); // -> 45
 
 /**
  * Set disabled state
- * @fires 'nb-slider_disabled'
+ * @fires 'nb-disabled'
  */
 slider.disable();
 
 /**
  * Reset disabled state
- * @fires 'nb-slider_enabled'
+ * @fires 'nb-enabled'
  */
  slider.enable();
 
  /**
  * Destroy the slider
- * @fires 'nb-slider_destroyed'
+ * @fires 'nb-destroyed'
  */
 slider.destroy();
 

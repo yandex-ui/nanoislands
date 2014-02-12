@@ -92,3 +92,34 @@ skin-islands-input-label()
   font-size: $islands_m
 
   background: linear-gradient(rgba(#FFE178, 0.1), rgba(#000, 0.02))
+
+
+skin-islands-input-placeholder()
+  kind: block
+  height: 0
+
+  color: utilus_alike(arguments, $islands_color_text_misc)
+
+skin-islands-input-placeholder-inner()
+  position: absolute
+  top: -1px
+  left: -1px
+
+  skin-islands-input-box()
+  padding: 0
+  min-height: 0
+
+  pointer-events: none
+
+  z-index: 9 // To overlap if placed before
+
+  // Should have a kind for ellipsis
+  // Maybe this should apply when not after textarea,
+  // Cause we could want to have multiline placeholder in this case
+  max-width: 100%
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+skin-islands-input-placeholder-ghost()
+  visibility: hidden

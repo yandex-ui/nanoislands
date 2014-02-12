@@ -70,6 +70,46 @@ func select-medium() {
     ' '
     nb-select( {
       'size': 'm'
+      'id': 'select-gropu1'
+      'class': 'my-test-class'
+      'items': [
+          {
+              'text': 'Карта'
+              'value': 'option1'
+              'selected': 'true'
+          }
+          {
+              'text': 'Спутник'
+              'value': 'option2'
+          }
+          {
+              'text': 'Гибрид'
+              'value': 'option3'
+          }
+
+          {
+              'text': 'Группа'
+              'group': [
+                    {
+                        'text': 'Супер Карта'
+                        'value': 'option4'
+                    }
+                    {
+                        'text': 'Супер Спутник'
+                        'value': 'option5'
+                    }
+                    {
+                        'text': 'Супер Гибрид'
+                        'value': 'option6'
+                    }
+              ]
+          }
+      ]
+    })
+
+    ' '
+    nb-select( {
+      'size': 'm'
       'id': 'select5'
       'class': 'my-test-class'
       'theme': 'action'
@@ -102,6 +142,34 @@ func select-medium() {
           {
               'text': 'Гибрид2'
               'value': 'option31'
+          }
+      ]
+    })
+
+    ' '
+    nb-select( {
+      'size': 'm'
+      'id': 'select6'
+      'class': 'my-test-class'
+      'attrs': {
+        'style': 'max-width: 200px'
+      }
+      'items': [
+          {
+              'icon': 'twitter'
+              'text': 'Twitter'
+              'value': 'option0'
+              'selected': 'true'
+          }
+          {
+              'icon': 'vk'
+              'text': 'VK'
+              'value': 'option1'
+          }
+          {
+              'text': 'Ещё'
+              'value': 'option4'
+              'icon': 'three-dots'
           }
       ]
     })

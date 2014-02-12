@@ -15,6 +15,7 @@
 * `'class'` {array} `['my_class1', 'my_class2']` — additional classes
 * `'disabled'` {boolean} — disabled button
 * `'icon'` {string} ... — link to icon
+* `'iconText'` {string} ... — symbol for icon
 * `'content'` {string} ... — content of button
 * `'attrs'` {object} `{'type': 'submit', 'attr2: 'value2' }` — custom DOM attributes for button
 * `'static'` {boolean} — block without nanoblocks functionality (JavaScript API)
@@ -70,7 +71,7 @@ button — nb block
     /**
     * Set text of the button
     * @param text {String} — text for the button
-    * @fires 'nb-button_text-set'
+    * @fires 'nb-text-set'
     * @returns {Object} nb.block
     */
    button.setText('Button');
@@ -84,7 +85,7 @@ button — nb block
    /**
     * Set href of the link button
     * @param href {String} — link for the link button
-    * @fires 'nb-button_href-set'
+    * @fires 'nb-url-set'
     * @returns {Object} nb.block
     */
    button.setUrl('http://ya.ru');
@@ -97,14 +98,14 @@ button — nb block
 
    /**
     * Disables the button
-    * @fires 'nb-button_disabled'
+    * @fires 'nb-disabled'
     * @returns {Object} nb.block
     */
    button.disable();
 
    /**
      * Enables the button
-     * @fires 'nb-button_enabled'
+     * @fires 'nb-enabled'
      * @returns {Object} nb.block
      */
    button.enable();
@@ -118,21 +119,21 @@ button — nb block
 
    /**
     * Focus the button
-    * @fires 'nb-button_focused'
+    * @fires 'nb-focused'
     * @returns {Object} nb.block
     */
    button.focus();
 
    /**
     * Blur the button
-    * @fires 'nb-button_blured'
+    * @fires 'nb-blured'
     * @returns {Object} nb.block
     */
    button.blur();
 
     /**
      * Destroy the button
-     * @fires 'nb-button_destroyed'
+     * @fires 'nb-destroyed'
      */
    button.destroy();
 

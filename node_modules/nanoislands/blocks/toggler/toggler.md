@@ -42,7 +42,7 @@ var toggler = nb.block(node);
     /**
      * Set value of the toggler
      * @param {String} value of the check state
-     * @fires 'nb-toggler_value-set'
+     * @fires 'nb-value-set'
      * @returns {Object} nb.block
      */
     toggler.setValue('value');
@@ -56,6 +56,7 @@ var toggler = nb.block(node);
     /**
      * Toggle to the oppocite value
      * Do nothing if toggler is disabled
+     * @fires 'nb-changed'
      * @returns {Object} nb.block
      */
     toggler.toggle();
@@ -69,20 +70,20 @@ var toggler = nb.block(node);
     /**
      * Set name of the toggler
      * @param {String} value
-     * @fires 'nb-toggler_name-set'
+     * @fires 'nb-name-set'
      * @returns {Object} nb.block
      */
     toggler.setName(value);
 
     /**
      * Disable toggler
-     * @fires 'nb-toggler_disabled'
+     * @fires 'nb-disabled'
      */
     toggler.disable()
 
     /**
      * Enable toggler
-     * @fires 'nb-toggler_enabled'
+     * @fires 'nb-enabled'
      */
     enable()
 
@@ -95,14 +96,14 @@ var toggler = nb.block(node);
 
     /**
      * Focus the input
-     * @fires 'nb-toggler_focused'
+     * @fires 'nb-focused'
      * @returns {Object} nb.block
      */
     toggler.focus();
 
     /**
      * Blur the input
-     * @fires 'nb-toggler_blured'
+     * @fires 'nb-blured'
      * @returns {Object} nb.block
      */
     toggler.blur();
@@ -115,14 +116,14 @@ var toggler = nb.block(node);
 
     /**
      * Checking toggler
-     * @fires 'nb-toggler_checked'
+     * @fires 'nb-checked'
      * @returns {Object} nb.block
      */
     toggler.check();
 
     /**
      * Unchecking toggler
-     * @fires 'nb-toggler_unchecked'
+     * @fires 'nb-unchecked'
      * @returns {Object} nb.block
      */
     toggler.uncheck();

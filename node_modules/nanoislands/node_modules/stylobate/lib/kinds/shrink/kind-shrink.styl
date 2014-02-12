@@ -5,8 +5,9 @@ kind-shrink()
   overflow: hidden
 
   if ellipsis in arguments
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    kind(ellipsis)
+
+  deprecate(arguments, ellipsis, false, '`ellipsis` param for shrink kind is deprecated, use ellipsis kind instead.')
 
   // Can't use extend here 'cause Stylus don't know -moz-doc
   if inline in arguments

@@ -1,0 +1,16 @@
+kind-disabled()
+  cursor: default !important
+
+  opacity: utilus_alike(arguments, 0.5)
+
+  &:focus
+    outline: 0
+
+  // Prevent different states in most browsers
+  unless with-events in arguments
+    pointer-events: none
+
+  stylobate_defaults(arguments, -nested '& &')
+
+kind-disabled-nested()
+  opacity: 1

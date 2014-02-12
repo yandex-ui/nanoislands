@@ -6,14 +6,14 @@
   },
   "name": "nanoislands-demo",
   "description": "Demo for nanoislands project",
-  "version": "0.1.32",
+  "version": "0.2.3",
   "homepage": "https://github.yandex-team.ru/UFO/nanoislands",
   "repository": {
     "type": "git",
     "url": "git://github.com/yandex-ui/nanoislands.git"
   },
   "dependencies": {
-    "nanoislands": "0.1.x",
+    "nanoislands": "*",
     "yate": "0.0.64"
   },
   "engines": {

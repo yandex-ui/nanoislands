@@ -1,0 +1,12 @@
+$utilus_mixin_cache = {}
+
+utilus_cache($where)
+  $key = '' + $where
+  if $key in $utilus_mixin_cache
+    @extend {"$placeholder_for_" + $utilus_mixin_cache[$key]}
+  else
+    &, $placeholder_for_&
+      $utilus_mixin_cache[$key] = selector()
+      {block}
+
+cache ?= utilus_cache

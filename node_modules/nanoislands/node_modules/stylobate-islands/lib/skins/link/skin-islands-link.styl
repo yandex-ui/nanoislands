@@ -1,6 +1,24 @@
 skin-islands-link()
   // Shoulf find out how to merge arguments
-  kind: link utilus_get_color(arguments) utilus_get_color(arguments, $index:1) utilus_get_ident(arguments) utilus_get_ident(arguments, $index:1)
+  $underline = ''
+  unless underline in arguments
+    $underline = (_underline '')
+
+  $hover = (_hover '')
+  unless no-hover in arguments
+    $hover = (_hover '&:hover' utilus_alike(arguments, #D00, $index:1))
+
+  $pseudo = ''
+  if pseudo in arguments
+    $pseudo = _pseudo
+
+  if nested in arguments
+    if underline in arguments
+      kind: link_underline
+    if pseudo in arguments
+      kind: link_pseudo
+  else
+    kind: link utilus_alike(arguments, #22C) $underline $hover $pseudo
 
   if fix-gaps in arguments
     background: linear-gradient(rgba(#000, 0), rgba(#000, 0)) no-repeat

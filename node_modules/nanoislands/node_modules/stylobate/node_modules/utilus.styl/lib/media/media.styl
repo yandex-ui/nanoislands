@@ -1,0 +1,37 @@
+// Define the cache and the aliases
+$utilus_media_cache = {}
+
+// Aliases, got from inuit.css
+$utilus_media_aliases = {
+  palm:       '(max-width: 480px)'
+  lap:        '(min-width: 481px) and (max-width: 1023px)'
+  lap-and-up: '(min-width: 481px)'
+  portable:   '(max-width: 1023px)'
+  desk:       '(min-width: 1024px)'
+  desk-wide:  '(min-width: 1200px)'
+}
+
+// Mixin for caching the blocks with the given conditions
+utilus_media($condition)
+  helper($condition)
+    unless $utilus_media_cache[$condition]
+      $utilus_media_cache[$condition] = ()
+    push($utilus_media_cache[$condition], block)
+
+  +helper($condition)
+    {selector() + ''}
+      {block}
+
+media ?= utilus_media
+
+// Function we would use to call all the cached styles
+utilus_flush_media()
+  for $media, $blocks in $utilus_media_cache
+    $media = unquote($utilus_media_aliases[$media] || $media)
+    $media = '(%s)' % $media unless match('\(', $media)
+    $media = 'only screen and %s' % $media
+    @media $media
+      for $block in $blocks
+        {$block}
+
+flush_media ?= utilus_flush_media

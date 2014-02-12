@@ -1,8 +1,7 @@
 func input-small() {
-    block = {
-        'content': 'Москва'
-    }
-    nb-input(block)
+    nb-input({
+       'content': 'Москва'
+    })
 }
 
 func input-medium() {
@@ -13,36 +12,90 @@ func input-medium() {
 }
 
 func input-disabled() {
-    block = {
-        'disabled': true()
-        'content': 'Москва'
-    }
-    nb-input(block)
+    nb-input({
+       'disabled': true()
+       'content': 'Москва'
+    })
 }
 
 func input-length() {
-    block = {
+    nb-input({
         'attrs': {
             'length': 11
             'maxlength': 11
             'placeholder': '11 символов'
         }
-    }
-    nb-input(block)
+    })
 }
 
 func input-multiline() {
-    block = {
-        'type': 'multiline'
-    }
-    nb-input(block)
+    nb-input({
+       'type': 'multiline'
+    })
 }
 
 func input-ghost() {
-    block = {
+    nb-input({
         'ghost': true()
-    }
-    nb-input(block)
+    })
+}
+
+func input-reset() {
+    nb-input({
+        'reset': true()
+        'size': 'm'
+        'content': 'privet'
+    })
+}
+
+func input-small-reset() {
+    nb-input({
+        'reset': true()
+        'size': 's'
+        'content': 'privet'
+    })
+}
+
+func input-left-right() {
+    nb-input({
+        'leftContent': 'Prefix...'
+        'rightContent': '...postfix'
+    })
+}
+
+func input-textarea-reset() {
+    nb-input( {
+        'reset': true()
+        'size': 'm'
+        'type': 'multiline'
+        'content': 'privet'
+    })
+}
+
+func input-error() {
+    nb-input({
+        'content': 'Здесь будет ошибка'
+        'error': {
+            'direction': 'right'
+            'content': 'Все плохо!!!'
+        }
+    })
+}
+
+func input-placeholder() {
+    nb-input({
+        'placeholder': 'Your Email or Name'
+    })
+}
+
+func input-placeholder-ghost() {
+    nb-input({
+        'content': 'hello@nano.is'
+        'placeholder': {
+            'ghost': true()
+            'text': ' — Your Email or Name'
+        }
+    })
 }
 
 func inputs() {
@@ -70,7 +123,7 @@ func inputs() {
         <div class="demo-h3">
             'Disabled '
             <span class="demo-code demo-code_small">
-                '.nb-input_disabled'
+                '.nb-disabled'
             </span>
         </div>
 
@@ -92,9 +145,60 @@ func inputs() {
     </div>
     <div class="demo-section">
         <div class="demo-h3">
+            'Multiline with reset'
+        </div>
+
+        show(input-textarea-reset())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
             'Ghost'
         </div>
 
         show(input-ghost())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Reset'
+        </div>
+
+        show(input-reset())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Small reset'
+        </div>
+
+        show(input-small-reset())
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Postfix, prefix'
+        </div>
+
+        show(input-left-right())
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Error'
+        </div>
+
+        show(input-error())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Placeholders'
+        </div>
+
+        show(input-placeholder())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Placeholders'
+        </div>
+
+        show(input-placeholder-ghost())
     </div>
 }

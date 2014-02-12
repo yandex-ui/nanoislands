@@ -66,7 +66,7 @@ Initialize all nb blocks with class '_init' within DOM node
 /**
 * Set value of the progress
 * @param {String|Number} value
-* @fires 'nb-progress_value-set'
+* @fires 'nb-value-set'
 * @returns {Object} nb.block
 */
 progress.setValue(30)

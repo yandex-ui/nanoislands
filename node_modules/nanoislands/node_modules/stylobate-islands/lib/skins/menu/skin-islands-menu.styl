@@ -10,8 +10,7 @@ skin-islands-menu-item()
   white-space: nowrap
 
   if ellipsis in arguments
-    overflow: hidden
-    text-overflow: ellipsis
+    kind: ellipsis
 
   unless utilus_get(arguments, '_size')
     skin-islands-menu-item_size(arguments)
