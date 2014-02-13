@@ -1126,7 +1126,7 @@ var nb = nb || {};
             var blocks = _cache[id];
             if (blocks) {
                 for (var name in blocks) {
-                    blocks[name].nbdestroy();
+                    blocks[name].destroy();
                 }
             }
         }
