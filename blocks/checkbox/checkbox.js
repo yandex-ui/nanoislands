@@ -66,6 +66,11 @@ nb.define('checkbox', {
             return this;
         }
 
+        nb.trigger('checkbox:checked', {
+            name: this.getName(),
+            value: this.getValue()
+        });
+
         var isChecked = this.isChecked();
 
         this.$control.prop({
@@ -79,11 +84,6 @@ nb.define('checkbox', {
         if (!isChecked) {
             this.trigger('nb-changed', this);
         }
-
-        nb.trigger('checkbox:checked', {
-            name: this.getName(),
-            value: this.getValue()
-        });
 
         return this;
     },
