@@ -286,3 +286,144 @@ nb.define('checkbox', {
     }
 
 }, 'base');
+
+
+
+
+/**
+ * Checkbox collection
+ *
+ * @example
+ * <div class="nb-checkbox-group _init" data-nb="checkbox-group">
+ *     nb-checkbox({
+ *         'name': 'test'
+ *         'value': '1'
+ *         'content': '1'
+ *         'type': 'radio'
+ *     })
+ *     nb-checkbox({
+ *         'name': 'test'
+ *         'value': '2'
+ *         'content': '2'
+ *         'type': 'radio'
+ *         'checked': true()
+ *     })
+ * </div>
+ *
+ * // return 2
+ * nb.block(document.querySelector('.nb-checkbox-group')).getValue();
+ *
+ * nb.block(document.querySelector('.nb-checkbox-group')).on('nb-changed', function(nameEvent, block) {
+ *     console.log(block.getValue());
+ * });
+ */
+nb.define('checkbox-group', {
+
+    /**
+     * @param {String} evtName name event
+     * @param {nb.block} item
+     * @fires 'nb-changed'
+     */
+    _onItemChecked: function(evtName, item) {
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i] != item) {
+                this.items[i].uncheck();
+            }
+        }
+
+        this.trigger('nb-changed', this);
+    },
+
+    /**
+     * Init a checkbox collection
+     * @fires 'nb-inited'
+     */
+    oninit: function() {
+        var onItemChecked = $.proxy(this._onItemChecked, this);
+
+        this.items = this.$node.find('.nb-checkbox').map(function() {
+            var block = nb.block(this);
+            block.on('nb-checked', onItemChecked);
+            return block;
+        });
+
+        this.trigger('nb-inited', this);
+    },
+
+    /**
+     * Return check state of the checkbox or radio
+     * @returns {Boolean}
+     */
+    isChecked: function() {
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i].isChecked()) {
+                return true;
+            }
+        }
+
+        return false;
+    },
+
+    /**
+     * Gets label of the checked checkbox or radio
+     * @returns {String|undefined}
+     */
+    getLabel: function() {
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i].isChecked()) {
+                return this.items[i].getLabel();
+            }
+        }
+    },
+
+    /**
+     * Gets checked checkbox value
+     * @returns {String|undefined}
+     */
+    getValue: function() {
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i].isChecked()) {
+                return this.items[i].getValue();
+            }
+        }
+    },
+
+    /**
+     * Set checkbox value
+     * @param {String|Number} value
+     * @fires 'nb-value-set'
+     * @returns {Object} nb.block
+     */
+    setValue: function(value) {
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i].getValue() == value) {
+                this.items[i].check();
+                this.trigger('nb-value-set', this);
+                break;
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Get name of the checkbox or radio
+     * @returns {String} name
+     */
+    getName: function() {
+        return this.items[0].getName();
+    },
+
+    /**
+     * @fires 'nb-destroyed'
+     */
+    destroy: function() {
+        this.trigger('nb-destroyed', this);
+        this.nbdestroy();
+    }
+
+}, 'base');
+
+
+
+
