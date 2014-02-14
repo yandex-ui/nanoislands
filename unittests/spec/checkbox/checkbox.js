@@ -227,6 +227,24 @@ describe("Checkbox Tests", function() {
                 this.button.check();
                 expect(this.button.isChecked()).to.be.ok();
             });
+
+            it('radio group', function() {
+                var radio1 = nb.find('checkbox-group1');
+                var radio2 = nb.find('checkbox-group2');
+
+                expect(radio1.isChecked()).to.not.ok();
+                expect(radio2.isChecked()).to.not.ok();
+
+                radio1.check();
+
+                expect(radio1.isChecked()).to.be.ok();
+                expect(radio2.isChecked()).to.not.ok();
+
+                radio2.check();
+
+                expect(radio1.isChecked()).to.not.ok();
+                expect(radio2.isChecked()).to.be.ok();
+            });
         });
     });
 

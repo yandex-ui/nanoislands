@@ -51,4 +51,19 @@ match .checkbox {
         "content": "Button"
         "id": "checkbox-without-attr-value"
     })
+
+
+    nb-checkbox({
+        "value": "my-value1"
+        "type": "radio"
+        "name": "checkbox-group"
+        "id": "checkbox-group1"
+    })
+
+    nb-checkbox({
+        "value": "my-value2"
+        "type": "radio"
+        "name": "checkbox-group"
+        "id": "checkbox-group2"
+    })
 }
