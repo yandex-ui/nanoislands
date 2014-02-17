@@ -6,19 +6,18 @@
     if ie
       display: inline-block
 
-  &__button
+  .nb-button__text
     if ie
       display: none
+    if !ie
+      overflow: hidden
+      text-overflow: ellipsis
+      padding-right: 4px
+      margin-right: - @padding-right
 
-  .nb-button__text
-    overflow: hidden
-    text-overflow: ellipsis
-    padding-right: 4px
-    margin-right: - @padding-right
-
-    // For baseline alignment
-    float: left
-    width: 100%
+      // For baseline alignment
+      float: left
+      width: 100%
 
 // For baseline alignment,
 // TODO: move to Stylobate
@@ -57,9 +56,6 @@
 
 .nb-select__item
   reset: li
-
-.nb-select__fallback
-  display: none
 
 .nb-select__text
   skin: menu-item (_checked '.nb-select__item_selected_yes &')
