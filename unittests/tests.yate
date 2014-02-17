@@ -1,4 +1,5 @@
 include '../nanoislands.yate'
+include 'spec/common/common.yate'
 include 'spec/button/button.yate'
 include 'spec/checkbox/checkbox.yate'
 include 'spec/input/input.yate'
