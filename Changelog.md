@@ -1,3 +1,9 @@
+##### 0.2.5 — patch
+
+###### Fixes
+* jquery form serialize checkbox bug fix
+* Now radio checkboxes with the same name behave correctly
+
 ##### 0.2.4 — patch
 
 ###### Fixes
