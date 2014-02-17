@@ -3,6 +3,12 @@ nb.define('checkbox', {
         'change input': 'onchange'
     },
 
+    _onCheckboxChecked: function(evtName, params) {
+        if (params.name == this.getName() && params.value != this.getValue()) {
+            this.uncheck();
+        }
+    },
+
     onchange: function() {
         if (this.$control.prop('checked')) {
             this.check();
@@ -27,6 +33,8 @@ nb.define('checkbox', {
         if (!this._isChecked) {
             this.$control.prop('indeterminate', true);
         }
+
+        nb.on('checkbox:checked', $.proxy(this._onCheckboxChecked, this));
 
         this.trigger('nb-inited', this);
     },
@@ -57,6 +65,11 @@ nb.define('checkbox', {
         if (!this.isEnabled()) {
             return this;
         }
+
+        nb.trigger('checkbox:checked', {
+            name: this.getName(),
+            value: this.getValue()
+        });
 
         var isChecked = this.isChecked();
 
@@ -281,6 +294,7 @@ nb.define('checkbox', {
      */
     destroy: function() {
         this.$control.off('click');
+        nb.off('checkbox:checked', $.proxy(this._onCheckboxChecked, this));
         this.trigger('nb-destroyed', this);
         this.nbdestroy();
     }
