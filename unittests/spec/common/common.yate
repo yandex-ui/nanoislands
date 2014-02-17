@@ -1,0 +1,6 @@
+match .common {
+    nb-button({
+        "content": "Button"
+        "id": "button"
+    })
+}
