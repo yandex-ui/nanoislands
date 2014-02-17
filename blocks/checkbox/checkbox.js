@@ -34,7 +34,9 @@ nb.define('checkbox', {
             this.$control.prop('indeterminate', true);
         }
 
-        nb.on('checkbox:checked', $.proxy(this._onCheckboxChecked, this));
+        if (this.getType() === 'radio') {
+            nb.on('checkbox:checked', $.proxy(this._onCheckboxChecked, this));
+        }
 
         this.trigger('nb-inited', this);
     },
@@ -65,11 +67,12 @@ nb.define('checkbox', {
         if (!this.isEnabled()) {
             return this;
         }
-
-        nb.trigger('checkbox:checked', {
-            name: this.getName(),
-            value: this.getValue()
-        });
+        if (this.getType() === 'radio') {
+            nb.trigger('checkbox:checked', {
+                name: this.getName(),
+                value: this.getValue()
+            });
+        }
 
         var isChecked = this.isChecked();
 
@@ -294,7 +297,9 @@ nb.define('checkbox', {
      */
     destroy: function() {
         this.$control.off('click');
-        nb.off('checkbox:checked', $.proxy(this._onCheckboxChecked, this));
+        if (this.getType() === 'radio') {
+            nb.off('checkbox:checked', $.proxy(this._onCheckboxChecked, this));
+        }
         this.trigger('nb-destroyed', this);
         this.nbdestroy();
     }
