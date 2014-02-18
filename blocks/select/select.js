@@ -173,6 +173,19 @@ nb.define('select', {
             }
             return that.$selected.val();
         };
+
+        // safe original function
+        that.$jUI.__resizeMenu = that.$jUI._resizeMenu;
+
+        that.$jUI._resizeMenu = function() {
+            // set maxHeight before the menu is displayed
+            if (that.data.maxheight) {
+                that._setMaxHeight(that.data.maxheight);
+            }
+
+            this.__resizeMenu();
+        };
+
         that.$jUI.menu.element.on('click', function(evt) {
             evt.stopPropagation();
         });
@@ -241,10 +254,6 @@ nb.define('select', {
 
         // pass empty string as value to search for, displaying all results
         this.$node.autocomplete('search', '');
-
-        if (this.data.maxheight) {
-            this._setMaxHeight(this.data.maxheight);
-        }
 
         this.trigger('nb-rendered', this);
         return this;
