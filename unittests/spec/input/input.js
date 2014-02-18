@@ -38,26 +38,26 @@ describe("Input Tests", function() {
             });
         });
 
-        describe("placeholder", function() {
-            it("markup for placeholder", function() {
-                var input = nb.find('input-placeholder');
-                expect(input.$placeholder.find('.nb-input__placeholder-inner').html()).to.equal('email');
+        describe("Hint", function() {
+            it("markup for hint", function() {
+                var input = nb.find('input-hint');
+                expect(input.$hint.find('.nb-input__hint-inner').html()).to.equal('email');
             });
 
-            it("markup for ghost placeholder", function() {
-                var input = nb.find('input-placeholder-ghost');
-                expect(input.$placeholder.find('.nb-input__placeholder-content').html()).to.equal('email');
+            it("markup for ghost hint", function() {
+                var input = nb.find('input-hint-ghost');
+                expect(input.$hint.find('.nb-input__hint-content').html()).to.equal('email');
             });
 
-            it("Placeholder should be hidden then value set.", function() {
-                var input = nb.find('input-placeholder');
+            it("Hint should be hidden then value set.", function() {
+                var input = nb.find('input-hint');
                 input.setValue('Vadim');
-                expect(input.$placeholder.css('visibility')).to.equal('hidden');
+                expect(input.$hint.css('visibility')).to.equal('hidden');
             });
-            it("Placeholder should be hidden then input focused", function() {
-                var input = nb.find('input-placeholder-ghost');
+            it("Hint should be hidden then input focused", function() {
+                var input = nb.find('input-hint-ghost');
                 input.focus();
-                expect(input.$placeholder.css('visibility')).to.equal('hidden');
+                expect(input.$hint.css('visibility')).to.equal('hidden');
             });
         });
 
@@ -298,45 +298,45 @@ describe("Input Tests", function() {
     });
 
     describe("#getPlaceholder()", function() {
-        it("should return placeholder", function() {
-            var input = nb.find('input-placeholder');
-            expect(input.getPlaceholder()).to.equal('email');
+        it("should return hint", function() {
+            var input = nb.find('input-hint');
+            expect(input.getHint()).to.equal('email');
         });
 
-        it("should return ghost placeholder", function() {
-            var input = nb.find('input-placeholder-ghost');
-            expect(input.getPlaceholder()).to.equal('email');
+        it("should return ghost hint", function() {
+            var input = nb.find('input-hint-ghost');
+            expect(input.getHint()).to.equal('email');
         });
 
     });
 
     describe("#setPlaceholder()", function() {
-        it("should set placeholder", function() {
-            var input = nb.find('input-placeholder');
+        it("should set hint", function() {
+            var input = nb.find('input-hint');
 
-            input.setPlaceholder('new');
+            input.setHint('new');
 
-            expect(input.getPlaceholder()).to.equal('new');
+            expect(input.getHint()).to.equal('new');
         });
 
-        it("should set ghost placeholder", function() {
-            var input = nb.find('input-placeholder-ghost');
+        it("should set ghost hint", function() {
+            var input = nb.find('input-hint-ghost');
 
-            input.setPlaceholder('new');
+            input.setHint('new');
 
-            expect(input.getPlaceholder()).to.equal('new');
+            expect(input.getHint()).to.equal('new');
         });
 
-        it("should throws nb-placeholder-set", function() {
-            var input = nb.find('input-placeholder');
+        it("should throws nb-hint-set", function() {
+            var input = nb.find('input-hint');
 
 
             var handlerWorks = false;
-            input.on('nb-placeholder-set', function() {
+            input.on('nb-hint-set', function() {
                 handlerWorks = true;
             });
 
-            input.setPlaceholder('new');
+            input.setHint('new');
 
             expect(handlerWorks).to.be.ok();
         });

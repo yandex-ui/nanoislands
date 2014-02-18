@@ -21,7 +21,7 @@ HTML input element.
 * `'error'` {object} `{content: 'error content', direction: 'right|left'}`
 * `'leftContent'` {string|xml} — content of the left field of input
 * `'rightContent'` {string|xml} — content of the right field of input
-* `'placeholder'` {string | Object} — content of placeholder or `{ text: '...', ghost: true() }` for ghost placeholder
+* `'hint'` {string | Object} — content of hint or `{ text: '...', ghost: true() }` for ghost hint
 
 ### Examples
 

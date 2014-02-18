@@ -3,7 +3,7 @@ func nb-input(nodeset options) {
         'size': 's'
     }
 
-    if options.leftContent || options.rightContent || options.labelContent || options.reset || options.ghost || options.error || options.placeholder {
+    if options.leftContent || options.rightContent || options.labelContent || options.reset || options.ghost || options.error || options.hint {
         if options.type == 'multiline' {
            nb-block('textarea', nb-extend(default, options))
         } else {
@@ -25,7 +25,7 @@ match .input nb {
     <label class='nb-input nb-input_type_complex'>
         apply . nb-main-attrs
 
-        if .placeholder || .error || .ghost {
+        if .hint || .error || .ghost {
             @class += ' _init'
         }
 
@@ -50,16 +50,16 @@ match .input nb {
             @data-nb-error ='{{ "id": "{ errorId }", "direction":"{ .error.direction}" }}'
         }
 
-        if .placeholder {
-            <span class="nb-input__placeholder">
-                <span class="nb-input__placeholder-inner">
-                    if .placeholder.ghost {
-                        <span class="nb-input__placeholder-ghost"></span>
-                        <span class="nb-input__placeholder-content">
-                            .placeholder.text
+        if .hint {
+            <span class="nb-input__hint">
+                <span class="nb-input__hint-inner">
+                    if .hint.ghost {
+                        <span class="nb-input__hint-ghost"></span>
+                        <span class="nb-input__hint-content">
+                            .hint.text
                         </span>
                     } else {
-                        .placeholder
+                        .hint
                     }
                 </span>
             </span>

@@ -28,10 +28,10 @@ nb.define('input', {
             that.trigger('nb-changed', this, e);
         });
 
-        this.$placeholder = this.$node.find('.nb-input__placeholder');
+        this.$hint = this.$node.find('.nb-input__hint');
 
-        if (this.$placeholder.length) {
-            this._initPlaceholder();
+        if (this.$hint.length) {
+            this._inithint();
         }
 
         this.focused = false;
@@ -52,32 +52,32 @@ nb.define('input', {
         this.trigger('nb-inited', this);
     },
 
-    _initPlaceholder: function() {
+    _inithint: function() {
         var that = this;
 
-        this.$placeholderGhost = this.$placeholder.find('.nb-input__placeholder-ghost');
+        this.$hintGhost = this.$hint.find('.nb-input__hint-ghost');
 
-        if (this.$placeholderGhost.length) {
+        if (this.$hintGhost.length) {
 
-            this.$placeholderGhost.html(that.getValue());
+            this.$hintGhost.html(that.getValue());
 
             this.$control.on('input', function() {
-                that.$placeholderGhost.html(that.getValue());
+                that.$hintGhost.html(that.getValue());
             });
 
             this.$control.on('focus', function() {
-                that.$placeholder.css('visibility', 'hidden');
+                that.$hint.css('visibility', 'hidden');
             });
 
             this.$control.on('blur', function() {
-                that.$placeholder.css('visibility', 'inherit');
+                that.$hint.css('visibility', 'inherit');
             });
         } else {
             this.$control.on('input', function() {
                 if (that.getValue() === '') {
-                    that.$placeholder.css('visibility', 'inherit');
+                    that.$hint.css('visibility', 'inherit');
                 } else {
-                    that.$placeholder.css('visibility', 'hidden');
+                    that.$hint.css('visibility', 'hidden');
                 }
             });
         }
@@ -275,36 +275,36 @@ nb.define('input', {
     },
 
      /**
-     * Set placeholder of the input
+     * Set hint of the input
      * @param {String} value
-     * @fires 'nb-placeholder-set'
+     * @fires 'nb-hint-set'
      * @returns {Object} nb.block
      */
-    setPlaceholder: function(value) {
-        if (this.$placeholder.length) {
-            if (this.$placeholderGhost.length) {
-                this.$placeholder.find('.nb-input__placeholder-content').html(value);
+    setHint: function(value) {
+        if (this.$hint.length) {
+            if (this.$hintGhost.length) {
+                this.$hint.find('.nb-input__hint-content').html(value);
             } else {
-                this.$placeholder.find('.nb-input__placeholder-inner').html(value);
+                this.$hint.find('.nb-input__hint-inner').html(value);
             }
-            this.trigger('nb-placeholder-set', this);
+            this.trigger('nb-hint-set', this);
         }
 
         return this;
     },
 
     /**
-     * Get placeholder of the input
-     * @returns {String} placeholder
+     * Get hint of the input
+     * @returns {String} hint
      */
-    getPlaceholder: function() {
+    getHint: function() {
         var value = '';
-        if (this.$placeholder.length) {
+        if (this.$hint.length) {
 
-            if (this.$placeholderGhost.length) {
-                value = this.$placeholder.find('.nb-input__placeholder-content').html();
+            if (this.$hintGhost.length) {
+                value = this.$hint.find('.nb-input__hint-content').html();
             } else {
-                value = this.$placeholder.find('.nb-input__placeholder-inner').html();
+                value = this.$hint.find('.nb-input__hint-inner').html();
             }
 
         }
