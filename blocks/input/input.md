@@ -29,7 +29,7 @@ HTML input element.
     nb-input({
         'size': 's'
         'attrs': {
-            'placeholder': 'Введите пароль'
+            'hint': 'Введите пароль'
             'type': 'password'
         }
     })
@@ -158,13 +158,13 @@ input.reset();
 * @fires 'nb-placeholder-set'
 * @returns {Object} nb.block
 */
-input.setPlaceholder('new placeholder');
+input.setHint('new placeholder');
 
 /**
 * Get placeholder of the input
 * @returns {String} placeholder
 */
-input.getPlaceholder()
+input.getHint()
 
 /**
 * Destroy the input
