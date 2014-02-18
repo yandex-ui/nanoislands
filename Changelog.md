@@ -1,3 +1,10 @@
+##### 0.2.6 — patch
+
+###### Fixes
+* setMaxheight before the menu is displayed first time
+* fix meta X-UA-Compatible
+* nb-select is hidden in IE8 fixed
+
 ##### 0.2.5 — patch
 
 ###### Fixes
