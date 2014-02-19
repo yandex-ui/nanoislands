@@ -37,7 +37,7 @@ match .input nb {
         }
 
         if .disabled {
-            @class += ' is-disabled'
+            @class += ' nb-is-disabled'
             @data-nb-disabled = 'true'
         }
 
@@ -123,7 +123,7 @@ match .textarea nb {
         }
 
         if .disabled {
-            @class += ' is-disabled'
+            @class += ' nb-is-disabled'
             @data-nb-disabled = 'true'
         }
 
@@ -198,7 +198,7 @@ match .inputSimple nb {
         }
 
         if .disabled {
-            @class += ' is-disabled'
+            @class += ' nb-is-disabled'
             @disabled = 'disabled'
             @data-nb-disabled = 'true'
         }
@@ -221,7 +221,7 @@ match .textareaSimple nb {
         }
 
         if .disabled {
-            @class += ' is-disabled'
+            @class += ' nb-is-disabled'
             @disabled = 'disabled'
             @data-nb-disabled = 'true'
         }

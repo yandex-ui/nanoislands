@@ -8,7 +8,7 @@ nb.define('tooltip-jq-toggler', {
     },
 
     'onmouseenter': function() {
-        if (this.$node.hasClass('is-disabled')) {
+        if (this.$node.hasClass('nb-is-disabled')) {
             return true;
         }
 

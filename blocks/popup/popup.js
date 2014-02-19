@@ -507,7 +507,7 @@ nb.define('popup-toggler', {
         if (evt) {
             evt.preventDefault();
         }
-        if (!this.$node.hasClass('is-disabled') && this.popup) {
+        if (!this.$node.hasClass('nb-is-disabled') && this.popup) {
             this.popup.open(this.options);
             this.trigger('nb-opened', this);
         }
@@ -520,7 +520,7 @@ nb.define('popup-toggler', {
      * @returns {Object} nb.block
      */
     close: function() {
-        if (!this.$node.hasClass('is-disabled') && this.popup) {
+        if (!this.$node.hasClass('nb-is-disabled') && this.popup) {
             this.popup.close();
             this.trigger('nb-closed', this);
         }

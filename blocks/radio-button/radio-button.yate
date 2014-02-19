@@ -40,7 +40,7 @@ match .radio-button nb {
                     }
 
                     if .disabled {
-                        @class += ' is-disabled js-disabled'
+                        @class += ' nb-is-disabled js-disabled'
                         @disabled = 'disabled'
                     }
 

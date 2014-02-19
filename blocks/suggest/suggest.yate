@@ -22,7 +22,7 @@ match .suggest nb {
         apply . nb-main-attrs
 
         if .disabled  {
-          @class += ' is-disabled'
+          @class += ' nb-is-disabled'
         }
 
         nb-input({

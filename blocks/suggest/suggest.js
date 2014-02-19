@@ -285,7 +285,7 @@
         disable: function() {
             if (this.isEnabled()) {
                 this.input.disable();
-                this.$node.addClass('is-disabled');
+                this.$node.addClass('nb-is-disabled');
                 this.$jUI.suggest('disable');
                 this.trigger('nb-disabled', this);
             }
@@ -300,7 +300,7 @@
         enable: function() {
             if (!this.isEnabled()) {
                 this.input.enable();
-                this.$node.removeClass('is-disabled');
+                this.$node.removeClass('nb-is-disabled');
                 this.$jUI.suggest('enable');
                 this.trigger('nb-enabled', this);
             }
@@ -312,7 +312,7 @@
          * @returns {Boolean}
          */
         isEnabled: function() {
-            return !this.$node.hasClass('is-disabled');
+            return !this.$node.hasClass('nb-is-disabled');
         },
 
         /**
