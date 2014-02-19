@@ -440,13 +440,13 @@ var nb = nb || {};
 
 //  Показываем блок.
     Block.prototype.show = function() {
-        $(this.node).removeClass('_hidden');
+        $(this.node).removeClass('is-hidden');
         this.trigger('show');
     };
 
 //  Прячем блок.
     Block.prototype.hide = function() {
-        $(this.node).addClass('_hidden');
+        $(this.node).addClass('is-hidden');
         this.trigger('hide');
     };
 

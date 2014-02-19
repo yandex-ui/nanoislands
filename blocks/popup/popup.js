@@ -348,7 +348,7 @@
             } else {
                 //  Попап закрыт. Будем открывать.
 
-                $(this.node).removeClass('_hidden');
+                $(this.node).removeClass('is-hidden');
                 //  Передвигаем попап.
                 this._move(where, how, params);
                 this.trigger('nb-opened');
