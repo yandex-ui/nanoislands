@@ -95,13 +95,24 @@ describe("Input Tests", function() {
         it("should fire nb-changed event", function() {
             var result = false;
 
-            this.input.setValue("Zzzzap!");
+            this.input.on('nb-changed', function() {
+                result = true;
+            });
+
+            this.input.$control.val("Zzzzap!");
+            this.input.$control.trigger('change');
+
+            expect(result).to.be.ok();
+        });
+
+        it("should fire nb-changed event on .setValue()", function() {
+            var result = false;
 
             this.input.on('nb-changed', function() {
                 result = true;
             });
 
-            this.input.$control.trigger('change');
+            this.input.setValue("Zzzzap!");
 
             expect(result).to.be.ok();
         });

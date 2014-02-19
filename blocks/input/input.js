@@ -211,7 +211,7 @@ nb.define('input', {
     /**
      * Set value of the input
      * @param {String|Object} value
-     * @fires 'nb-value-set'
+     * @fires 'nb-value-set', 'nb-changed'
      * @returns {Object} nb.block
      */
     setValue: function(value) {
@@ -219,6 +219,7 @@ nb.define('input', {
         this.$control.val(value);
         this.$control.trigger('input');
         this.trigger('nb-value-set', this);
+        this.trigger('nb-changed', this);
         return this;
     },
 
