@@ -34,5 +34,6 @@ make publish
 * [Progress](https://github.com/yandex-ui/nanoislands/blob/master/blocks/progress/progress.md)
 * [Popup](https://github.com/yandex-ui/nanoislands/blob/master/blocks/popup/popup.md)
 * [Slider](https://github.com/yandex-ui/nanoislands/blob/master/blocks/slider/slider.md)
+* [Groups](https://github.com/yandex-ui/nanoislands/blob/master/blocks/group/group.md)
 
 #### [Changelog](Changelog.md)

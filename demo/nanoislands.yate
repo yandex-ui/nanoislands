@@ -42,6 +42,7 @@ include 'header.yate'
 include 'user.yate'
 include 'suggest.yate'
 include 'toggler.yate'
+include 'group.yate'
 
 match / {
     <div class="demo-toggle nb-island nb-island_fly">
@@ -91,6 +92,16 @@ match / {
         <div class="demo-pane__content">
             inputs()
             input-groups()
+        </div>
+    </div>
+    <div class="demo-pane">
+        <div class="demo-pane__desc">
+            <div class="demo-h2">
+                "Классы групп"
+            </div>
+        </div>
+        <div class="demo-pane__content">
+            groups()
         </div>
     </div>
     <div class="demo-pane">
