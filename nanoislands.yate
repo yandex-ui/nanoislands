@@ -4,6 +4,22 @@ external nodeset nb-wrap(scalar, nodeset)
 external scalar nb-warn(scalar)
 external scalar nb-uniq()
 
+/**
+ * Escapes nodeset data to xml. So you can safety use it in nb-call
+ * @example
+ * nb-checkbox({
+ *   // bad
+ *   'content': .my-json-data-with-xss
+ * })
+ * nb-checkbox({
+ *   // good
+ *   'content': nb-nodeset-to-xml(.my-json-data-with-xss)
+ * })
+ */
+func nb-nodeset-to-xml(xml data) {
+   data
+}
+
 include 'blocks/common/common.yate'
 include 'blocks/button/button.yate'
 include 'blocks/popup/popup.yate'
