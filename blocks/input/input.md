@@ -121,7 +121,7 @@ input.setValue('value');
 /**
 * Set name of the input
 * @param {String|Object} value
-* @fires 'nb-name-set'
+* @fires 'nb-name-set', 'nb-changed'
 * @returns {Object} nb.block
 */
 input.setName('value');
