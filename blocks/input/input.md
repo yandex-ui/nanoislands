@@ -21,7 +21,7 @@ HTML input element.
 * `'error'` {object} `{content: 'error content', direction: 'right|left'}`
 * `'leftContent'` {string|xml} — content of the left field of input
 * `'rightContent'` {string|xml} — content of the right field of input
-* `'placeholder'` {string | Object} — content of placeholder or `{ text: '...', ghost: true() }` for ghost placeholder
+* `'hint'` {string | Object} — content of hint or `{ text: '...', ghost: true() }` for ghost hint
 
 ### Examples
 
@@ -29,7 +29,7 @@ HTML input element.
     nb-input({
         'size': 's'
         'attrs': {
-            'placeholder': 'Введите пароль'
+            'hint': 'Введите пароль'
             'type': 'password'
         }
     })
@@ -158,13 +158,13 @@ input.reset();
 * @fires 'nb-placeholder-set'
 * @returns {Object} nb.block
 */
-input.setPlaceholder('new placeholder');
+input.setHint('new placeholder');
 
 /**
 * Get placeholder of the input
 * @returns {String} placeholder
 */
-input.getPlaceholder()
+input.getHint()
 
 /**
 * Destroy the input

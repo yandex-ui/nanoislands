@@ -32,13 +32,13 @@ match .input {
    })
 
    nb-input({
-        'id': 'input-placeholder'
-        'placeholder': 'email'
+        'id': 'input-hint'
+        'hint': 'email'
    })
 
    nb-input({
-        'id': 'input-placeholder-ghost'
-        'placeholder': {
+        'id': 'input-hint-ghost'
+        'hint': {
             'text': 'email'
             'ghost': true()
         }
