@@ -28,8 +28,8 @@ HTML input element.
 ```
     nb-input({
         'size': 's'
+        'hint': 'Введите пароль'
         'attrs': {
-            'hint': 'Введите пароль'
             'type': 'password'
         }
     })
