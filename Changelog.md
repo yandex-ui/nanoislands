@@ -1,3 +1,19 @@
+##### 0.3.0 — "Mirror, Mirror"
+* add nb-nodeset-to-xml helper
+
+###### Fixes
+* fix #220
+* nb-input must fire nb-changed event on setValue
+* fix #217
+* Added pointer-events: none for .is-disabled
+* fix #214
+
+###### API changes
+* Added group classes
+* [Input]
+  * `placeholder` renamed to `hint`
+
+
 ##### 0.2.6 — patch
 
 ###### Fixes
