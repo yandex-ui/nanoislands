@@ -8,6 +8,8 @@ func nb-button(nodeset options) {
         nb-block('buttonAttach', nb-extend(default, options))
     } else if options.href {
         nb-block('buttonLink', nb-extend(default, options))
+    } else if options.for {
+        nb-block('buttonLabel', nb-extend(default, options))
     } else {
         nb-block('button', nb-extend(default, options))
     }
@@ -51,14 +53,18 @@ func _nb-button-attributes(type) {
         if type == 'button' {
             @disabled = 'disabled'
         }
-    } else {
-        if type == 'link' && .href {
+    } else if type == 'link' {
             @href="{ .href }"
-        }
+    } else if type == 'label' {
+            @for="{ .for }"
     }
 
     if type == 'attach' {
-        @class += 'nb-button_type_attach'
+        @class += ' nb-attach-button'
+    }
+
+    if .checked {
+        @class += ' is-checked'
     }
 
     if type == 'button' {
@@ -90,9 +96,9 @@ func _nb-button-content() {
 
 match .button nb {
     <button>
-        apply . nb-main-attrs
-
         _nb-button-attributes('button')
+
+        apply . nb-main-attrs
 
         <span class="nb-button-content">
             apply .icon nb
@@ -104,9 +110,9 @@ match .button nb {
 
 match .buttonLink nb {
     <a>
-        apply . nb-main-attrs
-
         _nb-button-attributes('link')
+
+        apply . nb-main-attrs
 
         <span class="nb-button-content">
             apply .icon nb
@@ -116,11 +122,25 @@ match .buttonLink nb {
     </a>
 }
 
-match .buttonAttach nb {
+match .buttonLabel nb {
     <label>
+        _nb-button-attributes('label')
+
         apply . nb-main-attrs
 
+        <span class="nb-button-content">
+            apply .icon nb
+
+            _nb-button-content()
+        </span>
+    </label>
+}
+
+match .buttonAttach nb {
+    <label>
         _nb-button-attributes('attach')
+
+        apply . nb-main-attrs
 
         <span class="nb-file-intruder">
             <span class="nb-file-intruder__inner">
