@@ -48,7 +48,7 @@ match .radio-button nb {
                         @class += ' nb-button_only-icon'
                     }
 
-                    <span class="nb-button__text">
+                    <span class="nb-button-content">
                             apply .icon nb
                             if (.content) {
                                 html(.content)

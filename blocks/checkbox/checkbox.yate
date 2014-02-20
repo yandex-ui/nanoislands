@@ -68,7 +68,7 @@ match .checkbox nb {
                     .theme
                 )
 
-                <span class="nb-button__text">
+                <span class="nb-button-content">
                     if (.content) {
                         html(.content)
                     }

@@ -44,7 +44,7 @@ describe("Select Tests", function() {
 
         it('Should substitute the name of the selected element', function() {
             var select = nb.find('select-duplicate-title');
-            expect(select.$node.find('.nb-button__text').text()).to.be.equal('2');
+            expect(select.$node.find('.nb-button-content').text()).to.be.equal('2');
         });
 
     });

@@ -85,7 +85,7 @@ describe("Checkbox Tests", function() {
 
                 it('should render additional nb-button markup', function() {
                     expect(this.checkboxes['button'].$node.find('.nb-button').length).to.be.greaterThan(0);
-                    expect(this.checkboxes['button'].$node.find('.nb-button__text').length).to.be.greaterThan(0);
+                    expect(this.checkboxes['button'].$node.find('.nb-button-content').length).to.be.greaterThan(0);
                 });
             });
         });

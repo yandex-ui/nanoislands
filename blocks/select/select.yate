@@ -24,7 +24,7 @@ match .select nb {
             @data-nb-maxheight = .maxHeight
         }
 
-        <span class="nb-button__text">
+        <span class="nb-button-content">
             isSelected = count(.items[(.selected)]) > 0
 
             for .items {

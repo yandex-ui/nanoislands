@@ -4,72 +4,55 @@
 
 @import '_skin-dark'
 
-$skin-islands-button-content = '.nb-button__text'
-$skin-islands-button-disabled = '.nb-is-disabled'
+$skin-islands-button-content = '.nb-button-content'
 
-// Обычная кнопка
-.nb-button_theme_normal
+.nb-button
   kind: button
+  position: relative // Why is it there?
+
+.nb-normal-button
   skin: button
 
-// Маленькая обычная кнопка
-.nb-button_theme_normal.nb-button_size_s
+.nb-small-button
   skin: button small
 
-// Летающая кнопка
-.nb-button_flying
+.nb-flying-button
   skin: button fly
 
-// Маленькая летающая кнопка
-.nb-button_flying.nb-button_size_s
+.nb-small-flying-button
   skin: button fly small
 
-// Кнопка-действие
-.nb-button_theme_action
-  kind: button
+.nb-action-button
   skin: action-button
 
-// Маленькая кнопка-действие
-.nb-button_theme_action.nb-button_size_s
+.nb-small-action-button
   skin: action-button small
 
-// Темная кнопка
-.nb-button_theme_dark
-  kind: button
+.nb-dark-button
   skin: dark-button
 
-// Little black --dress-- button
-.nb-button_theme_dark.nb-button_size_s
+.nb-small-dark-button
   skin: dark-button small
 
-// Псевдо-кнопка
-.nb-button_theme_pseudo
-  kind: button
+.nb-pseudo-button
   skin: pseudo-button
 
-// Маленькая псевдо-кнопка
-.nb-button_theme_pseudo.nb-button_size_s
+.nb-small-pseudo-button
   skin: pseudo-button small
 
-// Промо-кнопка
-.nb-button_theme_promo
-  kind: button
+.nb-promo-button
   skin: promo-button
 
-// Маленькая промо-кнопка
-.nb-button_theme_promo.nb-button_size_s
+.nb-small-promo-button
   skin: promo-button small
 
-// Большая промо-кнопка
-.nb-button_theme_promo.nb-button_size_l
+.nb-large-promo-button
   skin: promo-button large
 
-// Очень большая промо-кнопка
-.nb-button_theme_promo.nb-button_size_xl
+.nb-extra-large-promo-button
   skin: promo-button xlarge
 
 // Кнопка аттача
-
 .nb-file-intruder
   kind: file-intruder \
     (-inner '&__inner') \
