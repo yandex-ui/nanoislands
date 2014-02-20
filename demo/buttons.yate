@@ -124,7 +124,7 @@ func buttons() {
         <div class="demo-h3">
             'Size: M '
             <span class="demo-code demo-code_small">
-                '.nb-button_size_m'
+                '.nb-normal-button'
             </span>
         </div>
 
@@ -134,7 +134,7 @@ func buttons() {
         <div class="demo-h3">
             'Size: S '
             <span class="demo-code demo-code_small">
-                '.nb-button_size_s'
+                '.nb-small-button'
             </span>
         </div>
 
@@ -144,7 +144,7 @@ func buttons() {
         <div class="demo-h3">
             'Theme: Action '
             <span class="demo-code demo-code_small">
-                '.nb-button_theme_action'
+                '.nb-action-button'
             </span>
         </div>
 
@@ -154,7 +154,7 @@ func buttons() {
         <div class="demo-h3">
             'Theme: Pseudo '
             <span class="demo-code demo-code_small">
-                '.nb-button_theme_pseudo'
+                '.nb-pseudo-button'
             </span>
         </div>
 
@@ -164,7 +164,7 @@ func buttons() {
         <div class="demo-h3">
             'Theme: Dark '
             <span class="demo-code demo-code_small">
-                '.nb-button_theme_dark'
+                '.nb-dark-button'
             </span>
         </div>
 
@@ -174,7 +174,7 @@ func buttons() {
             <div class="demo-h3">
                 'Theme: Promo'
                 <span class="demo-code demo-code_small">
-                    '.nb-button_theme_promo'
+                    '.nb-promo-button'
                 </span>
             </div>
 
@@ -208,7 +208,7 @@ func buttons() {
         <div class="demo-h3">
             'Type: Attach '
             <span class="demo-code demo-code_small">
-                '.nb-button_type_attach'
+                '.nb-attach-button'
             </span>
         </div>
 

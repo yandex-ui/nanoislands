@@ -84,7 +84,7 @@ func _nb-button-attributes(type) {
     }
 
     if !( .content ) && (.icon || .iconText) {
-        @class += ' nb-button_only-icon'
+        @class += ' nb-with-only-button'
     }
 
 }
