@@ -47,7 +47,7 @@ match .input nb {
         }
 
         if .error {
-            @data-nb-error ='{{ "id": "{ errorId }", "direction":"{ .error.direction}" }}'
+            @data-nb-error ='{{ "id": "{ errorId }", "direction":"{ .error.direction}"}}'
         }
 
         if .hint {

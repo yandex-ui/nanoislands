@@ -85,9 +85,19 @@ nb.define('input', {
 
     /**
      * Show inputs error
+     * @param {Object | String} params —  optional params of error popup or contentof Error
+     *    {
+     *        autoclose: ...
+     *        where: ...
+     *        how: ...
+     *        appendTo: ...
+     *        content: ...
+     *    }
      * @returns {Object} nb.block
      */
-    showError: function() {
+    showError: function(params) {
+        var params = params || {};
+
         if (this.data.error) {
             this.$node.addClass('is-wrong');
             var how = {
@@ -104,11 +114,24 @@ nb.define('input', {
                 how.my = "left";
             }
 
-            this.error.open({
-                autoclose: false,
-                where: this.node,
-                how: how
-            });
+            if (typeof params === 'string') {
+                this.setErrorContent(params);
+            }
+
+            if (params.content) {
+                this.setErrorContent(params.content);
+            }
+
+            if (!this.error.isOpen()) {
+                this.error.open({
+                    autoclose: params.autoclose || false,
+                    where: params.where || this.node,
+                    how: params.how || how,
+                    appendTo: params.appendTo || false
+                });
+            }
+
+
         }
         return this;
     },
@@ -275,7 +298,7 @@ nb.define('input', {
         return this;
     },
 
-     /**
+    /**
      * Set hint of the input
      * @param {String} value
      * @fires 'nb-hint-set'
@@ -317,6 +340,10 @@ nb.define('input', {
      */
     destroy: function() {
         this.trigger('nb-destroyed', this);
+        if (this.error) {
+            this.error.nbdestroy();
+            this.error.$node.remove();
+        }
         this.nbdestroy();
     }
 }, 'base');
