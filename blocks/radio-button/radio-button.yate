@@ -38,6 +38,7 @@ match .radio-button nb {
                         'js-button'
                     ]
                     'for': uniq
+                    'id': false()
                     'attrs': {
                         'data-value': .value
                     }
