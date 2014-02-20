@@ -1,3 +1,11 @@
+##### 0.3.1 — patch
+* [nb-gap](https://github.com/yandex-ui/nanoislands/blob/master/blocks/gap/gap.md) added
+* not minimazed libs/jqery-ui.cudstom.js
+
+###### Fixes
+* fix #203 — Не всегда с первого раза переключается чекбокс в ИЕ9
+
+
 ##### 0.3.0 — "Mirror, Mirror"
 * add nb-nodeset-to-xml helper
 
