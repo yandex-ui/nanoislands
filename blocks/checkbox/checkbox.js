@@ -30,10 +30,6 @@ nb.define('checkbox', {
             evt.stopPropagation();
         });
 
-        if (!this._isChecked) {
-            this.$control.prop('indeterminate', true);
-        }
-
         if (this.getType() === 'radio') {
             nb.on('checkbox:checked', $.proxy(this._onCheckboxChecked, this));
         }
