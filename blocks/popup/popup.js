@@ -361,7 +361,7 @@
             //  Снимаем флаг о том, что попап открыт.
             this.where = null;
 
-            if (this.node && this.node.widget && this.node.widget.isOpen()) {
+            if (this.isOpen()) {
                 this.node.widget.close();
                 this.trigger('nb-closed');
             }
@@ -373,6 +373,10 @@
             }
 
             return this;
+        },
+
+        isOpen: function() {
+            return this.node && this.node.widget && this.node.widget.isOpen();
         },
 
         destroy: function() {
