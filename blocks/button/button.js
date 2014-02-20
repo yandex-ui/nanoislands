@@ -14,7 +14,7 @@ nb.define('button', {
     oninit: function() {
         this.$node.button({
             // set ui button disabled on init
-            disabled: this.node.hasAttribute('disabled')
+            disabled: this.$node.prop('disabled')
         });
         this.trigger('nb-inited', this);
     },
