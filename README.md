@@ -35,5 +35,6 @@ make publish
 * [Popup](https://github.com/yandex-ui/nanoislands/blob/master/blocks/popup/popup.md)
 * [Slider](https://github.com/yandex-ui/nanoislands/blob/master/blocks/slider/slider.md)
 * [Groups](https://github.com/yandex-ui/nanoislands/blob/master/blocks/group/group.md)
+* [Gaps](https://github.com/yandex-ui/nanoislands/blob/master/blocks/gap/gap.md)
 
 #### [Changelog](Changelog.md)

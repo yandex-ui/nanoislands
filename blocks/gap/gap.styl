@@ -1,0 +1,7 @@
+// global classes for block margins
+// Example: .nb-gap_top_s .nb-gap_right_m
+
+for $gap-side in 'top' 'left' 'bottom' 'right'
+  for $gap-size-name, $gap-size-value in $islands.sizes
+    .nb-gap_{$gap-side}_{$gap-size-name}
+      margin-{$gap-side}: $gap-size-value
