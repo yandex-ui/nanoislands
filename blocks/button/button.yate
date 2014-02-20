@@ -6,6 +6,8 @@ func nb-button(nodeset options) {
 
     if options.type == 'file' {
         nb-block('buttonAttach', nb-extend(default, options))
+    } else if options.type == 'span' {
+        nb-block('buttonSpan', nb-extend(default, options))
     } else if options.href {
         nb-block('buttonLink', nb-extend(default, options))
     } else if options.for {
@@ -16,10 +18,14 @@ func nb-button(nodeset options) {
 }
 
 func _nb-button-attributes(type) {
-    @class = "nb-button _init"
+    @class = "nb-button"
 
-    if !( .static ) {
-        @data-nb = 'button'
+    if (type != 'label') && (type != 'span') {
+        @class += ' _init'
+
+        if !( .static ) {
+            @data-nb = 'button'
+        }
     }
 
     // Set the size modifier of the button
@@ -120,6 +126,20 @@ match .buttonLink nb {
             _nb-button-content()
         </span>
     </a>
+}
+
+match .buttonSpan nb {
+    <span>
+        _nb-button-attributes('span')
+
+        apply . nb-main-attrs
+
+        <span class="nb-button-content">
+            apply .icon nb
+
+            _nb-button-content()
+        </span>
+    </span>
 }
 
 match .buttonLabel nb {
