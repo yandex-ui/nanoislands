@@ -14,9 +14,10 @@ for gap-side in 'top' 'left' 'bottom' 'right'
   .nb-gap_{gap-side}_l
     margin-{gap-side}: $islands_l
 
-// global hidden class
-.is-hidden
-  display: none !important
+// We need to deprecate `_hidden` somehow
+._hidden,
+.nb-is-hidden
+  kind: hidden
 
 // global class for links
 ._link

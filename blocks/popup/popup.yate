@@ -17,7 +17,7 @@ match .popupMenu nb {
     <div class="nb-popup _init">
         if !.static {
             @data-nb = "popup"
-            @class += " is-hidden"
+            @class += " nb-is-hidden"
         }
 
         apply . nb-main-attrs
@@ -53,7 +53,7 @@ func nb-popup(nodeset options) {
 }
 
 match .popup nb {
-    <div class="nb-popup _init is-hidden" data-nb='popup'>
+    <div class="nb-popup _init nb-is-hidden" data-nb='popup'>
 
         apply . nb-main-attrs
 
@@ -96,7 +96,7 @@ match .modalPopup nb {
     <div class="nb-popup _init nb-popup_type_modal">
         if !.static {
             @data-nb = "popup"
-            @class += " is-hidden"
+            @class += " nb-is-hidden"
         }
 
         if .theme {
