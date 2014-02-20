@@ -371,7 +371,7 @@ nb.define('select', {
     disable: function() {
         if (this.isEnabled()) {
             this.$node
-                .addClass('is-disabled')
+                .addClass('nb-is-disabled')
                 .autocomplete('disable');
             this.trigger('nb-disabled', this);
         }
@@ -386,7 +386,7 @@ nb.define('select', {
     enable: function() {
         if (!this.isEnabled()) {
             this.$node
-                .removeClass('is-disabled')
+                .removeClass('nb-is-disabled')
                 .autocomplete('enable');
             this.trigger('nb-enabled', this);
         }
@@ -398,7 +398,7 @@ nb.define('select', {
      * @returns {Boolean}
      */
     isEnabled: function() {
-        return !this.$node.hasClass('is-disabled');
+        return !this.$node.hasClass('nb-is-disabled');
     },
 
     /*

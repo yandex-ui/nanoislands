@@ -34,6 +34,7 @@ a._link
 ._link_outer
   color: #070
 
-.is-disabled
-  skin: disabled
-  pointer-events: none
+// We need to deprecate is-disabled in favor of nb-is-disabled
+.is-disabled,
+.nb-is-disabled
+  kind: disabled 0.6

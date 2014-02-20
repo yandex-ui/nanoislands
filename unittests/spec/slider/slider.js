@@ -133,7 +133,7 @@ describe('Slider Tests', function() {
         it('should has disabled mod', function() {
             this.slider.disable();
 
-            expect(this.slider.$node.hasClass('is-disabled')).to.be.ok();
+            expect(this.slider.$node.hasClass('nb-is-disabled')).to.be.ok();
         });
     });
 

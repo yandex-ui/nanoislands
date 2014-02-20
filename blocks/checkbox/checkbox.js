@@ -183,7 +183,7 @@ nb.define('checkbox', {
      */
     enable: function() {
         if (!this.isEnabled()) {
-            this.$node.removeClass('is-disabled');
+            this.$node.removeClass('nb-is-disabled');
             this.$control.removeAttr('disabled');
             this.trigger('nb-enabled', this);
         }
@@ -198,7 +198,7 @@ nb.define('checkbox', {
     disable: function() {
         if (this.isEnabled()) {
             this.blur();
-            this.$node.addClass('is-disabled');
+            this.$node.addClass('nb-is-disabled');
             this.$control.attr('disabled', 'disabled');
             this.trigger('nb-disabled', this);
         }

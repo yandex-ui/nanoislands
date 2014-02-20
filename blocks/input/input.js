@@ -190,7 +190,7 @@ nb.define('input', {
      * @returns {Object} nb.block
      */
     disable: function() {
-        this.$node.addClass('is-disabled');
+        this.$node.addClass('nb-is-disabled');
         this.$control.prop('disabled', true);
         this.trigger('nb-disabled', this);
         return this;
@@ -202,7 +202,7 @@ nb.define('input', {
      * @returns {Object} nb.block
      */
     enable: function() {
-        this.$node.removeClass('is-disabled');
+        this.$node.removeClass('nb-is-disabled');
         this.$control.prop('disabled', false);
         this.trigger('nb-enabled', this);
         return this;

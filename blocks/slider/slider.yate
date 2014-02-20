@@ -20,7 +20,7 @@ match .slider nb {
         }
 
         if .disabled {
-            @class += ' is-disabled'
+            @class += ' nb-is-disabled'
         }
 
         <div class='nb-slider__body nb-slider__body_type_{ .type }'>
