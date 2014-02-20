@@ -19,7 +19,7 @@ describe("Input Tests", function() {
     });
 
     describe("#YATE API", function() {
-        describe("reset", function() {
+        describe("error", function() {
             it("error params", function() {
                 var input = nb.find('input-error');
                 var data = this.input.nbdata();
@@ -355,6 +355,13 @@ describe("Input Tests", function() {
     });
 
     describe('#destroy()', function() {
+        it("should destroy error node", function() {
+            var input = nb.find('input-error');
+            input.showError();
+            input.destroy();
+            expect($(input.data.error.id).length).to.be.equal(0);
+        });
+
         it("should destroy nb.block", function() {
             this.input.destroy();
             expect(nb.hasBlock($('#input')[0])).to.be.equal(false);

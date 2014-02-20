@@ -116,6 +116,17 @@ describe("Popup Tests", function() {
             expect(this.popup.$node.css('display')).to.equal('block');
         });
 
+        it("#isOpen show be true if popup opened", function() {
+            this.popup.open({where: this.toggler.node, appendTo: '.content'});
+            expect(this.popup.isOpen()).to.be.ok();
+        });
+
+        it("#isOpen show be false if popup closed", function() {
+            this.popup.open({where: this.toggler.node, appendTo: '.content'});
+            this.popup.close();
+            expect(this.popup.isOpen()).to.not.ok();
+        });
+
         it("#Open check event", function() {
             var flag = false;
             this.popup.on('nb-opened', function() {
