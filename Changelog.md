@@ -1,3 +1,12 @@
+##### 0.3.2 — patch
+* [Popup] refactor — isOpen() method
+* [Input] error optional params
+
+###### Fixes
+* Input Error fixes
+* add !important to prevent style override
+* IE < 8 doesn't support node.hasAttribute method. Use $(node).prop
+
 ##### 0.3.1 — patch
 * [nb-gap](https://github.com/yandex-ui/nanoislands/blob/master/blocks/gap/gap.md) added
 * not minimazed libs/jqery-ui.cudstom.js
