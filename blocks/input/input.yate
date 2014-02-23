@@ -50,7 +50,7 @@ match .input nb {
             @data-nb-error ='{{ "id": "{ errorId }", "direction":"{ .error.direction}"}}'
         }
 
-        if .hint {
+        if .hint && .hint.text != '' {
             <span class="nb-input__hint">
                 <span class="nb-input__hint-inner">
                     if .hint.ghost {
