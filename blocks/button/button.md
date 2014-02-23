@@ -1,7 +1,8 @@
-## Yate
 ### Default button
 
-    nb-button()
+```
+nb-button()
+```
 
 * `size: m`
 * `theme: normal`
@@ -31,117 +32,17 @@
 Action buttom, size L with custom classes
 
 ```
-
-    nb-button({
-        'size': 'l'
-        'theme': 'action'
-        'id': 'id1'
-        'class': [
-            'my_class1'
-            'my_class2'
-        ]
-        'content': 'Hello World'
-        'attrs': {
-            'name': 'my_name'
-         }
-    })
-
+nb-button({
+    'size': 'l'
+    'theme': 'action'
+    'id': 'id1'
+    'class': [
+        'my_class1'
+        'my_class2'
+    ]
+    'content': 'Hello World'
+    'attrs': {
+        'name': 'my_name'
+     }
+})
 ```
-## JS
-
-### Initialization
-
-Initialize nb block on DOM node:
-```
-
-    nb.block(node);
-
-```
-
-Initialize all nb blocks with class '_init' within DOM node
-
-```
-
-    nb.init(node);
-
-```
-
-### Button methods
-
-button — nb block
-
-```
-
-    /**
-    * Set text of the button
-    * @param text {String} — text for the button
-    * @fires 'nb-text-set'
-    * @returns {Object} nb.block
-    */
-   button.setText('Button');
-
-   /**
-    * Get text of the button
-    * @returns {String} — text of the button
-    */
-   button.getText();
-
-   /**
-    * Set href of the link button
-    * @param href {String} — link for the link button
-    * @fires 'nb-url-set'
-    * @returns {Object} nb.block
-    */
-   button.setUrl('http://ya.ru');
-
-   /**
-    * Get href of the link button
-    * @returns {String} — href of the link button
-    */
-   button.getUrl();
-
-   /**
-    * Disables the button
-    * @fires 'nb-disabled'
-    * @returns {Object} nb.block
-    */
-   button.disable();
-
-   /**
-     * Enables the button
-     * @fires 'nb-enabled'
-     * @returns {Object} nb.block
-     */
-   button.enable();
-
-
-   /**
-    * Return state of the button
-    * @returns {Boolean}
-    */
-   button.isEnabled();
-
-   /**
-    * Focus the button
-    * @fires 'nb-focused'
-    * @returns {Object} nb.block
-    */
-   button.focus();
-
-   /**
-    * Blur the button
-    * @fires 'nb-blured'
-    * @returns {Object} nb.block
-    */
-   button.blur();
-
-    /**
-     * Destroy the button
-     * @fires 'nb-destroyed'
-     */
-   button.destroy();
-
-```
-
-
-

@@ -1,9 +1,7 @@
-## Yate
-
-### Default loader
-
+```
     nb-loader()
-    
+```
+
 * `size`: `m`
 
 ### Options
@@ -44,13 +42,3 @@ White medium loader on white background:
         }
     })
 ```
-
-## JS
-
-### Initialisation
-
-None. Loader is a static block.
-
-### Methods
-
-None declared.

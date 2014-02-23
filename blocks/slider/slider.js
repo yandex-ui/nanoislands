@@ -1,12 +1,12 @@
-/* jQuery UI Depends:
- *        jquery.ui.slider.js
- *        jquery.ui.core.js
- *        jquery.ui.mouse.js
- *        jquery.ui.widget.js
+/* ### jQuery UI Depends:
+ * - jquery.ui.slider.js
+ * - jquery.ui.core.js
+ * - jquery.ui.mouse.js
+ * - jquery.ui.widget.js
  */
 
 nb.define('slider', {
-    /**
+    /*!
      * Init the slider
      * @fires 'nb-inited'
      */

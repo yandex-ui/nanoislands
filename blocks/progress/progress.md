@@ -1,9 +1,7 @@
-## Yate
-
-### Default progress indicator
-
+```
     nb-progress()
-    
+```
+
 * `bar`: `true()`
 * `start`: `0`
 * `type`: `percentage`

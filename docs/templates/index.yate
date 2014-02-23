@@ -1,0 +1,112 @@
+include "externals.yate"
+
+match / {
+    html('<!DOCTYPE html>')
+    <html>
+        <head>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+            <title>Nanoislands Docs</title>
+            <link rel="stylesheet" type="text/css" href="/docs/css/bootstrap.min.css" />
+            <link rel="stylesheet" type="text/css" href="/docs/css/nanoislands-docs.css" />
+        </head>
+        <body class="page">
+            <div class="page-inner">
+                <h1 class="page-title">Nanoislands Docs</h1>
+                <ul class="blocks-menu">
+                    apply .* blocks-menu-item
+                </ul>
+                <ul class="blocks">
+                    apply .* blocks-item
+                </ul>
+            </div>
+        </body>
+    </html>
+}
+
+
+match .* blocks-menu-item {
+    <li class="blocks-menu-item">
+        <a href="#{ .block }">
+            .block
+        </a>
+    </li>
+}
+
+
+match .* blocks-item {
+    <li class="blocks-item" id="{ .block }">
+        apply .data blocks-content
+    </li>
+}
+
+
+match .* blocks-content {
+    <div class="blocks-method">
+        <h3 class="blocks-method-title">
+            getNameMethod('{.code}')
+        </h3>
+        if (.description.full) {
+            html(.description.full)
+        }
+
+        apply .tags[.name] blocks-settings
+    </div>
+}
+match .*[.md] blocks-content {
+    <div class="blocks-description">
+        <h2 class="blocks-title">
+            ..block
+        </h2>
+        html(.md)
+    </div>
+}
+match .*[.ignore] blocks-content {}
+
+
+match .* blocks-settings {
+    <div class="blocks-settings">
+        apply .[.name] blocks-params
+        apply .['fires' == .type || 'returns' == .type] blocks-extra
+    </div>
+}
+
+
+match .* blocks-params {
+    <dl class="dl-horizontal param">
+        <dt class="param-name">
+            .name
+        </dt>
+        <dd class="param-description">
+            <code class="param-types">
+                apply . blocks-params-types
+            </code>
+            .description
+        </dd>
+    </dl>
+}
+
+
+match .* blocks-params-types {
+    itemLast = count(.types) - 1
+    '{{'
+    for .types {
+        .
+        if (index() != itemLast) {
+            ' | '
+        }
+    }
+    '}}'
+}
+
+
+match .* blocks-extra {
+    <dl class="dl-horizontal param">
+        <dt class="param-name">
+            .type
+        </dt>
+        <dd class="param-description">
+            .string
+        </dd>
+    </dl>
+}

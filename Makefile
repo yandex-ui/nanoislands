@@ -22,6 +22,10 @@ nanoislands.ie.css: $(shell find . -name '*.styl') node_modules
 nanoislands.js: $(CURDIR)/blocks/nanoislands.js $(shell find $(CURDIR)/blocks -name '*.js') node_modules
 	$(NPM_BIN)/borschik --input=blocks/nanoislands.js --minimize=no --output=nanoislands.js
 
+docs: $(shell find $(CURDIR)/blocks -name '*.js') docs/templates/index.yate
+	node build/build-doc.js > docs/_data.json
+	$(NPM_BIN)/yate docs/templates/index.yate docs/_data.json docs/templates/externals.js > docs/index.html
+
 node_modules:
 	npm install
 

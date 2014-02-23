@@ -1,8 +1,6 @@
-## Yate
-
-### Input group
-
+```
     nb-input-group()
+```
 
 Renders compound group of text input field and button, ordered accordingly to `options`.
 
@@ -50,26 +48,3 @@ A group of an input field and a button with text, disabled altogether as a whole
         'disabled' : true()
     })
 ``` 
-
-## JS
-
-### Initialization
-
-Initialize nb block on DOM node:
-```
-
-    nb.block(node);
-
-```
-
-Initialize all nb blocks with class '_init' within DOM node
-
-```
-
-    nb.init(node);
-
-```
-
-### Input group methods
-
-None declared.

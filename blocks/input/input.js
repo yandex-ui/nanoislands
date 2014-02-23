@@ -23,7 +23,7 @@ nb.define('input', {
         'mousedown ._nb-input-reset': 'reset'
     },
 
-    /**
+    /*!
      * Init input
      * @fires 'nb-inited'
      * @constructor
@@ -158,14 +158,7 @@ nb.define('input', {
 
     /**
      * Show inputs error
-     * @param {Object | String} params —  optional params of error popup or contentof Error
-     *    {
-     *        autoclose: ...
-     *        where: ...
-     *        how: ...
-     *        appendTo: ...
-     *        content: ...
-     *    }
+     * @param {Object|String} params optional params of error popup or contentof Error
      * @returns {Object} nb.block
      */
     showError: function(params) {
@@ -403,6 +396,7 @@ nb.define('input', {
 
     /**
      * Destroy the button
+     * @fires 'nb-destroyed'
      */
     destroy: function() {
         this.trigger('nb-destroyed', this);

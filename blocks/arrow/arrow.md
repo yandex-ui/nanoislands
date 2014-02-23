@@ -1,8 +1,8 @@
-## Yate
-
 ### Default arrow
 
-    nb-arrow()
+```
+nb-arrow()
+```
 
 * search: 'true'
 * buttonContent: 'Найти'
@@ -24,55 +24,37 @@
 No inputs, with name of service:
 
 ```
-    nb-arrow({
-        'search': 'false'
-        'href': '#'
-        'text': 'Диск'
-    })
+nb-arrow({
+    'search': 'false'
+    'href': '#'
+    'text': 'Диск'
+})
 ```
 
 Arrow with search form, no placeholder text:
 
 ```
-    nb-arrow({
-        'search': 'true'
-    })
+nb-arrow({
+    'search': 'true'
+})
 ```
 
 Arrow with search form, prefilled and with requests info:
 
 ```
-    nb-arrow({
-        'search': 'true'
-        'requests': '8 млн ответов'
-        'value': 'жираф'
-    })
+nb-arrow({
+    'search': 'true'
+    'requests': '8 млн ответов'
+    'value': 'жираф'
+})
 ```
 
 Arrow with search form and namelink enabled:
 
 ```
-    nb-arrow({
-        'search': 'true'
-        'href': '#'
-        'text': 'Диск'
-    })
-```
-
-### Initialisation
-
-...
-
-### Arrow methods
-
-```
-    /*
-    * Add shadow to wrapper and hide info about requests
-    */
-    arrow.focus()
-    
-    /*
-    * Remove shadow from wrapper and show info about requests
-    */
-    arrow.blur()
+nb-arrow({
+    'search': 'true'
+    'href': '#'
+    'text': 'Диск'
+})
 ```

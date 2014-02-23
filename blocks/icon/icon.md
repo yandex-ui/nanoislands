@@ -1,8 +1,4 @@
-## Yate
-
-### Default icon
-
-NB: You have to explicitly pass icon name to nb-icon();
+You have to explicitly pass icon name to nb-icon()
 
 * `size` — `m`
 
@@ -32,12 +28,6 @@ Medium-sized icon:
     })
 ```
 
-## JS 
-
-### Initialisation
-
-None. Element is static.
-
-### Methods.
+### JS
 
 None declared.

@@ -46,6 +46,9 @@
 
     "grunt-contrib-watch": "*",
     "grunt-shell": "*"
+    "dox": "0.4.x",
+    "concat-stream": "1.4.x",
+    "github-flavored-markdown": "1.x"
   },
   "engines": {
     "node": "*"

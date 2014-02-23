@@ -1,7 +1,3 @@
-## Yate
-
-### Default generic popup
-
 ```
     nb-popup()
 ```
@@ -139,6 +135,7 @@
 
    })
 
+<<<<<<< HEAD
 ```
 
 ## JS
@@ -320,4 +317,3 @@ Arguments:
      */
     toggler.destroy();
 ```
-

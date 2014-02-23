@@ -1,20 +1,18 @@
-/*
- * jQuery UI Depends:
- *        jquery.ui.dialog.js
- *        jquery.ui.core.js
- *        jquery.ui.widget.js
- *        jquery.ui.button.js
- *        jquery.ui.draggable.js
- *        jquery.ui.mouse.js
- *        jquery.ui.position.js
+/*! 
+ * ### jQuery UI Depends
+ * 
+ * - jquery.ui.dialog.js
+ * - jquery.ui.core.js
+ * - jquery.ui.widget.js
+ * - jquery.ui.button.js
+ * - jquery.ui.draggable.js
+ * - jquery.ui.mouse.js
+ * - jquery.ui.position.js
  */
 
 (function() {
 
-    /**
-     * @fileOverview Надстройки nb над jQueryUI
-     */
-
+    // Надстройки nb над jQueryUI
     $.nb = {};
 
     // 60 fps is optimal rate for smooth changes
@@ -381,7 +379,7 @@
         return direction === 'top' || direction === 'bottom';
     }
 
-    /**
+    /*!
      *  Функция возвращает строку с модификаторами
      *  для обертки попапа, которую добавляет jquery ui,
      *  в соответсвии с модификаторами самого попапа
@@ -454,9 +452,17 @@
         },
 
 
-        /**
+        /* Open popup
          *
-         * @param {Object} p — params
+         * ```
+         * popup.open({
+         *     where: [100, 200],
+         *     how: 'top bottom'
+         * });
+         * ```
+         *
+         * @param {Object} params settings for popup
+         * @return {Object} nb.block
          */
         open: function(p) {
             var params = p || {};
@@ -482,6 +488,10 @@
             return this;
         },
 
+        /**
+         * Close popup
+         * @return {Object} nb.block
+         */
         close: function() {
 
             //  Снимаем флаг о том, что попап открыт.
@@ -524,6 +534,9 @@
             return this.node && this.node.widget && this.node.widget.isOpen();
         },
 
+        /**
+         * Destroy the popup
+         */
         destroy: function() {
             if (this.node && this.node.widget) {
                 this.node.widget.destroy();
@@ -732,10 +745,10 @@ nb.define('popup-toggler', {
     /**
      * Sets connected popup
      * @param {Object} params  - {
-    *       id : 'id' — popupID or link to nb.block
-    *       where: '#elem' — to what elem popup attached
-    *       how: { my: 'left', at:'right' } — to to open popup
-    *   }
+     *       id : 'id' — popupID or link to nb.block
+     *       where: '#elem' — to what elem popup attached
+     *       how: { my: 'left', at:'right' } — to to open popup
+     *   }
      * @returns {Object} nb.block
      */
     setPopup: function(params) {
@@ -774,9 +787,9 @@ nb.define('popup-toggler', {
     /**
      * Sets connected popup options
      * @param {Object} params - {
-    *       where: '#elem' — to what elem popup attached
-    *       how: { my: 'left', at:'right' } — to to open popup
-    *   }
+     *       where: '#elem' — to what elem popup attached
+     *       how: { my: 'left', at:'right' } — to to open popup
+     *   }
      * @returns {Object} nb.block
      */
     setOptions: function(params) {

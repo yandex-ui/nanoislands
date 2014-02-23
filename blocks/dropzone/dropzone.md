@@ -1,18 +1,16 @@
-## Yate
-
 ### Default dropzone
 
+```
     nb-dropzone()
+```
 
-* 'button' : {  
-    'size': 's'  
-    'type': 'file'  
-    'theme': 'pseudo'  
-    'class': 'nb-dropzone__button'
-} — default options for "Select file" button
+* `button`
+    * `size` - `s`
+    * `type` - `file`
+    * `theme` - `pseudo`
+    * `class` - `nb-dropzone__button`
 
 ### Options
-
 
 * `id` {string}
 * `class` {string} — additional classes['my_class1', 'my_class2'] 
