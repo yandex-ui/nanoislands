@@ -1,11 +1,13 @@
-/*
- * jQuery UI Depends:
- *        jquery.ui.autocomplete.js
- *        jquery.ui.button.js
- *        jquery.ui.core.js
- *        jquery.ui.widget.js
- *        jquery.ui.position.js
- *        jquery.ui.menu.js
+/** 
+ * ## JS
+ * ### jQuery UI Depends:
+ * 
+ * - jquery.ui.autocomplete.js
+ * - jquery.ui.button.js
+ * - jquery.ui.core.js
+ * - jquery.ui.widget.js
+ * - jquery.ui.position.js
+ * - jquery.ui.menu.js
  */
 
 nb.define('select', {
@@ -15,7 +17,7 @@ nb.define('select', {
         //'close' { event, ui}
     },
 
-    /**
+    /*!
      * Init select
      * @fires 'nb-inited'
      */
@@ -31,7 +33,7 @@ nb.define('select', {
         this.trigger('nb-inited', this);
     },
 
-    /**
+    /*!
      * preparing control depending on configuration and content
      */
     controlPrepare: function() {
@@ -191,7 +193,7 @@ nb.define('select', {
         });
     },
 
-    /**
+    /*!
      * Save value and text from <select> node.
      * @private
      */
@@ -286,10 +288,7 @@ nb.define('select', {
 
     /**
      * Changes a value of control, text on the button and select value it the fallback
-     * @param {Object} params — {
-         *     text: '..'
-         *     value: '..'
-         * }
+     * @param {Object} params — `{ text: '..', value: '..'}`
      * @fires 'nb-changed'
      * @returns {Object} nb.block
      */
@@ -330,11 +329,7 @@ nb.define('select', {
     /**
      * Returns state of the select
      *
-     * @return {Object} -
-     * {
-         *     value: '..'
-         *     text: '..'
-         * }
+     * @return {Object} `{value: '..', text: '..'}`
      */
     getState: function() {
         return {
@@ -541,9 +536,7 @@ nb.define('select', {
     /**
      * Sets option to the jUI widget
      * http://api.jqueryui.com/autocomplete/#method-option
-     * @param  {Object.<string, number>} option — {
-           *      name: value —  имя и значение опцииопции
-           * }
+     * @param  {Object} option `{name: value}` имя и значение опцииопции
      * @fires 'nb-option-set'
      * @returns {Object} nb.block
      */

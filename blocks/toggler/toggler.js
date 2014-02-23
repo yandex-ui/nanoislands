@@ -3,7 +3,7 @@ nb.define('toggler', {
         'click': 'toggle'
     },
 
-    /**
+    /*!
      * Init the toggler
      * @fires 'nb-inited'
      */

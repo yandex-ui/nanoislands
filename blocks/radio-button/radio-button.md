@@ -1,16 +1,10 @@
-## Yate
-
-### Radio button
-
 * Horizontal compound block
 * consists of several buttons
 * behaves like a group of radio-buttons
 
-NB: To get a group of actial _radiobuttons_ (like those you can get using vanilla HTML) use `checkbox` with corresponding options.
+To get a group of actial _radiobuttons_ (like those you can get using vanilla HTML) use `checkbox` with corresponding options.
 
 ### Basic usage example:
-
-(See `demo/index.html`.)
 
 ```
     nb-radio-button({
@@ -53,23 +47,3 @@ Default options:
     * `'icon'` {string} ... — icon name
     * `'checked'` {boolean} — checked element of radio-group
     * `'disabled'` {boolean}  — for disabled element
-
-### Initialization
-
-Initialize nb block on DOM node:
-```
-
-    nb.block(node);
-
-```
-
-Initialize all nb blocks with class '_init' within DOM node
-```
-
-    nb.init(node);
-
-```
-
-### Radiobutton methods
-
-None declared. Element is rendered as static.

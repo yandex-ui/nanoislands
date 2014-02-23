@@ -1,7 +1,3 @@
-## Yate
-
-### Default generic popup
-
 ```
     nb-popup()
 ```
@@ -132,49 +128,3 @@
    })
 
 ```
-
-## JS
-
-### Initialisation
-
-Initialize nb block on DOM node:
-```
-
-    nb.block(node);
-
-```
-
-Initialize all nb blocks with class '_init' within DOM node
-
-```
-
-    nb.init(node);
-
-```
-
-### Methods
-
-`popup` — `popup`, `popup-modal` or `popup-menu`
-
-```
-
-    /*
-    * Displays popup element.
-    * @fires 'nb-opened'
-    */
-    popup.open();
-
-    /*
-    * Hides popup element.
-    * @fires 'nb-closed'
-    */
-    popup.close();
-
-    /*
-    * Determine state of popup
-    */
-    popup.isOpen();
-
-``` 
-
-

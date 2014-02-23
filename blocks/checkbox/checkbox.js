@@ -17,11 +17,6 @@ nb.define('checkbox', {
         }
     },
 
-    /**
-     * Init a checkbox
-     * @fires 'nb-inited'
-     */
-
     oninit: function() {
         this.$control = this.$node.find('input[type]');
         this._isChecked = this.$control.prop('checked');
@@ -39,6 +34,11 @@ nb.define('checkbox', {
 
     /**
      * Override base getType()
+     *
+     * ```
+     * checkbox.getType(); // --> checkbox | radio
+     * ```
+     *
      * @returns {String} — type of control
      */
 
@@ -48,6 +48,14 @@ nb.define('checkbox', {
 
     /**
      * Return check state of the checkbox or radio
+     *
+     * ```
+     * checkbox.isChecked(); // --> false (by default)
+     *
+     * checkbox.check();
+     * checkbox.isChecked(); // --> true
+     * ```
+     *
      * @returns {Boolean}
      */
     isChecked: function() {
@@ -56,6 +64,11 @@ nb.define('checkbox', {
 
     /**
      * Checking checkbox or radio
+     *
+     * ```
+     * checkbox.check();
+     * ```
+     *
      * @fires 'nb-checked', 'nb-changed'
      * @returns {Object} nb.block
      */
@@ -89,6 +102,11 @@ nb.define('checkbox', {
 
     /**
      * Unchecking checkbox or radio
+     *
+     * ```
+     * checkbox.uncheck();
+     * ```
+     *
      * @fires 'nb-unchecked', 'nb-changed'
      * @returns {Object} nb.block
      */
@@ -116,6 +134,11 @@ nb.define('checkbox', {
 
     /**
      * Toggle to the opposite state checkbox or radio
+     *
+     * ```
+     * checkbox.toggle();
+     * ```
+     *
      * @fires 'change'
      * @return {Object} nb.block
      */
@@ -136,6 +159,11 @@ nb.define('checkbox', {
 
     /**
      * Return indeterminate state of the checkbox or radio
+     *
+     * ```
+     * checkbox.isIndeterminate();
+     * ```
+     *
      * @returns {Boolean}
      */
     isIndeterminate: function() {
@@ -144,6 +172,11 @@ nb.define('checkbox', {
 
     /**
      * Set indeterminate state of the checkbox or radio
+     *
+     * ```
+     * checkbox.setIndeterminate();
+     * ```
+     *
      * @fires 'nb-indeterminated'
      * @returns {Object} nb.block
      */
@@ -157,6 +190,11 @@ nb.define('checkbox', {
 
     /**
      * Set determinate state of the checkbox or radio
+     *
+     * ```
+     * checkbox.setDeterminate();
+     * ```
+     *
      * @fires 'nb-determinated'
      * @returns {Object} nb.block
      */
@@ -170,6 +208,11 @@ nb.define('checkbox', {
 
     /**
      * Return enable state of the checkbox or radio
+     *
+     * ```
+     * checkbox.isEnabled();
+     * ```
+     *
      * @returns {Boolean}
      */
     isEnabled: function() {
@@ -178,6 +221,11 @@ nb.define('checkbox', {
 
     /**
      * Enable the checkbox or radio
+     *
+     * ```
+     * checkbox.enable();
+     * ```
+     *
      * @fires 'nb-enabled'
      * @returns {Object} nb.block
      */
@@ -192,6 +240,11 @@ nb.define('checkbox', {
 
     /**
      * Disable the checkbox or radio
+     *
+     * ```
+     * checkbox.disable();
+     * ```
+     *
      * @fires 'nb-disabled'
      * @returns {Object} nb.block
      */
@@ -207,6 +260,11 @@ nb.define('checkbox', {
 
     /**
      * Focus the checkbox or radio
+     *
+     * ```
+     * checkbox.focus();
+     * ```
+     *
      * @fires 'nb-focused'
      * @returns {Object} nb.block
      */
@@ -218,6 +276,11 @@ nb.define('checkbox', {
 
     /**
      * Blur the checkbox or radio
+     *
+     * ```
+     * checkbox.blur();
+     * ```
+     *
      * @fires 'nb-blured'
      * @returns {Object} nb.block
      */
@@ -229,6 +292,11 @@ nb.define('checkbox', {
 
     /**
      * Sets label of the checkbox or radio
+     *
+     * ```
+     * checkbox.setLabel();
+     * ```
+     *
      * @param {String|Number} label
      * @fires 'nb-label-set'
      * @returns {Object} nb.block
@@ -241,6 +309,11 @@ nb.define('checkbox', {
 
     /**
      * Gets label of the checkbox or radio
+     *
+     * ```
+     * checkbox.getLabel(); // --> ...
+     * ```
+     *
      * @returns {String | Number}
      */
     getLabel: function() {
@@ -249,6 +322,11 @@ nb.define('checkbox', {
 
     /**
      * Get name of the checkbox or radio
+     *
+     * ```
+     * checkbox.getName(); // --> ...
+     * ```
+     *
      * @returns {String|Object} name
      */
     getName: function() {
@@ -256,7 +334,12 @@ nb.define('checkbox', {
     },
 
     /**
-     * Set checkbox value
+     * Set checkbox's name
+     *
+     * ```
+     * checkbox.setName('sex');
+     * ```
+     *
      * @param {String|Number} value
      * @fires 'nb-name-set'
      * @returns {Object} nb.block
@@ -269,6 +352,11 @@ nb.define('checkbox', {
 
     /**
      * Returns checkbox value
+     *
+     * ```
+     * checkbox.getValue();
+     * ```
+     *
      * @returns {String}
      */
     getValue: function() {
@@ -277,6 +365,11 @@ nb.define('checkbox', {
 
     /**
      * Set checkbox value
+     *
+     * ```
+     * checkbox.setValue('male');
+     * ```
+     *
      * @param {String|Number} value
      * @fires 'nb-value-set'
      * @returns {Object} nb.block
@@ -289,6 +382,11 @@ nb.define('checkbox', {
 
     /**
      * Destroy checkbox
+     *
+     * ```
+     * checkbox.destroy();
+     * ```
+     *
      * @fires 'nb-destroyed'
      */
     destroy: function() {

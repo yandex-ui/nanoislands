@@ -34,7 +34,10 @@
     "jscs": "1.0.11",
     "expect.js": "*",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-shell": "~0.6.4"
+    "grunt-shell": "~0.6.4",
+    "dox": "0.4.x",
+    "concat-stream": "1.4.x",
+    "github-flavored-markdown": "1.x"
   },
   "engines": {
     "node": "*"

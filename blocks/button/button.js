@@ -1,15 +1,6 @@
-/*
- * jQuery UI Depends:
- *        jquery.ui.button.js
- *        jquery.ui.core.js
- *        jquery.ui.widget.js
- */
-
 nb.define('button', {
-    /**
-     * Init a button
-     * @fires 'nb-inited'
-     */
+
+    events: {},
 
     oninit: function() {
         this.$node.button({
@@ -21,9 +12,14 @@ nb.define('button', {
 
     /**
      * Set text of the button
-     * @param {String} text  — text for the button
+     * 
+     * ```
+     *     button.setText('Hello, world!');
+     * ```
+     * 
+     * @param {String} text - text for the button
      * @fires 'nb-text-set'
-     * @returns {Object} nb.block
+     * @return {Object} block for chaining
      */
     setText: function(text) {
         if (this.$node && this.$node.data('uiButton')) {
@@ -35,7 +31,13 @@ nb.define('button', {
 
     /**
      * Get text of the button
-     * @returns {String} — text of the button
+     *
+     * ```
+     *     button.setText('Hello, world!');
+     *     button.getText(); // --> 'Hello, world!'
+     * ```
+     * 
+     * @return {String} text of the button
      *
      */
     getText: function() {
@@ -44,9 +46,14 @@ nb.define('button', {
 
     /**
      * Set href of the link button
-     * @param {String} href — link for the button
+     *
+     * ```
+     * button.setUrl('yandex.ru');
+     * ```
+     *
+     * @param {String} href - link for the button
      * @fires 'nb-url-set'
-     * @returns {Object} nb.block
+     * @return {Object} block for chaining
      */
     setUrl: function(href) {
         this.$node.attr('href', href);
@@ -56,16 +63,27 @@ nb.define('button', {
 
     /**
      * Get href of the link button
-     * @returns {String} — text of the button
+     *
+     * ```
+     * button.setUrl('yandex.ru');
+     * button.getUrl(); // --> yandex.ru
+     * ```
+     *
+     * @return {String} text of the button
      */
     getUrl: function() {
         return this.$node.attr('href');
     },
 
     /**
-     * Disables the button
+     * Disable the button
+     *
+     * ```
+     * button.disable();
+     * ```
+     *
      * @fires 'nb-disabled'
-     * @returns {Object} nb.block
+     * @return {Object} blocks for chaining
      */
     disable: function() {
         if (this.$node && this.$node.data('uiButton')) {
@@ -78,8 +96,13 @@ nb.define('button', {
 
     /**
      * Enables the button
+     *
+     * ```
+     * button.enable();
+     * ```
+     *
      * @fires 'nb-enabled'
-     * @returns {Object} nb.block
+     * @return {Object} blocks for chaining
      */
     enable: function() {
         if (this.$node && this.$node.data('uiButton')) {
@@ -92,7 +115,15 @@ nb.define('button', {
 
     /**
      * Return state of the button
-     * @returns {Boolean}
+     *
+     * ```
+     * button.isEnabled(); // --> true (by default)
+     *
+     * button.disable();
+     * button.isEnabled(); // --> false
+     * ```
+     *
+     * @return {Boolean}
      */
     isEnabled: function() {
         return !this.$node.prop("disabled");
@@ -100,8 +131,13 @@ nb.define('button', {
 
     /**
      * Focus the button
+     *
+     * ```
+     * button.focus();
+     * ```
+     *
      * @fires 'nb-focus'
-     * @returns {Object} nb.block
+     * @return {Object} blocks for chaining
      */
     focus: function() {
         if (this.isEnabled()) {
@@ -113,8 +149,13 @@ nb.define('button', {
 
     /**
      * Blur the button
+     *
+     * ```
+     * button.blur();
+     * ```
+     *
      * @fires 'nb-blured'
-     * @returns {Object} nb.block
+     * @return {Object} blocks for chaining
      */
     blur: function() {
         if (this.isEnabled()) {
@@ -126,6 +167,11 @@ nb.define('button', {
 
     /**
      * Destroy the button
+     *
+     * ```
+     * button.destroy();
+     * ```
+     *
      * @fires 'nb-destroyed'
      */
     destroy: function() {

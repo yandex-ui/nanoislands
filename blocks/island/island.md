@@ -1,10 +1,7 @@
-## Yate
 
-### Default island
-
+```
     nb-island()
-
-Default options: none.
+```
 
 ### Options
 
@@ -41,13 +38,3 @@ Inline island with an L-sized padding:
         'type':  'inline'
     })
 ```
-
-## JS
-
-### Initialisation
-
-None. Island is a static block.
-
-### Methods
-
-None declared

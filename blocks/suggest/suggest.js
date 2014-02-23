@@ -1,15 +1,15 @@
 /*
- * jQuery UI Depends:
- *        jquery.ui.autocomplete.js
- *        jquery.ui.button.js
- *        jquery.ui.core.js
- *        jquery.ui.widget.js
- *        jquery.ui.position.js
- *        jquery.ui.menu.js
+ * ### jQuery UI Depends:
+ * - jquery.ui.autocomplete.js
+ * - jquery.ui.button.js
+ * - jquery.ui.core.js
+ * - jquery.ui.widget.js
+ * - jquery.ui.position.js
+ * - jquery.ui.menu.js
  */
 (function() {
 
-    /**
+    /*!
      * Саджест
      * @namespace jquery.ui.suggest
      * @extends {jquery.ui.autocomplete} http://api.jqueryui.com/autocomplete/
@@ -27,7 +27,7 @@
      *        nb-keypress-enter – всплывает при нажатии на энетер и отсутвии саджеста
      */
 
-    /**
+    /*!
      * Опции инициализации саджеста
      * @description
      *     Эти опции могут быть определены в yate шаблонах при описании наноблока.
@@ -40,7 +40,7 @@
      * @type {Object}
      */
     var optionsSuggest = {
-        /**
+        /*!
          * Истоник данных
          * @description См. http://api.jqueryui.com/autocomplete/#option-source
          *
@@ -48,14 +48,14 @@
          */
         source: null,
 
-        /**
+        /*!
          * Количество элеметов, при котором в выпадающем списке появляется скролл
          *
          * @type {Number}
          */
         countMax: 10,
 
-        /**
+        /*!
          * Тип саджеста
          * @description
          *     Указывает из какого шаблона брать верстку для элемента выпадающего списка.
@@ -65,7 +65,7 @@
          */
         type: 'default',
 
-        /**
+        /*!
          * Включение или отключение выделения жирным начертанием результатов
          * матчинга в выпадающем списке.
          *
@@ -73,7 +73,7 @@
          */
         highlight: false,
 
-        /**
+        /*!
          * Размер блока.
          * @description Применятся на размер элементов в выпадающем списке.
          *
@@ -81,7 +81,7 @@
          */
         size: 's',
 
-        /**
+        /*!
          * Количесвто введенных символов, после которого начинать поиск слов
          */
         minLength: 2
@@ -165,7 +165,7 @@
 
     nb.define('suggest', {
 
-        /**
+        /*!
          * Init select
          * @fires 'nb-suggest_inited'
          */
@@ -223,9 +223,7 @@
         /**
          * Sets option to the jUI widget
          * http://api.jqueryui.com/autocomplete/#method-option
-         * @param  {Object.<string, number>} option — {
-         *      name: value —  имя и значение опцииопции
-         * }
+         * @param  {Object} option `{ name: value }` имя и значение опции
          * @fires 'nb-option-set'
          * @returns {Object} nb.block
          */
@@ -385,7 +383,7 @@
 
         /**
          * Search value in the source array and open suggest popup
-         * @param  {string | number} value
+         * @param  {string|number} value
          * @returns {Object} nb.block
          */
         search: function(value) {
