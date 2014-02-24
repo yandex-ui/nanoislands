@@ -119,9 +119,9 @@ describe("Checkbox Tests", function() {
             });
         });
 
-        it('should return empty string for checkbox without value', function() {
+        it('should return "on" for checkbox without value', function() {
             var checkbox = nb.find('checkbox-without-attr-value');
-            expect(checkbox.getValue()).to.be.equal('');
+            expect(checkbox.getValue()).to.be.equal('on');
         });
 
         describe("should return new value after setValue", function () {
