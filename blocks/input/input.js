@@ -238,11 +238,21 @@ nb.define('input', {
      * @returns {Object} nb.block
      */
     setValue: function(value) {
-        this.value = value;
-        this.$control.val(value);
-        this.$control.trigger('input');
-        this.trigger('nb-value-set', this);
-        this.trigger('nb-changed', this);
+        /*
+        Check newValue and actualValue to avoid recursion
+
+        nbInput.on('nb-changed', function() {
+            var validValue = validate(this.getValue());
+            this.setValue(validValue);
+        });
+        */
+        if (this.value != value) {
+            this.value = value;
+            this.$control.val(value);
+            this.$control.trigger('input');
+            this.trigger('nb-value-set', this);
+            this.trigger('nb-changed', this);
+        }
         return this;
     },
 
