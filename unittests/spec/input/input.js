@@ -116,6 +116,19 @@ describe("Input Tests", function() {
 
             expect(result).to.be.ok();
         });
+
+        it("should not fire nb-changed event on .setValue() if actual value stay the same", function() {
+            var result = false;
+
+            this.input.on('nb-changed', function() {
+                result = true;
+            });
+
+            var value = this.input.getValue();
+            this.input.setValue(value);
+
+            expect(result).to.not.be.ok();
+        });
     });
 
     describe('#getType()', function() {
