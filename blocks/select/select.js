@@ -149,7 +149,7 @@ nb.define('select', {
             $itemNode.data('ui-autocomplete-item', item);
 
             var $itemNodeContent = $('<a></a>');
-            var $itemText = $('<span class="nb-select__text"></span>').html(item.label).appendTo($itemNodeContent);
+            var $itemText = $('<span class="nb-select__text"></span>').text(item.label).appendTo($itemNodeContent);
             if (item.icon) {
                 $itemText.prepend('<img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_' + item.icon + '">');
             }
