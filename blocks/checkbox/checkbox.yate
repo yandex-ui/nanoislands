@@ -23,7 +23,7 @@ match .checkbox nb {
         }
 
 
-        <input class="nb-checkbox__input" id="nb-checkbox_{ uniq }" value="{ .value }">
+        <input class="nb-checkbox__input" id="nb-checkbox_{ uniq }">
             if .type == 'button' {
                 @type = 'checkbox'
             } else {
@@ -45,6 +45,11 @@ match .checkbox nb {
             if .checked {
                 @checked = 'checked'
             }
+
+            if .value {
+                @value = .value
+            }
+
         </input>
 
         if .type != 'button' {

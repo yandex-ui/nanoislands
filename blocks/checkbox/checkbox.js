@@ -272,7 +272,14 @@ nb.define('checkbox', {
      * @returns {String}
      */
     getValue: function() {
-        return this.$control.attr('value') || '';
+        var valueAttr = this.$control.attr('value');
+        if (typeof valueAttr === 'string') {
+            return valueAttr;
+        } else {
+            // checkbox without @value has .value === 'on'
+            // this is standard browser behavour
+            return 'on';
+        }
     },
 
     /**
