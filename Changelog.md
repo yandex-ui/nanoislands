@@ -1,3 +1,8 @@
+##### 0.3.3 — patch
+###### Fixes
+* [Checkbox] Checkbox without `@attr` now returns "on" for #getValue()
+* [Input] Input doesn't trigger events on #setValue() if new value is the same
+
 ##### 0.3.2 — patch
 * [Popup] refactor — isOpen() method
 * [Input] error optional params
