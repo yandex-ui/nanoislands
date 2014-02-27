@@ -1,4 +1,9 @@
-##### 0.3.3 — patch
+##### 0.3.5 — patch
+##### Fixes
+* [Checkbox] fix checkbox empty string value rendering
+* adds opacity IE fallback
+
+##### 0.3.4 — patch
 ###### Fixes
 * [Checkbox] Checkbox without `@attr` now returns "on" for #getValue()
 * [Input] Input doesn't trigger events on #setValue() if new value is the same
