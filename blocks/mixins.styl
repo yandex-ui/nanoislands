@@ -1,0 +1,13 @@
+/*
+ * Opacity with conditional IE support.
+ */
+opacity(n, args...)
+  opacity: n args
+  if ie
+    val = round(n * 100)
+    if val == 100
+      -ms-filter: none
+      filter: none
+    else
+      -ms-filter: 'alpha(Opacity=%s)' % val args
+      filter: 'alpha(opacity=%s)' % val args
