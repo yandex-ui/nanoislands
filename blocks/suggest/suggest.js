@@ -119,7 +119,7 @@
             clone.labelContent = clone.label;
             delete clone.label;
 
-            return yr.run('main', {
+            return yr.run(nb.getYateModuleName(), {
                 item: clone,
                 type: this.options.type,
                 size: this.options.size
