@@ -53,6 +53,18 @@ describe("Checkbox Tests", function() {
                 it('should render additional flag node', function() {
                     expect(this.checkboxes['checkbox'].$node.find('.nb-checkbox__flag.nb-checkbox__flag_type_checkbox').length).to.be.greaterThan(0);
                 });
+
+                it('should render attr @value from options', function() {
+                    expect(nb.find('checkbox-button').$control.attr('value')).to.be.equal('my-value');
+                });
+
+                it('should render empty attr @value from options', function() {
+                    expect(nb.find('checkbox-with-empty-attr-value').$control.attr('value')).to.be.equal('');
+                });
+
+                it('should not render attr @value if no such prop in options', function() {
+                    expect(nb.find('checkbox-without-attr-value').$control[0].hasAttribute('value')).to.be.equal(false);
+                });
             });
 
             describe('"radio"', function() {

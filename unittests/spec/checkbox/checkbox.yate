@@ -52,6 +52,11 @@ match .checkbox {
         "id": "checkbox-without-attr-value"
     })
 
+    nb-checkbox({
+        "content": "Button"
+        "id": "checkbox-with-empty-attr-value"
+        "value": ""
+    })
 
     nb-checkbox({
         "value": "my-value1"

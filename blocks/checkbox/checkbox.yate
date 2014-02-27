@@ -46,7 +46,9 @@ match .checkbox nb {
                 @checked = 'checked'
             }
 
-            if .value {
+            // бесмысленная и беспощадная проверка на наличие свойства value
+            // потому что пустое value и его отсутствие - не одно и то же
+            if count(.value) {
                 @value = .value
             }
 
