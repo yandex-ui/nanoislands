@@ -1,3 +1,8 @@
+##### 0.3.6 — patch
+##### Fixes
+* [Checkbox] Emulates "change" event for IE<9
+* [Select] IE<9 must degrade to native contol
+
 ##### 0.3.5 — patch
 ##### Fixes
 * [Checkbox] fix checkbox empty string value rendering
