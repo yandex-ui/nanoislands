@@ -1,3 +1,7 @@
+/**
+ * @class nb.block.Input
+ * @augments nb.block.Base
+ */
 nb.define('input', {
     events: {
         'click': 'focus',
@@ -9,6 +13,7 @@ nb.define('input', {
     /**
      * Init input
      * @fires 'nb-inited'
+     * @constructor
      */
     oninit: function() {
         var that = this;

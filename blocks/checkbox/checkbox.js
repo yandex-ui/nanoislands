@@ -1,3 +1,7 @@
+/**
+ * @class nb.block.Checkbox
+ * @augments nb.block.Base
+ */
 nb.define('checkbox', {
     events: {
         'change input': 'onchange'
@@ -20,8 +24,8 @@ nb.define('checkbox', {
     /**
      * Init a checkbox
      * @fires 'nb-inited'
+     * @constructor
      */
-
     oninit: function() {
         this.$control = this.$node.find('input[type]');
         this._isChecked = this.$control.prop('checked');

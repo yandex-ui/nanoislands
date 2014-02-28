@@ -8,6 +8,11 @@
  *        jquery.ui.menu.js
  */
 
+
+/**
+ * @class nb.block.Select
+ * @augments nb.block.Base
+ */
 nb.define('select', {
     events: {
         'click': '_onclick'
@@ -18,6 +23,7 @@ nb.define('select', {
     /**
      * Init select
      * @fires 'nb-inited'
+     * @constructor
      */
     oninit: function() {
         this.$control = this.$node.find('select');
