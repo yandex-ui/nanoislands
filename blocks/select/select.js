@@ -27,7 +27,7 @@ nb.define('select', {
         this._updateFromSelect();
 
         // degradation to native control in IE < 9
-        if (document['documentMode'] && document['documentMode'] < 9) {
+        if (nb.IE_LT9) {
             var that = this;
             this.$control.on('change', function(e) {
                 that.setState({
