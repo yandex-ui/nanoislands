@@ -26,9 +26,20 @@ nb.define('checkbox', {
         this.$control = this.$node.find('input[type]');
         this._isChecked = this.$control.prop('checked');
 
-        this.$control.on('click', function(evt) {
+        this.$control.on('click.nb-checkbox', function(evt) {
             evt.stopPropagation();
         });
+
+        // emulates "change" event for IE<9
+        // IE<9 triggers "change" only after "blur"
+        if (document['documentMode'] && document['documentMode'] < 9) {
+            var that = this;
+            this.$control.on('propertychange.nb-checkbox', function(e) {
+                if (e.originalEvent.propertyName === 'checked') {
+                    that.onchange();
+                }
+            });
+        }
 
         if (this.getType() === 'radio') {
             nb.on('checkbox:checked', $.proxy(this._onCheckboxChecked, this));
@@ -299,7 +310,7 @@ nb.define('checkbox', {
      * @fires 'nb-destroyed'
      */
     destroy: function() {
-        this.$control.off('click');
+        this.$control.off('.nb-checkbox');
         if (this.getType() === 'radio') {
             nb.off('checkbox:checked', $.proxy(this._onCheckboxChecked, this));
         }
