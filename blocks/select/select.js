@@ -26,8 +26,19 @@ nb.define('select', {
 
         this._updateFromSelect();
 
-        // preparing control depending on configuration and content
-        this.controlPrepare();
+        // degradation to native control in IE < 9
+        if (document['documentMode'] && document['documentMode'] < 9) {
+            var that = this;
+            this.$control.on('change', function(e) {
+                that.setState({
+                    value: e.target.value
+                })
+            });
+        } else {
+            // preparing control depending on configuration and content
+            this.controlPrepare();
+        }
+
         this.trigger('nb-inited', this);
     },
 
