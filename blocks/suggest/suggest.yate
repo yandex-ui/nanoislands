@@ -36,21 +36,25 @@ match .suggest nb {
     </div>
 }
 
-match / nb-suggest {
+match / nb-suggest-item {
     <li class="nb-suggest__item">
-        <a class="nb-suggest__item__link">
-            apply .item nb-suggest
-        </a>
+        apply . nb-suggest-item-content
     </li>
 }
 
-match /[.type == 'default'].item nb-suggest {
+match /[.type == 'default' || .type == 'username'] nb-suggest-item-content {
+    <a class="nb-suggest__item__link">
+        apply .item nb-suggest-item-content
+    </a>
+}
+
+match /[.type == 'default'].item nb-suggest-item-content {
     if .labelContent {
         html(.labelContent)
     }
 }
 
-match /[.type == 'username'].item nb-suggest {
+match /[.type == 'username'].item nb-suggest-item-content {
     user = {
         'size': /.size
         'mod': 'suggest'

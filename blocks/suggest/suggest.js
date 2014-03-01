@@ -126,7 +126,7 @@
             };
 
             if ($.isFunction(this.options.renderItem)) {
-                return this.options.renderItem(renderData);
+                return this.options.renderItem.call(this, renderData);
             } else {
                 return '<li><a href="#">' + clone.labelContent + '</a></li>';
             }
@@ -202,7 +202,7 @@
                 highlight: this.$node.data('highlight'),
                 minLength: this.$node.data('minLength'),
                 renderItem: function(data) {
-                    return yr.run(that.getYateModuleName(), data, 'nb-suggest');
+                    return yr.run(that.getYateModuleName(), data, 'nb-suggest-item');
                 }
             });
 
