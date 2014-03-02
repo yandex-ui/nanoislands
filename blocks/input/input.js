@@ -178,9 +178,9 @@ nb.define('input', {
             return this;
         }
 
-        if (!this.$node.hasClass('is-focused')) {
+        if (!this.focused) {
             nb.trigger('nb-input_focusout');
-            this.$node.addClass('is-focused');
+            this.$node.addClass('nb-is-focused');
 
             if (this.data.ghost) {
                 this.$node.removeClass('is-ghost');
@@ -200,7 +200,7 @@ nb.define('input', {
      * @returns {Object} nb.block
      */
     blur: function() {
-        this.$node.removeClass('is-focused');
+        this.$node.removeClass('nb-is-focused');
 
         if (this.data.ghost) {
             this.$node.addClass('is-ghost');
