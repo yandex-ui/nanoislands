@@ -43,4 +43,23 @@ func suggests() {
         </div>
         nb-suggest(suggestUser2)
     </div>
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Саджест c произвольным полем ввода. Введите буквы «Ва»'
+        </div>
+        nb-input({
+            'id': 'custom-input-for-suggest'
+            'size': 's'
+            'attrs': {
+                'placeholder': 'Введите вариант'
+            }
+        })
+        suggest-with-custom-input = {
+            'id': 'suggest-with-custom-input'
+            'customInput': true()
+        }
+        custom-input-suggest = nb-extend(suggest, suggest-with-custom-input)
+        nb-suggest(custom-input-suggest)
+    </div>
 }

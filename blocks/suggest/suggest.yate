@@ -25,15 +25,21 @@ match .suggest nb {
           @class += ' nb-is-disabled'
         }
 
-        nb-input({
-             'size': .size
-             'class': 'nb-suggest__input'
-             'attrs': .attrsInput
-             'disabled': .disabled
-             'name': .name
-             'content': .content
-         })
+        if (!.customInput) {
+            apply . nb-suggest-input
+        }
     </div>
+}
+
+match .suggest nb-suggest-input {
+    nb-input({
+         'size': .size
+         'class': 'nb-suggest__input'
+         'attrs': .attrsInput
+         'disabled': .disabled
+         'name': .name
+         'content': .content
+    })
 }
 
 match / nb-suggest {
