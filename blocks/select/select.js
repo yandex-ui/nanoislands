@@ -390,6 +390,7 @@ nb.define('select', {
             this.$node
                 .addClass('nb-is-disabled')
                 .autocomplete('disable');
+            this.$control.attr('disabled', 'disabled');
             this.trigger('nb-disabled', this);
         }
         return this;
@@ -405,6 +406,7 @@ nb.define('select', {
             this.$node
                 .removeClass('nb-is-disabled')
                 .autocomplete('enable');
+            this.$control.removeAttr('disabled');
             this.trigger('nb-enabled', this);
         }
         return this;
