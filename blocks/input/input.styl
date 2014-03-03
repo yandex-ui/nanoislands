@@ -12,6 +12,9 @@
     // reset default styles for <input type="search"/>
     -webkit-appearance: textfield
 
+  &.nb-is-focused
+    skin: input_focus
+
 .nb-input_type_complex
   kind: field $islands_s $islands_s
   skin: input-box
@@ -38,6 +41,7 @@
     skin: input-view no-focus
 
   :not(.nb-is-disabled):focus + .nb-input__view
+  :not(.nb-is-disabled).nb-is-focused + .nb-input__view
     skin: input_focus
 
   .nb-input__reset
@@ -59,7 +63,7 @@
     margin-right: $islands_s * -1
     height: auto
 
-  &.is-ghost:not(.is-focused) .nb-input__view
+  &.is-ghost:not(.nb-is-focused) .nb-input__view
     border: none
     background: none
     box-shadow: none
