@@ -498,6 +498,11 @@ var nb = nb || {};
         return children;
     };
 
+//  Определение  модуля, в котором находится шаблон YATE для блока
+    Block.prototype.getYateModuleName = function() {
+        return 'main';
+    };
+
 //  Чтобы можно было вызывать методы базового класса.
     nb.Block = Block;
 

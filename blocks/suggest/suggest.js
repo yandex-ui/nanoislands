@@ -119,11 +119,17 @@
             clone.labelContent = clone.label;
             delete clone.label;
 
-            return yr.run('main', {
+            var renderData = {
                 item: clone,
                 type: this.options.type,
                 size: this.options.size
-            }, 'nb-suggest');
+            };
+
+            if ($.isFunction(this.options.renderItem)) {
+                return this.options.renderItem(renderData);
+            } else {
+                return '<li><a href="#">' + clone.labelContent + '</a></li>';
+            }
         },
 
         _suggest: function(items) {
@@ -170,6 +176,7 @@
          * @fires 'nb-suggest_inited'
          */
         oninit: function() {
+            var that = this;
 
             this.input = this.children()[0];
 
@@ -193,7 +200,10 @@
                 type: this.$node.data('type'),
                 size: this.$node.data('size'),
                 highlight: this.$node.data('highlight'),
-                minLength: this.$node.data('minLength')
+                minLength: this.$node.data('minLength'),
+                renderItem: function(data) {
+                    return yr.run(that.getYateModuleName(), data, 'nb-suggest');
+                }
             });
 
             this.$suggest = this.$jUI.data().uiSuggest.menu.element;
