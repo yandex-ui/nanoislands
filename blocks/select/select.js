@@ -434,17 +434,10 @@ nb.define('select', {
             source = [source];
         }
 
-        var html = [];
-        for (var i = 0, j = source.length; i < j; i++) {
-            var item = source[i];
-            html.push(
-                '<option' +
-                    ' label="' + item.text + '"' +
-                    ' value="' + item.value + '"' +
-                    (item.selected ? ' selected="selected"' : '') +
-                    '>' + item.text + '</option>'
-            );
-        }
+        // render options with yate to prevent XSS
+        var html = yr.run(this.getYateModuleName(), {
+            items: source
+        }, 'nb-select-options');
 
         // set new source for select
         this.$control.empty().append(html);
