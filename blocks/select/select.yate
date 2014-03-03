@@ -48,20 +48,24 @@ match .select nb {
                 @name = .attrs.name
             }
 
-            for .items {
-                if .group {
-                    <optgroup label="{ .text }" data-nb-type="{ .type }">
-                    for .group {
-                        _select-option(.)
-                    }
-                    </optgroup>
-                } else {
-                    _select-option(.)
-                }
-            }
+            apply . nb-select-options
         </select>
         <div class="nb-select__dropdown nb-select__dropdown_size_{ .size } nb-select_theme_{ .theme }"></div>
     </span>
+}
+
+match / | .select nb-select-options {
+    for .items {
+        if .group {
+            <optgroup label="{ .text }" data-nb-type="{ .type }">
+            for .group {
+                _select-option(.)
+            }
+            </optgroup>
+        } else {
+            _select-option(.)
+        }
+    }
 }
 
 func _select-option(nodeset item) {
