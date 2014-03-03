@@ -176,8 +176,12 @@
          */
         _destroySuggest: function() {
             if (this.$control && this.$jUI) {
+                var jUIData = this.$jUI.data();
                 this.$control.off('.nb-suggest');
-                this.$jUI.suggest('destroy');
+                this.$jUI.off('.nb-suggest');
+                if (jUIData && jUIData.uiSuggest) {
+                    this.$jUI.suggest('destroy');
+                }
             }
         },
 
@@ -253,11 +257,11 @@
 
             this.$suggest.addClass(this.$node.data('class-suggest'));
 
-            this.$jUI.on('suggest_search', function() {
+            this.$jUI.on('suggest_search.nb-suggest', function() {
                 this.trigger('nb-type', this, this.getValue());
             }.bind(this));
 
-            this.$jUI.on('suggestselect', function(e, item) {
+            this.$jUI.on('suggestselect.nb-suggest', function(e, item) {
                 this.$selected = item.item;
                 this.trigger('nb-select', this, item.item);
             }.bind(this));
