@@ -1,3 +1,10 @@
+##### 0.3.7 — patch
+##### Fixes
+* Shift the method 'getYateModuleName' to a nb.Block instance.
+* [Input] Input.blur doesn't work
+* [Button] Fix disabled state for pseudo and file buttons
+
+
 ##### 0.3.6 — patch
 ##### Fixes
 * [Checkbox] Emulates "change" event for IE<9

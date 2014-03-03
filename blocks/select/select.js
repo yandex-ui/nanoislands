@@ -38,7 +38,7 @@ nb.define('select', {
             this.$control.on('change', function(e) {
                 that.setState({
                     value: e.target.value
-                })
+                });
             });
         } else {
             // preparing control depending on configuration and content
