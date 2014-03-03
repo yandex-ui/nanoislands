@@ -240,7 +240,7 @@ nb.define('select', {
     },
 
     _setText: function(text) {
-        this.$node.find('.nb-button__text').html(text);
+        this.$node.find('.nb-button__text').text(text);
     },
 
     _setMaxHeight: function(maxheight) {
