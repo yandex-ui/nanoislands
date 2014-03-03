@@ -1,9 +1,14 @@
+##### 0.3.8 — patch
+##### Fixes
+* enable/disable must affect <select> node
+* fix XSS in nb-suggest #_setText()
+* fix XSS in nb-suggest #setSource()
+
 ##### 0.3.7 — patch
 ##### Fixes
 * Shift the method 'getYateModuleName' to a nb.Block instance.
 * [Input] Input.blur doesn't work
 * [Button] Fix disabled state for pseudo and file buttons
-
 
 ##### 0.3.6 — patch
 ##### Fixes
