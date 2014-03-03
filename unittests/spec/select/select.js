@@ -368,6 +368,11 @@ describe("Select Tests", function() {
             this.select.disable();
             expect($.fn.autocomplete.calledWithExactly('disable')).to.be.equal(true);
         });
+
+        it("should disable <select> node", function() {
+            this.select.disable();
+            expect(this.select.$control.attr('disabled')).to.be.equal('disabled');
+        });
     });
 
     describe("#enable()", function() {
@@ -399,6 +404,11 @@ describe("Select Tests", function() {
         it("should call $.fn.autocomplete('enable')", function() {
             this.select.enable();
             expect($.fn.autocomplete.calledWithExactly('enable')).to.be.equal(true);
+        });
+
+        it("should enable <select> node", function() {
+            this.select.enable();
+            expect(this.select.$control[0].hasAttribute('disabled')).to.be.equal(false);
         });
     });
 
