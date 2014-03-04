@@ -192,6 +192,11 @@ describe("Select Tests", function() {
             expect(this.select.getState().text == 'Гибрид').to.be.ok();
         });
 
+        it('should set state with proper value from <option></option>', function() {
+            this.select.setState({value: 'option-with-html-text'});
+            expect(this.select.getState().text).to.be.equal('<script>alert(1)</script>');
+        });
+
         it("shouldn't change if trying to set nonexistent option", function() {
             var flag = true;
 
