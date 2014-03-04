@@ -18,7 +18,6 @@ match .select nb {
 
         if .disabled  {
             @class += ' nb-is-disabled'
-            @disabled = 'disabled'
         }
 
         if .maxHeight {
