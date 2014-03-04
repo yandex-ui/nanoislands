@@ -25,6 +25,25 @@ match .select {
           ]
         })
 
+    nb-select( {
+        'id': 'select-with-3-options'
+        'items': [
+            {
+                'text': 'option-text1'
+                'value': 'option-value1'
+            }
+            {
+                'text': 'option-text2'
+                'value': 'option-value2'
+            }
+            {
+                'selected': true()
+                'text': 'option-text3'
+                'value': 'option-value3'
+            }
+        ]
+    })
+
          nb-select( {
               'size': 'm'
               'id': 'select-mw1'
