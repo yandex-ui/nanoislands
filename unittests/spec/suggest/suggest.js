@@ -5,6 +5,11 @@ describe("suggest Tests", function() {
 
         nb.init();
         this.suggest = nb.find('suggest');
+        this.nbCustomSuggest = nb.find('suggest-with-custom-input');
+        this.nbCustomInput = $(yr.run('main', {}, 'custom-suggest-input'));
+        this.$inputField = $('<input />', {
+            type: 'text'
+        })
     });
 
     afterEach(function() {
@@ -22,6 +27,111 @@ describe("suggest Tests", function() {
     });
 
     describe("#Yate API", function() {
+    });
+
+    describe('#_destroySuggest', function() {
+        it('should destroy the Suggest', function() {
+            sinon.spy(jQuery.fn, 'suggest');
+            this.nbCustomSuggest._destroySuggest();
+            expect(jQuery.fn.suggest.calledWith('destroy')).to.be.ok();
+            jQuery.fn.suggest.restore();
+        });
+
+        it('should unbind of all events the Suggest', function() {
+            var events = $._data(this.nbCustomSuggest.$control[0]).events;
+            var isEvents = false;
+
+            this.nbCustomSuggest._destroySuggest();
+            $.map(events, function(event) {
+                $.map(event, function(eventData) {
+                    if (eventData.namespace === 'nb-suggest') {
+                        isEvents = true;
+                    }
+                })
+            });
+
+            expect(isEvents).not.to.be.ok();
+        });
+    });
+
+    describe('#setInput', function() {
+        var that = this;
+
+        it('should remove the previous Suggest', function() {
+            sinon.stub(this.nbCustomSuggest, '_destroySuggest');
+            this.nbCustomSuggest.setInput();
+            expect(this.nbCustomSuggest._destroySuggest.called).to.be.ok();
+            this.nbCustomSuggest._destroySuggest.restore();
+        });
+
+        it('should set the passed input', function() {
+            this.nbCustomSuggest.setInput(this.$inputField);
+            expect(this.nbCustomSuggest.$control[0]).to.equal(this.$inputField[0]);
+        });
+
+        it('should append the passed input to Suggest node', function() {
+            this.nbCustomSuggest.setInput(this.$inputField);
+            expect($.contains(this.nbCustomSuggest.$node[0], this.$inputField[0])).to.be.ok();
+        });
+
+        it('should set the node of suggest if input isn\'t passed', function() {
+            this.nbCustomSuggest.setInput();
+            expect(this.nbCustomSuggest.$control[0]).to.equal(this.nbCustomSuggest.$node[0]);
+        });
+
+        it('should init the nanoisland input', function() {
+            this.nbCustomSuggest.setInput(this.nbCustomInput);
+            expect(nb.hasBlock(this.nbCustomInput[0])).to.be.ok()
+        });
+
+        it('should set the positions option to a root of passed input node', function() {
+            this.nbCustomSuggest.setInput(this.nbCustomInput);
+            expect(this.nbCustomSuggest.getOption('position').of[0]).to.equal(this.nbCustomInput[0])
+        });
+
+        it('should init the suggest jUI widget', function() {
+            sinon.spy(jQuery.fn, 'suggest');
+            this.nbCustomSuggest.setInput();
+            expect(jQuery.fn.suggest.called).to.be.ok();
+            jQuery.fn.suggest.restore();
+        });
+
+        it('should add the \'class-suggest\' to the Suggest\'s dropdown', function() {
+            this.nbCustomSuggest.setInput();
+            var suggestClassName = this.nbCustomSuggest.$node.data('class-suggest');
+            expect(this.nbCustomSuggest.$suggest.hasClass(suggestClassName)).to.be.ok();
+        });
+
+        var hasEvent = function(node, eventName, eventNamespace) {
+            var hasEvent = false;
+
+            $.map($._data(node).events, function(eventsHandlers, key) {
+                if (key === eventName) {
+                    $.map(eventsHandlers, function(eventData) {
+                        if (eventData.namespace === eventNamespace) {
+                            hasEvent = true;
+                            return;
+                        }
+                    });
+                }
+                return;
+            });
+
+            return hasEvent;
+        };
+
+        var itShouldBindEvent = function(event) {
+            event = event.split('.');
+
+            it('should bind event "' + event + '" to the input control', function() {
+                this.nbCustomSuggest.setInput(this.$inputField);
+                expect(hasEvent(this.$inputField[0], event[0], event[1])).to.be.ok();
+            });
+        };
+
+        itShouldBindEvent('keydown.nb-suggest');
+        itShouldBindEvent('suggest_search.nb-suggest');
+        itShouldBindEvent('suggestselect.nb-suggest');
     });
 
     describe('#getType()', function() {

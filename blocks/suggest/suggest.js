@@ -170,19 +170,67 @@
     };
 
     nb.define('suggest', {
+        /**
+         * Delete jUI suggest
+         * @private
+         */
+        _destroySuggest: function() {
+            if (this.$control && this.$jUI) {
+                var jUIData = this.$jUI.data();
+                this.$control.off('.nb-suggest');
+                this.$jUI.off('.nb-suggest');
+                if (jUIData && jUIData.uiSuggest) {
+                    this.$jUI.suggest('destroy');
+                }
+            }
+        },
 
         /**
          * Init select
          * @fires 'nb-suggest_inited'
          */
         oninit: function() {
+            this.setInput(this.$node.find('input')[0]);
+
+            this.trigger('nb-inited', this);
+        },
+
+        /**
+         * Associate input field with suggest
+         * @param {Node|jQuery} inputNode the input block for associate of suggest
+         */
+        setInput: function(inputNode) {
             var that = this;
+            var position = {
+                my: "left top",
+                at: "left bottom",
+                collision: "none"
+            };
+
+            this._destroySuggest();
+
+            if (inputNode) {
+                this.$control = $(inputNode);
+                this.$node.append(inputNode);
+                if (this.$control[0].tagName.toLowerCase() !== 'input') {
+                    $.extend(position, {
+                        my: "left top",
+                        at: "left bottom",
+                        collision: "none",
+                        of: this.$control
+                    });
+                    this.$control = this.$control.find('input');
+
+                }
+            } else {
+                this.$control = this.$node;
+            }
 
             this.input = this.children()[0];
 
             var source = this.$node.data('source');
 
-            this.$node.find('input').on('keydown', function(e) {
+            this.$control.on('keydown.nb-suggest', function(e) {
                 var keyCode = $.ui.keyCode;
 
                 if ($.inArray(e.keyCode, [ keyCode.ENTER, keyCode.NUMPAD_ENTER ]) !== -1) {
@@ -192,10 +240,9 @@
                 }
             }.bind(this));
 
-            this.$control = this.$node.find('input');
-
             this.$jUI = this.$control.suggest({
                 source: source,
+                position: position,
                 countMax: this.$node.data('countMax'),
                 type: this.$node.data('type'),
                 size: this.$node.data('size'),
@@ -210,16 +257,14 @@
 
             this.$suggest.addClass(this.$node.data('class-suggest'));
 
-            this.$jUI.on('suggest_search', function() {
+            this.$jUI.on('suggest_search.nb-suggest', function() {
                 this.trigger('nb-type', this, this.getValue());
             }.bind(this));
 
-            this.$jUI.on('suggestselect', function(e, item) {
+            this.$jUI.on('suggestselect.nb-suggest', function(e, item) {
                 this.$selected = item.item;
                 this.trigger('nb-select', this, item.item);
             }.bind(this));
-
-            this.trigger('nb-inited', this);
         },
 
         /**
@@ -294,7 +339,9 @@
          */
         disable: function() {
             if (this.isEnabled()) {
-                this.input.disable();
+                if (this.input) {
+                    this.input.disable();
+                }
                 this.$node.addClass('nb-is-disabled');
                 this.$jUI.suggest('disable');
                 this.trigger('nb-disabled', this);
@@ -309,7 +356,9 @@
          */
         enable: function() {
             if (!this.isEnabled()) {
-                this.input.enable();
+                if (this.input) {
+                    this.input.enable();
+                }
                 this.$node.removeClass('nb-is-disabled');
                 this.$jUI.suggest('enable');
                 this.trigger('nb-enabled', this);
@@ -331,7 +380,7 @@
          * @returns {Object} nb.block
          */
         focus: function() {
-            if (this.isEnabled()) {
+            if (this.isEnabled() && this.input) {
                 this.input.focus();
             }
             this.trigger('nb-focused', this);
@@ -364,7 +413,7 @@
          * @returns {Object} nb.block
          */
         blur: function() {
-            if (this.isEnabled()) {
+            if (this.isEnabled() && this.input) {
                 this.input.blur();
             }
             this.trigger('nb-blured', this);
@@ -409,7 +458,7 @@
          */
         destroy: function() {
             if (this.$jUI && this.$suggest) {
-                this.$jUI.suggest('destroy');
+                this._destroySuggest();
             }
             this.trigger('nb-destroyed', this);
             this.nbdestroy();
