@@ -314,6 +314,15 @@ describe("Select Tests", function() {
             expect(item.text == 'test' && item.value == 'test').to.not.ok();
         });
 
+        it('should save selected state after remove item from source', function() {
+            var select = nb.find('select-with-3-options');
+            select.removeFromSource(1);
+            expect(select.getState()).to.be.eql({
+                'text': 'option-text3',
+                'value': 'option-value3'
+            });
+        });
+
         it("check event", function() {
             var flag = true;
 

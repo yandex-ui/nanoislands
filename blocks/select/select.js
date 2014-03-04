@@ -455,9 +455,11 @@ nb.define('select', {
      */
     getSource: function() {
         return $.map(this.$control.children('option'), function(node) {
+            var $node = $(node);
             return {
-                text: $(node).text(),
-                value: $(node).val()
+                text: $node.text(),
+                value: $node.val(),
+                selected: $node.prop('selected')
             };
         });
     },
@@ -501,6 +503,7 @@ nb.define('select', {
      */
     removeFromSource: function(param) {
         var source = this.getSource();
+
         var index;
 
         if (typeof param == 'number' || typeof param == 'string') {
