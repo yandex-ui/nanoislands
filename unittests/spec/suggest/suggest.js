@@ -5,6 +5,13 @@ describe("suggest Tests", function() {
 
         nb.init();
         this.suggest = nb.find('suggest');
+        this.createCustomSuggest = function($suggestField) {
+            if (!$suggestField) {
+                $suggestField = $('#custom-suggest-input');
+            }
+            $suggestField.addClass('_init');
+            return nb.block($suggestField[0]);
+        };
     });
 
     afterEach(function() {
@@ -12,13 +19,95 @@ describe("suggest Tests", function() {
     });
 
     describe("init", function() {
-
         it('should has disabled button after init', function() {
             var suggest = nb.find('suggest-disabled');
             expect(suggest.isEnabled()).to.be.equal(false);
         });
 
+        $.each(['input', 'textarea'], function(index, fieldTagName) {
+            it('should init the suggest of the passed ' + fieldTagName, function() {
+                var $suggestField = $('#custom-suggest-' + fieldTagName);
+                var nbCustomSuggest = this.createCustomSuggest($suggestField);
+                expect(nbCustomSuggest.$control[0]).to.equal($suggestField[0]);
+            });
+        });
 
+        it('should init the suggest of the suggest node', function() {
+            expect(this.suggest.$node[0]).to.equal($('#suggest')[0]);
+        });
+
+        it('should init the suggest jUI widget', function() {
+            sinon.spy(jQuery.fn, 'suggest');
+            this.createCustomSuggest();
+            expect(jQuery.fn.suggest.called).to.be.ok();
+            jQuery.fn.suggest.restore();
+        });
+
+        it('should add the \'class-suggest\' to the Suggest\'s dropdown', function() {
+            var suggestClassName = this.suggest.$node.data('class-suggest');
+            expect(this.suggest.$suggest.hasClass(suggestClassName)).to.be.ok();
+        });
+
+        var hasEvent = function(node, eventName, eventNamespace) {
+            var hasEvent = false;
+
+            $.map($._data(node).events, function(eventsHandlers, key) {
+                if (key === eventName) {
+                    $.map(eventsHandlers, function(eventData) {
+                        if (eventData.namespace === eventNamespace) {
+                            hasEvent = true;
+                            return;
+                        }
+                    });
+                }
+                return;
+            });
+
+            return hasEvent;
+        };
+
+        var itShouldBindEvent = function(event) {
+            it('should bind event "' + event + '" to the input control', function() {
+                event = event.split('.');
+                expect(hasEvent(this.suggest.$control[0], event[0], event[1])).to.be.ok();
+            });
+        };
+
+        itShouldBindEvent('keydown.nb-suggest');
+        itShouldBindEvent('suggest_search.nb-suggest');
+        itShouldBindEvent('suggestselect.nb-suggest');
+
+        it('should trigger event \'nb-inited\'', function() {
+            sinon.spy(nb.Block.prototype, 'trigger');
+            this.createCustomSuggest();
+            expect(nb.Block.prototype.trigger.calledWith('nb-inited')).to.be.ok();
+            nb.Block.prototype.trigger.restore();
+        });
+    });
+
+    describe('#destroy', function() {
+        it('should destroy the Suggest', function() {
+            sinon.spy(jQuery.fn, 'suggest');
+            this.suggest.destroy();
+            expect(jQuery.fn.suggest.calledWith('destroy')).to.be.ok();
+            jQuery.fn.suggest.restore();
+        });
+
+        it('should unbind of all events the Suggest', function() {
+            var events = $._data(this.suggest.$control[0]).events;
+            var isEvents = false;
+
+            this.suggest.destroy();
+            $.map(events, function(event) {
+                $.map(event, function(eventData) {
+                    if (eventData.namespace === 'nb-suggest') {
+                        isEvents = true;
+                    }
+                })
+            });
+
+            expect(isEvents).not.to.be.ok();
+        });
     });
 
     describe("#Yate API", function() {

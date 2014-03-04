@@ -12,4 +12,22 @@ match .suggest {
         'disabled': true()
         'source': '["Variant1", "Variant2", "Variant3"]'
     })
+
+    <input>
+        @id = 'custom-suggest-input'
+        apply . suggest-attrs
+    </input>
+
+    <textarea>
+        @id = 'custom-suggest-textarea'
+        apply . suggest-attrs
+    </textarea>
+}
+
+match .suggest suggest-attrs {
+    @class = 'nb-input_type_simple nb-input_size_s'
+    @placeholder = 'Введите вариант'
+    @data-nb = 'suggest'
+    @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest__container nb-suggest_size_s'
+    @data-source = '["Вариант 1", "Вариант 2", "Вариант 3"]'
 }
