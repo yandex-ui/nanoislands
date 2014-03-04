@@ -1,3 +1,11 @@
+##### 0.3.9 — patch
+* Added opportunity apply to suggest a custom input field.
+
+##### Fixes
+* nb-select js error in ie8 on disable/enable fixed
+* nb-select #setState escapes text twice
+* nb-select must save state after #removeFromSource()
+
 ##### 0.3.8 — patch
 ##### Fixes
 * enable/disable must affect <select> node
