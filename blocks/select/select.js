@@ -331,7 +331,7 @@ nb.define('select', {
 
                 this.value = this.$selected.val();
 
-                this.text = this.$selected.html();
+                this.text = this.$selected.text();
 
                 this._setText(this.text);
 
