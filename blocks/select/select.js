@@ -438,6 +438,19 @@ nb.define('select', {
             source = [source];
         }
 
+        // find all selected items
+        var selected = [];
+        source.forEach(function(item) {
+            if (item.selected) {
+                selected.push(item);
+            }
+        });
+
+        // leave only last selected item (this is native browser behaviour)
+        selected.slice(0, -1).forEach(function(item) {
+            item.selected = false;
+        });
+
         // render options with yate to prevent XSS
         var html = yr.run(this.getYateModuleName(), {
             items: source
@@ -480,8 +493,18 @@ nb.define('select', {
             items = [items];
         }
 
+        var selectedItemValue = null;
+
         var insertion = items.filter(function(item) {
-            return source.indexOf(item) === -1;
+            var newItem = source.indexOf(item) === -1;
+            if (newItem) {
+                if (item.selected) {
+                    // stores last selected item
+                    selectedItemValue = item.value;
+                }
+                return true;
+            }
+            return false;
         }, this);
 
         if (isNaN(index)) {
@@ -493,6 +516,15 @@ nb.define('select', {
         }, this);
 
         this.setSource(source);
+
+        // set state from new items
+        if (selectedItemValue) {
+            // use #setState() to fire 'nb-changed' event
+            this.setState({
+                value: selectedItemValue
+            });
+        }
+        this.trigger('nb-source-changed', this);
         return this;
     },
 
