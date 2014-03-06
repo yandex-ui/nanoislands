@@ -254,10 +254,10 @@ describe("Select Tests", function() {
         });
 
         it("check event", function() {
-            var flag = true;
+            var flag = 0;
 
             this.select.on('nb-source-changed', function() {
-                flag = false;
+                flag++;
             });
 
             this.select.setSource([
@@ -265,7 +265,7 @@ describe("Select Tests", function() {
                 {'text': 'test2', 'value': 'test2'}
             ]);
 
-            expect(flag).to.not.ok();
+            expect(flag).to.be.equal(1);
         });
     });
 
