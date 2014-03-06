@@ -302,6 +302,68 @@ describe("Select Tests", function() {
 
             expect(flag).to.not.ok();
         });
+
+        describe('add last selected item', function() {
+
+            beforeEach(function() {
+                this.select.addToSource({
+                    'selected': true,
+                    'text': 'add-text',
+                    'value': 'add-value'
+                });
+            });
+
+            it('should set state from added item', function() {
+                expect(this.select.getState()).to.be.eql({
+                    'text': 'add-text',
+                    'value': 'add-value'
+                });
+            });
+
+            it('should set text from added item', function() {
+                expect(this.select.$node.find('.nb-button__text').text()).to.be.eql('add-text');
+            });
+
+            it('should has only one selected item in source', function() {
+                var cnt = 0;
+                this.select.getSource().forEach(function(item) {
+                    if (item.selected) {
+                        cnt++;
+                    }
+                });
+
+                expect(cnt).to.be.equal(1);
+            });
+        });
+
+        describe('add first selected item', function() {
+
+            beforeEach(function() {
+                this.select.addToSource({
+                    'selected': true,
+                    'text': 'add-text',
+                    'value': 'add-value'
+                }, 0);
+            });
+
+            it('should set state from added item', function() {
+                expect(this.select.getState()).to.be.eql({
+                    'text': 'add-text',
+                    'value': 'add-value'
+                });
+            });
+
+            it('should has only one selected item in source', function() {
+                var cnt = 0;
+                this.select.getSource().forEach(function(item) {
+                    if (item.selected) {
+                        cnt++;
+                    }
+                });
+
+                expect(cnt).to.be.equal(1);
+            });
+        });
     });
 
     describe("#removeFromSource()", function() {
