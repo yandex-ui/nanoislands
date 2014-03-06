@@ -493,7 +493,6 @@ nb.define('select', {
         }, this);
 
         this.setSource(source);
-        this.trigger('nb-source-changed', this);
         return this;
     },
 
