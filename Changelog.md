@@ -1,3 +1,10 @@
+##### 0.3.10 — patch
+
+##### Fixes
+* nb-select: Fix adding selected item to source
+* nb-select: Fix double "source-changed" event on addToSource
+* gray color for togglers text
+
 ##### 0.3.9 — patch
 * Added opportunity apply to suggest a custom input field.
 
