@@ -1,22 +1,18 @@
-/*global module*/
+/*jshint node:true*/
 module.exports = function(grunt) {
-    'use strict';
+    "use strict";
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks("grunt-jscs-checker");
-    grunt.loadNpmTasks('grunt-mocha-phantomjs');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-shell');
+    require("load-grunt-tasks")(grunt);
 
     var gruntConfig = {};
 
     gruntConfig.jshint = {
         options: {
-            jshintrc: '.jshintrc',
+            jshintrc: ".jshintrc",
             force: true
         },
         files: [
-            'blocks/*/*.js'
+            "blocks/*/*.js"
         ]
     };
 
@@ -24,7 +20,7 @@ module.exports = function(grunt) {
         src: "blocks/*/*.js",
         options: {
             config: ".jscs.json",
-            requireCurlyBraces: [ "if" ],
+            requireCurlyBraces: ["if"],
             force: true
         }
     };
@@ -48,8 +44,7 @@ module.exports = function(grunt) {
                 "demo/*.yate"
             ],
             tasks: [
-                'jshint',
-                'jscs',
+                "codestyle",
                 "shell:rebuildNanoislands"
             ],
             options: {
@@ -57,31 +52,49 @@ module.exports = function(grunt) {
                 livereload: true
             }
         },
-        testYate: {
+        test: {
             files: [
-                "unittests/spec/*/*.yate"
+                "<%= watch.build.files %>",
+                "unittests/**/*.js",
+                "unittests/**/*.yate"
             ],
             tasks: [
-                "shell:rebuildTests",
-                "mocha_phantomjs:all"
-            ]
-        },
-        testJs: {
-            files: [
-                "unittests/spec/*/*.js"
-            ],
-            tasks: [
-                "mocha_phantomjs:all"
+                "karma:dev:run"
             ]
         }
     };
 
-    gruntConfig.mocha_phantomjs = {
-        all: ['unittests/index.html']
+    gruntConfig.karma = {
+        options: {
+            configFile: "karma.conf.js",
+        },
+        continuous: {
+            singleRun: true,
+            browsers: ["PhantomJS", "Firefox"]
+        },
+        dev: {
+            background: true,
+            reporters: "dots"
+        }
     };
 
     grunt.initConfig(gruntConfig);
 
-    grunt.registerTask('default', ['jshint', 'jscs', 'mocha_phantomjs']);
-    grunt.registerTask('watch_make', ['jshint', 'jscs', 'watch']);
+    grunt.registerTask("codestyle", [
+        "jshint",
+        "jscs"
+    ]);
+
+    grunt.registerTask("test", [
+        "codestyle",
+        "karma:continuous"
+    ]);
+
+    grunt.registerTask("watch_make", [
+        "codestyle",
+        "karma:dev:start",
+        "watch"
+    ]);
+
+    grunt.registerTask("default", ["test"]);
 };

@@ -1,5 +1,5 @@
 nb.define('progress', {
-   
+
     oninit: function() {
         var data = this.nbdata();
 

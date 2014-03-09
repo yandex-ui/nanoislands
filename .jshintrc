@@ -12,7 +12,14 @@
         "nb": true,
         "yr": false,
         "$": true,
-        "_": false
+        "_": false,
+
+        "expect": false,
+        "sinon": false,
+        "it": false,
+        "describe": false,
+        "beforeEach": false,
+        "afterEach": false
     },
     "immed": true,
     "latedef": true,
