@@ -40,8 +40,8 @@
     kind: fill -1px
     skin: input-view no-focus
 
-  :not(.nb-is-disabled):focus + .nb-input__view
-  :not(.nb-is-disabled).nb-is-focused + .nb-input__view
+  &:not(.nb-is-disabled):focus .nb-input__view
+  &:not(.nb-is-disabled).nb-is-focused .nb-input__view
     skin: input_focus
 
   .nb-input__reset

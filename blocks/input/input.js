@@ -5,9 +5,7 @@
 nb.define('input', {
     events: {
         'click': 'focus',
-        'mousedown .nb-input__reset': 'reset',
-        'focusin': 'focus',
-        'focusout': 'blur'
+        'mousedown .nb-input__reset': 'reset'
     },
 
     /**
@@ -53,6 +51,16 @@ nb.define('input', {
         nb.on('is-focusedout', function() {
             that.blur();
         });
+
+        this._onmousedown = function(e) {
+            if ($.contains(this.$control.get(0), e.target)) {
+                return;
+            }
+            this.blur();
+        }.bind(this);
+
+        this.$document.on('mousedown', this._onmousedown);
+        this.$document.on('touchstart', this._onmousedown);
 
         this.trigger('nb-inited', this);
     },
@@ -207,6 +215,7 @@ nb.define('input', {
         }
 
         this.focused = false;
+        this.$control.get(0).blur();
         this.trigger('nb-blured', this);
 
         return this;
@@ -359,6 +368,8 @@ nb.define('input', {
             this.error.nbdestroy();
             this.error.$node.remove();
         }
+        this.$document.off('mousedown', this._onmousedown);
+        this.$document.off('touchstart', this._onmousedown);
         this.nbdestroy();
     }
 }, 'base');

@@ -12,6 +12,7 @@ nb.define('base', {
      */
     _oninit: function() {
         this.$node = $(this.node);
+        this.$document = $(document);
 
         if (this.oninit) {
             this.oninit();
