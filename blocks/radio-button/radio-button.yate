@@ -37,9 +37,10 @@ match .radio-button nb {
                         'nb-complex-group-item-subject'
                         'js-button'
                     ]
-                    'for': uniq
+                    'type': 'label'
                     'id': false()
                     'attrs': {
+                        'for': uniq
                         'data-value': .value
                     }
                 }))
