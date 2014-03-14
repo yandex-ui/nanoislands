@@ -1,0 +1,1104 @@
+<!DOCTYPE html><html><head><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta http-equiv="Content-type" content="text/html; charset=utf-8"/><title>Nanoislands Docs</title><link rel="stylesheet" type="text/css" href="/docs/css/bootstrap.min.css"/><link rel="stylesheet" type="text/css" href="/docs/css/nanoislands-docs.css"/></head><body class="page"><div class="page-inner"><h1 class="page-title">Nanoislands Docs</h1><ul class="blocks-menu"><li class="blocks-menu-item"><a href="#arrow">arrow</a></li><li class="blocks-menu-item"><a href="#button">button</a></li><li class="blocks-menu-item"><a href="#checkbox">checkbox</a></li><li class="blocks-menu-item"><a href="#common">common</a></li><li class="blocks-menu-item"><a href="#dropzone">dropzone</a></li><li class="blocks-menu-item"><a href="#gap">gap</a></li><li class="blocks-menu-item"><a href="#group">group</a></li><li class="blocks-menu-item"><a href="#header">header</a></li><li class="blocks-menu-item"><a href="#icon">icon</a></li><li class="blocks-menu-item"><a href="#input">input</a></li><li class="blocks-menu-item"><a href="#input-group">input-group</a></li><li class="blocks-menu-item"><a href="#island">island</a></li><li class="blocks-menu-item"><a href="#loader">loader</a></li><li class="blocks-menu-item"><a href="#paranja">paranja</a></li><li class="blocks-menu-item"><a href="#popup">popup</a></li><li class="blocks-menu-item"><a href="#progress">progress</a></li><li class="blocks-menu-item"><a href="#radio-button">radio-button</a></li><li class="blocks-menu-item"><a href="#select">select</a></li><li class="blocks-menu-item"><a href="#slider">slider</a></li><li class="blocks-menu-item"><a href="#suggest">suggest</a></li><li class="blocks-menu-item"><a href="#tabs">tabs</a></li><li class="blocks-menu-item"><a href="#toggler">toggler</a></li><li class="blocks-menu-item"><a href="#tooltip">tooltip</a></li><li class="blocks-menu-item"><a href="#user">user</a></li></ul><ul class="blocks"><li class="blocks-item" id="arrow"><div class="blocks-description"><h2 class="blocks-title">arrow</h2><h3>Default arrow</h3>
+
+<div class="highlight"><pre lang="">nb-arrow()
+</pre></div>
+
+<ul>
+<li>search: 'true'</li>
+<li>buttonContent: 'Найти'</li>
+</ul>
+
+<h3>Options</h3>
+
+<ul>
+<li>search: true() — display search form</li>
+</ul>
+
+<div class="test">!!</div>
+
+<ul>
+<li>href: ... — URL for service arrow link</li>
+<li>action: ... — action URL for search form</li>
+<li>text: ... — text for service arrow or link rendered before search input</li>
+<li>buttonContent: ... — text for form field's 'submit' button</li>
+<li>value: ... — placeholder for search field</li>
+<li>requests: ... — info about unber of request with this search field</li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>No inputs, with name of service:</p>
+
+<div class="highlight"><pre lang="">nb-arrow({
+    'search': 'false'
+    'href': '#'
+    'text': 'Диск'
+})
+</pre></div>
+
+<p>Arrow with search form, no placeholder text:</p>
+
+<div class="highlight"><pre lang="">nb-arrow({
+    'search': 'true'
+})
+</pre></div>
+
+<p>Arrow with search form, prefilled and with requests info:</p>
+
+<div class="highlight"><pre lang="">nb-arrow({
+    'search': 'true'
+    'requests': '8 млн ответов'
+    'value': 'жираф'
+})
+</pre></div>
+
+<p>Arrow with search form and namelink enabled:</p>
+
+<div class="highlight"><pre lang="">nb-arrow({
+    'search': 'true'
+    'href': '#'
+    'text': 'Диск'
+})
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">focus</h3><p>Add a shadow to wrapper and hide info about requests</p>
+
+<div class="highlight"><pre lang=" ">arrow.focus()
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">blur</h3><p>Remove a shadow from wrapper and show info about requests</p>
+
+<div class="highlight"><pre lang="">arrow.blur();
+</pre></div></div></li><li class="blocks-item" id="button"><div class="blocks-description"><h2 class="blocks-title">button</h2><h3>Default button</h3>
+
+<div class="highlight"><pre lang="">nb-button()
+</pre></div>
+
+<ul>
+<li><code>size: m</code></li>
+<li><code>theme: normal</code></li>
+</ul>
+
+<h3>Optional attributes</h3>
+
+<ul>
+<li><code>'size'</code> {string} <code>'s' / 'm' / 'l'</code></li>
+<li><code>'theme'</code> {string} <code>'normal' / 'action' (yellow) / 'dark' / 'pseudo' / 'promo' (big yellow)</code></li>
+<li><code>'id'</code> {string} ...</li>
+<li><code>'name'</code> {string} ...</li>
+<li><code>'class'</code> {array} <code>['my_class1', 'my_class2']</code> — additional classes</li>
+<li><code>'disabled'</code> {boolean} — disabled button</li>
+<li><code>'icon'</code> {string} ... — link to icon</li>
+<li><code>'iconText'</code> {string} ... — symbol for icon</li>
+<li><code>'content'</code> {string} ... — content of button</li>
+<li><code>'attrs'</code> {object} <code>{'type': 'submit', 'attr2: 'value2' }</code> — custom DOM attributes for button</li>
+<li><code>'static'</code> {boolean} — block without nanoblocks functionality (JavaScript API)</li>
+<li><code>'type'</code> {string} <code>'file'</code> — attach button. This is not DOM type aka <code>&lt;input type=""/&gt;</code>, this is instance type.</li>
+<li><code>'href'</code> {string} — button with <code>&lt;a href=''&gt;</code></li>
+</ul>
+
+<h4>Example</h4>
+
+<p>Action buttom, size L with custom classes</p>
+
+<div class="highlight"><pre lang="">nb-button({
+    'size': 'l'
+    'theme': 'action'
+    'id': 'id1'
+    'class': [
+        'my_class1'
+        'my_class2'
+    ]
+    'content': 'Hello World'
+    'attrs': {
+        'name': 'my_name'
+     }
+})
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">setText</h3><p>Set text of the button</p>
+
+<div class="highlight"><pre lang="">    button.setText('Hello, world!');
+</pre></div><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">text</dt><dd class="param-description"><code class="param-types">{String}</code>- text for the button</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getText</h3><p>Get text of the button</p>
+
+<div class="highlight"><pre lang="">    button.setText('Hello, world!');
+    button.getText(); // --> 'Hello, world!'
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">setUrl</h3><p>Set href of the link button</p>
+
+<div class="highlight"><pre lang="">button.setUrl('yandex.ru');
+</pre></div><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">href</dt><dd class="param-description"><code class="param-types">{String}</code>- link for the button</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getUrl</h3><p>Get href of the link button</p>
+
+<div class="highlight"><pre lang="">button.setUrl('yandex.ru');
+button.getUrl(); // --> yandex.ru
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">disable</h3><p>Disable the button</p>
+
+<div class="highlight"><pre lang="">button.disable();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">enable</h3><p>Enables the button</p>
+
+<div class="highlight"><pre lang="">button.enable();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">isEnabled</h3><p>Return state of the button</p>
+
+<div class="highlight"><pre lang="">button.isEnabled(); // --> true (by default)
+
+button.disable();
+button.isEnabled(); // --> false
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">focus</h3><p>Focus the button</p>
+
+<div class="highlight"><pre lang="">button.focus();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">blur</h3><p>Blur the button</p>
+
+<div class="highlight"><pre lang="">button.blur();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">destroy</h3><p>Destroy the button</p>
+
+<div class="highlight"><pre lang="">button.destroy();
+</pre></div></div></li><li class="blocks-item" id="checkbox"><div class="blocks-description"><h2 class="blocks-title">checkbox</h2><h3>Default checkbox</h3>
+
+<div class="highlight"><pre lang="">nb-checkbox()
+</pre></div>
+
+<ul>
+<li><code>size</code> — m</li>
+<li><code>type</code> — checkbox</li>
+</ul>
+
+<h3>Optional attributes</h3>
+
+<ul>
+<li><code>'size'</code> {string} <code>'s'</code> / <code>'m'</code></li>
+<li><code>'id'</code> {string}...</li>
+<li><code>'name'</code> {string}...</li>
+<li><code>'class'</code> {array} <code>['my_class1', 'my_class2']</code> — additional classes</li>
+<li><code>'type'</code> {string} <code>'checkbox'</code> / <code>'radio'</code> / <code>'button'</code></li>
+<li><code>'disabled'</code> {boolean} — disabled button</li>
+<li><code>'value'</code> {string} — value</li>
+<li><code>'tabindex'</code> {string} — tabindex</li>
+<li><code>'checked'</code> {string} <code>'normal' / 'action' (yellow) / 'dark' / 'pseudo' / 'promo' (big yellow)</code> — theme for button type</li>
+<li><code>'theme'</code> {boolean} <code>'checkbox'</code> / <code>'radio'</code> / <code>'button'</code> — checked button</li>
+<li><code>'content'</code> {string} — text (or custom html) of the label, can be string or <code>xml</code> <em>xss warning!</em></li>
+<li><code>'attrs'</code> {object} <code>{'attr2': 'value2'}</code> — custom DOM attributes for checkbox input</li>
+</ul>
+
+<h4>Example</h4>
+
+<p>Action buttom, size L with custom classes</p>
+
+<div class="highlight"><pre lang="">    nb-checkbox({
+        'type': 'radio'
+        'content': 'Паук'
+        'attrs': {
+            'name': 'biotype'
+        }
+    })
+
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">nb.define('checkbox', {
+    events</h3><p>@class nb.block.Checkbox</p></div><div class="blocks-method"><h3 class="blocks-method-title">oninit</h3><p>Init a checkbox</p></div><div class="blocks-method"><h3 class="blocks-method-title">getType</h3><p>Override base getType()</p>
+
+<div class="highlight"><pre lang="">checkbox.getType(); // --> checkbox | radio
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">isChecked</h3><p>Return check state of the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.isChecked(); // --> false (by default)
+
+checkbox.check();
+checkbox.isChecked(); // --> true
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">check</h3><p>Checking checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.check();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">uncheck</h3><p>Unchecking checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.uncheck();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">toggle</h3><p>Toggle to the opposite state checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.toggle();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">isIndeterminate</h3><p>Return indeterminate state of the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.isIndeterminate();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">setIndeterminate</h3><p>Set indeterminate state of the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.setIndeterminate();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">setDeterminate</h3><p>Set determinate state of the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.setDeterminate();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">isEnabled</h3><p>Return enable state of the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.isEnabled();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">enable</h3><p>Enable the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.enable();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">disable</h3><p>Disable the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.disable();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">focus</h3><p>Focus the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.focus();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">blur</h3><p>Blur the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.blur();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">setLabel</h3><p>Sets label of the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.setLabel();
+</pre></div><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">label</dt><dd class="param-description"><code class="param-types">{String | Number}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getLabel</h3><p>Gets label of the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.getLabel(); // --> ...
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">getName</h3><p>Get name of the checkbox or radio</p>
+
+<div class="highlight"><pre lang="">checkbox.getName(); // --> ...
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">setName</h3><p>Set checkbox's name</p>
+
+<div class="highlight"><pre lang="">checkbox.setName('sex');
+</pre></div><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{String | Number}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getValue</h3><p>Returns checkbox value</p>
+
+<div class="highlight"><pre lang="">checkbox.getValue();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">setValue</h3><p>Set checkbox value</p>
+
+<div class="highlight"><pre lang="">checkbox.setValue('male');
+</pre></div><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{String | Number}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">destroy</h3><p>Destroy checkbox</p>
+
+<div class="highlight"><pre lang="">checkbox.destroy('');
+</pre></div></div></li><li class="blocks-item" id="common"><div class="blocks-method"><h3 class="blocks-method-title">nb.define('base', {
+    events</h3><p>@class nb.block.Base</p></div><div class="blocks-method"><h3 class="blocks-method-title">_oninit</h3><p>@constuctor</p></div></li><li class="blocks-item" id="dropzone"><div class="blocks-description"><h2 class="blocks-title">dropzone</h2><h3>Default dropzone</h3>
+
+<div class="highlight"><pre lang="">    nb-dropzone()
+</pre></div>
+
+<ul>
+<li><code>button</code>
+<ul><li><code>size</code> - <code>s</code></li>
+<li><code>type</code> - <code>file</code></li>
+<li><code>theme</code> - <code>pseudo</code></li>
+<li><code>class</code> - <code>nb-dropzone__button</code></li></ul></li>
+</ul>
+
+<h3>Options</h3>
+
+<ul>
+<li><code>id</code> {string}</li>
+<li><code>class</code> {string} — additional classes['my_class1', 'my_class2'] </li>
+<li><code>type</code> {string} — <code>modal</code> (use with <em>paranja</em>)</li>
+<li><code>head</code> {string} — drop zone title</li>
+<li><code>text</code> {string} — text to the left of the "Select file" button</li>
+<li><code>button</code> {nodeset|boolean} — <code>false()</code> to render dropzone without 'select file' button; check out <em>button</em> documentation for list of options</li>
+</ul>
+
+<h3>Example</h3>
+
+<p>Drop zone with all elements possible text:</p>
+
+<div class="highlight"><pre lang="">    nb-dropzone({
+       'head': 'Upload files'
+       'text': 'To upload, drag files here or'
+       'button' : {
+           'size': 's'
+           'content': 'select files'
+           'type': 'file'
+           'theme': 'pseudo'
+           'class': 'nb-dropzone__button'
+       }
+    })
+</pre></div>
+
+<p>Minimal dropzone:</p>
+
+<div class="highlight"><pre lang="">    nb-dropzone({
+        'text': 'Drop files here to upload them'
+        'button': 'false'
+    })
+</pre></div>
+
+<p>No-affordance dropzone — just empty rectangle (don't do this!):</p>
+
+<div class="highlight"><pre lang="">    nb-dropzone({
+        'button': 'false'
+    })
+</pre></div>
+
+<h3>Initialization</h3>
+
+<p>Initialize nb block on DOM node:</p>
+
+<div class="highlight"><pre lang="">
+    nb.block(node);
+
+</pre></div>
+
+<p>Initialize all nb blocks with class '_init' within DOM node</p>
+
+<div class="highlight"><pre lang="">
+    nb.init(node);
+
+</pre></div>
+
+<h3>Dropzone methods</h3>
+
+<p>None declared.</p></div></li><li class="blocks-item" id="gap"><div class="blocks-description"><h2 class="blocks-title">gap</h2><p>If you need to have gaps between any blocks, you can use global <code>nb-gap_SIDE_SIZE</code> classes.</p>
+
+<h3>Sides</h3>
+
+<p>Sides are <code>top</code>, <code>right</code>, <code>bottom</code> and <code>left</code>, each such class would add the margin of the given <code>SIZE</code> at the corresponding side:</p>
+
+<pre><code>'class': ['nb-gap_top_SIZE']
+
+'class': ['nb-gap_right_SIZE']
+
+'class': ['nb-gap_bottom_SIZE']
+
+'class': ['nb-gap_left_SIZE']
+</code></pre>
+
+<h3>Sizes</h3>
+
+<p>There are a few of possible preset sizes for gaps: <code>xs</code>, <code>s</code>, <code>m</code> and <code>l</code>. Each side have a modifier for each size, creating classes like <code>nb-gap_top_xs</code> etc.</p>
+
+<pre><code>'class': ['nb-gap_SIDE_xs']
+
+'class': ['nb-gap_SIDE_s']
+
+'class': ['nb-gap_SIDE_m']
+
+'class': ['nb-gap_SIDE_l']
+</code></pre></div></li><li class="blocks-item" id="group"><div class="blocks-description"><h2 class="blocks-title">group</h2><p>If you need to have groups consisting of any number of buttons and/or inputs in any order, you can mix them with <code>nb-group-…</code> global classes to achieve the desired behaviour.</p>
+
+<h3>Group wrapper</h3>
+
+<ul>
+<li><code>class</code> - <code>['nb-group']</code></li>
+</ul>
+
+<p>To make sure your group's items won't wrap you would want to use <code>.nb-group</code> class for their wrapper.</p>
+
+<h3>Group items</h3>
+
+<ul>
+<li><code>class</code> - <code>['nb-group-item']</code></li>
+</ul>
+
+<p>This is a class for generic group items, when you don't know their position. Such classes would work only if all the items have the same wrapper and have no other blocks in it.</p>
+
+<h3>Specific group items</h3>
+
+<ul>
+<li><code>class</code> - <code>['nb-group-start']</code></li>
+<li><code>class</code> - <code>['nb-group-middle']</code></li>
+<li><code>class</code> - <code>['nb-group-end']</code></li>
+</ul>
+
+<p>When you have other blocks before or after the grouped items, or you can't have a common wrapper for them, or they're placed not in straight order in the HTML, you could use more specific classes, telling where in the group your block is.</p>
+
+<h3>Complex group items</h3>
+
+<p>In some cases you would have the button/input which visuals you'd like to adjust to be nested inside other blocks and at the same time you couldn't tell which item is first and which is last.</p>
+
+<p>In that case you could use complex group items:</p>
+
+<ul>
+<li><code>class</code> - <code>['nb-complex-group-item']</code></li>
+<li><code>class</code> - <code>['nb-complex-group-item-subject']</code></li>
+</ul>
+
+<p>The <code>.nb-complex-group-item</code> class should be placed at the top level items, while the <code>nb-complex-group-item-subject</code> one should be placed at the actual inputs/items inside.</p></div></li><li class="blocks-item" id="header"></li><li class="blocks-item" id="icon"><div class="blocks-description"><h2 class="blocks-title">icon</h2><p>You have to explicitly pass icon name to nb-icon()</p>
+
+<ul>
+<li><code>size</code> — <code>m</code></li>
+</ul>
+
+<h3>Options</h3>
+
+<ul>
+<li><code>id</code> {string}</li>
+<li><code>class</code> {array} — additional classes ['my_class1', 'my_class2']</li>
+<li><code>icon</code> {string} — icon name (_TODO: List available icon names with descriptions)</li>
+<li><code>size</code> {string} — icon size, <code>s</code> or <code>m</code></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Small icon:</p>
+
+<div class="highlight"><pre lang="">    nb-icon({
+        'icon': 'link'
+        'size': 's'
+    })
+</pre></div>
+
+<p>Medium-sized icon:</p>
+
+<div class="highlight"><pre lang="">    nb-icon({
+        'icon': 'link'
+    })
+</pre></div>
+
+<h3>JS</h3>
+
+<p>None declared.</p></div></li><li class="blocks-item" id="input"><div class="blocks-description"><h2 class="blocks-title">input</h2><div class="highlight"><pre lang="">    nb-input(options)
+</pre></div>
+
+<h3>Options</h3>
+
+<ul>
+<li><code>'id'</code> {string}</li>
+<li><code>'name'</code> {string}</li>
+<li><code>'attrs'</code> {object} - attrubutes for input node</li>
+<li><code>'content'</code> {string|xml} - <code>value</code> of the input</li>
+<li><code>'type'</code> {string} — <code>'multiline'</code> textarea</li>
+<li><code>'ghost'</code> {boolean} — ghost mode input</li>
+<li><code>'disabled'</code> {boolean}</li>
+<li><code>'size'</code> {string}  - input size. <code>'s'</code> (no other sizes supported)</li>
+<li><code>'error'</code> {object} <code>{content: 'error content', direction: 'right|left'}</code></li>
+<li><code>'leftContent'</code> {string|xml} — content of the left field of input</li>
+<li><code>'rightContent'</code> {string|xml} — content of the right field of input</li>
+<li><code>'hint'</code> {string | Object} — content of hint or <code>{ text: '...', ghost: true() }</code> for ghost hint</li>
+</ul>
+
+<h3>Examples</h3>
+
+<div class="highlight"><pre lang="">    nb-input({
+        'size': 's'
+        'hint': 'Введите пароль'
+        'attrs': {
+            'type': 'password'
+        }
+    })
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">nb.define('input', {
+    events</h3><p>@class nb.block.Input</p></div><div class="blocks-method"><h3 class="blocks-method-title">showError</h3><p>Show inputs error</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">params</dt><dd class="param-description"><code class="param-types">{Object | String}</code>optional params of error popup or contentof Error</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">hideError</h3><p>Hide inputs error</p></div><div class="blocks-method"><h3 class="blocks-method-title">setErrorContent</h3><p>Set content of inputs error</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">content</dt><dd class="param-description"><code class="param-types">{string}</code>- content for error</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">focus</h3><p>Focus the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">blur</h3><p>Blur the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">disable</h3><p>Disables the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">enable</h3><p>Enables the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">setValue</h3><p>Set value of the input</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{String | Object}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">if (this.value != value) {
+            this.value = value;
+            this.$control.val(value);
+            this.$control.trigger('input');
+            this.trigger('nb-value-set', this);
+            this.trigger('nb-changed', this);
+        }
+        return this;
+    },</h3><p>Check newValue and actualValue to avoid recursion</p>
+
+<pre><code>    nbInput.on('nb-changed', function() {
+        var validValue = validate(this.getValue());
+        this.setValue(validValue);
+    });
+</code></pre></div><div class="blocks-method"><h3 class="blocks-method-title">getValue</h3><p>Get value of the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">getName</h3><p>Get name of the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">setName</h3><p>Set name of the input</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{String | Object}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">isEnabled</h3><p>Return state of the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">reset</h3><p>Resets value of the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">setHint</h3><p>Set hint of the input</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{String}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getHint</h3><p>Get hint of the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">destroy</h3><p>Destroy the button</p></div></li><li class="blocks-item" id="input-group"><div class="blocks-description"><h2 class="blocks-title">input-group</h2><div class="highlight"><pre lang="">    nb-input-group()
+</pre></div>
+
+<p>Renders compound group of text input field and button, ordered accordingly to <code>options</code>.</p>
+
+<h3>Options</h3>
+
+<ul>
+<li><code>id</code> {string}</li>
+<li><code>class</code> {array} — additional classes</li>
+<li><code>disabled</code> {boolean} — disable both inputs</li>
+<li><code>input</code> {string} — options for text input field</li>
+<li><code>button</code> {string} — options for button</li>
+</ul>
+
+<p>NB: For description of <code>button</code> and <code>input</code> see corresponding docs</p>
+
+<h3>Examples</h3>
+
+<p>A button with an icon, then a text input field:</p>
+
+<div class="highlight"><pre lang="">    nb-input-group({
+        'button' : {
+            'size': 's'
+            'icon': 'link'
+        }
+        'input' : {
+            'size': 's'
+            'content': '<a href='http://yadi.sk/'>http://yadi.sk/</a>'
+        }
+    })
+</pre></div>
+
+<p>A group of an input field and a button with text, disabled altogether as a whole:</p>
+
+<div class="highlight"><pre lang="">    nb-input-group({
+        'input' : {
+            'size': 's'
+            'attrs': {
+                'placeholder': 'Speak and...'
+            }
+        }
+        'button' : {
+            'size': 's'
+            'content': 'spell.'
+        }
+        'disabled' : true()
+    })
+</pre></div> </div></li><li class="blocks-item" id="island"><div class="blocks-description"><h2 class="blocks-title">island</h2><div class="highlight"><pre lang="">    nb-island()
+</pre></div>
+
+<h3>Options</h3>
+
+<ul>
+<li><code>padding</code> {string} — s / m / l</li>
+<li><code>type</code> {string} — inline / fly</li>
+<li><code>content</code> {xml|string} — island's content, can be string or <code>xml</code> <em>xss warning!</em></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Basic island:</p>
+
+<div class="highlight"><pre lang="">    nb-island({
+        'content': 'Остров миу-миу'
+    })
+</pre></div>
+
+<p>Flying island with an M-sized padding:</p>
+
+<div class="highlight"><pre lang="">    nb-island({
+        'content': 'Летающий остров'
+        'type': 'fly'
+        'padding': 'm'
+    })
+</pre></div>
+
+<p>Inline island with an L-sized padding:</p>
+
+<div class="highlight"><pre lang="">    nb-island({
+        'content': 'Остров с паддингами и инлайном'
+        'padding': 'l'
+        'type':  'inline'
+    })
+</pre></div></div></li><li class="blocks-item" id="loader"><div class="blocks-description"><h2 class="blocks-title">loader</h2><div class="highlight"><pre lang="">    nb-loader()
+</pre></div>
+
+<ul>
+<li><code>size</code>: <code>m</code></li>
+</ul>
+
+<h3>Options</h3>
+
+<ul>
+<li><code>color</code> {string} — spinner color, black by default, <code>while</code> is the only alternate option</li>
+<li><code>size</code> {string} — spinner size — s / m / l</li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Small loader:</p>
+
+<div class="highlight"><pre lang="">    nb-loader({
+        'size': 's'
+        'attrs': {
+            'data-id': '1'
+        }
+    })
+</pre></div>
+
+<p>Medium loader:</p>
+
+<div class="highlight"><pre lang="">    nb-loader({
+        'attrs': {
+            'data-id': '1'
+        }
+    })
+</pre></div>
+
+<p>White medium loader on white background:</p>
+
+<div class="highlight"><pre lang="">    nb-loader({
+        'color': 'white'
+        'attrs': {
+            'data-id': '1'
+        }
+    })
+</pre></div></div></li><li class="blocks-item" id="paranja"><div class="blocks-description"><h2 class="blocks-title">paranja</h2><div class="highlight"><pre lang="">    nb-paranja()
+</pre></div>
+
+<ul>
+<li><code>theme</code> — dark</li>
+</ul>
+
+<h3>Options</h3>
+
+<ul>
+<li><code>id</code> {string}</li>
+<li><code>class</code> {array} — additional classes</li>
+<li><code>attrs</code> {object} — custom DOM attributes, e.g.: <code>{ 'attr2: 'value2' }</code></li>
+<li><code>theme</code> {string} — light / dark</li>
+<li><code>content</code> {xml, string} — can be string or <code>xml</code> <em>xss warning!</em></li>
+</ul>
+
+<h3>Examples</h3>
+
+<div class="highlight"><pre lang="">    nb-paranja({
+        'theme': 'light'
+        'content': '<div>Surprise!</div>'
+    })
+</pre></div></div></li><li class="blocks-item" id="popup"><div class="blocks-description"><h2 class="blocks-title">popup</h2><div class="highlight"><pre lang="">    nb-popup()
+</pre></div>
+
+<h3>Options for generic popup</h3>
+
+<ul>
+<li><code>id</code> {string}</li>
+<li><code>class</code> {array} — additional classes</li>
+<li><code>attrs</code> {object} — custom DOM attributes, e.g.: <code>{ 'attr2: 'value2', 'attr2: 'value2' }</code></li>
+<li><code>tail</code> {string} — position of 'tail' widget — left|right|top|bottom</li>
+<li><code>titleContent</code> {xml|string} —  modal's title, can be string or <code>xml</code> <em>xss warning!</em></li>
+<li><code>content</code> {xml|string} — modal's content, can be string or <code>xml</code> <em>xss warning!</em></li>
+</ul>
+
+<h3>Example of generic popup</h3>
+
+<div class="highlight"><pre lang="">    nb-popup({
+        'id': 'genericPopup'
+        'tail': 'top'
+        'title': 'Hello, I'm your generic pop-up.'
+        'content': '<p>And welcome to nanoislands</p>'
+    })
+</pre></div>
+
+<h3>Default menu popup</h3>
+
+<div class="highlight"><pre lang="">    nb-popup-menu()
+</pre></div>
+
+<h3>Options for menu popup</h3>
+
+<ul>
+<li><code>id</code> {string}</li>
+<li><code>class</code> {array} — additional classes</li>
+<li><code>attrs</code> {object} — custom DOM attributes</li>
+<li><code>tail</code> {string} — position of 'tail' widget — left|right|top|bottom</li>
+<li><code>static</code> {boolean} — <code>true()</code> to prevent initialisation</li>
+<li><code>menu</code> {array} — array of objects:
+<ul><li>Object for menu element:
+<ul><li><code>href</code> {string}</li>
+<li><code>text</code> {string}</li></ul></li>
+<li>Object for separator:
+<ul><li><code>separator</code> {boolean} — <code>true()</code> to render separator</li></ul></li></ul></li>
+</ul>
+
+<h3>Menu popup example</h3>
+
+<div class="highlight"><pre lang="">    nb-popup-menu({
+        'id': 'popupMenu'
+        'tail': 'left'
+        'menu': [
+            {
+                'href': '#'
+                'content': 'Скопировать'
+            }
+            {
+                'href': '#'
+                'content': 'Переместить'
+            }
+            {
+                'href': '#'
+                'content': 'Удалить'
+            }
+        ]
+    })
+</pre></div>
+
+<h3>Default modal popup</h3>
+
+<div class="highlight"><pre lang="">    nb-popup-modal()
+</pre></div>
+
+<ul>
+<li><code>data-nb</code> {object}
+<ul><li><code>modal</code>: <code>true()</code></li>
+<li><code>width</code>: <code>auto</code></li>
+<li><code>height</code>: <code>auto</code></li>
+<li><code>minHeight</code>: <code>auto</code></li></ul></li>
+</ul>
+
+<h3>Options for modal popup</h3>
+
+<ul>
+<li><code>id</code> {string}</li>
+<li><code>class</code> {array} — additional classes</li>
+<li><code>attrs</code> {object} — custom DOM attributes</li>
+<li><code>titleContent</code> {xml|string} — modal's title, can be string or <code>xml</code> <em>xss warning!</em></li>
+<li><code>content</code> {xml|string} — modal's content, can be string or <code>xml</code> <em>xss warning!</em></li>
+<li><code>buttons</code> {xml|array} — popup's buttons:</li>
+<li><code>close</code> {nodeset} — popup's close button:
+<ul><li><code>attrs</code> {object} — custom DOM attributes for close button</li></ul></li>
+<li><code>data-nb</code> {object} — popup display paramenters, renteded as <code>data-nb-*</code> attributes
+<ul><li><code>modal</code> {boolean}</li>
+<li><code>width</code> {string}</li>
+<li><code>height</code> {string}</li>
+<li><code>minHeight</code> {string}</li></ul></li>
+</ul>
+
+<h3>Modal popup example:</h3>
+
+<div class="highlight"><pre lang="">    nb-popup-modal({
+       'id': 'modalPopup'
+       'title': 'Some modal popup'
+       'content': 'Some text for that popup'
+       'data-nb': {
+            'width': '300px'
+       }
+       'close': {
+            'class': 'ns-action'
+            'attrs': {
+                'data-params': '123'
+            }
+       }
+       'buttons': {
+            'class': 'ns-subliew-buttons'
+            'data': [
+            {
+               'content': 'Отправить'
+               'size': 'm'
+               'theme': 'action'
+               'class': 'nb-popup__button'
+            }
+            {
+               'content': 'Сохранить'
+               'size': 'm'
+               'class': 'nb-popup__button'
+            }
+        ]}
+
+   })
+
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">open</h3><p>Open popup</p>
+
+<div class="highlight"><pre lang="">popup.open({
+    where: [100, 200],
+    how: 'top bottom'
+});
+</pre></div><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">params</dt><dd class="param-description"><code class="param-types">{Object}</code>settings for popup</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">close</h3><p>Close popup</p></div><div class="blocks-method"><h3 class="blocks-method-title">isOpen</h3><p>Returns true if the popup is opened</p></div><div class="blocks-method"><h3 class="blocks-method-title">destroy</h3><p>Destroy the popup</p></div><div class="blocks-method"><h3 class="blocks-method-title">open</h3><p>Open popup</p></div><div class="blocks-method"><h3 class="blocks-method-title">close</h3><p>Close popup</p></div><div class="blocks-method"><h3 class="blocks-method-title">getPopup</h3><p>Returns connected popup</p></div><div class="blocks-method"><h3 class="blocks-method-title">setPopup</h3><p>Sets connected popup</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">params</dt><dd class="param-description"><code class="param-types">{Object}</code>- {</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getOptions</h3><p>Get connected popup  option</p></div><div class="blocks-method"><h3 class="blocks-method-title">setOptions</h3><p>Sets connected popup options</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">params</dt><dd class="param-description"><code class="param-types">{Object}</code>- {</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">destroy</h3><p>Destroy the popup toggler</p></div></li><li class="blocks-item" id="progress"><div class="blocks-description"><h2 class="blocks-title">progress</h2><div class="highlight"><pre lang="">    nb-progress()
+</pre></div>
+
+<ul>
+<li><code>bar</code>: <code>true()</code></li>
+<li><code>start</code>: <code>0</code></li>
+<li><code>type</code>: <code>percentage</code></li>
+<li><code>title</code>: <code></code></li>
+</ul>
+
+<h3>Options</h3>
+
+<ul>
+<li><code>bar</code> {boolean} — <code>false()</code> to display percentage text only</li>
+<li><code>title</code> {string} — text to be displayed in a progress-bar instead of a percentage ticker</li>
+<li><code>start</code> {number} — start value</li>
+<li><code>type</code> {string} — <code>title</code> to display title instead of pecentage</li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Progress indicator with progressbar and ticking percentage, initialised at 0%:</p>
+
+<div class="highlight"><pre lang="">    nb-progress({
+        'id': 'progress2'
+    })
+
+</pre></div>
+
+<p>Same thing, but in title mode and starting at 30%:</p>
+
+<div class="highlight"><pre lang="">
+    nb-progress({
+        'id': 'progress1'
+        'start': '30'
+        'type': 'title'
+        'title': 'Король_Лев_5_rutracker.org'
+    })
+
+</pre></div>
+
+<h2>JS</h2>
+
+<h3>Initialisation</h3>
+
+<p>Initialize nb block on DOM node:</p>
+
+<div class="highlight"><pre lang="">
+    nb.block(node);
+
+</pre></div>
+
+<p>Initialize all nb blocks with class '_init' within DOM node</p>
+
+<div class="highlight"><pre lang="">
+    nb.init(node);
+
+</pre></div>
+
+<h3>Methods</h3>
+
+<div class="highlight"><pre lang="">/**
+* Set value of the progress
+* @param {String|Number} value
+* @fires 'nb-value-set'
+* @returns {Object} nb.block
+*/
+progress.setValue(30)
+
+/**
+* Get value of the progress
+* @returns {String} value
+*/
+progress.getValue();
+
+/**
+* Change value of the progress by 1
+* @fires 'nb-progress_value-changed'
+* @returns {Object} nb.block
+*/
+progress.tick();
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">setValue</h3><p>Set value of the progress</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{String | Number}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getValue</h3><p>Get value of the progress</p></div><div class="blocks-method"><h3 class="blocks-method-title">tick</h3><p>Change value of the progress by 1</p></div></li><li class="blocks-item" id="radio-button"><div class="blocks-description"><h2 class="blocks-title">radio-button</h2><ul>
+<li>Horizontal compound block</li>
+<li>consists of several buttons</li>
+<li>behaves like a group of radio-buttons</li>
+</ul>
+
+<p>To get a group of actial <em>radiobuttons</em> (like those you can get using vanilla HTML) use <code>checkbox</code> with corresponding options.</p>
+
+<h3>Basic usage example:</h3>
+
+<div class="highlight"><pre lang="">    nb-radio-button({
+        'name': 'btn'
+        'group':  [
+            {
+                'content': 'Foo'
+                'value': 'btn1'
+            }
+            {
+                'content': 'Bar'
+                'value': 'btn3'
+            }
+            {
+                'content': 'Baz'
+                'value': 'btn4'
+            }
+            {
+                'content': 'Quux'
+                'value': 'btn2'
+            }
+        ]
+    })
+</pre></div>
+
+<p>Default options:</p>
+
+<ul>
+<li>size: m</li>
+<li>theme: normal</li>
+</ul>
+
+<h3>Options</h3>
+
+<ul>
+<li><code>'id'</code> {string}</li>
+<li><code>'size'</code> {string} <code>s / m / l</code></li>
+<li><code>'theme'</code> {string} <code>normal / action (yellow) / dark / pseudo / promo (big yellow)</code></li>
+<li><code>'class'</code> {array}  — additional classes for radio-button</li>
+<li><code>'group'</code> {array} — array of hashes, each hash describes a button:
+<ul><li><code>'content'</code> {string} ... — string of button's content</li>
+<li><code>'value'</code> {string}... — corresponding value</li>
+<li><code>'name'</code> {string} ... — name for radio-button</li>
+<li><code>'icon'</code> {string} ... — icon name</li>
+<li><code>'checked'</code> {boolean} — checked element of radio-group</li>
+<li><code>'disabled'</code> {boolean}  — for disabled element</li></ul></li>
+</ul></div><div class="blocks-method"><h3 class="blocks-method-title">nb.define('radio-button', {
+    oninit</h3><h3>jQuery UI Depends:</h3>
+
+<ul>
+<li>jquery.ui.button.js</li>
+<li>jquery.ui.core.js</li>
+<li>jquery.ui.widget.js</li>
+</ul></div></li><li class="blocks-item" id="select"><div class="blocks-description"><h2 class="blocks-title">select</h2><div class="highlight"><pre lang="">    nb-select()
+</pre></div>
+
+<ul>
+<li>size: m</li>
+<li>theme: normal</li>
+<li>direction: bottom</li>
+</ul>
+
+<h3>Optional attributes</h3>
+
+<ul>
+<li><code>'size'</code> {string} <code>m / s</code></li>
+<li><code>'theme'</code> {string} <code>normal / action (yellow) / dark / pseudo</code></li>
+<li><code>'id'</code> {string} block@id and select@name</li>
+<li><code>'name'</code> {string}</li>
+<li><code>'direction'</code> {string} bottom / top — open default direction</li>
+<li><code>'class'</code> {array} <code>['my_class1', 'my_class2']</code></li>
+<li><code>'disabled'</code> {boolean}</li>
+<li><code>'maxHeight'</code> {Number|String} number of visible items or string value of the max-height like '10em'</li>
+<li><code>'within'</code> {string} '...' - id attr of the container where listing tries to fit in (window default)</li>
+<li><code>'items'</code> {array}  - each object in array could have text, value and selected fields
+<ul><li><code>'text'</code> {string} text of option</li>
+<li><code>'value'</code> {string} value of option</li>
+<li><code>'icon'</code> {string} 'three-dots'</li>
+<li><code>'selected'</code> {boolean}</li>
+<li><code>'group'</code> {array} - group of options, array of items in <code>optgroup</code></li></ul></li>
+</ul>
+
+<h4>Example</h4>
+
+<div class="highlight"><pre lang="">nb-select( {
+  'size': 's'
+  'id': 'select1'
+  'class': 'my-sp-class'
+  'attrs': {
+        'name': 'my-name'
+   }
+  'theme': 'dark'
+  'items': [
+      {
+          'text': 'Карта'
+          'value': 'option1'
+          'selected': 'true'
+      }
+      {
+          'text': 'Спутник'
+          'value': 'option2'
+      }
+      {
+          'text': 'Гибрид'
+          'value': 'option3'
+      }
+      {
+          'text': 'Ещё'
+          'value': 'option4'
+          'icon': 'three-dots'
+      }
+        'text': 'Группа'
+        'group': [
+              {
+                  'text': 'Супер Карта'
+                  'value': 'option4'
+              }
+              {
+                  'text': 'Супер Спутник'
+                  'value': 'option5'
+              }
+              {
+                  'text': 'Супер Гибрид'
+                  'value': 'option6'
+              }
+        ]
+    }
+  ]
+})
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title"></h3><h2>JS</h2>
+
+<h3>jQuery UI Depends:</h3>
+
+<ul>
+<li>jquery.ui.autocomplete.js</li>
+<li>jquery.ui.button.js</li>
+<li>jquery.ui.core.js</li>
+<li>jquery.ui.widget.js</li>
+<li>jquery.ui.position.js</li>
+<li>jquery.ui.menu.js</li>
+</ul></div><div class="blocks-method"><h3 class="blocks-method-title">nb.define('select', {
+    events</h3><p>@class nb.block.Select</p></div><div class="blocks-method"><h3 class="blocks-method-title">render</h3><p>Render dropdown of the select</p></div><div class="blocks-method"><h3 class="blocks-method-title">open</h3><p>Open dropdown of the select</p></div><div class="blocks-method"><h3 class="blocks-method-title">close</h3><p>Close dropdown of the select</p></div><div class="blocks-method"><h3 class="blocks-method-title">setState</h3><p>Changes a value of control, text on the button and select value it the fallback</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">params</dt><dd class="param-description"><code class="param-types">{Object}</code>— `{ text: '..', value: '..'}`</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getState</h3><p>Returns state of the select</p></div><div class="blocks-method"><h3 class="blocks-method-title">getName</h3><p>Get name of the select</p></div><div class="blocks-method"><h3 class="blocks-method-title">setName</h3><p>Changes a value of control, text on the button and select value it the fallback</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">name</dt><dd class="param-description"><code class="param-types">{string}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">disable</h3><p>Disables the select</p></div><div class="blocks-method"><h3 class="blocks-method-title">enable</h3><p>Enables the select</p></div><div class="blocks-method"><h3 class="blocks-method-title">isEnabled</h3><p>Return state of the select</p></div><div class="blocks-method"><h3 class="blocks-method-title">setSource</h3><p>Set new items for select</p></div><div class="blocks-method"><h3 class="blocks-method-title">getSource</h3><p>Get items from select</p></div><div class="blocks-method"><h3 class="blocks-method-title">addToSource</h3><p>Add items to select</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">items</dt><dd class="param-description"><code class="param-types">{Array | Object}</code></dd></dl></div><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">index</dt><dd class="param-description"><code class="param-types">{Number}</code>to insert</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">removeFromSource</h3><p>Remove items to select</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">items</dt><dd class="param-description"><code class="param-types">{Array | Object | number}</code>or index</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">focus</h3><p>Focus the select</p></div><div class="blocks-method"><h3 class="blocks-method-title">blur</h3><p>Blur the select</p></div><div class="blocks-method"><h3 class="blocks-method-title">setOption</h3><p>Sets option to the jUI widget<br /><a href='http://api.jqueryui.com/autocomplete/#method-option'>http://api.jqueryui.com/autocomplete/#method-option</a></p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">option</dt><dd class="param-description"><code class="param-types">{Object}</code>`{name: value}` имя и значение опцииопции</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getOption</h3><p>Gets option of the jUI widget<br /><a href='http://api.jqueryui.com/autocomplete/#method-option'>http://api.jqueryui.com/autocomplete/#method-option</a></p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">option</dt><dd class="param-description"><code class="param-types">{String}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">destroy</h3><p>Destroy the select</p></div></li><li class="blocks-item" id="slider"><div class="blocks-description"><h2 class="blocks-title">slider</h2><div class="highlight"><pre lang="">    nb-slider()
+</pre></div>
+
+<ul>
+<li>size: s</li>
+<li>value: 0</li>
+<li>orientation: horiz</li>
+<li>type: range</li>
+</ul>
+
+<h3>Optional attributes</h3>
+
+<ul>
+<li><code>'size'</code> {string} <code>m / s</code></li>
+<li><code>'value'</code> {number}</li>
+<li><code>'id'</code> {string} block@id</li>
+<li><code>'class'</code> {array} <code>['my_class1', 'my_class2']</code></li>
+<li><code>'disabled'</code> {boolean}</li>
+</ul>
+
+<h4>Example</h4>
+
+<div class="highlight"><pre lang="">nb-slider({
+    'size': 's'
+    'class': 'js-super-class'
+    'value': 50
+    'disabled': true()
+    'id': 's1'
+})
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">nb.define('slider', {</h3><h3>jQuery UI Depends:</h3>
+
+<ul>
+<li>jquery.ui.slider.js</li>
+<li>jquery.ui.core.js</li>
+<li>jquery.ui.mouse.js</li>
+<li>jquery.ui.widget.js</li>
+</ul></div><div class="blocks-method"><h3 class="blocks-method-title">setValue</h3><p>Set specified value to slider</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{Number}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getValue</h3><p>Return slider's value</p></div><div class="blocks-method"><h3 class="blocks-method-title">setName</h3><p>Set name of the fallback input</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{String | Number}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getName</h3><p>Get name of the fallback input</p></div><div class="blocks-method"><h3 class="blocks-method-title">disable</h3><p>Set disabled state</p></div><div class="blocks-method"><h3 class="blocks-method-title">enable</h3><p>Reset disabled state</p></div><div class="blocks-method"><h3 class="blocks-method-title">isEnabled</h3><p>Return state of the slider</p></div><div class="blocks-method"><h3 class="blocks-method-title">destroy</h3><p>Destroy the slider</p></div></li><li class="blocks-item" id="suggest"><div class="blocks-description"><h2 class="blocks-title">suggest</h2><p>Suggest element.</p>
+
+<div class="highlight"><pre lang="">nb-suggest(options)
+</pre></div>
+
+<h3>Options</h3>
+
+<ul>
+<li><code>'id'</code> {string}</li>
+<li><code>'name'</code> {string}</li>
+<li><code>'attrs'</code> {object} - attrubutes for suggest node</li>
+<li><code>'attrsInput'</code> {object} - attrubutes for input node</li>
+<li><code>'disabled'</code> {boolean}</li>
+<li><code>'source'</code>: {array} — source data for suggest</li>
+<li><code>'highlight'</code>: {boolean} — hightlight results or not</li>
+<li><code>'size'</code> {string}  - input size. <code>'s'</code> (no other sizes supported)</li>
+<li><code>'countMax'</code> {string}  - The number of elements in which the drop-down list appears scroll (default = 10)</li>
+<li><code>'classSuggest'</code> {string} — additional class for suggest popup</li>
+<li><code>'content'</code> {string} — initial content og suggest field</li>
+</ul>
+
+<h3>Examples</h3>
+
+<div class="highlight"><pre lang="">nb-suggest({
+     'source': [
+        'Вариант 1'
+        'Вариант 2'
+     ]
+     'highlight': true()
+ })
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">(function() {</h3><h3>jQuery UI Depends:</h3>
+
+<ul>
+<li>jquery.ui.autocomplete.js</li>
+<li>jquery.ui.button.js</li>
+<li>jquery.ui.core.js</li>
+<li>jquery.ui.widget.js</li>
+<li>jquery.ui.position.js</li>
+<li>jquery.ui.menu.js</li>
+</ul></div><div class="blocks-method"><h3 class="blocks-method-title">getSelected</h3><p>Get selected item from suggest</p></div><div class="blocks-method"><h3 class="blocks-method-title">setOption</h3><p>Sets option to the jUI widget<br /><a href='http://api.jqueryui.com/autocomplete/#method-option'>http://api.jqueryui.com/autocomplete/#method-option</a></p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">option</dt><dd class="param-description"><code class="param-types">{Object}</code>`{ name: value }` имя и значение опции</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getOption</h3><p>Gets option of the jUI widget<br /><a href='http://api.jqueryui.com/autocomplete/#method-option'>http://api.jqueryui.com/autocomplete/#method-option</a></p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">option</dt><dd class="param-description"><code class="param-types">{String}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">setSource</h3><p>Set new items for suggest</p></div><div class="blocks-method"><h3 class="blocks-method-title">getSource</h3><p>Get items from suggest</p></div><div class="blocks-method"><h3 class="blocks-method-title">close</h3><p>Скрывает список предложений</p></div><div class="blocks-method"><h3 class="blocks-method-title">disable</h3><p>Disables the suggest</p></div><div class="blocks-method"><h3 class="blocks-method-title">enable</h3><p>Enables the suggest</p></div><div class="blocks-method"><h3 class="blocks-method-title">isEnabled</h3><p>Return state of the suggest</p></div><div class="blocks-method"><h3 class="blocks-method-title">focus</h3><p>Focus the suggest</p></div><div class="blocks-method"><h3 class="blocks-method-title">getName</h3><p>Get name of the suggest</p></div><div class="blocks-method"><h3 class="blocks-method-title">setName</h3><p>Set name of the suggest</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">name</dt><dd class="param-description"><code class="param-types">{string}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">blur</h3><p>Blur the suggest</p></div><div class="blocks-method"><h3 class="blocks-method-title">getValue</h3><p>Get current value of the suggest</p></div><div class="blocks-method"><h3 class="blocks-method-title">setValue</h3><p>Get current value of the suggest</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{String}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">search</h3><p>Search value in the source array and open suggest popup</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{string | number}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">destroy</h3><p>Destroy the suggest</p></div></li><li class="blocks-item" id="tabs"><div class="blocks-method"><h3 class="blocks-method-title">nb.define('tabs', {
+    oninit</h3><h3>jQuery UI Depends:</h3>
+
+<ul>
+<li>jquery.ui.tabs.js</li>
+<li>jquery.ui.core.js</li>
+<li>jquery.ui.widget.js</li>
+</ul></div></li><li class="blocks-item" id="toggler"><div class="blocks-description"><h2 class="blocks-title">toggler</h2><h2>Yate</h2>
+
+<h3>Default toggler</h3>
+
+<div class="highlight"><pre lang="">nb-toggler()
+</pre></div>
+
+<ul>
+<li>leftText — On</li>
+<li>rightText — Off</li>
+<li>size — s</li>
+</ul>
+
+<h3>Optional settings</h3>
+
+<ul>
+<li><code>'id'</code> {string}</li>
+<li><code>'name'</code> {string}</li>
+<li><code>'disabled'</code> {boolean}</li>
+<li><code>'checked'</code> {boolean}</li>
+<li><code>'leftText'</code> {string} 'On'</li>
+<li><code>'rightText'</code> {string} 'Off'</li>
+</ul>
+
+<h3>Example</h3>
+
+<p>Turned on enabled toggler with custom a titles on the sides</p>
+
+<div class="highlight"><pre lang="">nb-toggler({
+    'leftText': 'yep!'
+    'rightText': 'nope :-('
+    'checked': true()
+})
+</pre></div></div><div class="blocks-method"><h3 class="blocks-method-title">setValue</h3><p>Set value of the toggler</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{String}</code>of the check state</dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">getValue</h3><p>Returns value of the toggler</p></div><div class="blocks-method"><h3 class="blocks-method-title">toggle</h3><p>Toggle to the oppocite value<br />Do nothing if toggler is disabled</p></div><div class="blocks-method"><h3 class="blocks-method-title">getName</h3><p>Returns name of the toggler</p></div><div class="blocks-method"><h3 class="blocks-method-title">setName</h3><p>Set name of the toggler</p><div class="blocks-settings"><dl class="dl-horizontal param"><dt class="param-name">value</dt><dd class="param-description"><code class="param-types">{String}</code></dd></dl></div></div><div class="blocks-method"><h3 class="blocks-method-title">disable</h3><p>Disable toggler</p></div><div class="blocks-method"><h3 class="blocks-method-title">enable</h3><p>Enable toggler</p></div><div class="blocks-method"><h3 class="blocks-method-title">isEnabled</h3><p>Return enable state of the toggler</p></div><div class="blocks-method"><h3 class="blocks-method-title">focus</h3><p>Focus the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">blur</h3><p>Blur the input</p></div><div class="blocks-method"><h3 class="blocks-method-title">isChecked</h3><p>Return check state of the toggler</p></div><div class="blocks-method"><h3 class="blocks-method-title">check</h3><p>Checking toggler</p></div><div class="blocks-method"><h3 class="blocks-method-title">uncheck</h3><p>Unchecking toggler</p></div><div class="blocks-method"><h3 class="blocks-method-title">destroy</h3><p>Destroy the toggler</p></div></li><li class="blocks-item" id="tooltip"><div class="blocks-method"><h3 class="blocks-method-title">nb.define('tooltip-jq-toggler', {
+
+    //NOTES</h3></div></li><li class="blocks-item" id="user"><div class="blocks-method"><h3 class="blocks-method-title">nb.define('user', {
+    events</h3></div></li></ul></div></body></html>
