@@ -8,13 +8,9 @@ func nb-arrow(nodeset arrow) {
 }
 
 match .arrow nb {
-    <form class="nb-arrow nb-search-arrow _init" data-nb="arrow">
+    <form class="nb-arrow nb-search-arrow">
 
         apply . nb-main-attrs
-
-        if .action {
-            @action = .action
-        }
 
         <span class="nb-arrow-tail"></span>
 
@@ -60,7 +56,7 @@ match .arrow nb {
 }
 
 match .arrow[.search != 'true'] nb {
-    <div class="nb-service-arrow _init" data-nb="arrow">
+    <div class="nb-service-arrow">
 
         apply . nb-main-attrs
 
@@ -71,7 +67,7 @@ match .arrow[.search != 'true'] nb {
 }
 
 match .arrow[.search != 'true'][.href] nb {
-    <a href="{.href}" class="nb-service-arrow _init" data-nb="arrow">
+    <a href="{.href}" class="nb-service-arrow">
 
         apply . nb-main-attrs
 
