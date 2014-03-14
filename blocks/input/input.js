@@ -59,8 +59,8 @@ nb.define('input', {
             this.blur();
         }.bind(this);
 
-        this.$document.on('mousedown', this._onmousedown);
-        this.$document.on('touchstart', this._onmousedown);
+        $(document).on('mousedown', this._onmousedown);
+        $(document).on('touchstart', this._onmousedown);
 
         this.trigger('nb-inited', this);
     },
@@ -368,8 +368,8 @@ nb.define('input', {
             this.error.nbdestroy();
             this.error.$node.remove();
         }
-        this.$document.off('mousedown', this._onmousedown);
-        this.$document.off('touchstart', this._onmousedown);
+        $(document).off('mousedown', this._onmousedown);
+        $(document).off('touchstart', this._onmousedown);
         this.nbdestroy();
     }
 }, 'base');
