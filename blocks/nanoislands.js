@@ -13,7 +13,6 @@
 /* borschik:include:input-group/input-group.js  */
 /* borschik:include:progress/progress.js  */
 /* borschik:include:tabs/tabs.js  */
-/* borschik:include:arrow/arrow.js  */
 /* borschik:include:header/header.js  */
 /* borschik:include:user/user.js  */
 /* borschik:include:suggest/suggest.js  */
