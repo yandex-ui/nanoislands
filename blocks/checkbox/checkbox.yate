@@ -56,7 +56,7 @@ match .checkbox nb {
 
         if .type == 'button' {
             nb-button(nb-extend(., {
-                'type': 'span'
+                'type': 'inline'
                 'id': false()
                 'attrs': false()
                 'class': [
