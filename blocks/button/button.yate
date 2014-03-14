@@ -6,13 +6,13 @@ func nb-button(nodeset options) {
 
     if options.type == 'file' {
         nb-block('buttonAttach', nb-extend(default, options))
-    } else if options.type == 'span' {
+    } else if options.type == 'inline' {
         nb-block('buttonSpan', nb-extend(default, options))
-    } else if options.href {
-        nb-block('buttonLink', nb-extend(default, options))
-    } else if options.for {
+    } else if options.type == 'label' {
         nb-block('buttonLabel', nb-extend(default, options))
-    } else {
+    } else if options.type == 'link' {
+        nb-block('buttonLink', nb-extend(default, options))
+    }  else {
         nb-block('button', nb-extend(default, options))
     }
 }
@@ -20,38 +20,24 @@ func nb-button(nodeset options) {
 func _nb-button-attributes(type) {
     @class = "nb-button"
 
-    if (type != 'label') && (type != 'span') {
-        @class += ' _init'
-
-        if !( .static ) {
-            @data-nb = 'button'
-        }
-    }
-
-    // Set the size modifier of the button
-    size = if .size == 's' {
-        '-small'
-    } else if .size == 'm' {
-        if .theme == 'normal' {
-            '-normal'
-        } else {
-            ''
-        }
-    } else if .size == 'l' {
-        '-large'
-    } else if .size == 'xl' {
-        '-extra-large'
-    }
-
-    // Set the theme modifier of the button
-    theme = if .theme == 'normal' {
-        ''
+    // Set the size and theme modifier of the button
+    if .size == 'm' && .theme == 'normal' {
+        @class += ' nb-normal-button'
     } else {
-        '-' + .theme
-    }
+        size = (if .size == 's' {
+            '-small'
+        } else if .size == 'l' {
+            '-large'
+        } else if .size == 'xl' {
+            '-extra-large'
+        })
 
-    // Apply the modifier
-    @class += ' nb' + size + theme + '-button'
+        theme = (if !(.theme == 'normal') {
+            '-' +  .theme
+        })
+
+        @class += ' nb{ size }{ theme }-button'
+    }
 
     if .disabled {
         @class += ' nb-is-disabled'
@@ -59,10 +45,6 @@ func _nb-button-attributes(type) {
         if type == 'button' {
             @disabled = 'disabled'
         }
-    } else if type == 'link' {
-            @href="{ .href }"
-    } else if type == 'label' {
-            @for="{ .for }"
     }
 
     if type == 'attach' {
@@ -87,6 +69,7 @@ func _nb-button-attributes(type) {
         @class += ' nb-with-only-button'
     }
 
+
 }
 
 func _nb-button-content() {
@@ -100,9 +83,18 @@ func _nb-button-content() {
     }
 }
 
+func _nb-button-static(){
+    if !( .static ) {
+        @class += ' _init'
+        @data-nb = 'button'
+    }
+}
+
 match .button nb {
     <button>
         _nb-button-attributes('button')
+
+        _nb-button-static()
 
         apply . nb-main-attrs
 
@@ -118,6 +110,8 @@ match .buttonLink nb {
     <a>
         _nb-button-attributes('link')
 
+         _nb-button-static()
+
         apply . nb-main-attrs
 
         <span class="nb-button-content">
@@ -131,6 +125,8 @@ match .buttonLink nb {
 match .buttonSpan nb {
     <span>
         _nb-button-attributes('span')
+
+        _nb-button-static()
 
         apply . nb-main-attrs
 
@@ -146,6 +142,8 @@ match .buttonLabel nb {
     <label>
         _nb-button-attributes('label')
 
+        _nb-button-static()
+
         apply . nb-main-attrs
 
         <span class="nb-button-content">
@@ -159,6 +157,8 @@ match .buttonLabel nb {
 match .buttonAttach nb {
     <label>
         _nb-button-attributes('attach')
+
+        _nb-button-static()
 
         apply . nb-main-attrs
 

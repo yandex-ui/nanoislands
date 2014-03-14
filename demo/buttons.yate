@@ -1,15 +1,31 @@
 func button-medium() {
 
     button = {
-        'content': 'Применить'
+        'content': 'Normal button'
  }
 
     nb-button(button)
 
     ' '
     nb-button({
-        'content': 'Проверить'
-        'href': '#'
+        'content': 'Link button'
+        'type': 'link'
+        'attrs': {
+            'href': '#'
+        }
+    })
+    ' '
+    nb-button({
+        'content': 'Label button'
+        'type': 'label'
+        'attrs': {
+            'for': 'blah'
+        }
+    })
+    ' '
+    nb-button({
+        'content': 'Span button'
+        'type': 'span'
     })
 }
 

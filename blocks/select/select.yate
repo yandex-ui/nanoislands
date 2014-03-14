@@ -11,6 +11,7 @@ func nb-select(nodeset select) {
 match .select nb {
     <span data-nb-direction ="{ .direction }" data-nb="select" tabindex="0">
         _nb-button-attributes('span')
+
         @class += ' nb-select _init nb-select__button'
 
         if .size == 's' {
