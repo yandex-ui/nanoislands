@@ -35,7 +35,7 @@
     "expect.js": "*",
     "sinon": "*",
 
-    "karma": "~0.11.13",
+    "karma": "~0.12.x",
     "karma-mocha": "~0.1.1",
     "karma-sinon-expect": "~0.1.2",
     "karma-borschik-preprocessor": "~0.1.3",

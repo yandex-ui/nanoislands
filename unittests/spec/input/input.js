@@ -190,9 +190,9 @@ describe("Input Tests", function() {
             expect(handlerWorks).to.be.ok();
         });
 
-        it("should throws global nb-input_focusout event", function() {
+        it("should throws global nb- focusout event", function() {
             var handlerWorks = false;
-            nb.on('nb-input_focusout', function() {
+            nb.on('nb-focusout', function() {
                 handlerWorks = true;
             });
             this.input.focus();

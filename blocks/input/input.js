@@ -48,7 +48,7 @@ nb.define('input', {
             this.error = nb.find(this.data.error.id);
         }
 
-        nb.on('is-focusedout', function() {
+        nb.on('nb-focusout', function() {
             that.blur();
         });
 
@@ -78,11 +78,11 @@ nb.define('input', {
                 that.$hintGhost.html(that.getValue());
             });
 
-            this.$control.on('focus', function() {
+            this.$control.on('focusin', function() {
                 that.$hint.css('visibility', 'hidden');
             });
 
-            this.$control.on('blur', function() {
+            this.$control.on('focusout', function() {
                 that.$hint.css('visibility', 'inherit');
             });
         } else {
@@ -187,7 +187,7 @@ nb.define('input', {
         }
 
         if (!this.focused) {
-            nb.trigger('nb-input_focusout');
+            nb.trigger('nb-focusout');
             this.$node.addClass('nb-is-focused');
 
             if (this.data.ghost) {
@@ -195,11 +195,12 @@ nb.define('input', {
             }
 
             this.focused = true;
+            this.$control.triggerHandler("focusin");
             this.$control.get(0).focus();
             this.trigger('nb-focused', this);
-            return this;
         }
 
+        return this;
     },
 
     /**
@@ -215,6 +216,7 @@ nb.define('input', {
         }
 
         this.focused = false;
+        this.$control.triggerHandler("focusout");
         this.$control.get(0).blur();
         this.trigger('nb-blured', this);
 
@@ -259,7 +261,7 @@ nb.define('input', {
             var validValue = validate(this.getValue());
             this.setValue(validValue);
         });
-        */
+         */
         if (this.value != value) {
             this.value = value;
             this.$control.val(value);

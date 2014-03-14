@@ -90,10 +90,15 @@ module.exports = function(grunt) {
         "karma:continuous"
     ]);
 
-    grunt.registerTask("watch_make", [
+    grunt.registerTask("watch_make_test", [
         "codestyle",
         "karma:dev:start",
         "watch"
+    ]);
+
+    grunt.registerTask("watch_make", [
+        "codestyle",
+        "watch:build"
     ]);
 
     grunt.registerTask("default", ["test"]);

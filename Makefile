@@ -26,7 +26,7 @@ node_modules:
 	npm install
 
 watch: node_modules
-	$(NPM)/grunt-cli/bin/grunt watch
+	$(NPM)/grunt-cli/bin/grunt watch_make
 
 publish:
 	rm -rf node_modules
