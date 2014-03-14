@@ -23,16 +23,26 @@
     "autoprefixer": "1.x",
     "stylus": "0.42.x",
     "csso": "1.3.x",
-    "grunt": "*",
-    "grunt-cli": "*",
+    "load-grunt-tasks": "~0.2.0",
+    "grunt": "~0.4.0",
+    "grunt-cli": "~0.1.0",
     "grunt-contrib-jshint": "*",
-    "grunt-mocha-phantomjs": "*",
-    "grunt-jscs-checker": "~0.3.0",
-    "mocha-phantomjs": "*",
-    "phantomjs": "*",
-    "sinon": "*",
+    "grunt-jscs-checker": "~0.4.0",
+    "grunt-karma": "~0.7.2",
     "jscs": "1.0.11",
+
+    "mocha": "~1.17.0",
     "expect.js": "*",
+    "sinon": "*",
+
+    "karma": "~0.11.13",
+    "karma-mocha": "~0.1.1",
+    "karma-sinon-expect": "~0.1.2",
+    "karma-borschik-preprocessor": "~0.1.3",
+    "karma-yate-preprocessor": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-firefox-launcher": "~0.1.0",
+
     "grunt-contrib-watch": "~0.5.3",
     "grunt-shell": "~0.6.4"
   },
@@ -51,7 +61,7 @@
     "externals.yate.js"
   ],
   "scripts": {
-    "test": "make all && grunt",
-    "start": "make all && grunt watch_make"
+    "test": "grunt test",
+    "start": "grunt watch_make"
   }
 }

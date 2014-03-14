@@ -2,9 +2,11 @@ describe("Toggler Tests", function() {
 
     beforeEach(function() {
         var result = yr.run('main', {toggler: true});
-        $('.content').html(result);
 
-        nb.init();
+        this.$sandbox.html(result);
+
+        nb.init(this.$sandbox);
+
         this.toggler = nb.find('toggler');
     });
 

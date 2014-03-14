@@ -1,4 +1,4 @@
-describe('Progress Tests', function() {
+xdescribe('Progress Tests', function() {
     beforeEach(function() {
         var result = yr.run('main', {progress: true});
         $('.content').html(result);
@@ -6,6 +6,7 @@ describe('Progress Tests', function() {
         nb.init();
         this.nbProgress = nb.find('progress');
     });
+
     afterEach(function() {
         delete this.nbProgress;
     });
@@ -67,5 +68,5 @@ describe('Progress Tests', function() {
             this.progress.destroy();
             expect(nb.hasBlock($('#progress')[0])).to.be.equal(false);
         });
-    })
+    });
 });
