@@ -6,7 +6,7 @@
     if ie
       display: inline-block
 
-  .nb-button__text
+  .nb-button-content
     if ie
       display: none !important
     if !ie
@@ -33,12 +33,12 @@
   box-sizing: border-box
   display: inline-block
 
-.nb-select .nb-button__text:before
+.nb-select .nb-button-content:before
 .nb-select__dropdown .nb-select__item_type_group > .nb-select__a > .nb-select__text:before
   content: ""
   skin: icon_dropdown selecty
 
-.nb-select.nb-button_size_s .nb-button__text:before
+.nb-small-select .nb-button-content:before
 .nb-select__dropdown_size_s .nb-select__item_type_group > .nb-select__a  > .nb-select__text:before
   skin: icon_dropdown selecty small
 

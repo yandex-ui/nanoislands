@@ -85,7 +85,7 @@ describe("Checkbox Tests", function() {
 
                 it('should render additional nb-button markup', function() {
                     expect(this.checkboxes['button'].$node.find('.nb-button').length).to.be.greaterThan(0);
-                    expect(this.checkboxes['button'].$node.find('.nb-button__text').length).to.be.greaterThan(0);
+                    expect(this.checkboxes['button'].$node.find('.nb-button-content').length).to.be.greaterThan(0);
                 });
             });
         });
@@ -93,7 +93,7 @@ describe("Checkbox Tests", function() {
         describe("'Theme' parameter", function() {
             it("should affect appearance of the control", function() {
                 var sut = nb.find('checkbox-pseudo-button');
-                expect(sut.$node.find('.nb-button_theme_pseudo').length).to.be.greaterThan(0);
+                expect(sut.$node.find('.nb-pseudo-button').length).to.be.greaterThan(0);
             });
         });
     });

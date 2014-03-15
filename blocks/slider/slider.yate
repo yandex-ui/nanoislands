@@ -35,7 +35,7 @@ match .slider nb {
                     @class += ' { .handle.class }'
                 }
 
-                <span class='nb-button__text'>
+                <span class='nb-button-content'>
                     <input class='nb-slider__fallback' type='text' value='{ .value }' readonly='readonly'>
                         if .name {
                             @name = '{ .name }'

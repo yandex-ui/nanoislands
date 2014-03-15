@@ -32,29 +32,20 @@ match .radio-button nb {
                     }
                 </input>
 
-                <label for="{ uniq }" class = 'nb-button nb-complex-group-item-subject  js-button nb-button_theme_{ ..theme } nb-button_size_{ ..size }' data-value='{ .value }'>
-                    apply . nb-main-attrs
-
-                    if .checked {
-                        @class += ' nb-button_type_checked'
+                nb-button(nb-extend(., {
+                    'class': [
+                        'nb-complex-group-item-subject'
+                        'js-button'
+                    ]
+                    'type': 'label'
+                    'static': true()
+                    'id': false()
+                    'attrs': {
+                        'for': uniq
+                        'data-value': .value
                     }
+                }))
 
-                    if .disabled {
-                        @class += ' nb-is-disabled js-disabled'
-                        @disabled = 'disabled'
-                    }
-
-                    if !(.content) && .icon {
-                        @class += ' nb-button_only-icon'
-                    }
-
-                    <span class="nb-button__text">
-                            apply .icon nb
-                            if (.content) {
-                                html(.content)
-                            }
-                    </span>
-                </label>
             </span>
 
         }

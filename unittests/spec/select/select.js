@@ -44,7 +44,7 @@ describe("Select Tests", function() {
 
         it('Should substitute the name of the selected element', function() {
             var select = nb.find('select-duplicate-title');
-            expect(select.$node.find('.nb-button__text').text()).to.be.equal('2');
+            expect(select.$node.find('.nb-button-content').text()).to.be.equal('2');
         });
 
     });
@@ -321,7 +321,7 @@ describe("Select Tests", function() {
             });
 
             it('should set text from added item', function() {
-                expect(this.select.$node.find('.nb-button__text').text()).to.be.eql('add-text');
+                expect(this.select.$node.find('.nb-button-content').text()).to.be.eql('add-text');
             });
 
             it('should has only one selected item in source', function() {

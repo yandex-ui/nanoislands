@@ -54,32 +54,23 @@ match .checkbox nb {
 
         </input>
 
-        if .type != 'button' {
+        if .type == 'button' {
+            nb-button(nb-extend(., {
+                'type': 'inline'
+                'static': true()
+                'id': false()
+                'attrs': false()
+                'class': [
+                    'nb-checkbox__label'
+                ]
+            }))
+        } else {
             <span class="nb-checkbox__flag nb-checkbox__flag_type_{ .type }"><span class="nb-checkbox__flag__icon"></span></span>
-        }
-
-        <span class="nb-checkbox__label">
-            if .type == 'button' {
-
-                @class += (
-                    ' nb-button nb-button_size_'
-                    .size
-                    ' nb-button_theme_'
-                    .theme
-                )
-
-                <span class="nb-button__text">
-                    if (.content) {
-                        html(.content)
-                    }
-                </span>
-
-            } else {
+            <span class="nb-checkbox__label">
                 if (.content) {
                     html(.content)
                 }
-            }
-
-        </span>
+            </span>
+        }
     </label>
 }

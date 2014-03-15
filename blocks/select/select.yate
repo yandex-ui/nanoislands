@@ -9,22 +9,26 @@ func nb-select(nodeset select) {
 }
 
 match .select nb {
-    <span class="nb-select _init nb-button nb-select__button nb-button_size_{ .size } nb-button_theme_{ .theme }" data-nb-direction ="{ .direction }" data-nb="select" tabindex="0">
+    <span data-nb-direction ="{ .direction }" data-nb="select" tabindex="0">
+        _nb-button-attributes('span')
+
+        @class += ' nb-select _init nb-select__button'
+
+        if .size == 's' {
+            @class += ' nb-small-select'
+        }
+
         apply . nb-main-attrs
 
         if .within {
             @data-nb-within = .within
         }
 
-        if .disabled  {
-            @class += ' nb-is-disabled'
-        }
-
         if .maxHeight {
             @data-nb-maxheight = .maxHeight
         }
 
-        <span class="nb-button__text">
+        <span class="nb-button-content">
             isSelected = count(.items[(.selected)]) > 0
 
             for .items {

@@ -19,8 +19,11 @@
 * `'content'` {string} ... — content of button
 * `'attrs'` {object} `{'type': 'submit', 'attr2: 'value2' }` — custom DOM attributes for button
 * `'static'` {boolean} — block without nanoblocks functionality (JavaScript API)
-* `'type'` {string} `'file'` — attach button. This is not DOM type aka `<input type=""/>`, this is instance type.
-* `'href'` {string} — button with `<a href=''>`
+* `'type'` {string}
+*   `'file'` — attach button. This is not DOM type aka `<input type=""/>`, this is instance type.
+*   `'link'` — `<a>`
+*   `'label'` - `<label>`
+*   `'inline'` - `<span>`
 
 #### Example
 
