@@ -57,6 +57,7 @@ match .checkbox nb {
         if .type == 'button' {
             nb-button(nb-extend(., {
                 'type': 'inline'
+                'static': true()
                 'id': false()
                 'attrs': false()
                 'class': [
