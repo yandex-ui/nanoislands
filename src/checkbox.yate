@@ -97,13 +97,6 @@ func checkbox() {
     </div>
     <div class="demo-section">
         <div class="demo-h3">
-            'Type: Button'
-        </div>
-
-        show(checkbox-button())
-    </div>
-    <div class="demo-section">
-        <div class="demo-h3">
             'Size: S '
             <span class="demo-code demo-code_small">
                 '.nb-checkbox_size_s'

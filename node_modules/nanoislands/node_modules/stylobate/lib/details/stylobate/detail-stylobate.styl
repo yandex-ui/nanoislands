@@ -18,6 +18,7 @@ stylobate_defaults($where, $defaults...)
 
 _stylobate_defaults($where, $defaults)
   $origin = utilus_get($where, called_from)
+  return false if not $origin
   $parent = clone($where)
   $new = clone($defaults)
   prepend($new, $origin + '_')

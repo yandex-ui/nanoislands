@@ -170,6 +170,11 @@ Initialize all nb blocks with class '_init' within DOM node
     */
     popup.close();
 
+    /*
+    * Determine state of popup
+    */
+    popup.isOpen();
+
 ``` 
 
 

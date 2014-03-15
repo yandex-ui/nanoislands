@@ -43,4 +43,18 @@ func suggests() {
         </div>
         nb-suggest(suggestUser2)
     </div>
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Саджест c произвольным полем ввода. Введите буквы «Ва»'
+        </div>
+        <input>
+            @class = 'nb-input_type_simple nb-input_size_s _init'
+            @id = 'suggest-with-custom-input'
+            @placeholder = 'Введите вариант'
+            @data-nb = 'suggest'
+            @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest__container nb-suggest_size_s'
+            @data-source = suggest.source
+        </input>
+    </div>
 }

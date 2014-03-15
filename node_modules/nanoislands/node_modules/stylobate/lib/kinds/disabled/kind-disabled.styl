@@ -3,11 +3,11 @@ kind-disabled()
 
   opacity: utilus_alike(arguments, 0.5)
 
-  &:focus
-    outline: 0
-
   // Prevent different states in most browsers
-  unless with-events in arguments
+  if with-events in arguments
+    &:focus
+      outline: 0
+  else
     pointer-events: none
 
   stylobate_defaults(arguments, -nested '& &')

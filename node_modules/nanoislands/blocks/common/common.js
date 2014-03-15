@@ -1,8 +1,15 @@
+/**
+ * @class nb.block.Base
+ * @augments Block
+ */
 nb.define('base', {
     events: {
         'init': '_oninit'
     },
 
+    /**
+     * @constuctor
+     */
     _oninit: function() {
         this.$node = $(this.node);
 

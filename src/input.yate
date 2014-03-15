@@ -82,16 +82,16 @@ func input-error() {
     })
 }
 
-func input-placeholder() {
+func input-hint() {
     nb-input({
-        'placeholder': 'Your Email or Name'
+        'hint': 'Your Email or Name'
     })
 }
 
-func input-placeholder-ghost() {
+func input-hint-ghost() {
     nb-input({
         'content': 'hello@nano.is'
-        'placeholder': {
+        'hint': {
             'ghost': true()
             'text': ' — Your Email or Name'
         }
@@ -123,7 +123,7 @@ func inputs() {
         <div class="demo-h3">
             'Disabled '
             <span class="demo-code demo-code_small">
-                '.nb-disabled'
+                '.nb-is-disabled'
             </span>
         </div>
 
@@ -189,16 +189,16 @@ func inputs() {
     </div>
     <div class="demo-section">
         <div class="demo-h3">
-            'Placeholders'
+            'Hint'
         </div>
 
-        show(input-placeholder())
+        show(input-hint())
     </div>
     <div class="demo-section">
         <div class="demo-h3">
-            'Placeholders'
+            'Ghost hint'
         </div>
 
-        show(input-placeholder-ghost())
+        show(input-hint-ghost())
     </div>
 }
