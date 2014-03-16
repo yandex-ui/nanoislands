@@ -2,7 +2,15 @@ var fs = require('fs');
 var path = require('path');
 var concat = require('concat-stream');
 var dox = require('dox');
-var markdown = require('github-flavored-markdown');
+var markdown = require('marked');
+
+var renderer = new markdown.Renderer();
+
+renderer.code = function (text, lang) {
+  var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+
+  return '<div class="code code_' + lang + '"><pre><code>' + text + '</code></pre></div>'
+}
 
 var FOLDER_BLOCKS = path.resolve(__dirname, '../blocks/');
 var PATH_RESULT = path.resolve(__dirname, '../docs/data.json');
@@ -14,27 +22,24 @@ var writable = concat(function(data) {
 fs.readdirSync(FOLDER_BLOCKS).forEach(function(nameFolder) {
     var pathJS = path.resolve(FOLDER_BLOCKS, nameFolder, nameFolder + '.js');
     var pathMD = path.resolve(FOLDER_BLOCKS, nameFolder, nameFolder + '.md');
-    var data;
 
     if (fs.existsSync(pathMD)) {
-        data = [{
-            md: markdown.parse(fs.readFileSync(pathMD).toString())
-        }];
+        var md = markdown(fs.readFileSync(pathMD).toString(), { renderer: renderer })
     }
 
     if (fs.existsSync(pathJS)) {
-        var parsedJS = dox.parseComments(fs.readFileSync(pathJS).toString());
-        data = (data) ? data.concat(parsedJS) : parsedJS;
+        var jsdoc = dox.parseComments(fs.readFileSync(pathJS).toString());
     }
 
-    if (!data) {
+    if (!md) {
         return;
     }
 
-    writable.write([{
+    writable.write({
         block: nameFolder,
-        data: data
-    }]);
+        jsdoc: jsdoc,
+        md: md
+    });
 });
 
 writable.end();

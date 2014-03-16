@@ -1,16 +1,37 @@
-include "externals.yate"
+external scalar getNameMethod(scalar)
+
+include "../nanoislands.yate"
+
+
+func podium(xml markup) {
+    <div class="podium">
+        markup
+    </div>
+}
+
+func code(xml markup) {
+    <div class="code code_html">
+        <pre>
+            <code class="js-beautify">
+                scalar(markup)
+            </code>
+        </pre>
+    </div>
+}
+
+func show(scalar name, xml markup) {
+    <div code="{ name }">
+        podium(markup)
+        code(markup)
+    </div>
+}
+
+include "../blocks/arrow/arrow.example.yate"
+
 
 match / {
-    html('<!DOCTYPE html>')
-    <html>
-        <head>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-            <title>Nanoislands Docs</title>
-            <link rel="stylesheet" type="text/css" href="/docs/css/bootstrap.min.css" />
-            <link rel="stylesheet" type="text/css" href="/docs/css/nanoislands-docs.css" />
-        </head>
-        <body class="page">
+            arrows()
+
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>
                 <ul class="blocks-menu">
@@ -20,8 +41,7 @@ match / {
                     apply .* blocks-item
                 </ul>
             </div>
-        </body>
-    </html>
+
 }
 
 
@@ -36,16 +56,21 @@ match .* blocks-menu-item {
 
 match .* blocks-item {
     <li class="blocks-item" id="{ .block }">
-        apply .data blocks-content
+        apply .md
+        if .jsdoc {
+            <h3>JSdoc</h3>
+            apply .jsdoc
+        }
+
     </li>
 }
 
 
-match .* blocks-content {
+match .jsdoc {
     <div class="blocks-method">
-        <h3 class="blocks-method-title">
+        <h4 class="blocks-method-title">
             getNameMethod('{.code}')
-        </h3>
+        </h4>
         if (.description.full) {
             html(.description.full)
         }
@@ -53,18 +78,18 @@ match .* blocks-content {
         apply .tags[.name] blocks-settings
     </div>
 }
-match .*[.md] blocks-content {
+match .md {
     <div class="blocks-description">
         <h2 class="blocks-title">
             ..block
         </h2>
-        html(.md)
+        html(.)
     </div>
 }
-match .*[.ignore] blocks-content {}
+match .jsdoc[.ignore] blocks-content {}
 
 
-match .* blocks-settings {
+match .tags blocks-settings {
     <div class="blocks-settings">
         apply .[.name] blocks-params
         apply .['fires' == .type || 'returns' == .type] blocks-extra
@@ -72,7 +97,7 @@ match .* blocks-settings {
 }
 
 
-match .* blocks-params {
+match .tags blocks-params {
     <dl class="dl-horizontal param">
         <dt class="param-name">
             .name
@@ -87,7 +112,7 @@ match .* blocks-params {
 }
 
 
-match .* blocks-params-types {
+match .tags blocks-params-types {
     itemLast = count(.types) - 1
     '{{'
     for .types {
@@ -100,7 +125,7 @@ match .* blocks-params-types {
 }
 
 
-match .* blocks-extra {
+match .tags blocks-extra {
     <dl class="dl-horizontal param">
         <dt class="param-name">
             .type

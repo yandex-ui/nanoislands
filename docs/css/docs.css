@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+
+    font: 86% sans-serif;
+}
+
+pre {
+    margin-right: 50%;
+}
+
+/**
+ * page
+ */
+.page {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-width: 954px;
+    min-height: 100%;
+    background-color: #fbfaf4;
+    border: 18px solid #fff;
+
+    color: #333;
+}
+
+.page:before,
+.page:after {
+    content: "";
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    height: 18px;
+}
+
+.page:before {
+    top: 0;
+}
+
+.page:after {
+    bottom: 0;
+}
+
+.page-inner {
+    padding: 0 290px 0 40px;
+}
+
+.page-title {
+    font-size: 48px;
+    margin-top: 48px;
+}
+
+/**
+ * blocks list
+ */
+.blocks {
+    list-style: none;
+    padding: 0;
+}
+
+.blocks-item {
+    padding-top: 18px;
+    margin: 40px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.blocks-item:first-child {
+    margin-top: 0;
+    border-top: 0;
+}
+
+.blocks-title {
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.blocks-settings {
+    margin: 20px 0;
+}
+
+/**
+ * menu
+ */
+.blocks-menu {
+    position: fixed;
+    right: 18px;
+    top: 18px;
+    bottom: 18px;
+    width: 250px;
+    overflow-y: scroll;
+    background: rgb(249, 245, 228);
+    list-style: none;
+    padding: 0 18px;
+    margin: 0;
+}
+
+.blocks-menu-item {
+    margin: 10px 0;
+}
+
+.code_html {
+    display: none;
+}
+

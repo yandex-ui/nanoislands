@@ -5,7 +5,7 @@ export NPM
 
 MAKEFLAGS+=-j 4
 
-all: node_modules demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js unittests/tests.yate.js
+all: node_modules demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js unittests/tests.yate.js docs
 
 nanoislands.css: $(shell find . -name '*.styl') node_modules
 	node build/build-styl.js > $@
@@ -22,9 +22,13 @@ nanoislands.ie.css: $(shell find . -name '*.styl') node_modules
 nanoislands.js: $(CURDIR)/blocks/nanoislands.js $(shell find $(CURDIR)/blocks -name '*.js') node_modules
 	$(NPM_BIN)/borschik --input=blocks/nanoislands.js --minimize=no --output=nanoislands.js
 
-docs: $(shell find $(CURDIR)/blocks -name '*.js') docs/templates/index.yate
-	node build/build-doc.js > docs/_data.json
-	$(NPM_BIN)/yate docs/templates/index.yate docs/_data.json docs/templates/externals.js > docs/index.html
+docs/js/_data.json: $(shell find $(CURDIR)/blocks -name '*.js') $(shell find $(CURDIR)/blocks -name '*.md') node_modules
+	node build/build-doc.js > docs/js/_data.json
+
+docs/js/docs.yate.js: docs/docs.yate docs/js/_data.json $(shell find $(CURDIR)/blocks -name '*.js') $(shell find $(CURDIR)/blocks -name '*.yate') $(shell find $(CURDIR)/blocks -name '*.md') node_modules
+	$(NPM_BIN)/yate $(CURDIR)/docs/docs.yate > $(CURDIR)/docs/js/docs.yate.js
+
+docs: docs/js/_data.json docs/js/docs.yate.js
 
 node_modules:
 	npm install
@@ -43,7 +47,21 @@ publish:
 grunt: node_modules
 	$(NPM_BIN)/grunt
 
-clean:
-	rm -rf demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js unittests/tests.yate.js grunt
+clean-docs:
+	rm -rf docs/js/_data.json docs/js/docs.yate.js
 
-.PHONY: all publish clean watch
+clean-tests:
+	rm -rf unittests/tests.yate.js
+
+clean-js:
+	rm -rf nanoislands.js
+
+clean-css:
+	rm -rf nanoislands.css nanoislands.ie.css
+
+clean-demo:
+	rm -rf demo/demo.yate.js
+
+clean: clean-demo clean-css clean-js clean-tests clean-docs
+
+.PHONY: all publish clean watch docs clean-docs clean-tests clean-js clean-css clean-demo

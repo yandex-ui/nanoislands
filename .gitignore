@@ -12,5 +12,5 @@ nanoislands.yate.js
 demo/demo.yate.js
 unittests/tests.yate.js
 jquery.min.js
-docs/_*
-docs/index.html
+docs/js/_data.json
+docs/js/docs.yate.js
