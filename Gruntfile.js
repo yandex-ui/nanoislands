@@ -40,6 +40,7 @@ module.exports = function(grunt) {
             files: [
                 "<%= jshint.files %>",
                 "blocks/*/*.yate",
+                "blocks/*/*.md",
                 "blocks/*/*.styl",
                 "demo/*.yate"
             ],

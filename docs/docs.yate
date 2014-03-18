@@ -27,10 +27,12 @@ func show(scalar name, xml markup) {
 }
 
 include "../blocks/arrow/arrow.example.yate"
+include "../blocks/button/button.example.yate"
 
 
 match / {
             arrows()
+            buttons()
 
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>

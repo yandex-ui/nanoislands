@@ -1,8 +1,10 @@
 ### Default button
-
-```
-nb-button()
-```
+> <div example="button-default"/>
+> ```yate
+> nb-button({
+>     'content': 'Button'
+> })
+> ```
 
 * `size: m`
 * `theme: normal`
@@ -22,27 +24,120 @@ nb-button()
 * `'attrs'` {object} `{'type': 'submit', 'attr2: 'value2' }` — custom DOM attributes for button
 * `'static'` {boolean} — block without nanoblocks functionality (JavaScript API)
 * `'type'` {string}
-*   `'file'` — attach button. This is not DOM type aka `<input type=""/>`, this is instance type.
-*   `'link'` — `<a>`
-*   `'label'` - `<label>`
-*   `'inline'` - `<span>`
+  * `'file'` — attach button. This is not DOM type aka `<input type=""/>`, this is instance type.
+  * `'link'` — `<a>`
+  * `'label'` - `<label>`
+  * `'inline'` - `<span>`
 
-#### Example
+### Yate examples
 
-Action buttom, size L with custom classes
+#### Types
+`'type': 'link'  'label'  'inline'  'file'`
+<div example="buttons-type"/>
+> ```yate
+> nb-button({
+>        'content': 'Link button'
+>        'type': 'link'
+>        'attrs': {
+>            'href': '#'
+>         }
+>     })
+> ' '
+> nb-button({
+>     'content': 'Label button'
+>     'type': 'label'
+>     'attrs': {
+>         'for': 'blah'
+>     }
+> })
+> ' '
+> nb-button({
+>     'content': 'Span button'
+>     'type': 'inline'
+> })
+> ' '
+> nb-button({
+>      'content': 'Attach file'
+>      'type': 'file'
+> })
+> ```
 
-```
-nb-button({
-    'size': 'l'
-    'theme': 'action'
-    'id': 'id1'
-    'class': [
-        'my_class1'
-        'my_class2'
-    ]
-    'content': 'Hello World'
-    'attrs': {
-        'name': 'my_name'
-     }
-})
-```
+#### Size
+<div example="buttons-size" />
+> ```yate
+> nb-button({
+>     'content': 'Small'
+>     'size': 's'
+> })
+> ' '
+> nb-button({
+>    'content': 'Medium'
+> })
+> ' '
+> nb-button({
+>    'theme': 'promo'
+>    'content': 'Large'
+> })
+> ' '
+> nb-button({
+>    'theme': 'promo'
+>    'size': 'xl'
+>    'content': 'Extra large'
+> })
+> ```
+
+
+#### Themes
+`'theme': 'action'  'pseudo'  'dark'  'promo'`
+<div example="buttons-theme" />
+> ```yate
+> nb-button({
+>     'content': 'Action'
+>     'theme': 'action'
+> })
+> ' '
+> nb-button({
+>     'content': 'Pseudo'
+>     'theme': 'pseudo'
+> })
+> ' '
+> nb-button({
+>     'content': 'Dark'
+>     'theme': 'dark'
+> })
+>
+> ' '
+> nb-button({
+>     'content': 'Promo'
+>     'theme': 'promo'
+> })
+> ```
+
+#### Icons
+<div example="buttons-icon" />
+> ```yate
+> nb-button({
+>     'icon': 'eye'
+> })
+>
+> ' '
+> nb-button({
+>     'iconText': '▼'
+> })
+>
+> ' '
+> nb-button({
+>       'icon': 'link'
+>       'content': 'Открыть'
+> })
+> ```
+
+#### Disabled
+<div example="button-disabled" />
+> ```yate
+> nb-button({
+>   'disabled': true()
+>   'content': 'Disabled'
+> }
+> ```
+
