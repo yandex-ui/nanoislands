@@ -36,12 +36,12 @@
 <div example="buttons-type"/>
 > ```yate
 > nb-button({
->        'content': 'Link button'
->        'type': 'link'
->        'attrs': {
->            'href': '#'
->         }
->     })
+>     'content': 'Link button'
+>     'type': 'link'
+>     'attrs': {
+>         'href': '#'
+>     }
+> })
 > ' '
 > nb-button({
 >     'content': 'Label button'

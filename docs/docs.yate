@@ -28,17 +28,19 @@ func show(scalar name, xml markup) {
 
 include "../blocks/arrow/arrow.example.yate"
 include "../blocks/button/button.example.yate"
+include "../blocks/input/input.example.yate"
 
 
 match / {
             arrows()
             buttons()
+            inputs()
 
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>
-                <ul class="blocks-menu">
+                <ol class="blocks-menu">
                     apply .* blocks-menu-item
-                </ul>
+                </ol>
                 <ul class="blocks">
                     apply .* blocks-item
                 </ul>

@@ -28,4 +28,12 @@ $.getJSON('js/_data.json', function(data) {
         }));
     });
     hljs.initHighlightingOnLoad();
+
+    $('.js-show-input-error').click(function() {
+        var inputErrorNode = document.querySelector('.js-input-error');
+        if (inputErrorNode) {
+            var inputError = nb.block(inputErrorNode);
+            inputError.showError();
+        }
+    });
 })

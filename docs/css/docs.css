@@ -41,12 +41,16 @@ pre {
 }
 
 .page-inner {
-    padding: 0 290px 0 40px;
+    padding: 0 320px 0 40px;
 }
 
 .page-title {
     font-size: 48px;
     margin-top: 48px;
+}
+
+.page-input-error-button {
+    vertical-align: top;
 }
 
 /**
@@ -87,14 +91,13 @@ pre {
     bottom: 18px;
     width: 250px;
     overflow-y: scroll;
-    background: rgb(249, 245, 228);
-    list-style: none;
+    border: 1px dashed rgba(0,0,0,.15);
     padding: 0 18px;
     margin: 0;
 }
 
 .blocks-menu-item {
-    margin: 10px 0;
+    margin: 10px 0 10px 20px;
 }
 
 .code_html {
