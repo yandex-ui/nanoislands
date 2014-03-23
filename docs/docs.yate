@@ -29,12 +29,14 @@ func show(scalar name, xml markup) {
 include "../blocks/arrow/arrow.example.yate"
 include "../blocks/button/button.example.yate"
 include "../blocks/input/input.example.yate"
+include "../blocks/checkbox/checkbox.example.yate"
 
 
 match / {
             arrows()
             buttons()
             inputs()
+            checkbox()
 
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>
@@ -82,6 +84,8 @@ match .jsdoc {
         apply .tags[.name] blocks-settings
     </div>
 }
+match .jsdoc[.ignore] {}
+
 match .md {
     <div class="blocks-description">
         <h2 class="blocks-title">
@@ -90,7 +94,6 @@ match .md {
         html(.)
     </div>
 }
-match .jsdoc[.ignore] blocks-content {}
 
 
 match .tags blocks-settings {

@@ -1,4 +1,4 @@
-/**
+/*!
  * @class nb.block.Checkbox
  * @augments nb.block.Base
  */

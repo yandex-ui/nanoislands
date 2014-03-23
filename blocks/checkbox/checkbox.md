@@ -1,7 +1,8 @@
 ### Default checkbox
 
-```
-nb-checkbox()
+<div example="checkbox-default" />
+```yate
+    nb-checkbox()
 ```
 
 * `size` — m
@@ -23,17 +24,71 @@ nb-checkbox()
 * `'attrs'` {object} `{'attr2': 'value2'}` — custom DOM attributes for checkbox input
 
 
-#### Example
+#### Yate Example
 
-Action buttom, size L with custom classes
+#### checked
 
-```
+<div example="checkbox-checked" />
+```yate
     nb-checkbox({
-        'type': 'radio'
-        'content': 'Паук'
-        'attrs': {
-            'name': 'biotype'
-        }
+        'checked': true()
     })
+```
 
+#### checkbox with label
+
+<div example="checkbox-label" />
+```yate
+    nb-checkbox({
+        'content': 'Do you want to be an icon for the disfranchised masses?'
+        'name': 'is_rock_star'
+    })
+```
+
+#### Sizes
+
+<div example="checkbox-sizes" />
+
+```yate
+    nb-checkbox({
+        'size': 'm'
+    })
+    ' '
+    nb-checkbox({
+        'size': 's'
+    })
+```
+
+#### Types
+
+Button type of checkbox
+
+<div example="checkbox-button" />
+
+```yate
+    nb-checkbox({
+        'type': 'button'
+        'content': 'Greet the world?'
+    })
+```
+
+#### Disabled
+
+<div example="checkbox-disable-label" />
+
+```yate
+    nb-checkbox({
+        'content': 'Bet you can`t check me!'
+        'disabled': true()
+    })
+```
+
+<div example="checkbox-disable-button" />
+
+```yate
+    nb-checkbox({
+        'type': 'button'
+        'content': 'I`m sorry, but you can`t do it anymore'
+        'disabled': true()
+    })
 ```
