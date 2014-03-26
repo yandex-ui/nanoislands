@@ -303,10 +303,24 @@
 
         // ----------------------------------------------------------------------------------------------------------------- //
         oninit: function() {
+            var that = this;
             var data = this.nbdata();
 
             if ('modal' in data) {
                 this.modal = true;
+            }
+
+            this.$menu = this.$node.find('.nb-popup__menu');
+
+            if (this.$menu.length) {
+                this.$menu.menu({
+                    select: function(event, ui) {
+                        that.trigger('nb-select', {
+                            event: event,
+                            ui: ui
+                        });
+                    }
+                });
             }
 
             // Храним исходное положение попапа, чтобы возвращать его на место
@@ -328,7 +342,6 @@
         open: function(params) {
             var where = params.where;
             var how = params.how;
-
             //  Специальный флаг-костыль.
             //  Если он true, то это значит, что мы только что передвинули открытый попап в другое место
             //  и его не нужно закрывать на клик.
