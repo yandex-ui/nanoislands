@@ -1,3 +1,14 @@
+##### 0.3.11 — patch
+
+##### Fixes
+* fix #272 — Too small popup's close link
+* fix #275 — Input – Нужны события ввода текста
+* fix #277 — Событие внутри nb-popup-menu
+* Refactored nb-arrow to use stylobate
+* fix focus/blur for complex input
+* Run tests under Karma
+* MIT License
+
 ##### 0.3.10 — patch
 
 ##### Fixes

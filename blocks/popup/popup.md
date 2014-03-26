@@ -152,6 +152,17 @@ Initialize all nb blocks with class '_init' within DOM node
 
 ```
 
+### Events
+
+#### nb-select
+Bubble when select in popup
+Arguments:
+
+* Name of event — 'nb-select'
+* Params
+    * event {Object} // original event
+    * ui {Object} // jQuery ui element
+
 ### Methods
 
 `popup` — `popup`, `popup-modal` or `popup-menu`

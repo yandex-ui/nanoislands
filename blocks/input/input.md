@@ -55,6 +55,11 @@ Initialize all nb blocks with class '_init' within DOM node
     nb.init(node);
 
 ```
+### Events
+
+ * nb-input – on input event
+ * nb-changed – on change event
+
 ### Input methods
 
 
