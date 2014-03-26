@@ -31,6 +31,10 @@ nb.define('input', {
             that.trigger('nb-changed', this, e);
         });
 
+        this.$control.on('input', function(e) {
+            that.trigger('nb-input', this, e);
+        });
+
         this.$hint = this.$node.find('.nb-input__hint');
 
         if (this.$hint.length) {
