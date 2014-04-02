@@ -30,6 +30,7 @@ watch: node_modules
 
 publish:
 	rm -rf node_modules
+	npm install
 	make clean
 	npm test
 	npm publish
