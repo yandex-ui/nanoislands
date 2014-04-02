@@ -15,7 +15,7 @@
  */
 nb.define('select', {
     events: {
-        'click': '_onclick'
+        'mousedown': '_onclick'
         //'open' { event, ui}
         //'close' { event, ui}
     },
@@ -26,6 +26,7 @@ nb.define('select', {
      * @constructor
      */
     oninit: function() {
+        this.isOpen = false;
         this.$control = this.$node.find('select');
         this.$dropdown = this.$node.children('.nb-select__dropdown').appendTo('body');
         this.data = this.nbdata();
@@ -142,6 +143,14 @@ nb.define('select', {
 
         that.$jUI = that.$node.data('uiAutocomplete');
 
+        that.$node.on('autocompleteopen', function() {
+            that.isOpen = true;
+        });
+
+        that.$node.on('autocompleteclose', function() {
+            that.isOpen = false;
+        });
+
 
         // redefine one menu item rendering method, fires every time, then popup opening
         that.$jUI._renderItem = function(ul, item) {
@@ -227,12 +236,9 @@ nb.define('select', {
         if (this.$node && this.$node.data('uiAutocomplete')) {
             evt.preventDefault();
             // close if already visible
-            if (this.$node.data('uiAutocomplete') && this.$node.autocomplete('widget').css('display') == 'block') {
+            if (this.isOpen) {
                 this.close();
-                return;
-            }
-
-            if (this.isEnabled()) {
+            } else if (this.isEnabled()) {
                 this.open();
                 this.$node.focus();
             }
