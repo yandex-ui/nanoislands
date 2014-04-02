@@ -32,6 +32,7 @@ nb.define('input', {
         });
 
         this.$control.on('input', function(e) {
+            that.getValue();
             that.trigger('nb-input', this, e);
         });
 
