@@ -25,14 +25,14 @@ nb.define('input', {
         }
 
         this.disabled = this.$control.prop('disabled');
-        that.getValue();
+        this.value = this.getValue();
 
         this.$control.on('change', function(e) {
             that.trigger('nb-changed', this, e);
         });
 
         this.$control.on('input', function(e) {
-            that.getValue();
+            that.value = that.getValue();
             that.trigger('nb-input', this, e);
         });
 
@@ -283,8 +283,7 @@ nb.define('input', {
      */
     getValue: function() {
         // get actual value from <input/> and save it to instance
-        this.value = this.$control.val();
-        return this.value;
+        return  this.$control.val();
     },
 
     /**
