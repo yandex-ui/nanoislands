@@ -1,7 +1,7 @@
 var ie = process.argv[2] == 'ie' || false;
 
 var content = [
-    'ie = ' + ie.toString(),
+        'ie = ' + ie.toString(),
     '@import "nanoislands.styl";'
 ].join('\n');
 
@@ -15,7 +15,6 @@ var style = stylus(content)
 style.render(function(err, css) {
     var browsers = [
         // эти браузеры прибиты по версиям
-        'Explorer >= 9',
         'Opera 12',
         'Safari >= 6',
 
@@ -23,13 +22,17 @@ style.render(function(err, css) {
         'last 5 Chrome versions',
         'last 5 Firefox versions',
         'last 5 Opera versions'
-    ].join(',');
-    
+    ]
+
     if (err) {
         console.error(err);
         process.exit(1);
     }
-    
-    css = autoprefixer(browsers).process(css).css;
+
+    if (!ie) {
+        css = autoprefixer.apply(this, browsers).process(css).css;
+    } else {
+        css = autoprefixer('Explorer >= 9').process(css).css;
+    }
     process.stdout.write(css);
 });
