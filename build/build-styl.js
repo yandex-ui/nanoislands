@@ -23,7 +23,7 @@ style.render(function(err, css) {
         'last 5 Chrome versions',
         'last 5 Firefox versions',
         'last 5 Opera versions'
-    ].join(',')
+    ].join(',');
     
     if (err) {
         console.error(err);
