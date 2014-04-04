@@ -35,7 +35,7 @@ describe("Button Tests", function() {
 
         it("check text", function() {
             this.button.setText("Privet");
-            expect($(this.button.node).find('.nb-button-content').html()).to.be.equal("Privet");
+            expect($(this.button.node).find('.nb-button-content').text()).to.be.equal("Privet");
         });
 
         it("check event", function() {
@@ -47,6 +47,11 @@ describe("Button Tests", function() {
 
             this.button.setText("Privet");
             expect(flag).to.ok();
+        });
+
+        it("should not allow inserting arbitrary HTML", function() {
+            this.button.setText("</span>\"><img src='x' onerror=alert(window)");
+            expect($(this.button.node).find('.nb-button-content').text()).to.be.equal("</span>\"><img src='x' onerror=alert(window)");
         });
     });
 
