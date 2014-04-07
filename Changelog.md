@@ -1,3 +1,15 @@
+##### 0.3.13 — patch
+
+##### Fixes
+fix build
+
+
+##### 0.3.12 — patch
+
+##### Fixes
+fix #281 — Клик на открытый селект должен его закрывать
+fix #279 — Reset input clear button in IE10
+
 ##### 0.3.11 — patch
 
 ##### Fixes
