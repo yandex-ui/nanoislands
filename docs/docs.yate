@@ -30,6 +30,7 @@ include "../blocks/arrow/arrow.example.yate"
 include "../blocks/button/button.example.yate"
 include "../blocks/input/input.example.yate"
 include "../blocks/checkbox/checkbox.example.yate"
+include "../blocks/select/select.example.yate"
 
 
 match / {
@@ -37,6 +38,7 @@ match / {
             buttons()
             inputs()
             checkbox()
+            selects()
 
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>

@@ -1,7 +1,3 @@
-```
-    nb-select()
-```
-
 * size: m
 * theme: normal
 * direction: bottom
@@ -26,52 +22,306 @@
     * `'separator'` {boolean}
     * `'group'` {array} - group of options, array of items in `optgroup`
 
-#### Example
+### Yate examples
 
-```
-nb-select( {
-  'size': 's'
-  'id': 'select1'
-  'class': 'my-sp-class'
-  'attrs': {
-        'name': 'my-name'
-   }
-  'theme': 'dark'
-  'items': [
-      {
-          'text': 'Карта'
-          'value': 'option1'
-          'selected': 'true'
-      }
-      {
-          'text': 'Спутник'
-          'value': 'option2'
-      }
-      {
-          'text': 'Гибрид'
-          'value': 'option3'
-      }
-      {
-          'text': 'Ещё'
-          'value': 'option4'
-          'icon': 'three-dots'
-      }
-        'text': 'Группа'
-        'group': [
-              {
-                  'text': 'Супер Карта'
-                  'value': 'option4'
-              }
-              {
-                  'text': 'Супер Спутник'
-                  'value': 'option5'
-              }
-              {
-                  'text': 'Супер Гибрид'
-                  'value': 'option6'
-              }
-        ]
-    }
-  ]
-})
-```
+#### Default
+<div example="selects-simple"/>
+>```yate
+> nb-select({
+>     'items': [
+>         {
+>            'icon': 'twitter'
+>            'text': 'Twitter'
+>            'value': 'option0'
+>            'selected': 'true'
+>         }
+>         {
+>            'icon': 'vk'
+>            'text': 'VK'
+>            'value': 'option1'
+>         }
+>         {
+>            'text': 'Ещё'
+>            'value': 'option4'
+>            'icon': 'three-dots'
+>         }
+>     ]
+> })
+> " Текст рядом с селектами"
+>
+>
+>```
+
+#### Sizes
+`m` / `s`
+<div example="selects-size"/>
+> ```yate
+>    nb-select({
+>        'size': 'm'
+>        'items': [
+>            {
+>               'icon': 'twitter'
+>               'text': 'Twitter'
+>               'value': 'option0'
+>               'selected': 'true'
+>            }
+>            {
+>               'icon': 'vk'
+>               'text': 'VK'
+>               'value': 'option1'
+>            }
+>            {
+>               'text': 'Ещё'
+>               'value': 'option4'
+>               'icon': 'three-dots'
+>            }
+>        ]
+>    })
+>    ' '
+>    nb-select({
+>        'size': 's'
+>        'items': [
+>            {
+>               'icon': 'twitter'
+>               'text': 'Twitter'
+>               'value': 'option0'
+>               'selected': 'true'
+>            }
+>            {
+>               'icon': 'vk'
+>               'text': 'VK'
+>               'value': 'option1'
+>            }
+>            {
+>               'text': 'Ещё'
+>               'value': 'option4'
+>               'icon': 'three-dots'
+>            }
+>        ]
+>    })
+>    " Текст рядом с селектами"
+> ````
+
+#### Themes
+`normal / pseudo / dark / action (yellow)`
+<div example="selects-theme"/>
+> ```yate
+>  nb-select({
+>      'size': 'm'
+>      'id': 'select1'
+>      'attrs': {
+>      'name': 'myname'
+>      }
+>      'class': 'my-test-class'
+>      'items': [
+>          {
+>              'text': 'Карта'
+>              'value': 'option1'
+>          }
+>          {
+>              'text': 'Спутник'
+>              'value': 'option2'
+>          }
+>          {
+>              'text': 'Гибрид'
+>              'value': 'option3'
+>          }
+>      ]
+>  })
+>  ' '
+>  nb-select( {
+>    'size': 'm'
+>    'id': 'select3'
+>    'class': 'my-test-class'
+>    'theme': 'pseudo'
+>    'items': [
+>        {
+>            'text': 'Карта'
+>            'value': 'option1'
+>            'selected': 'true'
+>        }
+>        {
+>            'text': 'Спутник'
+>            'value': 'option2'
+>        }
+>        {
+>            'text': 'Гибрид'
+>            'value': 'option3'
+>        }
+>    ]
+>  })
+>  ' '
+>  nb-select( {
+>    'size': 'm'
+>    'id': 'select4'
+>    'class': 'my-test-class'
+>    'theme': 'dark'
+>    'items': [
+>        {
+>            'text': 'Карта'
+>            'value': 'option1'
+>            'selected': 'true'
+>        }
+>        {
+>            'text': 'Спутник'
+>            'value': 'option2'
+>        }
+>        {
+>            'text': 'Гибрид'
+>            'value': 'option3'
+>        }
+>    ]
+>  })
+>  ' '
+>  nb-select( {
+>    'size': 'm'
+>    'id': 'select5'
+>    'class': 'my-test-class'
+>    'theme': 'action'
+>    'attrs': {
+>      'style': 'width: 120px'
+>    }
+>    'items': [
+>        {
+>            'text': 'Народная карта'
+>            'value': 'option0'
+>            'selected': 'true'
+>        }
+>        {
+>            'text': 'Карта'
+>            'value': 'option1'
+>        }
+>    ]
+>  })
+> ```
+
+#### Disabled
+<div example="selects-disabled"/>
+>```yate
+> nb-select({
+>     'disabled': true()
+>     'items': [
+>         {
+>            'icon': 'twitter'
+>            'text': 'Twitter'
+>            'value': 'option0'
+>            'selected': 'true'
+>         }
+>         {
+>            'icon': 'vk'
+>            'text': 'VK'
+>            'value': 'option1'
+>         }
+>         {
+>            'text': 'Ещё'
+>            'value': 'option4'
+>            'icon': 'three-dots'
+>         }
+>     ]
+> })
+> " Текст рядом с селектами"
+>
+>
+>```
+
+#### Direction
+<div example="selects-direction"/>
+>```yate
+> nb-select({
+>     'direction': 'top'
+>     'items': [
+>         {
+>            'icon': 'twitter'
+>            'text': 'Twitter'
+>            'value': 'option0'
+>            'selected': 'true'
+>         }
+>         {
+>            'icon': 'vk'
+>            'text': 'VK'
+>            'value': 'option1'
+>         }
+>         {
+>            'text': 'Ещё'
+>            'value': 'option4'
+>            'icon': 'three-dots'
+>         }
+>     ]
+> })
+>
+>
+>```
+
+#### maxHeight
+{Number|String} number of visible items or string value of the max-height like '10em'
+<div example="selects-mh"/>
+>```yate
+> nb-select({
+>     'maxHeight': 3
+>     'items': [
+>         {
+>            'icon': 'twitter'
+>            'text': 'Twitter'
+>            'value': 'option0'
+>            'selected': 'true'
+>         }
+>         {
+>            'icon': 'vk'
+>            'text': 'VK'
+>            'value': 'option1'
+>         }
+>         {
+>            'icon': 'vk'
+>            'text': 'VK'
+>            'value': 'option1'
+>         }
+>         {
+>            'text': 'Ещё'
+>            'value': 'option4'
+>            'icon': 'three-dots'
+>         }
+>     ]
+> })
+>```
+
+#### Group
+<div example="selects-group"/>
+>```yate
+>    nb-select( {
+>        'id': 'select-gropu1'
+>        'class': 'my-test-class'
+>        'items': [
+>            {
+>                'text': 'Карта'
+>                'value': 'option1'
+>                'selected': 'true'
+>            }
+>            {
+>                'text': 'Спутник'
+>                'value': 'option2'
+>            }
+>            {
+>                'text': 'Гибрид'
+>                'value': 'option3'
+>            }
+>
+>            {
+>                'text': 'Группа'
+>                'group': [
+>                      {
+>                          'text': 'Супер Карта'
+>                          'value': 'option4'
+>                      }
+>                      {
+>                          'text': 'Супер Спутник'
+>                          'value': 'option5'
+>                      }
+>                      {
+>                          'text': 'Супер Гибрид'
+>                          'value': 'option6'
+>                      }
+>                ]
+>            }
+>        ]
+>    })
+>```
