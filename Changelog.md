@@ -1,3 +1,13 @@
+##### 0.3.14 — patch
+stylobate-islands update to 0.25.1
+stylobate update to 0.23.2
+
+##### Fixes
+Autoclose option for the modal popup
+fix #286 — Bug to the group's view of the select dropdown
+
+
+
 ##### 0.3.13 — patch
 
 ##### Fixes
