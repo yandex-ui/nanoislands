@@ -456,7 +456,7 @@
                     position: {
                         using: using
                     },
-                    autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
+                    autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : false
                 });
 
                 return;
