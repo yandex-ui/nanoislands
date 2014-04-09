@@ -32,6 +32,7 @@ publish:
 	rm -rf node_modules
 	npm install
 	make clean
+	make
 	npm test
 	npm publish
 
