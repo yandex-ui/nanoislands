@@ -27,7 +27,7 @@
             this._super();
             var that = this;
 
-            if (!this.options.modal) {
+            if (that.options.autoclose) {
                 this._onmousedown = function(e) {
                     that.options.closedByOuterClick = true;
                     // e.which === 3 -> right mouse button
@@ -39,10 +39,8 @@
                     if ($.contains(that.uiDialog[0], e.target)) {
                         return;
                     }
-
-                    if (that.options.autoclose) {
-                        that.close();
-                    }
+                    
+                    that.close();
                 };
 
                 this.document.on('mousedown', this._onmousedown);
@@ -458,7 +456,7 @@
                     position: {
                         using: using
                     },
-                    autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
+                    autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : false
                 });
 
                 return;
