@@ -22,6 +22,7 @@
     * `'value'` {string} value of option
     * `'icon'` {string} 'three-dots'
     * `'selected'` {boolean}
+    * `'separator'` {boolean}
     * `'group'` {array} - group of options, array of items in `optgroup`
 
 #### Example
