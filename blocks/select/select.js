@@ -193,7 +193,7 @@ nb.define('select', {
                         $itemText.prepend('<img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_' + item.icon + '">');
                     }
 
-                    $itemNode.append($itemNodeContent)
+                    $itemNode.append($itemNodeContent);
                 }
 
                 $itemNode.appendTo(ul);
