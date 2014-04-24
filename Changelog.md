@@ -1,4 +1,4 @@
-##### 0.3.16 — patch
+##### 0.3.17 — patch
 stylobate-islands update to 0.26.x
 yate update to  0.0.70
 
