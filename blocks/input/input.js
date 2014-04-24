@@ -36,6 +36,12 @@ nb.define('input', {
             that.trigger('nb-input', this, e);
         });
 
+        this.$control.on('focus', function() {
+            if (that.data.type != 'simple') {
+                that._onfocus();
+            }
+        });
+
         this.$hint = this.$node.find('.nb-input__hint');
 
         if (this.$hint.length) {
@@ -43,6 +49,7 @@ nb.define('input', {
         }
 
         this.focused = false;
+
         if (this.data.ghost) {
             this.$node.on('mouseover mouseout', function() {
                 that.$node.toggleClass('is-ghost');
@@ -61,11 +68,23 @@ nb.define('input', {
             if ($.contains(this.$control.get(0), e.target)) {
                 return;
             }
+
             this.blur();
+        }.bind(this);
+
+        this._onkeydown = function(e) {
+            var keyCode = e.keyCode || e.which;
+
+            if (keyCode == 9) {
+                this.blur();
+            }
+
         }.bind(this);
 
         $(document).on('mousedown', this._onmousedown);
         $(document).on('touchstart', this._onmousedown);
+        $(document).on('keydown', this._onkeydown);
+
 
         this.trigger('nb-inited', this);
     },
@@ -98,6 +117,17 @@ nb.define('input', {
                     that.$hint.css('visibility', 'hidden');
                 }
             });
+        }
+    },
+
+    _onfocus: function() {
+        this.$node.addClass('nb-is-focused');
+        this.focused = true;
+
+        this.$control.triggerHandler("focusin");
+
+        if (this.data.ghost) {
+            this.$node.removeClass('is-ghost');
         }
     },
 
@@ -190,17 +220,9 @@ nb.define('input', {
         if (!this.isEnabled()) {
             return this;
         }
-
         if (!this.focused) {
             nb.trigger('nb-focusout');
-            this.$node.addClass('nb-is-focused');
-
-            if (this.data.ghost) {
-                this.$node.removeClass('is-ghost');
-            }
-
-            this.focused = true;
-            this.$control.triggerHandler("focusin");
+            this._onfocus();
             this.$control.get(0).focus();
             this.trigger('nb-focused', this);
         }
@@ -260,12 +282,12 @@ nb.define('input', {
      */
     setValue: function(value) {
         /*
-        Check newValue and actualValue to avoid recursion
+         Check newValue and actualValue to avoid recursion
 
-        nbInput.on('nb-changed', function() {
-            var validValue = validate(this.getValue());
-            this.setValue(validValue);
-        });
+         nbInput.on('nb-changed', function() {
+         var validValue = validate(this.getValue());
+         this.setValue(validValue);
+         });
          */
         if (this.value != value) {
             this.value = value;
@@ -376,6 +398,7 @@ nb.define('input', {
         }
         $(document).off('mousedown', this._onmousedown);
         $(document).off('touchstart', this._onmousedown);
+        $(document).off('keydown', this._onkeydown);
         this.nbdestroy();
     }
 }, 'base');

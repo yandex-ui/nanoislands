@@ -1,3 +1,18 @@
+##### 0.3.17 — patch
+
+##### Fixes
+fix #300 — Input – При изменении фокуса с помощью "Tab" не исчезает выделение
+fix #297 — [IE] Vertical align: middle for .nb-checkbox__input and .nb-checkbox__label
+
+##### 0.3.16 — patch
+stylobate-islands update to 0.26.x
+yate update to  0.0.70
+
+##### Fixes
+fix #295 — Add the ability to separate content in selects, as in the popups.
+fix #263 — Псевдо-кнопка должна быть видна на тёмном фоне
+
+
 ##### 0.3.15 — patch
 stylobate-islands update to 0.25.1
 stylobate update to 0.23.2

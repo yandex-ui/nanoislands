@@ -86,7 +86,9 @@ func select-medium() {
               'text': 'Гибрид'
               'value': 'option3'
           }
-
+            {
+                'separator': true()
+            }
           {
               'text': 'Группа'
               'group': [

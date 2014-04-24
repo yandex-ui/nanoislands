@@ -9,7 +9,7 @@
 ### Optional attributes
 
 * `'size'` {string} `'s' / 'm' / 'l'`
-* `'theme'` {string} `'normal' / 'action' (yellow) / 'dark' / 'pseudo' / 'promo' (big yellow)`
+* `'theme'` {string} `'normal' / 'action' (yellow) / 'dark' / 'pseudo' / 'pseudo-inverted' / 'promo' (big yellow)`
 * `'id'` {string} ...
 * `'name'` {string} ...
 * `'class'` {array} `['my_class1', 'my_class2']` — additional classes
