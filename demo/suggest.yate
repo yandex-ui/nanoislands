@@ -53,7 +53,7 @@ func suggests() {
             @id = 'suggest-with-custom-input'
             @placeholder = 'Введите вариант'
             @data-nb = 'suggest'
-            @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest__container nb-suggest_size_s'
+            @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest-container nb-suggest_size_s'
             @data-source = suggest.source
         </input>
     </div>
