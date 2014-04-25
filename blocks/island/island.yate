@@ -8,16 +8,24 @@ func nb-island(nodeset options) {
 }
 
 match .island nb {
-    <div class="nb-island">
+    <div>
         apply . nb-main-attrs
 
-        if .padding {
-            @class += ' nb-island_padding_{ .padding }'
-        }
+        type = (if .type {
+            '-' + .type
+        } else {
+            ''
+        })
 
-        if .type {
-            @class += ' nb-island_type_{ .type }'
-        }
+        padding = (if .padding == 's' {
+            '-small'
+        } else if .padding == 'l' {
+            '-large'
+        } else if .padding == 'm' {
+            ''
+        })
+
+        @class += 'nb-island nb{ type }{ padding }-island'
 
         if .content {
             html(.content)

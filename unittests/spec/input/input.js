@@ -34,7 +34,7 @@ describe("Input Tests", function() {
             it("error dropdown content", function() {
                 var input = nb.find('input-error');
                 var data = input.nbdata();
-                expect($('#' + data.error.id + ' .nb-popup__content').html()).to.be.equal('error');
+                expect($('#' + data.error.id + ' .nb-popup-content').html()).to.be.equal('error');
             });
         });
 
@@ -161,7 +161,7 @@ describe("Input Tests", function() {
             var input = nb.find('input-error');
             var data = input.nbdata();
             input.setErrorContent('1');
-            expect(nb.find(data.error.id).$node.find('.nb-popup__content').html()).to.equal('1');
+            expect(nb.find(data.error.id).$node.find('.nb-popup-content').html()).to.equal('1');
         });
 
         it("should throws nb-error-content-set event", function() {

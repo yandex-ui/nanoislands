@@ -204,7 +204,7 @@ nb.define('input', {
      */
     setErrorContent: function(content) {
         if (this.data.error) {
-            this.error.$node.find('.nb-popup__content').html(content);
+            this.error.$node.find('.nb-popup-content').html(content);
             this.trigger('nb-error-content-set', this);
         }
         return this;

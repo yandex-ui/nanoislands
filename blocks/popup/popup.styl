@@ -1,13 +1,13 @@
 .nb-popup
   z-index: 100
   position: absolute
-  skin: popup (-content '&__content') (-close '&__close') (-tail '&__tail')
+  skin: popup (-content '&-content') (-close '&-close') (-tail '&-tail')
 
   overflow: hidden
 
 // popup
 
-.nb-popup__close
+.nb-popup-close
   z-index: 100
   width: 24px
   height: 24px
@@ -15,7 +15,7 @@
   right: 2px
 
 .nb-popup
-  & .nb-popup__link
+  & .nb-popup-link
     skin: menu-item (_hover '&:hover, &:focus')
     outline: none
 
@@ -25,17 +25,17 @@
     &:last-child
       margin-bottom: ($islands_s / 2)
 
-  & .nb-popup__separator
+  & .nb-popup-separator
     skin: menu-separator padded
 
-  & .nb-popup__menu
-  & .nb-popup__line
+  & .nb-popup-menu
+  & .nb-popup-line
     margin: 0
     padding: 0
     list-style: none
     outline: none
 
-.nb-popup__title
+.nb-popup-title
   font: $font-h3
   padding: $islands_s
   display: block
@@ -43,16 +43,16 @@
   text-overflow: ellipsis
   white-space: nowrap
 
-.nb-popup__content
+.nb-popup-content
   font: $font-p1
   padding: 0 $islands_s
 
-.nb-popup__buttons
+.nb-popup-buttons
 
   padding: $islands_s
   padding-top: $islands_s
 
-.nb-popup__button
+.nb-popup-button
   margin-right:  $islands_s
 
 .nb-popup.ui-dialog-fixed
@@ -65,20 +65,20 @@
 .nb-popup-outer.ui-dialog .ui-dialog-content
   padding:  0
 
-.nb-popup_to_bottom .nb-popup__tail_to_right
-.nb-popup_to_top .nb-popup__tail_to_right
+.nb-popup_to_bottom .nb-popup-right-tail
+.nb-popup_to_top .nb-popup-right-tail
   left: 75%
 
-.nb-popup_to_bottom .nb-popup__tail_to_left
-.nb-popup_to_top .nb-popup__tail_to_left
+.nb-popup_to_bottom .nb-popup-left-tail
+.nb-popup_to_top .nb-popup-left-tail
   left: 25%
 
-.nb-popup_to_left .nb-popup__tail_to_bottom
-.nb-popup_to_right .nb-popup__tail_to_bottom
+.nb-popup_to_left .nb-popup-bottom-tail
+.nb-popup_to_right .nb-popup-bottom-tail
   top: 75%
 
-.nb-popup_to_left .nb-popup__tail_to_top
-.nb-popup_to_right .nb-popup__tail_to_top
+.nb-popup_to_left .nb-popup-top-tail
+.nb-popup_to_right .nb-popup-top-tail
    top: 25%
 
 .nb-popup-outer
@@ -89,8 +89,8 @@
   background: #000
   background: rgba(0,0,0,0.3)
 
-.nb-popup_theme_default
-  .nb-popup__title
+.nb-default-popup
+  .nb-popup-title
     padding: 0 2*$gapM 0 $gapM
     height: 50px
     line-height: @height
@@ -100,17 +100,17 @@
     background: $backgroundPrimary
     border-bottom: 1px solid darken($background, 16%)
 
-  .nb-popup__content
+  .nb-popup-content
     padding: 0
 
-  .nb-popup__buttons
+  .nb-popup-buttons
     margin-top: -1px
     padding: ($gapS + 1px) $gapS $gapS
 
     box-shadow: inset 0 1px rgba($foreground, 0.15), 0 -2px rgba($foreground, 0.04)
 
-.nb-popup_type_error
+.nb-error-popup
   z-index: 10000
 
-  .nb-popup__content
+  .nb-popup-content
     line-height: 0
