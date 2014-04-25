@@ -1,60 +1,60 @@
 func gap-xs() {
     nb-button({
         'content': 'foo'
-        'class': ['nb-gap_right_xs']
+        'class': ['nb-xs-right-gap']
     })
     nb-button({
         'content': 'bar'
-        'class': ['nb-gap_right_xs']
+        'class': ['nb-xs-right-gap']
     })
     nb-button({
         'content': 'baz'
-        'class': ['nb-gap_right_xs']
+        'class': ['nb-xs-right-gap']
     })
 }
 
 func gap-s() {
     nb-button({
         'content': 'foo'
-        'class': ['nb-gap_right_s']
+        'class': ['nb-s-right-gap']
     })
     nb-button({
         'content': 'bar'
-        'class': ['nb-gap_right_s']
+        'class': ['nb-s-right-gap']
     })
     nb-button({
         'content': 'baz'
-        'class': ['nb-gap_right_s']
+        'class': ['nb-s-right-gap']
     })
 }
 
 func gap-m() {
     nb-button({
         'content': 'foo'
-        'class': ['nb-gap_right_m']
+        'class': ['nb-m-right-gap']
     })
     nb-button({
         'content': 'bar'
-        'class': ['nb-gap_right_m']
+        'class': ['nb-m-right-gap']
     })
     nb-button({
         'content': 'baz'
-        'class': ['nb-gap_right_m']
+        'class': ['nb-m-right-gap']
     })
 }
 
 func gap-l() {
     nb-button({
         'content': 'foo'
-        'class': ['nb-gap_right_l']
+        'class': ['nb-l-right-gap']
     })
     nb-button({
         'content': 'bar'
-        'class': ['nb-gap_right_l']
+        'class': ['nb-l-right-gap']
     })
     nb-button({
         'content': 'baz'
-        'class': ['nb-gap_right_l']
+        'class': ['nb-l-right-gap']
     })
 }
 
@@ -62,7 +62,7 @@ func gaps() {
     <div class="demo-section">
         <div class="demo-h3">
             <span class="demo-code demo-code_small">
-                '.nb-gap_right_xs'
+                '.nb-xs-right-gap'
             </span>
         </div>
 
@@ -72,7 +72,7 @@ func gaps() {
     <div class="demo-section">
         <div class="demo-h3">
             <span class="demo-code demo-code_small">
-                '.nb-gap_right_s'
+                '.nb-s-right-gap'
             </span>
         </div>
 
@@ -82,7 +82,7 @@ func gaps() {
     <div class="demo-section">
         <div class="demo-h3">
             <span class="demo-code demo-code_small">
-                '.nb-gap_right_m'
+                '.nb-m-right-gap'
             </span>
         </div>
 
@@ -92,7 +92,7 @@ func gaps() {
     <div class="demo-section">
         <div class="demo-h3">
             <span class="demo-code demo-code_small">
-                '.nb-gap_right_l'
+                '.nb-l-right-gap'
             </span>
         </div>
 

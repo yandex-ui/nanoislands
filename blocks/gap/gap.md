@@ -1,27 +1,27 @@
 # Gaps
 
-If you need to have gaps between any blocks, you can use global `nb-gap_SIDE_SIZE` classes.
+If you need to have gaps between any blocks, you can use global `nb-SIDE-SIZE-gap` classes.
 
 ## Sides
 
 Sides are `top`, `right`, `bottom` and `left`, each such class would add the margin of the given `SIZE` at the corresponding side:
 
-    'class': ['nb-gap_top_SIZE']
+    'class': ['nb-SIZE-top-gap']
 
-    'class': ['nb-gap_right_SIZE']
+    'class': ['nb-SIZE-right-gap']
 
-    'class': ['nb-gap_bottom_SIZE']
+    'class': ['nb-SIZE-bottom-gap']
 
-    'class': ['nb-gap_left_SIZE']
+    'class': ['nb-SIZE-left-gap']
 
 ## Sizes
 
 There are a few of possible preset sizes for gaps: `xs`, `s`, `m` and `l`. Each side have a modifier for each size, creating classes like `nb-gap_top_xs` etc.
 
-    'class': ['nb-gap_SIDE_xs']
+    'class': ['nb-xs-SIDE-gap']
 
-    'class': ['nb-gap_SIDE_s']
+    'class': ['nb-s-SIDE-gap']
 
-    'class': ['nb-gap_SIDE_m']
+    'class': ['nb-m-SIDE-gap']
 
-    'class': ['nb-gap_SIDE_l']
+    'class': ['nb-l-SIDE-gap']
