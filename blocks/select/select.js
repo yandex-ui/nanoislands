@@ -279,26 +279,6 @@ nb.define('select', {
             });
         },
 
-        _setText: function(text) {
-            this.$node.find('.nb-button__text').text(text);
-        },
-
-        _setMaxHeight: function(maxheight) {
-            var height;
-            if (/^\d+$/.test(maxheight)) {
-                var item = this.$jUI.menu.element.find('.nb-select__item').first();
-                height = parseInt(item.height()) * maxheight;
-            } else {
-                height = maxheight;
-            }
-
-            this.$jUI.menu.element.css({
-                'max-height': height,
-                'overflow-y': 'auto',
-                'overflow-x': 'hidden'
-            });
-        },
-
         /**
          * Render dropdown of the select
          * @fires 'nb-rendered'
