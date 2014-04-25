@@ -2,24 +2,27 @@
   kind: block
   skin: tabs
 
-.nb-tabs__tab
+.nb-tabs-tab
   reset('li')
   kind: block inline
 
-.nb-tabs__link
+.nb-tabs-link
   skin: tabs-item
   kind: block
 
-.ui-state-active .nb-tabs__link,
-.ui-state-active:hover .nb-tabs__link
+.ui-state-active .nb-tabs-link,
+.ui-state-active:hover .nb-tabs-link
   skin: tabs-item_selected
 
-.nb-tabs_size_s
+.nb-small-tabs
   kind: block
   skin: tabs small
 
-.nb-tabs_rise_s,
-.nb-tabs_rise_m,
-.nb-tabs_rise_l
+.nb-small-rise-s-tabs,
+.nb-rise-s-tabs,
+.nb-small-rise-m-tabs,
+.nb-rise-m-tabs,
+.nb-small-rise-l-tabs
+.nb-rise-l-tabs
   margin-top: -1*$islands_m
   margin-bottom: $islands_s
