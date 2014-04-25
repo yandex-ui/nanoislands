@@ -7,7 +7,7 @@ func nb-dropzone(nodeset options) {
             'type': 'file'
             // 'content': 'выбрите...'
             'theme': 'pseudo'
-            'class': 'nb-dropzone__button'
+            'class': 'nb-dropzone-button'
         }
     }
 
@@ -17,24 +17,22 @@ func nb-dropzone(nodeset options) {
 
 match .dropzone nb {
     <div class="nb-dropzone">
+
+        _size-theme-type-class({
+           'name': 'dropzone'
+           'type': .type
+        })
+
         apply . nb-main-attrs
 
-        if .type != 'modal' {
-            @class+= ' nb-dropzone_type_static'
-        }
-
-        if .type {
-            @class += ' nb-dropzone_type_{.type}'
-        }
-
         if .head {
-            <div class="nb-dropzone__head">
+            <div class="nb-dropzone-head">
                 .head
             </div>
         }
 
         if .content {
-            <div class="nb-dropzone__text">
+            <div class="nb-dropzone-text">
             if .content {
                 html(.content)
             }
@@ -45,7 +43,7 @@ match .dropzone nb {
         }
 
         if .type == 'modal' {
-            <div class="nb-dropzone__cover js-dropzone"></div>
+            <div class="nb-dropzone-cover"></div>
         }
     </div>
 }
