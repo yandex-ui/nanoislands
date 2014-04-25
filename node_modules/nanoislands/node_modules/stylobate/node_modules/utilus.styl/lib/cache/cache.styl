@@ -5,8 +5,10 @@ utilus_cache($where)
   if $key in $utilus_mixin_cache
     @extend {"$placeholder_for_" + $utilus_mixin_cache[$key]}
   else
-    &, $placeholder_for_&
-      $utilus_mixin_cache[$key] = selector()
+    $id = length($utilus_mixin_cache)
+    &,
+    /$placeholder_for_{$id}
+      $utilus_mixin_cache[$key] = $id
       {block}
 
 cache ?= utilus_cache

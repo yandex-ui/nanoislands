@@ -26,20 +26,24 @@ match .popupMenu nb {
             @data-nb-tail = .tail
         }
 
-        for .menu {
-            if .separator {
-                <div class="nb-popup__separator"></div>
-            } else {
-                <a class="nb-popup__line" tabindex="-1">
-                    if .href {
-                        @href = .href
-                    }
+        <ul class="nb-popup__menu">
+            for .menu {
+                if .separator {
+                    <li class="nb-popup__separator"></li>
+                } else {
+                   <li class="nb-popup__line">
+                        <a class="nb-popup__link">
+                            if .href {
+                                @href = .href
+                            }
 
-                    apply . nb-main-attrs
-                    html(.content)
-                </a>
+                            apply . nb-main-attrs
+                            html(.content)
+                        </a>
+                    </li>
+                }
             }
-        }
+        </ul>
     </div>
 }
 

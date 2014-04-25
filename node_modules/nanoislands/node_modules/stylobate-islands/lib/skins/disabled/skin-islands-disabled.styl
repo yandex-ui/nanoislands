@@ -1,18 +1,2 @@
 skin-islands-disabled()
-  @extends $skin-islands-disabled
-
-  unless no-nested in arguments
-    // When nested, make only the first level transparenty
-    & &
-      @extends $skin-islands-disabled_nested
-
-$skin-islands-disabled
-  cursor: default !important
-
-  opacity: 0.6
-
-  &:focus
-    outline: 0
-
-$skin-islands-disabled_nested
-  opacity: 1
+  kind: disabled 0.6 (no-nested in arguments ? no-nested : '')

@@ -2,6 +2,10 @@
 # Utilus.styl Changelog
 ---
 
+## v0.10.2 (2014-03-16)
+
+- Fixed `cache` to use proper placeholders.
+
 ## v0.10.1 (2014-02-09)
 
 - Fixed `utilus_collect_by_type` to work with hashes, #20.

@@ -4,7 +4,7 @@ skin-islands-menu()
 
 skin-islands-menu-item()
   kind: block
-  skin(link $islands_color_text no-hover)
+  global_skin(islands-link $islands_color_text no-hover)
 
   user-select: none
   white-space: nowrap
@@ -21,10 +21,10 @@ skin-islands-menu-item()
 
 skin-islands-menu-item_size()
   if small in arguments
-    skin(para2 no-margin)
+    global_skin(islands-para2 no-margin)
     padding: 0.5*$islands_xs $islands_s
   else
-    skin(para no-margin)
+    global_skin(islands-para no-margin)
     padding: 0.5*$islands_s $islands_m
 
 skin-islands-menu-item_hover()

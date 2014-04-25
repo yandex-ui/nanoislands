@@ -235,6 +235,8 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j9 = [ 0, 'selected' ];
 
+    var j10 = [ 0, 'separator' ];
+
     // func _select-option(nodeset item) : xml
     M.f11 = function f11(m, c0, i0, l0, a0, v18) {
         v18 = (v18 === undefined) ? [] : v18;
@@ -245,14 +247,19 @@ var yr = yr || require('yate/lib/runtime.js');
         a0.a = {
         };
         a0.s = 'option';
-        a0.a[ "label" ] = new yr.scalarAttr(nodeset2scalar( m.n(j6, v18) ));
-        a0.a[ "value" ] = new yr.scalarAttr(nodeset2scalar( m.n(j7, v18) ));
-        a0.a[ "data-icon" ] = new yr.scalarAttr(simpleScalar('icon', c0));
-        if (nodeset2boolean( (m.n(j9, v18)) )) {
-            a0.a[ "selected" ] = new yr.scalarAttr("");
+        if (nodeset2boolean( m.n(j10, v18) )) {
+            a0.a[ "separator" ] = new yr.scalarAttr("true");
+        } else {
+            a0.a[ "label" ] = new yr.scalarAttr(nodeset2scalar( m.n(j6, v18) ));
+            a0.a[ "value" ] = new yr.scalarAttr(nodeset2scalar( m.n(j7, v18) ));
+            a0.a[ "data-icon" ] = new yr.scalarAttr(simpleScalar('icon', c0));
+            if (nodeset2boolean( (m.n(j9, v18)) )) {
+                a0.a[ "selected" ] = new yr.scalarAttr("");
+            }
+            r0 += closeAttrs(a0);
+            r0 += nodeset2xml( m.n(j6, v18) );
         }
         r0 += closeAttrs(a0);
-        r0 += nodeset2xml( m.n(j6, v18) );
         r0 += "</option>";
 
         return r0;
@@ -277,19 +284,19 @@ var yr = yr || require('yate/lib/runtime.js');
         return r0;
     };
 
-    var j10 = [ 0, 'leftContent' ];
+    var j11 = [ 0, 'leftContent' ];
 
-    var j11 = [ 0, 'rightContent' ];
+    var j12 = [ 0, 'rightContent' ];
 
-    var j12 = [ 0, 'labelContent' ];
+    var j13 = [ 0, 'labelContent' ];
 
-    var j13 = [ 0, 'reset' ];
+    var j14 = [ 0, 'reset' ];
 
-    var j14 = [ 0, 'ghost' ];
+    var j15 = [ 0, 'ghost' ];
 
-    var j15 = [ 0, 'error' ];
+    var j16 = [ 0, 'error' ];
 
-    var j16 = [ 0, 'hint' ];
+    var j17 = [ 0, 'hint' ];
 
     // func nb-input(nodeset options) : xml
     M.f13 = function f13(m, c0, i0, l0, a0, v21) {
@@ -303,7 +310,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var v22 = r1;
 
         r0 += closeAttrs(a0);
-        if (nodeset2boolean( m.n(j10, v21) ) || nodeset2boolean( m.n(j11, v21) ) || nodeset2boolean( m.n(j12, v21) ) || nodeset2boolean( m.n(j13, v21) ) || nodeset2boolean( m.n(j14, v21) ) || nodeset2boolean( m.n(j15, v21) ) || nodeset2boolean( m.n(j16, v21) )) {
+        if (nodeset2boolean( m.n(j11, v21) ) || nodeset2boolean( m.n(j12, v21) ) || nodeset2boolean( m.n(j13, v21) ) || nodeset2boolean( m.n(j14, v21) ) || nodeset2boolean( m.n(j15, v21) ) || nodeset2boolean( m.n(j16, v21) ) || nodeset2boolean( m.n(j17, v21) )) {
             if (cmpSN("multiline", m.n(j2, v21))) {
                 r0 += m.f('f1', c0, i0, l0, a0, "textarea", (yr.externals['nb-extend'])(yr.object2nodeset( v22 ), v21));
             } else {
@@ -2948,7 +2955,7 @@ var yr = yr || require('yate/lib/runtime.js');
         return r0;
     };
 
-    var j17 = [ 0, 'source' ];
+    var j18 = [ 0, 'source' ];
 
     // func suggests() : xml
     M.f102 = function f102(m, c0, i0, l0, a0) {
@@ -3013,7 +3020,7 @@ var yr = yr || require('yate/lib/runtime.js');
         a0.a[ "placeholder" ] = new yr.scalarAttr("Введите вариант");
         a0.a[ "data-nb" ] = new yr.scalarAttr("suggest");
         a0.a[ "data-class-suggest" ] = new yr.scalarAttr("nb-island nb-island_type_fly nb-suggest__container nb-suggest_size_s");
-        a0.a[ "data-source" ] = new yr.scalarAttr(nodeset2scalar( m.n(j17, yr.object2nodeset( v104 )) ));
+        a0.a[ "data-source" ] = new yr.scalarAttr(nodeset2scalar( m.n(j18, yr.object2nodeset( v104 )) ));
         r0 += closeAttrs(a0);
         r0 += '';
         r0 += "</div>";
@@ -3077,51 +3084,49 @@ var yr = yr || require('yate/lib/runtime.js');
         return r0;
     };
 
-    var j18 = [ 0, 'id' ];
+    var j19 = [ 0, 'id' ];
 
-    var j19 = [ 0, 'class' ];
+    var j20 = [ 0, 'class' ];
 
-    var j20 = [ 0, 'mixin-nb' ];
+    var j21 = [ 0, 'mixin-nb' ];
 
-    var j21 = [ 0, 'data-nb', 0, '*' ];
+    var j22 = [ 0, 'data-nb', 0, '*' ];
 
-    var j22 = [ 0, 'attrs', 0, '*' ];
+    var j23 = [ 0, 'attrs', 0, '*' ];
 
-    var j23 = [ 0, 'button' ];
+    var j24 = [ 0, 'button' ];
 
-    var j24 = [ 0, 'size' ];
+    var j25 = [ 0, 'size' ];
 
-    var j25 = [ 0, 'theme' ];
+    var j26 = [ 0, 'theme' ];
 
-    var j26 = [ 0, 'static' ];
+    var j27 = [ 0, 'static' ];
 
-    var j27 = [ 0, 'disabled' ];
+    var j28 = [ 0, 'disabled' ];
 
-    var j28 = [ 0, 'name' ];
+    var j29 = [ 0, 'name' ];
 
-    var j29 = [ 0, 'attrs', 0, 'name' ];
+    var j30 = [ 0, 'attrs', 0, 'name' ];
 
-    var j30 = [ 0, 'content' ];
+    var j31 = [ 0, 'content' ];
 
-    var j31 = [ 0, 'iconText' ];
+    var j32 = [ 0, 'iconText' ];
 
-    var j32 = [ 0, 'buttonLink' ];
+    var j33 = [ 0, 'buttonLink' ];
 
-    var j33 = [ 0, 'buttonAttach' ];
+    var j34 = [ 0, 'buttonAttach' ];
 
-    var j34 = [ 0, 'attrs', 0, 'multiple' ];
+    var j35 = [ 0, 'attrs', 0, 'multiple' ];
 
-    var j35 = [ 0, 'multiple' ];
+    var j36 = [ 0, 'multiple' ];
 
-    var j36 = [ 0, 'attrs', 0, 'title' ];
+    var j37 = [ 0, 'attrs', 0, 'title' ];
 
-    var j37 = [ 0, 'popupMenu' ];
+    var j38 = [ 0, 'popupMenu' ];
 
-    var j38 = [ 0, 'tail' ];
+    var j39 = [ 0, 'tail' ];
 
-    var j39 = [ 0, 'menu' ];
-
-    var j40 = [ 0, 'separator' ];
+    var j40 = [ 0, 'menu' ];
 
     var j41 = [ 0, 'popup' ];
 
@@ -3177,9 +3182,9 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j65 = [ 0, 'error', 0, 'direction' ];
 
-    var j66 = [ 0, 'hint', 0, 'ghost' ];
+    var j66 = [ 0, 'hint', 0, 'text' ];
 
-    var j67 = [ 0, 'hint', 0, 'text' ];
+    var j67 = [ 0, 'hint', 0, 'ghost' ];
 
     var j68 = [ 0, 'error', 0, 'content' ];
 
@@ -3233,89 +3238,99 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j91 = [ 0, 'arrow' ];
 
-    var j92 = [ 0, 'search' ];
+    var j92 = [ 0, 'requests' ];
 
     var j93 = [ 0, 'buttonContent' ];
 
-    var j94 = [ 0, 'action' ];
-
-    var j95 = [ 0, 'requests' ];
-
-    var j96 = [ 0, 'header' ];
-
-    var j97 = [ 0, 'settings' ];
-
-    var j98 = [ 0, 'services' ];
-
-    var j99 = [ 0, 'user' ];
-
-    var j100 = [ 0, 'yaHref' ];
-
-    var j101 = [ 0, 'justify' ];
-
-    var j102 = [ 0, 'rightToLeft' ];
-
-    var j103 = [ 0, 'userpic' ];
-
-    var j104 = [ 0, 'notices' ];
-
-    var j105 = [ 0, 'username' ];
-
-    var j106 = [ 0, 'email' ];
-
-    var j107 = [ 0, 'suggest' ];
-
-    var j108 = [ 0, 'countMax' ];
-
-    var j109 = [ 0, 'highlight' ];
-
-    var j110 = [ 0, 'classSuggest' ];
-
-    var j111 = [ 0, 'attrsInput' ];
-
-    var j112 = [ 0, 'item' ];
+    var j94 = [ 0, 'search' ];
 
     function p2(m, c0, i0, l0) {
+        return !(cmpSN("true", selectNametest('search', c0, [])));
+    }
+
+    var j95 = [ 0, 'arrow', 2, p2 ];
+
+    function p3(m, c0, i0, l0) {
+        return simpleBoolean('href', c0);
+    }
+
+    var j96 = [ 0, 'arrow', 2, p2, 2, p3 ];
+
+    var j97 = [ 0, 'header' ];
+
+    var j98 = [ 0, 'settings' ];
+
+    var j99 = [ 0, 'services' ];
+
+    var j100 = [ 0, 'user' ];
+
+    var j101 = [ 0, 'yaHref' ];
+
+    var j102 = [ 0, 'justify' ];
+
+    var j103 = [ 0, 'rightToLeft' ];
+
+    var j104 = [ 0, 'userpic' ];
+
+    var j105 = [ 0, 'notices' ];
+
+    var j106 = [ 0, 'username' ];
+
+    var j107 = [ 0, 'email' ];
+
+    var j108 = [ 0, 'suggest' ];
+
+    var j109 = [ 0, 'countMax' ];
+
+    var j110 = [ 0, 'highlight' ];
+
+    var j111 = [ 0, 'classSuggest' ];
+
+    var j112 = [ 0, 'attrsInput' ];
+
+    var j113 = [ 0, 'item' ];
+
+    function p4(m, c0, i0, l0) {
         return cmpSN("default", selectNametest('type', c0, []));
     }
 
-    var j113 = [ 2, p2, 0, 'item' ];
+    var j114 = [ 2, p4, 0, 'item' ];
 
-    function p3(m, c0, i0, l0) {
+    function p5(m, c0, i0, l0) {
         return cmpSN("username", selectNametest('type', c0, []));
     }
 
-    var j114 = [ 2, p3, 0, 'item' ];
+    var j115 = [ 2, p5, 0, 'item' ];
 
-    var j115 = [ 0, 'size' ];
+    var j116 = [ 0, 'size' ];
 
-    var j116 = [ 0, 'usernameHighlighted' ];
+    var j117 = [ 0, 'usernameHighlighted' ];
 
-    var j117 = [ 0, 'emailHighlighted' ];
+    var j118 = [ 0, 'emailHighlighted' ];
 
-    var j118 = [ 0, 'mod' ];
+    var j119 = [ 0, 'mod' ];
 
-    function p4(m, c0, i0, l0) {
+    function p6(m, c0, i0, l0) {
         return cmpSN("suggest", selectNametest('mod', c0, [])) && simpleBoolean('usernameHighlighted', c0);
     }
 
-    var j119 = [ 0, 'user', 2, p4, 0, 'username' ];
+    var j120 = [ 0, 'user', 2, p6, 0, 'username' ];
 
-    var j120 = [ 1, 1, 0, 'usernameHighlighted' ];
+    var j121 = [ 1, 1, 0, 'usernameHighlighted' ];
 
-    function p5(m, c0, i0, l0) {
+    function p7(m, c0, i0, l0) {
         return cmpSN("suggest", selectNametest('mod', c0, [])) && simpleBoolean('emailHighlighted', c0);
     }
 
-    var j121 = [ 0, 'user', 2, p5, 0, 'email' ];
+    var j122 = [ 0, 'user', 2, p7, 0, 'email' ];
 
-    var j122 = [ 1, 1, 0, 'emailHighlighted' ];
+    var j123 = [ 1, 1, 0, 'emailHighlighted' ];
 
-    var j123 = [ 0, 'toggler' ];
+    var j124 = [ 0, 'toggler' ];
 
-    var j124 = [ 0, 'leftText' ];
+    var j125 = [ 0, 'leftText' ];
 
-    var j125 = [ 0, 'rightText' ];
+    var j126 = [ 0, 'rightText' ];
 
     // match .* : nb-main-attrs
     M.t0 = function t0(m, c0, i0, l0, a0) {
@@ -3352,12 +3367,12 @@ var yr = yr || require('yate/lib/runtime.js');
         } else {
             a0.a[ "data-nb" ] = new yr.scalarAttr(r1);
         }
-        var items0 = m.s(j21, c0);
+        var items0 = m.s(j22, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             a0.a[ "data-nb-" + ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j5, c1) ));
         }
-        var items0 = m.s(j22, c0);
+        var items0 = m.s(j23, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j5, c1) ));
@@ -3405,8 +3420,8 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('name', c0)) {
             a0.a[ "name" ] = new yr.scalarAttr(simpleScalar('name', c0));
         }
-        if (nodeset2boolean( m.s(j29, c0) )) {
-            a0.a[ "name" ] = new yr.scalarAttr(nodeset2scalar( m.s(j29, c0) ));
+        if (nodeset2boolean( m.s(j30, c0) )) {
+            a0.a[ "name" ] = new yr.scalarAttr(nodeset2scalar( m.s(j30, c0) ));
         }
         if (!nodeset2boolean( (selectNametest('content', c0, [])) ) && (simpleBoolean('icon', c0) || simpleBoolean('iconText', c0))) {
             var tmp0 = a0.a[ "class" ];
@@ -3437,7 +3452,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t2.j = j23;
+    M.t2.j = j24;
     M.t2.a = 0;
 
     // match .buttonLink : nb
@@ -3495,7 +3510,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t3.j = j32;
+    M.t3.j = j33;
     M.t3.a = 0;
 
     // match .buttonAttach : nb
@@ -3541,21 +3556,21 @@ var yr = yr || require('yate/lib/runtime.js');
             'type': new yr.scalarAttr("file")
         };
         a0.s = 'input';
-        if (nodeset2boolean( m.s(j34, c0) ) || simpleBoolean('multiple', c0)) {
+        if (nodeset2boolean( m.s(j35, c0) ) || simpleBoolean('multiple', c0)) {
             a0.a[ "multiple" ] = new yr.scalarAttr("multiple");
         }
         if (simpleBoolean('name', c0)) {
             a0.a[ "name" ] = new yr.scalarAttr(simpleScalar('name', c0));
         }
-        if (nodeset2boolean( m.s(j29, c0) )) {
-            a0.a[ "name" ] = new yr.scalarAttr(nodeset2scalar( ( m.s(j29, c0) ) ));
+        if (nodeset2boolean( m.s(j30, c0) )) {
+            a0.a[ "name" ] = new yr.scalarAttr(nodeset2scalar( ( m.s(j30, c0) ) ));
         }
-        if (nodeset2boolean( m.s(j36, c0) )) {
+        if (nodeset2boolean( m.s(j37, c0) )) {
             var tmp0 = a0.a[ "title" ];
             if (tmp0) {
-                a0.a[ "title" ] = tmp0.addscalar(nodeset2scalar( ( m.s(j36, c0) ) ));
+                a0.a[ "title" ] = tmp0.addscalar(nodeset2scalar( ( m.s(j37, c0) ) ));
             } else {
-                a0.a[ "title" ] = new yr.scalarAttr(nodeset2scalar( ( m.s(j36, c0) ) ));
+                a0.a[ "title" ] = new yr.scalarAttr(nodeset2scalar( ( m.s(j37, c0) ) ));
             }
         }
         r0 += closeAttrs(a0);
@@ -3583,7 +3598,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t4.j = j33;
+    M.t4.j = j34;
     M.t4.a = 0;
 
     // match .popupMenu : nb
@@ -3610,16 +3625,17 @@ var yr = yr || require('yate/lib/runtime.js');
             a0.a[ "data-nb-tail" ] = new yr.scalarAttr(simpleScalar('tail', c0));
         }
         r0 += closeAttrs(a0);
+        r0 += "<ul class=\"" + "nb-popup__menu" + "\">";
         var items0 = selectNametest('menu', c0, []);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             if (simpleBoolean('separator', c1)) {
-                r0 += "<div class=\"" + "nb-popup__separator" + "\"></div>";
+                r0 += "<li class=\"" + "nb-popup__separator" + "\"></li>";
             } else {
+                r0 += "<li class=\"" + "nb-popup__line" + "\">";
                 r0 += "<a";
                 a0.a = {
-                    'class': new yr.scalarAttr("nb-popup__line"),
-                    'tabindex': new yr.scalarAttr("-1")
+                    'class': new yr.scalarAttr("nb-popup__link")
                 };
                 a0.s = 'a';
                 if (simpleBoolean('href', c1)) {
@@ -3629,13 +3645,15 @@ var yr = yr || require('yate/lib/runtime.js');
                 r0 += closeAttrs(a0);
                 r0 += simpleScalar('content', c1);
                 r0 += "</a>";
+                r0 += "</li>";
             }
         }
+        r0 += "</ul>";
         r0 += "</div>";
 
         return r0;
     };
-    M.t5.j = j37;
+    M.t5.j = j38;
     M.t5.a = 0;
 
     // match .popup : nb
@@ -3771,8 +3789,8 @@ var yr = yr || require('yate/lib/runtime.js');
             if (simpleBoolean('name', c1)) {
                 a0.a[ "name" ] = new yr.scalarAttr(simpleScalar('name', c1));
             }
-            if (nodeset2boolean( m.s(j29, c1) )) {
-                a0.a[ "name" ] = new yr.scalarAttr(nodeset2scalar( m.s(j29, c1) ));
+            if (nodeset2boolean( m.s(j30, c1) )) {
+                a0.a[ "name" ] = new yr.scalarAttr(nodeset2scalar( m.s(j30, c1) ));
             }
             r0 += closeAttrs(a0);
             r0 += '';
@@ -3884,8 +3902,8 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('name', c0)) {
             a0.a[ "name" ] = new yr.scalarAttr(simpleScalar('name', c0));
         }
-        if (nodeset2boolean( m.s(j29, c0) )) {
-            a0.a[ "name" ] = new yr.scalarAttr(nodeset2scalar( m.s(j29, c0) ));
+        if (nodeset2boolean( m.s(j30, c0) )) {
+            a0.a[ "name" ] = new yr.scalarAttr(nodeset2scalar( m.s(j30, c0) ));
         }
         r0 += m.a(m, m.s(j5, c0), 'nb-select-options', a0)
         r0 += closeAttrs(a0);
@@ -4081,13 +4099,13 @@ var yr = yr || require('yate/lib/runtime.js');
             a0.a[ "data-nb-error" ] = new yr.scalarAttr("{ \"id\": \"" + ( v113 ) + "\", \"direction\":\"" + nodeset2scalar( ( m.s(j65, c0) ) ) + "\"}");
         }
         r0 += closeAttrs(a0);
-        if (simpleBoolean('hint', c0)) {
+        if (simpleBoolean('hint', c0) && !(cmpSN("", m.s(j66, c0)))) {
             r0 += "<span class=\"" + "nb-input__hint" + "\">";
             r0 += "<span class=\"" + "nb-input__hint-inner" + "\">";
-            if (nodeset2boolean( m.s(j66, c0) )) {
+            if (nodeset2boolean( m.s(j67, c0) )) {
                 r0 += "<span class=\"" + "nb-input__hint-ghost" + "\"></span>";
                 r0 += "<span class=\"" + "nb-input__hint-content" + "\">";
-                r0 += nodeset2xml( m.s(j67, c0) );
+                r0 += nodeset2xml( m.s(j66, c0) );
                 r0 += "</span>";
             } else {
                 r0 += nodeset2xml( selectNametest('hint', c0, []) );
@@ -4126,7 +4144,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'value': new yr.scalarAttr(nodeset2scalar( ( selectNametest('content', c0, []) ) ))
         };
         a0.s = 'input';
-        var items0 = m.s(j22, c0);
+        var items0 = m.s(j23, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j5, c1) ));
@@ -4230,7 +4248,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-input__controller")
         };
         a0.s = 'textarea';
-        var items0 = m.s(j22, c0);
+        var items0 = m.s(j23, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j5, c1) ));
@@ -4736,115 +4754,122 @@ var yr = yr || require('yate/lib/runtime.js');
     M.t26 = function t26(m, c0, i0, l0, a0) {
         var r0 = '';
 
+        //  var input-label : scalar
+        var r1 = '';
+        var a1 = { a: {} };
+        if (simpleBoolean('text', c0)) {
+            r1 += "<a href=\"" + simpleScalar('href', c0) + "\" class=\"nb-search-arrow-label\">" + simpleScalar('text', c0) + "</a>";
+        } else {
+            r1 += "";
+        }
+        var v116 = r1;
+
+        //  var input-requests : scalar
+        var r1 = '';
+        var a1 = { a: {} };
+        if (simpleBoolean('requests', c0)) {
+            r1 += " — " + simpleScalar('requests', c0);
+        } else {
+            r1 += "";
+        }
+        var v117 = r1;
+
         r0 += closeAttrs(a0);
-        r0 += "<div";
+        r0 += "<form";
         a0.a = {
-            'class': new yr.scalarAttr("nb-arrow _init"),
-            'data-nb': new yr.scalarAttr("arrow")
+            'class': new yr.scalarAttr("nb-arrow nb-search-arrow")
         };
-        a0.s = 'div';
+        a0.s = 'form';
         r0 += m.a(m, m.s(j5, c0), 'nb-main-attrs', a0)
-        if (!(cmpSN("true", selectNametest('search', c0, [])))) {
-            var tmp0 = a0.a[ "class" ];
-            if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-arrow_service");
-            } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-arrow_service");
-            }
-        } else {
-            var tmp0 = a0.a[ "class" ];
-            if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-arrow_search");
-            } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-arrow_search");
-            }
-        }
         r0 += closeAttrs(a0);
-        r0 += "<div class=\"" + "nb-arrow__top" + "\"></div>";
-        r0 += "<div class=\"" + "nb-arrow__bottom" + "\"></div>";
-        r0 += "<div";
-        a0.a = {
-            'class': new yr.scalarAttr("nb-arrow__content")
-        };
-        a0.s = 'div';
-        if (!(cmpSN("true", selectNametest('search', c0, [])))) {
-            var tmp0 = a0.a[ "class" ];
-            if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-arrow__service");
-            } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-arrow__service");
-            }
-            r0 += closeAttrs(a0);
-            r0 += "<a href=\"" + nodeset2attrvalue( ( selectNametest('href', c0, []) ) ) + "\" class=\"" + "_link nb-arrow__service__name" + "\">" + nodeset2xml( ( selectNametest('text', c0, []) ) ) + "</a>";
-        } else {
-            //  var input : object
+        r0 += "<span class=\"" + "nb-arrow-tail" + "\"></span>";
+        r0 += m.f('f2', c0, i0, l0, a0, yr.object2nodeset((function() {
+            var r0 = {};
+            var a0 = { a: {} };
+            r0[ "size" ] = "m";
+            r0[ "class" ] = "nb-search-arrow-button";
+            r0[ "content" ] = yr.nodeset2data(selectNametest('buttonContent', c0, []));
             var r1 = {};
             var a1 = { a: {} };
-            r1[ "size" ] = "m";
-            r1[ "class" ] = "nb-arrow__input";
-            var r2 = {};
-            var a2 = { a: {} };
-            r2[ "autocomplete" ] = "off";
-            r2[ "value" ] = yr.nodeset2data(selectNametest('value', c0, []));
-            r2[ "name" ] = "text";
-            r1[ "attrs" ] = r2;
-            var v116 = r1;
+            r1[ "type" ] = "submit";
+            r0[ "attrs" ] = r1;
 
-            //  var button : object
+            return r0;
+        })()));
+        r0 += "<div class=\"" + "nb-search-arrow-content" + "\">";
+        r0 += m.f('f13', c0, i0, l0, a0, yr.object2nodeset((function() {
+            var r0 = {};
+            var a0 = { a: {} };
+            r0[ "size" ] = "m";
+            r0[ "class" ] = "nb-search-arrow-input";
+            r0[ "leftContent" ] = v116;
             var r1 = {};
             var a1 = { a: {} };
-            r1[ "size" ] = "m";
-            r1[ "content" ] = yr.nodeset2data(selectNametest('buttonContent', c0, []));
-            r1[ "class" ] = "nb-arrow__button";
-            var r2 = {};
-            var a2 = { a: {} };
-            r2[ "type" ] = "submit";
-            r1[ "attrs" ] = r2;
-            var v117 = r1;
+            r1[ "autocomplete" ] = "off";
+            r1[ "value" ] = yr.nodeset2data(selectNametest('value', c0, []));
+            r1[ "name" ] = "text";
+            r0[ "attrs" ] = r1;
+            var r1 = {};
+            var a1 = { a: {} };
+            r1[ "text" ] = v117;
+            r1[ "ghost" ] = true;
+            r0[ "hint" ] = r1;
 
-            var tmp0 = a0.a[ "class" ];
-            if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(" nb-arrow__search");
-            } else {
-                a0.a[ "class" ] = new yr.scalarAttr(" nb-arrow__search");
-            }
-            r0 += closeAttrs(a0);
-            r0 += "<form";
-            a0.a = {
-            };
-            a0.s = 'form';
-            if (simpleBoolean('action', c0)) {
-                a0.a[ "action" ] = new yr.scalarAttr(simpleScalar('action', c0));
-            }
-            r0 += closeAttrs(a0);
-            r0 += m.f('f2', c0, i0, l0, a0, yr.object2nodeset( v117 ));
-            if (simpleBoolean('text', c0)) {
-                r0 += "<div class=\"" + "nb-arrow__name__wrap" + "\">";
-                r0 += "<a href=\"" + nodeset2attrvalue( ( selectNametest('href', c0, []) ) ) + "\" class=\"" + "nb-arrow__name _link" + "\">" + nodeset2xml( ( selectNametest('text', c0, []) ) ) + "</a>";
-                r0 += "</div>";
-            }
-            r0 += "<div class=\"" + "nb-arrow__input__wrap" + "\">";
-            r0 += m.f('f13', c0, i0, l0, a0, yr.object2nodeset( v116 ));
-            r0 += "</div>";
-            if (simpleBoolean('requests', c0)) {
-                r0 += "<div class=\"" + "nb-arrow__requests__wrap" + "\">";
-                r0 += "<span class=\"" + "nb-arrow__input_fake" + "\">" + " " + "</span>";
-                r0 += "<div class=\"" + "nb-arrow__requests" + "\">" + " — " + nodeset2xml( ( selectNametest('requests', c0, []) ) ) + " " + "</div>";
-                r0 += "</div>";
-            }
-            r0 += "</form>";
-        }
-        r0 += closeAttrs(a0);
+            return r0;
+        })()));
         r0 += "</div>";
-        r0 += "</div>";
+        r0 += "</form>";
 
         return r0;
     };
     M.t26.j = j91;
     M.t26.a = 0;
 
-    // match .header : nb
+    // match .arrow[ .search != "true" ] : nb
     M.t27 = function t27(m, c0, i0, l0, a0) {
+        var r0 = '';
+
+        r0 += closeAttrs(a0);
+        r0 += "<div";
+        a0.a = {
+            'class': new yr.scalarAttr("nb-service-arrow")
+        };
+        a0.s = 'div';
+        r0 += m.a(m, m.s(j5, c0), 'nb-main-attrs', a0)
+        r0 += closeAttrs(a0);
+        r0 += "<span class=\"" + "nb-arrow-tail" + "\"></span>";
+        r0 += nodeset2xml( selectNametest('text', c0, []) );
+        r0 += "</div>";
+
+        return r0;
+    };
+    M.t27.j = j95;
+    M.t27.a = 0;
+
+    // match .arrow[ .search != "true" ][ .href ] : nb
+    M.t28 = function t28(m, c0, i0, l0, a0) {
+        var r0 = '';
+
+        r0 += closeAttrs(a0);
+        r0 += "<a";
+        a0.a = {
+            'href': new yr.scalarAttr(nodeset2scalar( ( selectNametest('href', c0, []) ) )),
+            'class': new yr.scalarAttr("nb-service-arrow")
+        };
+        a0.s = 'a';
+        r0 += m.a(m, m.s(j5, c0), 'nb-main-attrs', a0)
+        r0 += closeAttrs(a0);
+        r0 += "<span class=\"" + "nb-arrow-tail" + "\"></span>";
+        r0 += nodeset2xml( selectNametest('text', c0, []) );
+        r0 += "</a>";
+
+        return r0;
+    };
+    M.t28.j = j96;
+    M.t28.a = 0;
+
+    // match .header : nb
+    M.t29 = function t29(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4913,11 +4938,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t27.j = j96;
-    M.t27.a = 0;
+    M.t29.j = j97;
+    M.t29.a = 0;
 
     // match .user : nb
-    M.t28 = function t28(m, c0, i0, l0, a0) {
+    M.t30 = function t30(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4960,11 +4985,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t28.j = j99;
-    M.t28.a = 0;
+    M.t30.j = j100;
+    M.t30.a = 0;
 
     // match .user : nb-user-pic
-    M.t29 = function t29(m, c0, i0, l0, a0) {
+    M.t31 = function t31(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4991,11 +5016,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t29.j = j99;
-    M.t29.a = 0;
+    M.t31.j = j100;
+    M.t31.a = 0;
 
     // match .user : nb-user-name
-    M.t30 = function t30(m, c0, i0, l0, a0) {
+    M.t32 = function t32(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5012,11 +5037,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t30.j = j99;
-    M.t30.a = 0;
+    M.t32.j = j100;
+    M.t32.a = 0;
 
     // match .suggest : nb
-    M.t31 = function t31(m, c0, i0, l0, a0) {
+    M.t33 = function t33(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5066,11 +5091,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t31.j = j107;
-    M.t31.a = 0;
+    M.t33.j = j108;
+    M.t33.a = 0;
 
     // match / : nb-suggest
-    M.t32 = function t32(m, c0, i0, l0, a0) {
+    M.t34 = function t34(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5087,11 +5112,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t32.j = 1;
-    M.t32.a = 1;
+    M.t34.j = 1;
+    M.t34.a = 1;
 
     // match /[ .type == "default" ].item : nb-suggest
-    M.t33 = function t33(m, c0, i0, l0, a0) {
+    M.t35 = function t35(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5101,11 +5126,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t33.j = j113;
-    M.t33.a = 1;
+    M.t35.j = j114;
+    M.t35.a = 1;
 
     // match /[ .type == "username" ].item : nb-suggest
-    M.t34 = function t34(m, c0, i0, l0, a0) {
+    M.t36 = function t36(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var user : object
@@ -5141,35 +5166,35 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t34.j = j114;
-    M.t34.a = 1;
+    M.t36.j = j115;
+    M.t36.a = 1;
 
     // match .user[ .mod == "suggest" && .usernameHighlighted ].username : nb-user-name
-    M.t35 = function t35(m, c0, i0, l0, a0) {
+    M.t37 = function t37(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += nodeset2scalar( m.s(j120, c0) );
+        r0 += nodeset2scalar( m.s(j121, c0) );
 
         return r0;
     };
-    M.t35.j = j119;
-    M.t35.a = 0;
+    M.t37.j = j120;
+    M.t37.a = 0;
 
     // match .user[ .mod == "suggest" && .emailHighlighted ].email : nb-user-name
-    M.t36 = function t36(m, c0, i0, l0, a0) {
+    M.t38 = function t38(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += nodeset2scalar( m.s(j122, c0) );
+        r0 += nodeset2scalar( m.s(j123, c0) );
 
         return r0;
     };
-    M.t36.j = j121;
-    M.t36.a = 0;
+    M.t38.j = j122;
+    M.t38.a = 0;
 
     // match .toggler : nb
-    M.t37 = function t37(m, c0, i0, l0, a0) {
+    M.t39 = function t39(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5205,7 +5230,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("nb-toggler__checkbox")
         };
         a0.s = 'input';
-        var items0 = m.s(j22, c0);
+        var items0 = m.s(j23, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j5, c1) ));
@@ -5239,11 +5264,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t37.j = j123;
-    M.t37.a = 0;
+    M.t39.j = j124;
+    M.t39.a = 0;
 
     // match /
-    M.t38 = function t38(m, c0, i0, l0, a0) {
+    M.t40 = function t40(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var check : object
@@ -5465,8 +5490,8 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t38.j = 1;
-    M.t38.a = 1;
+    M.t40.j = 1;
+    M.t40.a = 1;
 
     M.matcher = {
         "nb-main-attrs": {
@@ -5548,19 +5573,21 @@ var yr = yr || require('yate/lib/runtime.js');
                 "t25"
             ],
             "arrow": [
+                "t28",
+                "t27",
                 "t26"
             ],
             "header": [
-                "t27"
+                "t29"
             ],
             "user": [
-                "t28"
+                "t30"
             ],
             "suggest": [
-                "t31"
+                "t33"
             ],
             "toggler": [
-                "t37"
+                "t39"
             ]
         },
         "nb-select-options": {
@@ -5573,32 +5600,32 @@ var yr = yr || require('yate/lib/runtime.js');
         },
         "nb-user-pic": {
             "user": [
-                "t29"
+                "t31"
             ]
         },
         "nb-user-name": {
             "user": [
-                "t30"
+                "t32"
             ],
             "username": [
-                "t35"
+                "t37"
             ],
             "email": [
-                "t36"
+                "t38"
             ]
         },
         "nb-suggest": {
             "": [
-                "t32"
+                "t34"
             ],
             "item": [
-                "t34",
-                "t33"
+                "t36",
+                "t35"
             ]
         },
         "": {
             "": [
-                "t38"
+                "t40"
             ]
         }
     };

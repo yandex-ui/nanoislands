@@ -30,3 +30,15 @@ Those elements could be easily configured: by default those elements don't have 
 More that that, if the visual side of the element is actually inside it, you could use the specific selector to say where the radiuses should be removed (and you can mark this way more than one element):
 
     kind: group-item '& > .complex-button-inner, & > .complex-button-inner:before'
+
+### Vertical groups
+
+Groups are treated as horizontal by default, so they would have the margins and border-radius resetted on the lefts and the rights. If you'd need to have the same effect, but on the tops and bottoms of the block, you could use the `vertical` param:
+
+    kind: group-item vertical
+
+    kind: group-start vertical
+
+    kind: group-middle vertical
+
+    kind: group-end vertical

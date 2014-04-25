@@ -29,6 +29,11 @@ if !ie
   .nb-checkbox__input:focus + .nb-checkbox__flag
     skin: button_focus
 
+if ie
+  .nb-checkbox__input,
+  .nb-checkbox__label
+    vertical-align: middle
+
 .nb-checkbox_size_s,
 .nb-checkbox_size_s .nb-checkbox__flag
   skin: para2 no-margin

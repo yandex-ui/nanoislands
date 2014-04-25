@@ -9,9 +9,13 @@
 
 .nb-popup__close
   z-index: 100
+  width: 24px
+  height: 24px
+  top: 2px
+  right: 2px
 
 .nb-popup
-  & .nb-popup__line
+  & .nb-popup__link
     skin: menu-item (_hover '&:hover, &:focus')
     outline: none
 
@@ -23,6 +27,13 @@
 
   & .nb-popup__separator
     skin: menu-separator padded
+
+  & .nb-popup__menu
+  & .nb-popup__line
+    margin: 0
+    padding: 0
+    list-style: none
+    outline: none
 
 .nb-popup__title
   font: $font-h3

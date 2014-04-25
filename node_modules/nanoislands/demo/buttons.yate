@@ -36,6 +36,15 @@ func button-pseudo() {
     })
 }
 
+func button-pseudo-inverted() {
+    nb-button({
+        'content': 'Выбрать&hellip;'
+        'size': 'm'
+        'theme': 'pseudo-inverted'
+    })
+}
+
+
 func button-dark() {
     nb-button({
         'content': 'Готово'
@@ -159,6 +168,16 @@ func buttons() {
         </div>
 
         show(button-pseudo())
+    </div>
+    <div class="demo-section" style="background-color: #333; color: #fff">
+        <div class="demo-h3">
+            'Theme: Pseudo-inverted'
+            <span class="demo-code demo-code_small">
+                '.nb-button_theme_pseudo'
+            </span>
+        </div>
+
+        show(button-pseudo-inverted())
     </div>
     <div class="demo-section">
         <div class="demo-h3">
