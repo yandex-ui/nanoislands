@@ -60,7 +60,7 @@ func _nb-button-attributes(type) {
 
 func _nb-button-content() {
     if .iconText {
-        <span class="nb-icon nb-icon_text">
+        <span class="nb-icon nb-icon-text">
           .iconText
         </span>
     }
@@ -85,7 +85,11 @@ match .button nb {
         apply . nb-main-attrs
 
         <span class="nb-button-content">
-            apply .icon nb
+             if .icon {
+                nb-icon({
+                    'icon': .icon
+                })
+            }
 
             _nb-button-content()
         </span>
@@ -101,7 +105,11 @@ match .buttonLink nb {
         apply . nb-main-attrs
 
         <span class="nb-button-content">
-            apply .icon nb
+             if .icon {
+                nb-icon({
+                    'icon': .icon
+                })
+            }
 
             _nb-button-content()
         </span>
@@ -117,7 +125,11 @@ match .buttonSpan nb {
         apply . nb-main-attrs
 
         <span class="nb-button-content">
-            apply .icon nb
+            if .icon {
+                nb-icon({
+                    'icon': .icon
+                })
+            }
 
             _nb-button-content()
         </span>
@@ -133,8 +145,11 @@ match .buttonLabel nb {
         apply . nb-main-attrs
 
         <span class="nb-button-content">
-            apply .icon nb
-
+            if .icon {
+                nb-icon({
+                    'icon': .icon
+                })
+            }
             _nb-button-content()
         </span>
     </label>
@@ -174,7 +189,11 @@ match .buttonAttach nb {
             </span>
         </span>
         <span class="nb-button-content">
-            apply .icon nb
+            if .icon {
+               nb-icon({
+                   'icon': .icon
+               })
+           }
 
             _nb-button-content()
         </span>
