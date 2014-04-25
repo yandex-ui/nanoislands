@@ -10,7 +10,13 @@ func nb-slider(nodeset options) {
 }
 
 match .slider nb {
-    <div class='nb-slider _init nb-slider_size_{ .size } nb-slider_orientation_{ .orientation }  nb-slider__handle_type_{ .type }'>
+    <div>
+        _size-theme-type-class({
+            'name': 'slider'
+            'size': .size
+         })
+        @class += " _init nb-{ .orientation }-slider nb-slider-{ .type }-handle"
+
         apply . nb-main-attrs
 
         @data-nb-value = '{ .value }'
@@ -23,12 +29,12 @@ match .slider nb {
             @class += ' nb-is-disabled'
         }
 
-        <div class='nb-slider__body nb-slider__body_type_{ .type }'>
+        <div class='nb-slider-body nb-slider-{ .type }-body'>
             <label class='ui-slider-handle'>
                 if .size == 's' {
-                    @class += ' nb-slider__small-handle'
+                    @class += ' nb-slider-small-handle'
                 } else {
-                    @class += ' nb-slider__handle'
+                    @class += ' nb-slider-handle'
                 }
 
                 if .handle.class {
@@ -36,7 +42,7 @@ match .slider nb {
                 }
 
                 <span class='nb-button-content'>
-                    <input class='nb-slider__fallback' type='text' value='{ .value }' readonly='readonly'>
+                    <input class='nb-slider-fallback' type='text' value='{ .value }' readonly='readonly'>
                         if .name {
                             @name = '{ .name }'
                         }

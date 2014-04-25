@@ -14,7 +14,7 @@ match .suggest nb {
         @data-size = .size
         @data-source = .source
         @data-highlight = .highlight
-        @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest__container nb-suggest_size_{.size}'
+        @data-class-suggest = 'nb-island nb-fly-island-fly nb-suggest__container nb-suggest_size_{.size}'
         if .class {
             @data-class-suggest += ' {.classSuggest}'
         }
