@@ -39,7 +39,7 @@
                     if ($.contains(that.uiDialog[0], e.target)) {
                         return;
                     }
-                    
+
                     that.close();
                 };
 
@@ -136,7 +136,7 @@
             },
             draggable: false,
             resizable: false,
-            dialogClass: 'nb-popup-outer ui-dialog-no-close',
+            dialogClass: '_nb-popup-outer ui-dialog-no-close',
             position: {
                 my: 'center top',
                 at: 'center bottom',
@@ -148,7 +148,7 @@
 
         _create: function() {
             this._super();
-            this.$tail = $('<div class="nb-popup__tail"><i/></div>');
+            this.$tail = $('<div class="_nb-popup-tail"><i/></div>');
 
             //TODO: проверить, что вызывается один раз
             this.$tail.prependTo(this.uiDialog);
@@ -180,7 +180,7 @@
                 var direction = _getInverseDirection(tailDirection);
                 var targetCenter = _getElementCenter(ui.target);
 
-                nb.node.setMod(el, 'nb-popup_to', direction);
+                nb.node.setMod(el, '_nb-popup_to', direction);
                 $el.data('nb-tail-dir', direction);
 
                 // Позиционирование хвостика вдоль попапа, необходимо для того,
@@ -403,7 +403,7 @@
             // в массиве должно быть больше 1 элемента
             // иначе модификатора не было
             if (l > 1) {
-                newClass = 'nb-popup-outer_' + modifier;
+                newClass = '_nb-popup-outer_' + modifier;
             }
 
             return newClass;
@@ -416,7 +416,7 @@
     nb.define('popup', {
 
         events: {
-            'click .nb-popup__close': 'close',
+            'click ._nb-popup-close': 'close',
             'position': 'onposition'
         },
 
@@ -429,7 +429,7 @@
                 this.modal = true;
             }
 
-            this.$menu = this.$node.find('.nb-popup__menu');
+            this.$menu = this.$node.find('._nb-popup-menu');
 
             if (this.$menu.length) {
                 this.$menu.menu({
@@ -480,7 +480,7 @@
             } else {
                 //  Попап закрыт. Будем открывать.
 
-                $(this.node).removeClass('nb-is-hidden');
+                $(this.node).removeClass('_nb-is-hidden');
                 //  Передвигаем попап.
                 this._move(where, how, params);
                 this.trigger('nb-opened');
@@ -569,7 +569,7 @@
                     modal: true,
                     resizable: false,
                     draggable: false,
-                    dialogClass: 'nb-popup-outer ui-dialog-fixed',
+                    dialogClass: '_nb-popup-outer ui-dialog-fixed',
                     close: function() {
                         that.close();
                     },
@@ -643,7 +643,7 @@ nb.define('popup-toggler', {
         if (evt) {
             evt.preventDefault();
         }
-        if (!this.$node.hasClass('nb-is-disabled') && this.popup) {
+        if (!this.$node.hasClass('_nb-is-disabled') && this.popup) {
             this.popup.open(this.options);
             this.trigger('nb-opened', this);
         }
@@ -656,7 +656,7 @@ nb.define('popup-toggler', {
      * @returns {Object} nb.block
      */
     close: function() {
-        if (!this.$node.hasClass('nb-is-disabled') && this.popup) {
+        if (!this.$node.hasClass('_nb-is-disabled') && this.popup) {
             this.popup.close();
             this.trigger('nb-closed', this);
         }

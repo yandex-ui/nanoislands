@@ -3,5 +3,5 @@
 
 for $gap-side in 'top' 'left' 'bottom' 'right'
   for $gap-size-name, $gap-size-value in $islands.sizes
-    .nb-gap_{$gap-side}_{$gap-size-name}
+    .nb-with-{$gap-size-name}-{$gap-side}-gap
       margin-{$gap-side}: $gap-size-value

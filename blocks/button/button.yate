@@ -5,42 +5,28 @@ func nb-button(nodeset options) {
     }
 
     if options.type == 'file' {
-        nb-block('buttonAttach', nb-extend(default, options))
+        _nb-block('buttonAttach', _nb-extend(default, options))
     } else if options.type == 'inline' {
-        nb-block('buttonSpan', nb-extend(default, options))
+        _nb-block('buttonSpan', _nb-extend(default, options))
     } else if options.type == 'label' {
-        nb-block('buttonLabel', nb-extend(default, options))
+        _nb-block('buttonLabel', _nb-extend(default, options))
     } else if options.type == 'link' {
-        nb-block('buttonLink', nb-extend(default, options))
+        _nb-block('buttonLink', _nb-extend(default, options))
     }  else {
-        nb-block('button', nb-extend(default, options))
+        _nb-block('button', _nb-extend(default, options))
     }
 }
 
 func _nb-button-attributes(type) {
-    @class = "nb-button"
 
-    // Set the size and theme modifier of the button
-    if .size == 'm' && .theme == 'normal' {
-        @class += ' nb-normal-button'
-    } else {
-        size = (if .size == 's' {
-            '-small'
-        } else if .size == 'l' {
-            '-large'
-        } else if .size == 'xl' {
-            '-extra-large'
-        })
-
-        theme = (if !(.theme == 'normal') {
-            '-' +  .theme
-        })
-
-        @class += ' nb{ size }{ theme }-button'
-    }
+    _size-theme-type-class({
+       'name': 'button'
+       'size': .size
+       'theme': .theme
+    })
 
     if .disabled {
-        @class += ' nb-is-disabled'
+        @class += ' _nb-is-disabled'
 
         if type == 'button' {
             @disabled = 'disabled'
@@ -48,7 +34,7 @@ func _nb-button-attributes(type) {
     }
 
     if type == 'attach' {
-        @class += ' nb-attach-button'
+        @class += ' _nb-attach-button'
     }
 
     if .checked {
@@ -66,7 +52,7 @@ func _nb-button-attributes(type) {
     }
 
     if !( .content ) && (.icon || .iconText) {
-        @class += ' nb-with-only-button'
+        @class += ' _nb-with-only-button'
     }
 
 
@@ -74,7 +60,7 @@ func _nb-button-attributes(type) {
 
 func _nb-button-content() {
     if .iconText {
-        <span class="nb-icon nb-icon_text">
+        <span class="nb-icon _nb-icon-text">
           .iconText
         </span>
     }
@@ -98,8 +84,12 @@ match .button nb {
 
         apply . nb-main-attrs
 
-        <span class="nb-button-content">
-            apply .icon nb
+        <span class="_nb-button-content">
+             if .icon {
+                nb-icon({
+                    'icon': .icon
+                })
+            }
 
             _nb-button-content()
         </span>
@@ -114,8 +104,12 @@ match .buttonLink nb {
 
         apply . nb-main-attrs
 
-        <span class="nb-button-content">
-            apply .icon nb
+        <span class="_nb-button-content">
+             if .icon {
+                nb-icon({
+                    'icon': .icon
+                })
+            }
 
             _nb-button-content()
         </span>
@@ -130,8 +124,12 @@ match .buttonSpan nb {
 
         apply . nb-main-attrs
 
-        <span class="nb-button-content">
-            apply .icon nb
+        <span class="_nb-button-content">
+            if .icon {
+                nb-icon({
+                    'icon': .icon
+                })
+            }
 
             _nb-button-content()
         </span>
@@ -146,9 +144,12 @@ match .buttonLabel nb {
 
         apply . nb-main-attrs
 
-        <span class="nb-button-content">
-            apply .icon nb
-
+        <span class="_nb-button-content">
+            if .icon {
+                nb-icon({
+                    'icon': .icon
+                })
+            }
             _nb-button-content()
         </span>
     </label>
@@ -162,9 +163,9 @@ match .buttonAttach nb {
 
         apply . nb-main-attrs
 
-        <span class="nb-file-intruder">
-            <span class="nb-file-intruder__inner">
-                <input class="nb-file-intruder__input" type="file">
+        <span class="_nb-file-intruder">
+            <span class="_nb-file-intruder-inner">
+                <input class="_nb-file-intruder-input" type="file">
                     if .attrs.multiple || .multiple {
                         @multiple = "multiple"
                     }
@@ -184,11 +185,15 @@ match .buttonAttach nb {
                         @disabled = 'disabled'
                     }
                 </input>
-                <span class="nb-file-intruder__focus"></span>
+                <span class="_nb-file-intruder-focus"></span>
             </span>
         </span>
-        <span class="nb-button-content">
-            apply .icon nb
+        <span class="_nb-button-content">
+            if .icon {
+               nb-icon({
+                   'icon': .icon
+               })
+           }
 
             _nb-button-content()
         </span>

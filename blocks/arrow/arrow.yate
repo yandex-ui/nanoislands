@@ -4,18 +4,18 @@ func nb-arrow(nodeset arrow) {
         'buttonContent': 'Найти'
     }
 
-    nb-block('arrow', nb-extend(default, arrow))
+    _nb-block('arrow', _nb-extend(default, arrow))
 }
 
 match .arrow nb {
-    <form class="nb-arrow nb-search-arrow">
+    <form class="nb-arrow _nb-search-arrow">
 
         apply . nb-main-attrs
 
-        <span class="nb-arrow-tail"></span>
+        <span class="_nb-arrow-tail"></span>
 
         input-label = if .text {
-            '<a href="' + .href + '" class="nb-search-arrow-label">' + .text + '</a>'
+            '<a href="' + .href + '" class="_nb-search-arrow-label">' + .text + '</a>'
         } else {
             ''
         }
@@ -28,17 +28,17 @@ match .arrow nb {
 
         nb-button({
             'size': 'm'
-            'class': 'nb-search-arrow-button'
+            'class': '_nb-search-arrow-button'
             'content': .buttonContent
             'attrs': {
                 'type': 'submit'
             }
         })
 
-        <div class="nb-search-arrow-content">
+        <div class="_nb-search-arrow-content">
             nb-input({
                 'size': 'm'
-                'class': 'nb-search-arrow-input'
+                'class': '_nb-search-arrow-input'
                 'leftContent': input-label
                 'attrs': {
                     'autocomplete': 'off'
@@ -56,22 +56,22 @@ match .arrow nb {
 }
 
 match .arrow[.search != 'true'] nb {
-    <div class="nb-service-arrow">
+    <div class="_nb-service-arrow">
 
         apply . nb-main-attrs
 
-        <span class="nb-arrow-tail"></span>
+        <span class="_nb-arrow-tail"></span>
 
         .text
     </div>
 }
 
 match .arrow[.search != 'true'][.href] nb {
-    <a href="{.href}" class="nb-service-arrow">
+    <a href="{.href}" class="_nb-service-arrow">
 
         apply . nb-main-attrs
 
-        <span class="nb-arrow-tail"></span>
+        <span class="_nb-arrow-tail"></span>
 
         .text
     </a>

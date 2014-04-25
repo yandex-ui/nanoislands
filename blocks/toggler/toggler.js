@@ -8,7 +8,7 @@ nb.define('toggler', {
      * @fires 'nb-inited'
      */
     oninit: function() {
-        this.$control = this.$node.find('.nb-toggler__checkbox');
+        this.$control = this.$node.find('._nb-toggler-checkbox');
         this.trigger('nb-inited', this);
         return this;
     },
@@ -77,7 +77,7 @@ nb.define('toggler', {
      */
     disable: function() {
         this.$control.prop('disabled', true);
-        this.$node.addClass('nb-is-disabled');
+        this.$node.addClass('_nb-is-disabled');
         this.trigger('nb-disabled', this);
         return this;
     },
@@ -88,7 +88,7 @@ nb.define('toggler', {
      */
     enable: function() {
         this.$control.prop('disabled', false);
-        this.$node.removeClass('nb-is-disabled');
+        this.$node.removeClass('_nb-is-disabled');
         this.trigger('nb-enabled', this);
         return this;
     },
@@ -109,8 +109,8 @@ nb.define('toggler', {
      */
     focus: function() {
         if (this.isEnabled()) {
-            if (!this.$node.hasClass('is-focused')) {
-                this.$node.addClass('is-focused').focus();
+            if (!this.$node.hasClass('_nb-is-focused')) {
+                this.$node.addClass('_nb-is-focused').focus();
                 this.focused = true;
                 this.$control.focus();
                 this.trigger('nb-focused', this);
@@ -125,7 +125,7 @@ nb.define('toggler', {
      * @returns {Object} nb.block
      */
     blur: function() {
-        this.$node.removeClass('is-focused').blur();
+        this.$node.removeClass('_nb-is-focused').blur();
         this.focused = false;
         this.trigger('nb-blured', this);
         return this;
@@ -149,7 +149,7 @@ nb.define('toggler', {
             this.$control.prop({
                 'checked': true
             });
-            this.$node.addClass('is-checked');
+            this.$node.addClass('_nb-is-checked');
             this.trigger('nb-checked', this);
         }
         return this;
@@ -165,7 +165,7 @@ nb.define('toggler', {
             this.$control.prop({
                 'checked': false
             });
-            this.$node.removeClass('is-checked');
+            this.$node.removeClass('_nb-is-checked');
             this.trigger('nb-unchecked', this);
         }
         return this;

@@ -8,7 +8,7 @@ func dropzone() {
                'content': 'выбрите...'
                'type': 'file'
                'theme': 'pseudo'
-               'class': 'nb-dropzone__button'
+               'class': 'nb-dropzone-button'
            }
     }
     <div class="demo-section">

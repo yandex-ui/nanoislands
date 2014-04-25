@@ -3,23 +3,31 @@ func nb-user(nodeset user) {
         'size': 'm'
     }
 
-    nb-block('user', nb-extend(default, user))
+    _nb-block('user', _nb-extend(default, user))
 }
 
 match .user nb {
 
-    <span class="nb-user nb-user_size_{.size} _init" data-nb="user">
+    <span>
+          _size-theme-type-class({
+                'name': 'user'
+                'size': .size
+            })
+            @class += " _init"
+
+            if .justify {
+                @class += " _nb-user_justify"
+            }
+
         apply . nb-main-attrs
-        if .justify {
-            @class += ' nb-user_justify'
-        }
+
 
         if !.rightToLeft {
-            @class += ' nb-user_direction_ltr'
+            @class += ' _nb-user_ltr'
             apply . nb-user-pic
             apply . nb-user-name
         } else {
-            @class += ' nb-user_direction_rtl'
+            @class += ' _nb-user_rtl'
             apply . nb-user-name
             apply . nb-user-pic
         }
@@ -27,13 +35,18 @@ match .user nb {
 }
 
 match .user nb-user-pic {
-    <span class="nb-user__avatar nb-user__avatar_size_{.size}" >
+    <span >
+        _size-theme-type-class({
+            'name': 'user-avatar'
+            'size': .size
+        })
+
         if .userpic {
             @style+= " background-image: url('{.userpic}')"
         }
 
         if .notices > 0 {
-            <span class="nb-user__notice-count">
+            <span class="_nb-user-notice-count">
                 .notices
             </span>
         }
@@ -41,12 +54,12 @@ match .user nb-user-pic {
 }
 
 match .user nb-user-name {
-    <span class="nb-user__label">
-        <span class="nb-user__name _link" title="{.username}">
+    <span class="_nb-user-label">
+        <span class="_nb-user-name _link" title="{.username}">
             .username
         </span>
         if .email {
-            <span class="nb-user__email" title="{.email}">
+            <span class="_nb-user-email" title="{.email}">
                .email
             </span>
         }

@@ -5,17 +5,25 @@ func nb-radio-button(nodeset options) {
         'type': 'radio'
     }
 
-    nb-block('radio-button', nb-extend(default, options))
+    _nb-block('radio-button', _nb-extend(default, options))
 }
 
 match .radio-button nb {
-    <div data-nb='radio-button' class='nb-radio-button nb-group nb-radio-button_theme_{ .theme } nb-radio-button_size_{ .size } _init'>
+    <div>
+         _size-theme-type-class({
+            'name': 'radio-button'
+            'size': .size
+            'theme': .theme
+         })
+
+        @class += " nb-group"
+
         apply . nb-main-attrs
         for .group {
 
-            uniq = 'nb-radio-button_{nb-uniq()}'
-            <span class="nb-radio-button__button nb-complex-group-item">
-                <input class="nb-radio-button__radio" type="radio" name="{ ..name }" value="{ .value }" id="{ uniq }">
+            uniq = 'nb-radio-button_{_nb-uniq()}'
+            <span class="_nb-radio-button-button nb-complex-group-item">
+                <input class="_nb-radio-button-radio" type="radio" name="{ ..name }" value="{ .value }" id="{ uniq }">
                     if .checked {
                         @checked = 'checked'
                     }
@@ -32,7 +40,7 @@ match .radio-button nb {
                     }
                 </input>
 
-                nb-button(nb-extend(., {
+                nb-button(_nb-extend(., {
                     'class': [
                         'nb-complex-group-item-subject'
                         'js-button'

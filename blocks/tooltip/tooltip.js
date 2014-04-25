@@ -8,7 +8,7 @@ nb.define('tooltip-jq-toggler', {
     },
 
     'onmouseenter': function() {
-        if (this.$node.hasClass('nb-is-disabled')) {
+        if (this.$node.hasClass('_nb-is-disabled')) {
             return true;
         }
 
@@ -17,7 +17,7 @@ nb.define('tooltip-jq-toggler', {
         var params = {
             content: data.content,
             items: '*',
-            tooltipClass: "nb-tooltip nb-island nb-island_type_fly nb-island_padding_s"
+            tooltipClass: "nb-tooltip nb-island nb-small-fly-island"
         };
 
         if (data.position) {

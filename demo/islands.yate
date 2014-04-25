@@ -41,7 +41,7 @@ func islands() {
         <div class="demo-h3">
             'Padding: L, Inline '
             <span class="demo-code demo-code_small">
-                '.nb-island_padding_l.nb-island_inline'
+                '.nb-large-inline-island'
             </span>
         </div>
 

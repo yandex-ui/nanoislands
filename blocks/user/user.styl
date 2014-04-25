@@ -14,11 +14,11 @@ nb-user()
     display: inline-block
     position: relative
 
-  .nb-user__pseudo
+  ._nb-user-pseudo
     display: inline-block
     width: 100%
 
-  .nb-user__avatar
+  .nb-user-avatar
     display: inline-block
     vertical-align: middle
     border-radius: 50%
@@ -29,7 +29,7 @@ nb-user()
     box-shadow: inset 0 1px 0 1px rgba(0, 0, 0, 0.15)
     background-image: url('avatar.png')
 
-  .nb-user__notice-count
+  ._nb-user-notice-count
     position: absolute
     right: -4px
     top: -4px
@@ -52,120 +52,120 @@ nb-user()
     line-height: 15px
     text-align: center
 
-  .nb-user__label
+  ._nb-user-label
     display: inline-block
     vertical-align: middle
     text-align: left
 
-  .nb-user_size_m
+  ._nb-normal-user
     font-size: $fzm
     height: $m
 
-    .nb-user__avatar
+    .nb-user-avatar
       width: $m
       height: $m
 
-  .nb-user_size_s
+  ._nb-small-user
     font-size: $fzs
     height: $s
 
-    .nb-user__avatar
+    .nb-user-avatar
       width: $s
       height: $s
 
-  .nb-user_direction_ltr
-    .nb-user__avatar
+  ._nb-user_ltr
+    .nb-user-avatar
       margin-left: 0
 
-    .nb-user__label
+    ._nb-user-label
       margin-left: $gapS
 
-  .nb-user_direction_rtl
-    .nb-user__avatar
+  ._nb-user_rtl
+    .nb-user-avatar
       margin-left: $gapS
 
-    .nb-user__label
+    ._nb-user-label
       margin-left: 0
 
-  .nb-user__email
+  ._nb-user-email
     color: #999
 
-  .nb-user__name
-  .nb-user__email
+  ._nb-user-name
+  ._nb-user-email
     display: block
 
-  .nb-user_size_m
+  ._nb-normal-user
     line-height: $lhm
-  .nb-user_size_s
+  ._nb-small-user
     line-height: $lhs
 
-  .nb-user__email
+  ._nb-user-email
     font-size: 0.95em
 
-  .nb-user__name._link
+  ._nb-user-name._link
     color: #000
 
-  .nb-user__name:first-letter
-  .nb-user:hover .nb-user__name
+  ._nb-user-name:first-letter
+  ._nb-user:hover ._nb-user-name
     color: #d00
 
 
-  .nb-user_justify
+  ._nb-user_justify
     display: block
     text-align: justify
 
-    .nb-user__label
+    ._nb-user-label
       display: block
 
-    .nb-user__name
-    .nb-user__email
+    ._nb-user-name
+    ._nb-user-email
       overflow: hidden
       text-overflow: ellipsis
       white-space: nowrap
       position: relative
 
-    .nb-user__avatar
+    .nb-user-avatar
       position: absolute
       top: 0
 
-    &.nb-user_direction_rtl
-      .nb-user__avatar
+  ._nb-user_justify._nb-user_rtl
+      .nb-user-avatar
         right: 0
 
-      &.nb-user_size_s
-        .nb-user__label
-          margin-right: ($s + $gapS)
+  ._nb-user_justify._nb-user_rtl._nb-small-user
+    ._nb-user-label
+      margin-right: ($s + $gapS)
 
-      &.nb-user_size_m
-        .nb-user__label
-          margin-right: ($m + $gapS)
+  ._nb-user_justify._nb-user_rtl._nb-normal-user
+    ._nb-user-label
+      margin-right: ($m + $gapS)
 
-    &.nb-user_direction_ltr
-      .nb-user__avatar
-        left: 0
+  ._nb-user_justify._nb-user_ltr
+    .nb-user-avatar
+      left: 0
 
-      &.nb-user_size_s
-        .nb-user__label
-          margin-left: ($s + $gapS)
+  ._nb-user_justify._nb-user_ltr._nb-small-user
+    ._nb-user-label
+      margin-left: ($s + $gapS)
 
-      &.nb-user_size_m
-        .nb-user__label
-          margin-left: ($m + $gapS)
+  ._nb-user_justify._nb-user_ltr._nb-normal-user
+    ._nb-user-label
+      margin-left: ($m + $gapS)
 
 
-    &.nb-user_size_m
-      .nb-user__label
-        padding-top: ($m/2 - $lhm)
+  ._nb-user_justify._nb-small-user
+    ._nb-user-label
+      padding-top: ($m/2 - $lhm)
 
-      .nb-user__name:only-child
-        top: ($lhm/2)
+    ._nb-user-name:only-child
+      top: ($lhm/2)
 
-    &.nb-user_size_s
-      .nb-user__label
-        padding-top: ($s/2 - $lhs)
+  ._nb-user_justify._nb-small-user
+    ._nb-user-label
+      padding-top: ($s/2 - $lhs)
 
-      .nb-user__name:only-child
-        top: ($lhs/2)
+    ._nb-user-name:only-child
+      top: ($lhs/2)
 
 
 nb-user()

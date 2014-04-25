@@ -4,7 +4,7 @@ func nb-suggest(nodeset options) {
         'type': 'default'
     }
 
-    nb-block('suggest', nb-extend(defaults, options))
+    _nb-block('suggest', _nb-extend(defaults, options))
 }
 
 match .suggest nb {
@@ -14,7 +14,9 @@ match .suggest nb {
         @data-size = .size
         @data-source = .source
         @data-highlight = .highlight
-        @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest__container nb-suggest_size_{.size}'
+        @data-class-suggest = 'nb-island _nb-fly-island _nb-suggest-container _nb-{.size}-suggest'
+
+
         if .class {
             @data-class-suggest += ' {.classSuggest}'
         }
@@ -22,12 +24,12 @@ match .suggest nb {
         apply . nb-main-attrs
 
         if .disabled  {
-          @class += ' nb-is-disabled'
+          @class += ' _nb-is-disabled'
         }
 
         nb-input({
              'size': .size
-             'class': 'nb-suggest__input'
+             'class': '_nb-suggest-input'
              'attrs': .attrsInput
              'disabled': .disabled
              'name': .name
@@ -37,8 +39,8 @@ match .suggest nb {
 }
 
 match / nb-suggest {
-    <li class="nb-suggest__item">
-        <a class="nb-suggest__item__link">
+    <li class="_nb-suggest-item">
+        <a class="_nb-suggest-item-link">
             apply .item nb-suggest
         </a>
     </li>
