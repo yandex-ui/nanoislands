@@ -22,7 +22,17 @@ match .input nb {
 
     errorId = 'nb-input_error' + nb-uniq()
 
-    <label class='nb-input nb-input_type_complex'>
+    <label>
+        _size-theme-type-class({
+           'name': 'input'
+            if .size {
+                'size': .size
+            }
+           'type': 'complex'
+        })
+
+        @class +=' _init'
+
         apply . nb-main-attrs
 
         if .hint || .error || .ghost {
@@ -31,9 +41,6 @@ match .input nb {
 
         if !( .static ){
             @data-nb='input'
-        }
-        if .size {
-            @class += ' nb-input_size_{.size}'
         }
 
         if .disabled {
@@ -51,11 +58,11 @@ match .input nb {
         }
 
         if .hint && .hint.text != '' {
-            <span class="nb-input__hint">
-                <span class="nb-input__hint-inner">
+            <span class="nb-input-hint">
+                <span class="nb-input-hint-inner">
                     if .hint.ghost {
-                        <span class="nb-input__hint-ghost"></span>
-                        <span class="nb-input__hint-content">
+                        <span class="nb-input-hint-ghost"></span>
+                        <span class="nb-input-hint-content">
                             .hint.text
                         </span>
                     } else {
@@ -74,23 +81,23 @@ match .input nb {
         }
 
         if .reset {
-            <span class="nb-input__reset"></span>
+            <span class="nb-input-reset"></span>
         }
 
         if .leftContent {
-            <span class="nb-input__left">
+            <span class="nb-input-left">
                 html(.leftContent)
             </span>
         }
 
         if .rightContent {
-            <span class="nb-input__right">
+            <span class="nb-input-right">
                 html(.rightContent)
             </span>
         }
 
-        <span class="nb-input__content">
-            <input class="nb-input__controller" value="{.content}">
+        <span class="nb-input-content">
+            <input class="nb-input-controller" value="{.content}">
                 for .attrs.* {
                     @{name()} = .
                 }
@@ -103,7 +110,7 @@ match .input nb {
                     @disabled = 'disabled'
                 }
             </input>
-            <span class="nb-input__view">&nbsp;</span>
+            <span class="nb-input-view">&nbsp;</span>
         </span>
     </label>
 }
@@ -112,14 +119,21 @@ match .textarea nb {
 
     errorId = 'nb-input_error' + nb-uniq()
 
-    <label class='nb-input nb-input_type_complex'>
+    <label>
+        _size-theme-type-class({
+           'name': 'input'
+            if .size {
+                'size': .size
+            }
+           'type': 'complex'
+        })
+
+        @class +=' _init'
+
         apply . nb-main-attrs
 
         if !( .static ){
             @data-nb='input'
-        }
-        if .size {
-            @class += ' nb-input_size_{.size}'
         }
 
         if .disabled {
@@ -144,23 +158,23 @@ match .textarea nb {
         }
 
         if .reset {
-            <span class="nb-input__reset"></span>
+            <span class="nb-input-reset"></span>
         }
 
         if .leftContent {
-            <span class="nb-input__left">
+            <span class="nb-input-left">
                 html(.leftContent)
             </span>
         }
 
         if .rightContent {
-            <span class="nb-input__right">
+            <span class="nb-input-right">
                 html(.rightContent)
             </span>
         }
 
-        <span class="nb-input__content">
-            <textarea class="nb-input__controller">
+        <span class="nb-input-content">
+            <textarea class="nb-input-controller">
                 for .attrs.* {
                     @{name()} = .
                 }
@@ -177,13 +191,22 @@ match .textarea nb {
                     html(.content)
                 }
             </textarea>
-            <span class="nb-input__view">&nbsp;</span>
+            <span class="nb-input-view">&nbsp;</span>
         </span>
     </label>
 }
 
 match .inputSimple nb {
-    <input value="{.content}" data-nb-type='simple' class='nb-input _init nb-input_type_simple'>
+    <input value="{.content}" data-nb-type='simple'>
+       _size-theme-type-class({
+          'name': 'input'
+           if .size {
+               'size': .size
+           }
+          'type': 'simple'
+       })
+       @class += ' _init'
+
         apply . nb-main-attrs
 
         if .name {
@@ -192,9 +215,6 @@ match .inputSimple nb {
 
         if !( .static ){
             @data-nb='input'
-        }
-        if .size {
-            @class += ' nb-input_size_{.size}'
         }
 
         if .disabled {
@@ -206,7 +226,16 @@ match .inputSimple nb {
 }
 
 match .textareaSimple nb {
-    <textarea data-nb-type='simple' class='nb-input _init nb-input_type_simple'>
+    <textarea data-nb-type='simple'>
+        _size-theme-type-class({
+          'name': 'input'
+           if .size {
+               'size': .size
+           }
+          'type': 'simple'
+        })
+        @class += ' _init'
+
         apply . nb-main-attrs
 
         if .name {
@@ -215,9 +244,6 @@ match .textareaSimple nb {
 
         if !( .static ){
             @data-nb='input'
-        }
-        if .size {
-            @class += ' nb-input_size_{.size}'
         }
 
         if .disabled {

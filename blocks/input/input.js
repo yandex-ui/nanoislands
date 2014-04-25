@@ -5,7 +5,7 @@
 nb.define('input', {
     events: {
         'click': 'focus',
-        'mousedown .nb-input__reset': 'reset'
+        'mousedown .nb-input-reset': 'reset'
     },
 
     /**
@@ -21,7 +21,7 @@ nb.define('input', {
         if (this.data.type == 'simple') {
             this.$control = this.$node;
         } else {
-            this.$control = this.$node.find('.nb-input__controller');
+            this.$control = this.$node.find('.nb-input-controller');
         }
 
         this.disabled = this.$control.prop('disabled');
@@ -42,7 +42,7 @@ nb.define('input', {
             }
         });
 
-        this.$hint = this.$node.find('.nb-input__hint');
+        this.$hint = this.$node.find('.nb-input-hint');
 
         if (this.$hint.length) {
             this._inithint();
@@ -92,7 +92,7 @@ nb.define('input', {
     _inithint: function() {
         var that = this;
 
-        this.$hintGhost = this.$hint.find('.nb-input__hint-ghost');
+        this.$hintGhost = this.$hint.find('.nb-input-hint-ghost');
 
         if (this.$hintGhost.length) {
 
@@ -359,9 +359,9 @@ nb.define('input', {
     setHint: function(value) {
         if (this.$hint.length) {
             if (this.$hintGhost.length) {
-                this.$hint.find('.nb-input__hint-content').html(value);
+                this.$hint.find('.nb-input-hint-content').html(value);
             } else {
-                this.$hint.find('.nb-input__hint-inner').html(value);
+                this.$hint.find('.nb-input-hint-inner').html(value);
             }
             this.trigger('nb-hint-set', this);
         }
@@ -378,9 +378,9 @@ nb.define('input', {
         if (this.$hint.length) {
 
             if (this.$hintGhost.length) {
-                value = this.$hint.find('.nb-input__hint-content').html();
+                value = this.$hint.find('.nb-input-hint-content').html();
             } else {
-                value = this.$hint.find('.nb-input__hint-inner').html();
+                value = this.$hint.find('.nb-input-hint-inner').html();
             }
 
         }

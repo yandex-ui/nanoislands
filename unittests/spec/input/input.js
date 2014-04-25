@@ -41,12 +41,12 @@ describe("Input Tests", function() {
         describe("Hint", function() {
             it("markup for hint", function() {
                 var input = nb.find('input-hint');
-                expect(input.$hint.find('.nb-input__hint-inner').html()).to.equal('email');
+                expect($(input.node).find('.nb-input-hint-inner').html()).to.equal('email');
             });
 
             it("markup for ghost hint", function() {
                 var input = nb.find('input-hint-ghost');
-                expect(input.$hint.find('.nb-input__hint-content').html()).to.equal('email');
+                expect(input.$hint.find('.nb-input-hint-content').html()).to.equal('email');
             });
 
             it("Hint should be hidden then value set.", function() {
@@ -64,25 +64,25 @@ describe("Input Tests", function() {
         describe("prefix postfix", function() {
             it("markup left", function() {
                 var input = nb.find('input-left-right');
-                expect(input.$node.find('.nb-input__left').length).to.equal(1);
+                expect(input.$node.find('.nb-input-left').length).to.equal(1);
             });
             it("content left", function() {
                 var input = nb.find('input-left-right');
-                expect(input.$node.find('.nb-input__left').html()).to.equal('prefix');
+                expect(input.$node.find('.nb-input-left').html()).to.equal('prefix');
             });
             it("markup right", function() {
                 var input = nb.find('input-left-right');
-                expect(input.$node.find('.nb-input__right').length).to.equal(1);
+                expect(input.$node.find('.nb-input-right').length).to.equal(1);
             });
             it("content right", function() {
                 var input = nb.find('input-left-right');
-                expect(input.$node.find('.nb-input__right').html()).to.equal('postfix');
+                expect(input.$node.find('.nb-input-right').html()).to.equal('postfix');
             });
         });
 
         it("Input with reset param should have reset markup", function() {
             var input = nb.find('input-reset');
-            expect(input.$node.find('.nb-input__reset').length).to.be.equal(1);
+            expect(input.$node.find('.nb-input-reset').length).to.be.equal(1);
         });
         it("Input with reset param should be complex", function() {
             var input = nb.find('input-reset');

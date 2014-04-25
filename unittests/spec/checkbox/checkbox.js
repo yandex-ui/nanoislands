@@ -51,7 +51,8 @@ describe("Checkbox Tests", function() {
                 });
 
                 it('should render additional flag node', function() {
-                    expect(this.checkboxes['checkbox'].$node.find('.nb-checkbox-normal-flag').length).to.be.greaterThan(0);
+                    console.log($('.nb-checkbox-normal-flag'))
+                    expect($('.nb-checkbox-normal-flag')).to.be.ok();
                 });
 
                 it('should render attr @value from options', function() {
@@ -73,7 +74,7 @@ describe("Checkbox Tests", function() {
                 });
 
                 it('should render additional flag node', function() {
-                    expect(this.checkboxes['radio'].$node.find('.nb-checkbox-radio-flag').length).to.be.greaterThan(0);
+                    expect($('.nb-checkbox-radio-flag')).to.be.ok(0);
                 });
             });
 
