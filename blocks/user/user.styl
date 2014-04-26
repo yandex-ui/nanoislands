@@ -57,7 +57,7 @@ nb-user()
     vertical-align: middle
     text-align: left
 
-   .nb-normal-user
+  .nb-normal-user
     font-size: $fzm
     height: $m
 
@@ -73,14 +73,14 @@ nb-user()
       width: $s
       height: $s
 
-  .nb-ltr-user
+  .nb-user_ltr
     .nb-user-avatar
       margin-left: 0
 
     .nb-user-label
       margin-left: $gapS
 
-  .nb-rtl-user
+  .nb-user_rtl
     .nb-user-avatar
       margin-left: $gapS
 
@@ -128,44 +128,44 @@ nb-user()
       position: absolute
       top: 0
 
-    &.nb-rtl-user
+  .nb-user_justify.nb-user_rtl
       .nb-user-avatar
         right: 0
 
-      &.nb-small-user
-        .nb-user-label
-          margin-right: ($s + $gapS)
+  .nb-user_justify.nb-user_rtl.nb-small-user
+    .nb-user-label
+      margin-right: ($s + $gapS)
 
-      &.nb-normal-user
-        .nb-user-label
-          margin-right: ($m + $gapS)
+  .nb-user_justify.nb-user_rtl.nb-normal-user
+    .nb-user-label
+      margin-right: ($m + $gapS)
 
-    &.nb-ltr-user
-      .nb-user-avatar
-        left: 0
+  .nb-user_justify.nb-user_ltr
+    .nb-user-avatar
+      left: 0
 
-      &.nb-small-user
-        .nb-user-label
-          margin-left: ($s + $gapS)
+  .nb-user_justify.nb-user_ltr.nb-small-user
+    .nb-user-label
+      margin-left: ($s + $gapS)
 
-      &.nb-normal-user
-        .nb-user-label
-          margin-left: ($m + $gapS)
+  .nb-user_justify.nb-user_ltr.nb-normal-user
+    .nb-user-label
+      margin-left: ($m + $gapS)
 
 
-    &.nb-normal-user
-      .nb-user-label
-        padding-top: ($m/2 - $lhm)
+  .nb-user_justify.nb-small-user
+    .nb-user-label
+      padding-top: ($m/2 - $lhm)
 
-      .nb-user-name:only-child
-        top: ($lhm/2)
+    .nb-user-name:only-child
+      top: ($lhm/2)
 
-    &.nb-small-user
-      .nb-user-label
-        padding-top: ($s/2 - $lhs)
+  .nb-user_justify.nb-small-user
+    .nb-user-label
+      padding-top: ($s/2 - $lhs)
 
-      .nb-user-name:only-child
-        top: ($lhs/2)
+    .nb-user-name:only-child
+      top: ($lhs/2)
 
 
 nb-user()

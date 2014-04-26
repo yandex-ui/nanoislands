@@ -12,20 +12,22 @@ match .user nb {
           _size-theme-type-class({
                 'name': 'user'
                 'size': .size
-                if .justify {
-                    'type': .justify
-                }
             })
             @class += " _init"
+
+            if .justify {
+                @class += " nb-user_justify"
+            }
+
         apply . nb-main-attrs
 
 
         if !.rightToLeft {
-            @class += ' nb-ltr-user'
+            @class += ' nb-user_ltr'
             apply . nb-user-pic
             apply . nb-user-name
         } else {
-            @class += ' nb-rtl-user'
+            @class += ' nb-user_rtl'
             apply . nb-user-name
             apply . nb-user-pic
         }
@@ -44,7 +46,7 @@ match .user nb-user-pic {
         }
 
         if .notices > 0 {
-            <span class="nb-user__notice-count">
+            <span class="nb-user-notice-count">
                 .notices
             </span>
         }
