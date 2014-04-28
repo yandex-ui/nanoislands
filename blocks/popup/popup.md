@@ -21,7 +21,7 @@
     nb-popup({
         'id': 'genericPopup'
         'tail': 'top'
-        'title': 'Hello, I'm your generic pop-up.'
+        'title': 'Hello, I’m your generic pop-up.'
         'content': '<p>And welcome to nanoislands</p>'
     })
 ```
