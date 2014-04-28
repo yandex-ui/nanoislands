@@ -39,7 +39,7 @@
                     if ($.contains(that.uiDialog[0], e.target)) {
                         return;
                     }
-                    
+
                     that.close();
                 };
 
@@ -148,10 +148,10 @@
 
         _create: function() {
             this._super();
-            var $tail = $('<div class="nb-popup__tail"><i/></div>');
+            var $tail = $('<div class="nb-popup-tail"><i/></div>');
 
             if (this.options.tail != 'center') {
-                $tail.addClass('nb-popup__tail_to_' + this.options.tail);
+                $tail.addClass('nb-popup-' + this.options.tail + '-tail');
             }
 
             //TODO: проверить, что вызывается один раз
@@ -295,7 +295,7 @@
     nb.define('popup', {
 
         events: {
-            'click .nb-popup__close': 'close',
+            'click .nb-popup-close': 'close',
             'position': 'onposition'
         },
 
@@ -308,7 +308,7 @@
                 this.modal = true;
             }
 
-            this.$menu = this.$node.find('.nb-popup__menu');
+            this.$menu = this.$node.find('.nb-popup-menu');
 
             if (this.$menu.length) {
                 this.$menu.menu({

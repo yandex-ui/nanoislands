@@ -26,13 +26,13 @@ match .popupMenu nb {
             @data-nb-tail = .tail
         }
 
-        <ul class="nb-popup__menu">
+        <ul class="nb-popup-menu">
             for .menu {
                 if .separator {
-                    <li class="nb-popup__separator"></li>
+                    <li class="nb-popup-separator"></li>
                 } else {
-                   <li class="nb-popup__line">
-                        <a class="nb-popup__link">
+                   <li class="nb-popup-line">
+                        <a class="nb-popup-link">
                             if .href {
                                 @href = .href
                             }
@@ -97,21 +97,24 @@ match .modalPopup nb {
     if .static {
         nb-paranja()
     }
-    <div class="nb-popup _init nb-popup_type_modal">
+    <div>
+        _size-theme-type-class({
+           'name': 'popup'
+           'theme': .theme
+           'type': 'modal'
+        })
+        @class += ' _init'
+
         if !.static {
             @data-nb = "popup"
             @class += " nb-is-hidden"
         }
 
-        if .theme {
-            @class += ' nb-popup_theme_{.theme}'
-        }
-
         apply . nb-main-attrs
 
-        <div class="nb-popup__i">
+        <div class="nb-popup-i">
             if .close {
-                <a class="nb-popup__close { .close.class }">
+                <a class="nb-popup-close { .close.class }">
                     if .close.attrs {
                         for .close.attrs.* {
                             @{name()} = .
@@ -138,20 +141,20 @@ match .modalPopup nb {
 
 
 func _nb-popup-content(nodeset content) {
-    <div class="nb-popup__content">
+    <div class="nb-popup-content">
         html(content)
     </div>
 }
 
 func _nb-popup-title(nodeset title) {
-    <div class="nb-popup__title">
+    <div class="nb-popup-title">
         html(title)
     </div>
 }
 
 
 func _nb-popup-buttons(nodeset buttons) {
-    <div class="nb-popup__buttons">
+    <div class="nb-popup-buttons">
         apply buttons nb-main-attrs
 
         if count(buttons.data.*) {

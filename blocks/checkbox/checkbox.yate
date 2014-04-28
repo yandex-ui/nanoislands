@@ -15,15 +15,25 @@ match .checkbox nb {
         nb-uniq()
     }
 
-    <label data-nb='checkbox' class="nb-checkbox nb-checkbox_size_{ .size } nb-checkbox_type_{ .type } _init" for="nb-checkbox_{ uniq }">
+    <label data-nb='checkbox'  for="nb-checkbox_{ uniq }">
+
         apply . nb-main-attrs
+
+          _size-theme-type-class({
+                'name': 'checkbox'
+                'size': .size
+                if .type {
+                    'type': .type
+                }
+             })
+        @class += " _init"
 
         if .disabled  {
              @class += ' nb-is-disabled'
         }
 
 
-        <input class="nb-checkbox__input" id="nb-checkbox_{ uniq }">
+        <input class="nb-checkbox-input" id="nb-checkbox_{ uniq }">
             if .type == 'button' {
                 @type = 'checkbox'
             } else {
@@ -61,12 +71,20 @@ match .checkbox nb {
                 'id': false()
                 'attrs': false()
                 'class': [
-                    'nb-checkbox__label'
+                    'nb-checkbox-label'
                 ]
             }))
         } else {
-            <span class="nb-checkbox__flag nb-checkbox__flag_type_{ .type }"><span class="nb-checkbox__flag__icon"></span></span>
-            <span class="nb-checkbox__label">
+            <span class="nb-checkbox-flag ">
+                 if .type == 'checkbox' {
+                    @class += 'nb-checkbox-normal-flag'
+                } else if .type {
+                    @class += 'nb-checkbox-{.type}-flag'
+                }
+                <span class="nb-checkbox-flag-icon"></span>
+            </span>
+
+            <span class="nb-checkbox-label">
                 if (.content) {
                     html(.content)
                 }

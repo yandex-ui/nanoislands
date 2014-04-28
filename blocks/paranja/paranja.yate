@@ -7,7 +7,12 @@ func nb-paranja(nodeset options) {
 }
 
 match .paranja nb {
-    <div class="nb-paranja nb-paranja_theme_{ .theme }">
+    <div>
+        _size-theme-type-class({
+           'name': 'paranja'
+           'theme': .theme
+        })
+
         apply . nb-main-attrs
         
         if .content {
