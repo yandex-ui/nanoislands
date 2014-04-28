@@ -36,7 +36,7 @@ func nb-block(name, nodeset options) {
 }
 
 func _size-theme-type-class(nodeset options) {
-     @class = "nb-{ options.name }"
+     @class += "nb-{ options.name }"
 
         // Set the size and theme modifier
         if (!options.size || options.size == 'm' ) && ( !options.theme || options.theme == 'normal' ) && !options.type {
