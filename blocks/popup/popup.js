@@ -167,19 +167,13 @@
             // анимации.
             var offsetMultiplier = noEffect ? 1 : 2;
 
-            var inversion = {
-                top: 'bottom',
-                bottom: 'top',
-                left: 'right',
-                right: 'left'
-            };
-
+            // Определение направления хвостика.
             this.options.position.using = function(props, ui) {
                 var $el = ui.element.element;
                 var el = $el[0];
 
-                var tail = ui[ui.important];
-                var direction = inversion[tail];
+                var tail = _getPopupTailDirection(ui.target, ui.element);
+                var direction = _getInverseDirection(tail);
 
                 nb.node.setMod(el, 'nb-popup_to', direction);
                 $el.data('nb-tail-dir', direction);
@@ -255,6 +249,99 @@
             }
         });
     };
+
+    /**
+     * Вычисляет направление хвостика попапа, принимая во внимание положение
+     * и размер обоих элементов.
+     *
+     * Сперва для каждого элемента вычисляются координаты вершин опоясывающего
+     * прямоугольника. После этого, для каждой внешней полуплоскости,
+     * образованной сторонами прямоугольника целевого элемента (т.н. тогглера)
+     * проверяется попадание вершин прямоугольника попапа.
+     *
+     * @param  {Object} targetDimensions Положение и измерения элемента, на который указывает попап
+     * @param  {Object} popupDimensions  Положение и измерения попапа
+     * @return {String} top|right|bottom|left
+     */
+    function _getPopupTailDirection(targetDimensions, popupDimensions) {
+        var p = _getBoundingRectangle(popupDimensions);
+        var t = _getBoundingRectangle(targetDimensions);
+
+        // Проверка полуплоскости вверх от целевого элемента.
+        if (p[0].y <= t[0].y && p[1].y <= t[0].y) {
+            return 'bottom';
+        }
+
+        // Проверка полуплоскости вправо от целевого элемента.
+        if (p[0].x >= t[1].x && p[1].x >= t[1].x) {
+            return 'left';
+        }
+
+        // Проверка полуплоскости вниз от целевого элемента.
+        if (p[0].y >= t[1].y && p[1].y >= t[1].y) {
+            return 'top';
+        }
+
+        // В оставшихся случаях попап лежит слева от тогглера.
+        return 'right';
+    }
+
+    /**
+     * Возвращает координаты левой верхней и правой нижней вершин прямоугольника,
+     * из значений `top`, `left`, `width` и `height`:
+     *
+     *     {
+     *         top: 20,
+     *         left: 25,
+     *         width: 50,
+     *         height: 20
+     *     }
+     *
+     * в
+     *
+     *     [
+     *         {
+     *             x: 25,
+     *             y: 20
+     *         },
+     *         {
+     *             x: 75,
+     *             y: 70
+     *         }
+     *     ]
+     *
+     * @param  {Object} d
+     * @return {Object}
+     */
+    function _getBoundingRectangle(d) {
+        return [
+            {
+                x: d.left,
+                y: d.top
+            },
+            {
+                x: d.left + d.width,
+                y: d.top + d.height
+            }
+        ];
+    }
+
+    /**
+     * Возвращает строковое представление противоположного направления,
+     * например `top` -> `bottom`.
+     * @param  {String} direction
+     * @return {String}
+     */
+    function _getInverseDirection(direction) {
+        var inversion = {
+            top: 'bottom',
+            bottom: 'top',
+            left: 'right',
+            right: 'left'
+        };
+
+        return inversion[direction];
+    }
 
     /**
      *  Функция возвращает строку с модификаторами
