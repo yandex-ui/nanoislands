@@ -7,7 +7,7 @@ match .input-group nb {
         apply . nb-main-attrs
 
         if .disabled {
-            @class += ' is-disabled'
+            @class += ' nb-is-disabled'
             @data-nb-disabled = 'true'
         }
 
