@@ -18,26 +18,12 @@ func nb-button(nodeset options) {
 }
 
 func _nb-button-attributes(type) {
-    @class = "nb-button"
 
-    // Set the size and theme modifier of the button
-    if .size == 'm' && .theme == 'normal' {
-        @class += ' nb-normal-button'
-    } else {
-        size = (if .size == 's' {
-            '-small'
-        } else if .size == 'l' {
-            '-large'
-        } else if .size == 'xl' {
-            '-extra-large'
-        })
-
-        theme = (if !(.theme == 'normal') {
-            '-' +  .theme
-        })
-
-        @class += ' nb{ size }{ theme }-button'
-    }
+    _size-theme-type-class({
+       'name': 'button'
+       'size': .size
+       'theme': .theme
+    })
 
     if .disabled {
         @class += ' nb-is-disabled'
