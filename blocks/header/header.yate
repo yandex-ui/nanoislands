@@ -22,30 +22,22 @@ match .header nb {
 
                 <div class="nb-header__button">
                     <div class="nb-header__button__icon">
-
-                        iconSettings = {
-                            'icon': {
-                                'icon': 'settings'
-                                'size': 'm'
-                            }
-                        }
-
-                        apply iconSettings.icon nb
+                        nb-icon({
+                            'icon': 'settings'
+                            'size': 'm'
+                        })
                     </div>
                 </div>
             }
 
             if .services == 'true' {
-                iconServices = {
-                    'icon': {
-                        'icon': 'services'
-                        'size': 'm'
-                    }
-                }
 
                 <div class="nb-header__button">
                     <div class="nb-header__button__icon">
-                        apply iconServices.icon nb
+                        nb-icon({
+                            'icon': 'services'
+                            'size': 'm'
+                        })
                     </div>
                 </div>
             }

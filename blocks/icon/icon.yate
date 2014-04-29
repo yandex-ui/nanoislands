@@ -1,16 +1,20 @@
-func nb-icon(icon) {
+func nb-icon(nodeset options) {
     default = {
-        'icon': icon
         'size': 's'
     }
 
-    nb-block('icon', default)
+
+    nb-block('ico', nb-extend(default, options))
+    if!(nb-extend(default, options).icon) {
+        log('debug')
+            log(options)
+            log(nb-extend(default, options))
+    }
+
 }
 
-match .icon nb {
-    <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_{.}" />
-}
-
-match .icon[.icon] nb {
-    <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" class="nb-icon nb-icon_{.icon} nb-icon_size_{.size}" />
+match .ico nb {
+    <img>
+       @class = 'nb-icon nb-{ .size }{ .icon  != '' ? '-' + .icon  : '' }-icon'
+    </img>
 }

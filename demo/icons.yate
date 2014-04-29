@@ -1,35 +1,201 @@
-func all-icons(size, boolean white) {
-    func nb-ico(icon) {
-        default = {
-            'icon': icon
-            'size': size
-        }
-        nb-block('icon', default)
-        " "
-    }
+func all-icons-s(boolean white) {
 
     if white {
-        nb-ico('download_white')
-        nb-ico('upload_white')
-        nb-ico('link_white')
-        nb-ico('trash_white')
+        nb-icon({
+        'icon': 'download-white'
+        })
+        nb-icon({
+        'icon': 'upload-white'
+        })
+        nb-icon({
+        'icon': 'link-white'
+        })
+
+        nb-icon({
+        'icon': 'trash-white'
+        })
     } else {
-        nb-ico('close')
-        nb-ico('download')
-        nb-ico('upload')
-        nb-ico('people')
-        nb-ico('help')
-        nb-ico('eye')
-        nb-ico('link')
-        nb-ico('pause')
-        nb-ico('play')
-        nb-ico('three-dots')
-        nb-ico('trash')
-        nb-ico('attention')
-        nb-ico('mail')
-        nb-ico('vk')
-        nb-ico('twitter')
-        nb-ico('odnoklassniki')
+         nb-icon({
+        'icon': 'close'
+        })
+        nb-icon({
+        'icon': 'download'
+        })
+        nb-icon({
+        'icon': 'upload'
+        })
+
+        nb-icon({
+        'icon': 'people'
+        })
+
+        nb-icon({
+        'icon': 'help'
+        })
+
+        nb-icon({
+        'icon': 'eye'
+        })
+
+        nb-icon({
+        'icon': 'link'
+        })
+
+         nb-icon({
+        'icon': 'link'
+        })
+
+        nb-icon({
+        'icon': 'pause'
+        })
+
+         nb-icon({
+        'icon': 'play'
+        })
+
+         nb-icon({
+        'icon': 'play'
+        })
+
+        nb-icon({
+        'icon': 'three-dots'
+        })
+
+        nb-icon({
+        'icon': 'trash'
+        })
+
+        nb-icon({
+        'icon': 'attention'
+        })
+
+        nb-icon({
+        'icon': 'mail'
+        })
+
+        nb-icon({
+        'icon': 'vk'
+        })
+
+        nb-icon({
+        'icon': 'twitter'
+        })
+
+        nb-icon({
+        'icon': 'odnoklassniki'
+        })
+    }
+}
+
+func all-icons-m(boolean white) {
+
+    if white {
+        nb-icon({
+            'icon': 'download-white'
+            'size': 'm'
+        })
+        nb-icon({
+        'icon': 'upload-white'
+        'size': 'm'
+        })
+        nb-icon({
+        'icon': 'link-white'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'trash-white'
+        'size': 'm'
+        })
+    } else {
+         nb-icon({
+        'icon': 'close'
+        'size': 'm'
+        })
+        nb-icon({
+        'icon': 'download'
+         'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'upload'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'people'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'help'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'eye'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'link'
+        'size': 'm'
+        })
+
+         nb-icon({
+        'icon': 'link'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'pause'
+        'size': 'm'
+        })
+
+         nb-icon({
+        'icon': 'play'
+        'size': 'm'
+        })
+
+         nb-icon({
+        'icon': 'play'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'three-dots'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'trash'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'attention'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'mail'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'vk'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'twitter'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'odnoklassniki'
+        'size': 'm'
+        })
     }
 }
 
@@ -38,26 +204,26 @@ func icons() {
         <div class="demo-h3">
             'Size: S '
             <span class="demo-code demo-code_small">
-                '.nb-icon_size_s'
+                '.nb-iconn_size_s'
             </span>
         </div>
-        all-icons('s')
+        all-icons-s()
     </div>
     <div class="demo-section">
         <div class="demo-h3">
             'Size: M '
             <span class="demo-code demo-code_small">
-                '.nb-icon_size_m'
+                '.nb-iconn_size_m'
             </span>
         </div>
-        all-icons('m')
+        all-icons-m()
     </div>
     <div class="demo-section demo-section_dark">
         <div class="demo-h3">
             'White'
         </div>
-        all-icons('s', true())
-        all-icons('m', true())
+        all-icons-s(true())
+        all-icons-m(true())
     </div>
 }
 
