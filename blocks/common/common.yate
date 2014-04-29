@@ -35,3 +35,30 @@ func nb-block(name, nodeset options) {
     apply nb-wrap(name, options).* nb
 }
 
+func _size-theme-type-class(nodeset options) {
+     @class += "nb-{ options.name }"
+
+        // Set the size and theme modifier
+        if (!options.size || options.size == 'm' ) && ( !options.theme || options.theme == 'normal' ) && !options.type {
+            @class += ' nb-normal-{ options.name }'
+        } else {
+            size = (if options.size == 's' {
+                '-small'
+            } else if options.size == 'l' {
+                '-large'
+            } else if options.size == 'xl' {
+                '-extra-large'
+            })
+
+            theme = (if options.theme != 'normal' && options.theme {
+                '-' +  options.theme
+            })
+
+            type = (if options.type {
+                '-' +  options.type
+            })
+
+            @class += ' nb{ size }{ theme }{ type }-{ options.name }'
+        }
+}
+
