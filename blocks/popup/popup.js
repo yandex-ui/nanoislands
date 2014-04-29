@@ -148,14 +148,10 @@
 
         _create: function() {
             this._super();
-            var $tail = $('<div class="nb-popup__tail"><i/></div>');
-
-            if (this.options.tail != 'center') {
-                $tail.addClass('nb-popup__tail_to_' + this.options.tail);
-            }
+            this.$tail = $('<div class="nb-popup__tail"><i/></div>');
 
             //TODO: проверить, что вызывается один раз
-            $tail.prependTo(this.uiDialog);
+            this.$tail.prependTo(this.uiDialog);
         },
         _position: function(noEffect) {
             var that = this;
@@ -167,24 +163,39 @@
             // анимации.
             var offsetMultiplier = noEffect ? 1 : 2;
 
-            var inversion = {
-                top: 'bottom',
-                bottom: 'top',
-                left: 'right',
-                right: 'left'
+            // Позиционирование хвостика попапа, заданное в CSS.
+            var defaultTailPosition = {
+                top: '',
+                left: '',
+                right: '',
+                bottom: ''
             };
 
             this.options.position.using = function(props, ui) {
                 var $el = ui.element.element;
                 var el = $el[0];
 
-                var tail = ui[ui.important];
-                var direction = inversion[tail];
+                // Определение направления хвостика.
+                var tailDirection = _getPopupTailDirection(ui.target, ui.element);
+                var direction = _getInverseDirection(tailDirection);
+                var targetCenter = _getElementCenter(ui.target);
 
                 nb.node.setMod(el, 'nb-popup_to', direction);
                 $el.data('nb-tail-dir', direction);
 
-                props[tail] += (that.tailOffset * offsetMultiplier);
+                // Позиционирование хвостика вдоль попапа, необходимо для того,
+                // чтобы хвостик указывал на центр целевого элемента.
+                if (_isDirectionVertical(tailDirection)) {
+                    that.$tail.css($.extend(defaultTailPosition, {
+                        left: Math.abs(targetCenter.x - ui.element.left) / ui.element.width * 100 + '%'
+                    }));
+                } else {
+                    that.$tail.css($.extend(defaultTailPosition, {
+                        top: Math.abs(targetCenter.y - ui.element.top) / ui.element.height * 100 + '%'
+                    }));
+                }
+
+                props[tailDirection] += (that.tailOffset * offsetMultiplier);
 
                 return using.call(el, props, ui);
             };
@@ -255,6 +266,116 @@
             }
         });
     };
+
+    /**
+     * Вычисляет направление хвостика попапа, принимая во внимание положение
+     * и размер обоих элементов.
+     *
+     * Сперва для каждого элемента вычисляются координаты вершин опоясывающего
+     * прямоугольника. После этого, для каждой внешней полуплоскости,
+     * образованной сторонами прямоугольника целевого элемента (т.н. тогглера)
+     * проверяется попадание вершин прямоугольника попапа.
+     *
+     * @param  {Object} targetDimensions Положение и измерения элемента, на который указывает попап
+     * @param  {Object} popupDimensions  Положение и измерения попапа
+     * @return {String} top|right|bottom|left
+     */
+    function _getPopupTailDirection(targetDimensions, popupDimensions) {
+        var p = _getBoundingRectangle(popupDimensions);
+        var t = _getBoundingRectangle(targetDimensions);
+
+        // Проверка полуплоскости вверх от целевого элемента.
+        if (p[0].y <= t[0].y && p[1].y <= t[0].y) {
+            return 'bottom';
+        }
+
+        // Проверка полуплоскости вправо от целевого элемента.
+        if (p[0].x >= t[1].x && p[1].x >= t[1].x) {
+            return 'left';
+        }
+
+        // Проверка полуплоскости вниз от целевого элемента.
+        if (p[0].y >= t[1].y && p[1].y >= t[1].y) {
+            return 'top';
+        }
+
+        // В оставшихся случаях попап лежит слева от тогглера.
+        return 'right';
+    }
+
+    /**
+     * Рассчитывает координату центра прямоугольника на основе значений
+     * `left`, `top`, `width`, `height`.
+     * @param  {Object} d
+     * @return {Object}
+     */
+    function _getElementCenter(d) {
+        return {
+            x: d.left + (d.width / 2),
+            y: d.top + (d.height / 2)
+        };
+    }
+
+    /**
+     * Возвращает координаты левой верхней и правой нижней вершин прямоугольника,
+     * из значений `top`, `left`, `width` и `height`:
+     *
+     *     {
+     *         top: 20,
+     *         left: 25,
+     *         width: 50,
+     *         height: 20
+     *     }
+     *
+     * в
+     *
+     *     [
+     *         {
+     *             x: 25,
+     *             y: 20
+     *         },
+     *         {
+     *             x: 75,
+     *             y: 70
+     *         }
+     *     ]
+     *
+     * @param  {Object} d
+     * @return {Object}
+     */
+    function _getBoundingRectangle(d) {
+        return [
+            {
+                x: d.left,
+                y: d.top
+            },
+            {
+                x: d.left + d.width,
+                y: d.top + d.height
+            }
+        ];
+    }
+
+    /**
+     * Возвращает строковое представление противоположного направления,
+     * например `top` -> `bottom`.
+     * @param  {String} direction
+     * @return {String}
+     */
+    function _getInverseDirection(direction) {
+        var inversion = {
+            top: 'bottom',
+            bottom: 'top',
+            left: 'right',
+            right: 'left'
+        };
+
+        return inversion[direction];
+    }
+
+    function _isDirectionVertical(direction) {
+        return  direction === 'top' || direction === 'bottom';
+    }
 
     /**
      *  Функция возвращает строку с модификаторами
