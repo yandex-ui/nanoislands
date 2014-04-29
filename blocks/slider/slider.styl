@@ -13,22 +13,22 @@ nb-slider()
     cursor: default
 
 
-  .nb-slider__handle
+  .nb-slider-handle
     kind: button
     skin: button fly no-active
 
-  .nb-slider__small-handle
+  .nb-slider-small-handle
     kind: button
     skin: button fly small no-active
 
-  .nb-slider__fallback
+  .nb-slider-fallback
     kind: block
     reset: input
     user-select: none
     width: 1.2em
     text-align: center
 
-  .nb-slider__body
+  .nb-slider-body
     display: none
     position: relative
     z-index: 7
@@ -39,10 +39,10 @@ nb-slider()
     -moz-user-select: none
     user-select: none
 
-  .nb-slider_disabled .nb-slider__body
+  .nb-slider.nb-is-disabled .nb-slider-body
     opacity: 0.5
 
-  .nb-slider__body:before
+  .nb-slider-body:before
     content: ''
     display: block
     position: absolute
@@ -56,12 +56,12 @@ nb-slider()
 
     border-radius: 3px
 
-  .nb-slider__body:before
+  .nb-slider-body:before
     background-color: rgba(0,0,0,.07)
 
     box-shadow: inset 0 1px 3px rgba(0,0,0,.2), inset 0 0 1px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.2)
 
-  .nb-slider.nb-slider_orientation_horiz .nb-slider__body .ui-slider-range
+  .nb-horiz-slider .nb-slider-body .ui-slider-range
     position: absolute
     z-index: 2
     height: $nb-slider__track-height
@@ -86,7 +86,7 @@ nb-slider()
       background: #ffeca6
       box-shadow: 0 1px 3px -1px rgba(0,0,0,0.2) inset
 
-  .nb-slider .nb-slider__body .ui-slider-handle
+  .nb-slider .nb-slider-body .ui-slider-handle
     z-index: 6
     top: -0.85em
     margin: 0 0 0 -1.5em

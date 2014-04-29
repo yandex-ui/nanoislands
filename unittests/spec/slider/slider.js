@@ -18,7 +18,7 @@ describe('Slider Tests', function() {
         });
 
         it('should has defined initial value', function() {
-            var input = this.slider.node.querySelector('.nb-slider__fallback');
+            var input = this.slider.node.querySelector('.nb-slider-fallback');
 
             expect(input.value).to.be.equal('25');
         });
@@ -67,7 +67,7 @@ describe('Slider Tests', function() {
 
     describe('#setValue()', function() {
         it('should change the value', function() {
-            var input = this.slider.node.querySelector('.nb-slider__fallback');
+            var input = this.slider.node.querySelector('.nb-slider-fallback');
             this.slider.setValue(30);
 
             expect(input.value).to.be.equal('30');
@@ -93,7 +93,7 @@ describe('Slider Tests', function() {
 
     describe('#setName()', function() {
         it('should set name`s value of input', function() {
-            var input = this.slider.node.querySelector('.nb-slider__fallback');
+            var input = this.slider.node.querySelector('.nb-slider-fallback');
             this.slider.setName('price');
 
             expect(input.name).to.be.equal('price');
@@ -123,7 +123,7 @@ describe('Slider Tests', function() {
 
     describe('#disable()', function() {
         it('should set disable state', function() {
-            var $control = this.slider.$node.find('.nb-slider__body');
+            var $control = this.slider.$node.find('.nb-slider-body');
 
             this.slider.disable();
 
@@ -139,7 +139,7 @@ describe('Slider Tests', function() {
 
     describe('#enable()', function() {
         it('should reset disabled state', function() {
-            var $conrol = this.slider.$node.find('.nb-slider__body');
+            var $conrol = this.slider.$node.find('.nb-slider-body');
 
             this.sliderDisabled.enable();
 

@@ -249,7 +249,7 @@ nb.define('checkbox', {
      * @returns {Object} nb.block
      */
     setLabel: function(label) {
-        this.$node.find('.nb-checkbox__label').html(label);
+        this.$node.find('.nb-checkbox-label').html(label);
         this.trigger('nb-label-set', this);
         return this;
     },
@@ -259,7 +259,7 @@ nb.define('checkbox', {
      * @returns {String | Number}
      */
     getLabel: function() {
-        return this.$node.find('.nb-checkbox__label').html();
+        return this.$node.find('.nb-checkbox-label').html();
     },
 
     /**

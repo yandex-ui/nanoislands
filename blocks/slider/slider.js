@@ -14,8 +14,8 @@ nb.define('slider', {
         var that = this;
 
         this.data = this.nbdata();
-        this.$control = this.$node.find('.nb-slider__fallback');
-        this.$body = this.$node.children('.nb-slider__body');
+        this.$control = this.$node.find('.nb-slider-fallback');
+        this.$body = this.$node.children('.nb-slider-body');
 
         this.$body.show();
 

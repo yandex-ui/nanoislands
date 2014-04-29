@@ -14,7 +14,9 @@ match .suggest nb {
         @data-size = .size
         @data-source = .source
         @data-highlight = .highlight
-        @data-class-suggest = 'nb-island nb-island_type_fly nb-suggest__container nb-suggest_size_{.size}'
+        @data-class-suggest = 'nb-island nb-fly-island nb-suggest-container nb-{.size}-suggest'
+
+
         if .class {
             @data-class-suggest += ' {.classSuggest}'
         }
@@ -27,7 +29,7 @@ match .suggest nb {
 
         nb-input({
              'size': .size
-             'class': 'nb-suggest__input'
+             'class': 'nb-suggest-input'
              'attrs': .attrsInput
              'disabled': .disabled
              'name': .name
@@ -37,8 +39,8 @@ match .suggest nb {
 }
 
 match / nb-suggest {
-    <li class="nb-suggest__item">
-        <a class="nb-suggest__item__link">
+    <li class="nb-suggest-item">
+        <a class="nb-suggest-item-link">
             apply .item nb-suggest
         </a>
     </li>

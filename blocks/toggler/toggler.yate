@@ -11,7 +11,13 @@ func nb-toggler(nodeset toggler) {
 }
 
 match .toggler nb {
-    <a tabindex="1" class="nb-toggler nb-toggler_size_{.size} _init" data-nb="toggler">
+    <a tabindex="1" data-nb="toggler">
+     _size-theme-type-class({
+        'name': 'toggler'
+        'size': .size
+    })
+    @class += " _init"
+
         apply . nb-main-attrs
         if .checked {
             @class += ' is-checked'
@@ -19,8 +25,8 @@ match .toggler nb {
         if .disabled {
             @class += ' nb-is-disabled'
         }
-        <label class="nb-toggler__label">
-            <input type="checkbox" class="nb-toggler__checkbox" >
+        <label class="nb-toggler-label">
+            <input type="checkbox" class="nb-toggler-checkbox" >
                 for .attrs.* {
                    @{name()} = .
                 }
@@ -38,18 +44,18 @@ match .toggler nb {
                 }
             </input>
         </label>
-        <div class="nb-toggler__container">
-            <div class="nb-toggler__sticker nb-toggler__sticker_left">
-                <span class="nb-toggler__text">
+        <div class="nb-toggler-container">
+            <div class="nb-toggler-sticker nb-toggler-left-sticker">
+                <span class="nb-toggler-text">
                     .leftText
                 </span>
             </div>
-            <div class="nb-toggler__sticker nb-toggler__sticker_right">
-                <span class="nb-toggler__text">
+            <div class="nb-toggler-sticker nb-toggler-right-sticker">
+                <span class="nb-toggler-text">
                     .rightText
                 </span>
             </div>
         </div>
-        <div class="nb-toggler__knob"></div>
+        <div class="nb-toggler-knob"></div>
     </a>
 }
