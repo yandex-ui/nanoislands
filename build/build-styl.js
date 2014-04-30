@@ -8,13 +8,14 @@ var content = [
 var stylus = require('stylus');
 var autoprefixer = require('autoprefixer');
 var style = stylus(content)
-    .set('filename', ie ? 'nanoislands.ie.css' : 'nanoislands.css')
+    .set('filename', 'nanoislands.css')
     .set('resolve url', true)
     .define('url', stylus.resolver());
 
 style.render(function(err, css) {
     var browsers = [
         // эти браузеры прибиты по версиям
+        'Explorer >= 9',
         'Opera 12',
         'Safari >= 6',
 
@@ -22,17 +23,13 @@ style.render(function(err, css) {
         'last 5 Chrome versions',
         'last 5 Firefox versions',
         'last 5 Opera versions'
-    ]
+    ];
 
     if (err) {
         console.error(err);
         process.exit(1);
     }
 
-    if (!ie) {
-        css = autoprefixer.apply(this, browsers).process(css).css;
-    } else {
-        css = autoprefixer('Explorer >= 9').process(css).css;
-    }
+    css = autoprefixer.apply(this, browsers).process(css).css;
     process.stdout.write(css);
 });
