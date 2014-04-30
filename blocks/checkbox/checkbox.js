@@ -34,17 +34,6 @@ nb.define('checkbox', {
             evt.stopPropagation();
         });
 
-        // emulates "change" event for IE<9
-        // IE<9 triggers "change" only after "blur"
-        if (document['documentMode'] && document['documentMode'] < 9) {
-            var that = this;
-            this.$control.on('propertychange.nb-checkbox', function(e) {
-                if (e.originalEvent.propertyName === 'checked') {
-                    that.onchange();
-                }
-            });
-        }
-
         if (this.getType() === 'radio') {
             nb.on('checkbox:checked', $.proxy(this._onCheckboxChecked, this));
         }

@@ -13,13 +13,6 @@
 
 var nb = {};
 
-/**
- * IE < 9
- * @type {Boolean}
- * @constant
- */
-nb.IE_LT9 = Boolean(document['documentMode'] && document['documentMode'] < 9);
-
 //  ---------------------------------------------------------------------------------------------------------------  //
 
 //  Минимальный common.js

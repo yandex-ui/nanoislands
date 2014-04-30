@@ -33,18 +33,8 @@ nb.define('select', {
 
             this._updateFromSelect();
 
-            // degradation to native control in IE < 9
-            if (nb.IE_LT9) {
-                var that = this;
-                this.$control.on('change', function(e) {
-                    that.setState({
-                        value: e.target.value
-                    });
-                });
-            } else {
-                // preparing control depending on configuration and content
-                this.controlPrepare();
-            }
+            // preparing control depending on configuration and content
+            this.controlPrepare();
 
             this.trigger('nb-inited', this);
         },
@@ -408,9 +398,7 @@ nb.define('select', {
         disable: function() {
             if (this.isEnabled()) {
                 this.$node.addClass('nb-is-disabled');
-                if (!nb.IE_LT9) {
-                    this.$node.autocomplete('disable');
-                }
+                this.$node.autocomplete('disable');
                 this.$control.attr('disabled', 'disabled');
                 this.trigger('nb-disabled', this);
             }
@@ -425,9 +413,7 @@ nb.define('select', {
         enable: function() {
             if (!this.isEnabled()) {
                 this.$node.removeClass('nb-is-disabled');
-                if (!nb.IE_LT9) {
-                    this.$node.autocomplete('enable');
-                }
+                this.$node.autocomplete('enable');
                 this.$control.removeAttr('disabled');
                 this.trigger('nb-enabled', this);
             }
