@@ -31,10 +31,10 @@ describe("Button Tests", function() {
         });
     });
 
-    describe("#setText()", function() {
+    describe("#setContent()", function() {
 
         it("check text", function() {
-            this.button.setText("Privet");
+            this.button.setContent("Privet");
             expect($(this.button.node).find('._nb-button-content').html()).to.be.equal("Privet");
         });
 
@@ -45,18 +45,18 @@ describe("Button Tests", function() {
                 flag = true;
             });
 
-            this.button.setText("Privet");
+            this.button.setContent("Privet");
             expect(flag).to.ok();
         });
     });
 
-    describe("#getText()", function() {
+    describe("#getContent()", function() {
         it("should return text", function() {
-            expect(this.button.getText()).to.equal("Button");
+            expect(this.button.getContent()).to.equal("Button");
         });
-        it("should return new text after setText()", function() {
-            this.button.setText("SetText");
-            expect(this.button.getText()).to.equal("SetText");
+        it("should return new text after setContent()", function() {
+            this.button.setContent("SetText");
+            expect(this.button.getContent()).to.equal("SetText");
         });
     });
 

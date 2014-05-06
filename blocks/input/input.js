@@ -305,7 +305,7 @@ nb.define('input', {
      */
     getValue: function() {
         // get actual value from <input/> and save it to instance
-        return  this.$control.val();
+        return this.$control.val();
     },
 
     /**

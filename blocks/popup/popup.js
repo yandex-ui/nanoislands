@@ -336,7 +336,7 @@
     }
 
     function _isDirectionVertical(direction) {
-        return  direction === 'top' || direction === 'bottom';
+        return direction === 'top' || direction === 'bottom';
     }
 
     /**
