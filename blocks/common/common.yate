@@ -12,8 +12,10 @@ match .* nb-main-attrs {
         ' {.}'
     }
 
-    @data-nb += for .mixin-nb {
-        ' {.}'
+    if .mixin-nb {
+        @data-nb += for .mixin-nb {
+            ' {.}'
+        }
     }
 
     for .data-nb.* {

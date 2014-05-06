@@ -1,3 +1,19 @@
+##### 0.4.0 — "The Apple"
+* CSS class naming has been changed.
+* All private css classes and yate functions has been prefixed with `_`, fix #313 — Разделить классы блоков на публичные и приватные
+
+###### API changes
+* Gaps API has been changed
+* [Icon] now accepts only object, fix #273 — nb-icon size couldn't be set
+* [Button] setText -> setContent, fix #284 — Close XSS in button#setText
+
+
+
+##### Fixes
+fix #313 — Разделить классы блоков на публичные и приватные
+fix #284 — Close XSS in button#setText
+fix #273 — nb-icon size couldn't be set
+
 ##### 0.3.17 — patch
 
 ##### Fixes
