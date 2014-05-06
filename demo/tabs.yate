@@ -123,8 +123,8 @@ func tabs-island() {
         ]
     }
 
-    <div class="nb-island nb-fly-island">
-        @style = "width: 300px"
+    <div class="nb-island _nb-fly-island">
+        @style = "width: 500px"
 
         nb-tabs(block)
     </div>
