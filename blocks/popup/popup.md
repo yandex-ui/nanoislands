@@ -186,6 +186,19 @@ Arguments:
     */
     popup.isOpen();
 
+     /**
+     * Set content of popup (not menu, not modal)
+     * @fires 'nb-content-set'
+     * @returns {Object} nb.block
+     */
+    popup.setContent('Privet');
+
+    /**
+     * Get content of popup (not menu, not modal)
+     * @returns {String} content
+     */
+    popup.getContent();
+
 ``` 
 
 

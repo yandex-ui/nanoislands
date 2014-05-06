@@ -51,7 +51,6 @@ describe("Checkbox Tests", function() {
                 });
 
                 it('should render additional flag node', function() {
-                    console.log($('.nb-checkbox-normal-flag'))
                     expect($('._nb-checkbox-normal-flag')).to.be.ok();
                 });
 

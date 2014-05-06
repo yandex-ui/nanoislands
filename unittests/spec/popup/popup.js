@@ -27,10 +27,24 @@ describe("Popup Tests", function() {
     describe("#Toggler", function() {
         it("#Open", function() {
             this.toggler.open();
-            expect(this.popup.$node.css('display')).to.equal('block');
+            expect(this.popup.isOpen()).to.ok();
+        });
+
+        it("#Toggle() close popup", function() {
+            this.toggler.open();
+            this.toggler.toggle();
+            expect(this.popup.isOpen()).to.not.ok();
+        });
+
+        it("#Toggle() open popup", function() {
+            this.toggler.open();
+            this.toggler.close();
+            this.toggler.toggle();
+            expect(this.popup.isOpen()).to.ok();
         });
 
         it("#Open check event", function() {
+            this.toggler.close();
             var flag = false;
             this.toggler.on('nb-opened', function() {
                 flag = true;
@@ -41,6 +55,7 @@ describe("Popup Tests", function() {
         });
 
         it("#Close event", function() {
+            this.toggler.open();
             var flag = false;
             this.toggler.on('nb-closed', function() {
                 flag = true;
@@ -134,6 +149,25 @@ describe("Popup Tests", function() {
             });
 
             this.popup.open({where: this.toggler.node, appendTo: '.content'});
+            expect(flag).to.ok();
+        });
+
+        it("#getContent() ", function() {
+            expect(this.popup.getContent()).to.equal('Удалить');
+        });
+
+        it("#setContent() ", function() {
+            this.popup.setContent('privet');
+            expect(this.popup.getContent()).to.equal('privet');
+        });
+
+        it("#setContent() check event", function() {
+            var flag = false;
+            this.popup.on('nb-content-set', function() {
+                flag = true;
+            });
+
+            this.popup.setContent('privet');
             expect(flag).to.ok();
         });
     });

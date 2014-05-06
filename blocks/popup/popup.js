@@ -466,6 +466,25 @@
             return this;
         },
 
+        /**
+         * Set content of popup (not menu, not modal)
+         * @fires 'nb-content-set'
+         * @returns {Object} nb.block
+         */
+        setContent: function(content) {
+            this.$node.find('._nb-popup-content').html(content);
+            this.trigger('nb-content-set');
+            return this;
+        },
+
+        /**
+         * Get content of popup (not menu, not modal)
+         * @returns {String} content
+         */
+        getContent: function() {
+            return this.$node.find('._nb-popup-content').html();
+        },
+
         isOpen: function() {
             return this.node && this.node.widget && this.node.widget.isOpen();
         },
