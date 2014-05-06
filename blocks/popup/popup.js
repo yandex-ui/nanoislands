@@ -48,7 +48,7 @@
             }
 
             if (this.options.position.fixed) {
-                this._onresize = $.proxy(this._position, this, true);
+                this._onresize = $.proxy(this._position, this);
                 this.window.on('resize', this._onresize);
             }
 
@@ -153,15 +153,9 @@
             //TODO: проверить, что вызывается один раз
             this.$tail.prependTo(this.uiDialog);
         },
-        _position: function(noEffect) {
+        _position: function() {
             var that = this;
             var using = this.options.position.using;
-
-            // При повторном позиционировании попапа без его скрытия
-            // не произойдет вызова эффекта `nb`. Поэтому нет необходимости
-            // дополнительно смещать попап, чтобы обеспечить простор для
-            // анимации.
-            var offsetMultiplier = noEffect ? 1 : 2;
 
             // Позиционирование хвостика попапа, заданное в CSS.
             var defaultTailPosition = {
@@ -177,11 +171,10 @@
 
                 // Определение направления хвостика.
                 var tailDirection = _getPopupTailDirection(ui.target, ui.element);
-                var direction = _getInverseDirection(tailDirection);
                 var targetCenter = _getElementCenter(ui.target);
 
-                nb.node.setMod(el, '_nb-popup_to', direction);
-                $el.data('nb-tail-dir', direction);
+                nb.node.setMod(el, '_nb-popup_to', _getInverseDirection(tailDirection));
+                $el.data('nb-tail-dir', tailDirection);
 
                 // Позиционирование хвостика вдоль попапа, необходимо для того,
                 // чтобы хвостик указывал на центр целевого элемента.
@@ -195,7 +188,7 @@
                     }));
                 }
 
-                props[tailDirection] += (that.tailOffset * offsetMultiplier);
+                props[tailDirection] += that.tailOffset;
 
                 return using.call(el, props, ui);
             };
@@ -208,58 +201,27 @@
 
     jQuery.effects.effect.nb = function(o, done) {
         var $this = $(this);
-        var mode = $.effects.setMode($this, o.mode || "hide");
-        var tailDir = $this.data('nb-tail-dir');
+        var mode = $.effects.setMode($this, o.mode || 'hide');
+        var shouldHide = mode === 'hide';
 
-        var res = {
-            show: {
-                'bottom': {
-                    opacity: 1,
-                    top: '-=' + $.nb.contextDialog.prototype.tailOffset
-                },
-                'top': {
-                    opacity: 1,
-                    bottom: '-=' + $.nb.contextDialog.prototype.tailOffset
-                },
-                'left': {
-                    opacity: 1,
-                    right: '-=' + $.nb.contextDialog.prototype.tailOffset
-                },
-                'right': {
-                    opacity: 1,
-                    left: '-=' + $.nb.contextDialog.prototype.tailOffset
-                }
-            },
-            hide: {
-                'bottom': {
-                    opacity: 0,
-                    top: '+=' + $.nb.contextDialog.prototype.tailOffset
-                },
-                'top': {
-                    opacity: 0,
-                    bottom: '+=' + $.nb.contextDialog.prototype.tailOffset
-                },
-                'left': {
-                    opacity: 0,
-                    right: '+=' + $.nb.contextDialog.prototype.tailOffset
-                },
-                'right': {
-                    opacity: 0,
-                    left: '+=' + $.nb.contextDialog.prototype.tailOffset
-                }
-            }
-        };
+        var tailDirection = $this.data('nb-tail-dir');
+        var distance = $.nb.contextDialog.prototype.tailOffset;
 
-        if (mode == 'show') {
+        var animation = {};
+        animation.opacity = shouldHide ? 0 : 1;
+        animation[tailDirection] = (shouldHide ? '+=' : '-=') + distance;
+
+        if (!shouldHide) {
+            $this.css(tailDirection, '+=' + distance);
             $this.show();
         }
 
-        $this.animate(res[mode][tailDir], {
+        $this.animate(animation, {
             queue: false,
             duration: o.duration,
             easing: o.easing,
             complete: function() {
-                if (mode == 'hide') {
+                if (shouldHide) {
                     $this.hide();
                 }
                 done();
