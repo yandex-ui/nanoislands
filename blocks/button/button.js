@@ -22,10 +22,10 @@ nb.define('button', {
     /**
      * Set text of the button
      * @param {String} text  — text for the button
-     * @fires 'nb-text-set'
+     * @fires 'nb-content-set'
      * @returns {Object} nb.block
      */
-    setText: function(text) {
+    setContent: function(text) {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.find('._nb-button-content').html(text);
             this.trigger('nb-text-set', this);
@@ -38,7 +38,7 @@ nb.define('button', {
      * @returns {String} — text of the button
      *
      */
-    getText: function() {
+    getContent: function() {
         return this.$node.find('._nb-button-content').html();
     },
 
