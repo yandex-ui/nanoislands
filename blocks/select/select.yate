@@ -5,17 +5,17 @@ func nb-select(nodeset select) {
         'direction': 'bottom'
     }
 
-    nb-block('select', nb-extend(default, select))
+    _nb-block('select', _nb-extend(default, select))
 }
 
 match .select nb {
     <span data-nb-direction ="{ .direction }" data-nb="select" tabindex="0">
         _nb-button-attributes('span')
 
-        @class += ' nb-select _init nb-select__button'
+        @class += ' nb-select _init _nb-select-button'
 
         if .size == 's' {
-            @class += ' nb-small-select'
+            @class += ' _nb-small-normal-select'
         }
 
         apply . nb-main-attrs
@@ -28,7 +28,7 @@ match .select nb {
             @data-nb-maxheight = .maxHeight
         }
 
-        <span class="nb-button-content">
+        <span class="_nb-button-content">
             isSelected = count(.items[(.selected)]) > 0
 
             for .items {
@@ -37,8 +37,8 @@ match .select nb {
                 }
             }
         </span>
-        <span class="nb-select-helper"></span> // Helper for baseline alignment
-        <select class="nb-select__fallback">
+        <span class="_nb-select-helper"></span> // Helper for baseline alignment
+        <select class="_nb-select-fallback">
             if ( .disabled ) {
                 @disabled = 'disabled'
             }
@@ -53,7 +53,13 @@ match .select nb {
 
             apply . nb-select-options
         </select>
-        <div class="nb-select__dropdown nb-select__dropdown_size_{ .size } nb-select_theme_{ .theme }"></div>
+        <div>
+            _size-theme-type-class({
+               'name': 'select-dropdown'
+               'size': .size
+               'theme': .theme
+            })
+        </div>
     </span>
 }
 

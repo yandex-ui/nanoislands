@@ -1,50 +1,63 @@
-.nb-input_type_simple
+._nb-simple-input
+._nb-small-simple-input
+._nb-large-simple-input
+._nb-normal-input
   kind: input
   skin: input
 
-  &.nb-input_size_s
+  &._nb-is-focused
+    skin: input_focus
+
+
+._nb-small-simple-input
     skin: input small
     // reset default styles for <input type="search"/>
     -webkit-appearance: textfield
+  &._nb-is-focused
+    skin: input_focus
 
-  &.nb-input_size_l
+._nb-large-simple-input
     skin: input large
     // reset default styles for <input type="search"/>
     -webkit-appearance: textfield
 
-  &.nb-is-focused
-    skin: input_focus
-
-.nb-input_type_complex
+._nb-complex-input
+._nb-small-complex-input
   kind: field $islands_s $islands_s
   skin: input-box
 
-  &.nb-input_size_s
-    skin: input-box small
+._nb-small-complex-input
+  skin: input-box small
 
-  .nb-input__content
+._nb-simple-input
+._nb-complex-input
+._nb-small-complex-input
+._nb-large-complex-input
+._nb-small-simple-input
+._nb-large-simple-input
+  ._nb-input-content
     kind: field-content
 
-  .nb-input__controller
+  ._nb-input-controller
     kind: input
     z-index: 9
     width: 100%
     height: 100%
 
-  & textarea.nb-input__controller
+  & textarea._nb-input-controller
     vertical-align: top
     resize: none
 
-  .nb-input__view
+  ._nb-input-view
     border: 1px solid transparent
     kind: fill -1px
     skin: input-view no-focus
 
-  &:not(.nb-is-disabled):focus .nb-input__view
-  &:not(.nb-is-disabled).nb-is-focused .nb-input__view
+  &:not(._nb-is-disabled):focus ._nb-input-view
+  &:not(._nb-is-disabled)._nb-is-focused ._nb-input-view
     skin: input_focus
 
-  .nb-input__reset
+  ._nb-input-reset
     kind: field-right 0.5*$islands_s
     skin: icon _remove with-hover
     margin-right: $islands_s * -1
@@ -53,35 +66,36 @@
     &:before
       content: " " // utf nbsp here
 
-  .nb-input__left
+  ._nb-input-left
     kind: field-left 0.5*$islands_s
     margin-left: $islands_s * -1
     height: auto
 
-  .nb-input__right
+  ._nb-input-right
     kind: field-right 0.5*$islands_s
     margin-right: $islands_s * -1
     height: auto
 
-  &.is-ghost:not(.nb-is-focused) .nb-input__view
+  &._nb-is-ghost:not(._nb-is-focused) ._nb-input-view
     border: none
     background: none
     box-shadow: none
 
-  .nb-input__hint
+  ._nb-input-hint
     // In quotes, 'cause there is conflict with nib's input function
     skin: 'input-placeholder' (-inner '&-inner') (-ghost '&-ghost')
 
-.nb-input_size_s
-  .nb-input__hint-inner
+._nb-small-simple-input
+._nb-small-complex-input
+  ._nb-input-hint-inner
     line-height: $islands_m
     font-size: $islands_text_s
 
-.nb-input.is-wrong
+.nb-input._nb-is-wrong
   skin: input_error
 
-.nb-input__controller::-ms-clear
-.nb-input::-ms-clear
+._nb-input-controller::-ms-clear
+._nb-input::-ms-clear
   display: none
 
 

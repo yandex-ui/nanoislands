@@ -102,9 +102,6 @@ func inputs() {
     <div class="demo-section">
         <div class="demo-h3">
             'Size: M '
-            <span class="demo-code demo-code_small">
-                '.nb-input_size_m'
-            </span>
         </div>
 
         show(input-medium())
@@ -112,9 +109,6 @@ func inputs() {
     <div class="demo-section">
         <div class="demo-h3">
             'Size: S '
-            <span class="demo-code demo-code_small">
-                '.nb-input_size_s'
-            </span>
         </div>
 
         show(input-small())
@@ -122,9 +116,6 @@ func inputs() {
     <div class="demo-section">
         <div class="demo-h3">
             'Disabled '
-            <span class="demo-code demo-code_small">
-                '.nb-is-disabled'
-            </span>
         </div>
 
         show(input-disabled())

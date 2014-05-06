@@ -3,49 +3,41 @@ func nb-header(nodeset header) {
         'arrow': {
             'search': 'true'
             'buttonContent': 'Найти'
-            'class': 'nb-header__arrow'
+            'class': '_nb-header-arrow'
         }
         'services': 'true'
         'settings': 'true'
         'yaHref': 'http://yandex.ru'
     }
 
-    nb-block('header', nb-deep-extend(default, header))
+    _nb-block('header', _nb-deep-extend(default, header))
 }
 
 match .header nb {
     <div class="nb-header _init" data-nb="header">
         apply . nb-main-attrs
-        <div class="nb-header__actions">
+        <div class="_nb-header-actions">
 
             if .settings == 'true' {
 
-                <div class="nb-header__button">
-                    <div class="nb-header__button__icon">
-
-                        iconSettings = {
-                            'icon': {
-                                'icon': 'settings'
-                                'size': 'm'
-                            }
-                        }
-
-                        apply iconSettings.icon nb
+                <div class="_nb-header-button">
+                    <div class="_nb-header-button-icon">
+                        nb-icon({
+                            'icon': 'settings'
+                            'size': 'm'
+                        })
                     </div>
                 </div>
             }
 
             if .services == 'true' {
-                iconServices = {
-                    'icon': {
-                        'icon': 'services'
-                        'size': 'm'
-                    }
-                }
 
-                <div class="nb-header__button">
-                    <div class="nb-header__button__icon">
-                        apply iconServices.icon nb
+                <div class="_nb-header-button">
+                    <div class="_nb-header-button-icon">
+                        nb-icon({
+                            'icon': 'services'
+                            'size': 'm'
+                        })
                     </div>
                 </div>
             }
@@ -53,8 +45,8 @@ match .header nb {
                 nb-user(.user)
             }
         </div>
-        <div class="nb-header__main">
-            <a href="{.yaHref}" class="nb-header__logo"></a>
+        <div class="_nb-header-main">
+            <a href="{.yaHref}" class="_nb-header-logo"></a>
             nb-arrow(.arrow)
         </div>
     </div>

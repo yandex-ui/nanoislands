@@ -3,27 +3,32 @@ func nb-tabs(nodeset options) {
         'size': 'm'
     }
 
-    nb-block('tabs', nb-extend(default, options))
+    _nb-block('tabs', _nb-extend(default, options))
 }
 
 match .tabs nb {
-    <div class="nb-tabs nb-tabs_size_{.size} _init" data-nb="tabs">
-        if .rise {
-            @class += ' nb-tabs_rise_{ .rise }'
-        }
+    <div data-nb="tabs">
+        _size-theme-type-class({
+            'name': 'tabs'
+            'size': .size
+            if .rise {
+                'type': 'rise-' + .rise
+            }
+         })
+         @class += " _init"
 
         apply . nb-main-attrs
 
-        prefix = "tabs-{nb-uniq()}"
+        prefix = "tabs-{_nb-uniq()}"
 
-        <ul class="nb-tabs__tabs">
+        <ul class="_nb-tabs-tabs">
             for .items {
-                <li class="nb-tabs__tab">
+                <li class="_nb-tabs-tab">
                     if .active {
                         @class += " ui-tabs-active"
                     }
 
-                    <a class="nb-tabs__link _link" href="#{prefix}-{index()}">
+                    <a class="_nb-tabs-link _link" href="#{prefix}-{index()}">
                         .title
                     </a>
                 </li>
@@ -31,7 +36,7 @@ match .tabs nb {
         </ul>
 
         for .items {
-            <div class="nb-tabs__panel" id="{prefix}-{index()}">
+            <div class="_nb-tabs-panel" id="{prefix}-{index()}">
                 if .content {
                     html( .content )
                 }

@@ -51,7 +51,8 @@ describe("Checkbox Tests", function() {
                 });
 
                 it('should render additional flag node', function() {
-                    expect(this.checkboxes['checkbox'].$node.find('.nb-checkbox__flag.nb-checkbox__flag_type_checkbox').length).to.be.greaterThan(0);
+                    console.log($('.nb-checkbox-normal-flag'))
+                    expect($('._nb-checkbox-normal-flag')).to.be.ok();
                 });
 
                 it('should render attr @value from options', function() {
@@ -73,7 +74,7 @@ describe("Checkbox Tests", function() {
                 });
 
                 it('should render additional flag node', function() {
-                    expect(this.checkboxes['radio'].$node.find('.nb-checkbox__flag.nb-checkbox__flag_type_radio').length).to.be.greaterThan(0);
+                    expect($('._nb-checkbox-radio-flag')).to.be.ok(0);
                 });
             });
 
@@ -85,7 +86,7 @@ describe("Checkbox Tests", function() {
 
                 it('should render additional nb-button markup', function() {
                     expect(this.checkboxes['button'].$node.find('.nb-button').length).to.be.greaterThan(0);
-                    expect(this.checkboxes['button'].$node.find('.nb-button-content').length).to.be.greaterThan(0);
+                    expect(this.checkboxes['button'].$node.find('._nb-button-content').length).to.be.greaterThan(0);
                 });
             });
         });
@@ -93,7 +94,7 @@ describe("Checkbox Tests", function() {
         describe("'Theme' parameter", function() {
             it("should affect appearance of the control", function() {
                 var sut = nb.find('checkbox-pseudo-button');
-                expect(sut.$node.find('.nb-pseudo-button').length).to.be.greaterThan(0);
+                expect(sut.$node.find('._nb-pseudo-button').length).to.be.greaterThan(0);
             });
         });
     });

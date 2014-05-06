@@ -27,7 +27,7 @@ describe("Button Tests", function() {
     describe("YATE API", function() {
         it('iconText', function() {
             var button = nb.find('button-icon-text');
-            expect(button.$node.find('.nb-button-content .nb-icon').html()).to.be.equal('▼');
+            expect(button.$node.find('._nb-button-content .nb-icon').html()).to.be.equal('▼');
         });
     });
 
@@ -35,7 +35,7 @@ describe("Button Tests", function() {
 
         it("check text", function() {
             this.button.setText("Privet");
-            expect($(this.button.node).find('.nb-button-content').html()).to.be.equal("Privet");
+            expect($(this.button.node).find('._nb-button-content').html()).to.be.equal("Privet");
         });
 
         it("check event", function() {

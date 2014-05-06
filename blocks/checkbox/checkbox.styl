@@ -4,36 +4,47 @@
 
   cursor: pointer
 
-  &_type_button
-    .nb-checkbox__input
-      &:checked + .nb-checkbox__label
+._nb-button-checkbox
+    ._nb-checkbox-input
+      &:checked + ._nb-checkbox-label
         skin: button_checked
-      &:focus + .nb-checkbox__label
+      &:focus + ._nb-checkbox-label
         skin: button_focus
 
+._nb-small-button-checkbox
+    ._nb-checkbox-input
+      &:checked + ._nb-checkbox-label
+        skin: button_checked small
+      &:focus + ._nb-checkbox-label
+        skin: button_focus small
+
 if !ie
-  .nb-checkbox__input
+  ._nb-checkbox-input
     kind: hidden visually
 
-  .nb-checkbox__flag_type_radio
+  ._nb-checkbox-radio-flag
     kind: icon
-    skin: radio (-icon '& > .nb-checkbox__flag__icon')
+    skin: radio (-icon '& > ._nb-checkbox-flag-icon')
 
-  .nb-checkbox__flag_type_checkbox
+  ._nb-checkbox-normal-flag
     kind: icon
-    skin: checkbox (-icon '& > .nb-checkbox__flag__icon')
+    skin: checkbox (-icon '& > ._nb-checkbox-flag-icon')
 
-  .nb-checkbox__input:checked + .nb-checkbox__flag
+  ._nb-checkbox-input:checked + ._nb-checkbox-flag
     skin: button_checked
 
-  .nb-checkbox__input:focus + .nb-checkbox__flag
+  ._nb-checkbox-input:focus + ._nb-checkbox-flag
     skin: button_focus
 
 if ie
-  .nb-checkbox__input,
-  .nb-checkbox__label
+  ._nb-checkbox-input,
+  ._nb-checkbox-label
     vertical-align: middle
 
-.nb-checkbox_size_s,
-.nb-checkbox_size_s .nb-checkbox__flag
+._nb-small-checkbox,
+._nb-small-checkbox ._nb-checkbox-flag
+  skin: para2 no-margin
+
+._nb-small-radio-checkbox,
+._nb-small-radio-checkbox ._nb-checkbox-flag
   skin: para2 no-margin

@@ -376,7 +376,7 @@ describe("suggest Tests", function() {
 
         it("suggest shoud have right number of results", function() {
             this.suggest.search('Va');
-            expect(this.suggest.$suggest.find('.nb-suggest__item').length).to.equal(3);
+            expect(this.suggest.$suggest.find('._nb-suggest-item').length).to.equal(3);
         });
     });
 

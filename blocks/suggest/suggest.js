@@ -161,10 +161,10 @@
         'username': function(item, term) {
             var matcher = new RegExp('(' + $.ui.autocomplete.escapeRegex(term) + ')', "ig");
 
-            item.usernameHighlighted = item.username.replace(matcher, '<span class="nb-suggest__hl">$1</span>');
+            item.usernameHighlighted = item.username.replace(matcher, '<span class="_nb-suggest-hl">$1</span>');
 
             if (typeof item.email == 'string') {
-                item.emailHighlighted = item.email.replace(matcher, '<span class="nb-suggest__hl">$1</span>');
+                item.emailHighlighted = item.email.replace(matcher, '<span class="_nb-suggest-hl">$1</span>');
             }
         }
     };
@@ -303,7 +303,7 @@
                 } else {
                     this.$control.prop('disabled', true);
                 }
-                this.$node.addClass('nb-is-disabled');
+                this.$node.addClass('_nb-is-disabled');
                 this.$jUI.suggest('disable');
                 this.trigger('nb-disabled', this);
             }
@@ -322,7 +322,7 @@
                 } else {
                     this.$control.prop('disabled', false);
                 }
-                this.$node.removeClass('nb-is-disabled');
+                this.$node.removeClass('_nb-is-disabled');
                 this.$jUI.suggest('enable');
                 this.trigger('nb-enabled', this);
             }
@@ -334,7 +334,7 @@
          * @returns {Boolean}
          */
         isEnabled: function() {
-            return !this.$node.hasClass('nb-is-disabled');
+            return !this.$node.hasClass('_nb-is-disabled');
         },
 
         /**

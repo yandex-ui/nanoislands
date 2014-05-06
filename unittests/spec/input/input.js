@@ -34,19 +34,19 @@ describe("Input Tests", function() {
             it("error dropdown content", function() {
                 var input = nb.find('input-error');
                 var data = input.nbdata();
-                expect($('#' + data.error.id + ' .nb-popup__content').html()).to.be.equal('error');
+                expect($('#' + data.error.id + ' ._nb-popup-content').html()).to.be.equal('error');
             });
         });
 
         describe("Hint", function() {
             it("markup for hint", function() {
                 var input = nb.find('input-hint');
-                expect(input.$hint.find('.nb-input__hint-inner').html()).to.equal('email');
+                expect($(input.node).find('._nb-input-hint-inner').html()).to.equal('email');
             });
 
             it("markup for ghost hint", function() {
                 var input = nb.find('input-hint-ghost');
-                expect(input.$hint.find('.nb-input__hint-content').html()).to.equal('email');
+                expect(input.$hint.find('._nb-input-hint-content').html()).to.equal('email');
             });
 
             it("Hint should be hidden then value set.", function() {
@@ -64,25 +64,25 @@ describe("Input Tests", function() {
         describe("prefix postfix", function() {
             it("markup left", function() {
                 var input = nb.find('input-left-right');
-                expect(input.$node.find('.nb-input__left').length).to.equal(1);
+                expect(input.$node.find('._nb-input-left').length).to.equal(1);
             });
             it("content left", function() {
                 var input = nb.find('input-left-right');
-                expect(input.$node.find('.nb-input__left').html()).to.equal('prefix');
+                expect(input.$node.find('._nb-input-left').html()).to.equal('prefix');
             });
             it("markup right", function() {
                 var input = nb.find('input-left-right');
-                expect(input.$node.find('.nb-input__right').length).to.equal(1);
+                expect(input.$node.find('._nb-input-right').length).to.equal(1);
             });
             it("content right", function() {
                 var input = nb.find('input-left-right');
-                expect(input.$node.find('.nb-input__right').html()).to.equal('postfix');
+                expect(input.$node.find('._nb-input-right').html()).to.equal('postfix');
             });
         });
 
         it("Input with reset param should have reset markup", function() {
             var input = nb.find('input-reset');
-            expect(input.$node.find('.nb-input__reset').length).to.be.equal(1);
+            expect(input.$node.find('._nb-input-reset').length).to.be.equal(1);
         });
         it("Input with reset param should be complex", function() {
             var input = nb.find('input-reset');
@@ -161,7 +161,7 @@ describe("Input Tests", function() {
             var input = nb.find('input-error');
             var data = input.nbdata();
             input.setErrorContent('1');
-            expect(nb.find(data.error.id).$node.find('.nb-popup__content').html()).to.equal('1');
+            expect(nb.find(data.error.id).$node.find('._nb-popup-content').html()).to.equal('1');
         });
 
         it("should throws nb-error-content-set event", function() {

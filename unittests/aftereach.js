@@ -28,6 +28,6 @@
          * DOM nodes
          */
         $container.empty();
-        $body.children('.nb-select__dropdown, .ui-dialog').remove();
+        $body.children('.nb-select-dropdown, .ui-dialog').remove();
     });
 }(jQuery, nb));

@@ -1,8 +1,8 @@
-external nodeset nb-extend(nodeset, nodeset)
-external nodeset nb-deep-extend(nodeset, nodeset)
-external nodeset nb-wrap(scalar, nodeset)
-external scalar nb-warn(scalar)
-external scalar nb-uniq()
+external nodeset _nb-extend(nodeset, nodeset)
+external nodeset _nb-deep-extend(nodeset, nodeset)
+external nodeset _nb-wrap(scalar, nodeset)
+external scalar _nb-warn(scalar)
+external scalar _nb-uniq()
 
 /**
  * Escapes nodeset data to xml. So you can safety use it in nb-call
@@ -21,6 +21,7 @@ func nb-nodeset-to-xml(xml data) {
 }
 
 include 'blocks/common/common.yate'
+include 'blocks/icon/icon.yate'
 include 'blocks/button/button.yate'
 include 'blocks/popup/popup.yate'
 include 'blocks/radio-button/radio-button.yate'
@@ -29,7 +30,6 @@ include 'blocks/checkbox/checkbox.yate'
 include 'blocks/input/input.yate'
 include 'blocks/input-group/input-group.yate'
 include 'blocks/progress/progress.yate'
-include 'blocks/icon/icon.yate'
 include 'blocks/paranja/paranja.yate'
 include 'blocks/island/island.yate'
 include 'blocks/dropzone/dropzone.yate'

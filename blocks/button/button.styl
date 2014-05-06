@@ -4,66 +4,66 @@
 
 @import '_skin-dark'
 
-$skin-islands-button-content = '.nb-button-content'
+$skin-islands-button-content = '._nb-button-content'
 
 .nb-button
   kind: button
   position: relative // Why is it there?
 
-.nb-normal-button
+._nb-normal-button
   skin: button
 
-.nb-small-button
+._nb-small-button
   skin: button small
 
-.nb-flying-button
+._nb-flying-button
   skin: button fly
 
-.nb-small-flying-button
+._nb-small-flying-button
   skin: button fly small
 
-.nb-action-button
+._nb-action-button
   skin: action-button
 
-.nb-small-action-button
+._nb-small-action-button
   skin: action-button small
 
-.nb-dark-button
+._nb-dark-button
   skin: dark-button
 
-.nb-small-dark-button
+._nb-small-dark-button
   skin: dark-button small
 
-.nb-pseudo-button
+._nb-pseudo-button
   skin: pseudo-button
 
-.nb-small-pseudo-button
+._nb-small-pseudo-button
   skin: pseudo-button small
 
 // Псевдо-кнопка
-.nb-pseudo-inverted-button
+._nb-pseudo-inverted-button
   skin: pseudo-button _inverted
 
 // Маленькая псевдо-кнопка
-.nb-small-pseudo-inverted-button
+._nb-small-pseudo-inverted-button
   skin: pseudo-button _inverted small
 
 // Промо-кнопка
-.nb-promo-button
+._nb-promo-button
   skin: promo-button
 
-.nb-small-promo-button
+._nb-small-promo-button
   skin: promo-button small
 
-.nb-large-promo-button
+._nb-large-promo-button
   skin: promo-button large
 
-.nb-extra-large-promo-button
+._nb-extra-large-promo-button
   skin: promo-button xlarge
 
 // Кнопка аттача
-.nb-file-intruder
+._nb-file-intruder
   kind: file-intruder \
-    (-inner '&__inner') \
-    (-input '&__input') \
-    (-focus '&__focus' 'islands-button_focus_style')
+    (-inner '&-inner') \
+    (-input '&-input') \
+    (-focus '&-focus' 'islands-button_focus_style')

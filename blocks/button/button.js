@@ -27,7 +27,7 @@ nb.define('button', {
      */
     setText: function(text) {
         if (this.$node && this.$node.data('uiButton')) {
-            this.$node.find('.nb-button-content').html(text);
+            this.$node.find('._nb-button-content').html(text);
             this.trigger('nb-text-set', this);
         }
         return this;
@@ -39,7 +39,7 @@ nb.define('button', {
      *
      */
     getText: function() {
-        return this.$node.find('.nb-button-content').html();
+        return this.$node.find('._nb-button-content').html();
     },
 
     /**
@@ -70,7 +70,7 @@ nb.define('button', {
     disable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('disable');
-            this.$node.addClass('nb-is-disabled');
+            this.$node.addClass('_nb-is-disabled');
             this.trigger('nb-disabled', this);
         }
         return this;
@@ -84,7 +84,7 @@ nb.define('button', {
     enable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('enable');
-            this.$node.removeClass('nb-is-disabled');
+            this.$node.removeClass('_nb-is-disabled');
             this.trigger('nb-enabled', this);
         }
         return this;
