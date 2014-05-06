@@ -11,13 +11,12 @@
   * popup.setContent() and popup.getContent()
 * [Popup toggler] toggler.toggle() added
 
-
-
 ##### Fixes
 fix #313 — Разделить классы блоков на публичные и приватные
 fix #284 — Close XSS in button#setText
 fix #273 — nb-icon size couldn't be set
-
+fix #317 — Add opportunity to change content of popup (tooltip)
+fix #316 — Исправление повторного позиционирования открытого попапа
 
 ##### 0.3.17 — patch
 
