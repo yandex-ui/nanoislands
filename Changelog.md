@@ -6,6 +6,8 @@
 * Gaps API has been changed
 * [Icon] now accepts only object, fix #273 — nb-icon size couldn't be set
 * [Button] setText -> setContent, fix #284 — Close XSS in button#setText
+* [Popup] popup.open() don't close already opened popup
+* [Popup toggler] toggler.toggle() added
 
 
 

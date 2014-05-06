@@ -431,10 +431,7 @@
             if (this.where) {
                 //  Попап уже открыт
                 //  FIXME: Буэээ. Уродливое условие для варианта, когда заданы координаты вместо ноды.
-                if (where === this.where || ( (where instanceof Array) && where[0] === this.where[0] && where[1] === this.where[1] )) {
-                    //  На той же ноде. Значит закрываем его.
-                    this.close();
-                } else {
+                if (where !== this.where || ( (where instanceof Array) && (where[0] !== this.where[0] || where[1] !== this.where[1] ))) {
                     this.moved = true;
                     //  На другой ноде. Передвигаем его в нужное место.
                     this._move(where, how, params);
@@ -575,7 +572,7 @@
 nb.define('popup-toggler', {
 
     events: {
-        'click': 'open'
+        'click': 'toggle'
     },
 
     oninit: function() {
@@ -595,6 +592,21 @@ nb.define('popup-toggler', {
         };
         this.trigger('nb-inited', this);
     },
+    /**
+     * Toggle popup
+     * @returns {Object} nb.block
+     */
+    toggle: function(evt) {
+        if (evt) {
+            evt.preventDefault();
+        }
+        if (this.popup.isOpen()) {
+            this.close(evt);
+        } else {
+            this.open(evt);
+        }
+        return this;
+    },
 
     /**
      * Open popup
@@ -605,7 +617,7 @@ nb.define('popup-toggler', {
         if (evt) {
             evt.preventDefault();
         }
-        if (!this.$node.hasClass('_nb-is-disabled') && this.popup) {
+        if (!this.$node.hasClass('_nb-is-disabled') && this.popup && !this.popup.isOpen()) {
             this.popup.open(this.options);
             this.trigger('nb-opened', this);
         }
@@ -618,7 +630,7 @@ nb.define('popup-toggler', {
      * @returns {Object} nb.block
      */
     close: function() {
-        if (!this.$node.hasClass('_nb-is-disabled') && this.popup) {
+        if (!this.$node.hasClass('_nb-is-disabled') && this.popup && this.popup.isOpen()) {
             this.popup.close();
             this.trigger('nb-closed', this);
         }
