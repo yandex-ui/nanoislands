@@ -241,12 +241,12 @@ nb.define('input', {
         if (this.data.ghost) {
             this.$node.addClass('_nb-is-ghost');
         }
-
-        this.focused = false;
-        this.$control.triggerHandler("focusout");
-        this.$control.get(0).blur();
-        this.trigger('nb-blured', this);
-
+        if (this.focused) {
+            this.focused = false;
+            this.$control.triggerHandler("focusout");
+            this.$control.get(0).blur();
+            this.trigger('nb-blured', this);
+        }
         return this;
     },
 

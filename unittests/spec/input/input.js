@@ -190,6 +190,17 @@ describe("Input Tests", function() {
             expect(handlerWorks).to.be.ok();
         });
 
+        it("focus() shouldn't throws nb-blured", function() {
+            var handlerWorks = 0;
+            this.input.on('nb-blured', function() {
+                handlerWorks++;
+            });
+
+            this.input.focus();
+
+            expect(handlerWorks).to.equal(0);
+        });
+
         it("should throws global nb- focusout event", function() {
             var handlerWorks = false;
             nb.on('nb-focusout', function() {
@@ -213,13 +224,14 @@ describe("Input Tests", function() {
         });
 
         it("should throws blur event", function() {
-            var handlerWorks = false;
+            var handlerWorks = 0;
+            this.input.focus();
             this.input.on('nb-blured', function() {
-                handlerWorks = true;
+                handlerWorks++;
             });
             this.input.blur();
 
-            expect(handlerWorks).to.be.ok();
+            expect(handlerWorks).to.equal(1);
         });
     });
 
