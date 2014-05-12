@@ -33,6 +33,7 @@ include "../blocks/checkbox/checkbox.example.yate"
 include "../blocks/select/select.example.yate"
 include "../blocks/dropzone/dropzone.example.yate"
 include "../blocks/gap/gap.example.yate"
+include "../blocks/group/group.example.yate"
 
 
 match / {
@@ -43,6 +44,7 @@ match / {
             selects()
             dropzones()
             gaps()
+            groups()
 
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>

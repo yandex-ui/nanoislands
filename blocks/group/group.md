@@ -10,6 +10,24 @@ To make sure your group's items won't wrap you would want to use `.nb-group` cla
 
 * `class` - `['nb-group-item']`
 
+> <div example="group1"/>
+>```yate
+>    nb-button({
+>         'content': 'Слева'
+>         'size': 'm'
+>         'class': ['nb-group-item']
+>     })
+>     nb-input({
+>         'class': ['nb-group-item']
+>         'size': 'm'
+>     })
+>     nb-button({
+>         'content': 'Справа'
+>         'size': 'm'
+>         'class': ['nb-group-item']
+>     })
+>```
+
 This is a class for generic group items, when you don't know their position. Such classes would work only if all the items have the same wrapper and have no other blocks in it.
 
 ### Specific group items
@@ -17,6 +35,28 @@ This is a class for generic group items, when you don't know their position. Suc
 * `class` - `['nb-group-start']`
 * `class` - `['nb-group-middle']`
 * `class` - `['nb-group-end']`
+
+> <div example="group2"/>
+>```yate
+>    nb-button({
+>        'content': 'Слева'
+>        'theme': 'pseudo'
+>        'size': 's'
+>        'class': ['nb-group-start']
+>    })
+>    nb-button({
+>        'content': 'В центре'
+>        'theme': 'pseudo'
+>        'size': 's'
+>        'class': ['nb-group-middle']
+>    })
+>    nb-button({
+>        'content': 'Справа'
+>        'theme': 'pseudo'
+>        'size': 's'
+>        'class': ['nb-group-end']
+>    })
+>```
 
 When you have other blocks before or after the grouped items, or you can't have a common wrapper for them, or they're placed not in straight order in the HTML, you could use more specific classes, telling where in the group your block is.
 
