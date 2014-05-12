@@ -1,3 +1,12 @@
+##### 0.4.1 — patch
+
+##### Fixes
+* fix #324 — Add opportunity to change frame collision of the popup enhancement
+* fix #323 — Выравнивание контента по центру в кнопках-ссылках
+* fix #322 — Для чекбоксов не применяется размер "s" bug
+* fix #321 — Лишнее срабатывание событий для input bug
+* fix #320 — Рамка вокруг иконок в кнопках
+
 ##### 0.4.0 — "The Apple"
 * CSS class naming has been changed.
 * All private css classes and yate functions has been prefixed with `_`, fix #313 — Разделить классы блоков на публичные и приватные
