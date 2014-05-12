@@ -136,12 +136,12 @@ func popups() {
                'content': 'Отправить'
                'size': 'm'
                'theme': 'action'
-               'class': 'nb-popup__button'
+               'class': '_nb-popup-button'
             }
             {
                'content': 'Сохранить'
                'size': 'm'
-               'class': 'nb-popup__button'
+               'class': '_nb-popup-button'
             }
         ]}
 

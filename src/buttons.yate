@@ -1,15 +1,31 @@
 func button-medium() {
 
     button = {
-        'content': 'Применить'
+        'content': 'Normal button'
  }
 
     nb-button(button)
 
     ' '
     nb-button({
-        'content': 'Проверить'
-        'href': '#'
+        'content': 'Link button'
+        'type': 'link'
+        'attrs': {
+            'href': '#'
+        }
+    })
+    ' '
+    nb-button({
+        'content': 'Label button'
+        'type': 'label'
+        'attrs': {
+            'for': 'blah'
+        }
+    })
+    ' '
+    nb-button({
+        'content': 'Span button'
+        'type': 'span'
     })
 }
 
@@ -35,6 +51,15 @@ func button-pseudo() {
         'theme': 'pseudo'
     })
 }
+
+func button-pseudo-inverted() {
+    nb-button({
+        'content': 'Выбрать&hellip;'
+        'size': 'm'
+        'theme': 'pseudo-inverted'
+    })
+}
+
 
 func button-dark() {
     nb-button({
@@ -124,7 +149,7 @@ func buttons() {
         <div class="demo-h3">
             'Size: M '
             <span class="demo-code demo-code_small">
-                '.nb-button_size_m'
+                '.nb-normal-button'
             </span>
         </div>
 
@@ -134,7 +159,7 @@ func buttons() {
         <div class="demo-h3">
             'Size: S '
             <span class="demo-code demo-code_small">
-                '.nb-button_size_s'
+                '.nb-small-button'
             </span>
         </div>
 
@@ -144,7 +169,7 @@ func buttons() {
         <div class="demo-h3">
             'Theme: Action '
             <span class="demo-code demo-code_small">
-                '.nb-button_theme_action'
+                '.nb-action-button'
             </span>
         </div>
 
@@ -154,17 +179,27 @@ func buttons() {
         <div class="demo-h3">
             'Theme: Pseudo '
             <span class="demo-code demo-code_small">
-                '.nb-button_theme_pseudo'
+                '.nb-pseudo-button'
             </span>
         </div>
 
         show(button-pseudo())
     </div>
+    <div class="demo-section" style="background-color: #333; color: #fff">
+        <div class="demo-h3">
+            'Theme: Pseudo-inverted'
+            <span class="demo-code demo-code_small">
+                '.nb-button_theme_pseudo'
+            </span>
+        </div>
+
+        show(button-pseudo-inverted())
+    </div>
     <div class="demo-section">
         <div class="demo-h3">
             'Theme: Dark '
             <span class="demo-code demo-code_small">
-                '.nb-button_theme_dark'
+                '.nb-dark-button'
             </span>
         </div>
 
@@ -174,7 +209,7 @@ func buttons() {
             <div class="demo-h3">
                 'Theme: Promo'
                 <span class="demo-code demo-code_small">
-                    '.nb-button_theme_promo'
+                    '.nb-promo-button'
                 </span>
             </div>
 
@@ -208,7 +243,7 @@ func buttons() {
         <div class="demo-h3">
             'Type: Attach '
             <span class="demo-code demo-code_small">
-                '.nb-button_type_attach'
+                '.nb-attach-button'
             </span>
         </div>
 

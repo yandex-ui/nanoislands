@@ -123,8 +123,8 @@ func tabs-island() {
         ]
     }
 
-    <div class="nb-island nb-island_type_fly nb-island_padding_m">
-        @style = "width: 300px"
+    <div class="nb-island _nb-fly-island">
+        @style = "width: 500px"
 
         nb-tabs(block)
     </div>
@@ -134,9 +134,7 @@ func tabs() {
     <div class="demo-section">
         <div class="demo-h3">
             'Size: M '
-            <span class="demo-code demo-code_small">
-                '.nb-tabs_size_m'
-            </span>
+
         </div>
 
         show(tabs-medium())
@@ -144,9 +142,7 @@ func tabs() {
     <div class="demo-section">
         <div class="demo-h3">
             'Size: S '
-            <span class="demo-code demo-code_small">
-                '.nb-tabs_size_s'
-            </span>
+
         </div>
 
         show(tabs-small())
@@ -154,9 +150,7 @@ func tabs() {
     <div class="demo-section">
         <div class="demo-h3">
             'Внутри острова '
-            <span class="demo-code demo-code_small">
-                '.nb-tabs_rise_m'
-            </span>
+
         </div>
 
         show(tabs-island())

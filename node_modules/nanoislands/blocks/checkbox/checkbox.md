@@ -16,8 +16,8 @@
 * `'disabled'` {boolean} — disabled button
 * `'value'` {string} — value
 * `'tabindex'` {string} — tabindex
-* `'checked'` {string} `'normal' / 'action' (yellow) / 'dark' / 'pseudo' / 'promo' (big yellow)` — theme for button type
-* `'theme'` {boolean} `'checkbox'` / `'radio'` / `'button'` — checked button
+* `'checked'` {boolean} — checked button
+* `'theme'` {string} `'normal' / 'action' (yellow) / 'dark' / 'pseudo' / 'promo' (big yellow)` — theme for button type
 * `'content'` {string} — text (or custom html) of the label, can be string or `xml` _xss warning!_
 * `'attrs'` {object} `{'attr2': 'value2'}` — custom DOM attributes for checkbox input
 

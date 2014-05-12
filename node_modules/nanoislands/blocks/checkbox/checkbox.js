@@ -198,7 +198,7 @@ nb.define('checkbox', {
      */
     enable: function() {
         if (!this.isEnabled()) {
-            this.$node.removeClass('nb-is-disabled');
+            this.$node.removeClass('_nb-is-disabled');
             this.$control.removeAttr('disabled');
             this.trigger('nb-enabled', this);
         }
@@ -213,7 +213,7 @@ nb.define('checkbox', {
     disable: function() {
         if (this.isEnabled()) {
             this.blur();
-            this.$node.addClass('nb-is-disabled');
+            this.$node.addClass('_nb-is-disabled');
             this.$control.attr('disabled', 'disabled');
             this.trigger('nb-disabled', this);
         }
@@ -249,7 +249,7 @@ nb.define('checkbox', {
      * @returns {Object} nb.block
      */
     setLabel: function(label) {
-        this.$node.find('.nb-checkbox__label').html(label);
+        this.$node.find('._nb-checkbox-label').html(label);
         this.trigger('nb-label-set', this);
         return this;
     },
@@ -259,7 +259,7 @@ nb.define('checkbox', {
      * @returns {String | Number}
      */
     getLabel: function() {
-        return this.$node.find('.nb-checkbox__label').html();
+        return this.$node.find('._nb-checkbox-label').html();
     },
 
     /**

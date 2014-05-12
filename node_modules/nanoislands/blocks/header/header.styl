@@ -1,27 +1,26 @@
 .nb-header
   min-width: 700px
 
-.nb-header__actions
+._nb-header-actions
   float: right
   margin-right: $gapS
 
-.nb-header__main
+._nb-header-main
   overflow: hidden
 
-.nb-header__logo
+._nb-header-logo
   display: inline-block
   background: url('yandex.svg') 50% 50% no-repeat
   width: 138px
   height: 42px
 
-.nb-header__arrow
+._nb-header-arrow
   display: inline-block
 
-.nb-header__arrow.nb-search-arrow,
-.nb-header__arrow.nb-arrow_search
+._nb-header-arrow._nb-search-arrow
   width: 60%
 
-.nb-header__button
+._nb-header-button
   display: inline-block
 
   margin-right: $gapS
@@ -37,10 +36,10 @@
 
   cursor: pointer
 
-.nb-header__button:hover
+._nb-header-button:hover
   background: #cecece
 
-.nb-header__button:before
+._nb-header-button:before
   position: absolute
   top: 1px
   right: 1px
@@ -52,19 +51,19 @@
   border-radius: 2px
   background: $background
 
-.nb-header__button .nb-header__button__icon
+._nb-header-button ._nb-header-button-icon
   opacity: 0.25
   display: inline-block
   margin-left: 3px
 
-.nb-header__button_pressed
+._nb-header-pressed-button
   background: #fff7db
   box-shadow: 0 1px 7px rgba(30, 23, 0, 0.8) inset,0 2px 0 -1px rgba(255, 255, 255, 0.2)
 
-.nb-header__button_pressed:before
+._nb-header-pressed-button:before
   background: #ffeca6
   background: linear-gradient(top,#ffeca6 0,#fff6d5 100%)
   box-shadow: 0 1px 3px -1px rgba(0,0,0,.45) inset
 
-.nb-header__button_pressed .nb-header__button__icon
+._nb-header-pressed-button ._nb-header-button-icon
   opacity: 1

@@ -30,7 +30,7 @@ func checkbox-button() {
     nb-checkbox(button)
     <br />
     <br />
-    nb-checkbox(nb-extend(button, theme1))
+    nb-checkbox(_nb-extend(button, theme1))
 
 }
 
@@ -60,24 +60,25 @@ func checkbox-check() {
 }
 
 func checkbox-small() {
-    radio = {
+    nb-checkbox({
         'type': 'radio'
         'size': 's'
         'content': 'JavaScript'
         'checked': true()
         'name': 'language'
-    }
-
-    radio2 = {
+    })
+    <br />
+    nb-checkbox( {
         'type': 'radio'
         'size': 's'
         'content': 'Java'
         'name': 'language'
-    }
-
-    nb-checkbox(radio)
+    })
     <br />
-    nb-checkbox(radio2)
+    nb-checkbox({
+        'size': 's'
+        'content': 'Java Small'
+    })
 }
 
 func checkbox() {
@@ -98,9 +99,6 @@ func checkbox() {
     <div class="demo-section">
         <div class="demo-h3">
             'Size: S '
-            <span class="demo-code demo-code_small">
-                '.nb-checkbox_size_s'
-            </span>
         </div>
 
         show(checkbox-small())

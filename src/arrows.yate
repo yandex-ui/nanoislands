@@ -1,6 +1,14 @@
 func arrow-service() {
     block = {
         'search': 'false'
+        'text': 'Диск'
+    }
+    nb-arrow(block)
+}
+
+func arrow-service-link() {
+    block = {
+        'search': 'false'
         'href': '#'
         'text': 'Диск'
     }
@@ -39,6 +47,14 @@ func arrows() {
         </div>
 
         show(arrow-service())
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-h3">
+        'Название сервиса со ссылкой'
+        </div>
+
+        show(arrow-service-link())
     </div>
 
     <div class="demo-section">

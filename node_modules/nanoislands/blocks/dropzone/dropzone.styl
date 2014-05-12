@@ -4,35 +4,35 @@
   padding: 20px
   text-align: center
 
-.nb-dropzone_type_static
+._nb-normal-dropzone
   color: rgba(0,0,0,.8)
   background: #ecebe9
   cursor: pointer
 
-.nb-dropzone_type_static:before
-  border: 2px dashed rgba(0,0,0,.2)
-  content: ""
-  position: absolute
-  top: 0px
-  bottom: 0px
-  left: 0px
-  right: 0px
+  &:before
+    border: 2px dashed rgba(0,0,0,.2)
+    content: ""
+    position: absolute
+    top: 0px
+    bottom: 0px
+    left: 0px
+    right: 0px
 
-.nb-dropzone_type_static:hover
-  background: #e2e1df
+  &:hover
+    background: #e2e1df
 
-.nb-dropzone__head
+._nb-dropzone-head
   margin-bottom: 8px
   font: $font-h3
 
-.nb-dropzone__text
+._nb-dropzone-text
   font-size: 13px
   line-height: 24px
 
-.nb-dropzone__button
+._nb-dropzone-button
   margin-left:  8px
 
-.nb-dropzone_type_modal
+._nb-modal-dropzone
   color:  $foregroundSecondary
   position: fixed
   top:  0
@@ -46,14 +46,14 @@
 
   border: 5px dashed rgba(255,255,255, 1)
 
-  .nb-dropzone__head
+  ._nb-dropzone-head
     margin-bottom: 0
     width: 100%
     margin-top: 30px
     text-align: center
     font-size: 60px
 
-  .nb-dropzone__cover
+  ._nb-dropzone-cover
     position: absolute
     top:  0
     right:  0

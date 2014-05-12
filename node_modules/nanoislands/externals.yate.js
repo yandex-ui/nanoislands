@@ -57,7 +57,7 @@ function pluck(list, popertyName) {
 }
 
 
-yr.externals['nb-extend'] = function(parent, node) {
+yr.externals['_nb-extend'] = function(parent, node) {
     if (node && node[0]) {
         if (typeof node == 'string') {
             parent[0].data.content = node;
@@ -72,7 +72,7 @@ yr.externals['nb-extend'] = function(parent, node) {
     return parent;
 }
 
-yr.externals['nb-deep-extend'] = function(parent, node) {
+yr.externals['_nb-deep-extend'] = function(parent, node) {
     if (node && node[0]) {
         if (typeof node == 'string') {
             parent[0].data.content = node;
@@ -87,7 +87,7 @@ yr.externals['nb-deep-extend'] = function(parent, node) {
     return parent;
 }
 
-yr.externals['nb-wrap'] = function(name, options) {
+yr.externals['_nb-wrap'] = function(name, options) {
     var data = {};
 
     if (options && options.length) {
@@ -104,14 +104,14 @@ yr.externals['nb-wrap'] = function(name, options) {
     }];
 }
 
-yr.externals['nb-uniq'] = (function(){
+yr.externals['_nb-uniq'] = (function(){
     var uniq = 0;
     return function() {
         return uniq++;
     }
 })()
 
-yr.externals['nb-warn'] = function(message){
+yr.externals['_nb-warn'] = function(message){
     console.log('%c' + message, 'color:#ffcc00');
 };
 

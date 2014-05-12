@@ -3,16 +3,21 @@ func nb-loader(nodeset options) {
         'size': 'm'
     }
 
-    nb-block('loader', nb-extend(default, options))
+    _nb-block('loader', _nb-extend(default, options))
 }
 
 match .loader nb {
-    <span class="nb-loader nb-loader_size_{.size}">
+    <span>
+        _size-theme-type-class({
+           'name': 'loader'
+           'size': .size
+        })
+
         apply . nb-main-attrs
 
-        <span class="nb-loader__spinner">
+        <span class="_nb-loader-spinner">
             if .color {
-                @class += " nb-loader__spinner_color_{ .color }"
+                @class += " _nb-loader-{ .color }-spinner"
             }
         </span>
     </span>

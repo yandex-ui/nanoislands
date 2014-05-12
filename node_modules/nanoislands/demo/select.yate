@@ -219,9 +219,6 @@ func selects() {
     <div class="demo-section">
         <div class="demo-h3">
             'Size: M '
-            <span class="demo-code demo-code_small">
-                '.nb-select_size_m'
-            </span>
         </div>
 
         show(select-medium())
@@ -229,9 +226,6 @@ func selects() {
     <div class="demo-section">
         <div class="demo-h3">
             'Size: S '
-            <span class="demo-code demo-code_small">
-                '.nb-select_size_s'
-            </span>
         </div>
 
         show(select-small())

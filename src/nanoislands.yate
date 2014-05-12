@@ -42,9 +42,11 @@ include 'header.yate'
 include 'user.yate'
 include 'suggest.yate'
 include 'toggler.yate'
+include 'group.yate'
+include 'gap.yate'
 
 match / {
-    <div class="demo-toggle nb-island nb-island_fly">
+    <div class="demo-toggle nb-island nb-fly-island">
         <div class="demo-toggle__section">
             check = {
                 'content': 'Компактный вид'
@@ -91,6 +93,16 @@ match / {
         <div class="demo-pane__content">
             inputs()
             input-groups()
+        </div>
+    </div>
+    <div class="demo-pane">
+        <div class="demo-pane__desc">
+            <div class="demo-h2">
+                "Классы групп"
+            </div>
+        </div>
+        <div class="demo-pane__content">
+            groups()
         </div>
     </div>
     <div class="demo-pane">
@@ -253,6 +265,16 @@ match / {
         </div>
         <div class="demo-pane__content">
         toggleBlock()
+        </div>
+    </div>
+    <div class="demo-pane">
+        <div class="demo-pane__desc">
+            <div class="demo-h2">
+            "Gap classes"
+            </div>
+        </div>
+        <div class="demo-pane__content">
+        gaps()
         </div>
     </div>
 }

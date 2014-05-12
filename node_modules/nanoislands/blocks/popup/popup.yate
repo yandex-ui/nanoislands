@@ -10,14 +10,14 @@ func nb-popup-menu(nodeset options) {
        //]
     }
 
-    nb-block('popupMenu', nb-extend(default, options))
+    _nb-block('popupMenu', _nb-extend(default, options))
 }
 
 match .popupMenu nb {
-    <div class="nb-popup _init">
+    <div class="nb-popup _nb-popup _init">
         if !.static {
             @data-nb = "popup"
-            @class += " nb-is-hidden"
+            @class += " _nb-is-hidden"
         }
 
         apply . nb-main-attrs
@@ -26,13 +26,13 @@ match .popupMenu nb {
             @data-nb-tail = .tail
         }
 
-        <ul class="nb-popup__menu">
+        <ul class="_nb-popup-menu">
             for .menu {
                 if .separator {
-                    <li class="nb-popup__separator"></li>
+                    <li class="_nb-popup-separator"></li>
                 } else {
-                   <li class="nb-popup__line">
-                        <a class="nb-popup__link">
+                   <li class="_nb-popup-line">
+                        <a class="_nb-popup-link">
                             if .href {
                                 @href = .href
                             }
@@ -53,11 +53,11 @@ func nb-popup(nodeset options) {
        'none': 'none'
     }
 
-    nb-block('popup', nb-extend(default, options))
+    _nb-block('popup', _nb-extend(default, options))
 }
 
 match .popup nb {
-    <div class="nb-popup _init nb-is-hidden" data-nb='popup'>
+    <div class="nb-popup _nb-popup _init _nb-is-hidden" data-nb='popup'>
 
         apply . nb-main-attrs
 
@@ -90,28 +90,32 @@ func nb-popup-modal(nodeset options) {
         }
     }
 
-    nb-block('modalPopup', nb-deep-extend(default, options))
+    _nb-block('modalPopup', _nb-deep-extend(default, options))
 }
 
 match .modalPopup nb {
     if .static {
         nb-paranja()
     }
-    <div class="nb-popup _init nb-popup_type_modal">
+    <div>
+        _size-theme-type-class({
+           'name': 'popup'
+           'theme': .theme
+           'type': 'modal'
+        })
+        @class += ' _init'
+        @class += ' _nb-popup'
+
         if !.static {
             @data-nb = "popup"
-            @class += " nb-is-hidden"
-        }
-
-        if .theme {
-            @class += ' nb-popup_theme_{.theme}'
+            @class += " _nb-is-hidden"
         }
 
         apply . nb-main-attrs
 
-        <div class="nb-popup__i">
+        <div class="_nb-popup-i">
             if .close {
-                <a class="nb-popup__close { .close.class }">
+                <a class="_nb-popup-close { .close.class }">
                     if .close.attrs {
                         for .close.attrs.* {
                             @{name()} = .
@@ -138,20 +142,20 @@ match .modalPopup nb {
 
 
 func _nb-popup-content(nodeset content) {
-    <div class="nb-popup__content">
+    <div class="_nb-popup-content">
         html(content)
     </div>
 }
 
 func _nb-popup-title(nodeset title) {
-    <div class="nb-popup__title">
+    <div class="_nb-popup-title">
         html(title)
     </div>
 }
 
 
 func _nb-popup-buttons(nodeset buttons) {
-    <div class="nb-popup__buttons">
+    <div class="_nb-popup-buttons">
         apply buttons nb-main-attrs
 
         if count(buttons.data.*) {
