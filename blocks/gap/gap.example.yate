@@ -1,0 +1,66 @@
+func gaps() {
+
+ gapxs = (
+       nb-button({
+            'content': 'foo'
+            'class': ['nb-with-xs-right-gap']
+        })
+        nb-button({
+            'content': 'bar'
+            'class': ['nb-with-xs-right-gap']
+        })
+        nb-button({
+            'content': 'baz'
+            'class': ['nb-with-xs-right-gap']
+        })
+    )
+
+    gaps = (
+       nb-button({
+            'content': 'foo'
+            'class': ['nb-with-s-right-gap']
+        })
+        nb-button({
+            'content': 'bar'
+            'class': ['nb-with-s-right-gap']
+        })
+        nb-button({
+            'content': 'baz'
+            'class': ['nb-with-s-right-gap']
+        })
+    )
+    gapm = (
+       nb-button({
+            'content': 'foo'
+            'class': ['nb-with-m-right-gap']
+        })
+        nb-button({
+            'content': 'bar'
+            'class': ['nb-with-m-right-gap']
+        })
+        nb-button({
+            'content': 'baz'
+            'class': ['nb-with-m-right-gap']
+        })
+    )
+
+    gapl = (
+       nb-button({
+            'content': 'foo'
+            'class': ['nb-with-l-right-gap']
+        })
+        nb-button({
+            'content': 'bar'
+            'class': ['nb-with-l-right-gap']
+        })
+        nb-button({
+            'content': 'baz'
+            'class': ['nb-with-l-right-gap']
+        })
+    )
+
+    show('gap-s', gaps)
+    show('gap-xs', gapxs)
+    show('gap-m', gapm)
+    show('gap-l', gapl)
+}
