@@ -199,6 +199,89 @@ Arguments:
      */
     popup.getContent();
 
-``` 
+```
 
+
+### Options for popup toggler
+
+```
+<a id="popup-toggler3" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup3', how: {{ at: 'top', my: 'bottom' }}}}" href="#top">
+    <span class="link__inner">
+        "Попап сверху"
+    </span>
+</a>
+```
+
+* `id` {string} — id of connecte popup
+* `appendTo` {string} —  selector where append to
+* `how` {object} – http://api.jqueryui.com/position/
+```
+{
+    at: '..',
+    my: '..',
+    collision: '..',
+    using: '..',
+    within '..',
+    autoclose: true
+}
+```
+
+### Methods
+```
+ /**
+     * Toggle popup
+     * @returns {Object} nb.block
+     */
+    toggler.toggle();
+
+    /**
+     * Open popup
+     * @fires 'nb-opened'
+     * @returns {Object} nb.block
+     */
+    toggler.open();
+
+    /**
+     * Close popup
+     * @fires 'nb-closed'
+     * @returns {Object} nb.block
+     */
+    toggler.close();
+    
+    /**
+     * Returns connected popup
+     * @returns {Object} nb.block
+     */
+    toggler.getPopup();
+
+    /**
+     * Sets connected popup
+     * @param {Object} params  - {
+    *       id : 'id' — popupID or link to nb.block
+    *       where: '#elem' — to what elem popup attached
+    *       how: { my: 'left', at:'right' } — to to open popup
+    *   }
+     * @returns {Object} nb.block
+     */
+     
+    toggler.setPopup();
+
+    /**
+     * Get connected popup  option
+     * @returns {Object} options
+     */
+    toggler.getOptions();
+    
+    
+    /**
+     * Set connected popup option
+    */
+    toggler.setOptions();
+
+    /**
+     * Destroy the popup toggler
+     * @fires 'nb-destroyed'
+     */
+    toggler.destroy();
+```
 

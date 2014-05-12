@@ -574,12 +574,13 @@
                     // horizontal: fit, пытаемся уместить в window
                     // vertical: flip - выбирает наилучший вариант - вверх или вних
                     collision: (how.collision ? how.collision : 'fit flip'),
-                    using: using
+                    using: using || how.using,
+                    within: how.within
                 },
                 close: function() {
                     that.close();
                 },
-                appendTo: params.appendTo,
+                appendTo: params.appendTo || how.appendTo,
                 autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
             });
         }
