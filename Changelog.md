@@ -1,4 +1,4 @@
-##### 0.4.2 — patch
+##### 0.4.3 — patch
 * Support server-side rendering in yate externals
 
 ##### Fixes
