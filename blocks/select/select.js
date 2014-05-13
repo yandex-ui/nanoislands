@@ -190,7 +190,7 @@ nb.define('select', {
                     var $itemText = $('<span class="_nb-select-text"></span>').text(item.label).appendTo($itemNodeContent);
 
                     if (item.icon) {
-                        $itemText.prepend('<img class="nb-icon _nb-s-' + item.icon + '-icon">');
+                        $itemText.prepend('<img class="nb-icon nb-s-' + item.icon + '-icon">');
                     }
 
                     $itemNode.append($itemNodeContent);
