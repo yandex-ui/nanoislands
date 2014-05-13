@@ -23,12 +23,12 @@ $svg["sizes"] = {
 
 for $size-name, $size-value in $svg.sizes
   for $icon in $svg-icons
-    ._nb-{$size-name}-{$icon}-icon
+    .nb-{$size-name}-{$icon}-icon
       background-image: url($icon + '.svg')
       width:  $size-value
       height:  $size-value
 
 
 // Compensate visual shift for link icon
-._nb-icon-link
+.nb-s-icon-link
   left: 2px

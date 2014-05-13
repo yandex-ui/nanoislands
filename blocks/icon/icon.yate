@@ -16,7 +16,7 @@ func nb-icon(nodeset options) {
 match .ico nb {
     <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif">
        @class = (
-        'nb-icon _nb-'
+        'nb-icon nb-'
         .size
         if .icon  != '' {
             '-'
@@ -24,6 +24,6 @@ match .ico nb {
         }
         '-icon'
         )
-
+        apply . nb-main-attrs
     </img>
 }
