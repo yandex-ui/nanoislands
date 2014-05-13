@@ -1,3 +1,10 @@
+##### 0.4.2 — patch
+* Support server-side rendering in yate externals
+
+##### Fixes
+fix #327 — Кастомные иконки
+fix #326 — Метод open для nb-popup-modal выбрасывает ошибку...
+
 ##### 0.4.1 — patch
 
 ##### Fixes
