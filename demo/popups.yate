@@ -1,13 +1,13 @@
 func toggle-default() {
     <a id="popup-toggler" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup'}}" href="#default">
         <span class="link__inner">
-            "Попап по умолчанию"
+            "default"
         </span>
     </a>
 }
 
 func toggle-to-right() {
-    <a id="popup-toggler1" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup1', how: {{ at: 'left', my: 'right' }}}}" href="#right">
+    <a id="popup-toggler1" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup1', how: {{ at: 'left', my: 'right',  within: '#test' }}}}" href="#right">
         <span class="link__inner">
             "Попап справа"
         </span>
@@ -148,7 +148,7 @@ func popups() {
    }
 
     <div class="demo-section">
-        <div class="demo-group">
+        <div class="demo-group" style="text-align: right">
             podium(toggle-default())
             code(toggle-default())
             code(nb-popup-menu(default))
@@ -157,7 +157,7 @@ func popups() {
         nb-popup-menu(default)
     </div>
     <div class="demo-section">
-        <div class="demo-group">
+        <div class="demo-group" id="test" >
             podium(toggle-to-right())
             code(toggle-to-right())
             code(nb-popup-menu(toRight))

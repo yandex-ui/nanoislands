@@ -421,6 +421,7 @@
          * @param {Object} params
          */
         open: function(params) {
+            var params = params || {};
             var where = params.where;
             var how = params.how;
             //  Специальный флаг-костыль.
@@ -438,11 +439,12 @@
                 }
             } else {
                 //  Попап закрыт. Будем открывать.
-
-                $(this.node).removeClass('_nb-is-hidden');
-                //  Передвигаем попап.
-                this._move(where, how, params);
-                this.trigger('nb-opened');
+                if (params.where || this.modal) {
+                    $(this.node).removeClass('_nb-is-hidden');
+                    //  Передвигаем попап.
+                    this._move(where, how, params);
+                    this.trigger('nb-opened');
+                }
             }
             return this;
         },
@@ -560,7 +562,6 @@
 
                 return;
             }
-
 
             $(this.node).contextDialog({
                 tail: data.tail,
