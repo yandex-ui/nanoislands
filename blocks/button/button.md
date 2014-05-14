@@ -1,5 +1,5 @@
 ### Default button
-> <div example="button-default"/>
+<div example="button-default"/>
 > ```yate
 > nb-button({
 >     'content': 'Button'

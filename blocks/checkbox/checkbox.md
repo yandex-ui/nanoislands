@@ -1,9 +1,9 @@
 ### Default checkbox
 
 <div example="checkbox-default" />
-```yate
-    nb-checkbox()
-```
+> ```yate
+>     nb-checkbox()
+> ```
 
 * `size` — m
 * `type` — checkbox
@@ -29,66 +29,63 @@
 #### checked
 
 <div example="checkbox-checked" />
-```yate
-    nb-checkbox({
-        'checked': true()
-    })
-```
+> ```yate
+>     nb-checkbox({
+>         'checked': true()
+>     })
+> ```
 
 #### checkbox with label
 
 <div example="checkbox-label" />
-```yate
-    nb-checkbox({
-        'content': 'Do you want to be an icon for the disfranchised masses?'
-        'name': 'is_rock_star'
-    })
-```
+> ```yate
+>     nb-checkbox({
+>         'content': 'Do you want to be an icon for the disfranchised masses?'
+>         'name': 'is_rock_star'
+>     })
+> ```
 
 #### Sizes
 
 <div example="checkbox-sizes" />
 
-```yate
-    nb-checkbox({
-        'size': 'm'
-    })
-    ' '
-    nb-checkbox({
-        'size': 's'
-    })
-```
+> ```yate
+>     nb-checkbox({
+>         'size': 'm'
+>     })
+>     ' '
+>     nb-checkbox({
+>         'size': 's'
+>     })
+> ```
 
 #### Types
 
 Button type of checkbox
 
 <div example="checkbox-button" />
-
-```yate
-    nb-checkbox({
-        'type': 'button'
-        'content': 'Greet the world?'
-    })
-```
+>```yate
+>    nb-checkbox({
+>        'type': 'button'
+>        'content': 'Greet the world?'
+>    })
+>```
 
 #### Disabled
 
 <div example="checkbox-disable-label" />
-
-```yate
-    nb-checkbox({
-        'content': 'Bet you can`t check me!'
-        'disabled': true()
-    })
-```
+> ```yate
+>     nb-checkbox({
+>         'content': 'Bet you can`t check me!'
+>         'disabled': true()
+>     })
+> ```
 
 <div example="checkbox-disable-button" />
-
-```yate
-    nb-checkbox({
-        'type': 'button'
-        'content': 'I`m sorry, but you can`t do it anymore'
-        'disabled': true()
-    })
-```
+> ```yate
+>     nb-checkbox({
+>         'type': 'button'
+>         'content': 'I`m sorry, but you can`t do it anymore'
+>         'disabled': true()
+>     })
+> ```

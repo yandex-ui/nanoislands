@@ -18,33 +18,35 @@ NB: For description of `button` and `input` see corresponding docs
 
 A button with an icon, then a text input field:
 
-```
-    nb-input-group({
-        'button' : {
-            'size': 's'
-            'icon': 'link'
-        }
-        'input' : {
-            'size': 's'
-            'content': 'http://yadi.sk/'
-        }
-    })
-```
+<div example="input-group1"/>
+> ```yate
+> nb-input-group({
+>    'button' : {
+>        'size': 's'
+>        'icon': 'link'
+>    }
+>    'input' : {
+>        'size': 's'
+>        'content': 'http://yadi.sk/'
+>    }
+> })
+> ```
 
 A group of an input field and a button with text, disabled altogether as a whole:
 
-```
-    nb-input-group({
-        'input' : {
-            'size': 's'
-            'attrs': {
-                'placeholder': 'Speak and...'
-            }
-        }
-        'button' : {
-            'size': 's'
-            'content': 'spell.'
-        }
-        'disabled' : true()
-    })
-``` 
+<div example="input-group"/>
+> ```yate
+> nb-input-group({
+>    'input' : {
+>        'size': 's'
+>        'attrs': {
+>            'placeholder': 'Ticket number'
+>        }
+>    }
+>    'button' : {
+>        'size': 's'
+>        'content': 'check'
+>        'disabled': true()
+>    }
+> })
+> ```

@@ -35,6 +35,8 @@ include "../blocks/dropzone/dropzone.example.yate"
 include "../blocks/gap/gap.example.yate"
 include "../blocks/group/group.example.yate"
 include "../blocks/island/island.example.yate"
+include "../blocks/input-group/input-group.example.yate"
+include "../blocks/icon/icon.example.yate"
 
 
 match / {
@@ -47,6 +49,8 @@ match / {
             gaps()
             groups()
             islands()
+            input-groups()
+            icons()
 
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>

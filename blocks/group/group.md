@@ -10,7 +10,7 @@ To make sure your group's items won't wrap you would want to use `.nb-group` cla
 
 * `class` - `['nb-group-item']`
 
-> <div example="group1"/>
+<div example="group1"/>
 >```yate
 >    nb-button({
 >         'content': 'Слева'
@@ -36,7 +36,7 @@ This is a class for generic group items, when you don't know their position. Suc
 * `class` - `['nb-group-middle']`
 * `class` - `['nb-group-end']`
 
-> <div example="group2"/>
+<div example="group2"/>
 >```yate
 >    nb-button({
 >        'content': 'Слева'

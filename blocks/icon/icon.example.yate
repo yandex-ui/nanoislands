@@ -1,0 +1,216 @@
+func icons() {
+    func all-icons-s(boolean white) {
+
+        if white {
+            nb-icon({
+            'icon': 'download-white'
+            })
+            nb-icon({
+            'icon': 'upload-white'
+            })
+            nb-icon({
+            'icon': 'link-white'
+            })
+
+            nb-icon({
+            'icon': 'trash-white'
+            })
+        } else {
+             nb-icon({
+            'icon': 'close'
+            })
+            nb-icon({
+            'icon': 'download'
+            })
+            nb-icon({
+            'icon': 'upload'
+            })
+
+            nb-icon({
+            'icon': 'people'
+            })
+
+            nb-icon({
+            'icon': 'help'
+            })
+
+            nb-icon({
+            'icon': 'eye'
+            })
+
+            nb-icon({
+            'icon': 'link'
+            })
+
+             nb-icon({
+            'icon': 'link'
+            })
+
+            nb-icon({
+            'icon': 'pause'
+            })
+
+             nb-icon({
+            'icon': 'play'
+            })
+
+            nb-icon({
+            'icon': 'three-dots'
+            })
+
+            nb-icon({
+            'icon': 'trash'
+            })
+
+            nb-icon({
+            'icon': 'attention'
+            })
+
+            nb-icon({
+            'icon': 'mail'
+            })
+
+            nb-icon({
+            'icon': 'vk'
+            })
+
+            nb-icon({
+            'icon': 'twitter'
+            })
+
+            nb-icon({
+            'icon': 'odnoklassniki'
+            })
+        }
+    }
+
+    func all-icons-m(boolean white) {
+
+        if white {
+            nb-icon({
+                'icon': 'download-white'
+                'size': 'm'
+            })
+            nb-icon({
+            'icon': 'upload-white'
+            'size': 'm'
+            })
+            nb-icon({
+            'icon': 'link-white'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'trash-white'
+            'size': 'm'
+            })
+        } else {
+             nb-icon({
+            'icon': 'close'
+            'size': 'm'
+            })
+            nb-icon({
+            'icon': 'download'
+             'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'upload'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'people'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'help'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'eye'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'link'
+            'size': 'm'
+            })
+
+             nb-icon({
+            'icon': 'link'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'pause'
+            'size': 'm'
+            })
+
+             nb-icon({
+            'icon': 'play'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'three-dots'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'trash'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'attention'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'mail'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'vk'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'twitter'
+            'size': 'm'
+            })
+
+            nb-icon({
+            'icon': 'odnoklassniki'
+            'size': 'm'
+            })
+        }
+    }
+
+    icons-m = (
+
+        <div style="padding: 10px;">
+            all-icons-m()
+        </div >
+        <div style="padding: 10px; background: #333;">
+           all-icons-m(true())
+        </div >
+    )
+
+    show('icons-m', icons-m)
+
+    icons-s = (
+        <div style="padding: 10px;">
+            all-icons-s()
+        </div>
+        <div style="padding: 10px; background: #333;">
+            all-icons-s(true())
+        </div>
+    )
+
+     show('icons-s', icons-s)
+}
