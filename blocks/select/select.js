@@ -190,7 +190,7 @@ nb.define('select', {
                     var $itemText = $('<span class="_nb-select-text"></span>').text(item.label).appendTo($itemNodeContent);
 
                     if (item.icon) {
-                        $itemText.prepend('<img class="nb-icon nb-s-' + item.icon + '-icon">');
+                        $itemText.prepend('<img class="nb-icon nb-s-' + item.icon + '-icon" src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif">');
                     }
 
                     $itemNode.append($itemNodeContent);
