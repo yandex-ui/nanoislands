@@ -1,6 +1,8 @@
 ;(function() {
 
-    var yr = (typeof window !== 'undefined' && window.yr) || require('yate/lib/runtime.js');
+    if (typeof yr === 'undefined' && typeof require === 'function') {
+        require('yate/lib/runtime.js');
+    }
 
     /* Делает extend двух и более объектов объектов
     *
