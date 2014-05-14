@@ -10,8 +10,10 @@
 
 * `id` {string}
 * `class` {array} — additional classes
+* `theme` {string}
+  * `blank` — popup without styles
+  * `island` — islands styles
 * `attrs` {object} — custom DOM attributes, e.g.: `{ 'attr2: 'value2', 'attr2: 'value2' }`
-* `tail` {string} — position of 'tail' widget — left|right|top|bottom
 * `titleContent` {xml|string} —  modal's title, can be string or `xml` _xss warning!_
 * `content` {xml|string} — modal's content, can be string or `xml` _xss warning!_
 

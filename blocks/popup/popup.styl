@@ -32,26 +32,26 @@
     padding: 0
     list-style: none
     outline: none
+._nb-modal-popup
+  ._nb-popup-title
+    font: $font-h3
+    padding: $islands_s
+    display: block
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
 
-._nb-popup-title
-  font: $font-h3
-  padding: $islands_s
-  display: block
-  overflow: hidden
-  text-overflow: ellipsis
-  white-space: nowrap
+  ._nb-popup-content
+    font: $font-p1
+    padding: 0 $islands_s
 
-._nb-popup-content
-  font: $font-p1
-  padding: 0 $islands_s
+  ._nb-popup-buttons
 
-._nb-popup-buttons
+    padding: $islands_s
+    padding-top: $islands_s
 
-  padding: $islands_s
-  padding-top: $islands_s
-
-._nb-popup-button
-  margin-right:  $islands_s
+  ._nb-popup-button
+    margin-right:  $islands_s
 
 .nb-popup.ui-dialog-fixed
   position: fixed !important
@@ -71,7 +71,7 @@
   background: #000
   background: rgba(0,0,0,0.3)
 
-._nb-default-popup
+._nb-island-modal-popup
   ._nb-popup-title
     padding: 0 2*$gapM 0 $gapM
     height: 50px
@@ -96,3 +96,18 @@
 
   ._nb-popup-content
     line-height: 0
+
+._nb-blank-modal-popup
+  background-color: transparent
+  border: 0
+  box-shadow: none
+
+  ._nb-popup-content
+  ._nb-popup-buttons
+  ._nb-popup-title
+    padding: 0
+
+  ._nb-popup-content:before
+  ._nb-popup-content:after
+    margin: 0
+    display: none
