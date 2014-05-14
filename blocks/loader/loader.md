@@ -1,6 +1,8 @@
-```
-    nb-loader()
-```
+### Default loader
+<div example="loader-m"/>
+> ```yate
+>     nb-loader()
+> ```
 
 * `size`: `m`
 
@@ -12,33 +14,17 @@
 ### Examples
 
 Small loader:
-
-```
-    nb-loader({
-        'size': 's'
-        'attrs': {
-            'data-id': '1'
-        }
-    })
-```
-
-Medium loader:
-
-```
-    nb-loader({
-        'attrs': {
-            'data-id': '1'
-        }
-    })
-```
+<div example="loader-s"/>
+> ```yate
+>     nb-loader({
+>         'size': 's'
+>     })
+> ```
 
 White medium loader on white background:
-
-```
-    nb-loader({
-        'color': 'white'
-        'attrs': {
-            'data-id': '1'
-        }
-    })
-```
+<div example="loader-w"/>
+> ```yate
+>     nb-loader({
+>         'color': 'white'
+>     })
+> ```

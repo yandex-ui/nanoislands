@@ -1,6 +1,6 @@
 ### Default input
 
-> <div example="input-simple"/>
+<div example="input-simple"/>
 > ```yate
 > nb-input({
 >   'content': 'hello, world!',
