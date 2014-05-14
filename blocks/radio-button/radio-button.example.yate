@@ -1,0 +1,26 @@
+func radio-buttons(){
+    show('radio-buttons', nb-radio-button({
+      'size': 'm'
+      'name': 'btn'
+      'group':  [
+          {
+              'content': 'All'
+              'value': 'btn1'
+          }
+          {
+              'content': 'Unread'
+              'value': 'btn3'
+              'checked': true()
+          }
+          {
+              'content': 'Read'
+              'value': 'btn4'
+          }
+          {
+              'content': 'Delete'
+              'value': 'btn2'
+              'disabled': true()
+          }
+      ]
+    }))
+}

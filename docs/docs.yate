@@ -39,6 +39,7 @@ include "../blocks/input-group/input-group.example.yate"
 include "../blocks/icon/icon.example.yate"
 include "../blocks/loader/loader.example.yate"
 include "../blocks/progress/progress.example.yate"
+include "../blocks/radio-button/radio-button.example.yate"
 
 
 match / {
@@ -55,6 +56,7 @@ match / {
             icons()
             loaders()
             progress()
+            radio-buttons()
 
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>

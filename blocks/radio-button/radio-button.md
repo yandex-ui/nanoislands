@@ -1,34 +1,38 @@
+### Basic usage example:
+<div example="radio-buttons"/>
+> ```yate
+> nb-radio-button({
+>       'size': 'm'
+>       'name': 'btn'
+>       'group':  [
+>           {
+>               'content': 'All'
+>               'value': 'btn1'
+>           }
+>           {
+>               'content': 'Unread'
+>               'value': 'btn3'
+>               'checked': true()
+>           }
+>           {
+>               'content': 'Read'
+>               'value': 'btn4'
+>           }
+>           {
+>               'content': 'Delete'
+>               'value': 'btn2'
+>               'disabled': true()
+>           }
+>       ]
+>     })
+> ```
+
 * Horizontal compound block
 * consists of several buttons
 * behaves like a group of radio-buttons
 
 To get a group of actial _radiobuttons_ (like those you can get using vanilla HTML) use `checkbox` with corresponding options.
 
-### Basic usage example:
-
-```
-    nb-radio-button({
-        'name': 'btn'
-        'group':  [
-            {
-                'content': 'Foo'
-                'value': 'btn1'
-            }
-            {
-                'content': 'Bar'
-                'value': 'btn3'
-            }
-            {
-                'content': 'Baz'
-                'value': 'btn4'
-            }
-            {
-                'content': 'Quux'
-                'value': 'btn2'
-            }
-        ]
-    })
-```
 
 Default options:
 
