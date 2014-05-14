@@ -38,6 +38,7 @@ include "../blocks/island/island.example.yate"
 include "../blocks/input-group/input-group.example.yate"
 include "../blocks/icon/icon.example.yate"
 include "../blocks/loader/loader.example.yate"
+include "../blocks/progress/progress.example.yate"
 
 
 match / {
@@ -53,6 +54,7 @@ match / {
             input-groups()
             icons()
             loaders()
+            progress()
 
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>
