@@ -1,3 +1,9 @@
+##### 0.4.4 — patch
+
+##### Fixes
+* fix #332 — Попап содержит отступы для внутрилежащего контента
+* fix #330 — Бордер на img без src
+
 ##### 0.4.3 — patch
 * Support server-side rendering in yate externals
 
