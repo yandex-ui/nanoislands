@@ -1,33 +1,30 @@
 func island-simple() {
-    island = {
-        'content': 'Остров миу-миу'
-        'attrs': {
-            'style': 'height: 100px; width: 200px'
-        }
-    }
-    nb-island(island)
+    nb-island({
+          'content': 'Остров миу-миу'
+          'attrs': {
+              'style': 'height: 100px; width: 200px'
+          }
+      })
 }
 
 func island-fly() {
-    island = {
-        'content': 'Летающий остров'
-        'type': 'fly'
-        'padding': 'm'
-        'attrs': {
-            'style': 'height: 100px; width: 200px'
-        }
-    }
-    nb-island(island)
+    nb-island({
+      'content': 'Летающий остров'
+      'type': 'fly'
+      'padding': 'm'
+      'attrs': {
+          'style': 'height: 100px; width: 200px'
+      }
+    })
 }
 
 
 func island-padding() {
-    island = {
-        'content': 'Остров с паддингами и инлайном'
-        'padding': 'l'
-        'type':  'inline'
-    }
-    nb-island(island)
+    nb-island({
+          'content': 'Остров с паддингами и инлайном'
+          'padding': 'l'
+          'type':  'inline'
+      })
 }
 
 func islands() {
