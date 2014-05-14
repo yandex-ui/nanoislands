@@ -1,6 +1,4 @@
-;(function() {
-
-    var yr = (typeof window !== 'undefined' && window.yr) || require('yate/lib/runtime.js');
+;(function(yr) {
 
     /* Делает extend двух и более объектов объектов
     *
@@ -116,4 +114,4 @@ yr.externals['_nb-warn'] = function(message){
     console.log('%c' + message, 'color:#ffcc00');
 };
 
-})();
+})(typeof yr === 'undefined' && typeof require === 'function' ? require('yate/lib/runtime.js') : yr);
