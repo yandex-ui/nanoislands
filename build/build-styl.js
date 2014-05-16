@@ -17,7 +17,7 @@ style.render(function(err, css) {
         // эти браузеры прибиты по версиям
         'Opera 12',
         'Safari >= 6',
-
+        'Explorer >= 9',
         // эти браузеры обновляются автоматически
         'last 5 Chrome versions',
         'last 5 Firefox versions',

@@ -365,7 +365,7 @@
             // в массиве должно быть больше 1 элемента
             // иначе модификатора не было
             if (l > 1) {
-                newClass = '_nb-popup-outer_' + modifier;
+                newClass = 'nb-popup-outer_' + modifier;
             }
 
             return newClass;
