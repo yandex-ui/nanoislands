@@ -126,6 +126,23 @@ func radio-button() {
             }
         ]
     })
+    <br/>
+    <br/>
+     nb-radio-button({
+            'size': 's'
+            'name': 'btn11'
+            'group':  [
+                {
+                    'content': 'Все'
+                    'value': 'btn1'
+                }
+                {
+                    'content': 'Непрочитанные'
+                    'value': 'btn3'
+                    'checked': true()
+                }
+            ]
+        })
 }
 
 func attach-button() {
