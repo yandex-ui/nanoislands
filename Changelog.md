@@ -1,3 +1,9 @@
+##### 0.4.6 — patch
+
+##### Fixes
+* fix #337 — nb-radio-button потерялся размер small bug
+* fix #336 — Fix small select size
+
 ##### 0.4.5 — patch
 
 ##### Fixes
