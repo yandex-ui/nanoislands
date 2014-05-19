@@ -273,8 +273,8 @@
      */
     function _getElementCenter(d) {
         return {
-            x: d.left + (d.width / 2),
-            y: d.top + (d.height / 2)
+            x: Math.round(d.left + (d.width / 2)),
+            y: Math.round(d.top + (d.height / 2))
         };
     }
 
@@ -308,12 +308,12 @@
     function _getBoundingRectangle(d) {
         return [
             {
-                x: d.left,
-                y: d.top
+                x: Math.round(d.left),
+                y: Math.round(d.top)
             },
             {
-                x: d.left + d.width,
-                y: d.top + d.height
+                x: Math.round(d.left + d.width),
+                y: Math.round(d.top + d.height)
             }
         ];
     }
