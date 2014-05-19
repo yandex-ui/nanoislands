@@ -1,0 +1,20 @@
+.test1 {
+  padding: 10px;
+  margin: -10px;
+}
+.test2 {
+  padding: 10px 20px;
+  margin: -10px -20px;
+}
+.test3 {
+  padding: 10px 20px 30px;
+  margin: -10px -20px -30px;
+}
+.test4 {
+  padding: 10px 20px 30px 40px;
+  margin: -10px -20px -30px -40px;
+}
+.test5 {
+  padding: 10px 20px 30px 40px !important;
+  margin: -10px -20px -30px -40px !important;
+}

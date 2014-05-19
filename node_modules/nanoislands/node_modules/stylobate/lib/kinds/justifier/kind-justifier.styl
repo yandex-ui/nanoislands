@@ -1,0 +1,19 @@
+kind-justifier()
+  text-align: justify
+
+  if ie
+    text-justify: newspaper
+    text-align-last: justify
+  else
+    stylobate_defaults(arguments,
+      -helper '&:after')
+
+kind-justifier-helper()
+  pseudo-with-content()
+
+  display: inline-block
+  width: 100%
+
+kind-justifier_no-last-line()
+  font-size: 0
+  line-height: 0

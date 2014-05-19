@@ -1,0 +1,27 @@
+.test1 {
+  foo: -10px;
+}
+.test2 {
+  foo: -10px -20px;
+}
+.test3 {
+  foo: -10px 20px -10px !important;
+}
+.test4 {
+  foo: -10px -20px;
+}
+.test5 {
+  foo: -10px -30px -40px 10px;
+}
+.test6 {
+  foo: -10px 0.2px -20px 20px -30px;
+}
+.test7 {
+  foo: -10px, -20px;
+}
+.test8 {
+  foo: -10px, -30px, -40px 10px;
+}
+.test9 {
+  foo: -10px 0.2px, -20px 20px -30px;
+}

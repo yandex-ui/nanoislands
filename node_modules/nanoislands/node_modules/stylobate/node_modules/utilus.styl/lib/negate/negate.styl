@@ -1,0 +1,12 @@
+utilus_negate()
+  $result = clone(arguments)
+
+  for $item, $index in $result
+    if utilus_is_array($item)
+      $result[$index] = utilus_negate($item)
+    else if type($item) == 'unit'
+      $result[$index] = -1*$item
+
+  return $result
+
+negate ?= utilus_negate

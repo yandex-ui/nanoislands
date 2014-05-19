@@ -1,0 +1,61 @@
+func button-input-button() {
+    nb-button({
+        'content': 'Слева'
+        'size': 'm'
+        'class': ['nb-group-item']
+    })
+    nb-input({
+        'class': ['nb-group-item']
+        'size': 'm'
+    })
+    nb-button({
+        'content': 'Справа'
+        'size': 'm'
+        'class': ['nb-group-item']
+    })
+}
+
+func button-input-button-strict() {
+    nb-button({
+        'content': 'Слева'
+        'theme': 'pseudo'
+        'size': 's'
+        'class': ['nb-group-start']
+    })
+    nb-button({
+        'content': 'В центре'
+        'theme': 'pseudo'
+        'size': 's'
+        'class': ['nb-group-middle']
+    })
+    nb-button({
+        'content': 'Справа'
+        'theme': 'pseudo'
+        'size': 's'
+        'class': ['nb-group-end']
+    })
+}
+
+func groups() {
+    <div class="demo-section">
+        <div class="demo-h3">
+            <span class="demo-code demo-code_small">
+                '.nb-group-item'
+            </span>
+        </div>
+
+        show(button-input-button())
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-h3">
+            <span class="demo-code demo-code_small">
+                '.nb-group-start, '
+                '.nb-group-middle, '
+                '.nb-group-end'
+            </span>
+        </div>
+
+        show(button-input-button-strict())
+    </div>
+}
