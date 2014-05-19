@@ -48,6 +48,7 @@ match .radio-button nb {
                     'type': 'label'
                     'static': true()
                     'id': false()
+                    'size': ..size
                     'attrs': {
                         'for': uniq
                         'data-value': .value
