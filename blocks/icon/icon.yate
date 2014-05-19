@@ -5,12 +5,6 @@ func nb-icon(nodeset options) {
 
 
     _nb-block('ico', _nb-extend(default, options))
-    if!(_nb-extend(default, options).icon) {
-        log('debug')
-            log(options)
-            log(_nb-extend(default, options))
-    }
-
 }
 
 match .ico nb {
