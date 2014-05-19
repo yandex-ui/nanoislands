@@ -1,3 +1,9 @@
+##### 0.4.7 — patch
+
+##### Fixes
+* fix calculation of position for popups tail
+* fix #338 — [IE9] Checkboxes and selects arrows is broken
+
 ##### 0.4.6 — patch
 
 ##### Fixes
