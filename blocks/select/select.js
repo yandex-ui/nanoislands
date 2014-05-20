@@ -95,6 +95,7 @@ nb.define('select', {
 
             // select JUI control init
             that.$node.autocomplete({
+                disabled: that.$node.hasClass('_nb-is-disabled'),
                 delay: 0,
                 minLength: 0,
                 autoFocus: false,
@@ -122,7 +123,6 @@ nb.define('select', {
                     }));
                 },
                 select: function(event, ui) {
-
                     if (ui.item.type != 'group') {
                         ui.item.option.selected = true;
 
@@ -184,14 +184,18 @@ nb.define('select', {
                 if (item.separator) {
                     $itemNode.addClass('_nb-select-seperator-item');
                 } else {
+                    var $itemNodeContent;
                     $itemNode.data('ui-autocomplete-item', item);
-
-                    var $itemNodeContent = $('<a class="_nb-select-a"></a>');
-                    var $itemText = $('<span class="_nb-select-text"></span>').text(item.label).appendTo($itemNodeContent);
-
-                    if (item.icon) {
-                        $itemText.prepend('<img class="nb-icon nb-s-' + item.icon + '-icon" src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif">');
+                    if (item.type == 'group') {
+                        $itemNodeContent = $('<a class="_nb-select-a"></a>');
+                        var $itemText = $('<span class="_nb-select-text"></span>').text(item.label).appendTo($itemNodeContent);
+                        if (item.icon) {
+                            $itemText.prepend('<img class="nb-icon nb-s-' + item.icon + '-icon" src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif">');
+                        }
+                    } else {
+                        $itemNodeContent = $('<a class="_nb-select-a">' + item.label + '</a>');
                     }
+
 
                     $itemNode.append($itemNodeContent);
                 }

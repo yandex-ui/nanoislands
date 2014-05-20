@@ -34,15 +34,15 @@
   display: inline-block
 
 .nb-select ._nb-button-content:before
-.nb-select-dropdown ._nb-select-group-item > ._nb-select-a > ._nb-select-text:before
+.nb-select-dropdown ._nb-select-group-item > ._nb-select-a:before
   content: ""
   skin: icon_dropdown selecty
 
 ._nb-small-select ._nb-button-content:before
-._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a  > ._nb-select-text:before
+._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a:before
   skin: icon_dropdown selecty small
 
-.nb-select-dropdown ._nb-select-group-item > ._nb-select-a  > ._nb-select-text:before
+.nb-select-dropdown ._nb-select-group-item > ._nb-select-a:before
 ._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a  > ._nb-select-text:before
   transform: scale(0.75) rotate(-45deg) translate(3px, 5px)
 
@@ -57,7 +57,7 @@
 ._nb-select-item
   reset: li
 
-._nb-select-text
+._nb-select-a
   skin: menu-item (_checked '.is-selected &')
   white-space: nowrap
 
@@ -71,11 +71,11 @@
 
 ._nb-small-select-dropdown ._nb-select-item ._nb-select-text
 ._nb-small-pseudo-select-dropdown ._nb-select-item ._nb-select-text
+._nb-small-action-select-dropdown ._nb-select-item ._nb-select-text
+._nb-small-select-dropdown ._nb-select-item ._nb-select-a
   skin: menu-item_size small
 
-._nb-small-normal-select .ui-state-focus > ._nb-select-text,
-._nb-small-normal-select .ui-state-focus > ._nb-select-text,
-._nb-small-normal-select .ui-state-focus > ._nb-select-text,
+.nb-select-dropdown .ui-state-focus
   skin: menu-item_hover
 
 // FIXME: we need to use `nb-is-disabled` here
@@ -84,3 +84,6 @@
 
 ._nb-select-seperator-item
   skin: menu-separator padded
+
+._nb-is-disabled._nb-select-button:focus:after
+  box-shadow: none
