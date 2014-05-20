@@ -200,6 +200,19 @@ func select-medium() {
           }
       ]
     })
+    nb-select({
+      'size': 'm'
+      'id': 'select10'
+      'class': 'my-test-class'
+      'items': [
+          {
+              'text': ''
+              'value': 'option1'
+              'selected': 'true'
+          }
+
+      ]
+    })
     " Текст рядом с селектами"
 }
 func select-small() {

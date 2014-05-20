@@ -245,7 +245,7 @@ nb.define('select', {
 
             this.value = this.$selected.val();
             // &nbsp; - to prevent button from collapse if no text on <option/>
-            this.text = this.$selected.text() || '&nbsp;';
+            this.text = this.$selected.text();
 
             this._setText(this.text);
         },
@@ -264,7 +264,12 @@ nb.define('select', {
         },
 
         _setText: function(text) {
-            this.$node.find('._nb-button-content').text(text);
+            if (text) {
+                this.$node.find('._nb-button-content').html(text);
+            } else {
+                this.$node.find('._nb-button-content').html('&nbsp;');
+            }
+
         },
 
         _setMaxHeight: function(maxheight) {
