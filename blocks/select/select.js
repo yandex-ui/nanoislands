@@ -184,18 +184,19 @@ nb.define('select', {
                 if (item.separator) {
                     $itemNode.addClass('_nb-select-seperator-item');
                 } else {
-                    var $itemNodeContent;
                     $itemNode.data('ui-autocomplete-item', item);
+
+                    var $itemNodeContent = $('<a class="_nb-select-a"></a>');
+
                     if (item.type == 'group') {
-                        $itemNodeContent = $('<a class="_nb-select-a"></a>');
-                        var $itemText = $('<span class="_nb-select-text"></span>').text(item.label).appendTo($itemNodeContent);
-                        if (item.icon) {
-                            $itemText.prepend('<img class="nb-icon nb-s-' + item.icon + '-icon" src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif">');
-                        }
+                        $itemNodeContent.html('<span class="_nb-select-text">' + item.label + '</span>');
                     } else {
-                        $itemNodeContent = $('<a class="_nb-select-a">' + item.label + '</a>');
+                        $itemNodeContent.text(item.label).appendTo($itemNodeContent);
                     }
 
+                    if (item.icon) {
+                        $itemNodeContent.prepend('<img class="nb-icon nb-s-' + item.icon + '-icon" src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif">');
+                    }
 
                     $itemNode.append($itemNodeContent);
                 }
