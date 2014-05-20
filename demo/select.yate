@@ -178,9 +178,9 @@ func select-medium() {
     " Текст рядом с селектами"
 }
 func select-small() {
-    block = {
+    nb-select({
         'size': 's'
-        'id': 'select2'
+        'id': 'select7'
         'direction': 'top'
         'items': [
             {
@@ -201,8 +201,29 @@ func select-small() {
                 'value': 'option4'
             }
         ]
-    }
-    nb-select(block)
+    })
+    ' '
+    nb-select({
+      'size': 's'
+      'id': 'select8'
+      'class': 'my-test-class'
+      'theme': 'pseudo'
+      'items': [
+          {
+              'text': 'Карта'
+              'value': 'option1'
+              'selected': 'true'
+          }
+          {
+              'text': 'Спутник'
+              'value': 'option2'
+          }
+          {
+              'text': 'Гибрид'
+              'value': 'option3'
+          }
+      ]
+    })
     " Текст рядом с селектами"
 }
 
