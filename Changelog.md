@@ -1,3 +1,9 @@
+##### 0.4.9 — patch
+
+##### Fixes
+* fix #346 — [Chromium] Bug with content spacing in nb-select dropdown bug
+* fix #345 — [Opera 12.16] Bug selects view bug
+
 ##### 0.4.8 — patch
 
 ##### Fixes
