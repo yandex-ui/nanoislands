@@ -85,13 +85,10 @@ func _select-option(nodeset item) {
             @label = item.text
             @value = item.value
             @data-icon = .icon
-
             if (item.selected) {
                   @selected = ''
             }
-
             item.text
         }
-
     </option>
 }
