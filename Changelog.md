@@ -1,4 +1,4 @@
-##### 0.4.9 — patch
+##### 0.4.10 — patch
 
 ##### Fixes
 * fix #346 — [Chromium] Bug with content spacing in nb-select dropdown bug
