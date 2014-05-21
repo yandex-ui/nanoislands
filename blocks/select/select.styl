@@ -1,5 +1,8 @@
 .nb-select
-  ._nb-button-content
+  &.nb-button
+    text-align: left // fixes #345
+
+  & ._nb-button-content
     if ie
       display: none !important
     if !ie
