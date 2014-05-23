@@ -1,3 +1,8 @@
+##### 0.4.11 — patch
+
+##### Fixes
+* fix #349 — [Bug] nb-select don't open, when used the modal popup closing
+
 ##### 0.4.10 — patch
 
 ##### Fixes
