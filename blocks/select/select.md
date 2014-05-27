@@ -17,6 +17,7 @@
 * `'disabled'` {boolean}
 * `'maxHeight'` {Number|String} number of visible items or string value of the max-height like '10em'
 * `'within'` {string} '...' - id attr of the container where listing tries to fit in (window default)
+* `'appendto'` {string} — selector where show be placed select dropdown
 * `'items'` {array}  - each object in array could have text, value and selected fields
     * `'text'` {string} text of option
     * `'value'` {string} value of option

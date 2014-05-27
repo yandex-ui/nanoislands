@@ -28,8 +28,8 @@ nb.define('select', {
         oninit: function() {
             this.isOpen = false;
             this.$control = this.$node.find('select');
-            this.$dropdown = this.$node.children('.nb-select-dropdown').appendTo('body');
             this.data = this.nbdata();
+            this.$dropdown = this.$node.children('.nb-select-dropdown').appendTo(this.data.appendto || 'body');
 
             this._updateFromSelect();
 
