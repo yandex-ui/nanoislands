@@ -27,6 +27,7 @@ func _nb-button-attributes(type) {
 
     if .disabled {
         @class += ' _nb-is-disabled'
+        @tabindex = '-1'
 
         if type == 'button' {
             @disabled = 'disabled'
