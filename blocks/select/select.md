@@ -15,6 +15,7 @@
 * `'direction'` {string} bottom / top — open default direction
 * `'class'` {array} `['my_class1', 'my_class2']`
 * `'disabled'` {boolean}
+* `'tabindex'` {string} — tabindex
 * `'maxHeight'` {Number|String} number of visible items or string value of the max-height like '10em'
 * `'within'` {string} '...' - id attr of the container where listing tries to fit in (window default)
 * `'appendto'` {string} — selector where show be placed select dropdown

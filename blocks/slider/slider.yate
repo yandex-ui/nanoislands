@@ -41,6 +41,10 @@ match .slider nb {
                     @class += ' { .handle.class }'
                 }
 
+                if .tabindex {
+                    @tabindex = .tabindex
+                }
+
                 <span class='nb-button-content'>
                     <input class='_nb-slider-fallback' type='text' value='{ .value }' readonly='readonly'>
                         if .name {

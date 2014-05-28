@@ -34,6 +34,10 @@ func _nb-button-attributes(type) {
         }
     }
 
+    if .tabindex {
+        @tabindex = .tabindex
+    }
+
     if type == 'attach' {
         @class += ' _nb-attach-button'
     }

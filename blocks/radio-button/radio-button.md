@@ -50,6 +50,7 @@ Default options:
     * `'content'` {string} ... — string of button's content
     * `'value'` {string}... — corresponding value
     * `'name'` {string} ... — name for radio-button
+    * `'tabindex'` {string} — tabindex
     * `'icon'` {string} ... — icon name
     * `'checked'` {boolean} — checked element of radio-group
     * `'disabled'` {boolean}  — for disabled element

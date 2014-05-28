@@ -28,6 +28,10 @@ match .select nb {
             @data-nb-appendto = .appendto
         }
 
+        if .tabindex {
+            @tabindex = .tabindex
+        }
+
         if .maxHeight {
             @data-nb-maxheight = .maxHeight
         }

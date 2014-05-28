@@ -31,6 +31,7 @@ match .suggest nb {
              'size': .size
              'class': '_nb-suggest-input'
              'attrs': .attrsInput
+             'tabindex': .tabindex
              'disabled': .disabled
              'name': .name
              'content': .content

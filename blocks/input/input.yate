@@ -104,6 +104,10 @@ match .input nb {
                     @name = .name
                 }
 
+                if .tabindex {
+                    @tabindex = .tabindex
+                }
+
                 if .disabled {
                     @disabled = 'disabled'
                 }
@@ -181,6 +185,10 @@ match .textarea nb {
                     @name = .name
                 }
 
+                if .tabindex {
+                    @tabindex = .tabindex
+                }
+
                 if .disabled {
                     @disabled = 'disabled'
                 }
@@ -211,6 +219,10 @@ match .inputSimple nb {
             @name = .name
         }
 
+        if .tabindex {
+            @tabindex = .tabindex
+        }
+
         if !( .static ){
             @data-nb='input'
         }
@@ -238,6 +250,10 @@ match .textareaSimple nb {
 
         if .name {
             @name = .name
+        }
+
+        if .tabindex {
+            @tabindex = .tabindex
         }
 
         if !( .static ){
