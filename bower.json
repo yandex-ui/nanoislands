@@ -2,6 +2,7 @@
     "name": "nanoislands",
     "version": "0.4.11",
     "dependencies": {
+        "es5-shim": "3.4.0",
         "x-tag-core": "0.9.5",
         "react": "0.10.0",
         "xblocks-core": "*"
