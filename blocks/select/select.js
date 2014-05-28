@@ -266,8 +266,10 @@ nb.define('select', {
 
         _setText: function(text) {
             if (text) {
-                this.$node.find('._nb-button-content').html(text);
+                // use .text() to prevent XSS
+                this.$node.find('._nb-button-content').text(text);
             } else {
+                // &nbsp; - to prevent button from collapse if no text on <option/>
                 this.$node.find('._nb-button-content').html('&nbsp;');
             }
 

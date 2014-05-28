@@ -589,6 +589,17 @@ describe("Select Tests", function() {
                 this.select.setState({'value': 'option3'});
                 expect(flag).to.equal(1);
             });
+
+            it("XSS in _setText", function() {
+                this.select.addToSource({
+                    'selected': true,
+                    'text': '<b>bold</b>',
+                    'value': 'add-value'
+                });
+
+                expect(this.select.$node.find('._nb-button-content').html()).to.be.eql('&lt;b&gt;bold&lt;/b&gt;');
+            });
+
         });
 
         describe("API", function() {
