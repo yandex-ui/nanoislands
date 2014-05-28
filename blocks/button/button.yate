@@ -19,14 +19,23 @@ func nb-button(nodeset options) {
 
 func _nb-button-attributes(type) {
 
-    _size-theme-type-class({
-       'name': 'button'
-       'size': .size
-       'theme': .theme
-    })
+    if .name {
+        @name = .name
+    }
+
+    if .attrs.name {
+        @name = .attrs.name
+    }
+
+    if .size {
+        @size = .size
+    }
+
+    if .theme {
+        @theme = .theme
+    }
 
     if .disabled {
-        @class += ' _nb-is-disabled'
         @tabindex = '-1'
 
         if type == 'button' {
@@ -38,169 +47,91 @@ func _nb-button-attributes(type) {
         @tabindex = .tabindex
     }
 
-    if type == 'attach' {
-        @class += ' _nb-attach-button'
-    }
-
     if .checked {
-        @class += ' is-checked'
+        @checked = 'checked'
     }
 
-    if type == 'button' {
-        if .name {
-            @name = .name
-        }
-
-        if .attrs.name {
-            @name = .attrs.name
+    if type == 'attach' {
+        if .attrs.multiple || .multiple {
+            @multiple = "multiple"
         }
     }
 
-    if !( .content ) && (.icon || .iconText) {
-        @class += ' _nb-with-only-button'
+    if .icon {
+        @xb-ico-type = "{.icon}"
     }
-
-
 }
 
 func _nb-button-content() {
+    /*
     if .iconText {
         <span class="nb-icon _nb-icon-text">
           .iconText
         </span>
     }
+    */
     if .content {
         html(.content)
     }
 }
 
 func _nb-button-static(){
-    if !( .static ) {
-        @class += ' _init'
-        @data-nb = 'button'
+    if .static {
+        @xb-static = 'xb-static'
     }
 }
 
 match .button nb {
-    <button>
+    <xb-button type="{.type}">
         _nb-button-attributes('button')
-
         _nb-button-static()
 
         apply . nb-main-attrs
 
-        <span class="_nb-button-content">
-             if .icon {
-                nb-icon({
-                    'icon': .icon
-                })
-            }
-
-            _nb-button-content()
-        </span>
-    </button>
+        _nb-button-content()
+    </xb-button>
 }
 
 match .buttonLink nb {
-    <a>
+    <xb-button type="{.type}">
         _nb-button-attributes('link')
-
-         _nb-button-static()
+        _nb-button-static()
 
         apply . nb-main-attrs
 
-        <span class="_nb-button-content">
-             if .icon {
-                nb-icon({
-                    'icon': .icon
-                })
-            }
-
-            _nb-button-content()
-        </span>
-    </a>
+        _nb-button-content()
+    </xb-button>
 }
 
 match .buttonSpan nb {
-    <span>
+    <xb-button type="{.type}">
         _nb-button-attributes('span')
-
         _nb-button-static()
 
         apply . nb-main-attrs
 
-        <span class="_nb-button-content">
-            if .icon {
-                nb-icon({
-                    'icon': .icon
-                })
-            }
-
-            _nb-button-content()
-        </span>
-    </span>
+        _nb-button-content()
+    </xb-button>
 }
 
 match .buttonLabel nb {
-    <label>
+    <xb-button type="{.type}">
         _nb-button-attributes('label')
-
         _nb-button-static()
 
         apply . nb-main-attrs
 
-        <span class="_nb-button-content">
-            if .icon {
-                nb-icon({
-                    'icon': .icon
-                })
-            }
-            _nb-button-content()
-        </span>
-    </label>
+        _nb-button-content()
+    </xb-button>
 }
 
 match .buttonAttach nb {
-    <label>
+    <xb-button type="{.type}">
         _nb-button-attributes('attach')
-
         _nb-button-static()
 
         apply . nb-main-attrs
 
-        <span class="_nb-file-intruder">
-            <span class="_nb-file-intruder-inner">
-                <input class="_nb-file-intruder-input" type="file">
-                    if .attrs.multiple || .multiple {
-                        @multiple = "multiple"
-                    }
-
-                    if .name {
-                        @name = .name
-                    }
-
-                    if .attrs.name {
-                        @name = "{.attrs.name}"
-                    }
-                    if .attrs.title {
-                        @title += "{.attrs.title}"
-                    }
-
-                    if .disabled {
-                        @disabled = 'disabled'
-                    }
-                </input>
-                <span class="_nb-file-intruder-focus"></span>
-            </span>
-        </span>
-        <span class="_nb-button-content">
-            if .icon {
-               nb-icon({
-                   'icon': .icon
-               })
-           }
-
-            _nb-button-content()
-        </span>
-    </label>
+        _nb-button-content()
+    </xb-button>
 }
