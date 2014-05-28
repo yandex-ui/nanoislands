@@ -1,0 +1,10 @@
+{
+    "name": "nanoislands",
+    "version": "0.4.11",
+    "dependencies": {
+        "x-tag-core": "0.9.5",
+        "react": "0.10.0",
+        "xblocks-core": "*"
+    },
+    "directory": "bower_components"
+}
