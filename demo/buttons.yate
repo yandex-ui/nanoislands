@@ -84,7 +84,7 @@ func button-images() {
 
     ' '
     nb-button({
-        'iconText': '▼'
+        'content': '▼'
     })
 
     ' '
