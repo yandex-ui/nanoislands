@@ -33,9 +33,7 @@ match .input nb {
 
         apply . nb-main-attrs
 
-        if .hint || .error || .ghost {
-            @class += ' _init'
-        }
+        @class += ' _init'
 
         if !( .static ){
             @data-nb='input'
