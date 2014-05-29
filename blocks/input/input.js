@@ -15,6 +15,7 @@ nb.define('input', {
      */
     oninit: function() {
         var that = this;
+        this.focused = false;
 
         this.data = this.nbdata();
 
@@ -43,8 +44,6 @@ nb.define('input', {
         this.$control.on('change', function(e) {
             that.trigger('nb-changed', this, e);
         });
-
-        this.focused = false;
 
         this.$control.on('input', function(e) {
             that.value = that.getValue();
@@ -94,13 +93,6 @@ nb.define('input', {
                 that.$hintGhost.html(that.getValue());
             });
 
-            this.$control.on('focusin', function() {
-                that.$hint.css('visibility', 'hidden');
-            });
-
-            this.$control.on('focusout', function() {
-                that.$hint.css('visibility', 'inherit');
-            });
         } else {
             this.$control.on('input', function() {
                 if (that.getValue() === '') {
@@ -112,20 +104,28 @@ nb.define('input', {
         }
     },
 
-    _onfocus: function(e) {
+    _onfocus: function() {
         this.$node.addClass('_nb-is-focused');
         this.focused = true;
-        this.$control.focus();
+        this.$control.get(0).focus();
+
+        if (this.$hintGhost && this.$hintGhost.length) {
+            this.$hint.css('visibility', 'hidden');
+        }
 
         if (this.data.ghost) {
             this.$node.removeClass('_nb-is-ghost');
         }
     },
 
-    _onblur: function(e) {
+    _onblur: function() {
         this.$node.removeClass('_nb-is-focused');
         this.focused = false;
-        this.$control.blur();
+        this.$control.get(0).blur();
+
+        if (this.$hintGhost && this.$hintGhost.length) {
+            this.$hint.css('visibility', 'inherit');
+        }
 
         if (this.data.ghost) {
             this.$node.addClass('_nb-is-ghost');
