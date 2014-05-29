@@ -15,6 +15,7 @@ nb.define('input', {
      */
     oninit: function() {
         var that = this;
+        this.focused = false;
 
         this.data = this.nbdata();
 
@@ -23,6 +24,19 @@ nb.define('input', {
         } else {
             this.$control = this.$node.find('._nb-input-controller');
         }
+
+        this.$control.on('focusin', function(e) {
+            e.stopPropagation();
+            if (!that.focused) {
+                that._onfocus(e);
+            }
+        });
+        this.$control.on('focusout', function(e) {
+            e.stopPropagation();
+            if (that.focused) {
+                that._onblur(e);
+            }
+        });
 
         this.disabled = this.$control.prop('disabled');
         this.value = this.getValue();
@@ -36,19 +50,11 @@ nb.define('input', {
             that.trigger('nb-input', this, e);
         });
 
-        this.$control.on('focus', function() {
-            if (that.data.type != 'simple') {
-                that._onfocus();
-            }
-        });
-
         this.$hint = this.$node.find('._nb-input-hint');
 
         if (this.$hint.length) {
             this._inithint();
         }
-
-        this.focused = false;
 
         if (this.data.ghost) {
             this.$node.on('mouseover mouseout', function() {
@@ -60,10 +66,6 @@ nb.define('input', {
             this.error = nb.find(this.data.error.id);
         }
 
-        nb.on('nb-focusout', function() {
-            that.blur();
-        });
-
         this._onmousedown = function(e) {
             if ($.contains(this.$control.get(0), e.target)) {
                 return;
@@ -72,19 +74,8 @@ nb.define('input', {
             this.blur();
         }.bind(this);
 
-        this._onkeydown = function(e) {
-            var keyCode = e.keyCode || e.which;
-
-            if (keyCode == 9) {
-                this.blur();
-            }
-
-        }.bind(this);
-
         $(document).on('mousedown', this._onmousedown);
         $(document).on('touchstart', this._onmousedown);
-        $(document).on('keydown', this._onkeydown);
-
 
         this.trigger('nb-inited', this);
     },
@@ -102,13 +93,6 @@ nb.define('input', {
                 that.$hintGhost.html(that.getValue());
             });
 
-            this.$control.on('focusin', function() {
-                that.$hint.css('visibility', 'hidden');
-            });
-
-            this.$control.on('focusout', function() {
-                that.$hint.css('visibility', 'inherit');
-            });
         } else {
             this.$control.on('input', function() {
                 if (that.getValue() === '') {
@@ -123,11 +107,28 @@ nb.define('input', {
     _onfocus: function() {
         this.$node.addClass('_nb-is-focused');
         this.focused = true;
+        this.$control.get(0).focus();
 
-        this.$control.triggerHandler("focusin");
+        if (this.$hintGhost && this.$hintGhost.length) {
+            this.$hint.css('visibility', 'hidden');
+        }
 
         if (this.data.ghost) {
             this.$node.removeClass('_nb-is-ghost');
+        }
+    },
+
+    _onblur: function() {
+        this.$node.removeClass('_nb-is-focused');
+        this.focused = false;
+        this.$control.get(0).blur();
+
+        if (this.$hintGhost && this.$hintGhost.length) {
+            this.$hint.css('visibility', 'inherit');
+        }
+
+        if (this.data.ghost) {
+            this.$node.addClass('_nb-is-ghost');
         }
     },
 
@@ -217,16 +218,11 @@ nb.define('input', {
      * @returns {Object} nb.block
      */
     focus: function() {
-        if (!this.isEnabled()) {
-            return this;
-        }
-        if (!this.focused) {
+        if (!this.focused && this.isEnabled()) {
             nb.trigger('nb-focusout');
             this._onfocus();
-            this.$control.get(0).focus();
             this.trigger('nb-focused', this);
         }
-
         return this;
     },
 
@@ -236,15 +232,8 @@ nb.define('input', {
      * @returns {Object} nb.block
      */
     blur: function() {
-        this.$node.removeClass('_nb-is-focused');
-
-        if (this.data.ghost) {
-            this.$node.addClass('_nb-is-ghost');
-        }
-        if (this.focused) {
-            this.focused = false;
-            this.$control.triggerHandler("focusout");
-            this.$control.get(0).blur();
+        if (this.focused && this.isEnabled()) {
+            this._onblur();
             this.trigger('nb-blured', this);
         }
         return this;

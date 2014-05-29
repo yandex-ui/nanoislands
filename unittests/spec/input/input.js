@@ -212,6 +212,7 @@ describe("Input Tests", function() {
         });
 
         it("should be in focus", function() {
+            this.input.blur();
             this.input.focus();
             expect(this.input.focused).to.be.ok();
         });
@@ -219,8 +220,9 @@ describe("Input Tests", function() {
 
     describe("#blur()", function() {
         it("should not to be in focus", function() {
+            this.input.focus();
             this.input.blur();
-            expect(this.input.focused).not.to.be.ok();
+            expect(this.input.$control.is(":focus")).not.to.be.ok();
         });
 
         it("should throws blur event", function() {
