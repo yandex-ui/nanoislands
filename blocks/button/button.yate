@@ -18,6 +18,11 @@ func nb-button(nodeset options) {
 }
 
 func _nb-button-attributes(type) {
+    @class += ' nb-button'
+
+    if .type {
+        @type = .type
+    }
 
     if .name {
         @name = .name
@@ -78,11 +83,14 @@ func _nb-button-content() {
 func _nb-button-static(){
     if .static {
         @xb-static = 'xb-static'
+    } else {
+        @class += ' _init'
+        @data-nb = 'button'
     }
 }
 
 match .button nb {
-    <xb-button type="{.type}">
+    <xb-button>
         _nb-button-attributes('button')
         _nb-button-static()
 
@@ -93,7 +101,7 @@ match .button nb {
 }
 
 match .buttonLink nb {
-    <xb-button type="{.type}">
+    <xb-button>
         _nb-button-attributes('link')
         _nb-button-static()
 
@@ -104,7 +112,7 @@ match .buttonLink nb {
 }
 
 match .buttonSpan nb {
-    <xb-button type="{.type}">
+    <xb-button>
         _nb-button-attributes('span')
         _nb-button-static()
 
@@ -115,7 +123,7 @@ match .buttonSpan nb {
 }
 
 match .buttonLabel nb {
-    <xb-button type="{.type}">
+    <xb-button>
         _nb-button-attributes('label')
         _nb-button-static()
 
@@ -126,7 +134,7 @@ match .buttonLabel nb {
 }
 
 match .buttonAttach nb {
-    <xb-button type="{.type}">
+    <xb-button>
         _nb-button-attributes('attach')
         _nb-button-static()
 
