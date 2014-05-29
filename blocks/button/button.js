@@ -20,6 +20,7 @@ nb.define('button', {
     },
 
     /**
+     * FIXME подставлял html, непонятно для чего, кажется правильнее подставлять text
      * Set text of the button
      * @param {String} text  — text for the button
      * @fires 'nb-content-set'
@@ -27,7 +28,7 @@ nb.define('button', {
      */
     setContent: function(text) {
         if (this.$node && this.$node.data('uiButton')) {
-            this.$node.find('._nb-button-content').html(text);
+            this.node.content = text;
             this.trigger('nb-text-set', this);
         }
         return this;
@@ -35,11 +36,11 @@ nb.define('button', {
 
     /**
      * Get text of the button
+     * FIXME возвращал html, непонятно для чего, кажется правильнее возвращать text
      * @returns {String} — text of the button
-     *
      */
     getContent: function() {
-        return this.$node.find('._nb-button-content').html();
+        return this.node.content;
     },
 
     /**
@@ -70,7 +71,6 @@ nb.define('button', {
     disable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('disable');
-            this.$node.addClass('_nb-is-disabled');
             this.trigger('nb-disabled', this);
         }
         return this;
@@ -84,7 +84,6 @@ nb.define('button', {
     enable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('enable');
-            this.$node.removeClass('_nb-is-disabled');
             this.trigger('nb-enabled', this);
         }
         return this;
@@ -95,7 +94,7 @@ nb.define('button', {
      * @returns {Boolean}
      */
     isEnabled: function() {
-        return !this.$node.prop("disabled");
+        return !this.$node.prop('disabled');
     },
 
     /**
