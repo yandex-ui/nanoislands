@@ -42,10 +42,6 @@ func _nb-button-attributes(type) {
         @class += ' _nb-attach-button'
     }
 
-    if .checked {
-        @class += ' is-checked'
-    }
-
     if type == 'button' {
         if .name {
             @name = .name
