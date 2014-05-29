@@ -122,9 +122,6 @@ nb.define('input', {
 
     _onfocus: function() {
         this.$node.addClass('_nb-is-focused');
-        this.focused = true;
-
-        this.$control.triggerHandler("focusin");
 
         if (this.data.ghost) {
             this.$node.removeClass('_nb-is-ghost');
@@ -220,9 +217,10 @@ nb.define('input', {
         if (!this.isEnabled()) {
             return this;
         }
-        if (!this.focused) {
+        if (!this.$control.is(':focus')) {
             nb.trigger('nb-focusout');
             this._onfocus();
+            this.$control.triggerHandler("focusin");
             this.$control.get(0).focus();
             this.trigger('nb-focused', this);
         }
@@ -241,8 +239,7 @@ nb.define('input', {
         if (this.data.ghost) {
             this.$node.addClass('_nb-is-ghost');
         }
-        if (this.focused) {
-            this.focused = false;
+        if (!this.$control.is(':focus')) {
             this.$control.triggerHandler("focusout");
             this.$control.get(0).blur();
             this.trigger('nb-blured', this);

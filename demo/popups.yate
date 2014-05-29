@@ -37,9 +37,17 @@ func toggle-modal() {
         </span>
     </a>
     <br />
+    <br />
+    <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup-content'}}" href="#modal-content">
+        <span class="link__inner">
+            "Модальный Попап c контролами"
+        </span>
+    </a>
+    <br />
+    <br />
     <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup5'}}" href="#modalBlank">
         <span class="link__inner">
-            "Модальный Попап"
+            "Базовый Модальный Попап"
         </span>
     </a>
 }
@@ -152,6 +160,73 @@ func popups() {
         ]}
      }
 
+    modalWithContent = {
+       'id': 'popup-content'
+       'titleContent': 'Modal with complex content'
+       'content': (
+                nb-select( {
+                    'size': 'm'
+                    'appendto': '#popup-content'
+                    'theme': 'pseudo'
+                    'tabindex': 1
+                    'maxHeight': 5
+                    'name': 'select'
+                    'items': [
+                        {
+                            'text': 'option1'
+                            'value': '1'
+                        }
+                        {
+                            'text': 'option2'
+                            'value': '2'
+                        }
+                    ]
+                })
+                <br />
+                <br />
+                nb-input({
+                    'size': 'm'
+                    'class': 'nb-input-with-focus'
+                    'name': 'answer'
+                    'tabindex': 2
+                    'hint': 'hint'
+                    'error': {
+                        'direction': 'right'
+                        'content': 'ERROR'
+                    }
+                })
+
+                <br />
+                <br />
+
+                nb-button({
+                    'size': 'm'
+                    'tabindex': 4
+                    'theme': 'action'
+                    'content': 'BUTTON'
+                })
+
+                ' '
+
+                nb-button({
+                    'size': 'm'
+                    'theme': 'action'
+                    'disabled': true()
+                    'content': 'DISABLED'
+                })
+        )
+       'data-nb': {
+            'width': '300px'
+       }
+       'close': {
+            'class': 'ns-action'
+            'attrs': {
+                'data-params': '123'
+            }
+       }
+    }
+
+
     modalBlank = {
        'id': 'popup5'
        'theme': 'blank'
@@ -203,5 +278,6 @@ func popups() {
 
         nb-popup-modal(modal)
         nb-popup-modal(modalBlank)
+        nb-popup-modal(modalWithContent)
     </div>
 }
