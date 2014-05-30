@@ -1,7 +1,11 @@
 var ie = process.argv[2] == 'ie' || false;
 
 var content = [
-        'ie = ' + ie.toString(),
+    'ie = ' + ie.toString(),
+    '@import "node_modules/stylobate";',
+    'rem = rem_px',
+    '@import "node_modules/stylobate-islands";',
+    'set-skin-namespace("islands");',
     '@import "nanoislands.styl";'
 ].join('\n');
 
