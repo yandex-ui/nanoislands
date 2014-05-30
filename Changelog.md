@@ -1,3 +1,9 @@
+##### 0.4.13 — patch
+* stylus, stylobate, stylobate-islands update
+
+##### Fixes
+* fix #361 — Уметь добавлять несколько классов кнопке закрытия попапа
+
 ##### 0.4.12 — patch
 * tabindex attribute have been added
 
