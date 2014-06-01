@@ -16,6 +16,9 @@
 * `attrs` {object} — custom DOM attributes, e.g.: `{ 'attr2: 'value2', 'attr2: 'value2' }`
 * `titleContent` {xml|string} —  modal's title, can be string or `xml` _xss warning!_
 * `content` {xml|string} — modal's content, can be string or `xml` _xss warning!_
+* `close`{object|boolean} — with default cloase with `true()` or custom object:
+  * `class` {array} — custom classes for close
+  * `attrs` {object} — custom attrs for close
 
 ### Example of generic popup
 

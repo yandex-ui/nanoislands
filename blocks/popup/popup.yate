@@ -115,7 +115,11 @@ match .modalPopup nb {
 
         <div class="_nb-popup-i">
             if .close {
-                <a class="_nb-popup-close { .close.class }">
+                <a class="_nb-popup-close">
+                    @class += for .close.class {
+                            ' {.}'
+                    }
+
                     if .close.attrs {
                         for .close.attrs.* {
                             @{name()} = .
