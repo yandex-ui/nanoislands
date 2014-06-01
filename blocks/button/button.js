@@ -6,11 +6,11 @@
  */
 
 nb.define('button', {
+
     /**
      * Init a button
      * @fires 'nb-inited'
      */
-
     oninit: function() {
         this.$node.button({
             // set ui button disabled on init
