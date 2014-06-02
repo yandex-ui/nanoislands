@@ -74,6 +74,13 @@ nb.define('input', {
             this.blur();
         }.bind(this);
 
+        // IE 9/10 Enter Key causing Form Submit / Button Click
+        this.$control.keypress(function(e) {
+            if(e.which == 13) {
+                e.preventDefault();
+            }
+        });
+
         $(document).on('mousedown', this._onmousedown);
         $(document).on('touchstart', this._onmousedown);
 

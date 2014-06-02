@@ -164,6 +164,7 @@ func popups() {
        'id': 'popup-content'
        'titleContent': 'Modal with complex content'
        'content': (
+       <form action="#">
                 nb-select( {
                     'size': 'm'
                     'appendto': '#popup-content'
@@ -240,6 +241,7 @@ func popups() {
                     'disabled': true()
                     'content': 'DISABLED'
                 })
+        </form>
         )
        'data-nb': {
             'width': '300px'
