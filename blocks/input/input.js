@@ -76,7 +76,7 @@ nb.define('input', {
 
         // IE 9/10 Enter Key causing Form Submit / Button Click
         this.$control.keypress(function(e) {
-            if(e.which == 13) {
+            if (e.which == 13) {
                 e.preventDefault();
             }
         });
