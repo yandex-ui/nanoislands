@@ -1,14 +1,19 @@
-Draft ##### 0.4.14 — patch
-* If you use nanoislands.styl file for custom build, 
-  you should import stylobate and stylodate-islands files before it. 
-  Like this:
-
+##### 0.4.14 — patch
+* fix #362 — Importing nanoislands.styl throws when project already has stylobate or stylobate-islands
+  * If you use nanoislands.styl file for custom build, 
+    you should import stylobate and stylodate-islands files before it. 
+    Like this:
+    
     ```css
     @import "path_to_stylobate"
     rem = rem_px
     @import "path_to_stylobate-islands"
     set-skin-namespace('islands')
     ```
+    
+##### Fixes
+* fix #363 — Отключенный селект ловит фокус(IE, FF)
+* fix #359 — Проблемы с несколькими инпутами в одном попапе (IE9)
 
 ##### 0.4.13 — patch
 * stylus, stylobate, stylobate-islands update
