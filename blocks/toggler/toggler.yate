@@ -23,7 +23,7 @@ match .toggler nb {
             @class += ' _nb-is-checked'
         }
 
-        if .tabindex {
+        if (.tabindex && !.disabled) {
             @tabindex = .tabindex
         }
 

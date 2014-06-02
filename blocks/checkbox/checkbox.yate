@@ -44,7 +44,7 @@ match .checkbox nb {
                 @name = .name
             }
 
-            if .tabindex {
+            if (.tabindex && !.disabled) {
                 @tabindex = .tabindex
             }
 

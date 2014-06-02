@@ -182,14 +182,40 @@ func popups() {
                         }
                     ]
                 })
+                ' '
+                nb-select( {
+                    'size': 'm'
+                    'appendto': '#popup-content'
+                    'theme': 'pseudo'
+                    'disabled': true()
+                    'name': 'select'
+                    'items': [
+                        {
+                            'text': 'option1'
+                            'value': '1'
+                        }
+                        {
+                            'text': 'option2'
+                            'value': '2'
+                        }
+                    ]
+                })
                 <br />
                 <br />
                 nb-input({
                     'size': 'm'
-                    'class': 'nb-input-with-focus'
                     'name': 'answer'
-                    'tabindex': 2
-                    'hint': 'hint'
+                    'tabindex': 3
+                    'hint': 'question'
+                })
+
+                <br />
+                <br />
+                nb-input({
+                    'size': 'm'
+                    'name': 'answer'
+                    'tabindex': 4
+                    'hint': 'answer'
                     'error': {
                         'direction': 'right'
                         'content': 'ERROR'
@@ -201,7 +227,7 @@ func popups() {
 
                 nb-button({
                     'size': 'm'
-                    'tabindex': 4
+                    'tabindex': 5
                     'theme': 'action'
                     'content': 'BUTTON'
                 })

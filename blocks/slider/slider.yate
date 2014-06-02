@@ -41,7 +41,7 @@ match .slider nb {
                     @class += ' { .handle.class }'
                 }
 
-                if .tabindex {
+                if (.tabindex && !.disabled) {
                     @tabindex = .tabindex
                 }
 
