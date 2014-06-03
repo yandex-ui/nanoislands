@@ -65,11 +65,11 @@ nb.define('input', {
         }
 
         this._onmousedown = function(e) {
-            if ($.contains(this.$control.get(0), e.target)) {
+            if ($.contains(this.$node.get(0), e.target)) {
                 return;
             }
 
-            this.blur();
+            this._onblur(e);
         }.bind(this);
 
         // IE 9/10 Enter Key causing Form Submit / Button Click
@@ -112,7 +112,7 @@ nb.define('input', {
     _onfocus: function() {
         this.$node.addClass('_nb-is-focused');
         this.focused = true;
-        this.$control.get(0).focus();
+        this.$control.focus();
 
         if (this.$hintGhost && this.$hintGhost.length) {
             this.$hint.css('visibility', 'hidden');
@@ -126,7 +126,7 @@ nb.define('input', {
     _onblur: function() {
         this.$node.removeClass('_nb-is-focused');
         this.focused = false;
-        this.$control.get(0).blur();
+        this.$control.blur();
 
         if (this.$hintGhost && this.$hintGhost.length) {
             this.$hint.css('visibility', 'inherit');
