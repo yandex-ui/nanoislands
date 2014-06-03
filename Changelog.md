@@ -1,3 +1,10 @@
+##### 0.4.15 — patch
+
+##### Fixes
+* fix #366 — IE9 - при зажатии кнопки мыши на инпуте фокус смещается на другой элемент
+* fix #365 — Не всплывают события focusin/focusout у инпута
+* fix #364 — Ложная фокусировка на программно отключенном селекте
+
 ##### 0.4.14 — patch
 * fix #362 — Importing nanoislands.styl throws when project already has stylobate or stylobate-islands
   * If you use nanoislands.styl file for custom build, 
