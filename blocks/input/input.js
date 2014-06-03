@@ -26,13 +26,11 @@ nb.define('input', {
         }
 
         this.$control.on('focusin', function(e) {
-            e.stopPropagation();
             if (!that.focused) {
                 that._onfocus(e);
             }
         });
         this.$control.on('focusout', function(e) {
-            e.stopPropagation();
             if (that.focused) {
                 that._onblur(e);
             }
