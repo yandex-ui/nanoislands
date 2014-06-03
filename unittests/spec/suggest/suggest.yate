@@ -13,6 +13,12 @@ match .suggest {
         'source': '["Variant1", "Variant2", "Variant3"]'
     })
 
+    nb-suggest({
+        'id': 'suggest-tabindex'
+        'tabindex': '1'
+        'source': '["Variant1", "Variant2", "Variant3"]'
+    })
+
     <input>
         @id = 'custom-suggest-input'
         apply . suggest-attrs

@@ -111,6 +111,10 @@ describe("suggest Tests", function() {
     });
 
     describe("#Yate API", function() {
+        it("Tabindex", function() {
+            var suggest = nb.find('suggest-tabindex');
+            expect(suggest.$control.attr('tabindex')).to.equal('1');
+        });
     });
 
     describe('#getType()', function() {

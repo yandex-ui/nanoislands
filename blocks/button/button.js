@@ -70,6 +70,8 @@ nb.define('button', {
     disable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('disable');
+            this._tabindex = this.$node.attr('tabindex');
+            this.$node.attr('tabindex', '-1');
             this.$node.addClass('_nb-is-disabled');
             this.trigger('nb-disabled', this);
         }
@@ -84,6 +86,7 @@ nb.define('button', {
     enable: function() {
         if (this.$node && this.$node.data('uiButton')) {
             this.$node.button('enable');
+            this.$node.attr('tabindex', this._tabindex || '0');
             this.$node.removeClass('_nb-is-disabled');
             this.trigger('nb-enabled', this);
         }

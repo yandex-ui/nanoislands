@@ -420,6 +420,9 @@ nb.define('select', {
         disable: function() {
             if (this.isEnabled()) {
                 this.$node.addClass('_nb-is-disabled');
+                this._tabindex = this.$node.attr('tabindex');
+                this.$node.attr('tabindex', '-1');
+                this.$node.attr('_nb-is-disabled');
                 if (!nb.IE_LT9) {
                     this.$node.autocomplete('disable');
                 }
@@ -436,6 +439,7 @@ nb.define('select', {
          */
         enable: function() {
             if (!this.isEnabled()) {
+                this.$node.attr('tabindex', this._tabindex || '0');
                 this.$node.removeClass('_nb-is-disabled');
                 if (!nb.IE_LT9) {
                     this.$node.autocomplete('enable');

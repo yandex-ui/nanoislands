@@ -37,6 +37,17 @@ match .input {
    })
 
    nb-input({
+        'id': 'input-tabindex-simple'
+        'tabindex': '1'
+   })
+
+   nb-input({
+        'id': 'input-tabindex-complex'
+        'hint': 'email'
+        'tabindex': '1'
+   })
+
+   nb-input({
         'id': 'input-hint-ghost'
         'hint': {
             'text': 'email'

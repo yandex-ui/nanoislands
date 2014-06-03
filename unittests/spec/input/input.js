@@ -61,6 +61,18 @@ describe("Input Tests", function() {
             });
         });
 
+        describe("Tabindex", function() {
+            it("Simple input", function() {
+                var input = nb.find('input-tabindex-simple');
+                expect(input.$node.attr('tabindex')).to.equal('1');
+            });
+
+            it("Complex input", function() {
+                var input = nb.find('input-tabindex-complex');
+                expect(input.$control.attr('tabindex')).to.equal('1');
+            });
+        });
+
         describe("prefix postfix", function() {
             it("markup left", function() {
                 var input = nb.find('input-left-right');

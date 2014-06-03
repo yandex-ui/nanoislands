@@ -16,4 +16,10 @@ match .toggler {
         "id": "toggler-checked"
     })
 
+ nb-toggler({
+        "checked": true()
+        "id": "toggler-tabindex"
+        "tabindex": "1"
+    })
+
 }

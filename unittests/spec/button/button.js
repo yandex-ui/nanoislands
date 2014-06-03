@@ -29,6 +29,11 @@ describe("Button Tests", function() {
             var button = nb.find('button-icon-text');
             expect(button.$node.find('._nb-button-content .nb-icon').html()).to.be.equal('▼');
         });
+
+        it('Tabindex', function() {
+            var button = nb.find('button-tabindex');
+            expect(button.$node.attr('tabindex')).to.be.equal('1');
+        });
     });
 
     describe("#setContent()", function() {
@@ -123,6 +128,12 @@ describe("Button Tests", function() {
             this.button.disable();
             this.button.enable();
             expect(flag).to.ok();
+        });
+        it("should return initial tabindex", function() {
+            var button = nb.find('button-tabindex');
+            button.disable();
+            button.enable();
+            expect(button.$node.attr('tabindex')).to.be.equal('1');
         });
     });
 
