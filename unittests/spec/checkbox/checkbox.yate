@@ -71,4 +71,11 @@ match .checkbox {
         "name": "checkbox-group"
         "id": "checkbox-group2"
     })
+
+    nb-checkbox({
+        "value": "my-value3"
+        "type": "radio"
+        "tabindex": '1'
+        "id": "checkbox-tabindex"
+    })
 }

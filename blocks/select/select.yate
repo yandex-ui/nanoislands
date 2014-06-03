@@ -28,7 +28,7 @@ match .select nb {
             @data-nb-appendto = .appendto
         }
 
-        if .tabindex {
+        if (.tabindex && !.disabled) {
             @tabindex = .tabindex
         }
 

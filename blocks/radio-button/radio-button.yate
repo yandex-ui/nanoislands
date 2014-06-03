@@ -31,7 +31,7 @@ match .radio-button nb {
                         @disabled = 'disabled'
                     }
 
-                    if .tabindex {
+                    if (.tabindex && !.disabled) {
                         @tabindex = .tabindex
                     }
 

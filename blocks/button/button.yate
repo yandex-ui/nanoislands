@@ -48,7 +48,7 @@ func _nb-button-attributes(type) {
         }
     }
 
-    if .tabindex {
+    if (.tabindex && !.disabled) {
         @tabindex = .tabindex
     }
 

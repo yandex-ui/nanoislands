@@ -137,5 +137,17 @@ nb-select({
     ]
 })
 
+nb-select({
+    'id': 'select-tabindex'
+    'tabindex': '1'
+    'items': [
+        {
+            'text': '1'
+            'value': 'option1'
+        }
+    ]
+})
+
+
 
 }

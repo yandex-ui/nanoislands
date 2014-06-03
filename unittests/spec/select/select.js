@@ -449,7 +449,10 @@ describe("Select Tests", function() {
             this.select.disable();
             expect(this.select.$control.attr('disabled')).to.be.equal('disabled');
         });
+
+
     });
+
 
     describe("#enable()", function() {
         beforeEach(function() {
@@ -485,6 +488,13 @@ describe("Select Tests", function() {
         it("should enable <select> node", function() {
             this.select.enable();
             expect(this.select.$control[0].hasAttribute('disabled')).to.be.equal(false);
+        });
+
+        it("should return initial tabindex", function() {
+            var select = nb.find('select-tabindex');
+            select.disable();
+            select.enable();
+            expect(select.$node.attr('tabindex')).to.be.equal('1');
         });
     });
 
@@ -573,7 +583,6 @@ describe("Select Tests", function() {
         });
     });
 
-
     describe("Specific", function() {
 
         describe("Issues", function() {
@@ -637,6 +646,8 @@ describe("Select Tests", function() {
                 expect(select.$jUI.menu.element.find('._nb-select-item').first().find('.nb-icon').length).to.be.equal(1);
             });
         });
+
+
     });
 
 });

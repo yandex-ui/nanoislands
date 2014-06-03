@@ -93,7 +93,7 @@ match .input nb {
         }
 
         <span class="_nb-input-content">
-            <input class="_nb-input-controller" value="{.content}">
+            <input type="text" class="_nb-input-controller" value="{.content}">
                 for .attrs.* {
                     @{name()} = .
                 }
@@ -102,7 +102,7 @@ match .input nb {
                     @name = .name
                 }
 
-                if .tabindex {
+                if (.tabindex && !.disabled) {
                     @tabindex = .tabindex
                 }
 
@@ -183,7 +183,7 @@ match .textarea nb {
                     @name = .name
                 }
 
-                if .tabindex {
+                if (.tabindex && !.disabled) {
                     @tabindex = .tabindex
                 }
 
@@ -201,7 +201,7 @@ match .textarea nb {
 }
 
 match .inputSimple nb {
-    <input value="{.content}" data-nb-type='simple'>
+    <input type="text" value="{.content}" data-nb-type='simple'>
        _size-theme-type-class({
           'name': 'input'
            if .size {
@@ -217,7 +217,7 @@ match .inputSimple nb {
             @name = .name
         }
 
-        if .tabindex {
+        if (.tabindex && !.disabled) {
             @tabindex = .tabindex
         }
 
@@ -250,7 +250,7 @@ match .textareaSimple nb {
             @name = .name
         }
 
-        if .tabindex {
+        if (.tabindex && !.disabled) {
             @tabindex = .tabindex
         }
 

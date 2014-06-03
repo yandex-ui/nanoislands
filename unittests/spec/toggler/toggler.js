@@ -28,6 +28,13 @@ describe("Toggler Tests", function() {
 
     });
 
+    describe("#Yate API", function() {
+        it("Tabindex", function() {
+            var toggler = nb.find('toggler-tabindex');
+            expect(toggler.$node.attr('tabindex')).to.equal('1');
+        });
+    });
+
     describe('#getType()', function() {
         it('should return toggler type', function() {
             expect(this.toggler.getType()).to.be.equal('toggler');

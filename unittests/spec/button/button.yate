@@ -11,6 +11,12 @@ match .button {
     })
 
     nb-button({
+        "content": "Disbaled button"
+        "tabindex": "1"
+        "id": "button-tabindex"
+    })
+
+    nb-button({
         "iconText": '▼'
         "id": "button-icon-text"
     })
