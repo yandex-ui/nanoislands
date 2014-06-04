@@ -4,9 +4,11 @@ func all-icons-s(boolean white) {
         nb-icon({
         'icon': 'download-white'
         })
+
         nb-icon({
         'icon': 'upload-white'
         })
+
         nb-icon({
         'icon': 'link-white'
         })
@@ -14,13 +16,27 @@ func all-icons-s(boolean white) {
         nb-icon({
         'icon': 'trash-white'
         })
+
+        nb-icon({
+        'icon': 'full-screen-white'
+        })
+
+        nb-icon({
+        'icon': 'compose-yellow'
+        })
+
+        nb-icon({
+        'icon': 'zoom-white'
+        })
     } else {
          nb-icon({
         'icon': 'close'
         })
+
         nb-icon({
         'icon': 'download'
         })
+
         nb-icon({
         'icon': 'upload'
         })
@@ -84,6 +100,46 @@ func all-icons-s(boolean white) {
         nb-icon({
         'icon': 'odnoklassniki'
         })
+
+        nb-icon({
+        'icon': 'shared'
+        })
+
+        nb-icon({
+        'icon': 'published'
+        })
+
+        nb-icon({
+        'icon': 'new-folder'
+        })
+
+        nb-icon({
+        'icon': 'view-tiles'
+        })
+
+        nb-icon({
+        'icon': 'view-icons'
+        })
+
+        nb-icon({
+        'icon': 'view-list'
+        })
+
+        nb-icon({
+        'icon': 'compose'
+        })
+
+        nb-icon({
+        'icon': 'next'
+        })
+
+        nb-icon({
+        'icon': 'prev'
+        })
+
+        nb-icon({
+        'icon': 'volume'
+        })
     }
 }
 
@@ -94,10 +150,12 @@ func all-icons-m(boolean white) {
             'icon': 'download-white'
             'size': 'm'
         })
+
         nb-icon({
         'icon': 'upload-white'
         'size': 'm'
         })
+
         nb-icon({
         'icon': 'link-white'
         'size': 'm'
@@ -107,11 +165,27 @@ func all-icons-m(boolean white) {
         'icon': 'trash-white'
         'size': 'm'
         })
+
+        nb-icon({
+        'icon': 'full-screen-white'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'compose-yellow'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'zoom-white'
+        'size': 'm'
+        })
     } else {
          nb-icon({
         'icon': 'close'
         'size': 'm'
         })
+
         nb-icon({
         'icon': 'download'
          'size': 'm'
@@ -196,23 +270,73 @@ func all-icons-m(boolean white) {
         'icon': 'odnoklassniki'
         'size': 'm'
         })
+
+        nb-icon({
+        'icon': 'shared'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'published'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'new-folder'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'view-tiles'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'view-icons'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'view-list'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'compose'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'next'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'prev'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'volume'
+        'size': 'm'
+        })
     }
 }
 
 func icons() {
-    <div class="demo-section">
+    <div class="demo-section demo-section_icons">
         <div class="demo-h3">
             'Size: S '
         </div>
         all-icons-s()
     </div>
-    <div class="demo-section">
+    <div class="demo-section demo-section_icons">
         <div class="demo-h3">
             'Size: M '
         </div>
         all-icons-m()
     </div>
-    <div class="demo-section demo-section_dark">
+    <div class="demo-section demo-section_dark demo-section_icons">
         <div class="demo-h3">
             'White'
         </div>
