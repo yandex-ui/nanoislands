@@ -242,7 +242,7 @@ nb.define('select', {
          */
         _updateFromSelect: function() {
             // get selected <option/>
-            this.$selected = this.$control.children(':selected');
+            this.$selected = this.$control.find(':selected');
 
             this.value = this.$selected.val();
             // &nbsp; - to prevent button from collapse if no text on <option/>

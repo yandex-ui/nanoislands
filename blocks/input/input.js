@@ -109,11 +109,13 @@ nb.define('input', {
         }
     },
 
-    _onfocus: function() {
+    _onfocus: function(e) {
         this.$node.addClass('_nb-is-focused');
         this.focused = true;
-        this.$control.focus();
-
+        // if e this method called after tabulation. TODO checking of focus property
+        if (!e) {
+            this.$control.focus();
+        }
         if (this.$hintGhost && this.$hintGhost.length) {
             this.$hint.css('visibility', 'hidden');
         }
@@ -123,11 +125,13 @@ nb.define('input', {
         }
     },
 
-    _onblur: function() {
+    _onblur: function(e) {
         this.$node.removeClass('_nb-is-focused');
         this.focused = false;
-        this.$control.blur();
-
+        // if e this method called after tabulation. TODO checking of focus property
+        if (!e) {
+            this.$control.blur();
+        }
         if (this.$hintGhost && this.$hintGhost.length) {
             this.$hint.css('visibility', 'inherit');
         }

@@ -213,6 +213,47 @@ func select-medium() {
 
       ]
     })
+    ' '
+    nb-select( {
+          'size': 'm'
+          'id': 'select-group55'
+          'class': 'my-test-class'
+          'items': [
+              {
+                  'text': 'Карта'
+                  'value': 'option1'
+              }
+              {
+                  'text': 'Спутник'
+                  'value': 'option2'
+              }
+              {
+                  'text': 'Гибрид'
+                  'value': 'option3'
+              }
+                {
+                    'separator': true()
+                }
+              {
+                  'text': 'Группа'
+                  'group': [
+                        {
+                            'text': 'Супер Карта'
+                            'value': 'option4'
+                            'selected': 'true'
+                        }
+                        {
+                            'text': 'Супер Спутник'
+                            'value': 'option5'
+                        }
+                        {
+                            'text': 'Супер Гибрид'
+                            'value': 'option6'
+                        }
+                  ]
+              }
+          ]
+        })
     " Текст рядом с селектами"
 }
 func select-small() {
