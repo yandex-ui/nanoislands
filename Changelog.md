@@ -1,6 +1,11 @@
+##### 0.4.16  — patch
+
+###### Fixes
+* fix #369 — Дважды тригерится focusin на инпуте 
+
 ##### 0.4.15 — patch
 
-##### Fixes
+###### Fixes
 * fix #366 — IE9 - при зажатии кнопки мыши на инпуте фокус смещается на другой элемент
 * fix #365 — Не всплывают события focusin/focusout у инпута
 * fix #364 — Ложная фокусировка на программно отключенном селекте
@@ -18,14 +23,14 @@
     set-skin-namespace('islands')
     ```
     
-##### Fixes
+###### Fixes
 * fix #363 — Отключенный селект ловит фокус(IE, FF)
 * fix #359 — Проблемы с несколькими инпутами в одном попапе (IE9)
 
 ##### 0.4.13 — patch
 * stylus, stylobate, stylobate-islands update
 
-##### Fixes
+###### Fixes
 * fix #361 — Уметь добавлять несколько классов кнопке закрытия попапа
 
 ##### 0.4.12 — patch
@@ -39,12 +44,12 @@
 
 ##### 0.4.11 — patch
 
-##### Fixes
+###### Fixes
 * fix #349 — [Bug] nb-select don't open, when used the modal popup closing
 
 ##### 0.4.10 — patch
 
-##### Fixes
+###### Fixes
 * fix #346 — [Chromium] Bug with content spacing in nb-select dropdown bug
 * fix #345 — [Opera 12.16] Bug selects view bug
 
@@ -57,32 +62,32 @@
 
 ##### 0.4.7 — patch
 
-##### Fixes
+###### Fixes
 * fix calculation of position for popups tail
 * fix #338 — [IE9] Checkboxes and selects arrows is broken
 
 ##### 0.4.6 — patch
 
-##### Fixes
+###### Fixes
 * fix #337 — nb-radio-button потерялся размер small bug
 * fix #336 — Fix small select size
 
 ##### 0.4.5 — patch
 
-##### Fixes
+###### Fixes
 * fix #332 — Попап содержит отступы для внутрилежащего контента
 * fix #330 — Бордер на img без src
 
 ##### 0.4.3 — patch
 * Support server-side rendering in yate externals
 
-##### Fixes
+###### Fixes
 * fix #327 — Кастомные иконки
 * fix #326 — Метод open для nb-popup-modal выбрасывает ошибку...
 
 ##### 0.4.1 — patch
 
-##### Fixes
+###### Fixes
 * fix #324 — Add opportunity to change frame collision of the popup enhancement
 * fix #323 — Выравнивание контента по центру в кнопках-ссылках
 * fix #322 — Для чекбоксов не применяется размер "s" bug
@@ -102,7 +107,7 @@
   * popup.setContent() and popup.getContent()
 * [Popup toggler] toggler.toggle() added
 
-##### Fixes
+###### Fixes
 fix #313 — Разделить классы блоков на публичные и приватные
 fix #284 — Close XSS in button#setText
 fix #273 — nb-icon size couldn't be set
@@ -111,7 +116,7 @@ fix #316 — Исправление повторного позициониро�
 
 ##### 0.3.17 — patch
 
-##### Fixes
+###### Fixes
 fix #300 — Input – При изменении фокуса с помощью "Tab" не исчезает выделение
 fix #297 — [IE] Vertical align: middle for .nb-checkbox__input and .nb-checkbox__label
 
@@ -119,7 +124,7 @@ fix #297 — [IE] Vertical align: middle for .nb-checkbox__input and .nb-checkbo
 stylobate-islands update to 0.26.x
 yate update to  0.0.70
 
-##### Fixes
+###### Fixes
 fix #295 — Add the ability to separate content in selects, as in the popups.
 fix #263 — Псевдо-кнопка должна быть видна на тёмном фоне
 
@@ -128,25 +133,24 @@ fix #263 — Псевдо-кнопка должна быть видна на т�
 stylobate-islands update to 0.25.1
 stylobate update to 0.23.2
 
-##### Fixes
+###### Fixes
 Autoclose option for the modal popup
 fix #286 — Bug to the group's view of the select dropdown
 
 ##### 0.3.13 — patch
 
-##### Fixes
+###### Fixes
 fix build
-
 
 ##### 0.3.12 — patch
 
-##### Fixes
+###### Fixes
 fix #281 — Клик на открытый селект должен его закрывать
 fix #279 — Reset input clear button in IE10
 
 ##### 0.3.11 — patch
 
-##### Fixes
+###### Fixes
 * fix #272 — Too small popup's close link
 * fix #275 — Input – Нужны события ввода текста
 * fix #277 — Событие внутри nb-popup-menu
@@ -155,9 +159,9 @@ fix #279 — Reset input clear button in IE10
 * Run tests under Karma
 * MIT License
 
-##### 0.3.10 — patch
+###### 0.3.10 — patch
 
-##### Fixes
+###### Fixes
 * nb-select: Fix adding selected item to source
 * nb-select: Fix double "source-changed" event on addToSource
 * gray color for togglers text
@@ -165,7 +169,7 @@ fix #279 — Reset input clear button in IE10
 ##### 0.3.9 — patch
 * Added opportunity apply to suggest a custom input field.
 
-##### Fixes
+###### Fixes
 * nb-select js error in ie8 on disable/enable fixed
 * nb-select #setState escapes text twice
 * nb-select must save state after #removeFromSource()
@@ -177,18 +181,18 @@ fix #279 — Reset input clear button in IE10
 * fix XSS in nb-suggest #setSource()
 
 ##### 0.3.7 — patch
-##### Fixes
+###### Fixes
 * Shift the method 'getYateModuleName' to a nb.Block instance.
 * [Input] Input.blur doesn't work
 * [Button] Fix disabled state for pseudo and file buttons
 
 ##### 0.3.6 — patch
-##### Fixes
+###### Fixes
 * [Checkbox] Emulates "change" event for IE<9
 * [Select] IE<9 must degrade to native contol
 
 ##### 0.3.5 — patch
-##### Fixes
+###### Fixes
 * [Checkbox] fix checkbox empty string value rendering
 * adds opacity IE fallback
 
