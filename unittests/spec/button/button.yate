@@ -17,7 +17,7 @@ match .button {
     })
 
     nb-button({
-        "iconText": '▼'
+        "content": '▼'
         "id": "button-icon-text"
     })
 }

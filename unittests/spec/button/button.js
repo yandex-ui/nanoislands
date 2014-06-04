@@ -1,7 +1,8 @@
 describe("Button Tests", function() {
     beforeEach(function() {
         var result = yr.run('main', {button: true});
-        $('.content').html(result);
+        //$('.content').html(result);
+        xtag.innerHTML(document.querySelector('.content'), result);
 
         nb.init();
 
@@ -27,7 +28,7 @@ describe("Button Tests", function() {
     describe("YATE API", function() {
         it('iconText', function() {
             var button = nb.find('button-icon-text');
-            expect(button.$node.find('._nb-button-content .nb-icon').html()).to.be.equal('▼');
+            expect(button.getContent()).to.be.equal('▼');
         });
 
         it('Tabindex', function() {
@@ -40,7 +41,7 @@ describe("Button Tests", function() {
 
         it("check text", function() {
             this.button.setContent("Privet");
-            expect($(this.button.node).find('._nb-button-content').html()).to.be.equal("Privet");
+            expect(this.button.getContent()).to.be.equal("Privet");
         });
 
         it("check event", function() {
@@ -152,7 +153,7 @@ describe("Button Tests", function() {
 
         it("should be in focus", function() {
             this.button.focus();
-            expect($(document.activeElement).attr('id')).to.equal('button');
+            expect(document.activeElement.parentNode).to.equal(this.button.node);
         });
     });
 
@@ -160,7 +161,7 @@ describe("Button Tests", function() {
         it("should not to be in focus", function() {
             this.button.focus();
             this.button.blur();
-            expect($(document.activeElement)).not.equal('button');
+            expect(document.activeElement.parentNode).not.equal(this.button.node);
         });
 
         it("should throws nb-blured event", function() {

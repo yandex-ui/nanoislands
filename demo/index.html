@@ -30,13 +30,15 @@
         <div class="content content_hide-html"></div>
 
         <script>
-
             //  Запускаем шаблонизатор:
             var result = yr.run('main', { username: 'bs' });
 
+            //xtag.innerHTML(document.querySelector('.content'), result);
             $('.content').html(result);
-            nb.init();
 
+            xtag.addEvent(window, 'xb-created', function(e) {
+                nb.init();
+            });
         </script>
 
         <script type="text/javascript" src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>

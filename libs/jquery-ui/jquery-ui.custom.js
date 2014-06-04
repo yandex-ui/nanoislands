@@ -5929,6 +5929,7 @@ $.widget( "ui.button", {
 		}
 
 		this._determineButtonType();
+
 		this.hasTitle = !!this.buttonElement.attr( "title" );
 
 		var that = this,
@@ -5982,6 +5983,7 @@ $.widget( "ui.button", {
 				that.refresh();
 			});
 		}
+
 
 		if ( this.type === "checkbox" ) {
 			this.buttonElement.bind( "click" + this.eventNamespace, function() {
@@ -6052,6 +6054,7 @@ $.widget( "ui.button", {
 		// $.Widget.prototype._setOptionDisabled so it's easy to proxy and can
 		// be overridden by individual plugins
 		this._setOption( "disabled", options.disabled );
+
 		this._resetButton();
 	},
 
@@ -6114,7 +6117,7 @@ $.widget( "ui.button", {
 	_setOption: function( key, value ) {
 		this._super( key, value );
 		if ( key === "disabled" ) {
-			this.element.prop( "disabled", !!value );
+            this.element.prop( "disabled", !!value );
 			if ( value ) {
 				this.buttonElement.removeClass( "ui-state-focus" );
 			}
