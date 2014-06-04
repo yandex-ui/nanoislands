@@ -312,7 +312,6 @@ describe("suggest Tests", function() {
 
         it("should be in focus", function() {
             this.suggest.focus();
-
             expect($(document.activeElement).attr('id')).to.equal(this.suggest.$control.attr('id'));
         });
     });
