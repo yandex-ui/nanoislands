@@ -111,6 +111,7 @@ match .select {
                     {
                         'text': 'opt1'
                         'value': 'val4'
+                        'selected': true()
                     }
                     {
                         'text': 'opt2'

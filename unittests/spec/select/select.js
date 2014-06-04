@@ -28,6 +28,11 @@ describe("Select Tests", function() {
             expect(select.$control.find('optgroup').length).to.be.ok();
         });
 
+        it('Select with group should be inited even with selected on second level', function() {
+            var select = nb.find('select-group');
+            expect(select.getState().text == 'opt1').to.be.ok();
+        });
+
         it('Select with group should have second level menu in dropdown', function() {
             var select = nb.find('select-group');
             select.open();
