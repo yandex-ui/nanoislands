@@ -46,12 +46,19 @@ match .slider nb {
                 }
 
                 <span class='nb-button-content'>
+                    if .content {
+                        @class += ' nb-is-hidden'
+                    }
                     <input tabindex="-1" class='_nb-slider-fallback' type='text' value='{ .value }' readonly='readonly'>
                         if .name {
                             @name = '{ .name }'
                         }
                     </input>
                 </span>
+
+                if .content {
+                    html(.content)
+                }
             </label>
         </div>
     </div>
