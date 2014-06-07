@@ -30,15 +30,93 @@
         <div class="content content_hide-html"></div>
 
         <script>
+            (function(global) {
+                var hash = {};
+                var log = [];
+
+                global.cons = {};
+
+                cons.time = function(name, timeStart) {
+                    hash[name] = timeStart || Date.now();
+                };
+
+                cons.timeEnd = function(name) {
+                    if (!hash.hasOwnProperty(name)) {
+                        return;
+                    }
+
+                    var date = Date.now();
+
+                    log.push([name, hash[name], date]);
+                };
+
+                cons.getLog = function() {
+                    return log;
+                };
+
+                cons.output = function() {
+                    var el = document.createElement('div');
+                    var htmlLog = log.map(function(item) {
+                        return '<div><b>' + item[0] + ':</b>&nbsp;' + (item[2] - item[1]) + '</div>';
+                    });
+
+                    el.innerHTML = htmlLog.join('');
+
+                    var body = document.querySelector('body');
+                    body.insertBefore(el, body.firstChild);
+                };
+            }(window));
+        </script>
+
+
+<script>
+    var timeStart = Date.now();
+    cons.time('window.onload', timeStart);
+    cons.time('DOMComponentsLoaded', timeStart);
+    cons.time('DOM ready', timeStart);
+    cons.time('innerHTML', timeStart);
+    cons.time('xb-created', timeStart);
+
+    cons.time('init', timeStart);
+    cons.time('inserted', timeStart);
+    cons.time('created', timeStart);
+
+
+    window.addEventListener('xb-created', function() {
+        cons.timeEnd('xb-created');
+    });
+
+    $(function() {
+        cons.timeEnd('DOM ready');
+    });
+
+    $(document).on('DOMComponentsLoaded', function() {
+        cons.timeEnd('DOMComponentsLoaded');
+    });
+</script>
+
+
+
+        <script>
             //  Запускаем шаблонизатор:
             var result = yr.run('main', { username: 'bs' });
 
             //xtag.innerHTML(document.querySelector('.content'), result);
             $('.content').html(result);
+        </script>
 
-            xtag.addEvent(window, 'xb-created', function(e) {
-                nb.init();
-            });
+        <script>
+            cons.timeEnd('innerHTML');
+        </script>
+
+        <script>
+            window.onload = function() {
+                cons.timeEnd('window.onload');
+
+                setTimeout(function() {
+                    cons.output();
+                }, 5000);
+            };
         </script>
 
         <script type="text/javascript" src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
