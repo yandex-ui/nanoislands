@@ -11,4 +11,15 @@ match .slider {
       "id": "slider-disabled"
     })
 
+    nb-slider({
+      "name": "price"
+      "id": "slider-with-custom-content"
+      "content": apply . slider-custom-content
+    })
+}
+
+match .slider slider-custom-content {
+  <span class="js-slider-content">
+    "Hello, world!"
+  </span>
 }

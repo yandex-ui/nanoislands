@@ -6,10 +6,12 @@ describe('Slider Tests', function() {
         nb.init();
         this.slider = nb.find('slider');
         this.sliderDisabled = nb.find('slider-disabled');
+        this.sliderWithCustomContent = nb.find('slider-with-custom-content');
     });
     afterEach(function() {
         delete this.slider;
         delete this.sliderDisabled;
+        delete this.sliderWithCustomContent;
     });
 
     describe('Init', function() {
@@ -181,6 +183,13 @@ describe('Slider Tests', function() {
         it("should destroy nb.block", function() {
             this.slider.destroy();
             expect(nb.hasBlock($('#slider')[0])).to.be.equal(false);
+        });
+    });
+
+    describe("#Yate API", function() {
+        it('Slider with custom content should have the specified content', function() {
+            var $content = this.sliderWithCustomContent.$body.find('.js-slider-content');
+            expect($content.text()).to.be.equal('Hello, world!');
         });
     });
 
