@@ -1,3 +1,10 @@
+##### 0.4.17  — patch
+
+###### Fixes
+* fix #376 — Не тригерится submit по enter-у в инпуте внутри формы
+* fix #373 — Add some new icons
+* fix #372 — Active sub-option isn't selected
+
 ##### 0.4.16  — patch
 
 ###### Fixes
