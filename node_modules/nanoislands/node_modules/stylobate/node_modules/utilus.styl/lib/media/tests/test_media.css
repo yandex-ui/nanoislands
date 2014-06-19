@@ -33,3 +33,14 @@
     height: 50px;
   }
 }
+.baz {
+  padding: 0;
+}
+@media only screen and (min-width: 481px) and (max-width: 1023px) {
+  .baz {
+    padding: 30px;
+  }
+  .raz {
+    margin: 0;
+  }
+}

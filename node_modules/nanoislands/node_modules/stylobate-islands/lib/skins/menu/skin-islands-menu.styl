@@ -1,26 +1,26 @@
-skin-islands-menu()
-  if padded in arguments
-    padding: 0.5*(small in arguments ? $islands_xs : $islands_s) 0
+skin-islands-menu($this)
+  if padded in $this.arguments
+    padding: 0.5*(small in $this.arguments ? $islands_xs : $islands_s) 0
 
-skin-islands-menu-item()
+skin-islands-menu-item($this)
   kind: block
   global_skin(islands-link $islands_color_text no-hover)
 
   user-select: none
   white-space: nowrap
 
-  if ellipsis in arguments
+  if ellipsis in $this.arguments
     kind: ellipsis
 
-  unless utilus_get(arguments, '_size')
-    skin-islands-menu-item_size(arguments)
+  unless utilus_get($this.arguments, '_size')
+    skin-islands-menu-item_size($this)
 
-  unless no-hover in arguments or utilus_get(arguments, '_hover')
+  unless no-hover in $this.arguments or utilus_get($this.arguments, '_hover')
     &:hover
-      skin-islands-menu-item_hover(arguments)
+      skin-islands-menu-item_hover($this)
 
-skin-islands-menu-item_size()
-  if small in arguments
+skin-islands-menu-item_size($this)
+  if small in $this.arguments
     global_skin(islands-para2 no-margin)
     padding: 0.5*$islands_xs $islands_s
   else
@@ -30,31 +30,31 @@ skin-islands-menu-item_size()
 skin-islands-menu-item_hover()
   background: $islands_color_selected
 
-skin-islands-menu-item_checked()
-  unless utilus_get(arguments, '-helper')
+skin-islands-menu-item_checked($this)
+  unless utilus_get($this.arguments, '-helper')
     &:after
       content: ""
       skin-islands-menu-item_checked-helper()
 
 skin-islands-menu-item_checked-helper()
-  skin-islands-icon_check()
+  global_skin: islands-icon_check
   margin: -1*$islands_s 0 0 $islands_s
 
 
-skin-islands-menu-group()
+skin-islands-menu-group($this)
   display: block
 
   & + &
     box-shadow: 0 -1px rgba(#000, 0.2)
 
-    if padded in arguments
+    if padded in $this.arguments
       margin-top: 0.5*(small in arguments ? $islands_xs : $islands_s)
       padding-top: 0.5*(small in arguments ? $islands_xs : $islands_s)
 
-skin-islands-menu-separator()
+skin-islands-menu-separator($this)
   display: block
   border-top: 1px solid rgba-ie(#000, 0.2)
 
-  if padded in arguments
+  if padded in $this.arguments
     margin-top: 0.5*(small in arguments ? $islands_xs : $islands_s)
     margin-bottom: 0.5*(small in arguments ? $islands_xs : $islands_s)

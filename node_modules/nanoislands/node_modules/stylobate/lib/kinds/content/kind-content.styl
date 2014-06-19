@@ -1,37 +1,37 @@
-kind-content()
-  $sides = utilus_get_sides(arguments)
+kind-content($this)
+  $sides = utilus_get_sides($this.arguments)
   if ie or ('' + $sides == '0 0 0 0')
     padding: $sides
   else
     padding: 0 $sides[1] 0 $sides[3]
 
-    stylobate_defaults(arguments,
-      -before (no-before in arguments or no-elements in arguments ? '' : '&:before'),
-      -after (no-after in arguments or no-elements in arguments ? '' : '&:after'))
+    stylobate_defaults($this,
+      -before ($this.params.no-before or $this.params.no-elements ? '' : '&:before'),
+      -after ($this.params.no-after or $this.params.no-elements ? '' : '&:after'))
 
-    if no-before in arguments or (-before '') in arguments
+    if $this.params.no-before or $this.params.-before
       padding-top: $sides[0]
 
-    if no-after in arguments or (-after '') in arguments
+    if $this.params.no-after or $this.params.-after
       padding-top: $sides[2]
 
   // Deprecating no-…
-  deprecate(arguments, no-before)
-  deprecate(arguments, no-after)
-  depecate_removed(arguments, no-elements)
+  deprecate($this.params, no-before)
+  deprecate($this.params, no-after)
+  depecate_removed($this.params, no-elements)
 
 
-kind-content-before()
+kind-content-before($this)
   pseudo-with-content()
 
   display: table
 
-  margin-bottom: any_get_sides(arguments)[0]
+  margin-bottom: any_get_sides($this)[0]
 
-kind-content-after()
+kind-content-after($this)
   pseudo-with-content()
 
   display: table
   clear: both
 
-  margin-top: any_get_sides(arguments)[2]
+  margin-top: any_get_sides($this)[2]

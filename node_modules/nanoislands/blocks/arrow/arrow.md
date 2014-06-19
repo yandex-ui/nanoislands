@@ -14,6 +14,8 @@
 * action: ... — action URL for search form
 * text: ... — text for service arrow or link rendered before search input
 * buttonContent: ... — text for form field's 'submit' button
+* inputTabindex
+* buttonTabindex 
 * value: ... — placeholder for search field
 * requests: ... — info about unber of request with this search field
 

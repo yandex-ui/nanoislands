@@ -1,23 +1,23 @@
-kind-list()
-  kind-block()
+kind-list($this)
+  kind(block)
 
   // Getting the nowrap
-  if utilus_retrieve(arguments, nowrap nobr)
+  if utilus_retrieve($this.params, nowrap nobr)
     white-space: nowrap
 
   // Getting the align
-  $align = utilus_retrieve(arguments, left right center justify justify-all, left)
+  $align = utilus_retrieve($this.params, left right center justify justify-all, left)
   if $align
     text-align: $align
 
   // Placing the type
-  $type = utilus_retrieve(arguments, separate tight, separate)
-  $gap = utilus_get(arguments, 'gap')
+  $type = utilus_retrieve($this.params, separate tight, separate)
+  $gap = $this.params.gap
 
-kind-list-item()
+kind-list-item($this)
   // Getting the valign
-  $valign = utilus_retrieve(arguments, middle baseline bottom, top)
-  kind-block(inline, $valign)
+  $valign = utilus_retrieve($this.params, middle baseline bottom, top)
+  kind(block inline $valign)
 
   // get the gap from the parent
-  $gap = parent_get(arguments, 'gap')
+  $gap = $this.params.gap

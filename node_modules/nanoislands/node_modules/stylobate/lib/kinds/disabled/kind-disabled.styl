@@ -1,16 +1,16 @@
-kind-disabled()
+kind-disabled($this)
   cursor: default !important
 
-  opacity: utilus_alike(arguments, 0.5)
+  opacity: $this.units[0] or 0.5
 
   // Prevent different states in most browsers
-  if with-events in arguments
+  if $this.params.with-events
     &:focus
       outline: 0
   else
     pointer-events: none
 
-  stylobate_defaults(arguments, -nested '& &')
+  stylobate_defaults($this, -nested '& &')
 
 kind-disabled-nested()
   opacity: 1

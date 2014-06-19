@@ -1,6 +1,6 @@
-skin-islands-radio()
+skin-islands-radio($this)
   if !ie
-    global_skin(islands-button no-active middle retrieve(arguments, sizeless, adaptive) (_hover ''))
+    global_skin(islands-button no-active middle retrieve($this.arguments, sizeless, adaptive) (_hover ''))
 
     text-align: center
 
@@ -12,11 +12,11 @@ skin-islands-radio()
     &:before
       border-radius: 50%
 
-  unless ie or (no-elements in arguments)
-    stylobate_defaults(arguments,
+  unless ie or (no-elements in $this.arguments)
+    stylobate_defaults($this,
       -icon '& > &-icon')
 
-  deprecate(arguments, no-elements)
+  deprecate($this.arguments, no-elements)
 
 skin-islands-radio-icon()
   if !ie

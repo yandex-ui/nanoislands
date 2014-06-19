@@ -1,17 +1,17 @@
-kind-fill()
-  position: utilus_retrieve(arguments, fixed static sticky, absolute)
+kind-fill($this)
+  position: utilus_retrieve($this.params, fixed static sticky, absolute)
 
-  $sides = utilus_get_sides(arguments)
+  $sides = utilus_get_sides($this.arguments)
   top: $sides[0]
   right: $sides[1]
   bottom: $sides[2]
   left: $sides[3]
 
-  $bg = utilus_get_string(arguments)
-  $bg_color = utilus_get_color(arguments)
+  $bg = $this.strings[0]
+  $bg_color = $this.colors[0]
   if $bg
     $bg_color = unquote('') unless $bg_color
-    background: $bg_color url($bg) utilus_retrieve(arguments, repeat repeat-x repeat-y , no-repeat) 50%
+    background: $bg_color url($bg) utilus_retrieve($this.params, repeat repeat-x repeat-y , no-repeat) 50%
     // How to add bgposition here?
   else if $bg_color
     background: $bg_color

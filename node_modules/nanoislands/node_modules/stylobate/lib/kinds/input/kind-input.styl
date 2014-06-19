@@ -1,25 +1,23 @@
-kind-input()
-  @extends $kind-input
+kind-input($this)
+  width: $this.units[0] or 400px
 
-  width: utilus_alike(arguments, 400px)
-
-  $align = utilus_retrieve(arguments, middle top bottom)
+  $align = utilus_retrieve($this.params, middle top bottom)
   vertical-align: $align if $align
 
-  unless no-reset in arguments
+  unless $this.params.no-reset
     reset('input')
     // It would be nice to have a way to insert it without extends
 
-$kind-input
-  kind-block(inline)
+  +cache()
+    kind('block' inline)
 
-  box-sizing: border-box
+    box-sizing: border-box
 
-  max-width: 100%
+    max-width: 100%
 
-  cursor: text
+    cursor: text
 
-  if ie
-    vertical-align: middle
-  else
-    vertical-align: baseline
+    if ie
+      vertical-align: middle
+    else
+      vertical-align: baseline

@@ -1,25 +1,21 @@
-kind-clear()
+kind-clear($this)
   if !ie
-    stylobate_defaults(arguments,
-      -before (after in arguments ? '' : '&:before'),
-      -after (before in arguments ? '' : '&:after'))
+    stylobate_defaults($this,
+      -before ($this.params.after ? '' : '&:before'),
+      -after ($this.params.before ? '' : '&:after'))
 
-    deprecate(arguments, after)
-    deprecate(arguments, before)
+    deprecate($this.params, after)
+    deprecate($this.params, before)
 
   zoom: 1
 
 kind-clear-before()
-  @extends $kind-clear-before
+  +cache()
+    content: ""
+    display: table
 
 kind-clear-after()
-  @extends $kind-clear-after
-
-$kind-clear-before
-  content: ""
-  display: table
-
-$kind-clear-after
-  content: ""
-  display: table
-  clear: both
+  +cache()
+    content: ""
+    display: table
+    clear: both

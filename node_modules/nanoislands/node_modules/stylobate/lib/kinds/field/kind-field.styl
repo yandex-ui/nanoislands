@@ -1,55 +1,49 @@
-kind-field()
-  kind-input(no-reset)
+kind-field($this)
+  kind(input no-reset)
 
-  unless no-elements in arguments
-    unless utilus_get(arguments, '-content')
+  unless $this.params.no-elements
+    unless $this.elements.-content
       &-content
         kind-field-content()
 
-    unless utilus_get(arguments, '-left')
+    unless $this.elements.-left
       &-left
-        kind-field-left(arguments)
+        kind-field-left($this)
 
-    unless utilus_get(arguments, '-right')
+    unless $this.elements.-right
       &-right
-        kind-field-right(arguments)
+        kind-field-right($this)
 
 kind-field-content()
-  @extends $kind-field-content
+  +cache()
+    kind('block' static)
 
-$kind-field-content
-  kind-block(static)
+    overflow: hidden
 
-  overflow: hidden
+    height: 100%
 
-  height: 100%
+kind-field-left($this)
+  +cache()
+    position: relative
+    z-index: 9
+    float: left
 
-kind-field-left()
-  @extends $kind-field-left
-
-  $sides = any_get_sides(arguments)
-  unless no-margin in arguments
+  $sides = any_get_sides($this)
+  unless $this.params.no-margin
     margin: -1*$sides[0] 0 -1*$sides[2] -1*$sides[3]
 
-  unless no-padding in arguments
+  unless $this.params.no-padding
     padding: $sides
 
-$kind-field-left
-  position: relative
-  z-index: 9
-  float: left
+kind-field-right($this)
+  +cache()
+    position: relative
+    z-index: 9
+    float: right
 
-kind-field-right()
-  @extends $kind-field-right
-
-  $sides = any_get_sides(arguments)
-  unless no-margin in arguments
+  $sides = any_get_sides($this)
+  unless $this.params.no-margin
     margin: -1*$sides[0] -1*$sides[1] -1*$sides[2] 0
 
-  unless no-padding in arguments
+  unless $this.params.no-padding
     padding: $sides
-
-$kind-field-right
-  position: relative
-  z-index: 9
-  float: right

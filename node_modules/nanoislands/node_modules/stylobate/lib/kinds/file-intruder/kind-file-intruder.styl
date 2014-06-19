@@ -1,50 +1,42 @@
-kind-file-intruder()
-  @extends $kind-file-intruder
+kind-file-intruder($this)
+  +cache()
+    kind(fill)
+    z-index: 11
 
-  $focus = utilus_get(arguments, '-focus')
+    // In IE we could live without focus
+    if ie
+      overflow: hidden
+
+  $focus = $this.elements.-focus
   $focus-skin = utilus_get_string($focus, $index: 1)
-  {utilus_get(arguments, '-input')}:focus + {utilus_get_string($focus)}
+  {$this.elements.-input[0]}:focus + {utilus_get_string($focus)}
     skin-{$focus-skin}() if $focus-skin
 
-
-$kind-file-intruder
-  kind: fill
-  z-index: 11
-
-  // In IE we could live without focus
-  if ie
+kind-file-intruder-inner()
+  +cache()
+    float: right
+    text-align:right
     overflow: hidden
 
-kind-file-intruder-inner()
-  @extends $kind-file-intruder-inner
-
-// This block shouldn't have `oh`, so focus could be properly positioned over parent
-$kind-file-intruder-inner
-  float: right
-  text-align:right
-  overflow: hidden
-
-  width: 100%
-  height: 100%
+    width: 100%
+    height: 100%
 
 kind-file-intruder-input()
-  @extends $kind-file-intruder-input
+  +cache()
+    position: relative
+    z-index: 11
 
-$kind-file-intruder-input
-  position: relative
-  z-index: 11
+    display: inline-block
+    vertical-align: 0
+    padding: 0
+    margin: -5em 0 0 -400px
+    width: 500px
 
-  display: inline-block
-  vertical-align: 0
-  padding: 0
-  margin: -5em 0 0 -400px
-  width: 500px
+    cursor: pointer
 
-  cursor: pointer
+    font-size: 80px
 
-  font-size: 80px
-
-  opacity: 0
+    opacity: 0
 
 kind-file-intruder-focus()
-  kind-fill()
+  kind(fill)

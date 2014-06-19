@@ -1,25 +1,21 @@
-kind-centering()
+kind-centering($this)
   white-space: nowrap
   text-align: center
 
-  stylobate_defaults(arguments,
+  stylobate_defaults($this,
     -helper '&:before')
 
 kind-centering-helper()
-  @extends $kind-centering-helper
+  +cache()
+    content: "" // As it should be empty element anyway, it's safe to use here
+    display: inline-block
+    vertical-align: middle
+
+    height: 100%
 
 kind-centering-item()
-  @extends $kind-centering-item
-
-$kind-centering-helper
-  content: "" // As it should be empty element anyway, it's safe to use here
-  display: inline-block
-  vertical-align: middle
-
-  height: 100%
-
-$kind-centering-item
-  display: inline-block
-  white-space: normal
-  vertical-align: middle
-  text-align: left
+  +cache()
+    display: inline-block
+    white-space: normal
+    vertical-align: middle
+    text-align: left

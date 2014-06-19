@@ -1,28 +1,28 @@
-skin-islands-tabs()
+skin-islands-tabs($this)
   margin: 0 -0.5*$islands_m
 
-  if nowrap in arguments
+  if nowrap in $this.arguments
     white-space: nowrap
 
-  if adaptive in arguments
+  if adaptive in $this.arguments
     font-size: 1em
-  else if small in arguments
+  else if small in $this.arguments
     font-size: $islands_text_s
   else
     font-size: $islands_text_m
 
-skin-islands-tabs-item()
-  skin-islands-link(arguments)
+skin-islands-tabs-item($this)
+  skin-islands-link($this)
   line-height: 2em
   padding: 0.3*rem 0.5*$islands_m
 
-skin-islands-tabs-item_selected()
-  skin-islands-link_selected(arguments)
+skin-islands-tabs-item_selected($this)
+  skin-islands-link_selected($this)
 
-  unless no-elements in arguments
+  unless no-elements in $this.arguments
     &:before
       content: ""
-      skin-islands-tabs-item_selected-helper(arguments)
+      skin-islands-tabs-item_selected-helper($this)
 
 skin-islands-tabs-item_selected-helper()
   kind: fill top -1px 0.5*$islands_m

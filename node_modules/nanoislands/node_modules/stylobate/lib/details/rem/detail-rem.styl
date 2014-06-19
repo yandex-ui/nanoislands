@@ -5,5 +5,5 @@ rem_px ?= 10px
 $page_rem ?= unit(round(16px/rem_px,3),em)
 
 // Set the `rem` variable, with fallback in IE
-rem = 1rem
+rem ?= 1rem
 rem = rem_px if ie

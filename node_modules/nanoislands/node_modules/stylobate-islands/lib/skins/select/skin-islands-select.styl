@@ -1,4 +1,4 @@
-skin-islands-select()
+skin-islands-select($this)
   z-index: 10
 
   -webkit-appearance: none
@@ -22,14 +22,14 @@ skin-islands-select()
   // Removing dotted outline from Fx
   &, /x::-moz-focus-inner
     color: transparent
-    text-shadow: 0 0 0 alike(arguments, $islands_color_text)
+    text-shadow: 0 0 0 ($this.colors[0] or $islands_color_text)
 
   // Hardcoded paddings, yeah, Opera and Fx are stupid there
-  unless no-paddings in arguments
-    skin-islands-select-padding(arguments)
+  unless no-paddings in $this.arguments
+    skin-islands-select-padding($this)
 
-skin-islands-select-padding()
-  if small in arguments
+skin-islands-select-padding($this)
+  if small in $this.arguments
     $sides = ($islands_xs - 0.1*rem) (2*$islands_xs + $islands_m - 0.3*rem) ($islands_xs - 0.1*rem) ($islands_m - 0.3*rem)
   else
     $sides = ($islands_xs - 0.1*rem) (2*$islands_xs + $islands_m - 0.1*rem) ($islands_xs - 0.1*rem) ($islands_m - 0.1*rem)
@@ -39,8 +39,8 @@ skin-islands-select-padding()
   // Fixing padding in Fx
   &, /x::-moz-focus-inner
     // Here in for opera one-liners 'cause there is a bug in Stylus
-    padding: ($sides[0] + 0.1*rem) ($sides[1] - 0.4*rem) ($sides[2] + 0.1*rem) ($sides[3] - 0.4*rem) unless small in arguments
-    padding: $sides[0] ($sides[1] - 0.4*rem) $sides[2] ($sides[3] - 0.4*rem) if small in arguments
+    padding: ($sides[0] + 0.1*rem) ($sides[1] - 0.4*rem) ($sides[2] + 0.1*rem) ($sides[3] - 0.4*rem) unless small in $this.arguments
+    padding: $sides[0] ($sides[1] - 0.4*rem) $sides[2] ($sides[3] - 0.4*rem) if small in $this.arguments
 
   // Fixing margins in Opera
   &, /x:-o-prefocus
@@ -48,8 +48,8 @@ skin-islands-select-padding()
 
     margin-right: -1.5*rem
     padding-top: ($sides[0] + 0.2*rem)
-    padding-bottom: ($sides[0] + 0.2*rem) unless small in arguments
-    padding-bottom: ($sides[0] + 0.1*rem) if small in arguments
+    padding-bottom: ($sides[0] + 0.2*rem) unless small in $this.arguments
+    padding-bottom: ($sides[0] + 0.1*rem) if small in $this.arguments
 
 skin-islands-select-focus()
   select:focus + &
@@ -74,4 +74,4 @@ skin-islands-select-wrap()
     left: auto
     margin-right: -2px
 
-    skin-islands-icon_dropdown(#000)
+    global_skin: islands-icon_dropdown #000

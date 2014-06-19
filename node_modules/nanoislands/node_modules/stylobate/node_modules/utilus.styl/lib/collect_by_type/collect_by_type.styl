@@ -11,12 +11,12 @@ utilus_collect_by_type($where)
     booleans: (),
     functions: (),
     objects: (),
-    arrays: ()
+    arrays: {}
   }
 
   for $item, $val in $where
     if length($item) > 1 and type($item) != 'object'
-      push($result['arrays'], $item)
+      $result['arrays']['' + length($result['arrays'])] = $item
     else if ('' + $item) in $result
       push($result['' + $item], $val)
     else

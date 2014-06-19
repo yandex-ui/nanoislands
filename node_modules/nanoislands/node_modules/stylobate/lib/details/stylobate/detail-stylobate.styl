@@ -9,60 +9,181 @@ stylobate_extends($what, $target, $defaults = true)
 
 // Far from ideal (can't redefine defaults for already redefined defaults)
 // Dunno if it is possible to make proper refedining in Stylus' stylobate
-stylobate_new_defaults($where, $defaults...)
-  _stylobate_defaults($where, $defaults)
+stylobate_new_defaults($this, $defaults...)
+  _stylobate_defaults($this, $defaults)
 
-stylobate_defaults($where, $defaults...)
-  if !(utilus_get($where, is_extended) and utilus_get($where, called_from) in $stylobate_extends_without_defaults)
-    _stylobate_defaults($where, $defaults)
+stylobate_defaults($this, $defaults...)
+  if !($this.is_extended and $this.called_from in $stylobate_extends_without_defaults)
+    _stylobate_defaults($this, $defaults)
 
-_stylobate_defaults($where, $defaults)
-  $origin = utilus_get($where, called_from)
+stylobate_this()
+  $this = {
+    'parent': {}
+    'arguments': ()
+    'params': {}
+    'modifiers': {}
+    'elements': {}
+    'urls': ()
+    'selectors': ()
+  }
+  $null_collected = utilus_collect_by_type(())
+  for $key in ('strings' 'idents' 'units' 'rgbas' 'booleans' 'functions' 'objects' 'arrays' 'colors')
+    $this[$key] = $null_collected[$key]
+  return $this
+
+_stylobate_defaults($this, $defaults)
+  $origin = $this.called_from
   return false if not $origin
-  $parent = clone($where)
+
+  $newthis = clone($this)
+  $newthis['called_from'] = $origin + '_'
+  $newthis['defaulted'] = true
+  $newthis['modifiers'] = {}
+  $newthis['elements'] = {}
+
+  $defaults_collected = {
+    parent: {},
+    arguments: clone($defaults)
+  }
+
+  _stylobate_collect_arguments($defaults_collected)
+  if $defaults_collected.modifiers
+    for $key, $value in $defaults_collected.modifiers
+      unless $key in $newthis.params
+        $newthis['modifiers'][$key] = $value
+
+  if $defaults_collected.elements
+    for $key, $value in $defaults_collected.elements
+      unless $key in $newthis.params
+        $newthis['elements'][$key] = $value
+
   $new = clone($defaults)
-  prepend($new, $origin + '_')
   for $param, $index in $new
-    $found_param = utilus_get($where, $param[0])
+    $found_param = utilus_get($this['arguments'], $param[0])
     if $found_param or (type($found_param) == 'string' and $found_param == '')
       $new[$index] = ''
-  for $param, $index in $where
+  for $param, $index in $this.arguments
     $testparam = $param
     $testparam = '' unless type($param) in ('ident' 'string')
     unless match('^[-_]', $testparam)
       push($new, $param)
-  _stylobate('', $new)
 
-_stylobate($name, $params)
-  $subparams = utilus_remove_first($params)
-  push($subparams, called_from $name + $params[0])
-  $skin_name = utilus_ident($params[0])
-  $context = utilus_get($params, 'context', '')
+  $newthis['arguments'] = clone($new)
+  _stylobate('', $origin + '_', $newthis)
+
+_stylobate_collect_arguments($this)
+  if length($this.parent)
+    $this['params'] = $this['parent']['params']
+    $this['modifiers'] = $this['parent']['modifiers']
+    $this['elements'] = $this['parent']['elements']
+    $this['urls'] = $this['parent']['urls']
+    $this['selectors'] = $this['parent']['selectors']
+  else
+    $this['params'] = {}
+    $this['modifiers'] = {}
+    $this['elements'] = {}
+    $this['urls'] = ()
+    $this['selectors'] = ()
+
+  // Remove the item's name from the arguments
+  $this['arguments'][0] = unquote('')
+
+  // Collect the arguments, first step
+  $collected = utilus_collect_by_type($this['arguments'])
+  for $key in ('strings' 'idents' 'units' 'rgbas' 'booleans' 'functions' 'objects' 'arrays' 'colors')
+    if length($this.parent)
+      // Merging all subitems
+      $this[$key] = $collected[$key]
+      if type($this[$key]) == 'object'
+        for $subkey, $subvalue in $this.parent[$key]
+          $workaround = $this[$key]
+          $workaround[$subkey] = $subvalue
+      else
+        for $subvalue in $this.parent[$key]
+          push($this[$key], $subvalue)
+    else
+      $this[$key] = $collected[$key]
+
+  // Getting different params and stuff
+  if length($this['strings']) > 0
+    for $key in $this['strings']
+      // replace those checks with functions
+      if match('\.(png|jpg|svg|gif)\b|https?:\/\/|^data:', $key)
+        push($this['urls'], $key)
+      else if match('&|^[\/\.]', $key)
+        push($this['selectors'], $key)
+      else if $key != ''
+        // workaround for strange clone? bug
+        $workaround = $this['params']
+        $workaround[$key] = $key
+
+  if length($this['idents']) > 0
+    for $key in $this['idents']
+      // workaround for strange clone? bug
+      $workaround = $this['params']
+      $workaround['' + utilus_ident($key)] = utilus_ident($key)
+
+      if match('^(__|-[^\-])', $key)
+        $workaround = $this['elements']
+        $workaround['' + utilus_ident($key)] = '&'
+      else if match('^(_|--)', $key)
+        $workaround = $this['modifiers']
+        $workaround['' + utilus_ident($key)] = '&'
+
+  if length($this['arrays']) > 0
+    for $index, $array in $this['arrays']
+      $key = $array[0]
+      $rest = ()
+      for $item, $index in $array
+        $rest = utilus_append($rest, $item) if $index > 0
+
+      $workaround = $this['params']
+      $workaround['' + $key] = $rest if $rest
+
+      if match('^(__|-[^\-])', $key) and $rest
+        $workaround = $this['elements']
+        $workaround['' + $key] = $rest
+      else if match('^(_|--)', $key) and $rest
+        $workaround = $this['modifiers']
+        $workaround['' + $key] = $rest
+
+
+_stylobate($name, $params, $this = {
+    parent: {},
+    arguments: clone($params),
+    called_from: $name + $params[0]
+  })
+
+  _stylobate_collect_arguments($this) unless $this.defaulted
 
   // Check if the called stylobate extends anything, if so, call it first,
   // and use the extended stylobate for subitems.
+  $skin_name = utilus_ident($params[0])
   $extended_name_ending = replace('.*[^-_]+', '', $skin_name)
   $extended_name = $stylobate_extends[$name + $skin_name] || $stylobate_extends[$name + replace('[_-]+$', '', $skin_name)]
   $extended_name = utilus_ident($extended_name) + $extended_name_ending if $extended_name
   if $extended_name
-    push($subparams, is_extended)
+    $this['is_extended'] = true
     $skin_name = replace('^' + $name, '', $extended_name)
 
     if !utilus_is_function($extended_name) and $extended_name_ending == ''
       error('No stylobate function “' + $extended_name + '”')
 
-  {$extended_name}($subparams) if $extended_name and !$context and $extended_name_ending == ''
+  // Why do we need context in the first place
+  $context = utilus_get($params, 'context', '')
+
+  {$extended_name}($this) if $extended_name and !$context and $extended_name_ending == ''
   {$context}
-    {$extended_name}($subparams) if $extended_name and $context and $extended_name_ending == ''
+    {$extended_name}($this) if $extended_name and $context and $extended_name_ending == ''
 
   if ($name + join('',$params) != '') and !utilus_is_function($name + utilus_ident($params[0])) and !$extended_name and !match('[_-]$', utilus_ident($params[0]))
     error('No such “' + $name + '” — “' + utilus_ident($params[0]) + '”')
 
-  {$name + utilus_ident($params[0])}($subparams) if !$context and utilus_is_function($name + utilus_ident($params[0]))
+  {$name + utilus_ident($params[0])}($this) if !$context and utilus_is_function($name + utilus_ident($params[0]))
   {$context}
-    {$name + utilus_ident($params[0])}($subparams) if $context and utilus_is_function($name + utilus_ident($params[0]))
+    {$name + utilus_ident($params[0])}($this) if $context and utilus_is_function($name + utilus_ident($params[0]))
 
-  for $subitem in $subparams
+  for $subitem in $this.arguments
     // There shouldn't be an `if` inside a {$selector}, 'cause
     // there is a crazy stylus bug. When it would be fixed,
     // revert this version to 669082fb35
@@ -83,8 +204,13 @@ _stylobate($name, $params)
           $foundsubitem = $subitem
 
     call_subitem()
-      $subitemparams = remove_first(remove_first($foundsubitem))
-      push($subitemparams, (parent $subparams))
+      $this_subitem = {
+        parent: $this,
+        arguments: clone($foundsubitem)
+      }
+
+      _stylobate_collect_arguments($this_subitem)
+
       $subitemname = $name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]
       $subitemname = replace('[_-]+$', '', $extended_name) + $foundsubitem[0] if $extended_name
       $subitemname = '' unless utilus_is_function($subitemname)
@@ -94,16 +220,16 @@ _stylobate($name, $params)
       $subitemname_extended = $name + replace('[_-]+$', '', utilus_ident($params[0])) + $foundsubitem[0] if $extended_name
       $subitemname_extended = '' unless utilus_is_function($subitemname_extended)
 
+
       // Push proper `called_from`
-      push($subitemparams, called_from $subitemname) unless $subitemname_extended or !$subitemname
-      push($subitemparams, called_from $subitemname_extended) if $subitemname_extended
+      $this_subitem['called_from'] = $subitemname unless $subitemname_extended or !$subitemname
+      $this_subitem['called_from'] = $subitemname_extended if $subitemname_extended
 
-      {$subitemname}($subitemparams) unless $context or $subitemname_extended or !$subitemname
-      {$subitemname_extended}($subitemparams) unless $context or !$subitemname_extended
+      {$subitemname}($this_subitem) unless $context or $subitemname_extended or !$subitemname
+      {$subitemname_extended}($this_subitem) unless $context or !$subitemname_extended
       {$context}
-        {$subitemname}($subitemparams) if $context and !$subitemname_extended and $subitemname
-        {$subitemname_extended}($subitemparams) if $context and $subitemname_extended
-
+        {$subitemname}($this_subitem) if $context and !$subitemname_extended and $subitemname
+        {$subitemname_extended}($this_subitem) if $context and $subitemname_extended
 
     {$selector}
       call_subitem() if $foundsubitem != '' and $selector != ''

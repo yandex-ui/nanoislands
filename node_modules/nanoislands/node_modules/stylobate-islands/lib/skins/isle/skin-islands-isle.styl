@@ -1,19 +1,19 @@
-skin-islands-isle()
-  background: alike(arguments, $islands_bg_main)
+skin-islands-isle($this)
+  background: $this.colors[0] or $islands_bg_main
 
-  if fly in arguments
-    box-shadow: 0 0 0 1px rgba(0,0,0, alike(arguments, 0.15)),
+  if fly in $this.arguments
+    box-shadow: 0 0 0 1px rgba(0,0,0, ($this.units[0] or 0.15)),
                 0 8px 30px -5px rgba(0,0,0,0.5)
   else
-    box-shadow: 0 0 0 1px rgba(#000, alike(arguments, 0.1))
+    box-shadow: 0 0 0 1px rgba(#000, ($this.units[0] or 0.1))
 
   if ie
-    border: 1px solid rgba-ie(#000, alike(arguments, 0.1))
+    border: 1px solid rgba-ie(#000, ($this.units[0] or 0.1))
     margin: -1px 0
 
 // How to merge this and skin-islands-popup-content?
-skin-islands-isle-content()
-  if small in arguments
+skin-islands-isle-content($this)
+  if small in $this.arguments
     kind: content $islands_xs $islands_s
   else
     kind: content $islands_m $islands_l

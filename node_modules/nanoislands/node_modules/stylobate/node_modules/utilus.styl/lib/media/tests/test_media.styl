@@ -26,3 +26,17 @@
     height: 50px
 
 flush_media()
+
+.baz
+  padding: 0
+
+  +media('lap')
+    padding: 30px
+
++media('lap')
+  .raz
+    margin: 0
+
+
+// Testing the second flush
+flush_media()

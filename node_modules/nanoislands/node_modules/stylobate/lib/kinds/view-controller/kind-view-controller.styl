@@ -1,6 +1,6 @@
 kind-view-controller()
-  $view = utilus_alike(arguments, '&-view')
-  $controller = utilus_alike(arguments, '&-controller', 1)
+  $view = $this.strings[0] or '&-view'
+  $controller = $this.strings[1] or '&-controller'
 
   {$controller}
     kind-hidden(visually)

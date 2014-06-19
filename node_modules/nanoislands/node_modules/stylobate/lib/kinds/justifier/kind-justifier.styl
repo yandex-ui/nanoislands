@@ -1,11 +1,11 @@
-kind-justifier()
+kind-justifier($this)
   text-align: justify
 
   if ie
     text-justify: newspaper
     text-align-last: justify
   else
-    stylobate_defaults(arguments,
+    stylobate_defaults($this,
       -helper '&:after')
 
 kind-justifier-helper()

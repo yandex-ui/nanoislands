@@ -29,6 +29,7 @@ match .arrow nb {
         nb-button({
             'size': 'm'
             'class': '_nb-search-arrow-button'
+            'tabindex': .buttonTabindex
             'content': .buttonContent
             'attrs': {
                 'type': 'submit'
@@ -39,6 +40,7 @@ match .arrow nb {
             nb-input({
                 'size': 'm'
                 'class': '_nb-search-arrow-input'
+                'tabindex': .inputTabindex
                 'leftContent': input-label
                 'attrs': {
                     'autocomplete': 'off'

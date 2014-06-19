@@ -1,4 +1,4 @@
-kind-baseliner()
+kind-baseliner($this)
   display: inline-block
 
   if !ie
@@ -6,7 +6,7 @@ kind-baseliner()
   else
     vertical-align: middle
 
-  stylobate_defaults(arguments, -helper '&:before')
+  stylobate_defaults($this, -helper '&:before')
 
 kind-baseliner-content()
   float: left

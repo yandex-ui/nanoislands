@@ -17,6 +17,7 @@ HTML input element.
 * `'type'` {string} — `'multiline'` textarea
 * `'ghost'` {boolean} — ghost mode input
 * `'disabled'` {boolean}
+* `'tabindex'` {string} — tabindex
 * `'size'` {string}  - input size. `'s'` (no other sizes supported)
 * `'error'` {object} `{content: 'error content', direction: 'right|left'}`
 * `'leftContent'` {string|xml} — content of the left field of input

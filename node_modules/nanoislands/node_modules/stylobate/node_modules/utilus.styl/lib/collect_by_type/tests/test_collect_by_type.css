@@ -7,7 +7,7 @@
   functions: utilus_get rgba;
   objects: {} {"a":"(b)","c":"(d)"};
   booleans: false true false;
-  arrays: sss rrr a b c;
+  arrays: {"0":"(sss rrr)","1":"(a b c)"};
 }
 .foo_first {
   strings: 'adssad';

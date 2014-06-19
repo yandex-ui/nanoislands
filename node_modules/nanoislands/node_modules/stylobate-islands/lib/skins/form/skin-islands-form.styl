@@ -9,7 +9,7 @@ skin-islands-form-fieldset()
     margin-top: $islands_l
 
 skin-islands-form-legend()
-  skin-islands-h3(no-reset)
+  global_skin: islands-h3 no-reset
 
   margin-bottom: $islands_s
 
@@ -49,16 +49,16 @@ skin-islands-form-hint()
   margin-left: 2*$islands_l
 
 skin-islands-form-hint-title()
-  skin-islands-h3(no-reset)
+  global_skin: islands-h3 no-reset
 
 skin-islands-form-hint-content()
   float: left
   width: 100%
   height: 0 // To hang it
 
-  skin-islands-para2(no-reset)
+  global_skin: islands-para2 no-reset
 
   color: $islands_color_text_misc
 
 skin-islands-form-pseudo-link()
-  skin-islands-pseudo-link($islands_color_text)
+  global_skin: islands-pseudo-link $islands_color_text

@@ -1,8 +1,8 @@
-skin-islands-popup()
-  _stylobate('skin-islands-', isle fly)
+skin-islands-popup($this)
+  global_skin(islands-isle fly)
 
   // This could be moved to subskin only when we could get the parent's selector and reuse it inside.
-  $popup-tail = utilus_get(arguments, '-tail')
+  $popup-tail = utilus_get($this.arguments, '-tail')
   if $popup-tail
     &_to_top {$popup-tail}
       skin-islands-popup-tail_to_top()
@@ -17,12 +17,12 @@ skin-islands-popup()
       skin-islands-popup-tail_to_left()
 
 
-skin-islands-popup-overlay()
-  background: alike(arguments, rgba(#000, 0.3))
+skin-islands-popup-overlay($this)
+  background: $this.colors[0] or rgba(#000, 0.3)
 
-skin-islands-popup-content()
+skin-islands-popup-content($this)
   display: block
-  if small in arguments
+  if small in $this.arguments
     kind: content $islands_xs $islands_s
   else
     kind: content $islands_m $islands_l

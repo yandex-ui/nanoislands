@@ -1,6 +1,6 @@
-any_get_sides($where, $fallback = 0)
-  $this_sides = utilus_get_sides($where, $fallback)
+any_get_sides($this, $fallback = 0)
+  $this_sides = utilus_get_sides($this.arguments, $fallback)
   if ('' + $this_sides == '0 0 0 0')
-    $this_sides = utilus_get_sides(utilus_get($where, parent), $fallback)
+    $this_sides = utilus_get_sides($this.parent.arguments, $fallback)
   return $this_sides
 

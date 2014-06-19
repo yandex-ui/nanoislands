@@ -105,47 +105,47 @@ kind-grid_()
   kind-grid_gutter(arguments)
   kind-grid_nowrap(arguments)
 
-kind-grid_gutter()
-  $columns = process-grid-cols(arguments)
+kind-grid_gutter($this)
+  $columns = process-grid-cols($this.arguments)
 
   if $columns[6][1]
     margin-left: -1*$gutter = utilus_get($columns, 'gutter')
 
-  unless utilus_get(arguments, '-content')
+  unless utilus_get($this.arguments, '-content')
     padding-right: utilus_get($columns, 'shrinkers')[0]
 
-kind-grid_nowrap()
-  if retrieve(arguments, nowrap ellipsis)
+kind-grid_nowrap($this)
+  if retrieve($this.arguments, nowrap ellipsis)
     white-space: nowrap
 
-kind-grid-col()
-  $columns = process-grid-cols(utilus_get(arguments, 'parent'))
-  $column = get_column($columns, utilus_get_string(arguments))
+kind-grid-col($this)
+  $columns = process-grid-cols($this.parent.arguments)
+  $column = get_column($columns, utilus_get_string($this.arguments))
   width: $column[2][1]
 
-  if absolute in arguments
+  if absolute in $this.arguments
     position: absolute
 
   else
-    kind-block(inline)
+    kind(block inline)
 
-    unless parent_get(arguments, '-content')
+    unless utilus_get($this.parent.arguments, '-content')
       $gap = $column[3][1]
       if $gap
         margin-left: $gap
 
-      if utilus_get(arguments, 'nowrap')
-        unless parent_get(arguments, 'nowrap')
+      if utilus_get($this.arguments, 'nowrap')
+        unless utilus_get($this.parent.arguments, 'nowrap')
           white-space: nowrap
       else
-        if parent_get(arguments, 'ellipsis')
-          white-space: nowrap unless parent_get(arguments, 'nowrap')
+        if utilus_get($this.parent.arguments, 'ellipsis')
+          white-space: nowrap unless utilus_get($this.parent.arguments, 'nowrap')
           overflow: hidden
           text-overflow: ellipsis
         else
           white-space: normal
 
-kind-grid-content()
-  $gutter = parent_get(arguments, 'gutter')
+kind-grid-content($this)
+  $gutter = utilus_get($this.parent.arguments, 'gutter')
   if $gutter
     margin-left: $gutter

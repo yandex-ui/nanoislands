@@ -14,6 +14,7 @@
 * `'name'` {string} ...
 * `'class'` {array} `['my_class1', 'my_class2']` — additional classes
 * `'disabled'` {boolean} — disabled button
+* `'tabindex'` {string}
 * `'icon'` {string} ... — link to icon
 * `'iconText'` {string} ... — symbol for icon
 * `'content'` {string} ... — content of button

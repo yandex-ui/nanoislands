@@ -61,8 +61,10 @@
         },
         close: function() {
             this._super();
-            this.document.off('mousedown', this._onmousedown);
-            this.document.off('touchstart', this._onmousedown);
+            if (this.options.autoclose) {
+                this.document.off('mousedown', this._onmousedown);
+                this.document.off('touchstart', this._onmousedown);
+            }
 
             if (this._onresize) {
                 this.window.off('resize', this._onresize);

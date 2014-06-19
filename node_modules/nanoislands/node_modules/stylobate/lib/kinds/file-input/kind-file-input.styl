@@ -1,32 +1,28 @@
-kind-file-input()
-  @extends $kind-file-input
+kind-file-input($this)
+  +cache()
+    kind('block' inline)
 
-  $extrude = utilus_get_unit(arguments)
+    overflow: hidden
+
+  $extrude = $this.units[0]
   if $extrude
     padding: $extrude
     margin: $extrude * -1
 
-$kind-file-input
-  kind-block(inline)
-
-  overflow: hidden
-
 kind-file-input-input()
-  @extends $kind-file-input-input
+  +cache()
+    z-index: 10
+    position: absolute
+    right: 0
+    bottom: 0
 
-$kind-file-input-input
-  z-index: 10
-  position: absolute
-  right: 0
-  bottom: 0
+    min-width: 100%
+    padding: 0
+    margin: 0
 
-  min-width: 100%
-  padding: 0
-  margin: 0
+    cursor: pointer
 
-  cursor: pointer
+    // Could it be replaced with anything more sane?
+    font-size: 500px
 
-  // Could it be replaced with anything mpore sane?
-  font-size: 500px
-
-  opacity: 0
+    opacity: 0

@@ -1,24 +1,22 @@
 kind-group()
-  @extends $kind-group
+  +cache()
+    kind('block' inline)
+    white-space: nowrap
 
-$kind-group
-  kind-block(inline)
-  white-space: nowrap
-
-kind-group-item()
-  unless no-radius in arguments
+kind-group-item($this)
+  unless $this.params.no-radius
     &:first-child:not(:only-child)
-      kind-group-start(arguments)
+      kind-group-start($this)
 
     &:not(:first-child):not(:last-child)
-      kind-group-middle(arguments)
+      kind-group-middle($this)
 
     &:last-child:not(:only-child)
-      kind-group-end(arguments)
+      kind-group-end($this)
 
-kind-group-start()
-  {utilus_alike(arguments, '')}
-    $placeholder = vertical in arguments ? '$kind-group-start_vertical' : '$kind-group-start'
+kind-group-start($this)
+  {$this.strings[0] or ''}
+    $placeholder = $this.params.vertical ? '$kind-group-start_vertical' : '$kind-group-start'
     @extends {$placeholder}
 
 $kind-group-start
@@ -31,13 +29,13 @@ $kind-group-start_vertical
     border-bottom-right-radius: 0 !important
     border-bottom-left-radius: 0 !important
 
-kind-group-end()
-  unless no-margin in arguments
-    $placeholder = vertical in arguments ? '$kind-group-margin_vertical' : '$kind-group-margin'
+kind-group-end($this)
+  unless $this.params.no-margin
+    $placeholder = $this.params.vertical ? '$kind-group-margin_vertical' : '$kind-group-margin'
     @extends {$placeholder}
 
-  {utilus_alike(arguments, '')}
-    $placeholder = vertical in arguments ? '$kind-group-end_vertical' : '$kind-group-end'
+  {$this.strings[0] or ''}
+    $placeholder = $this.params.vertical ? '$kind-group-end_vertical' : '$kind-group-end'
     @extends {$placeholder}
 
 $kind-group-end
@@ -56,12 +54,12 @@ $kind-group-margin
 $kind-group-margin_vertical
   margin-top: -1px
 
-kind-group-middle()
-  unless no-margin in arguments
-    $placeholder = vertical in arguments ? '$kind-group-margin_vertical' : '$kind-group-margin'
+kind-group-middle($this)
+  unless $this.params.no-margin
+    $placeholder = $this.params.vertical ? '$kind-group-margin_vertical' : '$kind-group-margin'
     @extends {$placeholder}
 
-  $selector = utilus_alike(arguments, '')
+  $selector = $this.strings[0] or ''
   if $selector != ''
     {$selector}
       border-radius: 0 !important
