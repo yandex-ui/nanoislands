@@ -1,0 +1,31 @@
+.foo
+  width: 10px
+
+  +media('lap')
+    width: 20px
+
+  +media('desk')
+    width: 30px
+
+  +media('min-width: 200px')
+    width: 60px
+
+.bar
+  height: 10px
+
+  +media('lap')
+    height: 20px
+
+  +media('desk')
+    height: 30px
+
+  +media('min-width: 200px')
+    height: 50px
+
+  +media('(min-width: 500px) and (max-width: 700px)')
+    height: 50px
+
+flush_media('desk' 'min-width: 200px')
+
+.prefixed
+  flush_media('lap')

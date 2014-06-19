@@ -1,0 +1,12 @@
+utilus_one_em($context, $root = 16px)
+  if unit($context) in ('' 'em' 'rem')
+    return 1em / unit($context,'')
+  else if unit($context) == '%'
+    return 100em / $context
+  else if unit($context) == 'px' and unit($root_em) == 'px'
+    return 1em * $root_em / $context
+  else
+    return 1em
+
+
+one_em ?= utilus_one_em

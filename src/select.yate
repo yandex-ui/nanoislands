@@ -175,12 +175,91 @@ func select-medium() {
           }
       ]
     })
+    ' '
+    nb-select( {
+      'size': 'm'
+      'disabled': true()
+      'id': 'select9'
+      'class': 'my-test-class'
+      'items': [
+          {
+              'icon': 'twitter'
+              'text': 'Twitter'
+              'value': 'option0'
+              'selected': 'true'
+          }
+          {
+              'icon': 'vk'
+              'text': 'VK'
+              'value': 'option1'
+          }
+          {
+              'text': 'Ещё'
+              'value': 'option4'
+              'icon': 'three-dots'
+          }
+      ]
+    })
+    nb-select({
+      'size': 'm'
+      'id': 'select10'
+      'class': 'my-test-class'
+      'items': [
+          {
+              'text': ''
+              'value': 'option1'
+              'selected': 'true'
+          }
+
+      ]
+    })
+    ' '
+    nb-select( {
+          'size': 'm'
+          'id': 'select-group55'
+          'class': 'my-test-class'
+          'items': [
+              {
+                  'text': 'Карта'
+                  'value': 'option1'
+              }
+              {
+                  'text': 'Спутник'
+                  'value': 'option2'
+              }
+              {
+                  'text': 'Гибрид'
+                  'value': 'option3'
+              }
+                {
+                    'separator': true()
+                }
+              {
+                  'text': 'Группа'
+                  'group': [
+                        {
+                            'text': 'Супер Карта'
+                            'value': 'option4'
+                            'selected': 'true'
+                        }
+                        {
+                            'text': 'Супер Спутник'
+                            'value': 'option5'
+                        }
+                        {
+                            'text': 'Супер Гибрид'
+                            'value': 'option6'
+                        }
+                  ]
+              }
+          ]
+        })
     " Текст рядом с селектами"
 }
 func select-small() {
-    block = {
+    nb-select({
         'size': 's'
-        'id': 'select2'
+        'id': 'select7'
         'direction': 'top'
         'items': [
             {
@@ -201,8 +280,29 @@ func select-small() {
                 'value': 'option4'
             }
         ]
-    }
-    nb-select(block)
+    })
+    ' '
+    nb-select({
+      'size': 's'
+      'id': 'select8'
+      'class': 'my-test-class'
+      'theme': 'pseudo'
+      'items': [
+          {
+              'text': 'Карта'
+              'value': 'option1'
+              'selected': 'true'
+          }
+          {
+              'text': 'Спутник'
+              'value': 'option2'
+          }
+          {
+              'text': 'Гибрид'
+              'value': 'option3'
+          }
+      ]
+    })
     " Текст рядом с селектами"
 }
 

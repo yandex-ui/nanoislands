@@ -1,0 +1,44 @@
+$root_em = 10px
+
+superunit_s($context = 1)
+  return 0.5 * utilus_one_em($context, $root_em)
+
+superunit_m($context = 1)
+  return 1 * utilus_one_em($context, $root_em)
+
+superunit_l($context = 1)
+  return 2 * utilus_one_em($context, $root_em)
+
+.test1
+  width: superunit_m()
+
+.test2
+  width: superunit_m(0.5)
+  height: superunit_m(200%)
+
+.test3
+  width: superunit_m(20px)
+  height: superunit_m(4em)
+
+.test1_l
+  width: superunit_l()
+
+.test2_l
+  width: superunit_l(0.5)
+  height: superunit_l(200%)
+
+.test3_l
+  width: superunit_l(20px)
+  height: superunit_l(4em)
+
+.test1_s
+  width: superunit_s()
+
+.test2_s
+  width: superunit_s(0.5)
+  height: superunit_s(200%)
+
+.test3_s
+  width: superunit_s(20px)
+  height: superunit_s(4em)
+

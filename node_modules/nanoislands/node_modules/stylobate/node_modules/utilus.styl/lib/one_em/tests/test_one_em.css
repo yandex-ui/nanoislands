@@ -1,0 +1,33 @@
+.test1 {
+  width: 1em;
+}
+.test2 {
+  width: 2em;
+  height: 0.5em;
+}
+.test3 {
+  width: 0.5em;
+  height: 0.25em;
+}
+.test1_l {
+  width: 2em;
+}
+.test2_l {
+  width: 4em;
+  height: 1em;
+}
+.test3_l {
+  width: 1em;
+  height: 0.5em;
+}
+.test1_s {
+  width: 0.5em;
+}
+.test2_s {
+  width: 1em;
+  height: 0.25em;
+}
+.test3_s {
+  width: 0.25em;
+  height: 0.125em;
+}
