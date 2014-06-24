@@ -14,6 +14,13 @@ nb-user()
     display: inline-block
     position: relative
 
+    &:after
+      content: ""
+      display: table
+      width: 100%
+      height: 0
+      visibility: hidden
+
   ._nb-user-pseudo
     display: inline-block
     width: 100%
@@ -59,7 +66,6 @@ nb-user()
 
   ._nb-normal-user
     font-size: $fzm
-    height: $m
 
     .nb-user-avatar
       width: $m
@@ -67,7 +73,6 @@ nb-user()
 
   ._nb-small-user
     font-size: $fzs
-    height: $s
 
     .nb-user-avatar
       width: $s
@@ -124,13 +129,9 @@ nb-user()
       white-space: nowrap
       position: relative
 
-    .nb-user-avatar
-      position: absolute
-      top: 0
-
   ._nb-user_justify._nb-user_rtl
-      .nb-user-avatar
-        right: 0
+    .nb-user-avatar
+      float: right
 
   ._nb-user_justify._nb-user_rtl._nb-small-user
     ._nb-user-label
@@ -142,7 +143,7 @@ nb-user()
 
   ._nb-user_justify._nb-user_ltr
     .nb-user-avatar
-      left: 0
+      float: left
 
   ._nb-user_justify._nb-user_ltr._nb-small-user
     ._nb-user-label
