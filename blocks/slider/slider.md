@@ -14,6 +14,7 @@
 * `'id'` {string} block@id
 * `'class'` {array} `['my_class1', 'my_class2']`
 * `'disabled'` {boolean}
+* `'content'` {xml|string} — handle's content, can be string or `xml` _xss warning!_
 
 #### Example
 

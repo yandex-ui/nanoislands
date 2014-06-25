@@ -27,6 +27,15 @@ func slider-disabled() {
     nb-slider(slider)
 }
 
+func slider-custom-content() {
+    slider = {
+        'id': 's3'
+        'size': 's'
+        'content': apply / nb-slider-content
+    }
+    nb-slider(slider)
+}
+
 func sliders() {
     <div class="demo-section">
         <div class="demo-h3">
@@ -49,4 +58,18 @@ func sliders() {
 
         show(slider-disabled())
     </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Custom content of the button'
+        </div>
+
+        show(slider-custom-content())
+    </div>
+}
+
+
+match / nb-slider-content {
+    nb-icon({
+        'icon': 'volume'
+    })
 }
