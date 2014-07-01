@@ -26,6 +26,7 @@ $svg["sizes"] = {
   m:  3.2*rem
 }
 
+
 for $size-name, $size-value in $svg.sizes
   for $icon in $svg-icons
     .nb-{$size-name}-{$icon}-icon
@@ -33,6 +34,11 @@ for $size-name, $size-value in $svg.sizes
       width:  $size-value
       height:  $size-value
 
+.nb-s-new-folder-icon
+  width: 25px
+
+.nb-m-new-folder-icon
+  width: 50px
 
 // Compensate visual shift for link icon
 .nb-s-icon-link
