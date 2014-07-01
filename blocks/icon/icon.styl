@@ -13,13 +13,19 @@ $svg ?= {}
     margin-right: -1*$islands_xs
     margin-left: -1*$islands_xs
 
-$svg-icons = 'close' 'download' 'upload' 'eye' 'link' 'trash' 'people' 'help' 'print' 'services' 'settings' 'attention' 'three-dots' 'play' 'pause' 'mail' 'link-white' 'download-white' 'upload-white' 'trash-white' 'vk' 'twitter' 'odnoklassniki' 'shared' 'published' 'new-folder' 'view-tiles' 'view-icons' 'view-list' 'compose' 'compose-yellow' 'full-screen-white' 'next' 'prev' 'volume' 'zoom-white'
-
+$svg-icons = 'close' 'download' 'upload' 'eye' 'link' 'trash' 'people' 'help' 'print' \
+    'services' 'settings' 'attention' 'three-dots' 'play' 'pause' 'mail' 'link-white' \
+    'download-white' 'upload-white' 'trash-white' 'vk' 'twitter' 'odnoklassniki' 'shared' \
+    'published' 'new-folder' 'view-tile' 'view-icons' 'view-list' 'compose' 'compose-yellow' \
+    'full-screen-white' 'next' 'prev' 'volume' 'zoom-white' 'vkontakte-square-white' \
+    'facebook-square-white' 'odnoklassniki-square-white' 'vkontakte-square-black' \
+    'facebook-square-black' 'odnoklassniki-square-black' 'move' 'copy' 'world' 'friends' 'lock'
 
 $svg["sizes"] = {
   s:  1.6*rem,
   m:  3.2*rem
 }
+
 
 for $size-name, $size-value in $svg.sizes
   for $icon in $svg-icons
@@ -28,6 +34,11 @@ for $size-name, $size-value in $svg.sizes
       width:  $size-value
       height:  $size-value
 
+.nb-s-new-folder-icon
+  width: 25px
+
+.nb-m-new-folder-icon
+  width: 50px
 
 // Compensate visual shift for link icon
 .nb-s-icon-link
