@@ -1,3 +1,9 @@
+##### 0.4.20  — patch
+
+###### Fixes
+* fix #384 — Yet another icons addition
+* fix #383 — Update to latest es5-shim because of warning
+
 ##### 0.4.19  — patch
 
 ###### Fixes
