@@ -126,7 +126,7 @@ func all-icons-s(boolean white) {
         })
 
         nb-icon({
-        'icon': 'view-tile'
+        'icon': 'view-tiles'
         })
 
         nb-icon({
@@ -346,7 +346,7 @@ func all-icons-m(boolean white) {
         })
 
         nb-icon({
-        'icon': 'view-tile'
+        'icon': 'view-tiles'
         'size': 'm'
         })
 
