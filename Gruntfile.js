@@ -66,7 +66,7 @@ module.exports = function(grunt) {
 
     gruntConfig.karma = {
         options: {
-            configFile: "karma.conf.js",
+            configFile: "karma.conf.js"
         },
         continuous: {
             singleRun: true,
