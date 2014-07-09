@@ -650,6 +650,11 @@ describe("Select Tests", function() {
                 select.open();
                 expect(select.$jUI.menu.element.find('._nb-select-item').first().find('.nb-icon').length).to.be.equal(1);
             });
+
+            it("Icon node should be presented in button content", function() {
+                var select = nb.find('select-with-icons-in-options');
+                expect(select.$node.find('._nb-button-content .nb-icon').length).to.be.equal(1);
+            });
         });
 
 
