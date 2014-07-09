@@ -59,6 +59,7 @@ func input-small-reset() {
 func input-left-right() {
     nb-input({
         'leftContent': 'Prefix...'
+        'reset': true()
         'rightContent': '...postfix'
     })
 }
