@@ -48,6 +48,9 @@
     * Object for menu element:
         * `href` {string}
         * `text` {string}
+        * `attrs` {object} — custom DOM attributes
+        * `class` {array} — additional classes
+        * `id` {string}
     * Object for separator:
         * `separator` {boolean} — `true()` to render separator
 
