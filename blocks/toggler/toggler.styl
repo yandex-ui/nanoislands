@@ -1,6 +1,9 @@
 $toggler-height_s = 28px
 $toggler-width_s = 72px
 
+$toggler-height_xs = 22px
+$toggler-width_xs = 72px
+
 $toggler-height_m = 32px
 $toggler-width_m = 82px
 
@@ -128,6 +131,25 @@ $toggler-width_m = 82px
     ._nb-toggler-text
       left: - ($toggler-width_s - $toggler-height_s)
 
+._nb-extra-small-toggler
+  width: $toggler-width_xs
+  height: $toggler-height_xs
+
+  ._nb-toggler-knob
+    height: $toggler-height_xs
+    width: @height
+
+  ._nb-toggler-text
+    font: $font-p1
+    position: relative
+    top: 1px;
+    line-height: $toggler-height_xs
+    width: $toggler-width_xs - $toggler-height_xs
+
+  ._nb-toggler-left-sticker
+    ._nb-toggler-text
+      left: - ($toggler-width_xs - $toggler-height_xs)
+
 ._nb-normal-toggler
   width: $toggler-width_m
   height: $toggler-height_m
@@ -160,6 +182,18 @@ $toggler-width_m = 82px
   ._nb-toggler-right-sticker
     ._nb-toggler-text
       right: - ($toggler-width_s - $toggler-height_s)
+
+  ._nb-toggler-left-sticker
+    ._nb-toggler-text
+      left: 0
+
+._nb-extra-small-toggler._nb-is-checked
+  ._nb-toggler-knob
+    left: $toggler-width_xs - $toggler-height_xs
+
+  ._nb-toggler-right-sticker
+    ._nb-toggler-text
+      right: - ($toggler-width_xs - $toggler-height_xs)
 
   ._nb-toggler-left-sticker
     ._nb-toggler-text

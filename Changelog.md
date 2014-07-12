@@ -1,3 +1,13 @@
+##### 0.4.21  — patch
+
+###### Fixes
+* fix #392 — [Input] Order of reset and right part of an input
+* fix #391 — [Select] Отображения иконки в поле nb-select
+* fix #390 — [Input] Second argument for inputs' nb-changed question
+* fix #389 — [Popup-menu] Horizontal padding inconsistent.
+* fix #388 — [Toggler] XS size for inputs and togglers enhancement
+* fix #386 — [Icon] Rename icon view-tile to view-tiles
+
 ##### 0.4.20  — patch
 
 ###### Fixes

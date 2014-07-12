@@ -3,6 +3,12 @@ togglerS = {
     'rightText': 'Выкл'
 }
 
+togglerXS = {
+    'size': 'xs'
+    'leftText': 'Вкл'
+    'rightText': 'Выкл'
+}
+
 togglerM = {
     'leftText': 'Вкл'
     'rightText': 'Выкл'
@@ -22,13 +28,17 @@ func toggleBlock() {
         <div class="demo-h3">
         'Блок переключатель'
         </div>
-
         show(nb-toggler(togglerS))
         <br />
         <div class="demo-h3">
             'Блок переключатель M'
         </div>
         show(nb-toggler(togglerM))
+        <br />
+        <div class="demo-h3">
+            'Блок переключатель XS'
+        </div>
+        show(nb-toggler(togglerXS))
         <br />
         <div class="demo-h3">
             'Блок переключатель disabled'

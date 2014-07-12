@@ -40,7 +40,7 @@ nb.define('input', {
         this.value = this.getValue();
 
         this.$control.on('change', function(e) {
-            that.trigger('nb-changed', this, e);
+            that.trigger('nb-changed', that, e);
         });
 
         this.$control.on('input', function(e) {

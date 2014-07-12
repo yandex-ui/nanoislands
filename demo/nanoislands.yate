@@ -35,7 +35,6 @@ include 'islands.yate'
 include 'loaders.yate'
 include 'icons.yate'
 include 'sliders.yate'
-include 'tooltips-jq.yate'
 include 'tabs.yate'
 include 'arrows.yate'
 include 'header.yate'
@@ -179,19 +178,6 @@ match / {
         </div>
         <div class="demo-pane__content">
             popups()
-        </div>
-    </div>
-    <div class="demo-pane">
-        <div class="demo-pane__desc">
-            <div class="demo-h2">
-                "Tooltips"
-            </div>
-            <div class="demo-h5">
-                "Требует подключения JS"
-            </div>
-        </div>
-        <div class="demo-pane__content">
-            tooltips-jq()
         </div>
     </div>
     <div class="demo-pane">

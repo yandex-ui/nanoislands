@@ -57,8 +57,14 @@ func popups() {
         'id': 'popup'
         'menu': [
             {
-                'href': '#'
-                'content': 'Скопировать'
+                 'attrs': {
+                      'daria-action': 'someCoolActon'
+                 }
+                 'class': [
+                      'someCoolClass'
+                 ]
+                 'href': '#'
+                 'content': 'Скопировать'
             }
             {
                 'href': '#'
