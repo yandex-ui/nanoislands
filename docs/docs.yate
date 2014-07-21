@@ -40,6 +40,7 @@ include "../blocks/icon/icon.example.yate"
 include "../blocks/loader/loader.example.yate"
 include "../blocks/progress/progress.example.yate"
 include "../blocks/radio-button/radio-button.example.yate"
+include "../blocks/header/header.example.yate"
 
 
 match / {
@@ -50,6 +51,7 @@ match / {
             selects()
             dropzones()
             gaps()
+            headers()
             groups()
             islands()
             input-groups()
