@@ -1,0 +1,11 @@
+func progress() {
+
+    show('progress', nb-progress())
+
+    show('progress-title',  nb-progress({
+        'id': 'progress1'
+        'start': '30'
+        'type': 'title'
+        'title': 'Король_Лев_5_rutracker.org'
+    }))
+}
