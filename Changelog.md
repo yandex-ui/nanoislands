@@ -1,3 +1,6 @@
+##### 0.4.22  — patch
+* Some additional header flexibility
+
 ##### 0.4.21  — patch
 
 ###### Fixes

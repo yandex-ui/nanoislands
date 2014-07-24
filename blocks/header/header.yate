@@ -5,8 +5,8 @@ func nb-header(nodeset header) {
             'buttonContent': 'Найти'
             'class': '_nb-header-arrow'
         }
-        'services': 'true'
-        'settings': 'true'
+        'services': true()
+        'settings': true()
         'yaHref': 'http://yandex.ru'
     }
 
@@ -18,31 +18,48 @@ match .header nb {
         apply . nb-main-attrs
         <div class="_nb-header-actions">
 
-            if .settings == 'true' {
-
-                <div class="_nb-header-button">
-                    <div class="_nb-header-button-icon">
-                        nb-icon({
-                            'icon': 'settings'
-                            'size': 'm'
-                        })
+            if .settings {
+                if .settings.content {
+                    html(.settings.content)
+                } else {
+                     <div class="_nb-header-button">
+                        <div class="_nb-header-button-icon">
+                            nb-icon({
+                                'icon': 'settings'
+                                'size': 'm'
+                            })
+                        </div>
                     </div>
-                </div>
+                }
             }
 
-            if .services == 'true' {
-
-                <div class="_nb-header-button">
-                    <div class="_nb-header-button-icon">
-                        nb-icon({
-                            'icon': 'services'
-                            'size': 'm'
-                        })
+            if .services {
+                if .services.content {
+                    html(.auth.content)
+                } else {
+                    <div class="_nb-header-button">
+                        <div class="_nb-header-button-icon">
+                            nb-icon({
+                                'icon': 'services'
+                                'size': 'm'
+                            })
+                        </div>
                     </div>
-                </div>
+                }
             }
+
             if .user {
-                nb-user(.user)
+                if .user.content {
+                    html(.user.content)
+                } else {
+                    nb-user(.user)
+                }
+            }
+
+            if .auth {
+                if .auth.content {
+                    html(.auth.content)
+                }
             }
         </div>
         <div class="_nb-header-main">
