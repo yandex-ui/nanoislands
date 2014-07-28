@@ -1,0 +1,29 @@
+func popups() {
+
+    show('popup1', nb-popup-menu({
+        'id': 'popup1'
+        'menu': [
+            {
+                 'attrs': {
+                      'daria-action': 'someCoolActon'
+                 }
+                 'class': [
+                      'someCoolClass'
+                 ]
+                 'href': '#'
+                 'content': 'Скопировать'
+            }
+            {
+                'href': '#'
+                'content': 'Переместить'
+            }
+            {
+                'separator': true()
+            }
+            {
+                'href': '#'
+                'content': 'Удалить'
+            }
+        ]
+    }))
+}

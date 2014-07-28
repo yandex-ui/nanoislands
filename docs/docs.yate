@@ -41,6 +41,7 @@ include "../blocks/loader/loader.example.yate"
 include "../blocks/progress/progress.example.yate"
 include "../blocks/radio-button/radio-button.example.yate"
 include "../blocks/header/header.example.yate"
+include "../blocks/popup/popup.example.yate"
 
 
 match / {
@@ -59,6 +60,7 @@ match / {
             loaders()
             progress()
             radio-buttons()
+            popups()
 
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>

@@ -1,3 +1,106 @@
+### Popup
+There are 2 parts of popup control:
+— toggler
+— popup
+
+#### Options for popup toggler
+
+
+<a id="popup-toggler" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
+    <span class="link__inner">
+        "Default Toggler"
+    </span>
+</a>
+>```html
+> <a id="popup-toggler" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
+>    <span class="link__inner">
+>        "Default Toggler"
+>    </span>
+> </a>
+>```
+
+* `id` {string} — id of connecte popup
+* `appendTo` {string} —  selector where append to
+* `how` {object} – http://api.jqueryui.com/position/
+```
+{
+    at: '..',
+    my: '..',
+    collision: '..',
+    using: '..',
+    within '..',
+    autoclose: true
+}
+```
+
+#### Example of generic popup menu
+<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
+    <span class="link__inner">
+        "Default Toggler"
+    </span>
+</a>
+
+<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'right', my: 'left'}}" href="#right">
+    <span class="link__inner">
+        "To left"
+    </span>
+</a>
+
+<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'left', my: 'right'}}" href="#right">
+    <span class="link__inner">
+        "To left"
+    </span>
+</a>
+<div example="popup1"/>
+> ```yate
+> nb-popup-menu({
+>     'id': 'popup1'
+>     'menu': [
+>         {
+>              'attrs': {
+>                   'daria-action': 'someCoolActon'
+>              }
+>              'class': [
+>                   'someCoolClass'
+>              ]
+>              'href': '#'
+>              'content': 'Скопировать'
+>         }
+>         {
+>             'href': '#'
+>             'content': 'Переместить'
+>         }
+>         {
+>             'separator': true()
+>         }
+>         {
+>             'href': '#'
+>             'content': 'Удалить'
+>         }
+>     ]
+> })
+> ```
+
+### Options for menu popup
+
+* `id` {string}
+* `class` {array} — additional classes
+* `attrs` {object} — custom DOM attributes
+* `tail` {string} — position of 'tail' widget — left|right|top|bottom
+* `static` {boolean} — `true()` to prevent initialisation
+* `menu` {array} — array of objects:
+    * Object for menu element:
+        * `href` {string}
+        * `text` {string}
+        * `attrs` {object} — custom DOM attributes
+        * `class` {array} — additional classes
+        * `id` {string}
+    * Object for separator:
+        * `separator` {boolean} — `true()` to render separator
+
+* `size: m`
+* `theme: normal`
+
 ```
     nb-popup()
 ```
@@ -32,8 +135,6 @@
 ```
     nb-popup-menu()
 ```
-
-### Options for menu popup
 
 * `id` {string}
 * `class` {array} — additional classes
@@ -135,185 +236,6 @@
 
    })
 
-<<<<<<< HEAD
-```
-
-## JS
-
-### Initialisation
-
-Initialize nb block on DOM node:
-```
-
-    nb.block(node);
-
-```
-
-Initialize all nb blocks with class '_init' within DOM node
-
-```
-
-    nb.init(node);
-
-```
-
-### Events
-
-#### nb-select
-Bubble when select in popup
-Arguments:
-
-* Name of event — 'nb-select'
-* Params
-    * event {Object} // original event
-    * ui {Object} // jQuery ui element
-
-### Methods
-
-`popup` — `popup`, `popup-modal` or `popup-menu`
-
-```
-
-    /*
-    * Displays popup element.
-    * @params {Object} — how and where to open popup
-        * `where` {string} — selector where to open
-        * `appendTo` {string} —  selector where append to
-        * `autoclose` {boolean} 
-        * `autofocus` {boolean} 
-        * `withoutTail` {boolean}  
-        * `how` {object} – http://api.jqueryui.com/position/
-        ```
-        {
-            at: '..',
-            my: '..',
-            collision: '..',
-            using: '..',
-            within '..',
-        
-        }
-        ```
-    * @fires 'nb-opened'
-    */
-    popup.open(params);
-
-    /*
-    * Hides popup element.
-    * @fires 'nb-closed'
-    */
-    popup.close();
-
-    /*
-    * Determine state of popup
-    */
-    popup.isOpen();
-
-     /**
-     * Set content of popup (not menu, not modal)
-     * @fires 'nb-content-set'
-     * @returns {Object} nb.block
-     */
-    popup.setContent('Privet');
-
-    /**
-     * Get content of popup (not menu, not modal)
-     * @returns {String} content
-     */
-    popup.getContent();
-
-```
 
 
-### Options for popup toggler
-
-```
-<a id="popup-toggler3" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup3', how: {{ at: 'top', my: 'bottom' }}}}" href="#top">
-    <span class="link__inner">
-        "Попап сверху"
-    </span>
-</a>
-```
-
-* `id` {string} — id of connecte popup
-* `appendTo` {string} —  selector where append to
-* `autoclose` {boolean} 
-* `autofocus` {boolean}
-* `withoutTail` {boolean} 
-* `how` {object} – http://api.jqueryui.com/position/
-```
-{
-    at: '..',
-    my: '..',
-    collision: '..',
-    using: '..',
-    within '..',
-}
-```
-
-### Methods
-```
- /**
-     * Toggle popup
-     * @returns {Object} nb.block
-     */
-    toggler.toggle();
-
-    /**
-     * Open popup
-     * @fires 'nb-opened'
-     * @returns {Object} nb.block
-     */
-    toggler.open();
-
-    /**
-     * Close popup
-     * @fires 'nb-closed'
-     * @returns {Object} nb.block
-     */
-    toggler.close();
-    
-    /**
-     * Returns connected popup
-     * @returns {Object} nb.block
-     */
-    toggler.getPopup();
-
-    /**
-     * Sets connected popup
-     * @param {Object} params  - {
-           * `appendTo` {string} —  selector where append to
-           * `autoclose` {boolean} 
-           * `autofocus` {boolean} 
-           * `how` {object} – http://api.jqueryui.com/position/
-           ```
-           {
-               at: '..',
-               my: '..',
-               collision: '..',
-               using: '..',
-               within '..',
-           
-           }
-     * @returns {Object} nb.block
-     */
-     
-    toggler.setPopup();
-
-    /**
-     * Get connected popup  option
-     * @returns {Object} options
-     */
-    toggler.getOptions();
-    
-    
-    /**
-     * Set connected popup option
-    */
-    toggler.setOptions();
-
-    /**
-     * Destroy the popup toggler
-     * @fires 'nb-destroyed'
-     */
-    toggler.destroy();
-```
+## JSDOC
