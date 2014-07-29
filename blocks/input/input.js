@@ -160,8 +160,6 @@ nb.define('input', {
             this.$node.addClass('_nb-is-wrong');
             var how = {
                 collision: 'flip flip',
-                autoclose: params.autoclose || false,
-                autofocus: false
             };
 
             if (this.data.error.direction && this.data.error.direction == 'left') {
@@ -183,6 +181,8 @@ nb.define('input', {
 
             if (!this.error.isOpen()) {
                 this.error.open({
+                    autoclose: params.autoclose || false,
+                    autofocus: false,
                     where: params.where || this.node,
                     how: params.how || how,
                     appendTo: params.appendTo || false
