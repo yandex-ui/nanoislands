@@ -148,8 +148,8 @@
             }
         },
 
-        _focusTabbable: function(){
-            if (this.options.autofocus){
+        _focusTabbable: function() {
+            if (this.options.autofocus) {
                 this._super();
             }
         },
@@ -546,6 +546,26 @@
 
             how = how || {};
 
+            var autoclose = false;
+
+            if (typeof how.autoclose !== 'undefined') {
+                autoclose = how.autoclose;
+            }
+
+            if (typeof params.autoclose !== 'undefined') {
+                autoclose = params.autoclose;
+            }
+
+            var autofocus = true;
+
+            if (typeof how.autofocus !== 'undefined') {
+                autoclose = how.autofocus;
+            }
+
+            if (typeof params.autofocus !== 'undefined') {
+                autoclose = params.autofocus;
+            }
+
             //  Модальный попап двигать не нужно.
             if (this.modal) {
                 $(this.node).baseDialog({
@@ -565,7 +585,8 @@
                     position: {
                         using: using
                     },
-                    autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : false
+                    autoclose: autoclose,
+                    autofocus: autofocus
                 });
 
                 return;
@@ -590,8 +611,8 @@
                     that.close();
                 },
                 appendTo: params.appendTo || how.appendTo,
-                autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true,
-                autofocus: typeof how.autofocus !== 'undefined' ? how.autofocus : true
+                autoclose: autoclose,
+                autofocus: autofocus
             });
         }
     }, 'base');
