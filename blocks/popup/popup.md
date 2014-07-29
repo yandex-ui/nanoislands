@@ -179,9 +179,25 @@ Arguments:
 
     /*
     * Displays popup element.
+    * @params {Object} — how and where to open popup
+        * `where` {string} — selector where to open
+        * `appendTo` {string} —  selector where append to
+        * `autoclose` {boolean} 
+        * `autofocus` {boolean} 
+        * `how` {object} – http://api.jqueryui.com/position/
+        ```
+        {
+            at: '..',
+            my: '..',
+            collision: '..',
+            using: '..',
+            within '..',
+        
+        }
+        ```
     * @fires 'nb-opened'
     */
-    popup.open();
+    popup.open(params);
 
     /*
     * Hides popup element.
@@ -222,6 +238,8 @@ Arguments:
 
 * `id` {string} — id of connecte popup
 * `appendTo` {string} —  selector where append to
+* `autoclose` {boolean} 
+* `autofocus` {boolean} 
 * `how` {object} – http://api.jqueryui.com/position/
 ```
 {
@@ -230,7 +248,7 @@ Arguments:
     collision: '..',
     using: '..',
     within '..',
-    autoclose: true
+
 }
 ```
 
@@ -265,10 +283,19 @@ Arguments:
     /**
      * Sets connected popup
      * @param {Object} params  - {
-    *       id : 'id' — popupID or link to nb.block
-    *       where: '#elem' — to what elem popup attached
-    *       how: { my: 'left', at:'right' } — to to open popup
-    *   }
+           * `appendTo` {string} —  selector where append to
+           * `autoclose` {boolean} 
+           * `autofocus` {boolean} 
+           * `how` {object} – http://api.jqueryui.com/position/
+           ```
+           {
+               at: '..',
+               my: '..',
+               collision: '..',
+               using: '..',
+               within '..',
+           
+           }
      * @returns {Object} nb.block
      */
      

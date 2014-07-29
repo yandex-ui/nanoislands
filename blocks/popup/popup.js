@@ -72,6 +72,11 @@
 
             nb.off('popup-close', this._onpopupclose);
         },
+        _focusTabbable: function() {
+            if (this.options.autofocus) {
+                this._super();
+            }
+        },
         _create: function() {
             this.options.dialogClass += _getUIDialogExtraClass.call(this);
             this.options.dialogClass += (this.options.position.fixed) ? ' ui-dialog-fixed' : '';
@@ -147,6 +152,7 @@
                 collision: "fit flip"
             }
         },
+
 
         _create: function() {
             this._super();
@@ -540,6 +546,26 @@
 
             how = how || {};
 
+            var autoclose = true;
+
+            if (typeof how.autoclose !== 'undefined') {
+                autoclose = how.autoclose;
+            }
+
+            if (typeof params.autoclose !== 'undefined') {
+                autoclose = params.autoclose;
+            }
+
+            var autofocus = true;
+
+            if (typeof how.autofocus !== 'undefined') {
+                autofocus = how.autofocus;
+            }
+
+            if (typeof params.autofocus !== 'undefined') {
+                autofocus = params.autofocus;
+            }
+
             //  Модальный попап двигать не нужно.
             if (this.modal) {
                 $(this.node).baseDialog({
@@ -559,7 +585,8 @@
                     position: {
                         using: using
                     },
-                    autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : false
+                    autoclose: autoclose,
+                    autofocus: autofocus
                 });
 
                 return;
@@ -584,7 +611,8 @@
                     that.close();
                 },
                 appendTo: params.appendTo || how.appendTo,
-                autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
+                autoclose: autoclose,
+                autofocus: autofocus
             });
         }
     }, 'base');
