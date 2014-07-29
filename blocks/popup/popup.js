@@ -148,6 +148,12 @@
             }
         },
 
+        _focusTabbable: function(){
+            if (this.options.autofocus){
+                this._super();
+            }
+        },
+
         _create: function() {
             this._super();
             this.$tail = $('<div class="_nb-popup-tail"><i/></div>');
@@ -584,7 +590,8 @@
                     that.close();
                 },
                 appendTo: params.appendTo || how.appendTo,
-                autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true
+                autoclose: typeof how.autoclose !== 'undefined' ? how.autoclose : true,
+                autofocus: typeof how.autofocus !== 'undefined' ? how.autofocus : true
             });
         }
     }, 'base');
