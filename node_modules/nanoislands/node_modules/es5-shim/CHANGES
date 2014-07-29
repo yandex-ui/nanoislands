@@ -1,3 +1,31 @@
+3.4.0
+  - Removed nonstandard SpiderMonkey extension to Array#splice - when `deleteCount` is omitted, it's now treated as 0. (#192, #239)
+  - Fix Object.keys with Arguments objects in Safari 5.0
+  - Now shimming String#split in Opera 10.6
+  - Avoid using "toString" as a variable name, since that breaks Opera
+  - Internal implementation and test cleanups
+
+3.3.2
+ - Remove an internal "bind" call, which should make the shim a bit faster
+ - Fix a bug with object boxing in Array#reduceRight that was failing a test in IE 6
+
+3.3.1
+ - Fixing an Array#splice bug in IE 6/7
+ - cleaning up Array#splice tests
+
+3.3.0
+ - Fix Array#reduceRight in node 0.6 and older browsers (#238)
+
+3.2.0
+ - Fix es5-sham UMD definition to work properly with AMD (#237)
+ - Ensure that Array methods do not autobox context in strict mode (#233)
+
+3.1.1
+ - Update minified files (#231)
+
+3.1.0
+ - Fix String#replace in Firefox up through 29 (#228)
+
 3.0.2
  - Fix `Function#bind` in IE 7 and 8 (#224, #225, #226)
 

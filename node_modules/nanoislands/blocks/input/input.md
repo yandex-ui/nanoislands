@@ -17,12 +17,14 @@ HTML input element.
 * `'type'` {string} — `'multiline'` textarea
 * `'ghost'` {boolean} — ghost mode input
 * `'disabled'` {boolean}
+* `'reset'` {boolean} — reset control in input
 * `'tabindex'` {string} — tabindex
 * `'size'` {string}  - input size. `'s'` (no other sizes supported)
 * `'error'` {object} `{content: 'error content', direction: 'right|left'}`
 * `'leftContent'` {string|xml} — content of the left field of input
 * `'rightContent'` {string|xml} — content of the right field of input
 * `'hint'` {string | Object} — content of hint or `{ text: '...', ghost: true() }` for ghost hint
+
 
 ### Examples
 

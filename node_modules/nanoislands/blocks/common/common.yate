@@ -46,6 +46,8 @@ func _size-theme-type-class(nodeset options) {
         } else {
             size = (if options.size == 's' {
                 '-small'
+            } else if options.size == 'xs' {
+                '-extra-small'
             } else if options.size == 'l' {
                 '-large'
             } else if options.size == 'xl' {

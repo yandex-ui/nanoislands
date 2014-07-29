@@ -15,6 +15,9 @@
       float: left
       width: 100%
 
+  &._nb-with-icon ._nb-button-content
+    padding-left: 6px
+    margin-left: -6px;
 
 ._nb-select-fallback
   if !ie
@@ -50,7 +53,7 @@
   transform: scale(0.75) rotate(-45deg) translate(3px, 5px)
 
 .nb-select-dropdown .ui-menu
-  skin: isle fly, menu no-elements
+  skin: isle fly, menu no-elements padded
   position: absolute
   z-index: 10000
 

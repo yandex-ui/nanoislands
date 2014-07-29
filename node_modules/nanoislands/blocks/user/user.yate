@@ -24,13 +24,12 @@ match .user nb {
 
         if !.rightToLeft {
             @class += ' _nb-user_ltr'
-            apply . nb-user-pic
-            apply . nb-user-name
         } else {
             @class += ' _nb-user_rtl'
-            apply . nb-user-name
-            apply . nb-user-pic
         }
+
+        apply . nb-user-pic
+        apply . nb-user-name
     </span>
 }
 

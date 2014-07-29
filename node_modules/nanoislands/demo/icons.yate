@@ -28,6 +28,18 @@ func all-icons-s(boolean white) {
         nb-icon({
         'icon': 'zoom-white'
         })
+
+        nb-icon({
+        'icon': 'vkontakte-square-white'
+        })
+
+        nb-icon({
+        'icon': 'facebook-square-white'
+        })
+
+        nb-icon({
+        'icon': 'odnoklassniki-square-white'
+        })
     } else {
          nb-icon({
         'icon': 'close'
@@ -140,6 +152,38 @@ func all-icons-s(boolean white) {
         nb-icon({
         'icon': 'volume'
         })
+
+        nb-icon({
+        'icon': 'move'
+        })
+
+        nb-icon({
+        'icon': 'copy'
+        })
+
+        nb-icon({
+        'icon': 'vkontakte-square-black'
+        })
+
+        nb-icon({
+        'icon': 'facebook-square-black'
+        })
+
+        nb-icon({
+        'icon': 'odnoklassniki-square-black'
+        })
+
+        nb-icon({
+        'icon': 'world'
+        })
+
+        nb-icon({
+        'icon': 'friends'
+        })
+
+        nb-icon({
+        'icon': 'lock'
+        })
     }
 }
 
@@ -178,6 +222,21 @@ func all-icons-m(boolean white) {
 
         nb-icon({
         'icon': 'zoom-white'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'vkontakte-square-white'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'facebook-square-white'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'odnoklassniki-square-white'
         'size': 'm'
         })
     } else {
@@ -318,6 +377,46 @@ func all-icons-m(boolean white) {
 
         nb-icon({
         'icon': 'volume'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'move'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'copy'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'vkontakte-square-black'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'facebook-square-black'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'odnoklassniki-square-black'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'world'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'friends'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'lock'
         'size': 'm'
         })
     }

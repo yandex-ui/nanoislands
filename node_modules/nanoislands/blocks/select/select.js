@@ -247,8 +247,9 @@ nb.define('select', {
             this.value = this.$selected.val();
             // &nbsp; - to prevent button from collapse if no text on <option/>
             this.text = this.$selected.text();
+            this.icon = this.$selected.data('icon');
 
-            this._setText(this.text);
+            this._setText({ text: this.text, icon: this.icon});
         },
 
         _onclick: function(evt) {
@@ -264,10 +265,18 @@ nb.define('select', {
             }
         },
 
-        _setText: function(text) {
-            if (text) {
+        _setText: function(params) {
+            var content =  this.$node.find('._nb-button-content');
+            if (params.text || params.icon ) {
                 // use .text() to prevent XSS
-                this.$node.find('._nb-button-content').text(text);
+                content.text(params.text);
+                if (params.icon) {
+                    this.$node.addClass('_nb-with-icon');
+                    if (!params.text) {
+                        this.$node.addClass('_nb-with-only-button');
+                    }
+                    content.prepend('<img class="nb-icon nb-s-' + params.icon + '-icon" src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif">');
+                }
             } else {
                 // &nbsp; - to prevent button from collapse if no text on <option/>
                 this.$node.find('._nb-button-content').html('&nbsp;');
@@ -364,8 +373,9 @@ nb.define('select', {
                     this.value = this.$selected.val();
 
                     this.text = this.$selected.text();
+                    this.icon = this.$selected.data('icon');
 
-                    this._setText(this.text);
+                    this._setText({ text: this.text, icon: this.icon});
 
                     this.trigger('nb-changed', this);
 
