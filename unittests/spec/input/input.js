@@ -174,7 +174,7 @@ describe("Input Tests", function() {
             input.hideError();
             input.focus();
             input.showError();
-            expect(input.focused).to.be.ok();
+            expect($.contains(input.$node.get(0), document.activeElement)).to.be.ok();
         });
     });
 

@@ -72,6 +72,11 @@
 
             nb.off('popup-close', this._onpopupclose);
         },
+        _focusTabbable: function() {
+            if (this.options.autofocus) {
+                this._super();
+            }
+        },
         _create: function() {
             this.options.dialogClass += _getUIDialogExtraClass.call(this);
             this.options.dialogClass += (this.options.position.fixed) ? ' ui-dialog-fixed' : '';
@@ -148,11 +153,6 @@
             }
         },
 
-        _focusTabbable: function() {
-            if (this.options.autofocus) {
-                this._super();
-            }
-        },
 
         _create: function() {
             this._super();
@@ -546,7 +546,7 @@
 
             how = how || {};
 
-            var autoclose = false;
+            var autoclose = true;
 
             if (typeof how.autoclose !== 'undefined') {
                 autoclose = how.autoclose;
@@ -559,11 +559,11 @@
             var autofocus = true;
 
             if (typeof how.autofocus !== 'undefined') {
-                autoclose = how.autofocus;
+                autofocus = how.autofocus;
             }
 
             if (typeof params.autofocus !== 'undefined') {
-                autoclose = params.autofocus;
+                autofocus = params.autofocus;
             }
 
             //  Модальный попап двигать не нужно.

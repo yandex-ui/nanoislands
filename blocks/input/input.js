@@ -159,7 +159,8 @@ nb.define('input', {
         if (this.data.error) {
             this.$node.addClass('_nb-is-wrong');
             var how = {
-                collision: 'flip flip',
+                collision: 'flip flip'
+
             };
 
             if (this.data.error.direction && this.data.error.direction == 'left') {
