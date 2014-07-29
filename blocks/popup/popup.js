@@ -186,14 +186,34 @@
 
                 // Позиционирование хвостика вдоль попапа, необходимо для того,
                 // чтобы хвостик указывал на центр целевого элемента.
+
+                var css = {};
+                
                 if (_isDirectionVertical(tailDirection)) {
-                    that.$tail.css($.extend(defaultTailPosition, {
-                        left: Math.abs(targetCenter.x - ui.element.left) / ui.element.width * 100 + '%'
-                    }));
+                    if (targetCenter.x > ui.element.left + ui.element.width - 12) {
+                        css = {
+                            left: (ui.element.width - 12) + 'px'
+                        }
+                    } else {
+                        css = {
+                            left: Math.abs(targetCenter.x - ui.element.left) / ui.element.width * 100 + '%'
+                        }
+                    }
+
+                    that.$tail.css($.extend(defaultTailPosition, css));
                 } else {
-                    that.$tail.css($.extend(defaultTailPosition, {
-                        top: Math.abs(targetCenter.y - ui.element.top) / ui.element.height * 100 + '%'
-                    }));
+
+                    if (targetCenter.x > ui.element.top +  ui.element.height - 12) {
+                        css = {
+                            top: (ui.element.height - 12) + 'px'
+                        }
+                    } else {
+                        css = {
+                            top: Math.abs(targetCenter.y - ui.element.top) / ui.element.height * 100 + '%'
+                        }
+                    }
+
+                    that.$tail.css($.extend(defaultTailPosition, css));
                 }
 
                 props[tailDirection] += that.tailOffset;
