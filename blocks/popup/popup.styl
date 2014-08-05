@@ -17,12 +17,6 @@
     skin: menu-item (_hover '&:hover, &:focus')
     outline: none
 
-    &:first-child
-      margin-top: ($islands_s / 2)
-
-    &:last-child
-      margin-bottom: ($islands_s / 2)
-
   & ._nb-popup-separator
     skin: menu-separator padded
 
@@ -32,6 +26,13 @@
     padding: 0
     list-style: none
     outline: none
+
+  & ._nb-popup-line
+    &:first-child
+      margin-top: ($islands_s / 2)
+    &:last-child
+      margin-bottom: ($islands_s / 2)
+
 ._nb-modal-popup
   ._nb-popup-title
     font: $font-h3
