@@ -30,6 +30,14 @@ func toggle-to-top() {
     </a>
 }
 
+func toggle-w-t() {
+    <a id="popup-toggler4" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup-without-tail'}}" href="#top">
+        <span class="link__inner">
+            "Попап без хвостика"
+        </span>
+    </a>
+}
+
 func toggle-modal() {
     <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup4'}}" href="#modal">
         <span class="link__inner">
@@ -100,7 +108,6 @@ func popups() {
 
     toLeft = {
         'id': 'popup2'
-        'tail': 'top'
         'menu': [
             {
                 'href': '#'
@@ -119,7 +126,6 @@ func popups() {
 
     toTop = {
         'id': 'popup3'
-        'tail': 'left'
         'menu': [
             {
                 'href': '#'
@@ -134,6 +140,25 @@ func popups() {
                 'content': 'Удалить'
             }
         ]
+    }
+
+    withoutTail = {
+      'id': 'popup-without-tail'
+      'withoutTail': true()
+      'menu': [
+          {
+              'href': '#'
+              'content': 'Скопировать'
+          }
+          {
+              'href': '#'
+              'content': 'Переместить'
+          }
+          {
+              'href': '#'
+              'content': 'Удалить'
+          }
+      ]
     }
 
     modal = {
@@ -300,6 +325,15 @@ func popups() {
         </div>
 
         nb-popup-menu(toTop)
+    </div>
+    <div class="demo-section">
+        <div class="demo-group">
+            podium(toggle-w-t())
+            code(toggle-w-t())
+            code(nb-popup-menu(withoutTail))
+        </div>
+
+        nb-popup-menu(withoutTail)
     </div>
     <div class="demo-section">
         <div class="demo-group">
