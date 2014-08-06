@@ -129,7 +129,6 @@
         tailOffset: 13,
 
         options: {
-            tail: 'center',
             height: 'auto',
             minHeight: 'auto',
             width: 'auto',
@@ -156,10 +155,12 @@
 
         _create: function() {
             this._super();
-            this.$tail = $('<div class="_nb-popup-tail"><i/></div>');
+            if (!this.options.withoutTail) {
+                this.$tail = $('<div class="_nb-popup-tail"><i/></div>');
+                //TODO: проверить, что вызывается один раз
+                this.$tail.prependTo(this.uiDialog);
+            }
 
-            //TODO: проверить, что вызывается один раз
-            this.$tail.prependTo(this.uiDialog);
         },
         _position: function() {
             var that = this;
@@ -187,36 +188,39 @@
                 // Позиционирование хвостика вдоль попапа, необходимо для того,
                 // чтобы хвостик указывал на центр целевого элемента.
 
-                var css = {};
-                
-                if (_isDirectionVertical(tailDirection)) {
-                    if (targetCenter.x > ui.element.left + ui.element.width - 12) {
-                        css = {
-                            left: (ui.element.width - 12) + 'px'
+
+                if (!that.options.withoutTail) {
+                    var css = {};
+
+                    if (_isDirectionVertical(tailDirection)) {
+                        if (targetCenter.x > ui.element.left + ui.element.width - 12) {
+                            css = {
+                                left: (ui.element.width - 12) + 'px'
+                            }
+                        } else {
+                            css = {
+                                left: Math.abs(targetCenter.x - ui.element.left) / ui.element.width * 100 + '%'
+                            }
                         }
+
+                        that.$tail.css($.extend(defaultTailPosition, css));
                     } else {
-                        css = {
-                            left: Math.abs(targetCenter.x - ui.element.left) / ui.element.width * 100 + '%'
+
+                        if (targetCenter.x > ui.element.top + ui.element.height - 12) {
+                            css = {
+                                top: (ui.element.height - 12) + 'px'
+                            }
+                        } else {
+                            css = {
+                                top: Math.abs(targetCenter.y - ui.element.top) / ui.element.height * 100 + '%'
+                            }
                         }
+
+                        that.$tail.css($.extend(defaultTailPosition, css));
                     }
-
-                    that.$tail.css($.extend(defaultTailPosition, css));
-                } else {
-
-                    if (targetCenter.x > ui.element.top +  ui.element.height - 12) {
-                        css = {
-                            top: (ui.element.height - 12) + 'px'
-                        }
-                    } else {
-                        css = {
-                            top: Math.abs(targetCenter.y - ui.element.top) / ui.element.height * 100 + '%'
-                        }
-                    }
-
-                    that.$tail.css($.extend(defaultTailPosition, css));
                 }
 
-                props[tailDirection] += that.tailOffset;
+                props[tailDirection] += that.options.withoutTail ? 0 : that.tailOffset;
 
                 return using.call(el, props, ui);
             };
@@ -613,7 +617,6 @@
             }
 
             $(this.node).contextDialog({
-                tail: data.tail,
                 position: {
                     // где попап
                     at: (how.at ? how.at : 'center bottom'),// + ' center',
@@ -632,7 +635,8 @@
                 },
                 appendTo: params.appendTo || how.appendTo,
                 autoclose: autoclose,
-                autofocus: autofocus
+                autofocus: autofocus,
+                withoutTail: params.withoutTail || data.withouttail || false
             });
         }
     }, 'base');
@@ -657,6 +661,14 @@ nb.define('popup-toggler', {
 
             //  Как позиционировать попап.
             how: this.data.how,
+            // Без хвоста
+            withoutTail: this.data.withoutTail,
+
+            // Закрывать ли автоматически
+            autoclose: this.data.autoclose,
+
+            // Фокусировать ли автоматически
+            autofocus: this.data.autofocus,
 
             // Куда его вставлять
             appendTo: this.data.appendTo

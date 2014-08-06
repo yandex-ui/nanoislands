@@ -5,6 +5,18 @@ match .popup {
         </span>
     </a>
 
+    <a id="popup-toggler-w-t" class="_init" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup1', appendTo: '.content', withoutTail: true}}" href="#default">
+        <span class="link__inner">
+            "popup"
+        </span>
+    </a>
+
+    <a id="popup-toggler-w-t1" class="_init" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup-w-t', appendTo: '.content'}}" href="#default">
+        <span class="link__inner">
+            "popup"
+        </span>
+    </a>
+
  nb-popup({
     'id': 'popup'
     'content': 'Удалить'
@@ -12,6 +24,12 @@ match .popup {
 
  nb-popup({
     'id': 'popup1'
+    'content': 'Удалить'
+ })
+
+ nb-popup({
+    'id': 'popup-w-t'
+    'withoutTail': true()
     'content': 'Удалить'
  })
 }

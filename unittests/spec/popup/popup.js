@@ -15,6 +15,20 @@ describe("Popup Tests", function() {
         this.toggler.destroy();
     });
 
+    describe("YATE API", function() {
+        it("Popup Without tail", function() {
+            var toggler = nb.find('popup-toggler-w-t');
+            toggler.open();
+            expect(nb.find('popup1').$node.parent().find('._nb-popup-tail').length).to.equal(0);
+        });
+
+        it("Toggler Without tail", function() {
+            var toggler = nb.find('popup-toggler-w-t1');
+            toggler.open();
+            expect(nb.find('popup-w-t').$node.parent().find('._nb-popup-tail').length).to.equal(0);
+        });
+
+    });
     describe("Init", function() {
         it("Init popup", function() {
             expect(this.popup).to.not.equal(null);

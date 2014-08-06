@@ -42,7 +42,7 @@
 * `id` {string}
 * `class` {array} — additional classes
 * `attrs` {object} — custom DOM attributes
-* `tail` {string} — position of 'tail' widget — left|right|top|bottom
+* `withoutTail` {boolean}  
 * `static` {boolean} — `true()` to prevent initialisation
 * `menu` {array} — array of objects:
     * Object for menu element:
@@ -184,6 +184,7 @@ Arguments:
         * `appendTo` {string} —  selector where append to
         * `autoclose` {boolean} 
         * `autofocus` {boolean} 
+        * `withoutTail` {boolean}  
         * `how` {object} – http://api.jqueryui.com/position/
         ```
         {
@@ -239,7 +240,8 @@ Arguments:
 * `id` {string} — id of connecte popup
 * `appendTo` {string} —  selector where append to
 * `autoclose` {boolean} 
-* `autofocus` {boolean} 
+* `autofocus` {boolean}
+* `withoutTail` {boolean} 
 * `how` {object} – http://api.jqueryui.com/position/
 ```
 {
@@ -248,7 +250,6 @@ Arguments:
     collision: '..',
     using: '..',
     within '..',
-
 }
 ```
 
