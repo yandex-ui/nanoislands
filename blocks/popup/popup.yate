@@ -22,8 +22,8 @@ match .popupMenu nb {
 
         apply . nb-main-attrs
 
-        if .tail {
-            @data-nb-tail = .tail
+        if(.withoutTail) {
+            @data-nb-withoutTail = 'true'
         }
 
         <ul class="_nb-popup-menu">
@@ -61,8 +61,8 @@ match .popup nb {
 
         apply . nb-main-attrs
 
-        if .tail {
-            @data-nb-tail = .tail
+        if( .withoutTail ) {
+           @data-nb-withoutTail = 'true'
         }
 
         if .titleContent {
