@@ -53,20 +53,7 @@ match .input nb {
             @data-nb-error ='{{ "id": "{ errorId }", "direction":"{ .error.direction}"}}'
         }
 
-        if .hint && .hint.text != '' {
-            <span class="_nb-input-hint">
-                <span class="_nb-input-hint-inner">
-                    if .hint.ghost {
-                        <span class="_nb-input-hint-ghost"></span>
-                        <span class="_nb-input-hint-content">
-                            .hint.text
-                        </span>
-                    } else {
-                        .hint
-                    }
-                </span>
-            </span>
-        }
+
 
         if .error {
            nb-popup({
@@ -82,6 +69,8 @@ match .input nb {
             </span>
         }
 
+
+
         if .rightContent {
             <span class="_nb-input-right">
                 html(.rightContent)
@@ -93,6 +82,21 @@ match .input nb {
         }
 
         <span class="_nb-input-content">
+         if .hint && .hint.text != '' {
+                    <span class="_nb-input-hint">
+                        <span class="_nb-input-hint-inner">
+                            if .hint.ghost {
+                                <span class="_nb-input-hint-ghost"></span>
+                                <span class="_nb-input-hint-content">
+                                    .hint.text
+                                </span>
+                            } else {
+                                .hint
+                            }
+                        </span>
+                    </span>
+                }
+
             <input type="text" class="_nb-input-controller" value="{.content}">
                 for .attrs.* {
                     @{name()} = .
