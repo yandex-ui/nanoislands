@@ -1,3 +1,10 @@
+##### 0.4.23  — patch
+
+###### Fixes
+* fix #375 — [Popup] Nb-popup without tail.
+* fix #410 — [Input] Hint не учитывает наличия leftContent и отображается поверх.
+* fix #400 — [Popup] Incorrect position of popup's arrow on extreme positions
+
 ##### 0.4.22  — patch
 * Some additional header flexibility
 
