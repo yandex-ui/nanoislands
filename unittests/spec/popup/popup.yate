@@ -17,6 +17,20 @@ match .popup {
         </span>
     </a>
 
+    // Попап, находящийся в тесном блоке, проверяется выравнивание хвостика.
+    <div class="tight" style="width: 50px; height: 20px;">
+        <a id="popup-toggler-tight" class="_init" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup-tight', appendTo: '.tight'}}" href="#default">
+            <span class="link__inner">
+                "."
+            </span>
+        </a>
+        nb-popup({
+            'id': 'popup-tight'
+            'content': 'Удалить'
+            'within': '.tight'
+        })
+    </div>
+
  nb-popup({
     'id': 'popup'
     'content': 'Удалить'
