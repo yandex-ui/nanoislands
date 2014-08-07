@@ -177,6 +177,8 @@
             this.options.position.using = function(props, ui) {
                 var $el = ui.element.element;
                 var el = $el[0];
+                var tailPosition;
+                var tailLimits;
 
                 // Определение направления хвостика.
                 var tailDirection = _getPopupTailDirection(ui.target, ui.element);
@@ -185,42 +187,27 @@
                 nb.node.setMod(el, '_nb-popup_to', _getInverseDirection(tailDirection));
                 $el.data('nb-tail-dir', tailDirection);
 
-                // Позиционирование хвостика вдоль попапа, необходимо для того,
-                // чтобы хвостик указывал на центр целевого элемента.
-
-
                 if (!that.options.withoutTail) {
-                    var css = {};
-
+                    // Позиционирование хвостика вдоль попапа, необходимо для того,
+                    // чтобы хвостик указывал на центр целевого элемента.
                     if (_isDirectionVertical(tailDirection)) {
-                        if (targetCenter.x > ui.element.left + ui.element.width - 12) {
-                            css = {
-                                left: (ui.element.width - 12) + 'px'
-                            }
-                        } else {
-                            css = {
-                                left: Math.abs(targetCenter.x - ui.element.left) / ui.element.width * 100 + '%'
-                            }
-                        }
+                        tailLimits = [that.tailOffset, ui.element.width - that.tailOffset];
+                        tailPosition = _limitNumber(Math.abs(targetCenter.x - ui.element.left), tailLimits);
 
-                        that.$tail.css($.extend(defaultTailPosition, css));
+                        that.$tail.css($.extend(defaultTailPosition, {
+                            left: tailPosition + 'px'
+                        }));
                     } else {
+                        tailLimits = [that.tailOffset, ui.element.height - that.tailOffset];
+                        tailPosition = _limitNumber(Math.abs(targetCenter.y - ui.element.top), tailLimits);
 
-                        if (targetCenter.x > ui.element.top + ui.element.height - 12) {
-                            css = {
-                                top: (ui.element.height - 12) + 'px'
-                            }
-                        } else {
-                            css = {
-                                top: Math.abs(targetCenter.y - ui.element.top) / ui.element.height * 100 + '%'
-                            }
-                        }
-
-                        that.$tail.css($.extend(defaultTailPosition, css));
+                        that.$tail.css($.extend(defaultTailPosition, {
+                            top: tailPosition + 'px'
+                        }));
                     }
-                }
 
-                props[tailDirection] += that.options.withoutTail ? 0 : that.tailOffset;
+                    props[tailDirection] += that.tailOffset;
+                }
 
                 return using.call(el, props, ui);
             };
@@ -308,6 +295,16 @@
             x: Math.round(d.left + (d.width / 2)),
             y: Math.round(d.top + (d.height / 2))
         };
+    }
+
+    /**
+     * Ограничивает переданное число в заданный промежуток.
+     * @param  {Number} number
+     * @param  {Array}  range  [min, max]
+     * @return {Number}
+     */
+    function _limitNumber(number, range) {
+        return Math.min(Math.max(number, range[0]), range[1]);
     }
 
     /**

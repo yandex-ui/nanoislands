@@ -213,4 +213,12 @@ describe("Popup Tests", function() {
             expect(flag).to.ok();
         });
     });
+
+    describe("Tail positioning", function() {
+        it('should not be placed on the edge of popup', function() {
+            var toggler = nb.find('popup-toggler-tight');
+            toggler.open();
+            expect(nb.find('popup-tight').$node.parent().find('._nb-popup-tail')[0].style.left).to.equal('13px');
+        });
+    });
 });
