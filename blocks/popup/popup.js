@@ -47,10 +47,8 @@
                 this.document.on('touchstart', this._onmousedown);
             }
 
-            if (this.options.position.fixed) {
-                this._onresize = $.proxy(this._position, this);
-                this.window.on('resize', this._onresize);
-            }
+            this._onresize = $.throttle(this._position.bind(this), 200, false, false);
+            this.window.on('resize', this._onresize);
 
 
             this._onpopupclose = nb.on('popup-close', function() {

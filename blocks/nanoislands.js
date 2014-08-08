@@ -1,4 +1,5 @@
 /* borschik:include:../node_modules/es5-shim/es5-shim.js */
+/* borschik:include:../libs/jquery.throttle.js */
 /* borschik:include:../libs/nanoblocks.js */
 
 /* borschik:include:common/common.js */
