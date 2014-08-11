@@ -434,10 +434,6 @@
                     }
                 });
             }
-
-            // Храним исходное положение попапа, чтобы возвращать его на место
-            var previous = this.node.previousSibling;
-            this._home = previous ? { previous: previous } : { parent: this.node.parentNode };
         },
 
         onposition: function(e, params) {
@@ -449,22 +445,17 @@
 
         /**
          *
-         * @param {Object} params
+         * @param {Object} p — params
          */
-        open: function(params) {
-            var params = params || {};
+        open: function(p) {
+            var params = p || {};
             var where = params.where;
             var how = params.how;
-            //  Специальный флаг-костыль.
-            //  Если он true, то это значит, что мы только что передвинули открытый попап в другое место
-            //  и его не нужно закрывать на клик.
-            this.moved = false;
 
             if (this.where) {
                 //  Попап уже открыт
                 //  FIXME: Буэээ. Уродливое условие для варианта, когда заданы координаты вместо ноды.
                 if (where !== this.where || ( (where instanceof Array) && (where[0] !== this.where[0] || where[1] !== this.where[1] ))) {
-                    this.moved = true;
                     //  На другой ноде. Передвигаем его в нужное место.
                     this._move(where, how, params);
                 }
