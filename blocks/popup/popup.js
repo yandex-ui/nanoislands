@@ -198,6 +198,7 @@
                         that.$tail.css($.extend(defaultTailPosition, {
                             left: tailPosition + 'px'
                         }));
+
                     } else {
                         tailLimits = [that.tailOffset, ui.element.height - that.tailOffset];
                         tailPosition = _limitNumber(Math.abs(targetCenter.y - ui.element.top), tailLimits);
