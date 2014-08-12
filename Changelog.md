@@ -1,3 +1,8 @@
+##### 0.4.25  — patch
+
+###### Fixes
+* fix #414 — [Input] Fixes sticked letters together  .
+
 ##### 0.4.24  — patch
 
 ###### Fixes
