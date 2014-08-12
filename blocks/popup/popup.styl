@@ -97,7 +97,12 @@
   z-index: 10000
 
   ._nb-popup-content
-    line-height: 0
+    line-height: 1
+
+    &:after
+      margin-top: 10px
+    &:before
+      margin-bottom: 10px
 
 ._nb-blank-modal-popup
   background-color: transparent
