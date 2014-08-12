@@ -17,6 +17,9 @@
 
     $.nb = {};
 
+    // 60 fps is optimal rate for smooth changes
+    var TIME_PER_FRAME = 1000 / 60;
+
     $.widget('nb.baseDialog', $.ui.dialog, {
         options: {
             height: 'auto',
@@ -47,7 +50,7 @@
                 this.document.on('touchstart', this._onmousedown);
             }
 
-            this._onresize = $.throttle(this._position.bind(this), 200, false, false);
+            this._onresize = $.throttle(this._position.bind(this), TIME_PER_FRAME, false, false);
             this.window.on('resize', this._onresize);
 
 
