@@ -46,4 +46,12 @@ match .popup {
     'withoutTail': true()
     'content': 'Удалить'
  })
+
+ nb-popup({
+    'id': 'popup-modal'
+    'data-nb': {
+        'modal': true()
+    }
+    'content': 'Hello, words!'
+})
 }

@@ -7,12 +7,14 @@ describe("Popup Tests", function() {
         nb.init();
 
         this.popup = nb.find('popup');
+        this.popupModal = nb.find('popup-modal');
         this.toggler = nb.find('popup-toggler');
     });
 
     afterEach(function() {
         this.popup.destroy();
         this.toggler.destroy();
+        this.popupModal.destroy();
     });
 
     describe("YATE API", function() {
@@ -28,6 +30,11 @@ describe("Popup Tests", function() {
             expect(nb.find('popup-w-t').$node.parent().find('._nb-popup-tail').length).to.equal(0);
         });
 
+        it('Popup`s tail should not be placed on the edge of popup', function() {
+            var toggler = nb.find('popup-toggler-tight');
+            toggler.open();
+            expect(nb.find('popup-tight').$node.parent().find('._nb-popup-tail')[0].style.left).to.equal('13px');
+        });
     });
     describe("Init", function() {
         it("Init popup", function() {
@@ -166,6 +173,28 @@ describe("Popup Tests", function() {
             expect(flag).to.ok();
         });
 
+        it("#Close check event", function() {
+            var flag = false;
+            this.popup.on('nb-closed', function() {
+                flag = true;
+            });
+
+            this.popup.open({where: this.toggler.node, appendTo: '.content'});
+            this.popup.close();
+            expect(flag).to.ok();
+        });
+
+        it('#Click on overlay should close popup', function(done) {
+            this.popupModal.on('nb-closed', function() {
+                done();
+            });
+
+            this.popupModal.open();
+
+            var $overlay = $('.ui-widget-overlay');
+            $overlay.click();
+        });
+
         it("#getContent() ", function() {
             expect(this.popup.getContent()).to.equal('Удалить');
         });
@@ -197,28 +226,6 @@ describe("Popup Tests", function() {
         it("should destroy nb.block", function() {
             this.popup.destroy();
             expect(nb.hasBlock($('#popup')[0])).to.be.equal(false);
-        });
-    });
-
-
-    describe("#Popup", function() {
-        it("#Close check event", function() {
-            var flag = false;
-            this.popup.on('nb-closed', function() {
-                flag = true;
-            });
-
-            this.popup.open({where: this.toggler.node, appendTo: '.content'});
-            this.popup.close();
-            expect(flag).to.ok();
-        });
-    });
-
-    describe("Tail positioning", function() {
-        it('should not be placed on the edge of popup', function() {
-            var toggler = nb.find('popup-toggler-tight');
-            toggler.open();
-            expect(nb.find('popup-tight').$node.parent().find('._nb-popup-tail')[0].style.left).to.equal('13px');
         });
     });
 });
