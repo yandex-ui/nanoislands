@@ -194,7 +194,7 @@ match .textarea nb {
                 }
 
                 if .content {
-                    html(.content)
+                    .content
                 }
             </textarea>
             <span class="_nb-input-view">&nbsp;</span>
