@@ -100,6 +100,11 @@ describe("Input Tests", function() {
             var input = nb.find('input-reset');
             expect(input.nbdata().type).to.not.equal('simple');
         });
+
+        it('Multiline input should output escaped content as a textarea value', function() {
+            var input = nb.find('escape-multiline');
+            expect(input.getValue()).to.be("\">'></textarea></script><img/src='x'onerror=alert(1)>");
+        });
     });
 
 

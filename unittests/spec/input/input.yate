@@ -54,4 +54,10 @@ match .input {
             'ghost': true()
         }
    })
+
+   nb-input({
+        'id': 'escape-multiline'
+        'type': 'multiline'
+        'content': "\">'></textarea></script><img/src='x'onerror=alert(1)>"
+   })
 }

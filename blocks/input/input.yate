@@ -267,7 +267,7 @@ match .textareaSimple nb {
         }
 
         if .content {
-            html(.content)
+            .content
         }
 
     </textarea>
