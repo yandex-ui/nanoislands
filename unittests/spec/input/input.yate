@@ -54,4 +54,18 @@ match .input {
             'ghost': true()
         }
    })
+
+   xss_string = "\">'></textarea></script><img/src='x'onerror=alert(1)>"
+   nb-input({
+        'id': 'escape-multiline-simple'
+        'type': 'multiline'
+        'content': xss_string
+   })
+
+   nb-input({
+        'id': 'escape-multiline'
+        'type': 'multiline'
+        'content': xss_string
+        'reset': true()
+   })
 }
