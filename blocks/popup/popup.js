@@ -31,23 +31,32 @@
             var that = this;
 
             if (that.options.autoclose) {
-                this._onmousedown = function(e) {
-                    that.options.closedByOuterClick = true;
-                    // e.which === 3 -> right mouse button
-                    // e.which === 2 -> middle (wheel) mouse button
-                    if (e.which === 2 || e.which === 3) {
-                        return;
-                    }
+                if (this.options.modal) {
+                    this._onmousedown = function(e) {
+                        that.options.closedByOuterClick = true;
+                        if (e.which === 2 || e.which === 3) {
+                            return;
+                        }
+                        that.close();
+                    };
+                    this.overlay.click(this._onmousedown);
+                } else {
+                    this._onmousedown = function(e) {
+                        that.options.closedByOuterClick = true;
+                        if (e.which === 2 || e.which === 3) {
+                            return;
+                        }
 
-                    if ($.contains(that.uiDialog[0], e.target)) {
-                        return;
-                    }
+                        if ($.contains(that.uiDialog[0], e.target)) {
+                            return;
+                        }
 
-                    that.close();
-                };
+                        that.close();
+                    };
 
-                this.document.on('mousedown', this._onmousedown);
-                this.document.on('touchstart', this._onmousedown);
+                    this.document.on('mousedown', this._onmousedown);
+                    this.document.on('touchstart', this._onmousedown);
+                }
             }
 
             this._onresize = $.throttle(this._position.bind(this), TIME_PER_FRAME, false, false);
@@ -65,6 +74,7 @@
             if (this.options.autoclose) {
                 this.document.off('mousedown', this._onmousedown);
                 this.document.off('touchstart', this._onmousedown);
+                this.document.off('click', this._onmousedown);
             }
 
             if (this._onresize) {
@@ -78,6 +88,7 @@
                 this._super();
             }
         },
+        _keepFocus: $.noop,
         _create: function() {
             this.options.dialogClass += _getUIDialogExtraClass.call(this);
             this.options.dialogClass += (this.options.position.fixed) ? ' ui-dialog-fixed' : '';
