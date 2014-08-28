@@ -1,3 +1,18 @@
+(function() {
+    
+var bindOninput = function(block, callback) {
+    if (block.$control.get(0).attachEvent) {
+        //IE8 does not supports oninput events: https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.oninput
+        block.$control.get(0).attachEvent('onpropertychange', function(e) {
+            if (e.propertyName === "value") {
+                callback(e);
+            }
+        });
+    } else {
+        block.$control.on('input', callback);
+    }
+};
+
 /**
  * @class nb.block.Input
  * @augments nb.block.Base
@@ -31,7 +46,7 @@ nb.define('input', {
             that.trigger('nb-changed', this, e);
         });
 
-        this._bindOninput(function(e) {
+        bindOninput(this, function(e) {
             that.value = that.getValue();
             that.trigger('nb-input', this, e);
         });
@@ -70,19 +85,6 @@ nb.define('input', {
         this.trigger('nb-inited', this);
     },
 
-    _bindOninput: function(callback) {
-        if (this.$control.get(0).attachEvent) {
-            //IE8 does not supports oninput events: https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.oninput
-            this.$control.get(0).attachEvent('onpropertychange', function(e) {
-                if (e.propertyName === "value") {
-                    callback(e);
-                }
-            });
-        } else {
-            this.$control.on('input', callback);
-        }
-    },
-
     _inithint: function() {
         var that = this;
 
@@ -92,7 +94,7 @@ nb.define('input', {
 
             this.$hintGhost.html(that.getValue());
 
-            this._bindOninput(function() {
+            bindOninput(this, function() {
                 that.$hintGhost.html(that.getValue());
             });
 
@@ -104,7 +106,7 @@ nb.define('input', {
                 that.$hint.css('visibility', 'inherit');
             });
         } else {
-            this._bindOninput(function() {
+            bindOninput(this, function() {
                 if (that.getValue() === '') {
                     that.$hint.css('visibility', 'inherit');
                 } else {
@@ -392,3 +394,6 @@ nb.define('input', {
         this.nbdestroy();
     }
 }, 'base');
+
+
+})();    
