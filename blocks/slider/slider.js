@@ -1,4 +1,5 @@
-/* ### jQuery UI Depends:
+/*
+ * ### jQuery UI Depends:
  * - jquery.ui.slider.js
  * - jquery.ui.core.js
  * - jquery.ui.mouse.js

@@ -43,6 +43,7 @@ include "../blocks/radio-button/radio-button.example.yate"
 include "../blocks/header/header.example.yate"
 include "../blocks/popup/popup.example.yate"
 include "../blocks/slider/slider.example.yate"
+include "../blocks/suggest/suggest.example.yate"
 
 
 match / {
@@ -63,6 +64,7 @@ match / {
             radio-buttons()
             popups()
             sliders()
+            suggests()
 
             <div class="page-inner">
                 <h1 class="page-title">Nanoislands Docs</h1>
