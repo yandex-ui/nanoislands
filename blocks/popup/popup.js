@@ -744,11 +744,14 @@ nb.define('popup-toggler', {
 
     /**
      * Sets connected popup
-     * @param {Object} params  - {
+     * @param {Object} params
+     *  ```
+     *  {
      *       id : 'id' — popupID or link to nb.block
      *       where: '#elem' — to what elem popup attached
      *       how: { my: 'left', at:'right' } — to to open popup
      *   }
+     *  ```
      * @returns {Object} nb.block
      */
     setPopup: function(params) {
@@ -784,12 +787,16 @@ nb.define('popup-toggler', {
         return this.options;
     },
 
-    /**
+     /**
      * Sets connected popup options
-     * @param {Object} params - {
+     * @param {Object} params
+     *   ```
+     *  {
+     *       id : 'id' — popupID or link to nb.block
      *       where: '#elem' — to what elem popup attached
      *       how: { my: 'left', at:'right' } — to to open popup
      *   }
+     *  ```
      * @returns {Object} nb.block
      */
     setOptions: function(params) {

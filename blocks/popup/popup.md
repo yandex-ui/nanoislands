@@ -34,24 +34,31 @@ There are 2 parts of popup control:
 ```
 
 #### Example of generic popup menu
+<div example="popup1"/>
 <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
     <span class="link__inner">
         "Default Toggler"
     </span>
 </a>
 
-<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'right', my: 'left'}}" href="#right">
+<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'right', my: 'left'}}" href="#left">
     <span class="link__inner">
         "To left"
     </span>
 </a>
 
-<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'left', my: 'right'}}" href="#right">
+<a style="margin-left: 150px;" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'left', my: 'right'}}" href="#right">
     <span class="link__inner">
-        "To left"
+        "To right"
     </span>
 </a>
-<div example="popup1"/>
+
+<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'top', my: 'bottom'}}" href="#right">
+    <span class="link__inner">
+        "To top"
+    </span>
+</a>
+
 > ```yate
 > nb-popup-menu({
 >     'id': 'popup1'
@@ -101,9 +108,6 @@ There are 2 parts of popup control:
 * `size: m`
 * `theme: normal`
 
-```
-    nb-popup()
-```
 
 ### Options for generic popup
 
@@ -120,22 +124,21 @@ There are 2 parts of popup control:
   * `attrs` {object} — custom attrs for close
 
 ### Example of generic popup
+<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'genericPopup'}" href="#right">
+    <span class="link__inner">
+        "generic popup"
+    </span>
+</a>
+>```yate
+>    nb-popup({
+>        'id': 'genericPopup'
+>        'title': 'Hello, I’m your generic pop-up.'
+>        'content': '<p>And welcome to nanoislands</p>'
+>    })
+>```
 
-```
-    nb-popup({
-        'id': 'genericPopup'
-        'tail': 'top'
-        'title': 'Hello, I’m your generic pop-up.'
-        'content': '<p>And welcome to nanoislands</p>'
-    })
-```
 
 ### Default menu popup
-
-```
-    nb-popup-menu()
-```
-
 * `id` {string}
 * `class` {array} — additional classes
 * `attrs` {object} — custom DOM attributes
@@ -152,33 +155,33 @@ There are 2 parts of popup control:
         * `separator` {boolean} — `true()` to render separator
 
 ### Menu popup example
+<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
+    <span class="link__inner">
+        "Popup menu"
+    </span>
+</a>
 
-```
-    nb-popup-menu({
-        'id': 'popupMenu'
-        'tail': 'left'
-        'menu': [
-            {
-                'href': '#'
-                'content': 'Скопировать'
-            }
-            {
-                'href': '#'
-                'content': 'Переместить'
-            }
-            {
-                'href': '#'
-                'content': 'Удалить'
-            }
-        ]
-    })
-```
+>```yate
+>    nb-popup-menu({
+>        'id': 'popupMenu'
+>        'menu': [
+>            {
+>                'href': '#'
+>                'content': 'Скопировать'
+>            }
+>            {
+>                'href': '#'
+>                'content': 'Переместить'
+>            }
+>            {
+>                'href': '#'
+>                'content': 'Удалить'
+>            }
+>        ]
+>    })
+>```
 
-### Default modal popup
-
-```
-    nb-popup-modal()
-```
+### Modal popup
 
 * `data-nb` {object}
     * `modal`: `true()`
@@ -203,39 +206,44 @@ There are 2 parts of popup control:
     * `minHeight` {string}
 
 ### Modal popup example:
-
-```
-    nb-popup-modal({
-       'id': 'modalPopup'
-       'title': 'Some modal popup'
-       'content': 'Some text for that popup'
-       'data-nb': {
-            'width': '300px'
-       }
-       'close': {
-            'class': 'ns-action'
-            'attrs': {
-                'data-params': '123'
-            }
-       }
-       'buttons': {
-            'class': 'ns-subliew-buttons'
-            'data': [
-            {
-               'content': 'Отправить'
-               'size': 'm'
-               'theme': 'action'
-               'class': 'nb-popup__button'
-            }
-            {
-               'content': 'Сохранить'
-               'size': 'm'
-               'class': 'nb-popup__button'
-            }
-        ]}
-
-   })
-
+<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'modal-popup1'}" href="#modal">
+    <span class="link__inner">
+        "Modal popup"
+    </span>
+</a>
+<div example="modal-popup1"/>
+>```yate
+>    nb-popup-modal({
+>       'id': 'modal-popup1'
+>       'title': 'Some modal popup'
+>       'content': 'Some text for that popup'
+>       'data-nb': {
+>            'width': '300px'
+>       }
+>       'close': {
+>            'class': 'ns-action'
+>            'attrs': {
+>                'data-params': '123'
+>            }
+>       }
+>       'buttons': {
+>            'class': 'ns-subliew-buttons'
+>            'data': [
+>            {
+>               'content': 'Отправить'
+>               'size': 'm'
+>               'theme': 'action'
+>               'class': 'nb-popup__button'
+>            }
+>            {
+>               'content': 'Сохранить'
+>               'size': 'm'
+>               'class': 'nb-popup__button'
+>            }
+>        ]}
+>
+>   })
+>```
 
 
 ## JSDOC

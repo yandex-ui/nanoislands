@@ -26,4 +26,41 @@ func popups() {
             }
         ]
     }))
+
+    show('popup-modal1',nb-popup-modal({
+           'id': 'modal-popup1'
+           'title': 'Some modal popup'
+           'content': 'Some text for that popup'
+           'data-nb': {
+                'width': '300px'
+           }
+           'close': {
+                'class': 'ns-action'
+                'attrs': {
+                    'data-params': '123'
+                }
+           }
+           'buttons': {
+                'class': 'ns-subliew-buttons'
+                'data': [
+                {
+                   'content': 'Отправить'
+                   'size': 'm'
+                   'theme': 'action'
+                   'class': 'nb-popup__button'
+                }
+                {
+                   'content': 'Сохранить'
+                   'size': 'm'
+                   'class': 'nb-popup__button'
+                }
+            ]}
+
+       }))
+
+       show('genericPopup',nb-popup({
+           'id': 'genericPopup'
+           'title': 'Hello, I’m your generic pop-up.'
+           'content': '<p>And welcome to nanoislands</p>'
+       }))
 }
