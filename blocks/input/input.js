@@ -1,3 +1,18 @@
+(function() {
+    
+var bindOninput = function(block, callback) {
+    if (block.$control.get(0).attachEvent) {
+        //IE8 does not supports oninput events: https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.oninput
+        block.$control.get(0).attachEvent('onpropertychange', function(e) {
+            if (e.propertyName === "value") {
+                callback(e);
+            }
+        });
+    } else {
+        block.$control.on('input', callback);
+    }
+};
+
 /**
  * @class nb.block.Input
  * @augments nb.block.Base
@@ -43,7 +58,7 @@ nb.define('input', {
             that.trigger('nb-changed', that, e);
         });
 
-        this.$control.on('input', function(e) {
+        bindOninput(this, function(e) {
             that.value = that.getValue();
             that.trigger('nb-input', this, e);
         });
@@ -94,12 +109,12 @@ nb.define('input', {
 
             this.$hintGhost.html(that.getValue());
 
-            this.$control.on('input', function() {
+            bindOninput(this, function() {
                 that.$hintGhost.html(that.getValue());
             });
 
         } else {
-            this.$control.on('input', function() {
+            bindOninput(this, function() {
                 if (that.getValue() === '') {
                     that.$hint.css('visibility', 'inherit');
                 } else {
@@ -401,3 +416,6 @@ nb.define('input', {
         this.nbdestroy();
     }
 }, 'base');
+
+
+})();    
