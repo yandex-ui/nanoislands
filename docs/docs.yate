@@ -121,6 +121,7 @@ match .jsdoc {
     </div>
 }
 match .jsdoc[.ignore] {}
+match .jsdoc[.isPrivate] {}
 
 match .md {
     <div class="blocks-description">

@@ -271,6 +271,7 @@
      * @param  {Object} targetDimensions Положение и измерения элемента, на который указывает попап
      * @param  {Object} popupDimensions  Положение и измерения попапа
      * @return {String} top|right|bottom|left
+     * @private
      */
     function _getPopupTailDirection(targetDimensions, popupDimensions) {
         var p = _getBoundingRectangle(popupDimensions);
@@ -300,6 +301,7 @@
      * `left`, `top`, `width`, `height`.
      * @param  {Object} d
      * @return {Object}
+     * @private
      */
     function _getElementCenter(d) {
         return {
@@ -313,6 +315,7 @@
      * @param  {Number} number
      * @param  {Array}  range  [min, max]
      * @return {Number}
+     * @private
      */
     function _limitNumber(number, range) {
         return Math.min(Math.max(number, range[0]), range[1]);
@@ -344,6 +347,7 @@
      *
      * @param  {Object} d
      * @return {Object}
+     * @private
      */
     function _getBoundingRectangle(d) {
         return [
@@ -745,6 +749,7 @@ nb.define('popup-toggler', {
     /**
      * Sets connected popup
      * @param {Object} params
+     *
      *  ```
      *  {
      *       id : 'id' — popupID or link to nb.block

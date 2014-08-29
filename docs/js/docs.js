@@ -10,6 +10,16 @@ $.getJSON('js/_data.json', function(data) {
         $code.remove();
     })
 
+    $('.code_yate').each(function(i, el){
+        var $el = $(el);
+        var $code = $(el).find('pre');
+        $code .hide()
+        var link = $('<a data-nb="button" class="nb-button _nb-small-pseudo-button"><span class="_nb-button-content">Yate code</span></a>').on('click', function(){
+            $code.toggle();
+        })
+        $el.prepend(link)
+    })
+
     nb.init();
 
 

@@ -85,7 +85,7 @@ pre {
 .blocks-menu {
     position: fixed;
     right: 18px;
-    top: 100px;
+    top: 80px;
     bottom: 18px;
     width: 250px;
     overflow-y: scroll;
@@ -100,6 +100,9 @@ pre {
 }
 
 .code_html {
-    display: none;
+    /*display: none;*/
 }
 
+
+.blockquote
+{}
