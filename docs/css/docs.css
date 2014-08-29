@@ -14,11 +14,9 @@ pre {
 .page {
     position: relative;
     margin: 0;
-    padding: 0;
+    padding: 20px 0 0 0;
     min-width: 954px;
     min-height: 100%;
-    background-color: #fbfaf4;
-    border: 18px solid #fff;
 
     color: #333;
 }
@@ -87,11 +85,12 @@ pre {
 .blocks-menu {
     position: fixed;
     right: 18px;
-    top: 18px;
+    top: 100px;
     bottom: 18px;
     width: 250px;
     overflow-y: scroll;
     border: 1px dashed rgba(0,0,0,.15);
+    background-color: #fff;
     padding: 0 18px;
     margin: 0;
 }

@@ -44,6 +44,7 @@ include "../blocks/header/header.example.yate"
 include "../blocks/popup/popup.example.yate"
 include "../blocks/slider/slider.example.yate"
 include "../blocks/suggest/suggest.example.yate"
+include "../blocks/toggler/toggler.example.yate"
 
 
 match / {
@@ -65,9 +66,17 @@ match / {
             popups()
             sliders()
             suggests()
-
+            togglers()
+            nb-header({
+                'arrow': {
+                    'search': 'false'
+                    'text': 'Nanoislands'
+                }
+                'settings': false()
+                'services': false()
+            })
             <div class="page-inner">
-                <h1 class="page-title">Nanoislands Docs</h1>
+
                 <ol class="blocks-menu">
                     apply .* blocks-menu-item
                 </ol>
@@ -75,7 +84,6 @@ match / {
                     apply .* blocks-item
                 </ul>
             </div>
-
 }
 
 
