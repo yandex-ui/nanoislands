@@ -1,3 +1,11 @@
+##### 0.4.26  — patch
+
+###### Fixes
+* fix #426 — Supporting inputs in ie8 — workaround for the missing oninput event  
+* fix #424 — XSS in multiline input   
+* fix #421 — Синхронизировать фон для автозаполненного сложного поля для ввода  
+* fix #419 — Модальный попап закрывается при клике на скроллбар  
+
 ##### 0.4.25  — patch
 
 ###### Fixes
