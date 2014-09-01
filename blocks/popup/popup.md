@@ -37,7 +37,7 @@ There are 2 parts of popup control:
 <div example="popup1"/>
 <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
     <span class="link__inner">
-        "Default Toggler"
+        "Default"
     </span>
 </a>
 
@@ -129,9 +129,29 @@ There are 2 parts of popup control:
         "generic popup"
     </span>
 </a>
+
+
+
 >```yate
 >    nb-popup({
 >        'id': 'genericPopup'
+>        'title': 'Hello, I’m your generic pop-up.'
+>        'content': '<p>And welcome to nanoislands</p>'
+>    })
+>```
+
+
+<div example="popup2"/>
+<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup2'}" href="#default">
+    <span class="link__inner">
+        "generic popup  with close"
+    </span>
+</a>
+
+>```yate
+>    nb-popup({
+>        'id': 'genericPopup'
+>        'close': true()
 >        'title': 'Hello, I’m your generic pop-up.'
 >        'content': '<p>And welcome to nanoislands</p>'
 >    })
