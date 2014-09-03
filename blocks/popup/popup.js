@@ -527,6 +527,7 @@
         destroy: function() {
             if (this.node && this.node.widget) {
                 this.node.widget.destroy();
+                this.$node.addClass('_nb-is-hidden');
             }
 
             this.trigger('nb-destroyed', this);
