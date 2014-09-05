@@ -227,5 +227,10 @@ describe("Popup Tests", function() {
             this.popup.destroy();
             expect(nb.hasBlock($('#popup')[0])).to.be.equal(false);
         });
+
+        it("should return the class _nb-is-hidden", function() {
+            this.popup.destroy();
+            expect(this.popup.$node.hasClass('_nb-is-hidden')).to.ok();
+        });
     });
 });
