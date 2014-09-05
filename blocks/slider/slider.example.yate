@@ -1,0 +1,29 @@
+func sliders() {
+    show('slider-s',nb-slider( {
+       'id': 's2'
+       'size': 's'
+       'handle': {
+           'class': 'js-custom-class'
+       }
+       'value': 20
+   }))
+
+   show('slider-m', nb-slider({
+         'size': 'm'
+         'class': 'js-super-class'
+         'value': 50
+         'id': 's1'
+     }))
+
+    show('slider-d',nb-slider(  {
+         'disabled': true()
+     }))
+
+     show('slider-c',nb-slider(  {
+         'id': 's3'
+         'size': 's'
+         'content':  nb-icon({
+                'icon': 'volume'
+            })
+     }))
+}

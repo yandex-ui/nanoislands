@@ -1,0 +1,190 @@
+external scalar getNameMethod(scalar)
+
+include "../nanoislands.yate"
+
+
+func podium(xml markup) {
+    <div class="podium">
+        markup
+    </div>
+}
+
+func code(xml markup) {
+    <div class="code code_html">
+        <pre>
+            <code class="js-beautify">
+                scalar(markup)
+            </code>
+        </pre>
+    </div>
+}
+
+func show(scalar name, xml markup) {
+    <div code="{ name }">
+        podium(markup)
+        code(markup)
+    </div>
+}
+
+include "../blocks/arrow/arrow.example.yate"
+include "../blocks/button/button.example.yate"
+include "../blocks/input/input.example.yate"
+include "../blocks/checkbox/checkbox.example.yate"
+include "../blocks/select/select.example.yate"
+include "../blocks/dropzone/dropzone.example.yate"
+include "../blocks/gap/gap.example.yate"
+include "../blocks/group/group.example.yate"
+include "../blocks/island/island.example.yate"
+include "../blocks/input-group/input-group.example.yate"
+include "../blocks/icon/icon.example.yate"
+include "../blocks/loader/loader.example.yate"
+include "../blocks/progress/progress.example.yate"
+include "../blocks/radio-button/radio-button.example.yate"
+include "../blocks/header/header.example.yate"
+include "../blocks/popup/popup.example.yate"
+include "../blocks/slider/slider.example.yate"
+include "../blocks/suggest/suggest.example.yate"
+include "../blocks/toggler/toggler.example.yate"
+
+
+match / {
+
+            nb-header({
+                'arrow': {
+                    'search': 'false'
+                    'text': 'Nanoislands'
+                }
+                'settings': false()
+                'services': false()
+            })
+
+
+            <div class="page-inner">
+ arrows()
+            buttons()
+            inputs()
+            checkbox()
+            selects()
+            dropzones()
+            gaps()
+            headers()
+            groups()
+            islands()
+            input-groups()
+            icons()
+            loaders()
+            progress()
+            radio-buttons()
+            popups()
+            sliders()
+            suggests()
+            togglers()
+                <ol class="blocks-menu">
+                    apply .* blocks-menu-item
+                </ol>
+                <ul class="blocks">
+                    apply .* blocks-item
+                </ul>
+            </div>
+}
+
+
+match .* blocks-menu-item {
+    <li class="blocks-menu-item">
+        <a href="#{ .block }">
+            .block
+        </a>
+    </li>
+}
+
+
+match .* blocks-item {
+    <li class="blocks-item" id="{ .block }">
+        <h1>
+             .block
+        </h1>
+        html(.md)
+        if .jsdoc {
+            <div class="jsdoc">
+                <h3 class="jsdoc__title"><a href="#">JS API </a></h3>
+                <div class="jsdoc__content">
+                    apply .jsdoc
+                </div>
+            </div>
+        }
+
+    </li>
+}
+
+
+match .jsdoc {
+    <div class="blocks-method">
+        <h4 class="blocks-method-title">
+            getNameMethod('{.code}')
+        </h4>
+        if (.description.full) {
+            html(.description.full)
+        }
+
+        apply .tags[.name] blocks-settings
+    </div>
+}
+match .jsdoc[.ignore] {}
+match .jsdoc[.isPrivate] {}
+
+match .md {
+    <div class="blocks-description">
+        <h2 class="blocks-title">
+            ..block
+        </h2>
+        html(.)
+    </div>
+}
+
+
+match .tags blocks-settings {
+    <div class="blocks-settings">
+        apply .[.name] blocks-params
+        apply .['fires' == .type || 'returns' == .type] blocks-extra
+    </div>
+}
+
+
+match .tags blocks-params {
+    <dl class="dl-horizontal param">
+        <dt class="param-name">
+            .name
+        </dt>
+        <dd class="param-description">
+            <code class="param-types">
+                apply . blocks-params-types
+            </code>
+            .description
+        </dd>
+    </dl>
+}
+
+
+match .tags blocks-params-types {
+    itemLast = count(.types) - 1
+    '{{'
+    for .types {
+        .
+        if (index() != itemLast) {
+            ' | '
+        }
+    }
+    '}}'
+}
+
+
+match .tags blocks-extra {
+    <dl class="dl-horizontal param">
+        <dt class="param-name">
+            .type
+        </dt>
+        <dd class="param-description">
+            .string
+        </dd>
+    </dl>
+}

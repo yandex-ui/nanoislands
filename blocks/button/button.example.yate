@@ -1,0 +1,113 @@
+func buttons() {
+
+    buttons-type = (
+        nb-button({
+           'content': 'Link'
+           'type': 'link'
+           'attrs': {
+               'href': '#'
+            }
+        })
+        ' '
+        nb-button({
+              'content': 'Label'
+              'type': 'label'
+              'attrs': {
+                  'for': 'blah'
+              }
+           })
+
+        ' '
+        nb-button({
+             'content': 'Span'
+             'type': 'inline'
+          })
+        ' '
+        nb-button({
+             'content': 'File'
+             'type': 'file'
+        })
+    )
+    show('buttons-type', buttons-type)
+
+
+    buttons-theme = (
+        nb-button({
+            'content': 'Action'
+            'theme': 'action'
+        })
+        ' '
+        nb-button({
+            'content': 'Pseudo'
+            'theme': 'pseudo'
+        })
+        ' '
+        nb-button({
+            'content': 'Dark'
+            'theme': 'dark'
+        })
+
+        ' '
+        nb-button({
+            'content': 'Promo'
+            'theme': 'promo'
+        })
+    )
+
+    show('buttons-theme', buttons-theme)
+
+    buttons-icon = (
+        nb-button({
+            'icon': 'eye'
+        })
+
+        ' '
+        nb-button({
+            'iconText': '▼'
+        })
+
+        ' '
+        nb-button({
+              'icon': 'link'
+              'content': 'Открыть'
+        })
+    )
+
+    show('buttons-icon', buttons-icon)
+
+    show('button-default', nb-button({
+           'content': 'Button'
+    }))
+
+    buttons-size = (
+        nb-button({
+            'content': 'Small'
+            'size': 's'
+        })
+        ' '
+        nb-button({
+           'content': 'Medium'
+        })
+        ' '
+        nb-button({
+           'theme': 'promo'
+           'content': 'Large'
+        })
+        ' '
+        nb-button({
+           'theme': 'promo'
+           'size': 'xl'
+           'content': 'Extra large'
+        })
+    )
+
+    show('buttons-size', buttons-size)
+
+
+
+    show('button-disabled',  nb-button({
+        'disabled': true()
+        'content': 'Disabled'
+    }))
+
+}

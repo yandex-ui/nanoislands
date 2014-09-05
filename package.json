@@ -45,7 +45,10 @@
     "karma-firefox-launcher": "~0.1.x",
 
     "grunt-contrib-watch": "*",
-    "grunt-shell": "*"
+    "grunt-shell": "*",
+    "dox": "0.4.x",
+    "concat-stream": "1.4.x",
+    "marked": "0.3.x"
   },
   "engines": {
     "node": "*"

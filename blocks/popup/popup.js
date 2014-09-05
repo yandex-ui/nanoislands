@@ -1,20 +1,18 @@
-/*
- * jQuery UI Depends:
- *        jquery.ui.dialog.js
- *        jquery.ui.core.js
- *        jquery.ui.widget.js
- *        jquery.ui.button.js
- *        jquery.ui.draggable.js
- *        jquery.ui.mouse.js
- *        jquery.ui.position.js
+/*! 
+ * ### jQuery UI Depends
+ * 
+ * - jquery.ui.dialog.js
+ * - jquery.ui.core.js
+ * - jquery.ui.widget.js
+ * - jquery.ui.button.js
+ * - jquery.ui.draggable.js
+ * - jquery.ui.mouse.js
+ * - jquery.ui.position.js
  */
 
 (function() {
 
-    /**
-     * @fileOverview Надстройки nb над jQueryUI
-     */
-
+    // Надстройки nb над jQueryUI
     $.nb = {};
 
     // 60 fps is optimal rate for smooth changes
@@ -99,6 +97,7 @@
             this._super();
             delete this.element[0].widget;
         },
+
         _position: function() {
             var that = this;
             var using = this.options.position.using;
@@ -109,16 +108,16 @@
                 var width;
                 var height;
 
+                $(ui.element.element[0]).css({top: 'auto', bottom: 'auto', left: 'auto', right: 'auto'});
+
                 if (ui.vertical == 'bottom') {
                     height = that.window.height();
-
                     position.bottom = height - (position.top + ui.element.height);
                     position.top = 'auto';
                 }
 
                 if (ui.horizontal == 'right') {
                     width = that.window.width();
-
                     position.right = width - (position.left + ui.element.width);
                     position.left = 'auto';
                 }
@@ -273,6 +272,7 @@
      * @param  {Object} targetDimensions Положение и измерения элемента, на который указывает попап
      * @param  {Object} popupDimensions  Положение и измерения попапа
      * @return {String} top|right|bottom|left
+     * @private
      */
     function _getPopupTailDirection(targetDimensions, popupDimensions) {
         var p = _getBoundingRectangle(popupDimensions);
@@ -302,6 +302,7 @@
      * `left`, `top`, `width`, `height`.
      * @param  {Object} d
      * @return {Object}
+     * @private
      */
     function _getElementCenter(d) {
         return {
@@ -315,6 +316,7 @@
      * @param  {Number} number
      * @param  {Array}  range  [min, max]
      * @return {Number}
+     * @private
      */
     function _limitNumber(number, range) {
         return Math.min(Math.max(number, range[0]), range[1]);
@@ -346,6 +348,7 @@
      *
      * @param  {Object} d
      * @return {Object}
+     * @private
      */
     function _getBoundingRectangle(d) {
         return [
@@ -381,7 +384,7 @@
         return direction === 'top' || direction === 'bottom';
     }
 
-    /**
+    /*!
      *  Функция возвращает строку с модификаторами
      *  для обертки попапа, которую добавляет jquery ui,
      *  в соответсвии с модификаторами самого попапа
@@ -454,9 +457,17 @@
         },
 
 
-        /**
+        /* Open popup
          *
-         * @param {Object} p — params
+         * ```
+         * popup.open({
+         *     where: [100, 200],
+         *     how: 'top bottom'
+         * });
+         * ```
+         *
+         * @param {Object} params settings for popup
+         * @return {Object} nb.block
          */
         open: function(p) {
             var params = p || {};
@@ -468,7 +479,7 @@
                 //  FIXME: Буэээ. Уродливое условие для варианта, когда заданы координаты вместо ноды.
                 if (where !== this.where || ( (where instanceof Array) && (where[0] !== this.where[0] || where[1] !== this.where[1] ))) {
                     //  На другой ноде. Передвигаем его в нужное место.
-                    this._move(where, how, params);
+                    this._move(where, how);
                 }
             } else {
                 //  Попап закрыт. Будем открывать.
@@ -482,6 +493,10 @@
             return this;
         },
 
+        /**
+         * Close popup
+         * @return {Object} nb.block
+         */
         close: function() {
 
             //  Снимаем флаг о том, что попап открыт.
@@ -524,6 +539,9 @@
             return this.node && this.node.widget && this.node.widget.isOpen();
         },
 
+        /**
+         * Destroy the popup
+         */
         destroy: function() {
             if (this.node && this.node.widget) {
                 this.node.widget.destroy();
@@ -617,7 +635,7 @@
                 return;
             }
 
-            $(this.node).contextDialog({
+            this.$node.hide().contextDialog({
                 position: {
                     // где попап
                     at: (how.at ? how.at : 'center bottom'),// + ' center',
@@ -731,11 +749,15 @@ nb.define('popup-toggler', {
 
     /**
      * Sets connected popup
-     * @param {Object} params  - {
-    *       id : 'id' — popupID or link to nb.block
-    *       where: '#elem' — to what elem popup attached
-    *       how: { my: 'left', at:'right' } — to to open popup
-    *   }
+     * @param {Object} params
+     *
+     *  ```
+     *  {
+     *       id : 'id' — popupID or link to nb.block
+     *       where: '#elem' — to what elem popup attached
+     *       how: { my: 'left', at:'right' } — to to open popup
+     *   }
+     *  ```
      * @returns {Object} nb.block
      */
     setPopup: function(params) {
@@ -773,10 +795,14 @@ nb.define('popup-toggler', {
 
     /**
      * Sets connected popup options
-     * @param {Object} params - {
-    *       where: '#elem' — to what elem popup attached
-    *       how: { my: 'left', at:'right' } — to to open popup
-    *   }
+     * @param {Object} params
+     *   ```
+     *  {
+     *       id : 'id' — popupID or link to nb.block
+     *       where: '#elem' — to what elem popup attached
+     *       how: { my: 'left', at:'right' } — to to open popup
+     *   }
+     *  ```
      * @returns {Object} nb.block
      */
     setOptions: function(params) {

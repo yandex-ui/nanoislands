@@ -1,0 +1,9 @@
+func headers() {
+    show('header-default', nb-header({
+         'user': {
+                'username': 'Username'
+                'notices': '7'
+            }
+        })
+    )
+}

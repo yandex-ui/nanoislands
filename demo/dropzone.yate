@@ -1,22 +1,21 @@
 
 func dropzone() {
-    block = {
-           'head': 'Загрузка файлов'
-           'text': 'Перетащите файлы сюда или '
-           'button' : {
-               'size': 's'
-               'content': 'выбрите...'
-               'type': 'file'
-               'theme': 'pseudo'
-               'class': 'nb-dropzone-button'
-           }
-    }
     <div class="demo-section">
         <div class="demo-h3">
             'Зона для загрузки файла'
         </div>
 
-        show(nb-dropzone(block))
+        show(nb-dropzone({
+                                    'head': 'Загрузка файлов'
+                                    'text': 'Перетащите файлы сюда или '
+                                    'button' : {
+                                        'size': 's'
+                                        'content': 'выбрите...'
+                                        'type': 'file'
+                                        'theme': 'pseudo'
+                                        'class': 'nb-dropzone-button'
+                                    }
+                             }))
     </div>
 
 

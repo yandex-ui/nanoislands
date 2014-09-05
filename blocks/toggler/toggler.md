@@ -2,10 +2,6 @@
 
 ### Default toggler
 
-```
-nb-toggler()
-```
-
 * leftText — On
 * rightText — Off
 * size — s
@@ -20,118 +16,43 @@ nb-toggler()
 
 ### Example
 
-Turned on enabled toggler with custom a titles on the sides
+> <div example="toggler-s"/> 
+>
+> ```yate
+> nb-toggler({
+>     'leftText': 'On'
+>     'rightText': 'Off'
+> })
+> ```
 
-```
-nb-toggler({
-    'leftText': 'yep!'
-    'rightText': 'nope :-('
-    'checked': true()
-})
-```
+> <div example="toggler-m"/> 
+>
+> ```yate
+> nb-toggler({
+>     'leftText': 'On'
+>     'rightText': 'Off'
+>     'size': 'm'
+>     'checked': true()
+> })
+> ```
 
-## JS
+> <div example="toggler-xs"/> 
+>
+> ```yate
+>  nb-toggler({
+>      'leftText': 'On'
+>      'rightText': 'Off'
+>      'size': 'xs'
+>  })
+> ```
 
-### Toggler methods
-
-```
-
-// init component
-var toggler = nb.block(node);
-
-    /**
-     * Set value of the toggler
-     * @param {String} value of the check state
-     * @fires 'nb-value-set'
-     * @returns {Object} nb.block
-     */
-    toggler.setValue('value');
-
-    /**
-     * Returns value of the toggler
-     * @return {String} value
-     */
-    toggler.getValue();
-
-    /**
-     * Toggle to the oppocite value
-     * Do nothing if toggler is disabled
-     * @fires 'nb-changed'
-     * @returns {Object} nb.block
-     */
-    toggler.toggle();
-
-    /**
-     * Returns name of the toggler
-     * @return {String} value
-     */
-    toggler.getName();
-
-    /**
-     * Set name of the toggler
-     * @param {String} value
-     * @fires 'nb-name-set'
-     * @returns {Object} nb.block
-     */
-    toggler.setName(value);
-
-    /**
-     * Disable toggler
-     * @fires 'nb-disabled'
-     */
-    toggler.disable()
-
-    /**
-     * Enable toggler
-     * @fires 'nb-enabled'
-     */
-    enable()
-
-    /**
-     * Return enable state of the toggler
-     * @returns {Boolean}
-     */
-    toggler.isEnabled()
-
-
-    /**
-     * Focus the input
-     * @fires 'nb-focused'
-     * @returns {Object} nb.block
-     */
-    toggler.focus();
-
-    /**
-     * Blur the input
-     * @fires 'nb-blured'
-     * @returns {Object} nb.block
-     */
-    toggler.blur();
-
-    /**
-     * Return check state of the toggler
-     * @returns {Boolean}
-     */
-    toggler.isChecked();
-
-    /**
-     * Checking toggler
-     * @fires 'nb-checked'
-     * @returns {Object} nb.block
-     */
-    toggler.check();
-
-    /**
-     * Unchecking toggler
-     * @fires 'nb-unchecked'
-     * @returns {Object} nb.block
-     */
-    toggler.uncheck();
-
-    /**
-     * Destroy the toggler
-     */
-    toggler.destroy();
-
-```
-
+> <div example="toggler-d"/> 
+>
+> ```yate
+>  nb-toggler({
+>          'leftText': 'On'
+>          'rightText': 'Off'
+>          'size': 'm'
+>          'disabled': true()
+> })
+> ```

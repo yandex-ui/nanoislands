@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+
+    font: 86% sans-serif;
+}
+
+pre {
+    margin-right: 50%;
+}
+
+/**
+ * page
+ */
+.page {
+    position: relative;
+    margin: 0;
+    padding: 20px 0 0 0;
+    min-width: 954px;
+    min-height: 100%;
+
+    color: #333;
+}
+
+.page:before,
+.page:after {
+    content: "";
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    height: 18px;
+}
+
+.page:before {
+    top: 0;
+}
+
+.page:after {
+    bottom: 0;
+}
+
+.page-inner {
+    padding: 0 320px 0 40px;
+}
+
+.page-title {
+    font-size: 48px;
+    margin-top: 48px;
+}
+
+.page-input-error-button {
+    vertical-align: top;
+}
+
+/**
+ * blocks list
+ */
+.blocks {
+    list-style: none;
+    padding: 0;
+}
+
+.blocks-item {
+    padding-top: 18px;
+    margin: 40px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.blocks-item:first-child {
+    margin-top: 0;
+    border-top: 0;
+}
+
+.blocks-title {
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.blocks-settings {
+    margin: 20px 0;
+}
+
+/**
+ * menu
+ */
+.blocks-menu {
+    position: fixed;
+    right: 18px;
+    top: 80px;
+    bottom: 18px;
+    width: 250px;
+    overflow-y: scroll;
+    border: 1px dashed rgba(0,0,0,.15);
+    background-color: #fff;
+    padding: 0 18px;
+    margin: 0;
+}
+
+.blocks-menu-item {
+    margin: 10px 0 10px 20px;
+}
+
+.code_html {
+    /*display: none;*/
+}
+
+.link {
+    display: block;
+    width: 100px;
+    margin: auto;
+    text-align: center;
+}
+
+[example] .actions {
+    margin: 0.5rem 0;
+}
+
+[example] .actions .nb-button {
+    margin-right: 0.5rem;
+}

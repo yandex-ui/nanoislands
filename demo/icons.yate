@@ -290,11 +290,6 @@ func all-icons-m(boolean white) {
         'size': 'm'
         })
 
-         nb-icon({
-        'icon': 'play'
-        'size': 'm'
-        })
-
         nb-icon({
         'icon': 'three-dots'
         'size': 'm'

@@ -1,0 +1,81 @@
+func popups() {
+
+    show('popup1', nb-popup-menu({
+        'id': 'popup1'
+        'menu': [
+            {
+                 'attrs': {
+                      'daria-action': 'someCoolActon'
+                 }
+                 'class': [
+                      'someCoolClass'
+                 ]
+                 'href': '#'
+                 'content': 'Скопировать'
+            }
+            {
+                'href': '#'
+                'content': 'Переместить'
+            }
+            {
+                'separator': true()
+            }
+            {
+                'href': '#'
+                'content': 'Удалить'
+            }
+        ]
+    }))
+
+
+    show('popup-modal1',nb-popup-modal({
+           'id': 'modal-popup1'
+           'titleContent': 'Some modal popup'
+           'content': 'Some text for that popup'
+           'data-nb': {
+                'width': '300px'
+           }
+           'close': {
+                'class': 'ns-action'
+                'attrs': {
+                    'data-params': '123'
+                }
+           }
+           'buttons': {
+                'class': 'ns-subliew-buttons'
+                'data': [
+                {
+                   'content': 'Отправить'
+                   'size': 'm'
+                   'theme': 'action'
+                   'class': 'nb-popup__button'
+                }
+                {
+                   'content': 'Сохранить'
+                   'size': 'm'
+                   'class': 'nb-popup__button'
+                }
+            ]}
+
+       }))
+
+       show('genericPopup',nb-popup({
+           'id': 'genericPopup'
+           'titleContent': 'Hello, I’m your generic pop-up.'
+           'content': '<p>And welcome to nanoislands</p>'
+       }))
+
+       show('genericPopup',nb-popup({
+              'id': 'genericPopup1'
+              'titleContent': 'Hello, I’m your generic pop-up.'
+              'content': '<p>And welcome to nanoislands</p>'
+          }))
+
+       show('genericPopup2', nb-popup({
+           'id': 'genericPopup2'
+           'close': true()
+           'titleContent': 'Hello, I’m your generic pop-up.'
+           'content': '<p>And welcome to nanoislands</p>'
+       }))
+
+}

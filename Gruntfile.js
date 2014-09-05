@@ -32,7 +32,15 @@ module.exports = function(grunt) {
                 stdout: true,
                 failOnError: true
             }
+        },
+        rebuildDocs: {
+            command: "make docs",
+            options: {
+                stdout: true,
+                failOnError: true
+            }
         }
+
     };
 
     gruntConfig.watch = {
@@ -40,12 +48,16 @@ module.exports = function(grunt) {
             files: [
                 "<%= jshint.files %>",
                 "blocks/*/*.yate",
+                "blocks/*/*.md",
                 "blocks/*/*.styl",
-                "demo/*.yate"
+                "demo/*.yate",
+                "docs/*",
+                "docs/**/*"
             ],
             tasks: [
                 "codestyle",
-                "shell:rebuildNanoislands"
+                "shell:rebuildNanoislands",
+                "shell:rebuildDocs"
             ],
             options: {
                 // Start a live reload server on the default port 35729
