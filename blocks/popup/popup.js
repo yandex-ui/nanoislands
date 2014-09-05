@@ -108,7 +108,7 @@
                 var width;
                 var height;
 
-                $(ui.element.element[0]).css({top: 'auto', bottom: 'auto', left: 'auto', right: 'auto'})
+                $(ui.element.element[0]).css({top: 'auto', bottom: 'auto', left: 'auto', right: 'auto'});
 
                 if (ui.vertical == 'bottom') {
                     height = that.window.height();

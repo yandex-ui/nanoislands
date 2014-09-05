@@ -1,4 +1,5 @@
 ### Default button
+
 > <div example="button-default">
 > </div>
 >
@@ -35,6 +36,7 @@
 
 #### Types
 `'type': 'link'  'label'  'inline'  'file'`
+
 > <div example="buttons-type">
 > </div>
 >
