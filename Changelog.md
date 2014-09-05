@@ -1,3 +1,10 @@
+##### 0.4.27  — patch
+* new documentation in /docs/
+
+###### Fixes
+* #423 — Нет крестика у немодального попапа
+* #427 — Возвращаем класс _nb-is-hidden после destroy  
+
 ##### 0.4.26  — patch
 
 ###### Fixes
