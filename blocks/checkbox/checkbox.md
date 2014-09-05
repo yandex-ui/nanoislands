@@ -1,6 +1,7 @@
 ### Default checkbox
 
-<div example="checkbox-default" />
+> <div example="checkbox-default" />
+>
 > ```yate
 >     nb-checkbox()
 > ```
@@ -28,7 +29,8 @@
 
 #### checked
 
-<div example="checkbox-checked" />
+> <div example="checkbox-checked" />
+>
 > ```yate
 >     nb-checkbox({
 >         'checked': true()
@@ -37,7 +39,8 @@
 
 #### checkbox with label
 
-<div example="checkbox-label" />
+> <div example="checkbox-label" />
+>
 > ```yate
 >     nb-checkbox({
 >         'content': 'Do you want to be an icon for the disfranchised masses?'
@@ -47,8 +50,8 @@
 
 #### Sizes
 
-<div example="checkbox-sizes" />
-
+> <div example="checkbox-sizes" />
+>
 > ```yate
 >     nb-checkbox({
 >         'size': 'm'
@@ -63,7 +66,8 @@
 
 Button type of checkbox
 
-<div example="checkbox-button" />
+> <div example="checkbox-button" />
+>
 >```yate
 >    nb-checkbox({
 >        'type': 'button'
@@ -73,7 +77,8 @@ Button type of checkbox
 
 #### Disabled
 
-<div example="checkbox-disable-label" />
+> <div example="checkbox-disable-label" />
+>
 > ```yate
 >     nb-checkbox({
 >         'content': 'Bet you can`t check me!'
@@ -81,7 +86,8 @@ Button type of checkbox
 >     })
 > ```
 
-<div example="checkbox-disable-button" />
+> <div example="checkbox-disable-button" />
+>
 > ```yate
 >     nb-checkbox({
 >         'type': 'button'

@@ -54,7 +54,8 @@
 
 #### Sizes
 `m` / `s`
-<div example="selects-size"/>
+> <div example="selects-size"/>
+>
 > ```yate
 >    nb-select({
 >        'size': 'm'
@@ -104,7 +105,8 @@
 
 #### Themes
 `normal / pseudo / dark / action (yellow)`
-<div example="selects-theme"/>
+> <div example="selects-theme"/>
+>
 > ```yate
 >  nb-select({
 >      'size': 'm'
@@ -196,7 +198,9 @@
 > ```
 
 #### Disabled
-<div example="selects-disabled"/>
+
+> <div example="selects-disabled"/>
+>
 >```yate
 > nb-select({
 >     'disabled': true()
@@ -225,7 +229,8 @@
 >```
 
 #### Direction
-<div example="selects-direction"/>
+> <div example="selects-direction"/>
+>
 >```yate
 > nb-select({
 >     'direction': 'top'
@@ -254,7 +259,9 @@
 
 #### maxHeight
 {Number|String} number of visible items or string value of the max-height like '10em'
-<div example="selects-mh"/>
+
+> <div example="selects-mh"/>
+>
 >```yate
 > nb-select({
 >     'maxHeight': 3
@@ -285,7 +292,8 @@
 >```
 
 #### Group
-<div example="selects-group"/>
+> <div example="selects-group"/>
+>
 >```yate
 >    nb-select( {
 >        'id': 'select-gropu1'

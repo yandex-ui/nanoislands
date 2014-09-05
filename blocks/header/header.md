@@ -1,5 +1,6 @@
 ### Default Header
-<div example="header-default"/>
+> <div example="header-default"/>
+>
 > ```yate
 > nb-header({
 >        'user': {

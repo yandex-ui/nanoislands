@@ -1,5 +1,6 @@
 ### Default loader
-<div example="loader-m"/>
+> <div example="loader-m"/>
+>
 > ```yate
 >     nb-loader()
 > ```
@@ -14,7 +15,8 @@
 ### Examples
 
 Small loader:
-<div example="loader-s"/>
+> <div example="loader-s"/>
+>
 > ```yate
 >     nb-loader({
 >         'size': 's'
@@ -22,7 +24,8 @@ Small loader:
 > ```
 
 White medium loader on white background:
-<div example="loader-w"/>
+> <div example="loader-w"/>
+>
 > ```yate
 >     nb-loader({
 >         'color': 'white'

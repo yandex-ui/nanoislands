@@ -1,5 +1,6 @@
 ### Default dropzone
-<div example="dropzone-default"/>
+> <div example="dropzone-default"/>
+>
 > ```yate
 > nb-dropzone({
 >      'head': 'Upload files'

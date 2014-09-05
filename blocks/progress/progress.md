@@ -1,5 +1,6 @@
-Default progress
-<div example="progress"/>
+###Default progress
+> <div example="progress"/>
+>
 > ```yate
 >     nb-progress()
 > ```
@@ -21,7 +22,9 @@ Progress indicator with progressbar and ticking percentage, initialised at 0%:
 ### Examples
 
 Same thing, but in title mode and starting at 30%:
-<div example="progress-title"/>
+
+> <div example="progress-title"/>
+>
 > ```yate
 >     nb-progress({
 >         'id': 'progress1'

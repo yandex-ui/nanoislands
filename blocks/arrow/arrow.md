@@ -1,11 +1,14 @@
 ### Default arrow
-> <div example="arrow-default"/>
+
+> <div example="arrow-default">
+> </div>
+>
 > ```yate
 > nb-arrow()
 > ```
->
-> * search: 'true'
-> * buttonContent: 'Найти'
+
+* search: 'true'
+* buttonContent: 'Найти'
 
 ### Options
 
@@ -23,7 +26,9 @@
 
 Name of service:
 
-> <div example="arrow-service"/>
+> <div example="arrow-service">
+> </div>
+>
 > ```yate
 > nb-arrow({
 >     'search': 'false'
@@ -34,7 +39,9 @@ Name of service:
 
 Name of service with link:
 
-> <div example="arrow-service-link"/>
+> <div example="arrow-service-link">
+> </div>
+>
 > ```yate
 > nb-arrow({
 >     'search': 'false'
@@ -45,7 +52,9 @@ Name of service with link:
 
 Arrow with search form, prefilled and with requests info:
 
-> <div example="arrow-search-requests"/>
+> <div example="arrow-search-requests">
+> </div>
+>
 > ```yate
 > nb-arrow({
 >      'requests': '8 results'
@@ -59,7 +68,9 @@ Arrow with search form, prefilled and with requests info:
 
 Arrow with search form and namelink enabled:
 
-> <div  example="arrow-search-service" />
+> <div  example="arrow-search-service">
+> </div>
+>
 > ```yate
 > nb-arrow({
 >     'href': '#'

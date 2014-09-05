@@ -27,12 +27,6 @@ func popups() {
         ]
     }))
 
-    show('popup2', nb-popup({
-            'id': 'popup2'
-            'close': true()
-            'titleContent': 'Hello, I’m your generic pop-up.'
-            'content': '<p>And welcome to nanoislands</p>'
-        }))
 
     show('popup-modal1',nb-popup-modal({
            'id': 'modal-popup1'
@@ -70,4 +64,18 @@ func popups() {
            'titleContent': 'Hello, I’m your generic pop-up.'
            'content': '<p>And welcome to nanoislands</p>'
        }))
+
+       show('genericPopup',nb-popup({
+              'id': 'genericPopup1'
+              'titleContent': 'Hello, I’m your generic pop-up.'
+              'content': '<p>And welcome to nanoislands</p>'
+          }))
+
+       show('genericPopup2', nb-popup({
+           'id': 'genericPopup2'
+           'close': true()
+           'titleContent': 'Hello, I’m your generic pop-up.'
+           'content': '<p>And welcome to nanoislands</p>'
+       }))
+
 }

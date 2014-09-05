@@ -16,7 +16,8 @@
 
 ### Example
 
-<div example="toggler-s"/> 
+> <div example="toggler-s"/> 
+>
 > ```yate
 > nb-toggler({
 >     'leftText': 'On'
@@ -24,8 +25,8 @@
 > })
 > ```
 
-<div example="toggler-m"/> 
-
+> <div example="toggler-m"/> 
+>
 > ```yate
 > nb-toggler({
 >     'leftText': 'On'
@@ -35,8 +36,8 @@
 > })
 > ```
 
-<div example="toggler-xs"/> 
-
+> <div example="toggler-xs"/> 
+>
 > ```yate
 >  nb-toggler({
 >      'leftText': 'On'
@@ -45,8 +46,8 @@
 >  })
 > ```
 
-<div example="toggler-d"/> 
-
+> <div example="toggler-d"/> 
+>
 > ```yate
 >  nb-toggler({
 >          'leftText': 'On'

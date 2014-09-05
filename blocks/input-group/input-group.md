@@ -18,7 +18,8 @@ NB: For description of `button` and `input` see corresponding docs
 
 A button with an icon, then a text input field:
 
-<div example="input-group1"/>
+> <div example="input-group1"/>
+>
 > ```yate
 > nb-input-group({
 >    'button' : {
@@ -34,7 +35,8 @@ A button with an icon, then a text input field:
 
 A group of an input field and a button with text, disabled altogether as a whole:
 
-<div example="input-group"/>
+> <div example="input-group"/>
+>
 > ```yate
 > nb-input-group({
 >    'input' : {

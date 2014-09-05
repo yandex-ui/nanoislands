@@ -12,7 +12,8 @@ You have to explicitly pass icon name to nb-icon()
 ### Examples
 
 Small icon:
-<div example="icons-s"/>
+> <div example="icons-s"/>
+>
 >```yate
 >    nb-icon({
 >        'icon': 'link'
@@ -25,7 +26,8 @@ Small icon:
 >```
 
 Medium-sized icon:
-<div example="icons-m"/>
+> <div example="icons-m"/>
+>
 >```yate
 >    nb-icon({
 >        'icon': 'link-white'

@@ -103,6 +103,17 @@ pre {
     /*display: none;*/
 }
 
+.link {
+    display: block;
+    width: 100px;
+    margin: auto;
+    text-align: center;
+}
 
-.blockquote
-{}
+[example] .actions {
+    margin: 0.5rem 0;
+}
+
+[example] .actions .nb-button {
+    margin-right: 0.5rem;
+}

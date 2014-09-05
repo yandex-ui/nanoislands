@@ -97,6 +97,7 @@
             this._super();
             delete this.element[0].widget;
         },
+
         _position: function() {
             var that = this;
             var using = this.options.position.using;
@@ -107,16 +108,16 @@
                 var width;
                 var height;
 
+                $(ui.element.element[0]).css({top: 'auto', bottom: 'auto', left: 'auto', right: 'auto'})
+
                 if (ui.vertical == 'bottom') {
                     height = that.window.height();
-
                     position.bottom = height - (position.top + ui.element.height);
                     position.top = 'auto';
                 }
 
                 if (ui.horizontal == 'right') {
                     width = that.window.width();
-
                     position.right = width - (position.left + ui.element.width);
                     position.left = 'auto';
                 }
@@ -478,7 +479,7 @@
                 //  FIXME: Буэээ. Уродливое условие для варианта, когда заданы координаты вместо ноды.
                 if (where !== this.where || ( (where instanceof Array) && (where[0] !== this.where[0] || where[1] !== this.where[1] ))) {
                     //  На другой ноде. Передвигаем его в нужное место.
-                    this._move(where, how, params);
+                    this._move(where, how);
                 }
             } else {
                 //  Попап закрыт. Будем открывать.
@@ -634,7 +635,7 @@
                 return;
             }
 
-            $(this.node).contextDialog({
+            this.$node.hide().contextDialog({
                 position: {
                     // где попап
                     at: (how.at ? how.at : 'center bottom'),// + ' center',
@@ -792,7 +793,7 @@ nb.define('popup-toggler', {
         return this.options;
     },
 
-     /**
+    /**
      * Sets connected popup options
      * @param {Object} params
      *   ```

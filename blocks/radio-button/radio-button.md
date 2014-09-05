@@ -1,5 +1,6 @@
 ### Basic usage example:
-<div example="radio-buttons"/>
+> <div example="radio-buttons"/>
+>
 > ```yate
 > nb-radio-button({
 >       'size': 'm'

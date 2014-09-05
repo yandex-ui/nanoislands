@@ -20,19 +20,19 @@ Sides are `top`, `right`, `bottom` and `left`, each such class would add the mar
 There are a few of possible preset sizes for gaps: `xs`, `s`, `m` and `l`. Each side have a modifier for each size, creating classes like `nb-gap_top_xs` etc.
     'class': ['nb-with-xs-SIDE-gap']
 
-    <div example="gap-xs"/>
+<div example="gap-xs"/>
 
     'class': ['nb-with-s-SIDE-gap']
 
-    <div example="gap-s"/>
+<div example="gap-s"/>
 
     'class': ['nb-with-m-SIDE-gap']
 
-    <div example="gap-m"/>
+<div example="gap-m"/>
 
     'class': ['nb-with-l-SIDE-gap']
 
-    <div example="gap-l"/>
+<div example="gap-l"/>
 
 
 

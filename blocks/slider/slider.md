@@ -16,7 +16,8 @@
 * `'content'` {xml|string} — handle's content, can be string or `xml` _xss warning!_
 
 #### Example
-<div example="slider-s"/>
+> <div example="slider-s"/>
+>
 >```yate
 > nb-slider( {
 >    'id': 's2'
@@ -28,7 +29,8 @@
 > })
 > ```
 
-<div example="slider-m"/>
+> <div example="slider-m"/>
+>
 > ```yate
 > nb-slider({
 >      'size': 'm'
@@ -38,14 +40,16 @@
 >  })
 > ```
 
-<div example="slider-d"/>
+> <div example="slider-d"/>
+>
 > ```yate
 > nb-slider(  {
 >    'disabled': true()
 > })
 > ```
 
-<div example="slider-c"/>
+> <div example="slider-c"/>
+>
 > ```yate
 > nb-slider(  {
 >     'id': 's3'

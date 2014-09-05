@@ -8,7 +8,8 @@
 
 Basic island:
 
-<div example="island-simple"/>
+> <div example="island-simple"/>
+>
 > ```yate
 > nb-island({
 >   'content': 'Island'
@@ -20,7 +21,8 @@ Basic island:
 
 Flying island with an M-sized padding:
 
-<div example="island-fly"/>
+> <div example="island-fly"/>
+>
 > ```yate
 > nb-island({
 >     'content': 'Fly island'
@@ -34,7 +36,8 @@ Flying island with an M-sized padding:
 
 Inline island with an L-sized padding:
 
-<div example="island-padding"/>
+> <div example="island-padding"/>
+>
 > ```yate
 > nb-island({
 >   'content': 'Inline island with padding '

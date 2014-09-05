@@ -6,18 +6,9 @@ There are 2 parts of popup control:
 #### Options for popup toggler
 
 
-<a id="popup-toggler" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
-    <span class="link__inner">
-        "Default Toggler"
-    </span>
+<a `id="popup-toggler" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
+    <span class="link__inner">Default Toggler</span>
 </a>
->```html
-> <a id="popup-toggler" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
->    <span class="link__inner">
->        "Default Toggler"
->    </span>
-> </a>
->```
 
 * `id` {string} — id of connecte popup
 * `appendTo` {string} —  selector where append to
@@ -34,31 +25,32 @@ There are 2 parts of popup control:
 ```
 
 #### Example of generic popup menu
-<div example="popup1"/>
-<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
-    <span class="link__inner">
-        "Default"
-    </span>
-</a>
 
-<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'right', my: 'left'}}" href="#left">
-    <span class="link__inner">
-        "To left"
-    </span>
-</a>
+<div>
+    <a class="link" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
+        <span class="link__inner">
+            "Default"
+        </span>
+    </a>
+    <a class="link" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'right', my: 'left'}}" href="#left">
+        <span class="link__inner">
+            "To left"
+        </span>
+    </a>
+    <a class="link" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'left', my: 'right'}}" href="#right">
+        <span class="link__inner">
+            "To right"
+        </span>
+    </a>
+    <a class="link" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'top', my: 'bottom'}}" href="#right">
+        <span class="link__inner">
+            "To top"
+        </span>
+    </a>
+</div>
 
-<a style="margin-left: 150px;" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'left', my: 'right'}}" href="#right">
-    <span class="link__inner">
-        "To right"
-    </span>
-</a>
-
-<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1', how: { at: 'top', my: 'bottom'}}" href="#right">
-    <span class="link__inner">
-        "To top"
-    </span>
-</a>
-
+> <div example="popup1"/>
+> 
 > ```yate
 > nb-popup-menu({
 >     'id': 'popup1'
@@ -104,10 +96,8 @@ There are 2 parts of popup control:
         * `id` {string}
     * Object for separator:
         * `separator` {boolean} — `true()` to render separator
-
 * `size: m`
 * `theme: normal`
-
 
 ### Options for generic popup
 
@@ -124,14 +114,17 @@ There are 2 parts of popup control:
   * `attrs` {object} — custom attrs for close
 
 ### Example of generic popup
-<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'genericPopup'}" href="#right">
-    <span class="link__inner">
-        "generic popup"
-    </span>
-</a>
 
+<div>
+    <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'genericPopup'}" href="#right">
+        <span class="link__inner">
+            "generic popup"
+        </span>
+    </a>
+</div>
 
-
+> <div example="genericPopup"/>
+>
 >```yate
 >    nb-popup({
 >        'id': 'genericPopup'
@@ -140,23 +133,24 @@ There are 2 parts of popup control:
 >    })
 >```
 
+<div>
+    <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'genericPopup2'}" href="#default">
+        <span class="link__inner">
+            "generic popup  with close"
+        </span>
+    </a>
+</div>
 
-<div example="popup2"/>
-<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup2'}" href="#default">
-    <span class="link__inner">
-        "generic popup  with close"
-    </span>
-</a>
-
+> <div example="genericPopup2"/>
+>
 >```yate
 >    nb-popup({
->        'id': 'genericPopup'
+>        'id': 'genericPopup2'
 >        'close': true()
 >        'title': 'Hello, I’m your generic pop-up.'
 >        'content': '<p>And welcome to nanoislands</p>'
 >    })
 >```
-
 
 ### Default menu popup
 * `id` {string}
@@ -175,11 +169,14 @@ There are 2 parts of popup control:
         * `separator` {boolean} — `true()` to render separator
 
 ### Menu popup example
-<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
-    <span class="link__inner">
-        "Popup menu"
-    </span>
-</a>
+
+<div>
+    <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
+        <span class="link__inner">
+            "Popup menu"
+        </span>
+    </a>
+</div>
 
 >```yate
 >    nb-popup-menu({
@@ -226,15 +223,20 @@ There are 2 parts of popup control:
     * `minHeight` {string}
 
 ### Modal popup example:
-<a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'modal-popup1'}" href="#modal">
-    <span class="link__inner">
-        "Modal popup"
-    </span>
-</a>
-<div example="modal-popup1"/>
+
+<div>
+    <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup-modal1'}" href="#modal">
+        <span class="link__inner">
+            "Modal popup"
+        </span>
+    </a>
+</div>
+
+> <div example="popup-modal1"/>
+>
 >```yate
 >    nb-popup-modal({
->       'id': 'modal-popup1'
+>       'id': 'popup-modal1'
 >       'title': 'Some modal popup'
 >       'content': 'Some text for that popup'
 >       'data-nb': {
@@ -264,6 +266,4 @@ There are 2 parts of popup control:
 >
 >   })
 >```
-
-
 ## JSDOC

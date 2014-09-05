@@ -1,5 +1,7 @@
 ### Default button
-<div example="button-default"/>
+> <div example="button-default">
+> </div>
+>
 > ```yate
 > nb-button({
 >     'content': 'Button'
@@ -33,7 +35,9 @@
 
 #### Types
 `'type': 'link'  'label'  'inline'  'file'`
-<div example="buttons-type"/>
+> <div example="buttons-type">
+> </div>
+>
 > ```yate
 > nb-button({
 >     'content': 'Link button'
@@ -63,7 +67,9 @@
 > ```
 
 #### Size
-<div example="buttons-size" />
+> <div example="buttons-size" >
+> </div>
+>
 > ```yate
 > nb-button({
 >     'content': 'Small'
@@ -89,7 +95,9 @@
 
 #### Themes
 `'theme': 'action'  'pseudo'  'dark'  'promo'`
-<div example="buttons-theme" />
+> <div example="buttons-theme" >
+> </div>
+>
 > ```yate
 > nb-button({
 >     'content': 'Action'
@@ -114,7 +122,9 @@
 > ```
 
 #### Icons
-<div example="buttons-icon" />
+> <div example="buttons-icon" >
+> </div>
+>
 > ```yate
 > nb-button({
 >     'icon': 'eye'
@@ -133,7 +143,9 @@
 > ```
 
 #### Disabled
-<div example="button-disabled" />
+> <div example="button-disabled" >
+> </div>
+>
 > ```yate
 > nb-button({
 >   'disabled': true()

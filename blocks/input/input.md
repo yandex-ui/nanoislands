@@ -1,6 +1,7 @@
 ### Default input
 
-<div example="input-simple"/>
+> <div example="input-simple"/>
+>
 > ```yate
 > nb-input({
 >   'content': 'hello, world!',
@@ -8,7 +9,8 @@
 > })
 > ```
 >
-> * size: 's'
+
+* size: 's'
 
 ### Options
 
@@ -31,7 +33,8 @@
 
 ### Types
 
-<div example="input-simple-left-content"/>
+> <div example="input-simple-left-content"/>
+>
 > ```yate
 > nb-input({
 >     'leftContent': 'hello, world!'
@@ -39,7 +42,8 @@
 > })
 > ```
 
-<div example="input-simple-right-content"/>
+> <div example="input-simple-right-content"/>
+>
 > ```yate
 > nb-input({
 >     'rightContent': 'hello, world!'
@@ -47,7 +51,8 @@
 > })
 > ```
 
-<div example="input-simple-reset"/>
+> <div example="input-simple-reset"/>
+>
 > ```yate
 > nb-input({
 >     'reset': true()
@@ -56,7 +61,8 @@
 > })
 > ```
 
-<div example="input-simple-hint"/>
+> <div example="input-simple-hint"/>
+>
 > ```yate
 > nb-input({
 >     'name': 'greetings'
@@ -64,7 +70,8 @@
 > })
 > ```
 
-<div example="input-simple-hint-ghost"/>
+> <div example="input-simple-hint-ghost"/>
+>
 > ```yate
 > nb-input({
 >     'name': 'greetings'
@@ -75,7 +82,8 @@
 > })
 > ```
 
-<div example="input-simple-error"/>
+> <div example="input-simple-error"/>
+>
 > ```yate
 > nb-input({
 >     'name': 'greetings'
@@ -85,7 +93,8 @@
 > })
 > ```
 
-<div example="input-multiline"/>
+> <div example="input-multiline"/>
+>
 > ```yate
 > nb-input({
 >     'content': 'hello, world!'
@@ -94,7 +103,8 @@
 > })
 > ```
 
-<div example="input-multiline-rightContent"/>
+> <div example="input-multiline-rightContent"/>
+>
 > ```yate
 > nb-input({
 >     'rightContent': 'hello, world!'
@@ -105,7 +115,8 @@
 
 ### Sizes
 
-<div example="input-size-s"/>
+> <div example="input-size-s"/>
+>
 > ```yate
 > nb-input({
 >     'size': 's'
@@ -114,7 +125,8 @@
 > })
 > ```
 
-<div example="input-size-m"/>
+> <div example="input-size-m"/>
+>
 > ```yate
 > nb-input({
 >     'size': 'm'
@@ -125,7 +137,8 @@
 
 ### Disabled
 
-<div example="input-simple-disabled"/>
+> <div example="input-simple-disabled"/>
+>
 > ```yate
 > nb-input({
 >     'content': 'hello, world!'
@@ -134,7 +147,8 @@
 > })
 > ```
 
-<div example="input-multiline-disabled"/>
+> <div example="input-multiline-disabled"/>
+>
 > ```yate
 > nb-input({
 >     'content': 'hello, world!'

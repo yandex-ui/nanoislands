@@ -48,7 +48,19 @@ include "../blocks/toggler/toggler.example.yate"
 
 
 match / {
-            arrows()
+
+            nb-header({
+                'arrow': {
+                    'search': 'false'
+                    'text': 'Nanoislands'
+                }
+                'settings': false()
+                'services': false()
+            })
+
+
+            <div class="page-inner">
+ arrows()
             buttons()
             inputs()
             checkbox()
@@ -67,16 +79,6 @@ match / {
             sliders()
             suggests()
             togglers()
-            nb-header({
-                'arrow': {
-                    'search': 'false'
-                    'text': 'Nanoislands'
-                }
-                'settings': false()
-                'services': false()
-            })
-            <div class="page-inner">
-
                 <ol class="blocks-menu">
                     apply .* blocks-menu-item
                 </ol>
@@ -98,10 +100,17 @@ match .* blocks-menu-item {
 
 match .* blocks-item {
     <li class="blocks-item" id="{ .block }">
-        apply .md
+        <h1>
+             .block
+        </h1>
+        html(.md)
         if .jsdoc {
-            <h3>JSdoc</h3>
-            apply .jsdoc
+            <div class="jsdoc">
+                <h3 class="jsdoc__title"><a href="#">JS API </a></h3>
+                <div class="jsdoc__content">
+                    apply .jsdoc
+                </div>
+            </div>
         }
 
     </li>

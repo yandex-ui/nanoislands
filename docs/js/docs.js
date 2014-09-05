@@ -5,23 +5,53 @@ $.getJSON('js/_data.json', function(data) {
     $('.content').html(result);
 
     $('[example]').each(function(i, el) {
-        var $code = $('[code=' + $(el).attr('example') +']');
-        $(el).append($code.html());
+        var $el = $(el);
+
+        var $code = $('[code=' + $el.attr('example') + ']');
+        $el.append($code.html());
         $code.remove();
+
+
+        var $podium = $el.find('.podium');
+        var $html = $el.find('.code_html');
+        var $yate = $el.parent().find('.code_yate');
+
+        $yate.hide();
+        $yate.appendTo($el);
+
+        $html.hide();
+
+        var linkYate = makeButton('Yate code').on('click', function() {
+            $yate.toggle();
+        });
+
+        var linkHtml = makeButton('HTML code').on('click', function() {
+            $html.toggle();
+        })
+
+        var actions = $('<div class="actions"></div>').append(linkYate).append(linkHtml)
+        actions.insertAfter($podium)
     })
 
-    $('.code_yate').each(function(i, el){
+    $('.jsdoc').each(function(i, el){
         var $el = $(el);
-        var $code = $(el).find('pre');
-        $code .hide()
-        var link = $('<a data-nb="button" class="nb-button _nb-small-pseudo-button"><span class="_nb-button-content">Yate code</span></a>').on('click', function(){
-            $code.toggle();
+        var $content = $el.find('.jsdoc__content')
+        var $link = $el.find('.jsdoc__title a')
+        $content.hide()
+
+        $link.on('click', function(evt, el){
+            evt.preventDefault();
+            $content.toggle();
         })
-        $el.prepend(link)
+
     })
+
 
     nb.init();
 
+    function makeButton(content) {
+        return $('<a data-nb="button" class="nb-button _nb-small-pseudo-button"><span class="_nb-button-content">' + content + '</span></a>')
+    }
 
     function unescapeHTML(input) {
         var e = document.createElement('div');
