@@ -57,7 +57,7 @@
                 }
             }
 
-            this._onresize = $.throttle(this._position.bind(this), TIME_PER_FRAME, false, false);
+            this._onresize = $.throttle(TIME_PER_FRAME, this._position.bind(this));
             this.window.on('resize', this._onresize);
 
 
