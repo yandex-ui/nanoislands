@@ -94,8 +94,20 @@ describe("Input Tests", function() {
 
         it("Input with reset param should have reset markup", function() {
             var input = nb.find('input-reset');
-            expect(input.$node.find('._nb-input-reset').length).to.be.equal(1);
+            expect(input.$reset.length).to.be.equal(1);
         });
+
+        it("reset should be hidden after reset()", function() {
+            var input = nb.find('input-reset');
+            input.reset();
+            expect(input.$reset.css('visibility')).to.equal('hidden');
+        });
+
+        it("reset should be hidden with empty value", function() {
+            var input = nb.find('input-reset-empty');
+            expect(input.$reset.css('visibility')).to.equal('hidden');
+        });
+
         it("Input with reset param should be complex", function() {
             var input = nb.find('input-reset');
             expect(input.nbdata().type).to.not.equal('simple');

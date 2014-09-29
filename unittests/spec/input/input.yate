@@ -26,6 +26,11 @@ match .input {
    })
 
    nb-input({
+         'id': 'input-reset-empty'
+         'reset': true()
+   })
+
+   nb-input({
         'id': 'input-left-right'
         'leftContent': 'prefix'
         'rightContent': 'postfix'
