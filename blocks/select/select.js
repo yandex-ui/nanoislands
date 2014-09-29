@@ -360,9 +360,9 @@ nb.define('select', {
                 var selected;
 
                 if (params.value) {
-                    selected = this.$control.find('option[value="' + params.value + '"]');
+                    selected = this.$control.find('option[value="' + params.value + '"]').first();
                 } else {
-                    selected = this.$control.find('option:contains(' + params.text + ')');
+                    selected = this.$control.find('option:contains(' + params.text + ')').first();
                 }
 
                 if (selected.length !== 0) {

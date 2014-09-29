@@ -150,5 +150,22 @@ nb-select({
 })
 
 
+nb-select({
+    'id': 'select-texttext'
+    'items': [
+        {
+            'value': ''
+            'text': 'Text'
+            'selected': false()
+        }
+        {
+            'value': 'whatever'
+            'text': 'Text'
+            'selected': false()
+        }
+    ]
+})
+
+
 
 }

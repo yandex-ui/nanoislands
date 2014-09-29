@@ -604,6 +604,12 @@ describe("Select Tests", function() {
                 expect(flag).to.equal(1);
             });
 
+
+            it("#422", function() {
+                nb.find('select-texttext').setState({'text': 'Text'});
+                expect(nb.find('select-texttext').$node.find('._nb-button-content').html()).to.equal('Text');
+            });
+
             it("XSS in _setText", function() {
                 this.select.addToSource({
                     'selected': true,
