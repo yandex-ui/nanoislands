@@ -1,3 +1,9 @@
+##### 0.4.30 — patch
+
+###### Fixes
+* #274 — Input – при вызове showError() теряется фокус с инпута 
+* #393 — Option to show reset only when there is something to clear 
+
 ##### 0.4.29 — patch
 
 ###### Fixes
