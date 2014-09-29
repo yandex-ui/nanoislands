@@ -162,6 +162,7 @@ nb.define('input', {
      * @returns {Object} nb.block
      */
     showError: function(params) {
+        var wasFocused = this.focused;
         var params = params || {};
 
         if (this.data.error) {
@@ -189,6 +190,7 @@ nb.define('input', {
             }
 
             if (!this.error.isOpen()) {
+
                 this.error.open({
                     autoclose: params.autoclose || false,
                     autofocus: false,
@@ -196,9 +198,11 @@ nb.define('input', {
                     how: params.how || how,
                     appendTo: params.appendTo || false
                 });
+
+                if (wasFocused) {
+                    this._onfocus();
+                }
             }
-
-
         }
         return this;
     },

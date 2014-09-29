@@ -168,6 +168,15 @@ describe("Input Tests", function() {
         });
     });
 
+    describe("showError()", function() {
+        it("should return focus to input", function() {
+            var input = nb.find('input-error');
+            input.focus();
+            input.showError();
+            expect(input.focused).to.be.ok();
+        });
+    });
+
     describe("hideError()", function() {
         it("error should be hidden", function() {
             var input = nb.find('input-error');
