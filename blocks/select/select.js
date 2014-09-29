@@ -162,7 +162,6 @@ nb.define('select', {
                 that.isOpen = false;
             });
 
-
 // redefine one menu item rendering method, fires every time, then popup opening
             that.$jUI._renderItem = function(ul, item) {
                 var $itemNode = $('<li class="_nb-select-item"></li>');
@@ -268,8 +267,8 @@ nb.define('select', {
         },
 
         _setText: function(params) {
-            var content =  this.$node.find('._nb-button-content');
-            if (params.text || params.icon ) {
+            var content = this.$node.find('._nb-button-content');
+            if (params.text || params.icon) {
                 // use .text() to prevent XSS
                 content.text(params.text);
                 if (params.icon) {
