@@ -1,5 +1,5 @@
 (function() {
-    
+
 var bindOninput = function(block, callback) {
     if (block.$control.get(0).attachEvent) {
         //IE8 does not supports oninput events: https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.oninput
@@ -55,7 +55,7 @@ nb.define('input', {
         this.value = this.getValue();
 
         this.$control.on('change', function(e) {
-            that.trigger('nb-changed', that, e);
+            that.trigger('nb-changed', this, e);
         });
 
         bindOninput(this, function(e) {

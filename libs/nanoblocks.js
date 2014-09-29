@@ -419,14 +419,14 @@ var nb = nb || {};
 //  "Генерим" кастомное событие name.
 //  Т.е. вызываем по очереди (в порядке подписки) все обработчики события name.
 //  В каждый передаем name и params.
-    Block.prototype.trigger = function(name, params) {
+    Block.prototype.trigger = function(name) {
         //  Копируем список хэндлеров. Если вдруг внутри какого-то обработчика будет вызван off(),
         //  то мы не потеряем вызов следующего обработчика.
-        var handlers = this.__getHandlers(name).slice();
+        var handlers = this.__getHandlers(arguments[0]).slice();
 
         for (var i = 0, l = handlers.length; i < l; i++) {
             //  Вызываем обработчик в контексте this.
-            handlers[i].call(this, name, params);
+            handlers[i].apply(this, arguments);
         }
     };
 

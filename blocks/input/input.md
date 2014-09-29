@@ -157,3 +157,23 @@
 >     'disabled': true()
 > })
 > ```
+
+### Events
+
+#### nb-input
+On native control input
+
+Arguments:
+
+* event name
+* block
+* original event
+
+#### nb-changed 
+On native control change
+
+Arguments:
+
+* event name
+* block
+* original event
