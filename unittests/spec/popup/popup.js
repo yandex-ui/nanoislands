@@ -140,10 +140,45 @@ describe("Popup Tests", function() {
             expect(this.toggler.getOptions().where).to.equal('.content');
         });
 
-        it("should destroy nb.block", function() {
-            this.toggler.destroy();
-            expect(nb.hasBlock($('#popup-toggler')[0])).to.be.equal(false);
+
+        it("#disable() check state", function() {
+            this.toggler.disable();
+            expect(this.toggler.isEnabled()).to.not.ok();
         });
+
+        it("#disable() check event", function() {
+            var flag = true;
+
+            this.toggler.on('nb-disabled', function() {
+                flag = false;
+            });
+
+            this.toggler.disable();
+
+            expect(flag).to.not.ok();
+        });
+
+        it("#enable() check state", function() {
+            this.toggler.disable();
+            this.toggler.enable();
+            expect(this.toggler.isEnabled()).to.ok();
+        });
+
+        it("#enable() check event", function() {
+            var flag = false;
+            this.toggler.on('nb-enabled', function() {
+                flag = true;
+            });
+
+            this.toggler.disable();
+            this.toggler.enable();
+            expect(flag).to.ok();
+        });
+        it("should destroy nb.block", function() {
+                   this.toggler.destroy();
+                   expect(nb.hasBlock($('#popup-toggler')[0])).to.be.equal(false);
+               });
+
     });
 
     describe("#Popup", function() {

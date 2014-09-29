@@ -720,7 +720,7 @@ nb.define('popup-toggler', {
         if (evt) {
             evt.preventDefault();
         }
-        if (!this.$node.hasClass('_nb-is-disabled') && this.popup && !this.popup.isOpen()) {
+        if (this.isEnabled() && this.popup && !this.popup.isOpen()) {
             this.popup.open(this.options);
             this.trigger('nb-opened', this);
         }
@@ -733,7 +733,7 @@ nb.define('popup-toggler', {
      * @returns {Object} nb.block
      */
     close: function() {
-        if (!this.$node.hasClass('_nb-is-disabled') && this.popup && this.popup.isOpen()) {
+        if (this.isEnabled() && this.popup && this.popup.isOpen()) {
             this.popup.close();
             this.trigger('nb-closed', this);
         }
@@ -812,6 +812,51 @@ nb.define('popup-toggler', {
             this.trigger('nb-options-set', this);
         }
         return this;
+    },
+
+    /**
+     * Disable the toggler
+     *
+     * ```
+     * popupToggler.disable();
+     * ```
+     *
+     * @fires 'nb-disabled'
+     * @return {Object} blocks for chaining
+     */
+    disable: function() {
+        this._tabindex = this.$node.attr('tabindex');
+        this.$node.attr('tabindex', '-1');
+        this.$node.addClass('_nb-is-disabled');
+        this.trigger('nb-disabled', this);
+        return this;
+    },
+
+    /**
+     * Enables the  toggler
+     *
+     * ```
+     * popupToggler.enable();
+     * ```
+     *
+     * @fires 'nb-enabled'
+     * @return {Object} blocks for chaining
+     */
+    enable: function() {
+        this.$node.attr('tabindex', this._tabindex || '0');
+        this.$node.removeClass('_nb-is-disabled');
+        this.trigger('nb-enabled', this);
+        return this;
+    },
+
+    /**
+     * Return state of the toggler
+     *
+     *
+     * @return {Boolean}
+     */
+    isEnabled: function() {
+        return !this.$node.hasClass('_nb-is-disabled');
     },
 
     /**

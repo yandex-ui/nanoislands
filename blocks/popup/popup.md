@@ -6,7 +6,7 @@ There are 2 parts of popup control:
 #### Options for popup toggler
 
 
-<a `id="popup-toggler" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
+<a id="popup-toggler" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup1'}" href="#default">
     <span class="link__inner">Default Toggler</span>
 </a>
 
