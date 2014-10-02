@@ -1,0 +1,26 @@
+func islands() {
+
+    show('island-simple', nb-island({
+       'content': 'Island'
+       'attrs': {
+           'style': 'height: 100px; width: 200px'
+       }
+    }))
+
+
+      show('island-fly', nb-island({
+          'content': 'Fly island'
+          'type': 'fly'
+          'padding': 'm'
+          'attrs': {
+              'style': 'height: 100px; width: 200px'
+          }
+        }))
+
+      show('island-padding', nb-island({
+          'content': 'Inline island with padding'
+          'padding': 'l'
+          'type':  'inline'
+      }))
+
+}

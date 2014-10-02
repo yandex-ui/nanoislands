@@ -1,0 +1,314 @@
+func selects() {
+
+    selects-theme = (
+        nb-select({
+            'size': 'm'
+            'id': 'select1'
+            'attrs': {
+                'name': 'myname'
+            }
+            'class': 'my-test-class'
+            'items': [
+                {
+                    'text': 'Карта'
+                    'value': 'option1'
+                }
+                {
+                    'text': 'Спутник'
+                    'value': 'option2'
+                }
+                {
+                    'text': 'Гибрид'
+                    'value': 'option3'
+                }
+            ]
+        })
+        ' '
+        nb-select({
+          'size': 'm'
+          'id': 'select3'
+          'class': 'my-test-class'
+          'theme': 'pseudo'
+          'items': [
+              {
+                  'text': 'Карта'
+                  'value': 'option1'
+                  'selected': 'true'
+              }
+              {
+                  'text': 'Спутник'
+                  'value': 'option2'
+              }
+              {
+                  'text': 'Гибрид'
+                  'value': 'option3'
+              }
+          ]
+        })
+        ' '
+        nb-select( {
+          'size': 'm'
+          'id': 'select4'
+          'class': 'my-test-class'
+          'theme': 'dark'
+          'items': [
+              {
+                  'text': 'Карта'
+                  'value': 'option1'
+                  'selected': 'true'
+              }
+              {
+                  'text': 'Спутник'
+                  'value': 'option2'
+              }
+              {
+                  'text': 'Гибрид'
+                  'value': 'option3'
+              }
+          ]
+        })
+        ' '
+        nb-select({
+          'size': 'm'
+          'id': 'select5'
+          'class': 'my-test-class'
+          'theme': 'action'
+          'attrs': {
+            'style': 'width: 120px'
+          }
+          'items': [
+              {
+                  'text': 'Народная карта'
+                  'value': 'option0'
+                  'selected': 'true'
+              }
+              {
+                  'text': 'Карта'
+                  'value': 'option1'
+              }
+          ]
+        })
+    )
+
+    show('selects-theme', selects-theme)
+
+    show('selects-group', nb-select( {
+        'size': 'm'
+        'id': 'select-gropu1'
+        'class': 'my-test-class'
+        'items': [
+            {
+                'text': 'Карта'
+                'value': 'option1'
+                'selected': 'true'
+            }
+            {
+                'text': 'Спутник'
+                'value': 'option2'
+            }
+            {
+                'text': 'Гибрид'
+                'value': 'option3'
+            }
+
+            {
+                'text': 'Группа'
+                'group': [
+                      {
+                          'text': 'Супер Карта'
+                          'value': 'option4'
+                      }
+                      {
+                          'text': 'Супер Спутник'
+                          'value': 'option5'
+                      }
+                      {
+                          'text': 'Супер Гибрид'
+                          'value': 'option6'
+                      }
+                ]
+            }
+        ]
+      })
+    )
+
+     selects-size = (
+            nb-select({
+                'size': 'm'
+                'items': [
+                    {
+                       'icon': 'twitter'
+                       'text': 'Twitter'
+                       'value': 'option0'
+                       'selected': 'true'
+                    }
+                    {
+                       'icon': 'vk'
+                       'text': 'VK'
+                       'value': 'option1'
+                    }
+                    {
+                       'text': 'Ещё'
+                       'value': 'option4'
+                       'icon': 'three-dots'
+                    }
+                ]
+            })
+            ' '
+            nb-select({
+                'size': 's'
+                'items': [
+                    {
+                       'icon': 'twitter'
+                       'text': 'Twitter'
+                       'value': 'option0'
+                       'selected': 'true'
+                    }
+                    {
+                       'icon': 'vk'
+                       'text': 'VK'
+                       'value': 'option1'
+                    }
+                    {
+                       'text': 'Ещё'
+                       'value': 'option4'
+                       'icon': 'three-dots'
+                    }
+                ]
+            })
+            " Текст рядом с селектами"
+        )
+
+    show('selects-size', selects-size)
+
+    selects-simple = (
+        nb-select({
+            'items': [
+                {
+                   'icon': 'twitter'
+                   'text': 'Twitter'
+                   'value': 'option0'
+                   'selected': 'true'
+                }
+                {
+                   'icon': 'vk'
+                   'text': 'VK'
+                   'value': 'option1'
+                }
+                {
+                   'text': 'Ещё'
+                   'value': 'option4'
+                   'icon': 'three-dots'
+                }
+            ]
+        })
+        " Текст рядом с селектами"
+    )
+
+    show('selects-simple', selects-simple)
+    show('selects-disabled',  nb-select({
+        'disabled': true()
+        'items': [
+            {
+                'icon': 'twitter'
+                'text': 'Twitter'
+                'value': 'option0'
+                'selected': 'true'
+            }
+            {
+                'icon': 'vk'
+                'text': 'VK'
+                'value': 'option1'
+            }
+            {
+                'text': 'Ещё'
+                'value': 'option4'
+                'icon': 'three-dots'
+            }
+        ]
+    }))
+    show('selects-direction',  nb-select({
+        'direction': 'top'
+        'items': [
+            {
+                'icon': 'twitter'
+                'text': 'Twitter'
+                'value': 'option0'
+                'selected': 'true'
+            }
+            {
+                'icon': 'vk'
+                'text': 'VK'
+                'value': 'option1'
+            }
+            {
+                'text': 'Ещё'
+                'value': 'option4'
+                'icon': 'three-dots'
+            }
+        ]
+    }))
+    show('selects-mh',  nb-select({
+        'maxHeight': 3
+        'items': [
+            {
+                'icon': 'twitter'
+                'text': 'Twitter'
+                'value': 'option0'
+                'selected': 'true'
+            }
+            {
+                'icon': 'vk'
+                'text': 'VK'
+                'value': 'option1'
+            }
+            {
+                'icon': 'vk'
+                'text': 'VK'
+                'value': 'option1'
+            }
+            {
+                'text': 'Ещё'
+                'value': 'option4'
+                'icon': 'three-dots'
+            }
+        ]
+    }))
+    show('selects-group', nb-select( {
+        'id': 'select-gropu1'
+        'class': 'my-test-class'
+        'items': [
+            {
+                'text': 'Карта'
+                'value': 'option1'
+                'selected': 'true'
+            }
+            {
+                'text': 'Спутник'
+                'value': 'option2'
+            }
+            {
+                'text': 'Гибрид'
+                'value': 'option3'
+            }
+
+            {
+                'text': 'Группа'
+                'group': [
+                      {
+                          'text': 'Супер Карта'
+                          'value': 'option4'
+                      }
+                      {
+                          'text': 'Супер Спутник'
+                          'value': 'option5'
+                      }
+                      {
+                          'text': 'Супер Гибрид'
+                          'value': 'option6'
+                      }
+                ]
+            }
+        ]
+      }))
+}

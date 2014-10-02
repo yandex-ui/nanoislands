@@ -1,0 +1,2 @@
+npm update
+node node_modules/.bin/normalize > index.html

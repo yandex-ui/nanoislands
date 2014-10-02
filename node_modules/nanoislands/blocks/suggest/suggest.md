@@ -1,12 +1,5 @@
-# Suggest
-
 Suggest element.
 
-## Yate
-
-```
-nb-suggest(options)
-```
 
 ### Options
  * `'id'` {string}
@@ -23,164 +16,37 @@ nb-suggest(options)
 
 
 ### Examples
+Простейший саджест с большим количеством вариантов. Введите буквы «Ва»
 
-```
-nb-suggest({
-     'source': [
-        'Вариант 1'
-        'Вариант 2'
-     ]
-     'highlight': true()
- })
-```
+> <div example="suggest"/>                                                         
+>
+> ```yate                                                                         
+> nb-suggest({
+>   'source': '["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7", "Вариант 8", "Вариант 9", "Вариант 10", "Вариант 11", "Вариант 12", "Вариант 13", "Вариант 14", "Вариант 15", "Вариант 16", "Вариант 17", "Вариант 18", "Вариант 19"]'
+>   'highlight': true()
+>   'size': 's'
+> })                                                                           
+> ```                                                                             
 
+Саджест с подсветкой, в котором представлена команда разработчиков Диска
 
-## JS
+> <div example="suggestUser"/>                                                         
+>
+> ```yate
+>nb-suggest({
+>     'source': '[{{"value": "Константин Константинович Константинопольский","labelContent": "Константин Константинович Константинопольский konstantin.konstantinopolsky","username": "Константин Константинович Константинопольский","email": "konstantin.konstantinopolsky@yandex-team.ru"}},{{"value": "Константин Васильев","labelContent": "Константин Васильев mctep","username": "Константин Васильев","email": "mctep@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/mctep/avatar/54.jpg"}},{{"value": "Евгений Дорошенко","labelContent": "Евгений Дорошенко esdoroshenko","username": "Евгений Дорошенко","email": "esdoroshenko@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/esdoroshenko/avatar/54.jpg"}},{{"value": "Вадим Пацев","labelContent": "Вадим Пацев basvasilich","username": "Вадим Пацев","email": "basvasilich@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/basvasilich/avatar/54.jpg"}},{{"value": "Светлана Блыщак","labelContent": "Светлана Блыщак sweetlush","username": "Светлана Блыщак","email": "sweetlush@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/sweetlush/avatar/54.jpg"}},{{"value": "Яна Недоросткова","labelContent": "Яна Недоросткова yanann11","username": "Яна Недоросткова","email": "yanann11@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/yanann11/avatar/54.jpg"}},{{"value": "Азиз Йулдошев","labelContent": "Азиз Йулдошев lapple","username": "Азиз Йулдошев","email": "lapple@yandex-team.ru","userpic": "https://center.yandex-team.ru/api/v1/user/lapple/avatar/54.jpg"}}]'
+>     'highlight': true()
+>     'type': 'username'
+> })
+> ```
 
-### Initialization
+Саджест, который ходит на сервер за demo/users.json.
 
-Initialize nb block on DOM node:
-```
-    nb.block(node);
-```
-Initialize all nb blocks with class '_init' within DOM node
-```
-    nb.init(node);
-```
-
-### Events
-
- * nb-type – bubble when enter a value
- * nb-select – bubble when select in suggest popup
- * nb-keypress-enter – bubble when input keypressed
-
-### Methods
-
-suggest — nb block
-
-```
-
-/**
-* Get selected item from suggest
-* @return {Object}
-*/
-suggest.getSelected();
-
-/**
-* Sets option to the jUI widget
-* http://api.jqueryui.com/autocomplete/#method-option
-* @param  {Object.<string, number>} option — {
-*      name: value —  имя и значение опцииопции
-* }
-* @fires 'nb-option-set'
-* @returns {Object} nb.block
-*/
-suggest.setOption({autoFocus: true});
-
-
-/**
-* Gets option of the jUI widget
-* http://api.jqueryui.com/autocomplete/#method-option
-* @param {String} option
-* @returns {String} option value
-*/
-suggest.getOption();
-
-/*
-* Set new items for suggest
-* @params {Array} source New source
-* @fires 'nb-source-changed'
-* @returns {Object} nb.block
-*/
-suggest.setSource(['var1', 'var2', 'var3']);
-
-/*
-* Get items from suggest
-* @returns {Array} source
-*/
-suggest.getSource();
-
-/**
-* Скрывает список предложений
-* @fires 'nb-closed'
-* @returns {Object} nb.block
-*/
-suggest.close();
-
-/**
-* Disables the suggest
-* @fires 'nb-disabled'
-* @returns {Object} nb.block
-*/
-suggest.disable();
-
-/**
-* Enables the suggest
-* @fires 'nb-enabled'
-* @returns {Object} nb.block
-*/
-suggest.enable();
-
-/**
-* Return state of the suggest
-* @returns {Boolean}
-*/
-suggest.isEnabled();
-
-/**
-* Focus the suggest
-* @fires 'nb-focused'
-* @returns {Object} nb.block
-*/
-suggest.focus();
-
-/**
-* Get name of the suggest
-* @returns {String|Object} name
-*/
-suggest.getName();
-
-/**
-* Set name of the suggest
-* @param {string} name
-* @fires 'nb-name-set'
-* @returns {Object} nb.block
-*/
-suggest.setName('name');
-
-/**
-* Blur the suggest
-* @fires 'nb-blured'
-* @returns {Object} nb.block
-*/
-suggest.blur();
-
-/**
-* Get current value of the suggest
-* @returns {String | Number}
-*/
-suggest.getValue();
-
-/**
-* Get current value of the suggest
-* @param {String} value
-* @fires 'nb-value-set'
-* @returns {Object} nb.block
-*/
-suggest.setValue('New value');
-
-/**
-* Search value in the source array and open suggest popup
-* @param  {string | number} value
-* @returns {Object} nb.block
-*/
-suggest.search('Va');
-
-/**
-* Destroy the suggest
-* @fires 'nb-destroyed'
-*/
-suggest.destroy()
-
-
-```
+> <div example="suggestUser2"/> 
+>
+> ```yate
+>  nb-suggest({
+>      'source': './users.json'
+>      'type': 'username'
+>  })
+> ``` 

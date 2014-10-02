@@ -3,7 +3,7 @@ nb.define('header', {
         'click .nb-header-button': 'togglePress'
     },
 
-    /**
+    /*!
      * Toggles pressed state of button
      */
 

@@ -1,0 +1,28 @@
+func input-groups() {
+
+    show('input-group', nb-input-group({
+    'input' : {
+       'size': 's'
+       'attrs': {
+           'placeholder': 'Ticket number'
+       }
+    }
+    'button' : {
+       'size': 's'
+       'content': 'check'
+       'disabled': true()
+    }
+    }))
+
+    show('input-group1',nb-input-group({
+       'button' : {
+           'size': 's'
+           'icon': 'link'
+       }
+       'input' : {
+           'size': 's'
+           'content': 'http://yadi.sk/'
+       }
+    }))
+
+}

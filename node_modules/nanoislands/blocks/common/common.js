@@ -17,7 +17,7 @@ nb.define('base', {
         }
     },
 
-    /**
+    /*!
      * @returns {String} type of block
      */
     getType: function() {
