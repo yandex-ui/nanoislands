@@ -1,85 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-        <title>Nanoislands Demo</title>
-        <link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/7.3/styles/tomorrow.min.css" />
-        <link rel="stylesheet" type="text/css"  href="node_modules/nanoislands/libs/jquery-ui/jquery-ui.custom.css"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=edge" /><!--[if gt IE 7]><!-->
-        <link type="text/css" rel="stylesheet" href="node_modules/nanoislands/nanoislands.css" /><!--<![endif]--><!--[if lt IE 8]>
-        <link rel="stylesheet" href="../nanoislands.ie.css" /><![endif]-->
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>Nanoislands Demo</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/nanoislands/libs/highlightjs/tomorrow.min.css"/>
+    <link rel="stylesheet" type="text/css" href="node_modules/nanoislands/libs/jquery-ui/jquery-ui.custom.css"/>
+    <!--[if gt IE 7]><!-->
+    <link type="text/css" rel="stylesheet" href="node_modules/nanoislands/nanoislands.css"/>
+    <!--<![endif]--><!--[if lt IE 8]>
+    <link rel="stylesheet" href="node_modules/nanoislands/nanoislands.ie.css"/><![endif]-->
 
-        <link rel="stylesheet" type="text/css" href="src/demo.css" />
-        <script src="//yandex.st/jquery/1.10.2/jquery.min.js"></script>
-        <script src="node_modules/nanoislands/libs/jquery-ui/jquery-ui.custom.js"></script>
-        <script src="node_modules/yate/lib/runtime.js"></script>
-        <script src="node_modules/nanoislands/externals.yate.js"></script>
-        <script src="nanoislands-demo.yate.js"></script>
-        <script src="node_modules/nanoislands/nanoislands.js"></script>
-    </head>
-    <body>
-        <div class="content content_hide-html"></div>
-
-        <script>
-
-            //  Запускаем шаблонизатор:
-            var result = yr.run('main', { username: 'bs' });
-
-            $('.content').html(result);
-            nb.init();
-
-        </script>
-
-        <script type="text/javascript" src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
-        <script type="text/javascript" src="src/beautify-html.js"></script>
-        <script type="text/javascript">
-
-            $(function() {
-                function unescapeHTML(input) {
-                  var e = document.createElement('div');
-                  e.innerHTML = input;
-                  return e.childNodes.length === 0 ? '' : e.childNodes[0].nodeValue;
-                }
-
-                $('.js-beautify').each(function() {
-                    var $el = $(this);
-
-                    $el.text(html_beautify(unescapeHTML($el.html()), {
-                        unformatted: [],
-                        wrap_line_length: 80
-                    }));
-                });
-                hljs.initHighlightingOnLoad();
-
-                var $content = $('.content');
-                var TOGGLE_HTML = 'content_hide-html';
-                var TOGGLE_COMPACT = 'content_compact';
-
-                if (localStorage.getItem('html') == 'on') {
-                    $content.removeClass(TOGGLE_HTML);
-                    $('.js-toggle-html').prop('checked', true);
-                }
-
-                if (localStorage.getItem('compact') == 'on') {
-                    $content.addClass(TOGGLE_COMPACT);
-                    $('.js-toggle-compact').prop('checked', true);
-                }
-
-                $(document)
-                    .on('change', '.js-toggle-html', function() {
-                        var on = this.checked;
-
-                        localStorage.setItem('html', this.checked ? 'on': 'off');
-                        $content.toggleClass(TOGGLE_HTML, on);
-                    })
-                    .on('change', '.js-toggle-compact', function() {
-                        var on = this.checked;
-
-                        localStorage.setItem('compact',  this.checked ? 'on' : 'off');
-                        $content.toggleClass(TOGGLE_COMPACT, on);
-                    });
-
-            });
-        </script>
-    </body>
+    <link rel="stylesheet" type="text/css" href="node_modules/nanoislands/docs/css/docs.css"/>
+    <script src="node_modules/nanoislands/libs/jquery.min.js"></script>
+    <script src="node_modules/nanoislands/libs/jquery-ui/jquery-ui.custom.js"></script>
+    <script src="node_modules/nanoislands/node_modules/yate/lib/runtime.js"></script>
+    <script src="node_modules/nanoislands/externals.yate.js"></script>
+    <script src="node_modules/nanoislands/docs/js/externals.js"></script>
+    <script src="node_modules/nanoislands/docs/js/docs.yate.js"></script>
+    <script src="node_modules/nanoislands/nanoislands.js"></script>
+</head>
+<body>
+<div class="page content"></div>
+<script type="text/javascript" src="node_modules/nanoislands/libs/highlightjs/highlight.min.js"></script>
+<script type="text/javascript" src="node_modules/nanoislands/docs/js/beautify-html.js"></script>
+<script type="text/javascript" src="node_modules/nanoislands/docs/js/docs.js"></script>
+</body>
 </html>
+
