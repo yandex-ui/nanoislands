@@ -368,6 +368,7 @@
      * например `top` -> `bottom`.
      * @param  {String} direction
      * @return {String}
+     * @private
      */
     function _getInverseDirection(direction) {
         var inversion = {

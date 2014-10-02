@@ -13,7 +13,7 @@
         }
     };
 
-    /**
+    /*!
      * @class nb.block.Input
      * @augments nb.block.Base
      */
@@ -23,7 +23,7 @@
             'mousedown ._nb-input-reset': 'reset'
         },
 
-        /*!
+        /**
          * Init input
          * @fires 'nb-inited'
          * @constructor
@@ -101,11 +101,11 @@
             }.bind(this);
 
             // IE 9/10 Enter Key causing Form Submit / Button Click
-            /* this.$control.keypress(function(e) {
-             if (e.which == 13) {
-             e.preventDefault();
-             }
-             }); */
+             // this.$control.keypress(function(e) {
+             // if (e.which == 13) {
+             // e.preventDefault();
+             // }
+             // });
 
             $(document).on('mousedown', this._onmousedown);
             $(document).on('touchstart', this._onmousedown);
@@ -305,14 +305,14 @@
          * @returns {Object} nb.block
          */
         setValue: function(value) {
-            /*
-             Check newValue and actualValue to avoid recursion
+            
+             // Check newValue and actualValue to avoid recursion
 
-             nbInput.on('nb-changed', function() {
-             var validValue = validate(this.getValue());
-             this.setValue(validValue);
-             });
-             */
+             // nbInput.on('nb-changed', function() {
+             // var validValue = validate(this.getValue());
+             // this.setValue(validValue);
+             // });
+             
             if (this.value != value) {
                 this.value = value;
                 this.$control.val(value);

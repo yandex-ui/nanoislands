@@ -11,7 +11,7 @@
  */
 
 
-/**
+/*!
  * @class nb.block.Select
  * @augments nb.block.Base
  */

@@ -1,14 +1,4 @@
-/*
- * ### jQuery UI Depends:
- * - jquery.ui.autocomplete.js
- * - jquery.ui.button.js
- * - jquery.ui.core.js
- * - jquery.ui.widget.js
- * - jquery.ui.position.js
- * - jquery.ui.menu.js
- */
 (function() {
-
     /*!
      * Саджест
      * @namespace jquery.ui.suggest
@@ -169,9 +159,23 @@
         }
     };
 
+    /*
+     * ### jQuery UI Depends:
+     * - jquery.ui.autocomplete.js
+     * - jquery.ui.button.js
+     * - jquery.ui.core.js
+     * - jquery.ui.widget.js
+     * - jquery.ui.position.js
+     * - jquery.ui.menu.js
+     */
+
+    /*!
+     * @class nb.block.Suggest
+     * @augments nb.block.Base
+     */
     nb.define('suggest', {
 
-        /*!
+        /**
          * Init select
          * @fires 'nb-suggest_inited'
          */
