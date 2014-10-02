@@ -1,0 +1,38 @@
+[
+	{
+		"value": "Константин Васильев",
+		"label": "Константин Васильев mctep",
+		"username": "Константин Васильев",
+		"email": "mctep@yandex-team.ru",
+	},
+	{
+		"value": "Евгений Дорошенко",
+		"label": "Евгений Дорошенко esdoroshenko",
+		"username": "Евгений Дорошенко",
+		"email": "esdoroshenko@yandex-team.ru",
+	},
+	{
+		"value": "Вадим Пацев",
+		"label": "Вадим Пацев basvasilich",
+		"username": "Вадим Пацев",
+		"email": "basvasilich@yandex-team.ru",
+	},
+	{
+		"value": "Светлана Блыщак",
+		"label": "Светлана Блыщак sweetlush",
+		"username": "Светлана Блыщак",
+		"email": "sweetlush@yandex-team.ru",
+	},
+	{
+		"value": "Яна Недоросткова",
+		"label": "Яна Недоросткова yanann11",
+		"username": "Яна Недоросткова",
+		"email": "yanann11@yandex-team.ru",
+	},
+	{
+		"value": "Азиз Йулдошев",
+		"label": "Азиз Йулдошев lapple",
+		"username": "Азиз Йулдошев",
+		"email": "lapple@yandex-team.ru",
+	}
+]

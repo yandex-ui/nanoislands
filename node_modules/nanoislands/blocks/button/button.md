@@ -1,7 +1,13 @@
-## Yate
 ### Default button
 
-    nb-button()
+> <div example="button-default">
+> </div>
+>
+> ```yate
+> nb-button({
+>     'content': 'Button'
+> })
+> ```
 
 * `size: m`
 * `theme: normal`
@@ -21,127 +27,131 @@
 * `'attrs'` {object} `{'type': 'submit', 'attr2: 'value2' }` — custom DOM attributes for button
 * `'static'` {boolean} — block without nanoblocks functionality (JavaScript API)
 * `'type'` {string}
-*   `'file'` — attach button. This is not DOM type aka `<input type=""/>`, this is instance type.
-*   `'link'` — `<a>`
-*   `'label'` - `<label>`
-*   `'inline'` - `<span>`
+  * `'file'` — attach button. This is not DOM type aka `<input type=""/>`, this is instance type.
+  * `'link'` — `<a>`
+  * `'label'` - `<label>`
+  * `'inline'` - `<span>`
 
-#### Example
+### Yate examples
 
-Action buttom, size L with custom classes
+#### Types
+`'type': 'link'  'label'  'inline'  'file'`
 
-```
+> <div example="buttons-type">
+> </div>
+>
+> ```yate
+> nb-button({
+>     'content': 'Link button'
+>     'type': 'link'
+>     'attrs': {
+>         'href': '#'
+>     }
+> })
+> ' '
+> nb-button({
+>     'content': 'Label button'
+>     'type': 'label'
+>     'attrs': {
+>         'for': 'blah'
+>     }
+> })
+> ' '
+> nb-button({
+>     'content': 'Span button'
+>     'type': 'inline'
+> })
+> ' '
+> nb-button({
+>      'content': 'Attach file'
+>      'type': 'file'
+> })
+> ```
 
-    nb-button({
-        'size': 'l'
-        'theme': 'action'
-        'id': 'id1'
-        'class': [
-            'my_class1'
-            'my_class2'
-        ]
-        'content': 'Hello World'
-        'attrs': {
-            'name': 'my_name'
-         }
-    })
-
-```
-## JS
-
-### Initialization
-
-Initialize nb block on DOM node:
-```
-
-    nb.block(node);
-
-```
-
-Initialize all nb blocks with class '_init' within DOM node
-
-```
-
-    nb.init(node);
-
-```
-
-### Button methods
-
-button — nb block
-
-```
-
-    /**
-    * Set text of the button
-    * @param text {String} — text for the button
-    * @fires 'nb-text-set'
-    * @returns {Object} nb.block
-    */
-   button.setText('Button');
-
-   /**
-    * Get text of the button
-    * @returns {String} — text of the button
-    */
-   button.getText();
-
-   /**
-    * Set href of the link button
-    * @param href {String} — link for the link button
-    * @fires 'nb-url-set'
-    * @returns {Object} nb.block
-    */
-   button.setUrl('http://ya.ru');
-
-   /**
-    * Get href of the link button
-    * @returns {String} — href of the link button
-    */
-   button.getUrl();
-
-   /**
-    * Disables the button
-    * @fires 'nb-disabled'
-    * @returns {Object} nb.block
-    */
-   button.disable();
-
-   /**
-     * Enables the button
-     * @fires 'nb-enabled'
-     * @returns {Object} nb.block
-     */
-   button.enable();
+#### Size
+> <div example="buttons-size" >
+> </div>
+>
+> ```yate
+> nb-button({
+>     'content': 'Small'
+>     'size': 's'
+> })
+> ' '
+> nb-button({
+>    'content': 'Medium'
+> })
+> ' '
+> nb-button({
+>    'theme': 'promo'
+>    'content': 'Large'
+> })
+> ' '
+> nb-button({
+>    'theme': 'promo'
+>    'size': 'xl'
+>    'content': 'Extra large'
+> })
+> ```
 
 
-   /**
-    * Return state of the button
-    * @returns {Boolean}
-    */
-   button.isEnabled();
+#### Themes
+`'theme': 'action'  'pseudo'  'dark'  'promo'`
+> <div example="buttons-theme" >
+> </div>
+>
+> ```yate
+> nb-button({
+>     'content': 'Action'
+>     'theme': 'action'
+> })
+> ' '
+> nb-button({
+>     'content': 'Pseudo'
+>     'theme': 'pseudo'
+> })
+> ' '
+> nb-button({
+>     'content': 'Dark'
+>     'theme': 'dark'
+> })
+>
+> ' '
+> nb-button({
+>     'content': 'Promo'
+>     'theme': 'promo'
+> })
+> ```
 
-   /**
-    * Focus the button
-    * @fires 'nb-focused'
-    * @returns {Object} nb.block
-    */
-   button.focus();
+#### Icons
+> <div example="buttons-icon" >
+> </div>
+>
+> ```yate
+> nb-button({
+>     'icon': 'eye'
+> })
+>
+> ' '
+> nb-button({
+>     'iconText': '▼'
+> })
+>
+> ' '
+> nb-button({
+>       'icon': 'link'
+>       'content': 'Открыть'
+> })
+> ```
 
-   /**
-    * Blur the button
-    * @fires 'nb-blured'
-    * @returns {Object} nb.block
-    */
-   button.blur();
-
-    /**
-     * Destroy the button
-     * @fires 'nb-destroyed'
-     */
-   button.destroy();
-
-```
-
-
+#### Disabled
+> <div example="button-disabled" >
+> </div>
+>
+> ```yate
+> nb-button({
+>   'disabled': true()
+>   'content': 'Disabled'
+> }
+> ```
 

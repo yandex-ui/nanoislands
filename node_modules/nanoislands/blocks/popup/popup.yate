@@ -65,6 +65,10 @@ match .popup nb {
            @data-nb-withoutTail = 'true'
         }
 
+        if .close {
+           _nb-popup-close(.close)
+        }
+
         if .titleContent {
            _nb-popup-title(.titleContent)
         }
@@ -115,17 +119,7 @@ match .modalPopup nb {
 
         <div class="_nb-popup-i">
             if .close {
-                <a class="_nb-popup-close">
-                    @class += for .close.class {
-                            ' {.}'
-                    }
-
-                    if .close.attrs {
-                        for .close.attrs.* {
-                            @{name()} = .
-                        }
-                    }
-                </a>
+               _nb-popup-close(.close)
             }
 
             if .titleContent {
@@ -170,4 +164,21 @@ func _nb-popup-buttons(nodeset buttons) {
            html(buttons.data)
         }
     </div>
+}
+
+
+func _nb-popup-close(nodeset close) {
+
+    <a class="_nb-popup-close">
+        @class += for close.class {
+                ' {.}'
+        }
+
+        if close.attrs {
+            for close.attrs.* {
+                @{name()} = .
+            }
+        }
+    </a>
+
 }

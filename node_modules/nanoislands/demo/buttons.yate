@@ -39,7 +39,7 @@ func button-small() {
 func button-action() {
     nb-button({
         'content': 'Отправить'
-        'size': 'm'
+        'size': 's'
         'theme': 'action'
     })
 }

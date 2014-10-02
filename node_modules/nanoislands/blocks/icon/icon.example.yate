@@ -1,0 +1,443 @@
+func icons() {
+   func all-icons-s(boolean white) {
+
+       if white {
+           nb-icon({
+           'icon': 'download-white'
+           })
+
+           nb-icon({
+           'icon': 'upload-white'
+           })
+
+           nb-icon({
+           'icon': 'link-white'
+           })
+
+           nb-icon({
+           'icon': 'trash-white'
+           })
+
+           nb-icon({
+           'icon': 'full-screen-white'
+           })
+
+           nb-icon({
+           'icon': 'compose-yellow'
+           })
+
+           nb-icon({
+           'icon': 'zoom-white'
+           })
+
+           nb-icon({
+           'icon': 'vkontakte-square-white'
+           })
+
+           nb-icon({
+           'icon': 'facebook-square-white'
+           })
+
+           nb-icon({
+           'icon': 'odnoklassniki-square-white'
+           })
+       } else {
+            nb-icon({
+           'icon': 'close'
+           })
+
+           nb-icon({
+           'icon': 'download'
+           })
+
+           nb-icon({
+           'icon': 'upload'
+           })
+
+           nb-icon({
+           'icon': 'people'
+           })
+
+           nb-icon({
+           'icon': 'help'
+           })
+
+           nb-icon({
+           'icon': 'eye'
+           })
+
+           nb-icon({
+           'icon': 'link'
+           })
+
+            nb-icon({
+           'icon': 'link'
+           })
+
+           nb-icon({
+           'icon': 'pause'
+           })
+
+            nb-icon({
+           'icon': 'play'
+           })
+
+            nb-icon({
+           'icon': 'play'
+           })
+
+           nb-icon({
+           'icon': 'three-dots'
+           })
+
+           nb-icon({
+           'icon': 'trash'
+           })
+
+           nb-icon({
+           'icon': 'attention'
+           })
+
+           nb-icon({
+           'icon': 'mail'
+           })
+
+           nb-icon({
+           'icon': 'vk'
+           })
+
+           nb-icon({
+           'icon': 'twitter'
+           })
+
+           nb-icon({
+           'icon': 'odnoklassniki'
+           })
+
+           nb-icon({
+           'icon': 'shared'
+           })
+
+           nb-icon({
+           'icon': 'published'
+           })
+
+           nb-icon({
+           'icon': 'new-folder'
+           })
+
+           nb-icon({
+           'icon': 'view-tiles'
+           })
+
+           nb-icon({
+           'icon': 'view-icons'
+           })
+
+           nb-icon({
+           'icon': 'view-list'
+           })
+
+           nb-icon({
+           'icon': 'compose'
+           })
+
+           nb-icon({
+           'icon': 'next'
+           })
+
+           nb-icon({
+           'icon': 'prev'
+           })
+
+           nb-icon({
+           'icon': 'volume'
+           })
+
+           nb-icon({
+           'icon': 'move'
+           })
+
+           nb-icon({
+           'icon': 'copy'
+           })
+
+           nb-icon({
+           'icon': 'vkontakte-square-black'
+           })
+
+           nb-icon({
+           'icon': 'facebook-square-black'
+           })
+
+           nb-icon({
+           'icon': 'odnoklassniki-square-black'
+           })
+
+           nb-icon({
+           'icon': 'world'
+           })
+
+           nb-icon({
+           'icon': 'friends'
+           })
+
+           nb-icon({
+           'icon': 'lock'
+           })
+       }
+   }
+
+   func all-icons-m(boolean white) {
+
+       if white {
+           nb-icon({
+               'icon': 'download-white'
+               'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'upload-white'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'link-white'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'trash-white'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'full-screen-white'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'compose-yellow'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'zoom-white'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'vkontakte-square-white'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'facebook-square-white'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'odnoklassniki-square-white'
+           'size': 'm'
+           })
+       } else {
+            nb-icon({
+           'icon': 'close'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'download'
+            'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'upload'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'people'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'help'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'eye'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'link'
+           'size': 'm'
+           })
+
+            nb-icon({
+           'icon': 'link'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'pause'
+           'size': 'm'
+           })
+
+            nb-icon({
+           'icon': 'play'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'three-dots'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'trash'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'attention'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'mail'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'vk'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'twitter'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'odnoklassniki'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'shared'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'published'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'new-folder'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'view-tiles'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'view-icons'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'view-list'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'compose'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'next'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'prev'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'volume'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'move'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'copy'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'vkontakte-square-black'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'facebook-square-black'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'odnoklassniki-square-black'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'world'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'friends'
+           'size': 'm'
+           })
+
+           nb-icon({
+           'icon': 'lock'
+           'size': 'm'
+           })
+       }
+   }
+
+    icons-m = (
+
+        <div style="padding: 10px;">
+            all-icons-m()
+        </div >
+        <div style="padding: 10px; background: #333;">
+           all-icons-m(true())
+        </div >
+    )
+
+    show('icons-m', icons-m)
+
+    icons-s = (
+        <div style="padding: 10px;">
+            all-icons-s()
+        </div>
+        <div style="padding: 10px; background: #333;">
+            all-icons-s(true())
+        </div>
+    )
+
+     show('icons-s', icons-s)
+}

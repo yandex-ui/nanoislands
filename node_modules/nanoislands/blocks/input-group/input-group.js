@@ -16,7 +16,7 @@ nb.define('input-group', {
             }
         });
     },
-    /**
+    /*!
      * Disables the input-group
      */
     onDisable: function() {
@@ -25,7 +25,7 @@ nb.define('input-group', {
         this.disabled = true;
     },
 
-    /**
+    /*!
      * Enables the input-group
      */
     onEnable: function() {

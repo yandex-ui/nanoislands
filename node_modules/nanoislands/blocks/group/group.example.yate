@@ -1,0 +1,44 @@
+func groups() {
+
+group1 = (nb-button({
+        'content': 'Слева'
+        'size': 'm'
+        'class': ['nb-group-item']
+    })
+    nb-input({
+        'class': ['nb-group-item']
+        'size': 'm'
+    })
+    nb-button({
+        'content': 'Справа'
+        'size': 'm'
+        'class': ['nb-group-item']
+    })
+)
+
+
+ group2 = ( nb-button({
+        'content': 'Слева'
+        'theme': 'pseudo'
+        'size': 's'
+        'class': ['nb-group-start']
+    })
+    nb-button({
+        'content': 'В центре'
+        'theme': 'pseudo'
+        'size': 's'
+        'class': ['nb-group-middle']
+    })
+    nb-button({
+        'content': 'Справа'
+        'theme': 'pseudo'
+        'size': 's'
+        'class': ['nb-group-end']
+    })
+)
+
+
+    show('group1', group1)
+    show('group2', group2)
+
+}

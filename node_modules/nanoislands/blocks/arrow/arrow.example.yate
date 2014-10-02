@@ -1,0 +1,32 @@
+func arrows() {
+
+    show('arrow-default', nb-arrow({
+        'search': 'true'
+    }))
+
+    show('arrow-service', nb-arrow({
+        'search': 'false'
+        'text': 'Disk'
+    }))
+
+    show('arrow-service-link', nb-arrow({
+        'search': 'false'
+        'href': '#'
+        'text': 'Disk'
+    }))
+
+    show('arrow-search-requests', nb-arrow({
+          'requests': '8 results'
+          'attrs': {
+            'action': '/search.php'
+          }
+          'buttonContent': 'I\'m feeling lucky'
+          'value': 'Dog'
+    }))
+
+    show('arrow-search-service', nb-arrow({
+        'href': '#'
+        'text': 'Disk'
+    }))
+
+}
