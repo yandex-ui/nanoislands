@@ -1,3 +1,6 @@
+##### 0.4.31 — patch
+moved yate to dependencies since it is used in docs
+ 
 ##### 0.4.30 — patch
 
 ###### Fixes
