@@ -6,8 +6,12 @@
  * - jquery.ui.widget.js
  */
 
+/*!
+ * @class nb.block.Slider
+ * @augments nb.block.Base
+ */
 nb.define('slider', {
-    /*!
+    /**
      * Init the slider
      * @fires 'nb-inited'
      */
