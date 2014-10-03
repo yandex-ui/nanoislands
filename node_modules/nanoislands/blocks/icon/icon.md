@@ -1,8 +1,4 @@
-## Yate
-
-### Default icon
-
-NB: You have to explicitly pass icon name to nb-icon();
+You have to explicitly pass icon name to nb-icon()
 
 * `size` — `m`
 
@@ -16,28 +12,28 @@ NB: You have to explicitly pass icon name to nb-icon();
 ### Examples
 
 Small icon:
-
-```
-    nb-icon({
-        'icon': 'link'
-        'size': 's'
-    })
-```
+> <div example="icons-s"/>
+>
+>```yate
+>    nb-icon({
+>        'icon': 'link'
+>        'size': 's'
+>    })>
+>    nb-icon({
+>        'icon': 'link-white'
+>        'size': 's'
+>    })
+>```
 
 Medium-sized icon:
-
-```
-    nb-icon({
-        'icon': 'link'
-    })
-```
-
-## JS 
-
-### Initialisation
-
-None. Element is static.
-
-### Methods.
-
-None declared.
+> <div example="icons-m"/>
+>
+>```yate
+>    nb-icon({
+>        'icon': 'link-white'
+>        'size': 'm'
+>    })
+>    nb-icon({
+>        'icon': 'link'
+>    })
+>```

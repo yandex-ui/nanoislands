@@ -102,5 +102,12 @@
 ._nb-input::-ms-clear
   display: none
 
+// Overriding Webkit's default background color for autofilled inputs
+// to ensure consistent appearance across platforms.
+._nb-input-controller:-webkit-autofill
+  // NOTE: Cannot use `background` because native Webkit styles `!important`-ize
+  // default background color.
+  box-shadow: inset 0 0 0 900px $backgroundAutofill
 
-
+._nb-input-controller:-webkit-autofill + ._nb-input-view
+  background: $backgroundAutofill

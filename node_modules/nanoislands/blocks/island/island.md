@@ -1,11 +1,3 @@
-## Yate
-
-### Default island
-
-    nb-island()
-
-Default options: none.
-
 ### Options
 
 * `padding` {string} — s / m / l
@@ -16,38 +8,40 @@ Default options: none.
 
 Basic island:
 
-```
-    nb-island({
-        'content': 'Остров миу-миу'
-    })
-```
+> <div example="island-simple"/>
+>
+> ```yate
+> nb-island({
+>   'content': 'Island'
+>   'attrs': {
+>       'style': 'height: 100px; width: 200px'
+>    }
+> })
+> ```
 
 Flying island with an M-sized padding:
 
-```
-    nb-island({
-        'content': 'Летающий остров'
-        'type': 'fly'
-        'padding': 'm'
-    })
-```
+> <div example="island-fly"/>
+>
+> ```yate
+> nb-island({
+>     'content': 'Fly island'
+>     'type': 'fly'
+>     'padding': 'm'
+>     'attrs': {
+>        'style': 'height: 100px; width: 200px'
+>     }
+> })
+> ```
 
 Inline island with an L-sized padding:
 
-```
-    nb-island({
-        'content': 'Остров с паддингами и инлайном'
-        'padding': 'l'
-        'type':  'inline'
-    })
-```
-
-## JS
-
-### Initialisation
-
-None. Island is a static block.
-
-### Methods
-
-None declared
+> <div example="island-padding"/>
+>
+> ```yate
+> nb-island({
+>   'content': 'Inline island with padding '
+>   'padding': 'l'
+>   'type':  'inline'
+> })
+> ```

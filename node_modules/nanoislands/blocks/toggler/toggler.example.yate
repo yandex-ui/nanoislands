@@ -1,0 +1,28 @@
+func togglers() {
+    show('toggler-s', nb-toggler({
+        'leftText': 'On'
+        'rightText': 'Off'
+    }))
+
+    show('toggler-m', nb-toggler({
+        'leftText': 'On'
+        'rightText': 'Off'
+        'size': 'm'
+        'checked': true()
+    }))
+
+    show('toggler-xs', nb-toggler({
+        'leftText': 'On'
+        'rightText': 'Off'
+        'size': 'xs'
+    }))
+
+    show('toggler-d', nb-toggler({
+        'leftText': 'On'
+        'rightText': 'Off'
+        'size': 'm'
+        'disabled': true()
+    }))
+
+
+}

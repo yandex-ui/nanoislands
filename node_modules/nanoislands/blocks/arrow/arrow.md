@@ -1,8 +1,11 @@
-## Yate
-
 ### Default arrow
 
-    nb-arrow()
+> <div example="arrow-default">
+> </div>
+>
+> ```yate
+> nb-arrow()
+> ```
 
 * search: 'true'
 * buttonContent: 'Найти'
@@ -19,60 +22,59 @@
 * value: ... — placeholder for search field
 * requests: ... — info about unber of request with this search field
 
-### Examples
+### Yate examples
 
-No inputs, with name of service:
+Name of service:
 
-```
-    nb-arrow({
-        'search': 'false'
-        'href': '#'
-        'text': 'Диск'
-    })
-```
+> <div example="arrow-service">
+> </div>
+>
+> ```yate
+> nb-arrow({
+>     'search': 'false'
+>     'text': Disk'
+> })
+> ```
 
-Arrow with search form, no placeholder text:
 
-```
-    nb-arrow({
-        'search': 'true'
-    })
-```
+Name of service with link:
+
+> <div example="arrow-service-link">
+> </div>
+>
+> ```yate
+> nb-arrow({
+>     'search': 'false'
+>     'href': '#'
+>     'text': Disk'
+> })
+> ```
 
 Arrow with search form, prefilled and with requests info:
 
-```
-    nb-arrow({
-        'search': 'true'
-        'requests': '8 млн ответов'
-        'value': 'жираф'
-    })
-```
+> <div example="arrow-search-requests">
+> </div>
+>
+> ```yate
+> nb-arrow({
+>      'requests': '8 results'
+>      'attrs': {
+>        'action': '/search.php'
+>      }
+>      'buttonContent': 'I\'m feeling lucky'
+>      'value': 'Dog'
+> })
+> ```
 
 Arrow with search form and namelink enabled:
 
-```
-    nb-arrow({
-        'search': 'true'
-        'href': '#'
-        'text': 'Диск'
-    })
-```
+> <div  example="arrow-search-service">
+> </div>
+>
+> ```yate
+> nb-arrow({
+>     'href': '#'
+>     'text': Disk'
+> })
+> ```
 
-### Initialisation
-
-...
-
-### Arrow methods
-
-```
-    /*
-    * Add shadow to wrapper and hide info about requests
-    */
-    arrow.focus()
-    
-    /*
-    * Remove shadow from wrapper and show info about requests
-    */
-    arrow.blur()
-```

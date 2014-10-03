@@ -46,7 +46,10 @@ func arrows() {
         'Название сервиса'
         </div>
 
-        show(arrow-service())
+         show(nb-arrow({
+           'search': 'false'
+           'text': 'Диск'
+         }))
     </div>
 
     <div class="demo-section">

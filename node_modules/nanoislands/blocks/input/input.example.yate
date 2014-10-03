@@ -1,0 +1,94 @@
+func inputs() {
+
+    show('input-simple', nb-input({
+        'content': 'hello, world!'
+        'name': 'greetings'
+    }))
+
+    show('input-simple-left-content', nb-input({
+        'leftContent': 'hello, world!'
+        'name': 'greetings'
+    }))
+
+    show('input-simple-right-content', nb-input({
+        'rightContent': 'hello, world!'
+        'name': 'greetings'
+    }))
+
+    show('input-simple-reset', nb-input({
+        'reset': true()
+        'content': 'hello, world!'
+        'name': 'greetings'
+    }))
+
+    show('input-simple-hint', nb-input({
+        'name': 'greetings'
+        'hint': 'Can you greet the world?'
+    }))
+
+    show('input-simple-hint-ghost', nb-input({
+        'name': 'greetings'
+        'hint': {
+            'text': 'Can you greet the world?'
+            'ghost': true()
+        }
+    }))
+
+    error-input = (
+         nb-input({
+            'content': 'Hello, ...'
+            'name': 'greetings'
+            'error': {
+                'content': 'Ooops... It`s a wrong way'
+                'direction': 'right'
+            }
+            'class': 'js-input-error'
+        })
+        ' '
+        nb-button({
+            'content': '← open error popup'
+            'type': 'inline'
+            'size': 's'
+            'class': 'js-show-input-error page-input-error-button'
+        })
+    )
+    show('input-simple-error', error-input)
+
+    show('input-size-s', nb-input({
+        'size': 's'
+        'content': 'hello, world!'
+        'name': 'greetings'
+    }))
+
+    show('input-size-m', nb-input({
+        'size': 'm'
+        'content': 'hello, world!'
+        'name': 'greetings'
+    }))
+
+    show('input-simple-disabled', nb-input({
+        'content': 'hello, world!'
+        'name': 'greetings'
+        'disabled': true()
+    }))
+
+    show('input-multiline', nb-input({
+        'content': 'hello, world!'
+        'name': 'greetings'
+        'type': 'multiline'
+    }))
+
+    show('input-multiline-rightContent', nb-input({
+        'rightContent': 'hello, world!'
+        'name': 'greetings'
+        'type': 'multiline'
+    }))
+
+    show('input-multiline-disabled', nb-input({
+        'content': 'hello, world!'
+        'name': 'greetings'
+        'type': 'multiline'
+        'disabled': true()
+    }))
+
+}

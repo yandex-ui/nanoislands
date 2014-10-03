@@ -1,8 +1,6 @@
-## Yate
-
-### Default paranja
-
+```
     nb-paranja()
+```
 
 * `theme` — dark
 
@@ -22,13 +20,3 @@
         'content': '<div>Surprise!</div>'
     })
 ```
-
-## JS
-
-### Initialisation
-
-None.
-
-### Methods
-
-None.

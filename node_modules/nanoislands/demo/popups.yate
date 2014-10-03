@@ -38,6 +38,15 @@ func toggle-w-t() {
     </a>
 }
 
+func toggle-edge() {
+    "Попап на самом краю "
+    <a id="popup-toggler5" class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup-close-to-edge'}}" href="#top">
+        <span class="link__inner">
+            "&gt;"
+        </span>
+    </a>
+}
+
 func toggle-modal() {
     <a class="nb link link_wrapper link_pseudo" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup4'}}" href="#modal">
         <span class="link__inner">
@@ -159,6 +168,20 @@ func popups() {
               'content': 'Удалить'
           }
       ]
+    }
+
+    closeToEdge = {
+        'id': 'popup-close-to-edge'
+        'menu': [
+            {
+                'href': '#'
+                'content': 'Держать руку'
+            }
+            {
+                'href': '#'
+                'content': 'Упасть'
+            }
+        ]
     }
 
     modal = {
@@ -334,6 +357,15 @@ func popups() {
         </div>
 
         nb-popup-menu(withoutTail)
+    </div>
+    <div class="demo-section" style="text-align: right; padding-right: 0">
+        <div class="demo-group">
+            podium(toggle-edge())
+            code(toggle-edge())
+            code(nb-popup-menu(closeToEdge))
+        </div>
+
+        nb-popup-menu(closeToEdge)
     </div>
     <div class="demo-section">
         <div class="demo-group">

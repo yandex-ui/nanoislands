@@ -1,0 +1,39 @@
+func checkbox() {
+
+    show('checkbox-default', nb-checkbox())
+
+    show('checkbox-label', nb-checkbox({
+        'content': 'Do you want to be an icon for the disfranchised masses?'
+        'name': 'is_rock_star'
+    }))
+
+    show('checkbox-checked', nb-checkbox({
+        'checked': true()
+    }))
+
+    checkbox-sizes = (
+        nb-checkbox({
+            'size': 'm'
+        })
+        ' '
+        nb-checkbox({
+            'size': 's'
+        })
+    )
+    show('checkbox-sizes', checkbox-sizes)
+
+    show('checkbox-button', nb-checkbox({
+        'type': 'button'
+        'content': 'Greet the world?'
+    }))
+
+    show('checkbox-disable-label', nb-checkbox({
+            'content': 'Bet you can`t check me!'
+            'disabled': true()
+    }))
+    show('checkbox-disable-button', nb-checkbox({
+        'type': 'button'
+        'content': 'I`m sorry, but you can`t do it anymore'
+        'disabled': true()
+    }))
+}
