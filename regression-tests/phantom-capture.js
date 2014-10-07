@@ -3,40 +3,33 @@
     Paths are relative to CasperJs directory
 */
 var phantomcss = require('./../node_modules/phantomcss/phantomcss.js');
+var system = require('system');
+var fs = require('fs');
 
-
+// var blockName = typeof system.args //.toString.match(/filename=(.*)/)
+// console.log(blockName);
 phantomcss.init({
-    // screenshotRoot: '/screenshots',
-    // failedComparisonsRoot: '/failures'
-    // casper: specific_instance_of_casper,
-    libraryRoot: './../node_modules/phantomcss',
-    // fileNameGetter: function overide_file_naming(){console.log('here'); return 'name'},
-    // onPass: function passCallback(){console.log('pass');},
-    // onFail: function failCallback(){},
-    // onTimeout: function timeoutCallback(){},
-    // onComplete: function completeCallback(){},
-    // hideElements: '#thing.selector',
-    // addLabelToFailedImage: true,
-    // outputSettings: {
-    //     errorColor: {
-    //         red: 255,
-    //         green: 255,
-    //         blue: 0
-    //     },
-    //     errorType: 'movement',
-    //     transparency: 0.3
-    // }
+    "libraryRoot": "./../node_modules/phantomcss",
+    screenshotRoot: './screenshots/',
+	fileNameGetter: function (root, filename) {
+		var name = root + filename + '.png';
+        if (fs.isFile(name)) return root + filename + '.diff.png'
+        else return name;
+	}
 });
 
+var args = Array.prototype.slice.call(system.args).join(' ');
+
+var blockName = args.match(/blockName=([^\s]+)/)[1];
+var scenario = args.match(/scenario=([^\s]+)/)[1];
+
+casper.start('http://localhost:3000/regression-tests/index.html');
+require(scenario)(casper, phantomcss, blockName);
 
 /*
     The test scenario
 */
-casper.start( 'http://localhost:3000/docs/index.html' );
 
-casper.then(function(){
-    phantomcss.screenshot('._nb-header-main', 'testing');
-});
 
 // casper.then(function(){
 
@@ -72,11 +65,6 @@ casper.then(function(){
 //     );
 // });
 
-casper.then( function now_check_the_screenshots(){
-    // compare screenshots
-    phantomcss.compareAll();
-});
-
 casper.then( function end_it(){
     casper.test.done();
 });
@@ -84,8 +72,6 @@ casper.then( function end_it(){
 /*
 Casper runs tests
 */
-casper.run(function(){
-    console.log('\nTHE END.');
+casper.run(function() {
     phantom.exit(phantomcss.getExitStatus());
 });
-
