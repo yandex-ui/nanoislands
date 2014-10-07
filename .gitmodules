@@ -1,4 +1,0 @@
-[submodule "regression-tests/phantomcss"]
-	path = regression-tests/phantomcss
-	url = git://github.com/Huddle/PhantomCSS.git
-
