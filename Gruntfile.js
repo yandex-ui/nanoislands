@@ -113,5 +113,12 @@ module.exports = function(grunt) {
         "watch:build"
     ]);
 
+    grunt.registerTask("regtest", "asdf", function () {
+        console.log('launching testing process...');
+        require('child_process').fork('run.js', [process.argv[3].replace(/-/g, '')], {
+            cwd: './regression-tests'
+        });
+    })
+
     grunt.registerTask("default", ["test"]);
 };
