@@ -39,9 +39,9 @@ This will create or replace *.diff* files and show print to console if any failu
 ## Whats under the hood
 
 The script does basically the following:
-* iterates over all arguments you've passed (if no arguments passed iterates over all folder inside 'block' folder)
+* iterates over all arguments you've passed (if no arguments passed iterates over all folder inside 'blocks' folder)
 * During this iteration it checks if the testConfig.json exists and parses it. (see below for full description of config file).
-* Takes template of each block with following priority: template from testConfig.json, [anything].test.yate, [anything].test.yate. If nothing of this is found proceed without processing current block.
+* Takes template of each block with following priority: template from testConfig.json, [anything].test.yate, [anything].test.yate. If none of them are found proceed without processing current block.
 * Renders taken template into index.yate.js (*via index.yate*)
 * Runs casper which heads to localhost and does testing
 
