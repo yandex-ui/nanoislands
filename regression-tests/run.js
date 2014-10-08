@@ -3,13 +3,10 @@ var diff = require.bind(require, './diff');
 var exec = require('child_process').exec;
 
 if(require.main === module) {
-	var len = process.argv.length
-	if (len <= 2) return console.log('not enough params');;
+	var len = process.argv.length;
+	if (len <= 2) return console.log('not enough params');
 
-	var args = [];
-	for (var i = 3; i < len; i++)
-		args.push(process.argv[i])
-	run(process.argv[2], args)
+	run(process.argv[2], process.argv.slice(3));
 
 } else {
 	module.exports = run;
