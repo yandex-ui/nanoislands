@@ -1,6 +1,6 @@
 var phantomcss = require('../../node_modules/phantomcss/phantomcss.js');
 var system = require('system');
-
+var fs = require('fs')
 var blockName = system.args.join(' ').match(/blockName=([^\s]+)/)[1];
 
 casper.start();
@@ -10,11 +10,19 @@ phantomcss.init({
     cleanupComparisonImages: true
 });
 
+var diffs = {};
+var filesRe = new RegExp('(' + blockName + '\.[^;]*)', 'g'); //takes all files matching blockname.
+var re = /.*diff\.png$/;
 
-// TODO: here we could iterate over all states
 casper.then( function () {
     // compare screenshots
-    phantomcss.compareFiles('screenshots/' + blockName + '.png', 'screenshots/' + blockName + '.diff.png');
+    fs.list('./screenshots')
+		.join(';')
+		.match(filesRe)
+		.forEach(function (fileName) {
+			if (re.test(fileName))
+				phantomcss.compareFiles('screenshots/' + fileName.replace('.diff', ''), 'screenshots/' + fileName);
+		});
 });
 
 casper.then( function end_it(){
