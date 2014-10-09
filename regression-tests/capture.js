@@ -26,14 +26,14 @@ function test (block, cb) {
     var files = fs.readdirSync(blockDirPath).join(';');
 
     // finding config file
-    var config = fs.existsSync(blockDirPath + 'testConfig.json') ? require(blockDirPath + '/testConfig.json') : {};
+    var config = fs.existsSync(blockDirPath + 'testConfig.json') ? require(blockDirPath + 'testConfig.json') : {};
 
     var mock = ''; // filename for template
 
     if (config.scenarioFile) // take the scenario from config
-        config.scenarioFile = blocksDirPath + config.scenarioFile;
+        config.scenarioFile = blockDirPath + config.scenarioFile;
     else // roll back to default behaviour
-        config.scenarioFile = 'defaultScenario';
+        config.scenarioFile = fs.existsSync(blockDirPath + 'rtest.js') ? blockDirPath + 'rtest.js' : 'defaultScenario';
 
 
     // checking if the test(mock) template exists in directory
@@ -68,7 +68,10 @@ function test (block, cb) {
 
     compile(function () {
         console.log('capturing ' + block);
-        casper(block, config.scenarioFile, cb);
+        casper(block, config.scenarioFile, cb).stdout.on('data', function (data) {
+            // only in verbose mode - to be implemented
+            // console.log(data);
+        });
     });
 
 }

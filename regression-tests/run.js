@@ -22,7 +22,7 @@ function run (operation, blocks) {
     }
 	else {
 		filenames = blocks.map(function (b) {
-	    	return b + '.png'
+	    	return b + '\.*.png'
 	    }).join(' ');
 	}
 
@@ -38,5 +38,4 @@ function run (operation, blocks) {
 		default:
 			console.log('invalid argument');
     }
-
 }
