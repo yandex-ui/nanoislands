@@ -1,6 +1,6 @@
 var searchButton = '._nb-search-arrow-button';
 
-var clickNShot = util.clickNShot;
+var downNShot = util.downNShot;
 
 util.shotCurrent('body', 'default')();
 
@@ -10,7 +10,7 @@ function changeViewport () {
 
 
 util.sequence([
-    clickNShot(searchButton),
+    downNShot(searchButton),
     changeViewport,
     util.shotCurrent('body', '200x300')
 ]);
