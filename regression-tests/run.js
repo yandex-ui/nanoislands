@@ -1,4 +1,4 @@
-var capture = require.bind(require, './capture');
+var capture = require('./capture');
 var diff = require.bind(require, './diff');
 var exec = require('child_process').exec;
 
@@ -29,11 +29,11 @@ function run (operation, blocks) {
     switch (operation) {
 	    case 'update':
 	    	exec('cd screenshots && rm ' + filenames,
-	    		capture().bind(null, blocks));
+	    		capture.bind(null, blocks));
 		    break;
 		case 'diff':
 			exec('cd failures && rm ' + filenames.replace('.png', '.fail.png'),
-				capture().bind(null, blocks.slice(), diff().bind(null, blocks)));
+				capture.bind(null, blocks.slice(), diff().bind(null, blocks)));
 			break;
 		default:
 			console.log('invalid argument');
