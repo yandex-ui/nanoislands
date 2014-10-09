@@ -38,6 +38,10 @@ function actions (selector) {
 }
 
 function click (selector) {
+	return actions(selector, 'move', 'click');
+}
+
+function down (selector) {
 	return actions(selector, 'move', 'down');
 }
 
@@ -45,8 +49,12 @@ function clickNShot (selector) {
 	return shot(selector, click(selector), 'click');
 }
 
+function downNShot (selector) {
+	return shot(selector, down(selector), 'down');
+}
+
 module.exports = function () {
-	// casper, phantomcss, blockName is in global
+	// casper, phantomcss, blockName are in global
 	mouse = casper.mouse;
 	return {
 		shotCurrent: shotCurrent,
@@ -54,6 +62,7 @@ module.exports = function () {
 		sequence: sequence,
 		actions: actions,
 		click: click,
-		clickNShot: clickNShot
+		clickNShot: clickNShot,
+		downNShot: downNShot
 	};
 }
