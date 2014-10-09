@@ -33,7 +33,7 @@ function test (block, cb) {
     if (config.scenarioFile) // take the scenario from config
         config.scenarioFile = blockDirPath + config.scenarioFile;
     else // roll back to default behaviour
-        config.scenarioFile = fs.existsSync(blockDirPath + 'rtest.js') ? blockDirPath + 'rtest.js' : 'defaultScenario';
+        config.scenarioFile = fs.existsSync(blockDirPath + 'rtest.js') ? blockDirPath + 'rtest.js' : null;
 
 
     // checking if the test(mock) template exists in directory

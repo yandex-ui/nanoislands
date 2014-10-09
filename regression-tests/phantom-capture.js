@@ -24,7 +24,11 @@ phantomcss.init({
 });
 
 casper.start('http://localhost:3000/regression-tests/index.html');
-require(scenario); //executing scenario
+
+util.shotCurrent('body', 'default')();
+
+if (scenario !== 'null')
+    require(scenario); //executing scenario
 casper.then( function () {
 
     casper.test.done(); //ending casper

@@ -1,1 +1,0 @@
-util.shotCurrent('body', 'default')();
