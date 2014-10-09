@@ -53,6 +53,13 @@ function downNShot (selector) {
 	return shot(selector, down(selector), 'down');
 }
 
+function changeViewport (width, height) {
+	return function() {
+		casper.viewport(width, height);
+	}
+
+}
+
 module.exports = function () {
 	// casper, phantomcss, blockName are in global
 	mouse = casper.mouse;
@@ -63,6 +70,7 @@ module.exports = function () {
 		actions: actions,
 		click: click,
 		clickNShot: clickNShot,
-		downNShot: downNShot
+		downNShot: downNShot,
+		changeViewport: changeViewport
 	};
 }
