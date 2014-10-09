@@ -16,20 +16,20 @@ var re = /.*diff\.png$/;
 
 casper.then( function () {
     // compare screenshots
-    fs.list('./screenshots')
+    var files = fs.list('./screenshots')
 		.join(';')
-		.match(filesRe)
-		.forEach(function (fileName) {
+		.match(filesRe);
+	if (files) files.forEach(function (fileName) {
 			if (re.test(fileName))
 				phantomcss.compareFiles('screenshots/' + fileName.replace('.diff', ''), 'screenshots/' + fileName);
 		});
 });
 
-casper.then( function end_it(){
+casper.then(function() {
     casper.test.done();
 });
 
-casper.run(function(){
+casper.run(function() {
     console.log('\nTHE END.');
     phantom.exit(phantomcss.getExitStatus());
 });

@@ -9,13 +9,7 @@ var casper = function (block, cb) {
 function diff (block, cb) {
     if (!fs.statSync(blocksDirPath + block).isDirectory())
         return cb();
-    // var blockDirPath = blocksDirPath + block + '/';
-    // var config;
 
-    // if (fs.existsSync(blockDirPath + 'testConfig.json'))
-    //     config = require(blockDirPath + 'testConfig.json')
-    // else
-    //     config = {}
     casper(block, cb).stdout.on('data', function (data) {
         console.log(data);
     });
