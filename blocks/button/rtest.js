@@ -3,12 +3,12 @@ var promoButton = '._nb-promo-button';
 var actionButton = '._nb-action-button';
 var smallButton = '._nb-with-only-button';
 
-var clickNShot = util.clickNShot;
+var downNShot = util.downNShot;
 
 util.sequence([
     util.shotCurrent('body', 'default'),
-    clickNShot(extraLargeButton),
-    clickNShot(promoButton),
-    clickNShot(actionButton),
-    clickNShot(smallButton)
+    downNShot(extraLargeButton),
+    downNShot(promoButton),
+    downNShot(actionButton),
+    downNShot(smallButton)
 ]);
