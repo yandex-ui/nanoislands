@@ -1,4 +1,1 @@
-
-casper.then(function() {
-    phantomcss.screenshot('body', blockName + '.default');
-});
+util.shotCurrent('body', 'default')();
