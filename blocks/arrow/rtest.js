@@ -8,7 +8,6 @@ function changeViewport () {
     casper.viewport(200, 300);
 }
 
-
 util.sequence([
     downNShot(searchButton),
     changeViewport,
