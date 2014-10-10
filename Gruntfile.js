@@ -113,11 +113,26 @@ module.exports = function(grunt) {
         "watch:build"
     ]);
 
-    grunt.registerTask("regtest", "asdf", function () {
-        console.log('launching testing process...');
-        require('child_process').fork('run.js', [process.argv[3].replace(/-/g, '')], {
-            cwd: './regression-tests'
-        });
+    grunt.registerTask("regtest", "Regression testing of blocks", function() {
+        var diff = grunt.option('diff');
+        var upd = grunt.option('update');
+
+        var done = this.async();
+
+        var operation;
+        var blocks;
+
+        // options can be either string or boolean
+        if (diff) {
+            operation = 'diff';
+            blocks = typeof diff === 'string' ? diff.split(',') : [];
+        } else if (grunt.option('update')) {
+            operation = 'update';
+            blocks = typeof upd === 'string' ? upd.split(',') : [];
+        } else
+            return console.log('not a valid command. Please use --diff or --update');
+
+        require('./regression-tests/run')(operation, blocks, done);
     })
 
     grunt.registerTask("default", ["test"]);

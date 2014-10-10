@@ -16,11 +16,12 @@ function diff (block, cb) {
 
 }
 
-function end () {
+function end (cb) {
     console.log('end diff');
+    cb && cb();
 }
 
-module.exports = function iterate (blocks) {
-    if (blocks.length === 0) return end();
-    diff(blocks.shift(), iterate.bind(null, blocks))
+module.exports = function iterate (blocks, cb) {
+    if (blocks.length === 0) return end(cb);
+    diff(blocks.shift(), iterate.bind(null, blocks, cb))
 }
