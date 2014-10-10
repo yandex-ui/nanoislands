@@ -1,0 +1,30 @@
+include "../nanoislands.yate"
+
+
+func podium(xml markup) {
+    <div class="podium">
+        markup
+    </div>
+}
+
+func code(xml markup) {
+    <div class="code code_html">
+        <pre>
+            <code class="js-beautify">
+                scalar(markup)
+            </code>
+        </pre>
+    </div>
+}
+
+func show(scalar name, xml markup) {
+    <div code="{ name }">
+        podium(markup)
+    </div>
+}
+
+include '../blocks/user/user.example.yate'
+
+match / {
+    users()
+}

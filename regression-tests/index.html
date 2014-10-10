@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+
+    <link rel="stylesheet" type="text/css" href="../libs/highlightjs/tomorrow.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../libs/jquery-ui/jquery-ui.custom.css"/>
+    <!--[if gt IE 7]><!-->
+    <link type="text/css" rel="stylesheet" href="../nanoislands.css"/>
+    <!--<![endif]--><!--[if lt IE 8]>
+    <link rel="stylesheet" href="../nanoislands.ie.css"/><![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="../docs/css/docs.css"/>
+    <script src="../libs/jquery.min.js"></script>
+    <script src="../libs/jquery-ui/jquery-ui.custom.js"></script>
+    <script src="../node_modules/yate/lib/runtime.js"></script>
+    <script src="../externals.yate.js"></script>
+    <script src="../docs/js/externals.js"></script>
+    <script src="index.yate.js"></script>
+    <script src="../nanoislands.js"></script>
+    <style>body{background: white;}</style>
+</head>
+<body>
+    <div class="page content"></div>
+    <script>
+        $(function () {
+            var result = yr.run('main', {});
+            $('body').html(result)
+            nb.init();
+        });
+    </script>
+
+</body>
+</html>
