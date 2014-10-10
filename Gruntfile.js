@@ -122,6 +122,8 @@ module.exports = function(grunt) {
         var operation;
         var blocks;
 
+        if (grunt.option('e') || grunt.option('explain'))
+            process.env.verboseTest = 1;
         // options can be either string or boolean
         if (diff) {
             operation = 'diff';

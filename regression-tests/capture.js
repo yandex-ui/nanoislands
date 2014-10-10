@@ -69,8 +69,8 @@ function test (block, cb) {
     compile(function () {
         console.log('capturing ' + block);
         casper(block, config.scenarioFile, cb).stdout.on('data', function (data) {
-            // only in verbose mode - to be implemented
-            // console.log(data);
+            if (process.env.verboseTest === '1')
+                console.log(data)
         });
     });
 
