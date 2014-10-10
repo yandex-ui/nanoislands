@@ -15,8 +15,11 @@ phantomcss.init({
     screenshotRoot: './screenshots/',
     fileNameGetter: function (root, filename) {
 
-        var name = root + filename + '.png';
+        if (!(new RegExp('^' + blockName + '\\.')).test(filename))
+            filename = filename.replace(blockName, blockName + '.');
 
+        var name = root + filename + '.png';
+        // console.log(filename);
         // if the file exists - write .diff file
         if (fs.isFile(name)) return root + filename + '.diff.png'
         else return name;

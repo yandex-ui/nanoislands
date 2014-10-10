@@ -24,16 +24,11 @@
 <body>
     <div class="page content"></div>
     <script>
-
-    // setTimeout(function () {
-    //     location.reload();
-    // }, 1000)
-    $(function () {
-        var result = yr.run('main', {});
-        $('body').html(result)
-        nb.init();
-
-    })
+        $(function () {
+            var result = yr.run('main', {});
+            $('body').html(result)
+            nb.init();
+        });
     </script>
 
 </body>
