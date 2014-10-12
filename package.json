@@ -1,72 +1,75 @@
 {
-  "author": {
-    "name": "Vadim Patsev",
-    "email": "basvasilich@yandex.ru",
-    "url": "https://github.com/basvasilich"
-  },
-  "name": "nanoislands",
-  "description": "Yate/Stylus/jQuery-UI library for Yandex corporate style",
-  "version": "0.4.31",
-  "licence": "MIT",
-  "homepage": "http://yandex-ui.github.io/nanoislands/",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/yandex-ui/nanoislands.git"
-  },
-  "dependencies": {
-    "yate": "0.0.71",
-    "es5-shim": "3.4.0",
-    "stylobate": "0.24.x",
-    "stylobate-islands": "0.27.x"
-  },
-  "devDependencies": {
-    "borschik": "0.4.x",
-    "autoprefixer": "1.x",
-    "stylus": "0.45.x",
-    "csso": "1.3.x",
-    "load-grunt-tasks": "~0.2.x",
-    "grunt": "~0.4.x",
-    "grunt-cli": "~0.1.x",
-    "grunt-contrib-jshint": "*",
-    "grunt-jscs-checker": "~0.4.x",
-    "grunt-karma": "~0.7.x",
-    "jscs": "1.0.x",
+    "author": {
+        "name": "Vadim Patsev",
+        "email": "basvasilich@yandex.ru",
+        "url": "https://github.com/basvasilich"
+    },
+    "name": "nanoislands",
+    "description": "Yate/Stylus/jQuery-UI library for Yandex corporate style",
+    "version": "0.4.31",
+    "licence": "MIT",
+    "homepage": "http://yandex-ui.github.io/nanoislands/",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/yandex-ui/nanoislands.git"
+    },
+    "dependencies": {
+        "yate": "0.0.71",
+        "es5-shim": "3.4.0",
+        "stylobate": "0.24.x",
+        "stylobate-islands": "0.27.x"
+    },
+    "devDependencies": {
+        "borschik": "0.4.x",
+        "autoprefixer": "1.x",
+        "stylus": "0.45.x",
+        "csso": "1.3.x",
+        "load-grunt-tasks": "~0.2.x",
+        "grunt": "~0.4.x",
+        "grunt-cli": "~0.1.x",
+        "grunt-contrib-jshint": "*",
+        "grunt-jscs-checker": "~0.4.x",
+        "grunt-karma": "~0.7.x",
+        "jscs": "1.0.x",
 
-    "mocha": "~1.17.0",
-    "expect.js": "*",
-    "sinon": "*",
+        "mocha": "~1.17.0",
+        "expect.js": "*",
+        "sinon": "*",
 
-    "karma": "~0.12.x",
-    "karma-mocha": "~0.1.x",
-    "karma-sinon-expect": "~0.1.x",
-    "karma-borschik-preprocessor": "~0.1.x",
-    "karma-yate-preprocessor": "~0.1.x",
-    "karma-phantomjs-launcher": "~0.1.x",
-    "karma-firefox-launcher": "~0.1.x",
+        "karma": "~0.12.x",
+        "karma-mocha": "~0.1.x",
+        "karma-sinon-expect": "~0.1.x",
+        "karma-borschik-preprocessor": "~0.1.x",
+        "karma-yate-preprocessor": "~0.1.x",
+        "karma-phantomjs-launcher": "~0.1.x",
+        "karma-firefox-launcher": "~0.1.x",
 
-    "grunt-contrib-watch": "*",
-    "grunt-shell": "*",
-    "dox": "0.4.x",
-    "concat-stream": "1.4.x",
-    "marked": "0.3.x"
-  },
-  "engines": {
-    "node": "*"
-  },
-  "files": [
-    "blocks",
-    "libs",
-    "demo",
-    "docs",
-    "nanoislands.js",
-    "nanoislands.yate",
-    "nanoislands.styl",
-    "nanoislands.css",
-    "nanoislands.ie.css",
-    "externals.yate.js"
-  ],
-  "scripts": {
-    "test": "grunt test",
-    "start": "grunt watch_make"
-  }
+        "grunt-contrib-watch": "*",
+        "grunt-shell": "*",
+        "dox": "0.4.x",
+        "concat-stream": "1.4.x",
+        "marked": "0.3.x",
+        "express": "*",
+        "phantomcss": "*"
+
+    },
+    "engines": {
+        "node": "*"
+    },
+    "files": [
+        "blocks",
+        "libs",
+        "demo",
+        "docs",
+        "nanoislands.js",
+        "nanoislands.yate",
+        "nanoislands.styl",
+        "nanoislands.css",
+        "nanoislands.ie.css",
+        "externals.yate.js"
+    ],
+    "scripts": {
+        "test": "grunt test",
+        "start": "grunt watch_make"
+    }
 }
