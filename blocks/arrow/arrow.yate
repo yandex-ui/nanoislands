@@ -9,7 +9,7 @@ func nb-arrow(nodeset arrow) {
 }
 
 match .arrow nb {
-    <form class="nb-arrow _nb-search-arrow">
+    <form data-nb='arrow' class="nb-arrow _init _nb-search-arrow">
 
         apply . nb-main-attrs
 

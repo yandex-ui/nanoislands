@@ -116,10 +116,11 @@
         _inithint: function() {
             var that = this;
 
+            this.$control.removeAttr('placeholder');
+
             this.$hintGhost = this.$hint.find('._nb-input-hint-ghost');
 
             if (this.$hintGhost.length) {
-
                 this.$hintGhost.html(that.getValue());
 
                 bindOninput(this, function() {
@@ -127,6 +128,7 @@
                 });
 
             } else {
+                that.$hint.css('visibility', 'visible');
                 bindOninput(this, function() {
                     if (that.getValue() === '') {
                         that.$hint.css('visibility', 'inherit');
