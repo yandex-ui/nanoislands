@@ -52,6 +52,12 @@ describe("Select Tests", function() {
             expect(select.$node.find('._nb-button-content').text()).to.be.equal('2');
         });
 
+        it('Should have additional classes for options', function() {
+            var select = nb.find('select');
+            this.select.open();
+            expect(this.select.$node.autocomplete('widget').find('.class1.class2').length).to.equal(1);
+        });
+
     });
 
     describe('#getType()', function() {
@@ -92,7 +98,6 @@ describe("Select Tests", function() {
         });
 
         it('shouldn\'t close select', function() {
-            this.select.render();
             this.select.render();
             expect(this.select.$node.autocomplete('widget').css('display')).to.equal('block');
         });

@@ -21,6 +21,10 @@ match .select {
               {
                   'text': 'Гибрид'
                   'value': 'option3'
+                  'class': [
+                        'class1'
+                        'class2'
+                    ]
               }
               {
                   'text': '<script>alert(1)</script>'

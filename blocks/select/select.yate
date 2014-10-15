@@ -92,7 +92,13 @@ func _select-option(nodeset item) {
         } else {
             @label = item.text
             @value = item.value
-            @data-icon = .icon
+            @data-icon = item.icon
+            if (item.class) {
+                for item.class {
+                     @data-class += ' ' + .
+                }
+            }
+
             if (item.selected) {
                   @selected = ''
             }

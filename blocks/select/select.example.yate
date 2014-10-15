@@ -12,6 +12,10 @@ func selects() {
                 {
                     'text': 'Карта'
                     'value': 'option1'
+                    'class': [
+                        'my-test-class-for-option'
+                        'or-two'
+                    ]
                 }
                 {
                     'text': 'Спутник'

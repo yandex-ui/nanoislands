@@ -76,6 +76,7 @@ nb.define('select', {
             that._returnOptItem = function(item) {
                 var $item = $(item);
                 var icon = $item.data('icon');
+                var className = $item.data('class');
                 var result = {};
                 if ($item.attr('separator')) {
                     result = {
@@ -90,6 +91,10 @@ nb.define('select', {
                     };
                     if (icon) {
                         result['icon'] = icon;
+                    }
+
+                    if (className) {
+                        result['className'] = className;
                     }
                 }
                 return result;
@@ -165,6 +170,10 @@ nb.define('select', {
 // redefine one menu item rendering method, fires every time, then popup opening
             that.$jUI._renderItem = function(ul, item) {
                 var $itemNode = $('<li class="_nb-select-item"></li>');
+
+                if (item.className) {
+                    $itemNode.addClass(item.className);
+                }
 
                 if (item.option.selected) {
                     $itemNode.addClass('is-selected');
