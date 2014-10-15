@@ -471,6 +471,10 @@
          * @return {Object} nb.block
          */
         open: function(p) {
+            if (!p && !this.modal) {
+                console.warn('Trying to call popup.open() without params;');
+                return this;
+            }
             var params = p || {};
             var where = params.where;
             var how = params.how;
@@ -559,6 +563,8 @@
             //  Запоминаем, на какой ноде мы открываем попап.
             this.where = where;
             var that = this;
+            var params = params || {};
+            var how = how || {};
 
             var data = this.nbdata();
             // по умолчанию попап позиционирова абсолютно
@@ -566,12 +572,12 @@
 
             // сделаем попап фиксированным, если
             // у popup-toggler задан how.fixed = true
-            if (how && how.fixed) {
+            if (how.fixed) {
                 isFixed = true;
             }
             // или если был задан атрибут data-nb-how = 'fixed'
             // в настройках самого попапа
-            if (data.how == 'fixed') {
+            if (data && data.how == 'fixed') {
                 isFixed = true;
             }
 
@@ -588,8 +594,6 @@
                     $el.css(props);
                 }
             };
-
-            how = how || {};
 
             var autoclose = true;
 
