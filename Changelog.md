@@ -1,3 +1,13 @@
+##### 0.4.32 — patch
+Update es5-shim to v4.0.x
+
+###### Fixes
+* fix #447 — Квадратные кнопки
+* fix #446 — Нужна возможность прокинуть класс в item у select-а
+* fix #444 — [Bug] JsError in popup when used #open method  bug
+* fix #441 — Проблема инициализации arrow
+* fix #442 — Пропускаем неопределённые блоки при обработке события
+
 ##### 0.4.31 — patch
 moved yate to dependencies since it is used in docs
  
