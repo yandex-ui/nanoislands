@@ -20,7 +20,8 @@ There are 2 parts of popup control:
     collision: '..',
     using: '..',
     within '..',
-    autoclose: true
+    autoclose: true,
+    autofocus: true
 }
 ```
 
@@ -85,6 +86,7 @@ There are 2 parts of popup control:
 * `id` {string}
 * `class` {array} — additional classes
 * `attrs` {object} — custom DOM attributes
+* `autofocus` {boolean} — focus first input
 * `tail` {string} — position of 'tail' widget — left|right|top|bottom
 * `static` {boolean} — `true()` to prevent initialisation
 * `menu` {array} — array of objects:
@@ -107,6 +109,7 @@ There are 2 parts of popup control:
   * `blank` — popup without styles
   * `island` — islands styles
 * `attrs` {object} — custom DOM attributes, e.g.: `{ 'attr2: 'value2', 'attr2: 'value2' }`
+* `autofocus` {boolean} — focus first input
 * `titleContent` {xml|string} —  modal's title, can be string or `xml` _xss warning!_
 * `content` {xml|string} — modal's content, can be string or `xml` _xss warning!_
 * `close`{object|boolean} — with default cloase with `true()` or custom object:
@@ -156,6 +159,7 @@ There are 2 parts of popup control:
 * `id` {string}
 * `class` {array} — additional classes
 * `attrs` {object} — custom DOM attributes
+* `autofocus` {boolean} — focus first input
 * `withoutTail` {boolean}  
 * `static` {boolean} — `true()` to prevent initialisation
 * `menu` {array} — array of objects:
@@ -211,6 +215,7 @@ There are 2 parts of popup control:
 * `id` {string}
 * `class` {array} — additional classes
 * `attrs` {object} — custom DOM attributes
+* `autofocus` {boolean} — focus first input
 * `titleContent` {xml|string} — modal's title, can be string or `xml` _xss warning!_
 * `content` {xml|string} — modal's content, can be string or `xml` _xss warning!_
 * `buttons` {xml|array} — popup's buttons:
