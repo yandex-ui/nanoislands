@@ -425,7 +425,6 @@
             }
             $(document).off('mousedown', this._onmousedown);
             $(document).off('touchstart', this._onmousedown);
-            $(document).off('keydown', this._onkeydown);
             this.nbdestroy();
         }
     }, 'base');
