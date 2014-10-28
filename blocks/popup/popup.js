@@ -708,7 +708,7 @@ nb.define('popup-toggler', {
         if (evt) {
             evt.preventDefault();
         }
-        if (this.popup.isOpen()) {
+        if (this.popup && this.popup.isOpen()) {
             this.close(evt);
         } else {
             this.open(evt);
