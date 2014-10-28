@@ -232,6 +232,7 @@
 
     jQuery.effects.effect.nb = function(o, done) {
         var $this = $(this);
+        var nbBlock = nb.block($this.find('.nb-popup').get(0))
         var mode = $.effects.setMode($this, o.mode || 'hide');
         var shouldHide = mode === 'hide';
 
@@ -254,7 +255,11 @@
             complete: function() {
                 if (shouldHide) {
                     $this.hide();
+                    nbBlock.trigger('nb-closed', nbBlock);
+                    done();
+                    return
                 }
+                nbBlock.trigger('nb-opened', nbBlock);
                 done();
             }
         });
@@ -468,6 +473,7 @@
          * ```
          *
          * @param {Object} params settings for popup
+         * @fires 'nb-open-started' and 'nb-opened'
          * @return {Object} nb.block
          */
         open: function(p) {
@@ -492,7 +498,11 @@
                     $(this.node).removeClass('_nb-is-hidden');
                     //  Передвигаем попап.
                     this._move(where, how, params);
-                    this.trigger('nb-opened');
+                    if (this.modal) {
+                        this.trigger('nb-opened');
+                    } else {
+                        this.trigger('nb-open-started');
+                    }
                 }
             }
             return this;
@@ -500,6 +510,7 @@
 
         /**
          * Close popup
+         * @fires 'nb-close-started' and 'nb-closed'
          * @return {Object} nb.block
          */
         close: function() {
@@ -509,13 +520,23 @@
 
             if (this.isOpen()) {
                 this.node.widget.close();
-                this.trigger('nb-closed');
+
+                if (this.modal) {
+                    this.trigger('nb-closed');
+                } else {
+                    this.trigger('nb-close-started');
+                }
             }
+
 
             // if popup closed by document click we also should fire event
             if (this.node && this.node.widget && this.node.widget.options.closedByOuterClick) {
+                if (this.modal) {
+                    this.trigger('nb-closed');
+                } else {
+                    this.trigger('nb-close-started');
+                }
                 this.node.widget.options.closedByOuterClick = false;
-                this.trigger('nb-closed');
             }
 
             return this;
@@ -676,8 +697,20 @@ nb.define('popup-toggler', {
     },
 
     oninit: function() {
+        var that = this;
         this.data = this.nbdata()['popup-toggler'];
         this.popup = nb.find(this.data['id']);
+
+        if (this.popup) {
+            this.popup.on('nb-closed', function() {
+                that.trigger('nb-closed', that);
+            });
+
+            this.popup.on('nb-opened', function() {
+                that.trigger('nb-opened', that);
+            });
+        }
+
         this.options = {
             //  Относительно чего позиционировать попап.
             //  Если заданы точные координаты в `data.where`, то по ним.
@@ -718,7 +751,7 @@ nb.define('popup-toggler', {
 
     /**
      * Open popup
-     * @fires 'nb-opened'
+     * @fires 'nb-open-started' and 'nb-opened'
      * @returns {Object} nb.block
      */
     open: function(evt) {
@@ -727,20 +760,20 @@ nb.define('popup-toggler', {
         }
         if (this.isEnabled() && this.popup && !this.popup.isOpen()) {
             this.popup.open(this.options);
-            this.trigger('nb-opened', this);
+            this.trigger('nb-open-started', this);
         }
         return this;
     },
 
     /**
      * Close popup
-     * @fires 'nb-closed'
+     * @fires 'nb-close-started' and 'nb-closed'
      * @returns {Object} nb.block
      */
     close: function() {
         if (this.isEnabled() && this.popup && this.popup.isOpen()) {
             this.popup.close();
-            this.trigger('nb-closed', this);
+            this.trigger('nb-close-started', this);
         }
         return this;
     },
