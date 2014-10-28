@@ -34,7 +34,7 @@ nb.define('toggler', {
     },
 
     /**
-     * Toggle to the oppocite value
+     * Toggle to the opposite value
      * Do nothing if toggler is disabled
      * @fires 'nb-changed'
      * @returns {Object} nb.block
