@@ -235,11 +235,48 @@
         var nbBlock = nb.block($this.find('.nb-popup').get(0));
         var mode = $.effects.setMode($this, o.mode || 'hide');
         var shouldHide = mode === 'hide';
-
         var tailDirection = $this.data('nb-tail-dir');
         var distance = $.nb.contextDialog.prototype.tailOffset;
 
         var animation = {};
+
+        var doWithoutAnimation = function() {
+
+            $this.css({'opacity': '1'});
+            if (shouldHide) {
+                $this.hide();
+                nbBlock.trigger('nb-closed', nbBlock);
+                done();
+            } else {
+                nbBlock.trigger('nb-opened', nbBlock);
+                done();
+            }
+            nbBlock.animationInProgress = false;
+            return;
+        }
+
+        var doWithAnimation = function() {
+            $this.animate(animation, {
+                queue: false,
+                duration: o.duration,
+                easing: o.easing,
+                complete: function() {
+                    if (shouldHide) {
+                        $this.hide();
+                        nbBlock.animationInProgress = false;
+                        nbBlock.trigger('nb-closed', nbBlock);
+                        done();
+                    } else {
+                        nbBlock.animationInProgress = false;
+                        nbBlock.trigger('nb-opened', nbBlock);
+                        done();
+                    }
+                    return;
+                }
+            });
+            return;
+        }
+        
         animation.opacity = shouldHide ? 0 : 1;
         animation[tailDirection] = (shouldHide ? '+=' : '-=') + distance;
 
@@ -253,26 +290,12 @@
 
             nbBlock.animationInProgress = true;
 
-            $this.animate(animation, {
-                queue: false,
-                duration: o.duration,
-                easing: o.easing,
-                complete: function() {
-                    if (shouldHide) {
-                        $this.hide();
-                        nbBlock.animationInProgress = false;
-                        nbBlock.trigger('nb-closed', nbBlock);
-                        done();
-                        return;
-                    }
-                    nbBlock.animationInProgress = false;
-                    nbBlock.trigger('nb-opened', nbBlock);
-                    done();
-                }
-            });
+            if (nbBlock.hasAnimation) {
+                doWithAnimation();
+            } else {
+                doWithoutAnimation();
+            }
         }
-
-
     };
 
     /**
@@ -636,6 +659,7 @@
                 autoclose = params.autoclose;
             }
 
+
             var autofocus = true;
 
             if (typeof how.autofocus !== 'undefined') {
@@ -644,6 +668,16 @@
 
             if (typeof params.autofocus !== 'undefined') {
                 autofocus = params.autofocus;
+            }
+
+            this.hasAnimation = true;
+
+            if (typeof how.animation !== 'undefined') {
+                this.hasAnimation = how.animation;
+            }
+
+            if (typeof params.animation !== 'undefined') {
+                this.hasAnimation = params.animation;
             }
 
             //  Модальный попап двигать не нужно.
