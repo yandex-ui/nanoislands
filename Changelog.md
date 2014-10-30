@@ -1,3 +1,12 @@
+##### 0.5.0 — ""The Doomsday Machine"
+
+###### Breaking changes
+* [Popup] Now 'nb-opened' and 'nb-closed' event fires after animation. Also 'nb-open-started' and 'nb-close-started' events has been added.
+
+###### Fixes
+* fix #449 — [Input] destroy снимает все обработчики "keydown" c "document"
+* fix #454 — при нажатии на popup-toggler до загрузки страницы получаем ошибку
+
 ##### 0.4.32 — patch
 Update es5-shim to v4.0.x
 
