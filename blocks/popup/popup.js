@@ -232,7 +232,7 @@
 
     jQuery.effects.effect.nb = function(o, done) {
         var $this = $(this);
-        var nbBlock = nb.block($this.find('.nb-popup').get(0))
+        var nbBlock = nb.block($this.find('.nb-popup').get(0));
         var mode = $.effects.setMode($this, o.mode || 'hide');
         var shouldHide = mode === 'hide';
 
@@ -257,7 +257,7 @@
                     $this.hide();
                     nbBlock.trigger('nb-closed', nbBlock);
                     done();
-                    return
+                    return;
                 }
                 nbBlock.trigger('nb-opened', nbBlock);
                 done();
