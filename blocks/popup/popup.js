@@ -243,26 +243,36 @@
         animation.opacity = shouldHide ? 0 : 1;
         animation[tailDirection] = (shouldHide ? '+=' : '-=') + distance;
 
-        if (!shouldHide) {
-            $this.css(tailDirection, '+=' + distance);
-            $this.show();
+        if (nbBlock.animationInProgress) {
+            done();
+        } else {
+            if (!shouldHide) {
+                $this.css(tailDirection, '+=' + distance);
+                $this.show();
+            }
+
+            nbBlock.animationInProgress = true;
+
+            $this.animate(animation, {
+                queue: false,
+                duration: o.duration,
+                easing: o.easing,
+                complete: function() {
+                    if (shouldHide) {
+                        $this.hide();
+                        nbBlock.animationInProgress = false;
+                        nbBlock.trigger('nb-closed', nbBlock);
+                        done();
+                        return;
+                    }
+                    nbBlock.animationInProgress = false;
+                    nbBlock.trigger('nb-opened', nbBlock);
+                    done();
+                }
+            });
         }
 
-        $this.animate(animation, {
-            queue: false,
-            duration: o.duration,
-            easing: o.easing,
-            complete: function() {
-                if (shouldHide) {
-                    $this.hide();
-                    nbBlock.trigger('nb-closed', nbBlock);
-                    done();
-                    return;
-                }
-                nbBlock.trigger('nb-opened', nbBlock);
-                done();
-            }
-        });
+
     };
 
     /**
@@ -662,28 +672,30 @@
                 return;
             }
 
-            this.$node.hide().contextDialog({
-                position: {
-                    // где попап
-                    at: (how.at ? how.at : 'center bottom'),// + ' center',
-                    // где ссылка, которая открыла попап
-                    my: (how.my ? how.my : 'center top'),// + ' center',
-                    fixed: isFixed,
-                    of: $(this.where),
-                    // horizontal: fit, пытаемся уместить в window
-                    // vertical: flip - выбирает наилучший вариант - вверх или вних
-                    collision: (how.collision ? how.collision : 'fit flip'),
-                    using: using || how.using,
-                    within: how.within
-                },
-                close: function() {
-                    that.close();
-                },
-                appendTo: params.appendTo || how.appendTo,
-                autoclose: autoclose,
-                autofocus: autofocus,
-                withoutTail: params.withoutTail || data.withouttail || false
-            });
+            if (!this.animationInProgress) {
+                this.$node.hide().contextDialog({
+                    position: {
+                        // где попап
+                        at: (how.at ? how.at : 'center bottom'),// + ' center',
+                        // где ссылка, которая открыла попап
+                        my: (how.my ? how.my : 'center top'),// + ' center',
+                        fixed: isFixed,
+                        of: $(this.where),
+                        // horizontal: fit, пытаемся уместить в window
+                        // vertical: flip - выбирает наилучший вариант - вверх или вних
+                        collision: (how.collision ? how.collision : 'fit flip'),
+                        using: using || how.using,
+                        within: how.within
+                    },
+                    close: function() {
+                        that.close();
+                    },
+                    appendTo: params.appendTo || how.appendTo,
+                    autoclose: autoclose,
+                    autofocus: autofocus,
+                    withoutTail: params.withoutTail || data.withouttail || false
+                });
+            }
         }
     }, 'base');
 })();
