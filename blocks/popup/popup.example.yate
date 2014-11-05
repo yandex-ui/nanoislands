@@ -65,6 +65,13 @@ func popups() {
            'content': '<p>And welcome to nanoislands</p>'
        }))
 
+       show('genericPopup-w-animation',nb-popup({
+                  'id': 'genericPopup-w-animation'
+                  'animation': false()
+                  'titleContent': 'Hello, I’m your generic pop-up.'
+                  'content': '<p>And welcome to nanoislands</p>'
+              }))
+
        show('genericPopup',nb-popup({
               'id': 'genericPopup1'
               'titleContent': 'Hello, I’m your generic pop-up.'

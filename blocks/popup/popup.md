@@ -21,6 +21,7 @@ There are 2 parts of popup control:
     using: '..',
     within '..',
     autoclose: true
+    animation: true
 }
 ```
 
@@ -119,6 +120,14 @@ There are 2 parts of popup control:
     <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'genericPopup'}" href="#right">
         <span class="link__inner">
             "generic popup"
+        </span>
+    </a>
+</div>
+
+<div>
+    <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'genericPopup', how: { animation: false}}" href="#right">
+        <span class="link__inner">
+            "generic popup without animation"
         </span>
     </a>
 </div>

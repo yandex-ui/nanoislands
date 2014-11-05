@@ -40,7 +40,9 @@
                     this.overlay.click(this._onmousedown);
                 } else {
                     this._onmousedown = function(e) {
-                        that.options.closedByOuterClick = true;
+                        var popupId = $(that.uiDialog[0]).find('.nb-popup').attr('id');
+                        var toggler = $(e.target).parents().addBack().filter('[data-nb="popup-toggler"]');
+
                         if (e.which === 2 || e.which === 3) {
                             return;
                         }
@@ -49,6 +51,12 @@
                             return;
                         }
 
+                        // if we handle click on toggler we shouldn't close linked popup by outerclick
+                        if (nb.find(toggler.attr('id')).nbdata()["popup-toggler"].id == popupId) {
+                            return;
+                        }
+
+                        that.options.closedByOuterClick = true;
                         that.close();
                     };
 
@@ -242,34 +250,71 @@
         var nbBlock = nb.block($this.find('.nb-popup').get(0));
         var mode = $.effects.setMode($this, o.mode || 'hide');
         var shouldHide = mode === 'hide';
-
         var tailDirection = $this.data('nb-tail-dir');
         var distance = $.nb.contextDialog.prototype.tailOffset;
 
         var animation = {};
-        animation.opacity = shouldHide ? 0 : 1;
-        animation[tailDirection] = (shouldHide ? '+=' : '-=') + distance;
 
-        if (!shouldHide) {
-            $this.css(tailDirection, '+=' + distance);
-            $this.show();
-        }
+        var doWithoutAnimation = function() {
 
-        $this.animate(animation, {
-            queue: false,
-            duration: o.duration,
-            easing: o.easing,
-            complete: function() {
-                if (shouldHide) {
-                    $this.hide();
-                    nbBlock.trigger('nb-closed', nbBlock);
-                    done();
-                    return;
-                }
+            $this.css({'opacity': '1'});
+            if (shouldHide) {
+                $this.hide();
+                nbBlock.trigger('nb-closed', nbBlock);
+                done();
+            } else {
                 nbBlock.trigger('nb-opened', nbBlock);
                 done();
             }
-        });
+            nbBlock.animationInProgress = false;
+            return;
+        };
+
+        var doWithAnimation = function() {
+            $this.animate(animation, {
+                queue: false,
+                duration: o.duration,
+                easing: o.easing,
+                complete: function() {
+                    if (shouldHide) {
+                        $this.hide();
+                        nbBlock.animationInProgress = false;
+                        nbBlock.trigger('nb-closed', nbBlock);
+                        done();
+                    } else {
+                        nbBlock.animationInProgress = false;
+                        nbBlock.trigger('nb-opened', nbBlock);
+                        done();
+                    }
+                    return;
+                }
+            });
+            return;
+        };
+
+        animation.opacity = shouldHide ? 0 : 1;
+        animation[tailDirection] = (shouldHide ? '+=' : '-=') + distance;
+
+        nbBlock.animationInProgress = false;
+
+        if (nbBlock.animationInProgress) {
+            done();
+        } else {
+            if (!shouldHide) {
+                if (nbBlock.hasAnimation) {
+                    $this.css(tailDirection, '+=' + distance);
+                }
+                $this.show();
+            }
+
+            nbBlock.animationInProgress = true;
+
+            if (nbBlock.hasAnimation) {
+                doWithAnimation();
+            } else {
+                doWithoutAnimation();
+            }
+        }
     };
 
     /**
@@ -502,7 +547,7 @@
             } else {
                 //  Попап закрыт. Будем открывать.
                 if (params.where || this.modal) {
-                    $(this.node).removeClass('_nb-is-hidden');
+                    this.$node.removeClass('_nb-is-hidden');
                     //  Передвигаем попап.
                     this._move(where, how, params);
                     if (this.modal) {
@@ -611,16 +656,7 @@
 
             var using = function(props) {
                 var $el = $(this);
-
-                if (params.animate) {
-                    $el.stop().animate(props, {
-                        duration: 'fast',
-                        queue: false,
-                        complete: $.proxy(that.trigger, that, 'position.complete')
-                    });
-                } else {
-                    $el.css(props);
-                }
+                $el.css(props);
             };
 
             var autoclose = true;
@@ -633,6 +669,7 @@
                 autoclose = params.autoclose;
             }
 
+
             var autofocus = true;
 
             if (typeof how.autofocus !== 'undefined') {
@@ -641,6 +678,16 @@
 
             if (typeof params.autofocus !== 'undefined') {
                 autofocus = params.autofocus;
+            }
+
+            this.hasAnimation = true;
+
+            if (typeof how.animation !== 'undefined') {
+                this.hasAnimation = how.animation;
+            }
+
+            if (typeof params.animation !== 'undefined') {
+                this.hasAnimation = params.animation;
             }
 
             //  Модальный попап двигать не нужно.
@@ -669,28 +716,30 @@
                 return;
             }
 
-            this.$node.hide().contextDialog({
-                position: {
-                    // где попап
-                    at: (how.at ? how.at : 'center bottom'),// + ' center',
-                    // где ссылка, которая открыла попап
-                    my: (how.my ? how.my : 'center top'),// + ' center',
-                    fixed: isFixed,
-                    of: $(this.where),
-                    // horizontal: fit, пытаемся уместить в window
-                    // vertical: flip - выбирает наилучший вариант - вверх или вних
-                    collision: (how.collision ? how.collision : 'fit flip'),
-                    using: using || how.using,
-                    within: how.within
-                },
-                close: function() {
-                    that.close();
-                },
-                appendTo: params.appendTo || how.appendTo,
-                autoclose: autoclose,
-                autofocus: autofocus,
-                withoutTail: params.withoutTail || data.withouttail || false
-            });
+            if (!this.animationInProgress) {
+                this.$node.hide().contextDialog({
+                    position: {
+                        // где попап
+                        at: (how.at ? how.at : 'center bottom'),// + ' center',
+                        // где ссылка, которая открыла попап
+                        my: (how.my ? how.my : 'center top'),// + ' center',
+                        fixed: isFixed,
+                        of: $(this.where),
+                        // horizontal: fit, пытаемся уместить в window
+                        // vertical: flip - выбирает наилучший вариант - вверх или вних
+                        collision: (how.collision ? how.collision : 'fit flip'),
+                        using: using || how.using,
+                        within: how.within
+                    },
+                    close: function() {
+                        that.close();
+                    },
+                    appendTo: params.appendTo || how.appendTo,
+                    autoclose: autoclose,
+                    autofocus: autofocus,
+                    withoutTail: params.withoutTail || data.withouttail || false
+                });
+            }
         }
     }, 'base');
 })();
