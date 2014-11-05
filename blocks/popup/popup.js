@@ -28,7 +28,7 @@
             this._super();
             var that = this;
 
-            if (that.options.autoclose) {
+            if (this.options.autoclose) {
                 if (this.options.modal) {
                     this._onmousedown = function(e) {
                         that.options.closedByOuterClick = true;
@@ -67,8 +67,15 @@
                 }
             });
         },
-        close: function() {
+        close: function(evt) {
             this._super();
+
+            // if we close modal popup by "esc", we should trigger 'nb-closed' event
+            if (evt && evt.keyCode === 27 && this.options.modal) {
+                this.nbBlock = this.nbBlock || nb.find($(this.uiDialog[0]).find('.nb-popup').attr('id'));
+                this.nbBlock.trigger('nb-closed', this.nbBlock);
+            }
+
             if (this.options.autoclose) {
                 this.document.off('mousedown', this._onmousedown);
                 this.document.off('touchstart', this._onmousedown);
