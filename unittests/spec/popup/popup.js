@@ -58,7 +58,6 @@ describe("Popup Tests", function() {
         });
 
         it("#Toggle() open popup", function() {
-            this.toggler.open();
             this.toggler.close();
             this.toggler.toggle();
             expect(this.popup.isOpen()).to.ok();

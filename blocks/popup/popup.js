@@ -40,7 +40,9 @@
                     this.overlay.click(this._onmousedown);
                 } else {
                     this._onmousedown = function(e) {
-                        that.options.closedByOuterClick = true;
+                        var popupId = $(that.uiDialog[0]).find('.nb-popup').attr('id');
+                        var toggler = $(e.target).parents().addBack().filter('[data-nb="popup-toggler"]');
+
                         if (e.which === 2 || e.which === 3) {
                             return;
                         }
@@ -49,6 +51,12 @@
                             return;
                         }
 
+                        // if we handle click on toggler we shouldn't close linked popup by outerclick
+                        if (nb.find(toggler.attr('id')).nbdata()["popup-toggler"].id == popupId) {
+                            return;
+                        }
+
+                        that.options.closedByOuterClick = true;
                         that.close();
                     };
 
@@ -253,7 +261,7 @@
             }
             nbBlock.animationInProgress = false;
             return;
-        }
+        };
 
         var doWithAnimation = function() {
             $this.animate(animation, {
@@ -275,16 +283,20 @@
                 }
             });
             return;
-        }
-        
+        };
+
         animation.opacity = shouldHide ? 0 : 1;
         animation[tailDirection] = (shouldHide ? '+=' : '-=') + distance;
+
+        nbBlock.animationInProgress = false;
 
         if (nbBlock.animationInProgress) {
             done();
         } else {
             if (!shouldHide) {
-                $this.css(tailDirection, '+=' + distance);
+                if (nbBlock.hasAnimation) {
+                    $this.css(tailDirection, '+=' + distance);
+                }
                 $this.show();
             }
 
@@ -528,7 +540,7 @@
             } else {
                 //  Попап закрыт. Будем открывать.
                 if (params.where || this.modal) {
-                    $(this.node).removeClass('_nb-is-hidden');
+                    this.$node.removeClass('_nb-is-hidden');
                     //  Передвигаем попап.
                     this._move(where, how, params);
                     if (this.modal) {
@@ -637,16 +649,7 @@
 
             var using = function(props) {
                 var $el = $(this);
-
-                if (params.animate) {
-                    $el.stop().animate(props, {
-                        duration: 'fast',
-                        queue: false,
-                        complete: $.proxy(that.trigger, that, 'position.complete')
-                    });
-                } else {
-                    $el.css(props);
-                }
+                $el.css(props);
             };
 
             var autoclose = true;

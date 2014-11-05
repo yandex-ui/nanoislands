@@ -21,7 +21,7 @@ There are 2 parts of popup control:
     using: '..',
     within '..',
     autoclose: true
-    animation: false
+    animation: true
 }
 ```
 
