@@ -1,4 +1,14 @@
-##### 0.5.0 — ""The Doomsday Machine"
+##### 0.5.1 — patch
+
+* [Popup] popup withiout animation
+
+###### Fixes
+* [Popup] click on scroll shouln't close popup
+* fix #379 — Trigger `nb-closed` on nb-popup closed by pressing escape button
+* fix #456 — Не открывается модальный попап на демостраничке
+* fix #452 — Не очищается очередь анимации попапов
+
+##### 0.5.0 — "The Doomsday Machine"
 
 ###### Breaking changes
 * [Popup] Now 'nb-opened' and 'nb-closed' event fires after animation. Also 'nb-open-started' and 'nb-close-started' events has been added.
