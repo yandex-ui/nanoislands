@@ -18,6 +18,7 @@
     * `'text'` {string} text of option
     * `'value'` {string} value of option
     * `'icon'` {string} 'three-dots'
+    * `'class'` {array} aditional classes for options
     * `'selected'` {boolean}
     * `'separator'` {boolean}
     * `'group'` {array} - group of options, array of items in `optgroup`
@@ -119,6 +120,10 @@
 >          {
 >              'text': 'Карта'
 >              'value': 'option1'
+>              'class': [
+>                   'my-test-class-for-option'
+>                   'or-two'
+>              ]
 >          }
 >          {
 >              'text': 'Спутник'

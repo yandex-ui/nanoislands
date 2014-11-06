@@ -2,6 +2,7 @@
 /* borschik:include:../libs/jquery.ba-throttle-debounce.js */
 /* borschik:include:../libs/nanoblocks.js */
 
+/* borschik:include:arrow/arrow.js */
 /* borschik:include:common/common.js */
 /* borschik:include:button/button.js */
 /* borschik:include:tooltip/tooltip.js */

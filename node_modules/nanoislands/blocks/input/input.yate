@@ -111,6 +111,10 @@ match .input nb {
                 if .disabled {
                     @disabled = 'disabled'
                 }
+
+                if .hint && .hint.text != '' {
+                    @placeholder = .hint
+                }
             </input>
             <span class="_nb-input-view">&nbsp;</span>
         </span>

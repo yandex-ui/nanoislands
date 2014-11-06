@@ -1,13 +1,6 @@
 func nb-popup-menu(nodeset options) {
     default = {
        'none': 'none'
-       //'tail': 'left|right|top|bottom'
-       //'menu': [
-       //    {
-       //        'href': '#'
-       //        'text': 'Скопировать'
-       //     }
-       //]
     }
 
     _nb-block('popupMenu', _nb-extend(default, options))

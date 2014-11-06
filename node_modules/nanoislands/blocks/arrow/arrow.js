@@ -1,45 +1,4 @@
 nb.define('arrow', {
-    events: {
-        'focusin .nb-arrow__input__wrap': 'focus',
-        'focusout .nb-arrow__input__wrap': 'blur'
-    },
-
     oninit: function() {
-        this.$wrap = this.$node.find('.nb-arrow__name__wrap');
-        this.$requests = this.$node.find('.nb-arrow__requests');
-        this.$node.find('.nb-arrow__input_fake').text(this.$node.find('.nb-input').attr('value'));
-    },
-
-    /**
-     * Add a shadow to wrapper and hide info about requests
-     *
-     * ```
-     * arrow.focus()
-     * ```
-     *
-     * @return {Object} nb-block
-     */
-    focus: function() {
-        if (!this.$wrap.hasClass('nb-arrow__name__wrap_focus')) {
-            this.$wrap.addClass('nb-arrow__name__wrap_focus');
-        }
-        this.$requests.fadeOut('fast');
-        return this;
-    },
-
-    /**
-     * Remove a shadow from wrapper and show info about requests
-     *
-     * ```
-     * arrow.blur();
-     * ```
-     *
-     * @return {Object} nb-block
-     */
-    blur: function() {
-        this.$wrap.removeClass('nb-arrow__name__wrap_focus');
-        this.$node.find('.nb-arrow__input_fake').text(this.$node.find('.nb-input').attr('value'));
-        this.$requests.fadeIn('fast');
-        return this;
     }
 }, 'base');

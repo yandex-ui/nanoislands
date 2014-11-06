@@ -476,19 +476,7 @@ var yr = yr || require('yate/lib/runtime.js');
         } else {
             a0.a[ "label" ] = new yr.scalarAttr(nodeset2scalar( m.n(j18, v26) ));
             a0.a[ "value" ] = new yr.scalarAttr(nodeset2scalar( m.n(j19, v26) ));
-            a0.a[ "data-icon" ] = new yr.scalarAttr(nodeset2scalar( m.n(j9, v26) ));
-            if (nodeset2boolean( (m.n(j15, v26)) )) {
-                var items0 = m.n(j15, v26);
-                for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
-                    var c1 = items0[ i1 ];
-                    var tmp1 = a0.a[ "data-class" ];
-                    if (tmp1) {
-                        a0.a[ "data-class" ] = tmp1.addscalar(" " + nodeset2scalar( m.s(j14, c1) ));
-                    } else {
-                        a0.a[ "data-class" ] = new yr.scalarAttr(" " + nodeset2scalar( m.s(j14, c1) ));
-                    }
-                }
-            }
+            a0.a[ "data-icon" ] = new yr.scalarAttr(simpleScalar('icon', c0));
             if (nodeset2boolean( (m.n(j20, v26)) )) {
                 a0.a[ "selected" ] = new yr.scalarAttr("");
             }
@@ -1331,11 +1319,6 @@ var yr = yr || require('yate/lib/runtime.js');
             var a3 = { a: {} };
             r3[ "text" ] = "Карта";
             r3[ "value" ] = "option1";
-            var r4 = [];
-            var a4 = { a: {} };
-            r4.push("my-test-class-for-option");
-            r4.push("or-two");
-            r3[ "class" ] = r4;
             r2.push(r3);
             var r3 = {};
             var a3 = { a: {} };
@@ -3020,7 +3003,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += m.f('f35', c0, i0, l0, a0, "popup-modal1", m.f('f10', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
-            r0[ "id" ] = "popup-modal1";
+            r0[ "id" ] = "modal-popup1";
             r0[ "titleContent" ] = "Some modal popup";
             r0[ "content" ] = "Some text for that popup";
             var r1 = {};
@@ -3062,16 +3045,6 @@ var yr = yr || require('yate/lib/runtime.js');
             var r0 = {};
             var a0 = { a: {} };
             r0[ "id" ] = "genericPopup";
-            r0[ "titleContent" ] = "Hello, I’m your generic pop-up.";
-            r0[ "content" ] = "<p>And welcome to nanoislands</p>";
-
-            return r0;
-        })())));
-        r0 += m.f('f35', c0, i0, l0, a0, "genericPopup-w-animation", m.f('f9', c0, i0, l0, a0, yr.object2nodeset((function() {
-            var r0 = {};
-            var a0 = { a: {} };
-            r0[ "id" ] = "genericPopup-w-animation";
-            r0[ "animation" ] = false;
             r0[ "titleContent" ] = "Hello, I’m your generic pop-up.";
             r0[ "content" ] = "<p>And welcome to nanoislands</p>";
 
@@ -4427,9 +4400,6 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
-        if (simpleBoolean('hint', c0) && !(cmpSN("", m.s(j67, c0)))) {
-            a0.a[ "placeholder" ] = new yr.scalarAttr(simpleScalar('hint', c0));
-        }
         r0 += closeAttrs(a0);
         r0 += '';
         r0 += "<span class=\"" + "_nb-input-view" + "\">" + " " + "</span>";
@@ -5144,8 +5114,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<form";
         a0.a = {
-            'data-nb': new yr.scalarAttr("arrow"),
-            'class': new yr.scalarAttr("nb-arrow _init _nb-search-arrow")
+            'class': new yr.scalarAttr("nb-arrow _nb-search-arrow")
         };
         a0.s = 'form';
         r0 += m.a(m, 0, m.s(j14, c0), 'nb-main-attrs', a0)
