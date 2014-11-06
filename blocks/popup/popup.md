@@ -234,7 +234,7 @@ There are 2 parts of popup control:
 ### Modal popup example:
 
 <div>
-    <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'modal-popup1'}" href="#modal">
+    <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'popup-modal1'}" href="#modal">
         <span class="link__inner">
             "Modal popup"
         </span>

@@ -29,7 +29,7 @@ func popups() {
 
 
     show('popup-modal1',nb-popup-modal({
-           'id': 'modal-popup1'
+           'id': 'popup-modal1'
            'titleContent': 'Some modal popup'
            'content': 'Some text for that popup'
            'data-nb': {

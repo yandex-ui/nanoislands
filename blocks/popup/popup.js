@@ -31,10 +31,12 @@
             if (this.options.autoclose) {
                 if (this.options.modal) {
                     this._onmousedown = function(e) {
-                        that.options.closedByOuterClick = true;
+
                         if (e.which === 2 || e.which === 3) {
                             return;
                         }
+
+                        that.options.closedByOuterClick = true;
                         that.close();
                     };
                     this.overlay.click(this._onmousedown);
@@ -52,7 +54,12 @@
                         }
 
                         // if we handle click on toggler we shouldn't close linked popup by outerclick
-                        if (nb.find(toggler.attr('id')).nbdata()["popup-toggler"].id == popupId) {
+                        if (toggler.length && nb.find(toggler.attr('id')) && nb.find(toggler.attr('id')).nbdata()["popup-toggler"].id == popupId) {
+                            return;
+                        }
+
+                         // hacky way to detect click on scroll
+                        if (e.clientX > window.screen.width - 18) {
                             return;
                         }
 
