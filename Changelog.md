@@ -1,9 +1,9 @@
 ##### 0.5.1 — patch
 
-* [Popup] popup withiout animation
+* [Popup] popup without animation
 
 ###### Fixes
-* [Popup] click on scroll shouln't close popup
+* [Popup] click on scroll shouldn't close popup
 * fix #379 — Trigger `nb-closed` on nb-popup closed by pressing escape button
 * fix #456 — Не открывается модальный попап на демостраничке
 * fix #452 — Не очищается очередь анимации попапов
