@@ -1,3 +1,7 @@
+##### 0.5.2
+
+* update es-shim
+
 ##### 0.5.1 — patch
 
 * [Popup] popup without animation
