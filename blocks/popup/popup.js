@@ -162,9 +162,6 @@
         tailOffset: 13,
 
         options: {
-            height: 'auto',
-            minHeight: 'auto',
-            width: 'auto',
             show: {
                 effect: 'nb',
                 duration: 150
@@ -175,7 +172,6 @@
             },
             draggable: false,
             resizable: false,
-            dialogClass: '_nb-popup-outer ui-dialog-no-close',
             position: {
                 my: 'center top',
                 at: 'center bottom',
@@ -528,6 +524,14 @@
          * popup.open({
          *     where: [100, 200],
          *     how: 'top bottom'
+         *     height: '100px',
+         *     minHeight: '100px',
+         *     maxHeight: '100px',
+         *     width: '100px',
+         *     class: 'test'
+         *     appendTo: '#test'
+         *     autoclose: false,
+         *     autofocus: false
          * });
          * ```
          *
@@ -700,15 +704,16 @@
             //  Модальный попап двигать не нужно.
             if (this.modal) {
                 $(this.node).baseDialog({
-                    height: data.height,
-                    minHeight: data.minheight,
-                    width: data.width,
+                    height: params.height || data.height,
+                    minHeight: params.minHeight || data.minheight,
+                    maxHeight: params.maxHeight ||  data.maxheight,
+                    width: params.width || data.width,
                     show: 'fade',
                     hide: 'fade',
                     modal: true,
                     resizable: false,
                     draggable: false,
-                    dialogClass: '_nb-popup-outer ui-dialog-fixed',
+                    dialogClass: params.class || '_nb-popup-outer ui-dialog-fixed',
                     close: function() {
                         that.close();
                     },
@@ -725,6 +730,11 @@
 
             if (!this.animationInProgress) {
                 this.$node.hide().contextDialog({
+                    height: params.height || data.height || 'auto',
+                    minHeight: params.minHeight || data.minheight || 'auto',
+                    maxHeight: params.maxHeight || data.maxheight || 'auto',
+                    width: params.width || data.width || 'auto',
+                    dialogClass: params.class ? '_nb-popup-outer ui-dialog-no-close ' + params.class : '_nb-popup-outer ui-dialog-no-close',
                     position: {
                         // где попап
                         at: (how.at ? how.at : 'center bottom'),// + ' center',

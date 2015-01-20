@@ -174,6 +174,16 @@
         /**
          * Show inputs error
          * @param {Object|String} params optional params of error popup or contentof Error
+         *
+         * ```
+         * input.showError({
+         *     where: [100, 200],
+         *     how: 'top bottom'
+         *     class: 'test'
+         *     appendTo: '#test'
+         *     autoclose: false,
+         * });
+         * ```
          * @returns {Object} nb.block
          */
         showError: function(params) {
@@ -209,7 +219,8 @@
                         autofocus: false,
                         where: params.where || this.node,
                         how: params.how || how,
-                        appendTo: params.appendTo || false
+                        appendTo: params.appendTo || false,
+                        class: params.class || false
                     });
 
                     if (wasFocused) {

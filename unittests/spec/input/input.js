@@ -194,6 +194,16 @@ describe("Input Tests", function() {
     });
 
     describe("showError()", function() {
+        it("show have class param", function() {
+            var input = nb.find('input-error');
+            var data = input.nbdata();
+            input.hideError();
+            input.showError({class: 'test'});
+            expect($(nb.find(data.error.id).node).contextDialog().parent().is('.test')).to.be.ok();
+        });
+    });
+
+    describe("showError()", function() {
         it("should return focus to input", function() {
             var input = nb.find('input-error');
             input.focus();
