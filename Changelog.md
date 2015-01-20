@@ -1,3 +1,14 @@
+##### 0.5.3 — patch
+
+###### Fixes
+* fix #470 — Возможность ограничивать высоту попапа
+* fix #468 — Добавить иконки android и apple
+* fix #467 — Поддержать свойства appendTo и/или class в error у блока input
+* fix #461 — Input – при вызове hideError() теряется фокус с инпута
+* fix #463 — Не забирать пустой gif с yandex.st
+* fix #458 — Input — nb-changed — коллбек не получает блок при пользовательском вводе
+
+
 ##### 0.5.2 — patch
 
 * update es-shim
