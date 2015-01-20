@@ -101,11 +101,11 @@
             }.bind(this);
 
             // IE 9/10 Enter Key causing Form Submit / Button Click
-             // this.$control.keypress(function(e) {
-             // if (e.which == 13) {
-             // e.preventDefault();
-             // }
-             // });
+            // this.$control.keypress(function(e) {
+            // if (e.which == 13) {
+            // e.preventDefault();
+            // }
+            // });
 
             $(document).on('mousedown', this._onmousedown);
             $(document).on('touchstart', this._onmousedown);
@@ -184,7 +184,6 @@
                 this.$node.addClass('_nb-is-wrong');
                 var how = {
                     collision: 'flip flip'
-
                 };
 
                 if (this.data.error.direction && this.data.error.direction == 'left') {
@@ -205,7 +204,6 @@
                 }
 
                 if (!this.error.isOpen()) {
-
                     this.error.open({
                         autoclose: params.autoclose || false,
                         autofocus: false,
@@ -227,9 +225,15 @@
          * @returns {Object} nb.block
          */
         hideError: function() {
+            var wasFocused = this.focused;
+
             if (this.data.error) {
                 this.$node.removeClass('_nb-is-wrong');
                 this.error.close();
+
+                if (wasFocused) {
+                    this._onfocus();
+                }
             }
             return this;
         },
@@ -307,14 +311,14 @@
          * @returns {Object} nb.block
          */
         setValue: function(value) {
-            
-             // Check newValue and actualValue to avoid recursion
 
-             // nbInput.on('nb-changed', function() {
-             // var validValue = validate(this.getValue());
-             // this.setValue(validValue);
-             // });
-             
+            // Check newValue and actualValue to avoid recursion
+
+            // nbInput.on('nb-changed', function() {
+            // var validValue = validate(this.getValue());
+            // this.setValue(validValue);
+            // });
+
             if (this.value != value) {
                 this.value = value;
                 this.$control.val(value);

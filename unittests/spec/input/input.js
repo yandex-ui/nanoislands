@@ -212,6 +212,17 @@ describe("Input Tests", function() {
         });
     });
 
+    describe("hideError()", function() {
+        it("should not take focus", function() {
+            var input = nb.find('input-error');
+            input.hideError();
+            input.focus();
+            input.showError();
+            input.hideError();
+            expect($.contains(input.$node.get(0), document.activeElement)).to.be.ok();
+        });
+    });
+
     describe("showError()", function() {
         it("should not take focus", function() {
             var input = nb.find('input-error');
