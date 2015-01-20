@@ -59,7 +59,7 @@
             });
 
             this.$control.on('change', function(e) {
-                that.trigger('nb-changed', this, e);
+                that.trigger('nb-changed', that, e);
             });
 
             bindOninput(this, function(e) {

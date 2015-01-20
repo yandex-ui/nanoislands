@@ -139,6 +139,19 @@ describe("Input Tests", function() {
             expect(result).to.be.ok();
         });
 
+        it("nb-changed event should provide block", function() {
+            var result = false;
+
+            this.input.on('nb-changed', function(name, block, event) {
+                result = this.$node.attr('id') == block.$node.attr('id');
+            });
+
+            this.input.$control.val("Zzzzap!");
+            this.input.$control.trigger('change');
+
+            expect(result).to.be.ok();
+        });
+
         it("should fire nb-changed event on .setValue()", function() {
             var result = false;
 
