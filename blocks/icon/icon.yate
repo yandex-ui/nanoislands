@@ -8,7 +8,7 @@ func nb-icon(nodeset options) {
 }
 
 match .ico nb {
-    <img src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif">
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
        @class = (
         'nb-icon nb-'
         .size
