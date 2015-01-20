@@ -176,7 +176,11 @@ There are 2 parts of popup control:
         * `id` {string}
     * Object for separator:
         * `separator` {boolean} — `true()` to render separator
-
+* `data-nb` {object}
+    * `width`: {number}
+    * `height`: {number}
+    * `minHeight`: {number}
+    * `maxHeight`: {number}
 ### Menu popup example
 
 <div>
@@ -214,6 +218,7 @@ There are 2 parts of popup control:
     * `width`: `auto`
     * `height`: `auto`
     * `minHeight`: `auto`
+    * `maxHeight`: `auto`
 
 ### Options for modal popup
 

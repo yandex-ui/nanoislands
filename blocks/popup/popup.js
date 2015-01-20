@@ -524,10 +524,10 @@
          * popup.open({
          *     where: [100, 200],
          *     how: 'top bottom'
-         *     height: '100px',
-         *     minHeight: '100px',
-         *     maxHeight: '100px',
-         *     width: '100px',
+         *     height: 100 {number},
+         *     minHeight: 100 {number},
+         *     maxHeight: 100 {number},
+         *     width: 100 {number},
          *     class: 'test'
          *     appendTo: '#test'
          *     autoclose: false,

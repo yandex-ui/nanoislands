@@ -80,6 +80,7 @@ func nb-popup-modal(nodeset options) {
             'width': 'auto'
             'height': 'auto'
             'minHeight': 'auto'
+            'maxHeight': 'auto'
         }
         // if there is privitive deep-extend with options don't work
         'close': {
