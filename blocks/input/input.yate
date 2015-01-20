@@ -57,7 +57,7 @@ match .input nb {
 
         if .error {
            nb-popup({
-                "class": "_nb-error-popup"
+                "class": .error.class + " _nb-error-popup"
                 "content": .error.content
                 "id": errorId
            })
