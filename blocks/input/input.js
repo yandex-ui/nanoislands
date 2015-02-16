@@ -220,7 +220,7 @@
                         where: params.where || this.node,
                         how: params.how || how,
                         appendTo: params.appendTo || false,
-                        class: params.class || false
+                        class: params['class'] || false
                     });
 
                     if (wasFocused) {
