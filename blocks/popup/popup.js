@@ -713,7 +713,7 @@
                     modal: true,
                     resizable: false,
                     draggable: false,
-                    dialogClass: params.class || '_nb-popup-outer ui-dialog-fixed',
+                    dialogClass: params['class'] || '_nb-popup-outer ui-dialog-fixed',
                     close: function() {
                         that.close();
                     },
@@ -734,7 +734,7 @@
                     minHeight: params.minHeight || data.minheight || 'auto',
                     maxHeight: params.maxHeight || data.maxheight || 'auto',
                     width: params.width || data.width || 'auto',
-                    dialogClass: params.class ? '_nb-popup-outer ui-dialog-no-close ' + params.class : '_nb-popup-outer ui-dialog-no-close',
+                    dialogClass: params['class'] ? '_nb-popup-outer ui-dialog-no-close ' + params['class'] : '_nb-popup-outer ui-dialog-no-close',
                     position: {
                         // где попап
                         at: (how.at ? how.at : 'center bottom'),// + ' center',
