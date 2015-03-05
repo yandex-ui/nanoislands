@@ -19,6 +19,15 @@ match .suggest {
         'source': '["Variant1", "Variant2", "Variant3"]'
     })
 
+     nb-suggest({
+          'id': 'suggest-complex-input'
+          'tabindex': '1'
+          'source': '["Variant1", "Variant2", "Variant3"]'
+          'input': {
+                'hint': 'Variant1'
+          }
+      })
+
     <input>
         @id = 'custom-suggest-input'
         apply . suggest-attrs

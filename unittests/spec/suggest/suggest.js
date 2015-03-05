@@ -115,6 +115,11 @@ describe("suggest Tests", function() {
             var suggest = nb.find('suggest-tabindex');
             expect(suggest.$control.attr('tabindex')).to.equal('1');
         });
+
+        it("Complex input", function() {
+            var suggest = nb.find('suggest-complex-input');
+            expect(suggest.input.$node.find('._nb-input-hint-inner').text()).to.equal('Variant1');
+        });
     });
 
     describe('#getType()', function() {
@@ -365,7 +370,7 @@ describe("suggest Tests", function() {
     describe("#setSelected()", function() {
 
         it("should return selected item", function() {
-            this.suggest.$jUI.trigger('suggestselect', { item: 'Variant1'});
+            this.suggest.$jUI.trigger('suggestselect', {item: 'Variant1'});
 
             expect(this.suggest.getSelected()).to.equal('Variant1');
         });

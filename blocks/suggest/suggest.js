@@ -186,8 +186,9 @@
             if (nodeTagName === 'input' || nodeTagName === 'textarea') {
                 this.$control = this.$node;
             } else {
+                console.log(this.$node.find('.nb-input').get(0));
                 this.$control = this.$node.find('input');
-                this.input = this.children()[0];
+                this.input = nb.block(this.$node.find('.nb-input').get(0));
             }
 
             var source = this.$node.data('source');
@@ -224,6 +225,7 @@
 
             this.$jUI.on('suggestselect.nb-suggest', function(e, item) {
                 this.$selected = item.item;
+                this.input.setValue(item.item.value);
                 this.trigger('nb-select', this, item.item);
             }.bind(this));
 

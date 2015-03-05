@@ -5,7 +5,6 @@ Suggest element.
  * `'id'` {string}
  * `'name'` {string}
  * `'attrs'` {object} - attrubutes for suggest node
- * `'attrsInput'` {object} - attrubutes for input node
  * `'disabled'` {boolean}
  * `'source'`: {array} — source data for suggest
  * `'highlight'`: {boolean} — hightlight results or not
@@ -13,6 +12,14 @@ Suggest element.
  * `'countMax'` {string}  - The number of elements in which the drop-down list appears scroll (default = 10)
  * `'classSuggest'` {string} — additional class for suggest popup
  * `'content'` {string} — initial content og suggest field
+ * `'input'` {object}:
+    * `'attrs'` {object} - attrubutes for suggest node
+    * `'ghost'` {boolean} — ghost mode input
+    * `'reset'` {boolean} — reset control in input
+    * `'error'` {object} `{content: 'error content', direction: 'right|left'}`
+    * `'leftContent'` {string|xml} — content of the left field of input
+    * `'rightContent'` {string|xml} — content of the right field of input
+    * `'hint'` {string | Object} — content of hint or `{ text: '...', ghost: true() }` for ghost hint
 
 
 ### Examples
@@ -49,4 +56,15 @@ Suggest element.
 >      'source': './users.json'
 >      'type': 'username'
 >  })
-> ``` 
+> ```
+
+Саджест c ljgjkybntkmysvb gfhfvtnhfvb
+
+> <div example="suggestUser3"/>
+>
+> ```yate
+>  nb-suggest({
+>      'source': './users.json'
+>      'type': 'username'
+>  })
+> ```

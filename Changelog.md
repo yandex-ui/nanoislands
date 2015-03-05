@@ -1,3 +1,10 @@
+##### 0.6.0 — "Catspaw"
+* [Suggest] — `attrsInput` -> `input.attrs`
+* [Suggest] — #474 Пробрасывать поля hint и error из nb-suggest во вложенный инпут
+
+###### Fixes
+* fix #475 — Не работает ::-ms-clear в ИЕ для инпута
+
 ##### 0.5.3 — patch
 
 ###### Fixes
