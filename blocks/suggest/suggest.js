@@ -186,7 +186,6 @@
             if (nodeTagName === 'input' || nodeTagName === 'textarea') {
                 this.$control = this.$node;
             } else {
-                console.log(this.$node.find('.nb-input').get(0));
                 this.$control = this.$node.find('input');
                 this.input = nb.block(this.$node.find('.nb-input').get(0));
             }

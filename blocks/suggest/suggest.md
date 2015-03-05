@@ -21,6 +21,12 @@ Suggest element.
     * `'rightContent'` {string|xml} — content of the right field of input
     * `'hint'` {string | Object} — content of hint or `{ text: '...', ghost: true() }` for ghost hint
 
+Поддерживаемые события:
+* `nb-type` – всплывает при вводе значения в инпут
+* `nb-select` – всплывает при выборе значения из саджеста
+* `nb-keypress-enter` – всплывает при нажатии на энетер и отсутвии саджеста
+
+suggest.input — доступ с наноблоку input
 
 ### Examples
 Простейший саджест с большим количеством вариантов. Введите буквы «Ва»
@@ -58,7 +64,7 @@ Suggest element.
 >  })
 > ```
 
-Саджест c ljgjkybntkmysvb gfhfvtnhfvb
+Саджест c сложным инпутом внутри
 
 > <div example="suggestUser3"/>
 >
