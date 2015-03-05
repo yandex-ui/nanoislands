@@ -95,3 +95,25 @@ Button type of checkbox
 >         'disabled': true()
 >     })
 > ```
+
+#### Radio
+
+> <div example="radio-button" />
+>
+> ```yate
+>     nb-checkbox({
+>         'name': 'radio1'
+>         'type': 'radio'
+>         'content': 'Variant #1'
+>     })
+>     nb-checkbox({
+>         'name': 'radio1'
+>         'type': 'radio'
+>         'content': 'Variant #2'
+>     })
+>     nb-checkbox({
+>         'name': 'radio1'
+>         'type': 'radio'
+>         'content': 'Variant #3'
+>     })
+> ```

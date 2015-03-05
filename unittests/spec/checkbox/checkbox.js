@@ -383,6 +383,22 @@ describe("Checkbox Tests", function() {
 
             expect(flag).to.be.equal(1);
         });
+
+        it('Should work propertly with radio', function() {
+            var radio1 = nb.find('checkbox-group1');
+            var radio2 = nb.find('checkbox-group2');
+
+            var flag = 0;
+            radio1.on('nb-changed', function() {
+                flag++;
+            });
+
+            radio1.check();
+            radio2.check();
+            radio1.check();
+
+            expect(flag).to.be.equal(3);
+        });
     });
 
     describe("#uncheck()", function() {

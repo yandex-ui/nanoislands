@@ -8,17 +8,13 @@ nb.define('checkbox', {
     },
 
     _onCheckboxChecked: function(evtName, params) {
-        if (params.name == this.getName() && params.value != this.getValue()) {
+        if (params.name == this.getName() && params.nb.$node.attr('id') != this.$node.attr('id')) {
             this.uncheck();
         }
     },
 
     onchange: function() {
-        if (this.$control.prop('checked')) {
-            this.check();
-        } else {
-            this.uncheck();
-        }
+        this.check();
     },
 
     /**
@@ -99,7 +95,7 @@ nb.define('checkbox', {
         if (this.getType() === 'radio') {
             nb.trigger('checkbox:checked', {
                 name: this.getName(),
-                value: this.getValue()
+                nb: this
             });
         }
 
@@ -131,6 +127,7 @@ nb.define('checkbox', {
      * @returns {Object} nb.block
      */
     uncheck: function() {
+
         if (!this.isEnabled()) {
             return this;
         }

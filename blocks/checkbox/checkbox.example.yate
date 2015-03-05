@@ -20,6 +20,32 @@ func checkbox() {
             'size': 's'
         })
     )
+
+    radio = (
+         nb-checkbox({
+            'name': 'radio1'
+            'type': 'radio'
+            'content': 'Variant #1'
+         })
+
+         <br />
+
+         nb-checkbox({
+            'name': 'radio1'
+            'type': 'radio'
+            'content': 'Variant #2'
+         })
+
+         <br />
+
+         nb-checkbox({
+            'name': 'radio1'
+            'type': 'radio'
+            'content': 'Variant #3'
+         })
+
+    )
+
     show('checkbox-sizes', checkbox-sizes)
 
     show('checkbox-button', nb-checkbox({
@@ -36,4 +62,6 @@ func checkbox() {
         'content': 'I`m sorry, but you can`t do it anymore'
         'disabled': true()
     }))
+
+    show('radio-button', radio )
 }
