@@ -137,7 +137,7 @@ There are 2 parts of popup control:
 >```yate
 >    nb-popup({
 >        'id': 'genericPopup'
->        'title': 'Hello, I’m your generic pop-up.'
+>        'titleContent': 'Hello, I’m your generic pop-up.'
 >        'content': '<p>And welcome to nanoislands</p>'
 >    })
 >```
@@ -156,7 +156,7 @@ There are 2 parts of popup control:
 >    nb-popup({
 >        'id': 'genericPopup2'
 >        'close': true()
->        'title': 'Hello, I’m your generic pop-up.'
+>        'titleContent': 'Hello, I’m your generic pop-up.'
 >        'content': '<p>And welcome to nanoislands</p>'
 >    })
 >```
@@ -251,7 +251,7 @@ There are 2 parts of popup control:
 >```yate
 >    nb-popup-modal({
 >       'id': 'popup-modal1'
->       'title': 'Some modal popup'
+>       'titleContent': 'Some modal popup'
 >       'content': 'Some text for that popup'
 >       'data-nb': {
 >            'width': '300px'
