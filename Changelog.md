@@ -1,3 +1,8 @@
+##### 0.6.0 — path
+
+###### Fixes
+* fix #476 — В случае сложного инпута в nb-suggest, саджест не совпадает с ним по ширине и высоте.
+
 ##### 0.6.0 — "Catspaw"
 * [Suggest] — `attrsInput` -> `input.attrs`
 * [Suggest] — #474 Пробрасывать поля hint и error из nb-suggest во вложенный инпут

@@ -80,6 +80,10 @@
     $.widget("ui.suggest", $.ui.autocomplete, {
         options: optionsSuggest,
 
+        _resizeMenu: function() {
+            this.menu.element.width($(this.options.position.of).outerWidth());
+        },
+
         _renderMenu: function(ul, items) {
             var that = this;
             var html = '';
@@ -195,7 +199,7 @@
             this.$control.on('keydown.nb-suggest', function(e) {
                 var keyCode = $.ui.keyCode;
 
-                if ($.inArray(e.keyCode, [ keyCode.ENTER, keyCode.NUMPAD_ENTER ]) !== -1) {
+                if ($.inArray(e.keyCode, [keyCode.ENTER, keyCode.NUMPAD_ENTER]) !== -1) {
                     if (!this.$jUI.data().uiSuggest.menu.active) {
                         this.trigger('nb-keypress-enter', this, this.getValue());
                     }
@@ -204,6 +208,9 @@
 
             this.$jUI = this.$control.suggest({
                 source: source,
+                position: {
+                    of: this.$node.get(0)
+                },
                 countMax: this.$node.data('countMax'),
                 type: this.$node.data('type'),
                 size: this.$node.data('size'),
