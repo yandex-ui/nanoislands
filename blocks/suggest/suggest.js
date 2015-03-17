@@ -231,7 +231,11 @@
 
             this.$jUI.on('suggestselect.nb-suggest', function(e, item) {
                 this.$selected = item.item;
-                this.input.setValue(item.item.value);
+                if (this.input) {
+                    this.input.setValue(item.item.value);
+                } else {
+                    this.$control.val(item.item.value);
+                }
                 this.trigger('nb-select', this, item.item);
             }.bind(this));
 
