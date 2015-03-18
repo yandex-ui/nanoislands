@@ -490,16 +490,25 @@
 
         // ----------------------------------------------------------------------------------------------------------------- //
         oninit: function() {
-            var that = this;
             var data = this.nbdata();
 
             if ('modal' in data) {
                 this.modal = true;
             }
 
-            this.$menu = this.$node.find('._nb-popup-menu');
+            this._initPopupMenu();
+        },
+
+        /**
+         * Initialize popup menu
+         * @private
+         */
+        _initPopupMenu: function() {
+            // we need first element only because there can be multilevel menu
+            this.$menu = this.$node.find('._nb-popup-menu').eq(0);
 
             if (this.$menu.length) {
+                var that = this;
                 this.$menu.menu({
                     select: function(event, ui) {
                         that.trigger('nb-select', {
@@ -606,12 +615,27 @@
         },
 
         /**
-         * Set content of popup (not menu, not modal)
+         * Set content of popup (not modal)
+         * @description
+         * For popup-menu `content` is new `<ul class="_nb-popup-menu">...</ul>`.
+         * Use yate mode `nb-popup-menu-content` to generate it.
+         * @param {string} content New popup/menu content
          * @fires 'nb-content-set'
          * @returns {Object} nb.block
          */
         setContent: function(content) {
-            this.$node.find('._nb-popup-content').html(content);
+            if (this.$menu.length) {
+                // destroy old menu
+                this.$menu.menu('destroy');
+                // replace with new one
+                this.$menu.replaceWith(content);
+                // init
+                this._initPopupMenu();
+
+            } else {
+                this.$node.find('._nb-popup-content').html(content);
+            }
+
             this.trigger('nb-content-set');
             return this;
         },
