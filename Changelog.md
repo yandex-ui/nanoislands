@@ -1,3 +1,8 @@
+##### 0.6.3 — path
+
+###### Fixes
+* fix #478 — popup#setContent fixes for nb-popup-menu
+
 ##### 0.6.2 — path
 
 ###### Fixes
