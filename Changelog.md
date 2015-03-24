@@ -1,3 +1,8 @@
+##### 0.6.4 — path
+
+###### Fixes
+* fix #479 — nb.checkbox can't be unchecked
+
 ##### 0.6.3 — path
 
 ###### Fixes
