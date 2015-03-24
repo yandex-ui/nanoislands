@@ -184,6 +184,14 @@ func all-icons-s(boolean white) {
         nb-icon({
         'icon': 'lock'
         })
+
+        nb-icon({
+        'icon': 'apple'
+        })
+
+        nb-icon({
+        'icon': 'android'
+        })
     }
 }
 
@@ -412,6 +420,16 @@ func all-icons-m(boolean white) {
 
         nb-icon({
         'icon': 'lock'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'apple'
+        'size': 'm'
+        })
+
+        nb-icon({
+        'icon': 'android'
         'size': 'm'
         })
     }

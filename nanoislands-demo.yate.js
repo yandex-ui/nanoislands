@@ -300,6 +300,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r2[ "width" ] = "auto";
         r2[ "height" ] = "auto";
         r2[ "minHeight" ] = "auto";
+        r2[ "maxHeight" ] = "auto";
         r1[ "data-nb" ] = r2;
         var r2 = {};
         var a2 = { a: {} };
@@ -372,9 +373,52 @@ var yr = yr || require('yate/lib/runtime.js');
         return r0;
     };
 
-    // func nb-radio-button(nodeset options) : xml
+    var j15 = [ 0, 'class' ];
+
+    var j16 = [ 0, 'attrs' ];
+
+    var j17 = [ 0, 'attrs', 0, '*' ];
+
+    // func _nb-popup-close(nodeset close) : xml
     M.f14 = function f14(m, c0, i0, l0, a0, v21) {
         v21 = (v21 === undefined) ? [] : v21;
+        var r0 = '';
+
+        r0 += closeAttrs(a0);
+        r0 += "<a";
+        a0.a = {
+            'class': new yr.scalarAttr("_nb-popup-close")
+        };
+        a0.s = 'a';
+        var r1 = '';
+        var a1 = { a: {} };
+        var items0 = m.n(j15, v21);
+        for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
+            var c1 = items0[ i1 ];
+            r1 += " " + nodeset2scalar( ( m.s(j14, c1) ) );
+        }
+        var tmp0 = a0.a[ "class" ];
+        if (tmp0) {
+            a0.a[ "class" ] = tmp0.addscalar(r1);
+        } else {
+            a0.a[ "class" ] = new yr.scalarAttr(r1);
+        }
+        if (nodeset2boolean( m.n(j16, v21) )) {
+            var items0 = m.n(j17, v21);
+            for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
+                var c1 = items0[ i1 ];
+                a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j14, c1) ));
+            }
+        }
+        r0 += closeAttrs(a0);
+        r0 += "</a>";
+
+        return r0;
+    };
+
+    // func nb-radio-button(nodeset options) : xml
+    M.f15 = function f15(m, c0, i0, l0, a0, v22) {
+        v22 = (v22 === undefined) ? [] : v22;
         var r0 = '';
 
         //  var default : object
@@ -383,17 +427,17 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "size" ] = "m";
         r1[ "theme" ] = "normal";
         r1[ "type" ] = "radio";
-        var v22 = r1;
+        var v23 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "radio-button", (yr.externals['_nb-extend'])(yr.object2nodeset( v22 ), v21));
+        r0 += m.f('f1', c0, i0, l0, a0, "radio-button", (yr.externals['_nb-extend'])(yr.object2nodeset( v23 ), v22));
 
         return r0;
     };
 
     // func nb-select(nodeset select) : xml
-    M.f15 = function f15(m, c0, i0, l0, a0, v23) {
-        v23 = (v23 === undefined) ? [] : v23;
+    M.f16 = function f16(m, c0, i0, l0, a0, v24) {
+        v24 = (v24 === undefined) ? [] : v24;
         var r0 = '';
 
         //  var default : object
@@ -402,25 +446,25 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "size" ] = "m";
         r1[ "theme" ] = "normal";
         r1[ "direction" ] = "bottom";
-        var v24 = r1;
+        var v25 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "select", (yr.externals['_nb-extend'])(yr.object2nodeset( v24 ), v23));
+        r0 += m.f('f1', c0, i0, l0, a0, "select", (yr.externals['_nb-extend'])(yr.object2nodeset( v25 ), v24));
 
         return r0;
     };
 
-    var j15 = [ 0, 'text' ];
+    var j18 = [ 0, 'text' ];
 
-    var j16 = [ 0, 'value' ];
+    var j19 = [ 0, 'value' ];
 
-    var j17 = [ 0, 'selected' ];
+    var j20 = [ 0, 'selected' ];
 
-    var j18 = [ 0, 'separator' ];
+    var j21 = [ 0, 'separator' ];
 
     // func _select-option(nodeset item) : xml
-    M.f16 = function f16(m, c0, i0, l0, a0, v25) {
-        v25 = (v25 === undefined) ? [] : v25;
+    M.f17 = function f17(m, c0, i0, l0, a0, v26) {
+        v26 = (v26 === undefined) ? [] : v26;
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -428,17 +472,29 @@ var yr = yr || require('yate/lib/runtime.js');
         a0.a = {
         };
         a0.s = 'option';
-        if (nodeset2boolean( m.n(j18, v25) )) {
+        if (nodeset2boolean( m.n(j21, v26) )) {
             a0.a[ "separator" ] = new yr.scalarAttr("true");
         } else {
-            a0.a[ "label" ] = new yr.scalarAttr(nodeset2scalar( m.n(j15, v25) ));
-            a0.a[ "value" ] = new yr.scalarAttr(nodeset2scalar( m.n(j16, v25) ));
-            a0.a[ "data-icon" ] = new yr.scalarAttr(simpleScalar('icon', c0));
-            if (nodeset2boolean( (m.n(j17, v25)) )) {
+            a0.a[ "label" ] = new yr.scalarAttr(nodeset2scalar( m.n(j18, v26) ));
+            a0.a[ "value" ] = new yr.scalarAttr(nodeset2scalar( m.n(j19, v26) ));
+            a0.a[ "data-icon" ] = new yr.scalarAttr(nodeset2scalar( m.n(j9, v26) ));
+            if (nodeset2boolean( (m.n(j15, v26)) )) {
+                var items0 = m.n(j15, v26);
+                for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
+                    var c1 = items0[ i1 ];
+                    var tmp1 = a0.a[ "data-class" ];
+                    if (tmp1) {
+                        a0.a[ "data-class" ] = tmp1.addscalar(" " + nodeset2scalar( m.s(j14, c1) ));
+                    } else {
+                        a0.a[ "data-class" ] = new yr.scalarAttr(" " + nodeset2scalar( m.s(j14, c1) ));
+                    }
+                }
+            }
+            if (nodeset2boolean( (m.n(j20, v26)) )) {
                 a0.a[ "selected" ] = new yr.scalarAttr("");
             }
             r0 += closeAttrs(a0);
-            r0 += nodeset2xml( m.n(j15, v25) );
+            r0 += nodeset2xml( m.n(j18, v26) );
         }
         r0 += closeAttrs(a0);
         r0 += "</option>";
@@ -447,8 +503,8 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func nb-checkbox(nodeset options) : xml
-    M.f17 = function f17(m, c0, i0, l0, a0, v26) {
-        v26 = (v26 === undefined) ? [] : v26;
+    M.f18 = function f18(m, c0, i0, l0, a0, v27) {
+        v27 = (v27 === undefined) ? [] : v27;
         var r0 = '';
 
         //  var default : object
@@ -457,51 +513,51 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "size" ] = "m";
         r1[ "type" ] = "checkbox";
         r1[ "theme" ] = "normal";
-        var v27 = r1;
+        var v28 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "checkbox", (yr.externals['_nb-extend'])(yr.object2nodeset( v27 ), v26));
+        r0 += m.f('f1', c0, i0, l0, a0, "checkbox", (yr.externals['_nb-extend'])(yr.object2nodeset( v28 ), v27));
 
         return r0;
     };
 
-    var j19 = [ 0, 'leftContent' ];
+    var j22 = [ 0, 'leftContent' ];
 
-    var j20 = [ 0, 'rightContent' ];
+    var j23 = [ 0, 'rightContent' ];
 
-    var j21 = [ 0, 'labelContent' ];
+    var j24 = [ 0, 'labelContent' ];
 
-    var j22 = [ 0, 'reset' ];
+    var j25 = [ 0, 'reset' ];
 
-    var j23 = [ 0, 'ghost' ];
+    var j26 = [ 0, 'ghost' ];
 
-    var j24 = [ 0, 'error' ];
+    var j27 = [ 0, 'error' ];
 
-    var j25 = [ 0, 'hint' ];
+    var j28 = [ 0, 'hint' ];
 
     // func nb-input(nodeset options) : xml
-    M.f18 = function f18(m, c0, i0, l0, a0, v28) {
-        v28 = (v28 === undefined) ? [] : v28;
+    M.f19 = function f19(m, c0, i0, l0, a0, v29) {
+        v29 = (v29 === undefined) ? [] : v29;
         var r0 = '';
 
         //  var default : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "size" ] = "s";
-        var v29 = r1;
+        var v30 = r1;
 
         r0 += closeAttrs(a0);
-        if (nodeset2boolean( m.n(j19, v28) ) || nodeset2boolean( m.n(j20, v28) ) || nodeset2boolean( m.n(j21, v28) ) || nodeset2boolean( m.n(j22, v28) ) || nodeset2boolean( m.n(j23, v28) ) || nodeset2boolean( m.n(j24, v28) ) || nodeset2boolean( m.n(j25, v28) )) {
-            if (cmpSN("multiline", m.n(j4, v28))) {
-                r0 += m.f('f1', c0, i0, l0, a0, "textarea", (yr.externals['_nb-extend'])(yr.object2nodeset( v29 ), v28));
+        if (nodeset2boolean( m.n(j22, v29) ) || nodeset2boolean( m.n(j23, v29) ) || nodeset2boolean( m.n(j24, v29) ) || nodeset2boolean( m.n(j25, v29) ) || nodeset2boolean( m.n(j26, v29) ) || nodeset2boolean( m.n(j27, v29) ) || nodeset2boolean( m.n(j28, v29) )) {
+            if (cmpSN("multiline", m.n(j4, v29))) {
+                r0 += m.f('f1', c0, i0, l0, a0, "textarea", (yr.externals['_nb-extend'])(yr.object2nodeset( v30 ), v29));
             } else {
-                r0 += m.f('f1', c0, i0, l0, a0, "input", (yr.externals['_nb-extend'])(yr.object2nodeset( v29 ), v28));
+                r0 += m.f('f1', c0, i0, l0, a0, "input", (yr.externals['_nb-extend'])(yr.object2nodeset( v30 ), v29));
             }
         } else {
-            if (cmpSN("multiline", m.n(j4, v28))) {
-                r0 += m.f('f1', c0, i0, l0, a0, "textareaSimple", (yr.externals['_nb-extend'])(yr.object2nodeset( v29 ), v28));
+            if (cmpSN("multiline", m.n(j4, v29))) {
+                r0 += m.f('f1', c0, i0, l0, a0, "textareaSimple", (yr.externals['_nb-extend'])(yr.object2nodeset( v30 ), v29));
             } else {
-                r0 += m.f('f1', c0, i0, l0, a0, "inputSimple", (yr.externals['_nb-extend'])(yr.object2nodeset( v29 ), v28));
+                r0 += m.f('f1', c0, i0, l0, a0, "inputSimple", (yr.externals['_nb-extend'])(yr.object2nodeset( v30 ), v29));
             }
         }
 
@@ -509,19 +565,19 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func nb-input-group(nodeset options) : xml
-    M.f19 = function f19(m, c0, i0, l0, a0, v30) {
-        v30 = (v30 === undefined) ? [] : v30;
+    M.f20 = function f20(m, c0, i0, l0, a0, v31) {
+        v31 = (v31 === undefined) ? [] : v31;
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "input-group", v30);
+        r0 += m.f('f1', c0, i0, l0, a0, "input-group", v31);
 
         return r0;
     };
 
     // func nb-progress(nodeset options) : xml
-    M.f20 = function f20(m, c0, i0, l0, a0, v31) {
-        v31 = (v31 === undefined) ? [] : v31;
+    M.f21 = function f21(m, c0, i0, l0, a0, v32) {
+        v32 = (v32 === undefined) ? [] : v32;
         var r0 = '';
 
         //  var default : object
@@ -531,51 +587,51 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "start" ] = "0";
         r1[ "type" ] = "percentage";
         r1[ "title" ] = " ";
-        var v32 = r1;
+        var v33 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "progress", (yr.externals['_nb-extend'])(yr.object2nodeset( v32 ), v31));
+        r0 += m.f('f1', c0, i0, l0, a0, "progress", (yr.externals['_nb-extend'])(yr.object2nodeset( v33 ), v32));
 
         return r0;
     };
 
     // func nb-paranja(nodeset options) : xml
-    M.f21 = function f21(m, c0, i0, l0, a0, v33) {
-        v33 = (v33 === undefined) ? [] : v33;
+    M.f22 = function f22(m, c0, i0, l0, a0, v34) {
+        v34 = (v34 === undefined) ? [] : v34;
         var r0 = '';
 
         //  var default : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "theme" ] = "dark";
-        var v34 = r1;
+        var v35 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "paranja", (yr.externals['_nb-extend'])(yr.object2nodeset( v34 ), v33));
+        r0 += m.f('f1', c0, i0, l0, a0, "paranja", (yr.externals['_nb-extend'])(yr.object2nodeset( v35 ), v34));
 
         return r0;
     };
 
     // func nb-island(nodeset options) : xml
-    M.f22 = function f22(m, c0, i0, l0, a0, v35) {
-        v35 = (v35 === undefined) ? [] : v35;
+    M.f23 = function f23(m, c0, i0, l0, a0, v36) {
+        v36 = (v36 === undefined) ? [] : v36;
         var r0 = '';
 
         //  var island : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "content" ] = "";
-        var v36 = r1;
+        var v37 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "island", (yr.externals['_nb-extend'])(yr.object2nodeset( v36 ), v35));
+        r0 += m.f('f1', c0, i0, l0, a0, "island", (yr.externals['_nb-extend'])(yr.object2nodeset( v37 ), v36));
 
         return r0;
     };
 
     // func nb-dropzone(nodeset options) : xml
-    M.f23 = function f23(m, c0, i0, l0, a0, v37) {
-        v37 = (v37 === undefined) ? [] : v37;
+    M.f24 = function f24(m, c0, i0, l0, a0, v38) {
+        v38 = (v38 === undefined) ? [] : v38;
         var r0 = '';
 
         //  var default : object
@@ -588,34 +644,34 @@ var yr = yr || require('yate/lib/runtime.js');
         r2[ "theme" ] = "pseudo";
         r2[ "class" ] = "_nb-dropzone-button";
         r1[ "button" ] = r2;
-        var v38 = r1;
+        var v39 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "dropzone", (yr.externals['_nb-deep-extend'])(yr.object2nodeset( v38 ), v37));
+        r0 += m.f('f1', c0, i0, l0, a0, "dropzone", (yr.externals['_nb-deep-extend'])(yr.object2nodeset( v39 ), v38));
 
         return r0;
     };
 
     // func nb-loader(nodeset options) : xml
-    M.f24 = function f24(m, c0, i0, l0, a0, v39) {
-        v39 = (v39 === undefined) ? [] : v39;
+    M.f25 = function f25(m, c0, i0, l0, a0, v40) {
+        v40 = (v40 === undefined) ? [] : v40;
         var r0 = '';
 
         //  var default : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "size" ] = "m";
-        var v40 = r1;
+        var v41 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "loader", (yr.externals['_nb-extend'])(yr.object2nodeset( v40 ), v39));
+        r0 += m.f('f1', c0, i0, l0, a0, "loader", (yr.externals['_nb-extend'])(yr.object2nodeset( v41 ), v40));
 
         return r0;
     };
 
     // func nb-slider(nodeset options) : xml
-    M.f25 = function f25(m, c0, i0, l0, a0, v41) {
-        v41 = (v41 === undefined) ? [] : v41;
+    M.f26 = function f26(m, c0, i0, l0, a0, v42) {
+        v42 = (v42 === undefined) ? [] : v42;
         var r0 = '';
 
         //  var default : object
@@ -625,52 +681,52 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "type" ] = "range";
         r1[ "size" ] = "s";
         r1[ "orientation" ] = "horiz";
-        var v42 = r1;
+        var v43 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "slider", (yr.externals['_nb-deep-extend'])(yr.object2nodeset( v42 ), v41));
+        r0 += m.f('f1', c0, i0, l0, a0, "slider", (yr.externals['_nb-deep-extend'])(yr.object2nodeset( v43 ), v42));
 
         return r0;
     };
 
     // func nb-tabs(nodeset options) : xml
-    M.f26 = function f26(m, c0, i0, l0, a0, v43) {
-        v43 = (v43 === undefined) ? [] : v43;
+    M.f27 = function f27(m, c0, i0, l0, a0, v44) {
+        v44 = (v44 === undefined) ? [] : v44;
         var r0 = '';
 
         //  var default : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "size" ] = "m";
-        var v44 = r1;
+        var v45 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "tabs", (yr.externals['_nb-extend'])(yr.object2nodeset( v44 ), v43));
+        r0 += m.f('f1', c0, i0, l0, a0, "tabs", (yr.externals['_nb-extend'])(yr.object2nodeset( v45 ), v44));
 
         return r0;
     };
 
     // func nb-arrow(nodeset arrow) : xml
-    M.f27 = function f27(m, c0, i0, l0, a0, v45) {
-        v45 = (v45 === undefined) ? [] : v45;
+    M.f28 = function f28(m, c0, i0, l0, a0, v46) {
+        v46 = (v46 === undefined) ? [] : v46;
         var r0 = '';
 
         //  var default : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "search" ] = "true";
-        r1[ "buttonContent" ] = "Найти";
-        var v46 = r1;
+        r1[ "buttonContent" ] = "Find";
+        var v47 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "arrow", (yr.externals['_nb-extend'])(yr.object2nodeset( v46 ), v45));
+        r0 += m.f('f1', c0, i0, l0, a0, "arrow", (yr.externals['_nb-extend'])(yr.object2nodeset( v47 ), v46));
 
         return r0;
     };
 
     // func nb-header(nodeset header) : xml
-    M.f28 = function f28(m, c0, i0, l0, a0, v47) {
-        v47 = (v47 === undefined) ? [] : v47;
+    M.f29 = function f29(m, c0, i0, l0, a0, v48) {
+        v48 = (v48 === undefined) ? [] : v48;
         var r0 = '';
 
         //  var default : object
@@ -685,34 +741,34 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "services" ] = true;
         r1[ "settings" ] = true;
         r1[ "yaHref" ] = "http://yandex.ru";
-        var v48 = r1;
+        var v49 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "header", (yr.externals['_nb-deep-extend'])(yr.object2nodeset( v48 ), v47));
+        r0 += m.f('f1', c0, i0, l0, a0, "header", (yr.externals['_nb-deep-extend'])(yr.object2nodeset( v49 ), v48));
 
         return r0;
     };
 
     // func nb-user(nodeset user) : xml
-    M.f29 = function f29(m, c0, i0, l0, a0, v49) {
-        v49 = (v49 === undefined) ? [] : v49;
+    M.f30 = function f30(m, c0, i0, l0, a0, v50) {
+        v50 = (v50 === undefined) ? [] : v50;
         var r0 = '';
 
         //  var default : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "size" ] = "m";
-        var v50 = r1;
+        var v51 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "user", (yr.externals['_nb-extend'])(yr.object2nodeset( v50 ), v49));
+        r0 += m.f('f1', c0, i0, l0, a0, "user", (yr.externals['_nb-extend'])(yr.object2nodeset( v51 ), v50));
 
         return r0;
     };
 
     // func nb-suggest(nodeset options) : xml
-    M.f30 = function f30(m, c0, i0, l0, a0, v51) {
-        v51 = (v51 === undefined) ? [] : v51;
+    M.f31 = function f31(m, c0, i0, l0, a0, v52) {
+        v52 = (v52 === undefined) ? [] : v52;
         var r0 = '';
 
         //  var defaults : object
@@ -720,17 +776,17 @@ var yr = yr || require('yate/lib/runtime.js');
         var a1 = { a: {} };
         r1[ "countMax" ] = "10";
         r1[ "type" ] = "default";
-        var v52 = r1;
+        var v53 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "suggest", (yr.externals['_nb-extend'])(yr.object2nodeset( v52 ), v51));
+        r0 += m.f('f1', c0, i0, l0, a0, "suggest", (yr.externals['_nb-extend'])(yr.object2nodeset( v53 ), v52));
 
         return r0;
     };
 
     // func nb-toggler(nodeset toggler) : xml
-    M.f31 = function f31(m, c0, i0, l0, a0, v53) {
-        v53 = (v53 === undefined) ? [] : v53;
+    M.f32 = function f32(m, c0, i0, l0, a0, v54) {
+        v54 = (v54 === undefined) ? [] : v54;
         var r0 = '';
 
         //  var default : object
@@ -739,35 +795,35 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "leftText" ] = "On";
         r1[ "rightText" ] = "Off";
         r1[ "size" ] = "s";
-        var v54 = r1;
+        var v55 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f1', c0, i0, l0, a0, "toggler", (yr.externals['_nb-extend'])(yr.object2nodeset( v54 ), v53));
+        r0 += m.f('f1', c0, i0, l0, a0, "toggler", (yr.externals['_nb-extend'])(yr.object2nodeset( v55 ), v54));
 
         return r0;
     };
 
     // func podium(xml markup) : xml
-    M.f32 = function f32(m, c0, i0, l0, a0, v55) {
+    M.f33 = function f33(m, c0, i0, l0, a0, v56) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "demo-podium" + "\">";
-        r0 += v55;
+        r0 += v56;
         r0 += "</div>";
 
         return r0;
     };
 
     // func code(xml markup) : xml
-    M.f33 = function f33(m, c0, i0, l0, a0, v56) {
+    M.f34 = function f34(m, c0, i0, l0, a0, v57) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "demo-code demo-code_sample" + "\">";
         r0 += "<pre>";
         r0 += "<code class=\"" + "js-beautify" + "\">";
-        r0 += scalar2xml( xml2scalar( v56 ) );
+        r0 += scalar2xml( xml2scalar( v57 ) );
         r0 += "</code>";
         r0 += "</pre>";
         r0 += "</div>";
@@ -776,24 +832,24 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func show(xml markup) : xml
-    M.f34 = function f34(m, c0, i0, l0, a0, v57) {
+    M.f35 = function f35(m, c0, i0, l0, a0, v58) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "demo-group" + "\">";
-        r0 += m.f('f32', c0, i0, l0, a0, v57);
-        r0 += m.f('f33', c0, i0, l0, a0, v57);
+        r0 += m.f('f33', c0, i0, l0, a0, v58);
+        r0 += m.f('f34', c0, i0, l0, a0, v58);
         r0 += "</div>";
 
         return r0;
     };
 
     // func select-medium() : xml
-    M.f35 = function f35(m, c0, i0, l0, a0) {
+    M.f36 = function f36(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -825,7 +881,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += " ";
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -855,7 +911,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += " ";
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -885,7 +941,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += " ";
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -940,7 +996,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += " ";
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -990,7 +1046,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += " ";
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -1026,7 +1082,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += " ";
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -1058,7 +1114,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
             return r0;
         })()));
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -1077,7 +1133,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += " ";
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -1137,11 +1193,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func select-small() : xml
-    M.f36 = function f36(m, c0, i0, l0, a0) {
+    M.f37 = function f37(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "s";
@@ -1175,7 +1231,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += " ";
-        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f16', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "s";
@@ -1210,7 +1266,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func selects() : xml
-    M.f37 = function f37(m, c0, i0, l0, a0) {
+    M.f38 = function f38(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1218,30 +1274,30 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: M ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f35', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f36', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: S ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f36', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f37', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
     // func button-medium() : xml
-    M.f38 = function f38(m, c0, i0, l0, a0) {
+    M.f39 = function f39(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var button : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "content" ] = "Normal button";
-        var v58 = r1;
+        var v59 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f4', c0, i0, l0, a0, yr.object2nodeset( v58 ));
+        r0 += m.f('f4', c0, i0, l0, a0, yr.object2nodeset( v59 ));
         r0 += " ";
         r0 += m.f('f4', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
@@ -1282,7 +1338,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func button-small() : xml
-    M.f39 = function f39(m, c0, i0, l0, a0) {
+    M.f40 = function f40(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1299,7 +1355,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func button-action() : xml
-    M.f40 = function f40(m, c0, i0, l0, a0) {
+    M.f41 = function f41(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1317,7 +1373,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func button-pseudo() : xml
-    M.f41 = function f41(m, c0, i0, l0, a0) {
+    M.f42 = function f42(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1335,7 +1391,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func button-pseudo-inverted() : xml
-    M.f42 = function f42(m, c0, i0, l0, a0) {
+    M.f43 = function f43(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1353,7 +1409,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func button-dark() : xml
-    M.f43 = function f43(m, c0, i0, l0, a0) {
+    M.f44 = function f44(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1371,7 +1427,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func button-promo() : xml
-    M.f44 = function f44(m, c0, i0, l0, a0) {
+    M.f45 = function f45(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1389,7 +1445,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func button-images() : xml
-    M.f45 = function f45(m, c0, i0, l0, a0) {
+    M.f46 = function f46(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1422,7 +1478,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func button-disabled() : xml
-    M.f46 = function f46(m, c0, i0, l0, a0) {
+    M.f47 = function f47(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1439,11 +1495,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func radio-button() : xml
-    M.f47 = function f47(m, c0, i0, l0, a0) {
+    M.f48 = function f48(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f14', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -1478,7 +1534,7 @@ var yr = yr || require('yate/lib/runtime.js');
         })()));
         r0 += "<br/>";
         r0 += "<br/>";
-        r0 += m.f('f14', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f15', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "s";
@@ -1505,7 +1561,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func attach-button() : xml
-    M.f48 = function f48(m, c0, i0, l0, a0) {
+    M.f49 = function f49(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1532,7 +1588,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func buttons() : xml
-    M.f49 = function f49(m, c0, i0, l0, a0) {
+    M.f50 = function f50(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1543,7 +1599,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-normal-button";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f38', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f39', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -1552,7 +1608,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-small-button";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f39', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f40', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -1561,7 +1617,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-action-button";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f40', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f41', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -1570,7 +1626,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-pseudo-button";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f41', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f42', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\" style=\"" + "background-color: #333; color: #fff" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -1579,7 +1635,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-button_theme_pseudo";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f42', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f43', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -1588,7 +1644,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-dark-button";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f43', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f44', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -1597,7 +1653,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-promo-button";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f44', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f45', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -1606,19 +1662,19 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-disabled";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f46', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f47', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Кнопка с иконкой";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f45', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f46', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Радио-группа";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f47', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f48', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -1627,14 +1683,14 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-attach-button";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f48', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f49', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
     // func checkbox-radio() : xml
-    M.f50 = function f50(m, c0, i0, l0, a0) {
+    M.f51 = function f51(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var radio : object
@@ -1643,7 +1699,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "type" ] = "radio";
         r1[ "content" ] = "Человек";
         r1[ "name" ] = "biotype";
-        var v59 = r1;
+        var v60 = r1;
 
         //  var radio2 : object
         var r1 = {};
@@ -1651,18 +1707,18 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "type" ] = "radio";
         r1[ "content" ] = "Паук";
         r1[ "name" ] = "biotype";
-        var v60 = r1;
+        var v61 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset( v59 ));
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset( v60 ));
         r0 += "<br/>";
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset( v60 ));
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset( v61 ));
 
         return r0;
     };
 
     // func checkbox-button() : xml
-    M.f51 = function f51(m, c0, i0, l0, a0) {
+    M.f52 = function f52(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var button : object
@@ -1671,26 +1727,26 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "type" ] = "button";
         r1[ "content" ] = "Залипающая кнопка";
         r1[ "name" ] = "sticky-button";
-        var v61 = r1;
+        var v62 = r1;
 
         //  var theme1 : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "theme" ] = "pseudo";
         r1[ "content" ] = "Pseudo кнопка";
-        var v62 = r1;
+        var v63 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset( v61 ));
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset( v62 ));
         r0 += "<br/>";
         r0 += "<br/>";
-        r0 += m.f('f17', c0, i0, l0, a0, (yr.externals['_nb-extend'])(yr.object2nodeset( v61 ), yr.object2nodeset( v62 )));
+        r0 += m.f('f18', c0, i0, l0, a0, (yr.externals['_nb-extend'])(yr.object2nodeset( v62 ), yr.object2nodeset( v63 )));
 
         return r0;
     };
 
     // func checkbox-check() : xml
-    M.f52 = function f52(m, c0, i0, l0, a0) {
+    M.f53 = function f53(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var radio : object
@@ -1700,38 +1756,38 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "id" ] = "task";
         r1[ "checked" ] = true;
         r1[ "name" ] = "task";
-        var v63 = r1;
+        var v64 = r1;
 
         //  var radio2 : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "content" ] = "Сын";
         r1[ "name" ] = "task";
-        var v64 = r1;
+        var v65 = r1;
 
         //  var radio3 : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "content" ] = "Дом";
         r1[ "name" ] = "task";
-        var v65 = r1;
+        var v66 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset( v63 ));
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset( v64 ));
         r0 += "<br/>";
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset( v64 ));
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset( v65 ));
         r0 += "<br/>";
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset( v65 ));
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset( v66 ));
 
         return r0;
     };
 
     // func checkbox-small() : xml
-    M.f53 = function f53(m, c0, i0, l0, a0) {
+    M.f54 = function f54(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "type" ] = "radio";
@@ -1743,7 +1799,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += "<br/>";
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "type" ] = "radio";
@@ -1754,7 +1810,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += "<br/>";
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "s";
@@ -1767,7 +1823,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func checkbox() : xml
-    M.f54 = function f54(m, c0, i0, l0, a0) {
+    M.f55 = function f55(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1775,32 +1831,32 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Type: Radio";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f50', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f51', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Type: Checkbox";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f52', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f53', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: S ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f53', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f54', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Type: Button";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f51', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f52', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
     // func toggle-default() : xml
-    M.f55 = function f55(m, c0, i0, l0, a0) {
+    M.f56 = function f56(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1814,7 +1870,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func toggle-to-right() : xml
-    M.f56 = function f56(m, c0, i0, l0, a0) {
+    M.f57 = function f57(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1828,7 +1884,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func toggle-to-left() : xml
-    M.f57 = function f57(m, c0, i0, l0, a0) {
+    M.f58 = function f58(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1842,7 +1898,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func toggle-to-top() : xml
-    M.f58 = function f58(m, c0, i0, l0, a0) {
+    M.f59 = function f59(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1856,7 +1912,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func toggle-w-t() : xml
-    M.f59 = function f59(m, c0, i0, l0, a0) {
+    M.f60 = function f60(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1870,7 +1926,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func toggle-modal() : xml
-    M.f60 = function f60(m, c0, i0, l0, a0) {
+    M.f61 = function f61(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -1898,7 +1954,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func popups() : xml
-    M.f61 = function f61(m, c0, i0, l0, a0) {
+    M.f62 = function f62(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var default : object
@@ -1935,7 +1991,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r3[ "content" ] = "Удалить";
         r2.push(r3);
         r1[ "menu" ] = r2;
-        var v66 = r1;
+        var v67 = r1;
 
         //  var toRight : object
         var r1 = {};
@@ -1959,7 +2015,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r3[ "content" ] = "Удалить";
         r2.push(r3);
         r1[ "menu" ] = r2;
-        var v67 = r1;
+        var v68 = r1;
 
         //  var toLeft : object
         var r1 = {};
@@ -1983,7 +2039,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r3[ "content" ] = "Удалить";
         r2.push(r3);
         r1[ "menu" ] = r2;
-        var v68 = r1;
+        var v69 = r1;
 
         //  var toTop : object
         var r1 = {};
@@ -2007,7 +2063,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r3[ "content" ] = "Удалить";
         r2.push(r3);
         r1[ "menu" ] = r2;
-        var v69 = r1;
+        var v70 = r1;
 
         //  var withoutTail : object
         var r1 = {};
@@ -2032,7 +2088,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r3[ "content" ] = "Удалить";
         r2.push(r3);
         r1[ "menu" ] = r2;
-        var v70 = r1;
+        var v71 = r1;
 
         //  var modal : object
         var r1 = {};
@@ -2072,7 +2128,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r3.push(r4);
         r2[ "data" ] = r3;
         r1[ "buttons" ] = r2;
-        var v71 = r1;
+        var v72 = r1;
 
         //  var modalWithContent : object
         var r1 = {};
@@ -2082,7 +2138,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var r2 = '';
         var a2 = { a: {} };
         r2 += closeAttrs(a2);
-        r2 += m.f('f15', c0, i0, l0, a2, yr.object2nodeset((function() {
+        r2 += m.f('f16', c0, i0, l0, a2, yr.object2nodeset((function() {
             var r2 = {};
             var a2 = { a: {} };
             r2[ "size" ] = "m";
@@ -2108,7 +2164,7 @@ var yr = yr || require('yate/lib/runtime.js');
             return r2;
         })()));
         r2 += " ";
-        r2 += m.f('f15', c0, i0, l0, a2, yr.object2nodeset((function() {
+        r2 += m.f('f16', c0, i0, l0, a2, yr.object2nodeset((function() {
             var r2 = {};
             var a2 = { a: {} };
             r2[ "size" ] = "m";
@@ -2134,7 +2190,7 @@ var yr = yr || require('yate/lib/runtime.js');
         })()));
         r2 += "<br/>";
         r2 += "<br/>";
-        r2 += m.f('f18', c0, i0, l0, a2, yr.object2nodeset((function() {
+        r2 += m.f('f19', c0, i0, l0, a2, yr.object2nodeset((function() {
             var r2 = {};
             var a2 = { a: {} };
             r2[ "size" ] = "m";
@@ -2146,7 +2202,7 @@ var yr = yr || require('yate/lib/runtime.js');
         })()));
         r2 += "<br/>";
         r2 += "<br/>";
-        r2 += m.f('f18', c0, i0, l0, a2, yr.object2nodeset((function() {
+        r2 += m.f('f19', c0, i0, l0, a2, yr.object2nodeset((function() {
             var r2 = {};
             var a2 = { a: {} };
             r2[ "size" ] = "m";
@@ -2197,7 +2253,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r3[ "data-params" ] = "123";
         r2[ "attrs" ] = r3;
         r1[ "close" ] = r2;
-        var v72 = r1;
+        var v73 = r1;
 
         //  var modalBlank : object
         var r1 = {};
@@ -2206,65 +2262,65 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "theme" ] = "blank";
         r1[ "close" ] = false;
         r1[ "content" ] = "Some text for that popup";
-        var v73 = r1;
+        var v74 = r1;
 
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-group" + "\" style=\"" + "text-align: right" + "\">";
-        r0 += m.f('f32', c0, i0, l0, a0, m.f('f55', c0, i0, l0, a0));
-        r0 += m.f('f33', c0, i0, l0, a0, m.f('f55', c0, i0, l0, a0));
-        r0 += m.f('f33', c0, i0, l0, a0, m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v66 )));
-        r0 += "</div>";
-        r0 += m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v66 ));
-        r0 += "</div>";
-        r0 += "<div class=\"" + "demo-section" + "\">";
-        r0 += "<div class=\"" + "demo-group" + "\" id=\"" + "test" + "\">";
-        r0 += m.f('f32', c0, i0, l0, a0, m.f('f56', c0, i0, l0, a0));
         r0 += m.f('f33', c0, i0, l0, a0, m.f('f56', c0, i0, l0, a0));
-        r0 += m.f('f33', c0, i0, l0, a0, m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v67 )));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f56', c0, i0, l0, a0));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v67 )));
         r0 += "</div>";
         r0 += m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v67 ));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
-        r0 += "<div class=\"" + "demo-group" + "\">";
-        r0 += m.f('f32', c0, i0, l0, a0, m.f('f57', c0, i0, l0, a0));
+        r0 += "<div class=\"" + "demo-group" + "\" id=\"" + "test" + "\">";
         r0 += m.f('f33', c0, i0, l0, a0, m.f('f57', c0, i0, l0, a0));
-        r0 += m.f('f33', c0, i0, l0, a0, m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v68 )));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f57', c0, i0, l0, a0));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v68 )));
         r0 += "</div>";
         r0 += m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v68 ));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-group" + "\">";
-        r0 += m.f('f32', c0, i0, l0, a0, m.f('f58', c0, i0, l0, a0));
         r0 += m.f('f33', c0, i0, l0, a0, m.f('f58', c0, i0, l0, a0));
-        r0 += m.f('f33', c0, i0, l0, a0, m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v69 )));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f58', c0, i0, l0, a0));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v69 )));
         r0 += "</div>";
         r0 += m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v69 ));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-group" + "\">";
-        r0 += m.f('f32', c0, i0, l0, a0, m.f('f59', c0, i0, l0, a0));
         r0 += m.f('f33', c0, i0, l0, a0, m.f('f59', c0, i0, l0, a0));
-        r0 += m.f('f33', c0, i0, l0, a0, m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v70 )));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f59', c0, i0, l0, a0));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v70 )));
         r0 += "</div>";
         r0 += m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v70 ));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-group" + "\">";
-        r0 += m.f('f32', c0, i0, l0, a0, m.f('f60', c0, i0, l0, a0));
         r0 += m.f('f33', c0, i0, l0, a0, m.f('f60', c0, i0, l0, a0));
-        r0 += m.f('f33', c0, i0, l0, a0, m.f('f10', c0, i0, l0, a0, yr.object2nodeset( v71 )));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f60', c0, i0, l0, a0));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v71 )));
         r0 += "</div>";
-        r0 += m.f('f10', c0, i0, l0, a0, yr.object2nodeset( v71 ));
-        r0 += m.f('f10', c0, i0, l0, a0, yr.object2nodeset( v73 ));
+        r0 += m.f('f8', c0, i0, l0, a0, yr.object2nodeset( v71 ));
+        r0 += "</div>";
+        r0 += "<div class=\"" + "demo-section" + "\">";
+        r0 += "<div class=\"" + "demo-group" + "\">";
+        r0 += m.f('f33', c0, i0, l0, a0, m.f('f61', c0, i0, l0, a0));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f61', c0, i0, l0, a0));
+        r0 += m.f('f34', c0, i0, l0, a0, m.f('f10', c0, i0, l0, a0, yr.object2nodeset( v72 )));
+        r0 += "</div>";
         r0 += m.f('f10', c0, i0, l0, a0, yr.object2nodeset( v72 ));
+        r0 += m.f('f10', c0, i0, l0, a0, yr.object2nodeset( v74 ));
+        r0 += m.f('f10', c0, i0, l0, a0, yr.object2nodeset( v73 ));
         r0 += "</div>";
 
         return r0;
     };
 
     // func dropzone() : xml
-    M.f62 = function f62(m, c0, i0, l0, a0) {
+    M.f63 = function f63(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var block : object
@@ -2280,21 +2336,21 @@ var yr = yr || require('yate/lib/runtime.js');
         r2[ "theme" ] = "pseudo";
         r2[ "class" ] = "nb-dropzone-button";
         r1[ "button" ] = r2;
-        var v74 = r1;
+        var v75 = r1;
 
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Зона для загрузки файла";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f23', c0, i0, l0, a0, yr.object2nodeset( v74 )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f24', c0, i0, l0, a0, yr.object2nodeset( v75 )));
         r0 += "</div>";
 
         return r0;
     };
 
     // func progresses() : xml
-    M.f63 = function f63(m, c0, i0, l0, a0) {
+    M.f64 = function f64(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var default : object
@@ -2302,7 +2358,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var a1 = { a: {} };
         r1[ "id" ] = "progress2";
         r1[ "start" ] = "20";
-        var v75 = r1;
+        var v76 = r1;
 
         //  var title : object
         var r1 = {};
@@ -2311,7 +2367,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "start" ] = "30";
         r1[ "type" ] = "title";
         r1[ "title" ] = "Король_Лев_5_rutracker.org";
-        var v76 = r1;
+        var v77 = r1;
 
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "demo-section" + "\">";
@@ -2321,7 +2377,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-percentage-progress";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( v75 )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f21', c0, i0, l0, a0, yr.object2nodeset( v76 )));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -2330,18 +2386,18 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-title-progress";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( v76 )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f21', c0, i0, l0, a0, yr.object2nodeset( v77 )));
         r0 += "</div>";
 
         return r0;
     };
 
     // func input-small() : xml
-    M.f64 = function f64(m, c0, i0, l0, a0) {
+    M.f65 = function f65(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "content" ] = "Москва";
@@ -2353,11 +2409,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-medium() : xml
-    M.f65 = function f65(m, c0, i0, l0, a0) {
+    M.f66 = function f66(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
@@ -2370,11 +2426,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-disabled() : xml
-    M.f66 = function f66(m, c0, i0, l0, a0) {
+    M.f67 = function f67(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "disabled" ] = true;
@@ -2387,11 +2443,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-length() : xml
-    M.f67 = function f67(m, c0, i0, l0, a0) {
+    M.f68 = function f68(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             var r1 = {};
@@ -2408,11 +2464,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-multiline() : xml
-    M.f68 = function f68(m, c0, i0, l0, a0) {
+    M.f69 = function f69(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "type" ] = "multiline";
@@ -2424,11 +2480,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-ghost() : xml
-    M.f69 = function f69(m, c0, i0, l0, a0) {
+    M.f70 = function f70(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "ghost" ] = true;
@@ -2440,11 +2496,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-reset() : xml
-    M.f70 = function f70(m, c0, i0, l0, a0) {
+    M.f71 = function f71(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "reset" ] = true;
@@ -2458,11 +2514,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-small-reset() : xml
-    M.f71 = function f71(m, c0, i0, l0, a0) {
+    M.f72 = function f72(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "reset" ] = true;
@@ -2476,11 +2532,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-left-right() : xml
-    M.f72 = function f72(m, c0, i0, l0, a0) {
+    M.f73 = function f73(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "leftContent" ] = "Prefix...";
@@ -2495,11 +2551,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-textarea-reset() : xml
-    M.f73 = function f73(m, c0, i0, l0, a0) {
+    M.f74 = function f74(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "reset" ] = true;
@@ -2514,11 +2570,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-error() : xml
-    M.f74 = function f74(m, c0, i0, l0, a0) {
+    M.f75 = function f75(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "content" ] = "Здесь будет ошибка";
@@ -2535,11 +2591,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-hint() : xml
-    M.f75 = function f75(m, c0, i0, l0, a0) {
+    M.f76 = function f76(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "hint" ] = "Your Email or Name";
@@ -2551,11 +2607,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func input-hint-ghost() : xml
-    M.f76 = function f76(m, c0, i0, l0, a0) {
+    M.f77 = function f77(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "content" ] = "hello@nano.is";
@@ -2572,7 +2628,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func inputs() : xml
-    M.f77 = function f77(m, c0, i0, l0, a0) {
+    M.f78 = function f78(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -2580,86 +2636,86 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: M ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f65', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f66', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: S ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f64', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f65', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Disabled ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f66', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f67', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Maxlength";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f67', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f68', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Multiline";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f68', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f69', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Multiline with reset";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f73', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f74', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Ghost";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f69', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f70', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Reset";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f70', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f71', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Small reset";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f71', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f72', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Postfix, prefix";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f72', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f73', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Error";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f74', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f75', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Hint";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f75', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f76', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Ghost hint";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f76', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f77', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
     // func input-groups() : xml
-    M.f78 = function f78(m, c0, i0, l0, a0) {
+    M.f79 = function f79(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var blockDefault1 : object
@@ -2678,7 +2734,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r2[ "size" ] = "s";
         r2[ "content" ] = "Проверить";
         r1[ "button" ] = r2;
-        var v77 = r1;
+        var v78 = r1;
 
         //  var blockDefault2 : object
         var r1 = {};
@@ -2693,27 +2749,27 @@ var yr = yr || require('yate/lib/runtime.js');
         r2[ "size" ] = "s";
         r2[ "content" ] = "http://yadi.sk/";
         r1[ "input" ] = r2;
-        var v78 = r1;
+        var v79 = r1;
 
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Поле+кнопка";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f19', c0, i0, l0, a0, yr.object2nodeset( v77 )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( v78 )));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Кнопка+поле";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f19', c0, i0, l0, a0, yr.object2nodeset( v78 )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f20', c0, i0, l0, a0, yr.object2nodeset( v79 )));
         r0 += "</div>";
 
         return r0;
     };
 
     // func island-simple() : xml
-    M.f79 = function f79(m, c0, i0, l0, a0) {
+    M.f80 = function f80(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var island : object
@@ -2724,16 +2780,16 @@ var yr = yr || require('yate/lib/runtime.js');
         var a2 = { a: {} };
         r2[ "style" ] = "height: 100px; width: 200px";
         r1[ "attrs" ] = r2;
-        var v79 = r1;
+        var v80 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f22', c0, i0, l0, a0, yr.object2nodeset( v79 ));
+        r0 += m.f('f23', c0, i0, l0, a0, yr.object2nodeset( v80 ));
 
         return r0;
     };
 
     // func island-fly() : xml
-    M.f80 = function f80(m, c0, i0, l0, a0) {
+    M.f81 = function f81(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var island : object
@@ -2746,16 +2802,16 @@ var yr = yr || require('yate/lib/runtime.js');
         var a2 = { a: {} };
         r2[ "style" ] = "height: 100px; width: 200px";
         r1[ "attrs" ] = r2;
-        var v80 = r1;
+        var v81 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f22', c0, i0, l0, a0, yr.object2nodeset( v80 ));
+        r0 += m.f('f23', c0, i0, l0, a0, yr.object2nodeset( v81 ));
 
         return r0;
     };
 
     // func island-padding() : xml
-    M.f81 = function f81(m, c0, i0, l0, a0) {
+    M.f82 = function f82(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var island : object
@@ -2764,24 +2820,24 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "content" ] = "Остров с паддингами и инлайном";
         r1[ "padding" ] = "l";
         r1[ "type" ] = "inline";
-        var v81 = r1;
+        var v82 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f22', c0, i0, l0, a0, yr.object2nodeset( v81 ));
+        r0 += m.f('f23', c0, i0, l0, a0, yr.object2nodeset( v82 ));
 
         return r0;
     };
 
     // func islands() : xml
-    M.f82 = function f82(m, c0, i0, l0, a0) {
+    M.f83 = function f83(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "demo-section" + "\">";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f79', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f80', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f80', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f81', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -2790,14 +2846,14 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-large-inline-island";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f81', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f82', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
     // func loader-small() : xml
-    M.f83 = function f83(m, c0, i0, l0, a0) {
+    M.f84 = function f84(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var loader : object
@@ -2808,16 +2864,16 @@ var yr = yr || require('yate/lib/runtime.js');
         var a2 = { a: {} };
         r2[ "data-id" ] = "1";
         r1[ "attrs" ] = r2;
-        var v82 = r1;
+        var v83 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f24', c0, i0, l0, a0, yr.object2nodeset( v82 ));
+        r0 += m.f('f25', c0, i0, l0, a0, yr.object2nodeset( v83 ));
 
         return r0;
     };
 
     // func loader-medium() : xml
-    M.f84 = function f84(m, c0, i0, l0, a0) {
+    M.f85 = function f85(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var loader : object
@@ -2827,16 +2883,16 @@ var yr = yr || require('yate/lib/runtime.js');
         var a2 = { a: {} };
         r2[ "data-id" ] = "1";
         r1[ "attrs" ] = r2;
-        var v83 = r1;
+        var v84 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f24', c0, i0, l0, a0, yr.object2nodeset( v83 ));
+        r0 += m.f('f25', c0, i0, l0, a0, yr.object2nodeset( v84 ));
 
         return r0;
     };
 
     // func loader-white() : xml
-    M.f85 = function f85(m, c0, i0, l0, a0) {
+    M.f86 = function f86(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var loader : object
@@ -2847,16 +2903,16 @@ var yr = yr || require('yate/lib/runtime.js');
         var a2 = { a: {} };
         r2[ "data-id" ] = "1";
         r1[ "attrs" ] = r2;
-        var v84 = r1;
+        var v85 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f24', c0, i0, l0, a0, yr.object2nodeset( v84 ));
+        r0 += m.f('f25', c0, i0, l0, a0, yr.object2nodeset( v85 ));
 
         return r0;
     };
 
     // func loaders() : xml
-    M.f86 = function f86(m, c0, i0, l0, a0) {
+    M.f87 = function f87(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -2864,30 +2920,30 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: M ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f84', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f85', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: S ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f83', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f84', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section demo-section_dark" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Color: White ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f85', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f86', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
     // func all-icons-s(boolean white) : xml
-    M.f87 = function f87(m, c0, i0, l0, a0, v85) {
+    M.f88 = function f88(m, c0, i0, l0, a0, v86) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        if (v85) {
+        if (v86) {
             r0 += m.f('f3', c0, i0, l0, a0, yr.object2nodeset((function() {
                 var r0 = {};
                 var a0 = { a: {} };
@@ -3140,11 +3196,11 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func all-icons-m(boolean white) : xml
-    M.f88 = function f88(m, c0, i0, l0, a0, v86) {
+    M.f89 = function f89(m, c0, i0, l0, a0, v87) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
-        if (v86) {
+        if (v87) {
             r0 += m.f('f3', c0, i0, l0, a0, yr.object2nodeset((function() {
                 var r0 = {};
                 var a0 = { a: {} };
@@ -3432,7 +3488,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func icons() : xml
-    M.f89 = function f89(m, c0, i0, l0, a0) {
+    M.f90 = function f90(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3440,27 +3496,27 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: S ";
         r0 += "</div>";
-        r0 += m.f('f87', c0, i0, l0, a0);
+        r0 += m.f('f88', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section demo-section_icons" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: M ";
         r0 += "</div>";
-        r0 += m.f('f88', c0, i0, l0, a0);
+        r0 += m.f('f89', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section demo-section_dark demo-section_icons" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "White";
         r0 += "</div>";
-        r0 += m.f('f87', c0, i0, l0, a0, true);
         r0 += m.f('f88', c0, i0, l0, a0, true);
+        r0 += m.f('f89', c0, i0, l0, a0, true);
         r0 += "</div>";
 
         return r0;
     };
 
     // func slider-small() : xml
-    M.f90 = function f90(m, c0, i0, l0, a0) {
+    M.f91 = function f91(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var slider : object
@@ -3473,16 +3529,16 @@ var yr = yr || require('yate/lib/runtime.js');
         r2[ "class" ] = "js-custom-class";
         r1[ "handle" ] = r2;
         r1[ "value" ] = 20;
-        var v87 = r1;
+        var v88 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f25', c0, i0, l0, a0, yr.object2nodeset( v87 ));
+        r0 += m.f('f26', c0, i0, l0, a0, yr.object2nodeset( v88 ));
 
         return r0;
     };
 
     // func slider-medium() : xml
-    M.f91 = function f91(m, c0, i0, l0, a0) {
+    M.f92 = function f92(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var slider : object
@@ -3492,32 +3548,32 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "class" ] = "js-super-class";
         r1[ "value" ] = 50;
         r1[ "id" ] = "s1";
-        var v88 = r1;
+        var v89 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f25', c0, i0, l0, a0, yr.object2nodeset( v88 ));
+        r0 += m.f('f26', c0, i0, l0, a0, yr.object2nodeset( v89 ));
 
         return r0;
     };
 
     // func slider-disabled() : xml
-    M.f92 = function f92(m, c0, i0, l0, a0) {
+    M.f93 = function f93(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var slider : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "disabled" ] = true;
-        var v89 = r1;
+        var v90 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f25', c0, i0, l0, a0, yr.object2nodeset( v89 ));
+        r0 += m.f('f26', c0, i0, l0, a0, yr.object2nodeset( v90 ));
 
         return r0;
     };
 
     // func sliders() : xml
-    M.f93 = function f93(m, c0, i0, l0, a0) {
+    M.f94 = function f94(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3525,26 +3581,26 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: S";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f90', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f91', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: M";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f91', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f92', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Disabled";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f92', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f93', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
     // func tooltips-jq() : xml
-    M.f94 = function f94(m, c0, i0, l0, a0) {
+    M.f95 = function f95(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3563,7 +3619,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func tabs-article() : xml
-    M.f95 = function f95(m, c0, i0, l0, a0) {
+    M.f96 = function f96(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3584,7 +3640,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func tabs-discussion() : xml
-    M.f96 = function f96(m, c0, i0, l0, a0) {
+    M.f97 = function f97(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3609,7 +3665,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func tabs-medium() : xml
-    M.f97 = function f97(m, c0, i0, l0, a0) {
+    M.f98 = function f98(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var block : object
@@ -3620,24 +3676,24 @@ var yr = yr || require('yate/lib/runtime.js');
         var r3 = {};
         var a3 = { a: {} };
         r3[ "title" ] = "Статья";
-        r3[ "content" ] = m.f('f95', c0, i0, l0, a3);
+        r3[ "content" ] = m.f('f96', c0, i0, l0, a3);
         r2.push(r3);
         var r3 = {};
         var a3 = { a: {} };
         r3[ "title" ] = "Обсуждение";
-        r3[ "content" ] = m.f('f96', c0, i0, l0, a3);
+        r3[ "content" ] = m.f('f97', c0, i0, l0, a3);
         r2.push(r3);
         r1[ "items" ] = r2;
-        var v90 = r1;
+        var v91 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f26', c0, i0, l0, a0, yr.object2nodeset( v90 ));
+        r0 += m.f('f27', c0, i0, l0, a0, yr.object2nodeset( v91 ));
 
         return r0;
     };
 
     // func tabs-small() : xml
-    M.f98 = function f98(m, c0, i0, l0, a0) {
+    M.f99 = function f99(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var block : object
@@ -3668,16 +3724,16 @@ var yr = yr || require('yate/lib/runtime.js');
         r3[ "title" ] = "Технологии";
         r2.push(r3);
         r1[ "items" ] = r2;
-        var v91 = r1;
+        var v92 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f26', c0, i0, l0, a0, yr.object2nodeset( v91 ));
+        r0 += m.f('f27', c0, i0, l0, a0, yr.object2nodeset( v92 ));
 
         return r0;
     };
 
     // func tabs-island() : xml
-    M.f99 = function f99(m, c0, i0, l0, a0) {
+    M.f100 = function f100(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var exchange : xml
@@ -3699,11 +3755,11 @@ var yr = yr || require('yate/lib/runtime.js');
         r3[ "size" ] = "s";
         r3[ "content" ] = "Обменять";
         r2[ "button" ] = r3;
-        var v92 = r2;
+        var v93 = r2;
 
         r1 += closeAttrs(a1);
-        r1 += m.f('f19', c0, i0, l0, a1, yr.object2nodeset( v92 ));
-        var v93 = r1;
+        r1 += m.f('f20', c0, i0, l0, a1, yr.object2nodeset( v93 ));
+        var v94 = r1;
 
         //  var return : xml
         var r1 = '';
@@ -3723,11 +3779,11 @@ var yr = yr || require('yate/lib/runtime.js');
         r3[ "size" ] = "s";
         r3[ "content" ] = "Вернуть";
         r2[ "button" ] = r3;
-        var v94 = r2;
+        var v95 = r2;
 
         r1 += closeAttrs(a1);
-        r1 += m.f('f19', c0, i0, l0, a1, yr.object2nodeset( v94 ));
-        var v95 = r1;
+        r1 += m.f('f20', c0, i0, l0, a1, yr.object2nodeset( v95 ));
+        var v96 = r1;
 
         //  var block : object
         var r1 = {};
@@ -3738,15 +3794,15 @@ var yr = yr || require('yate/lib/runtime.js');
         var r3 = {};
         var a3 = { a: {} };
         r3[ "title" ] = "Обмен";
-        r3[ "content" ] = v93;
+        r3[ "content" ] = v94;
         r2.push(r3);
         var r3 = {};
         var a3 = { a: {} };
         r3[ "title" ] = "Возврат";
-        r3[ "content" ] = v95;
+        r3[ "content" ] = v96;
         r2.push(r3);
         r1[ "items" ] = r2;
-        var v96 = r1;
+        var v97 = r1;
 
         r0 += closeAttrs(a0);
         r0 += "<div";
@@ -3756,14 +3812,14 @@ var yr = yr || require('yate/lib/runtime.js');
         a0.s = 'div';
         a0.a[ "style" ] = new yr.scalarAttr("width: 500px");
         r0 += closeAttrs(a0);
-        r0 += m.f('f26', c0, i0, l0, a0, yr.object2nodeset( v96 ));
+        r0 += m.f('f27', c0, i0, l0, a0, yr.object2nodeset( v97 ));
         r0 += "</div>";
 
         return r0;
     };
 
     // func tabs() : xml
-    M.f100 = function f100(m, c0, i0, l0, a0) {
+    M.f101 = function f101(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3771,26 +3827,26 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: M ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f97', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f98', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Size: S ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f98', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f99', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Внутри острова ";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f99', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f100', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
     // func arrow-service() : xml
-    M.f101 = function f101(m, c0, i0, l0, a0) {
+    M.f102 = function f102(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var block : object
@@ -3798,16 +3854,16 @@ var yr = yr || require('yate/lib/runtime.js');
         var a1 = { a: {} };
         r1[ "search" ] = "false";
         r1[ "text" ] = "Диск";
-        var v97 = r1;
+        var v98 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f27', c0, i0, l0, a0, yr.object2nodeset( v97 ));
+        r0 += m.f('f28', c0, i0, l0, a0, yr.object2nodeset( v98 ));
 
         return r0;
     };
 
     // func arrow-service-link() : xml
-    M.f102 = function f102(m, c0, i0, l0, a0) {
+    M.f103 = function f103(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var block : object
@@ -3816,32 +3872,32 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "search" ] = "false";
         r1[ "href" ] = "#";
         r1[ "text" ] = "Диск";
-        var v98 = r1;
+        var v99 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f27', c0, i0, l0, a0, yr.object2nodeset( v98 ));
+        r0 += m.f('f28', c0, i0, l0, a0, yr.object2nodeset( v99 ));
 
         return r0;
     };
 
     // func arrow-search() : xml
-    M.f103 = function f103(m, c0, i0, l0, a0) {
+    M.f104 = function f104(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var block : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "search" ] = "true";
-        var v99 = r1;
+        var v100 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f27', c0, i0, l0, a0, yr.object2nodeset( v99 ));
+        r0 += m.f('f28', c0, i0, l0, a0, yr.object2nodeset( v100 ));
 
         return r0;
     };
 
     // func arrow-search-requests() : xml
-    M.f104 = function f104(m, c0, i0, l0, a0) {
+    M.f105 = function f105(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var block : object
@@ -3850,16 +3906,16 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "search" ] = "true";
         r1[ "requests" ] = "8 млн ответов";
         r1[ "value" ] = "жираф";
-        var v100 = r1;
+        var v101 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f27', c0, i0, l0, a0, yr.object2nodeset( v100 ));
+        r0 += m.f('f28', c0, i0, l0, a0, yr.object2nodeset( v101 ));
 
         return r0;
     };
 
     // func arrow-search-service() : xml
-    M.f105 = function f105(m, c0, i0, l0, a0) {
+    M.f106 = function f106(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var block : object
@@ -3868,16 +3924,16 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "search" ] = "true";
         r1[ "href" ] = "#";
         r1[ "text" ] = "Диск";
-        var v101 = r1;
+        var v102 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f27', c0, i0, l0, a0, yr.object2nodeset( v101 ));
+        r0 += m.f('f28', c0, i0, l0, a0, yr.object2nodeset( v102 ));
 
         return r0;
     };
 
     // func arrows() : xml
-    M.f106 = function f106(m, c0, i0, l0, a0) {
+    M.f107 = function f107(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3885,38 +3941,38 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Название сервиса";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f101', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f102', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Название сервиса со ссылкой";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f102', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f103', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Поисковая стрелка (по умолчанию)";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f103', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f104', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Поисковая стрелка (по умолчанию)";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f104', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f105', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Поисковая стрелка (по умолчанию)";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f105', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f106', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
     //  var header : object
-    M.v102 = function(m, c0, i0, l0) {
+    M.v103 = function(m, c0, i0, l0) {
         var r1 = {};
         var a1 = { a: {} };
         var r2 = {};
@@ -3928,7 +3984,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func header() : xml
-    M.f107 = function f107(m, c0, i0, l0, a0) {
+    M.f108 = function f108(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -3936,14 +3992,14 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Шапка с поисковой стрелкой";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f28', c0, i0, l0, a0, yr.object2nodeset( m.v('v102', c0.doc.root) )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f29', c0, i0, l0, a0, yr.object2nodeset( m.v('v103', c0.doc.root) )));
         r0 += "</div>";
 
         return r0;
     };
 
     //  var userNormal : object
-    M.v103 = function(m, c0, i0, l0) {
+    M.v104 = function(m, c0, i0, l0) {
         var r1 = {};
         var a1 = { a: {} };
         r1[ "username" ] = "sweetlush";
@@ -3952,7 +4008,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     //  var userRtL : object
-    M.v104 = function(m, c0, i0, l0) {
+    M.v105 = function(m, c0, i0, l0) {
         var r1 = {};
         var a1 = { a: {} };
         r1[ "username" ] = "Username";
@@ -3962,7 +4018,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     //  var userSmall : object
-    M.v105 = function(m, c0, i0, l0) {
+    M.v106 = function(m, c0, i0, l0) {
         var r1 = {};
         var a1 = { a: {} };
         r1[ "username" ] = "basvasilich";
@@ -3971,7 +4027,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     //  var userEmail : object
-    M.v106 = function(m, c0, i0, l0) {
+    M.v107 = function(m, c0, i0, l0) {
         var r1 = {};
         var a1 = { a: {} };
         r1[ "username" ] = "Константин Леонидович Васильев";
@@ -3983,7 +4039,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     //  var userEmail2 : object
-    M.v107 = function(m, c0, i0, l0) {
+    M.v108 = function(m, c0, i0, l0) {
         var r1 = {};
         var a1 = { a: {} };
         r1[ "username" ] = "Константин Леонидович Васильев";
@@ -3994,7 +4050,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func userBlock() : xml
-    M.f108 = function f108(m, c0, i0, l0, a0) {
+    M.f109 = function f109(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4002,39 +4058,39 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок информации о пользователе L";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f29', c0, i0, l0, a0, yr.object2nodeset( m.v('v103', c0.doc.root) )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f30', c0, i0, l0, a0, yr.object2nodeset( m.v('v104', c0.doc.root) )));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок информации о пользователе справа налево";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f29', c0, i0, l0, a0, yr.object2nodeset( m.v('v104', c0.doc.root) )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f30', c0, i0, l0, a0, yr.object2nodeset( m.v('v105', c0.doc.root) )));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок информации о пользователе S";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f29', c0, i0, l0, a0, yr.object2nodeset( m.v('v105', c0.doc.root) )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f30', c0, i0, l0, a0, yr.object2nodeset( m.v('v106', c0.doc.root) )));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок информации о пользователе растянутый и с имейлом";
         r0 += "</div>";
         r0 += "<div style=\"" + "width: 200px" + "\">";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f29', c0, i0, l0, a0, yr.object2nodeset( m.v('v106', c0.doc.root) )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f30', c0, i0, l0, a0, yr.object2nodeset( m.v('v107', c0.doc.root) )));
         r0 += "</div>";
         r0 += "<div style=\"" + "width: 200px" + "\">";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f29', c0, i0, l0, a0, yr.object2nodeset( m.v('v107', c0.doc.root) )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f30', c0, i0, l0, a0, yr.object2nodeset( m.v('v108', c0.doc.root) )));
         r0 += "</div>";
         r0 += "</div>";
 
         return r0;
     };
 
-    var j26 = [ 0, 'source' ];
+    var j29 = [ 0, 'source' ];
 
     // func suggests() : xml
-    M.f109 = function f109(m, c0, i0, l0, a0) {
+    M.f110 = function f110(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var suggest : object
@@ -4043,7 +4099,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "source" ] = "[\"Вариант 1\", \"Вариант 2\", \"Вариант 3\", \"Вариант 4\", \"Вариант 5\", \"Вариант 6\", \"Вариант 7\", \"Вариант 8\", \"Вариант 9\", \"Вариант 10\", \"Вариант 11\", \"Вариант 12\", \"Вариант 13\", \"Вариант 14\", \"Вариант 15\", \"Вариант 16\", \"Вариант 17\", \"Вариант 18\", \"Вариант 19\"]";
         r1[ "highlight" ] = true;
         r1[ "size" ] = "s";
-        var v108 = r1;
+        var v109 = r1;
 
         //  var suggestUser : object
         var r1 = {};
@@ -4051,27 +4107,27 @@ var yr = yr || require('yate/lib/runtime.js');
         r1[ "source" ] = "[{\"value\": \"Константин Константинович Константинопольский\",\"labelContent\": \"Константин Константинович Константинопольский konstantin.konstantinopolsky\",\"username\": \"Константин Константинович Константинопольский\",\"email\": \"konstantin.konstantinopolsky@yandex-team.ru\"},{\"value\": \"Константин Васильев\",\"labelContent\": \"Константин Васильев mctep\",\"username\": \"Константин Васильев\",\"email\": \"mctep@yandex-team.ru\",\"userpic\": \"https://center.yandex-team.ru/api/v1/user/mctep/avatar/54.jpg\"},{\"value\": \"Евгений Дорошенко\",\"labelContent\": \"Евгений Дорошенко esdoroshenko\",\"username\": \"Евгений Дорошенко\",\"email\": \"esdoroshenko@yandex-team.ru\",\"userpic\": \"https://center.yandex-team.ru/api/v1/user/esdoroshenko/avatar/54.jpg\"},{\"value\": \"Вадим Пацев\",\"labelContent\": \"Вадим Пацев basvasilich\",\"username\": \"Вадим Пацев\",\"email\": \"basvasilich@yandex-team.ru\",\"userpic\": \"https://center.yandex-team.ru/api/v1/user/basvasilich/avatar/54.jpg\"},{\"value\": \"Светлана Блыщак\",\"labelContent\": \"Светлана Блыщак sweetlush\",\"username\": \"Светлана Блыщак\",\"email\": \"sweetlush@yandex-team.ru\",\"userpic\": \"https://center.yandex-team.ru/api/v1/user/sweetlush/avatar/54.jpg\"},{\"value\": \"Яна Недоросткова\",\"labelContent\": \"Яна Недоросткова yanann11\",\"username\": \"Яна Недоросткова\",\"email\": \"yanann11@yandex-team.ru\",\"userpic\": \"https://center.yandex-team.ru/api/v1/user/yanann11/avatar/54.jpg\"},{\"value\": \"Азиз Йулдошев\",\"labelContent\": \"Азиз Йулдошев lapple\",\"username\": \"Азиз Йулдошев\",\"email\": \"lapple@yandex-team.ru\",\"userpic\": \"https://center.yandex-team.ru/api/v1/user/lapple/avatar/54.jpg\"}]";
         r1[ "highlight" ] = true;
         r1[ "type" ] = "username";
-        var v109 = r1;
+        var v110 = r1;
 
         //  var suggestUser2 : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "source" ] = "./users.json";
         r1[ "type" ] = "username";
-        var v110 = r1;
+        var v111 = r1;
 
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Простейший саджест с большим количеством вариантов. Введите буквы «Ва»";
         r0 += "</div>";
-        r0 += m.f('f30', c0, i0, l0, a0, yr.object2nodeset( v108 ));
+        r0 += m.f('f31', c0, i0, l0, a0, yr.object2nodeset( v109 ));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Саджест с подсветкой, в котором представлена команда разработчиков Диска";
         r0 += "</div>";
-        r0 += m.f('f30', c0, i0, l0, a0, yr.object2nodeset( v109 ));
+        r0 += m.f('f31', c0, i0, l0, a0, yr.object2nodeset( v110 ));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -4081,7 +4137,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "Для корректной работы, необходмо настроить ваш сервер на выдачу json файлов как есть. ";
         r0 += "Файл статичный, поэтому результаты будут всегда одинаковые. ";
         r0 += "</div>";
-        r0 += m.f('f30', c0, i0, l0, a0, yr.object2nodeset( v110 ));
+        r0 += m.f('f31', c0, i0, l0, a0, yr.object2nodeset( v111 ));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -4096,7 +4152,7 @@ var yr = yr || require('yate/lib/runtime.js');
         a0.a[ "placeholder" ] = new yr.scalarAttr("Введите вариант");
         a0.a[ "data-nb" ] = new yr.scalarAttr("suggest");
         a0.a[ "data-class-suggest" ] = new yr.scalarAttr("nb-island _nb-fly-island _nb-suggest-container _nb-small-suggest");
-        a0.a[ "data-source" ] = new yr.scalarAttr(nodeset2scalar( m.n(j26, yr.object2nodeset( v108 )) ));
+        a0.a[ "data-source" ] = new yr.scalarAttr(nodeset2scalar( m.n(j29, yr.object2nodeset( v109 )) ));
         r0 += closeAttrs(a0);
         r0 += '';
         r0 += "</div>";
@@ -4105,7 +4161,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     //  var togglerS : object
-    M.v111 = function(m, c0, i0, l0) {
+    M.v112 = function(m, c0, i0, l0) {
         var r1 = {};
         var a1 = { a: {} };
         r1[ "leftText" ] = "Вкл";
@@ -4114,7 +4170,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     //  var togglerM : object
-    M.v112 = function(m, c0, i0, l0) {
+    M.v113 = function(m, c0, i0, l0) {
         var r1 = {};
         var a1 = { a: {} };
         r1[ "leftText" ] = "Вкл";
@@ -4125,7 +4181,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     //  var togglerDisabled : object
-    M.v113 = function(m, c0, i0, l0) {
+    M.v114 = function(m, c0, i0, l0) {
         var r1 = {};
         var a1 = { a: {} };
         r1[ "leftText" ] = "Вкл";
@@ -4136,7 +4192,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func toggleBlock() : xml
-    M.f110 = function f110(m, c0, i0, l0, a0) {
+    M.f111 = function f111(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4144,24 +4200,24 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок переключатель";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f31', c0, i0, l0, a0, yr.object2nodeset( m.v('v111', c0.doc.root) )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f32', c0, i0, l0, a0, yr.object2nodeset( m.v('v112', c0.doc.root) )));
         r0 += "<br/>";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок переключатель M";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f31', c0, i0, l0, a0, yr.object2nodeset( m.v('v112', c0.doc.root) )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f32', c0, i0, l0, a0, yr.object2nodeset( m.v('v113', c0.doc.root) )));
         r0 += "<br/>";
         r0 += "<div class=\"" + "demo-h3" + "\">";
         r0 += "Блок переключатель disabled";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f31', c0, i0, l0, a0, yr.object2nodeset( m.v('v113', c0.doc.root) )));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f32', c0, i0, l0, a0, yr.object2nodeset( m.v('v114', c0.doc.root) )));
         r0 += "</div>";
 
         return r0;
     };
 
     // func button-input-button() : xml
-    M.f111 = function f111(m, c0, i0, l0, a0) {
+    M.f112 = function f112(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4177,7 +4233,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
             return r0;
         })()));
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             var r1 = [];
@@ -4205,7 +4261,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func button-input-button-strict() : xml
-    M.f112 = function f112(m, c0, i0, l0, a0) {
+    M.f113 = function f113(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4253,7 +4309,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func groups() : xml
-    M.f113 = function f113(m, c0, i0, l0, a0) {
+    M.f114 = function f114(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4263,7 +4319,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-group-item";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f111', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f112', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -4273,14 +4329,14 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-group-end";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f112', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f113', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
     // func gap-xs() : xml
-    M.f114 = function f114(m, c0, i0, l0, a0) {
+    M.f115 = function f115(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4322,7 +4378,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func gap-s() : xml
-    M.f115 = function f115(m, c0, i0, l0, a0) {
+    M.f116 = function f116(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4364,7 +4420,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func gap-m() : xml
-    M.f116 = function f116(m, c0, i0, l0, a0) {
+    M.f117 = function f117(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4406,7 +4462,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func gap-l() : xml
-    M.f117 = function f117(m, c0, i0, l0, a0) {
+    M.f118 = function f118(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4448,7 +4504,7 @@ var yr = yr || require('yate/lib/runtime.js');
     };
 
     // func gaps() : xml
-    M.f118 = function f118(m, c0, i0, l0, a0) {
+    M.f119 = function f119(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -4458,7 +4514,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-with-xs-right-gap";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f114', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f115', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -4466,7 +4522,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-with-s-right-gap";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f115', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f116', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -4474,7 +4530,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-with-m-right-gap";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f116', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f117', c0, i0, l0, a0));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-section" + "\">";
         r0 += "<div class=\"" + "demo-h3" + "\">";
@@ -4482,99 +4538,93 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += ".nb-with-l-right-gap";
         r0 += "</span>";
         r0 += "</div>";
-        r0 += m.f('f34', c0, i0, l0, a0, m.f('f117', c0, i0, l0, a0));
+        r0 += m.f('f35', c0, i0, l0, a0, m.f('f118', c0, i0, l0, a0));
         r0 += "</div>";
 
         return r0;
     };
 
-    var j27 = [ 0, 'id' ];
+    var j30 = [ 0, 'id' ];
 
-    var j28 = [ 0, 'class' ];
+    var j31 = [ 0, 'mixin-nb' ];
 
-    var j29 = [ 0, 'mixin-nb' ];
+    var j32 = [ 0, 'data-nb', 0, '*' ];
 
-    var j30 = [ 0, 'data-nb', 0, '*' ];
+    var j33 = [ 0, 'ico' ];
 
-    var j31 = [ 0, 'attrs', 0, '*' ];
+    var j34 = [ 0, 'button' ];
 
-    var j32 = [ 0, 'ico' ];
+    var j35 = [ 0, 'buttonLink' ];
 
-    var j33 = [ 0, 'button' ];
+    var j36 = [ 0, 'buttonSpan' ];
 
-    var j34 = [ 0, 'buttonLink' ];
+    var j37 = [ 0, 'buttonLabel' ];
 
-    var j35 = [ 0, 'buttonSpan' ];
+    var j38 = [ 0, 'buttonAttach' ];
 
-    var j36 = [ 0, 'buttonLabel' ];
+    var j39 = [ 0, 'attrs', 0, 'multiple' ];
 
-    var j37 = [ 0, 'buttonAttach' ];
+    var j40 = [ 0, 'multiple' ];
 
-    var j38 = [ 0, 'attrs', 0, 'multiple' ];
+    var j41 = [ 0, 'attrs', 0, 'title' ];
 
-    var j39 = [ 0, 'multiple' ];
+    var j42 = [ 0, 'attrs', 0, 'accept' ];
 
-    var j40 = [ 0, 'attrs', 0, 'title' ];
+    var j43 = [ 0, 'popupMenu' ];
 
-    var j41 = [ 0, 'popupMenu' ];
+    var j44 = [ 0, 'withoutTail' ];
 
-    var j42 = [ 0, 'withoutTail' ];
+    var j45 = [ 0, 'menu' ];
 
-    var j43 = [ 0, 'menu' ];
+    var j46 = [ 0, 'href' ];
 
-    var j44 = [ 0, 'href' ];
-
-    var j45 = [ 0, 'popup' ];
-
-    var j46 = [ 0, 'titleContent' ];
-
-    var j47 = [ 0, 'modalPopup' ];
+    var j47 = [ 0, 'popup' ];
 
     var j48 = [ 0, 'close' ];
 
-    var j49 = [ 0, 'close', 0, 'class' ];
+    var j49 = [ 0, 'titleContent' ];
 
-    var j50 = [ 0, 'close', 0, 'attrs' ];
+    var j50 = [ 0, 'modalPopup' ];
 
-    var j51 = [ 0, 'close', 0, 'attrs', 0, '*' ];
+    var j51 = [ 0, 'buttons' ];
 
-    var j52 = [ 0, 'buttons' ];
+    var j52 = [ 0, 'radio-button' ];
 
-    var j53 = [ 0, 'radio-button' ];
+    var j53 = [ 0, 'group' ];
 
-    var j54 = [ 0, 'group' ];
+    var j54 = [ 1, 1, 0, 'name' ];
 
-    var j55 = [ 1, 1, 0, 'name' ];
+    var j55 = [ 0, 'checked' ];
 
-    var j56 = [ 0, 'checked' ];
+    var j56 = [ 1, 1, 0, 'size' ];
 
-    var j57 = [ 1, 1, 0, 'size' ];
-
-    var j58 = [ 0, 'select' ];
+    var j57 = [ 0, 'select' ];
 
     function p0(m, c0, i0, l0) {
         return nodeset2boolean( (selectNametest('selected', c0, [])) );
     }
 
-    var j59 = [ 0, 'items', 2, p0 ];
+    var j58 = [ 0, 'items', 2, p0 ];
 
-    var j60 = [ 0, 'direction' ];
+    var j59 = [ 0, 'direction' ];
 
-    var j61 = [ 0, 'within' ];
+    var j60 = [ 0, 'within' ];
 
-    var j62 = [ 0, 'appendto' ];
+    var j61 = [ 0, 'appendto' ];
 
-    var j63 = [ 0, 'maxHeight' ];
+    var j62 = [ 0, 'maxHeight' ];
 
-    var j64 = [ 0, 'items' ];
+    var j63 = [ 0, 'items' ];
 
-    var j65 = [ ];
+    var j64 = [ ];
 
-    var j66 = [ 0, 'checkbox' ];
+    var j65 = [ 0, 'checkbox' ];
 
-    var j67 = [ 0, 'input' ];
+    var j66 = [ 0, 'input' ];
 
-    var j68 = [ 0, 'error', 0, 'direction' ];
+    var j67 = [ 0, 'error', 0, 'direction' ];
+
+    var j68 = [ 0, 'error', 0, 'class' ];
 
     var j69 = [ 0, 'error', 0, 'content' ];
 
@@ -4688,51 +4738,65 @@ var yr = yr || require('yate/lib/runtime.js');
 
     var j120 = [ 0, 'classSuggest' ];
 
-    var j121 = [ 0, 'attrsInput' ];
+    var j121 = [ 0, 'input', 0, 'attrs' ];
 
-    var j122 = [ 0, 'item' ];
+    var j122 = [ 0, 'input', 0, 'leftContent' ];
+
+    var j123 = [ 0, 'input', 0, 'rightContent' ];
+
+    var j124 = [ 0, 'input', 0, 'labelContent' ];
+
+    var j125 = [ 0, 'input', 0, 'reset' ];
+
+    var j126 = [ 0, 'input', 0, 'ghost' ];
+
+    var j127 = [ 0, 'input', 0, 'error' ];
+
+    var j128 = [ 0, 'input', 0, 'hint' ];
+
+    var j129 = [ 0, 'item' ];
 
     function p3(m, c0, i0, l0) {
         return cmpSN("default", selectNametest('type', c0, []));
     }
 
-    var j123 = [ 2, p3, 0, 'item' ];
+    var j130 = [ 2, p3, 0, 'item' ];
 
     function p4(m, c0, i0, l0) {
         return cmpSN("username", selectNametest('type', c0, []));
     }
 
-    var j124 = [ 2, p4, 0, 'item' ];
+    var j131 = [ 2, p4, 0, 'item' ];
 
-    var j125 = [ 0, 'size' ];
+    var j132 = [ 0, 'size' ];
 
-    var j126 = [ 0, 'usernameHighlighted' ];
+    var j133 = [ 0, 'usernameHighlighted' ];
 
-    var j127 = [ 0, 'emailHighlighted' ];
+    var j134 = [ 0, 'emailHighlighted' ];
 
-    var j128 = [ 0, 'mod' ];
+    var j135 = [ 0, 'mod' ];
 
     function p5(m, c0, i0, l0) {
         return cmpSN("suggest", selectNametest('mod', c0, [])) && simpleBoolean('usernameHighlighted', c0);
     }
 
-    var j129 = [ 0, 'user', 2, p5, 0, 'username' ];
+    var j136 = [ 0, 'user', 2, p5, 0, 'username' ];
 
-    var j130 = [ 1, 1, 0, 'usernameHighlighted' ];
+    var j137 = [ 1, 1, 0, 'usernameHighlighted' ];
 
     function p6(m, c0, i0, l0) {
         return cmpSN("suggest", selectNametest('mod', c0, [])) && simpleBoolean('emailHighlighted', c0);
     }
 
-    var j131 = [ 0, 'user', 2, p6, 0, 'email' ];
+    var j138 = [ 0, 'user', 2, p6, 0, 'email' ];
 
-    var j132 = [ 1, 1, 0, 'emailHighlighted' ];
+    var j139 = [ 1, 1, 0, 'emailHighlighted' ];
 
-    var j133 = [ 0, 'toggler' ];
+    var j140 = [ 0, 'toggler' ];
 
-    var j134 = [ 0, 'leftText' ];
+    var j141 = [ 0, 'leftText' ];
 
-    var j135 = [ 0, 'rightText' ];
+    var j142 = [ 0, 'rightText' ];
 
     // match .* : nb-main-attrs
     M.t0 = function t0(m, c0, i0, l0, a0) {
@@ -4771,12 +4835,12 @@ var yr = yr || require('yate/lib/runtime.js');
                 a0.a[ "data-nb" ] = new yr.scalarAttr(r1);
             }
         }
-        var items0 = m.s(j30, c0);
+        var items0 = m.s(j32, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             a0.a[ "data-nb-" + ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j14, c1) ));
         }
-        var items0 = m.s(j31, c0);
+        var items0 = m.s(j17, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j14, c1) ));
@@ -4805,7 +4869,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<img";
         a0.a = {
-            'src': new yr.scalarAttr("//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif")
+            'src': new yr.scalarAttr("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
         };
         a0.s = 'img';
         var r1 = '';
@@ -4824,7 +4888,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t2.j = j32;
+    M.t2.j = j33;
     M.t2.a = 0;
 
     // match .button : nb
@@ -4856,7 +4920,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t3.j = j33;
+    M.t3.j = j34;
     M.t3.a = 0;
 
     // match .buttonLink : nb
@@ -4888,7 +4952,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t4.j = j34;
+    M.t4.j = j35;
     M.t4.a = 0;
 
     // match .buttonSpan : nb
@@ -4920,7 +4984,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t5.j = j35;
+    M.t5.j = j36;
     M.t5.a = 0;
 
     // match .buttonLabel : nb
@@ -4952,7 +5016,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t6.j = j36;
+    M.t6.j = j37;
     M.t6.a = 0;
 
     // match .buttonAttach : nb
@@ -4976,7 +5040,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'type': new yr.scalarAttr("file")
         };
         a0.s = 'input';
-        if (nodeset2boolean( m.s(j38, c0) ) || simpleBoolean('multiple', c0)) {
+        if (nodeset2boolean( m.s(j39, c0) ) || simpleBoolean('multiple', c0)) {
             a0.a[ "multiple" ] = new yr.scalarAttr("multiple");
         }
         if (simpleBoolean('name', c0)) {
@@ -4985,16 +5049,19 @@ var yr = yr || require('yate/lib/runtime.js');
         if (nodeset2boolean( m.s(j7, c0) )) {
             a0.a[ "name" ] = new yr.scalarAttr(nodeset2scalar( ( m.s(j7, c0) ) ));
         }
-        if (nodeset2boolean( m.s(j40, c0) )) {
+        if (nodeset2boolean( m.s(j41, c0) )) {
             var tmp0 = a0.a[ "title" ];
             if (tmp0) {
-                a0.a[ "title" ] = tmp0.addscalar(nodeset2scalar( ( m.s(j40, c0) ) ));
+                a0.a[ "title" ] = tmp0.addscalar(nodeset2scalar( ( m.s(j41, c0) ) ));
             } else {
-                a0.a[ "title" ] = new yr.scalarAttr(nodeset2scalar( ( m.s(j40, c0) ) ));
+                a0.a[ "title" ] = new yr.scalarAttr(nodeset2scalar( ( m.s(j41, c0) ) ));
             }
         }
         if (simpleBoolean('disabled', c0)) {
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
+        }
+        if (nodeset2boolean( m.s(j42, c0) )) {
+            a0.a[ "accept" ] = new yr.scalarAttr(nodeset2scalar( ( m.s(j42, c0) ) ));
         }
         r0 += closeAttrs(a0);
         r0 += '';
@@ -5017,7 +5084,7 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t7.j = j37;
+    M.t7.j = j38;
     M.t7.a = 0;
 
     // match .popupMenu : nb
@@ -5043,40 +5110,65 @@ var yr = yr || require('yate/lib/runtime.js');
         if (nodeset2boolean( (selectNametest('withoutTail', c0, [])) )) {
             a0.a[ "data-nb-withoutTail" ] = new yr.scalarAttr("true");
         }
+        r0 += m.a(m, m.s(j14, c0), 'nb-popup-menu-content', a0)
         r0 += closeAttrs(a0);
-        r0 += "<ul class=\"" + "_nb-popup-menu" + "\">";
-        var items0 = selectNametest('menu', c0, []);
-        for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
-            var c1 = items0[ i1 ];
-            if (simpleBoolean('separator', c1)) {
-                r0 += "<li class=\"" + "_nb-popup-separator" + "\"></li>";
-            } else {
-                r0 += "<li class=\"" + "_nb-popup-line" + "\">";
-                r0 += "<a";
-                a0.a = {
-                    'class': new yr.scalarAttr("_nb-popup-link")
-                };
-                a0.s = 'a';
-                if (simpleBoolean('href', c1)) {
-                    a0.a[ "href" ] = new yr.scalarAttr(simpleScalar('href', c1));
-                }
-                r0 += m.a(m, m.s(j14, c1), 'nb-main-attrs', a0)
-                r0 += closeAttrs(a0);
-                r0 += simpleScalar('content', c1);
-                r0 += "</a>";
-                r0 += "</li>";
-            }
-        }
-        r0 += "</ul>";
         r0 += "</div>";
 
         return r0;
     };
-    M.t8.j = j41;
+    M.t8.j = j43;
     M.t8.a = 0;
 
-    // match .popup : nb
+    // match .popupMenu : nb-popup-menu-content
     M.t9 = function t9(m, c0, i0, l0, a0) {
+        var r0 = '';
+
+        r0 += closeAttrs(a0);
+        r0 += "<ul";
+        a0.a = {
+            'class': new yr.scalarAttr("_nb-popup-menu")
+        };
+        a0.s = 'ul';
+        r0 += m.a(m, selectNametest('menu', c0, []), 'nb-popup-menu-content-item', a0)
+        r0 += closeAttrs(a0);
+        r0 += "</ul>";
+
+        return r0;
+    };
+    M.t9.j = j43;
+    M.t9.a = 0;
+
+    // match .menu : nb-popup-menu-content-item
+    M.t10 = function t10(m, c0, i0, l0, a0) {
+        var r0 = '';
+
+        r0 += closeAttrs(a0);
+        if (simpleBoolean('separator', c0)) {
+            r0 += "<li class=\"" + "_nb-popup-separator" + "\"></li>";
+        } else {
+            r0 += "<li class=\"" + "_nb-popup-line" + "\">";
+            r0 += "<a";
+            a0.a = {
+                'class': new yr.scalarAttr("_nb-popup-link")
+            };
+            a0.s = 'a';
+            if (simpleBoolean('href', c0)) {
+                a0.a[ "href" ] = new yr.scalarAttr(simpleScalar('href', c0));
+            }
+            r0 += m.a(m, m.s(j14, c0), 'nb-main-attrs', a0)
+            r0 += closeAttrs(a0);
+            r0 += simpleScalar('content', c0);
+            r0 += "</a>";
+            r0 += "</li>";
+        }
+
+        return r0;
+    };
+    M.t10.j = j45;
+    M.t10.a = 0;
+
+    // match .popup : nb
+    M.t11 = function t11(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5091,6 +5183,9 @@ var yr = yr || require('yate/lib/runtime.js');
             a0.a[ "data-nb-withoutTail" ] = new yr.scalarAttr("true");
         }
         r0 += closeAttrs(a0);
+        if (simpleBoolean('close', c0)) {
+            r0 += m.f('f14', c0, i0, l0, a0, selectNametest('close', c0, []));
+        }
         if (simpleBoolean('titleContent', c0)) {
             r0 += m.f('f12', c0, i0, l0, a0, selectNametest('titleContent', c0, []));
         }
@@ -5101,16 +5196,16 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t9.j = j45;
-    M.t9.a = 0;
+    M.t11.j = j47;
+    M.t11.a = 0;
 
     // match .modalPopup : nb
-    M.t10 = function t10(m, c0, i0, l0, a0) {
+    M.t12 = function t12(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
         if (simpleBoolean('static', c0)) {
-            r0 += m.f('f21', c0, i0, l0, a0);
+            r0 += m.f('f22', c0, i0, l0, a0);
         }
         r0 += "<div";
         a0.a = {
@@ -5150,33 +5245,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "_nb-popup-i" + "\">";
         if (simpleBoolean('close', c0)) {
-            r0 += "<a";
-            a0.a = {
-                'class': new yr.scalarAttr("_nb-popup-close")
-            };
-            a0.s = 'a';
-            var r1 = '';
-            var a1 = { a: {} };
-            var items0 = m.s(j49, c0);
-            for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
-                var c1 = items0[ i1 ];
-                r1 += " " + nodeset2scalar( ( m.s(j14, c1) ) );
-            }
-            var tmp0 = a0.a[ "class" ];
-            if (tmp0) {
-                a0.a[ "class" ] = tmp0.addscalar(r1);
-            } else {
-                a0.a[ "class" ] = new yr.scalarAttr(r1);
-            }
-            if (nodeset2boolean( m.s(j50, c0) )) {
-                var items0 = m.s(j51, c0);
-                for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
-                    var c1 = items0[ i1 ];
-                    a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j14, c1) ));
-                }
-            }
-            r0 += closeAttrs(a0);
-            r0 += "</a>";
+            r0 += m.f('f14', c0, i0, l0, a0, selectNametest('close', c0, []));
         }
         if (simpleBoolean('titleContent', c0)) {
             r0 += m.f('f12', c0, i0, l0, a0, selectNametest('titleContent', c0, []));
@@ -5192,11 +5261,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t10.j = j47;
-    M.t10.a = 0;
+    M.t12.j = j50;
+    M.t12.a = 0;
 
     // match .radio-button : nb
-    M.t11 = function t11(m, c0, i0, l0, a0) {
+    M.t13 = function t13(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5225,16 +5294,16 @@ var yr = yr || require('yate/lib/runtime.js');
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             //  var uniq : scalar
-            var v114 = "nb-radio-button_" + ( (yr.externals['_nb-uniq'])() );
+            var v115 = "nb-radio-button_" + ( (yr.externals['_nb-uniq'])() );
 
             r0 += "<span class=\"" + "_nb-radio-button-button nb-complex-group-item" + "\">";
             r0 += "<input";
             a0.a = {
                 'class': new yr.scalarAttr("_nb-radio-button-radio"),
                 'type': new yr.scalarAttr("radio"),
-                'name': new yr.scalarAttr(nodeset2scalar( ( m.s(j55, c1) ) )),
+                'name': new yr.scalarAttr(nodeset2scalar( ( m.s(j54, c1) ) )),
                 'value': new yr.scalarAttr(nodeset2scalar( ( selectNametest('value', c1, []) ) )),
-                'id': new yr.scalarAttr(( v114 ))
+                'id': new yr.scalarAttr(( v115 ))
             };
             a0.s = 'input';
             if (simpleBoolean('checked', c1)) {
@@ -5265,10 +5334,10 @@ var yr = yr || require('yate/lib/runtime.js');
                 r0[ "type" ] = "label";
                 r0[ "static" ] = true;
                 r0[ "id" ] = false;
-                r0[ "size" ] = yr.nodeset2data(m.s(j57, c1));
+                r0[ "size" ] = yr.nodeset2data(m.s(j56, c1));
                 var r1 = {};
                 var a1 = { a: {} };
-                r1[ "for" ] = v114;
+                r1[ "for" ] = v115;
                 r1[ "data-value" ] = yr.nodeset2data(selectNametest('value', c1, []));
                 r0[ "attrs" ] = r1;
 
@@ -5280,15 +5349,15 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t11.j = j53;
-    M.t11.a = 0;
+    M.t13.j = j52;
+    M.t13.a = 0;
 
     // match .select : nb
-    M.t12 = function t12(m, c0, i0, l0, a0) {
+    M.t14 = function t14(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var isSelected : boolean
-        var v115 = ( m.s(j59, c0) ).length > 0;
+        var v116 = ( m.s(j58, c0) ).length > 0;
 
         r0 += closeAttrs(a0);
         r0 += "<span";
@@ -5331,7 +5400,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var items0 = selectNametest('items', c0, []);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
-            if ((v115 && simpleBoolean('selected', c1)) || (!v115 && i1 == 0)) {
+            if ((v116 && simpleBoolean('selected', c1)) || (!v116 && i1 == 0)) {
                 r0 += nodeset2xml( selectNametest('text', c1, []) );
             }
         }
@@ -5373,11 +5442,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t12.j = j58;
-    M.t12.a = 0;
+    M.t14.j = j57;
+    M.t14.a = 0;
 
     // match / | .select : nb-select-options
-    M.t13 = function t13(m, c0, i0, l0, a0) {
+    M.t15 = function t15(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5389,21 +5458,21 @@ var yr = yr || require('yate/lib/runtime.js');
                 var items1 = selectNametest('group', c1, []);
                 for (var i2 = 0, l2 = items1.length; i2 < l2; i2++) {
                     var c2 = items1[ i2 ];
-                    r0 += m.f('f16', c2, i2, l2, a0, m.s(j14, c2));
+                    r0 += m.f('f17', c2, i2, l2, a0, m.s(j14, c2));
                 }
                 r0 += "</optgroup>";
             } else {
-                r0 += m.f('f16', c1, i1, l1, a0, m.s(j14, c1));
+                r0 += m.f('f17', c1, i1, l1, a0, m.s(j14, c1));
             }
         }
 
         return r0;
     };
-    M.t13.s = [ 1, j58 ];
-    M.t13.a = [ 1, 0 ];
+    M.t15.s = [ 1, j57 ];
+    M.t15.a = [ 1, 0 ];
 
     // match .checkbox : nb
-    M.t14 = function t14(m, c0, i0, l0, a0) {
+    M.t16 = function t16(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var uniq : scalar
@@ -5414,13 +5483,13 @@ var yr = yr || require('yate/lib/runtime.js');
         } else {
             r1 += (yr.externals['_nb-uniq'])();
         }
-        var v116 = r1;
+        var v117 = r1;
 
         r0 += closeAttrs(a0);
         r0 += "<label";
         a0.a = {
             'data-nb': new yr.scalarAttr("checkbox"),
-            'for': new yr.scalarAttr("nb-checkbox_" + ( v116 ))
+            'for': new yr.scalarAttr("nb-checkbox_" + ( v117 ))
         };
         a0.s = 'label';
         r0 += m.a(m, m.s(j14, c0), 'nb-main-attrs', a0)
@@ -5453,7 +5522,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "<input";
         a0.a = {
             'class': new yr.scalarAttr("_nb-checkbox-input"),
-            'id': new yr.scalarAttr("nb-checkbox_" + ( v116 ))
+            'id': new yr.scalarAttr("nb-checkbox_" + ( v117 ))
         };
         a0.s = 'input';
         if (cmpSN("button", selectNametest('type', c0, []))) {
@@ -5527,15 +5596,15 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t14.j = j66;
-    M.t14.a = 0;
+    M.t16.j = j65;
+    M.t16.a = 0;
 
     // match .input : nb
-    M.t15 = function t15(m, c0, i0, l0, a0) {
+    M.t17 = function t17(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var errorId : scalar
-        var v117 = "nb-input_error" + (yr.externals['_nb-uniq'])();
+        var v118 = "nb-input_error" + (yr.externals['_nb-uniq'])();
 
         r0 += closeAttrs(a0);
         r0 += "<label";
@@ -5582,16 +5651,16 @@ var yr = yr || require('yate/lib/runtime.js');
             a0.a[ "data-nb-ghost" ] = new yr.scalarAttr("true");
         }
         if (simpleBoolean('error', c0)) {
-            a0.a[ "data-nb-error" ] = new yr.scalarAttr("{ \"id\": \"" + ( v117 ) + "\", \"direction\":\"" + nodeset2scalar( ( m.s(j68, c0) ) ) + "\"}");
+            a0.a[ "data-nb-error" ] = new yr.scalarAttr("{ \"id\": \"" + ( v118 ) + "\", \"direction\":\"" + nodeset2scalar( ( m.s(j67, c0) ) ) + "\"}");
         }
         r0 += closeAttrs(a0);
         if (simpleBoolean('error', c0)) {
             r0 += m.f('f9', c0, i0, l0, a0, yr.object2nodeset((function() {
                 var r0 = {};
                 var a0 = { a: {} };
-                r0[ "class" ] = "_nb-error-popup";
+                r0[ "class" ] = nodeset2scalar( m.s(j68, c0) ) + " _nb-error-popup";
                 r0[ "content" ] = yr.nodeset2data(m.s(j69, c0));
-                r0[ "id" ] = v117;
+                r0[ "id" ] = v118;
 
                 return r0;
             })()));
@@ -5631,7 +5700,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'value': new yr.scalarAttr(nodeset2scalar( ( selectNametest('content', c0, []) ) ))
         };
         a0.s = 'input';
-        var items0 = m.s(j31, c0);
+        var items0 = m.s(j17, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j14, c1) ));
@@ -5645,6 +5714,9 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('disabled', c0)) {
             a0.a[ "disabled" ] = new yr.scalarAttr("disabled");
         }
+        if (simpleBoolean('hint', c0) && !(cmpSN("", m.s(j70, c0)))) {
+            a0.a[ "placeholder" ] = new yr.scalarAttr(simpleScalar('hint', c0));
+        }
         r0 += closeAttrs(a0);
         r0 += '';
         r0 += "<span class=\"" + "_nb-input-view" + "\">" + " " + "</span>";
@@ -5653,15 +5725,15 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t15.j = j67;
-    M.t15.a = 0;
+    M.t17.j = j66;
+    M.t17.a = 0;
 
     // match .textarea : nb
-    M.t16 = function t16(m, c0, i0, l0, a0) {
+    M.t18 = function t18(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var errorId : scalar
-        var v118 = "nb-input_error" + (yr.externals['_nb-uniq'])();
+        var v119 = "nb-input_error" + (yr.externals['_nb-uniq'])();
 
         r0 += closeAttrs(a0);
         r0 += "<label";
@@ -5714,14 +5786,14 @@ var yr = yr || require('yate/lib/runtime.js');
             } else {
                 a0.a[ "class" ] = new yr.scalarAttr(" _init");
             }
-            a0.a[ "data-nb-error" ] = new yr.scalarAttr("{ \"id\": \"" + ( v118 ) + "\", \"direction\":\"" + nodeset2scalar( ( m.s(j68, c0) ) ) + "\" }");
+            a0.a[ "data-nb-error" ] = new yr.scalarAttr("{ \"id\": \"" + ( v119 ) + "\", \"direction\":\"" + nodeset2scalar( ( m.s(j67, c0) ) ) + "\" }");
             r0 += closeAttrs(a0);
             r0 += m.f('f9', c0, i0, l0, a0, yr.object2nodeset((function() {
                 var r0 = {};
                 var a0 = { a: {} };
                 r0[ "class" ] = "_nb-error-popup";
                 r0[ "content" ] = yr.nodeset2data(m.s(j69, c0));
-                r0[ "id" ] = v118;
+                r0[ "id" ] = v119;
 
                 return r0;
             })()));
@@ -5746,7 +5818,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("_nb-input-controller")
         };
         a0.s = 'textarea';
-        var items0 = m.s(j31, c0);
+        var items0 = m.s(j17, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j14, c1) ));
@@ -5762,7 +5834,7 @@ var yr = yr || require('yate/lib/runtime.js');
         }
         r0 += closeAttrs(a0);
         if (simpleBoolean('content', c0)) {
-            r0 += simpleScalar('content', c0);
+            r0 += nodeset2xml( selectNametest('content', c0, []) );
         }
         r0 += "</textarea>";
         r0 += "<span class=\"" + "_nb-input-view" + "\">" + " " + "</span>";
@@ -5771,11 +5843,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t16.j = j72;
-    M.t16.a = 0;
+    M.t18.j = j72;
+    M.t18.a = 0;
 
     // match .inputSimple : nb
-    M.t17 = function t17(m, c0, i0, l0, a0) {
+    M.t19 = function t19(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5828,11 +5900,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t17.j = j73;
-    M.t17.a = 0;
+    M.t19.j = j73;
+    M.t19.a = 0;
 
     // match .textareaSimple : nb
-    M.t18 = function t18(m, c0, i0, l0, a0) {
+    M.t20 = function t20(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5880,17 +5952,17 @@ var yr = yr || require('yate/lib/runtime.js');
         }
         r0 += closeAttrs(a0);
         if (simpleBoolean('content', c0)) {
-            r0 += simpleScalar('content', c0);
+            r0 += nodeset2xml( selectNametest('content', c0, []) );
         }
         r0 += "</textarea>";
 
         return r0;
     };
-    M.t18.j = j74;
-    M.t18.a = 0;
+    M.t20.j = j74;
+    M.t20.a = 0;
 
     // match .input-group : nb
-    M.t19 = function t19(m, c0, i0, l0, a0) {
+    M.t21 = function t21(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5917,18 +5989,18 @@ var yr = yr || require('yate/lib/runtime.js');
             if (c1.name == "button") {
                 r0 += m.f('f4', c1, i1, l1, a0, m.s(j14, c1));
             } else if (c1.name == "input") {
-                r0 += m.f('f18', c1, i1, l1, a0, m.s(j14, c1));
+                r0 += m.f('f19', c1, i1, l1, a0, m.s(j14, c1));
             }
         }
         r0 += "</div>";
 
         return r0;
     };
-    M.t19.j = j75;
-    M.t19.a = 0;
+    M.t21.j = j75;
+    M.t21.a = 0;
 
     // match .progress : nb
-    M.t20 = function t20(m, c0, i0, l0, a0) {
+    M.t22 = function t22(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -5971,11 +6043,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t20.j = j76;
-    M.t20.a = 0;
+    M.t22.j = j76;
+    M.t22.a = 0;
 
     // match .paranja : nb
-    M.t21 = function t21(m, c0, i0, l0, a0) {
+    M.t23 = function t23(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6000,11 +6072,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t21.j = j80;
-    M.t21.a = 0;
+    M.t23.j = j80;
+    M.t23.a = 0;
 
     // match .island : nb
-    M.t22 = function t22(m, c0, i0, l0, a0) {
+    M.t24 = function t24(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var type : scalar
@@ -6015,7 +6087,7 @@ var yr = yr || require('yate/lib/runtime.js');
         } else {
             r1 += "";
         }
-        var v119 = r1;
+        var v120 = r1;
 
         //  var padding : scalar
         var r1 = '';
@@ -6027,7 +6099,7 @@ var yr = yr || require('yate/lib/runtime.js');
         } else if (cmpSN("m", selectNametest('padding', c0, []))) {
             r1 += "";
         }
-        var v120 = r1;
+        var v121 = r1;
 
         r0 += closeAttrs(a0);
         r0 += "<div";
@@ -6037,9 +6109,9 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += m.a(m, m.s(j14, c0), 'nb-main-attrs', a0)
         var tmp0 = a0.a[ "class" ];
         if (tmp0) {
-            a0.a[ "class" ] = tmp0.addscalar("nb-island _nb" + ( v120 ) + ( v119 ) + "-island");
+            a0.a[ "class" ] = tmp0.addscalar("nb-island _nb" + ( v121 ) + ( v120 ) + "-island");
         } else {
-            a0.a[ "class" ] = new yr.scalarAttr("nb-island _nb" + ( v120 ) + ( v119 ) + "-island");
+            a0.a[ "class" ] = new yr.scalarAttr("nb-island _nb" + ( v121 ) + ( v120 ) + "-island");
         }
         r0 += closeAttrs(a0);
         if (simpleBoolean('content', c0)) {
@@ -6049,11 +6121,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t22.j = j81;
-    M.t22.a = 0;
+    M.t24.j = j81;
+    M.t24.a = 0;
 
     // match .dropzone : nb
-    M.t23 = function t23(m, c0, i0, l0, a0) {
+    M.t25 = function t25(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6093,11 +6165,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t23.j = j83;
-    M.t23.a = 0;
+    M.t25.j = j83;
+    M.t25.a = 0;
 
     // match .loader : nb
-    M.t24 = function t24(m, c0, i0, l0, a0) {
+    M.t26 = function t26(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6134,11 +6206,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t24.j = j85;
-    M.t24.a = 0;
+    M.t26.j = j85;
+    M.t26.a = 0;
 
     // match .slider : nb
-    M.t25 = function t25(m, c0, i0, l0, a0) {
+    M.t27 = function t27(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6245,15 +6317,15 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t25.j = j87;
-    M.t25.a = 0;
+    M.t27.j = j87;
+    M.t27.a = 0;
 
     // match .tabs : nb
-    M.t26 = function t26(m, c0, i0, l0, a0) {
+    M.t28 = function t28(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var prefix : scalar
-        var v121 = "tabs-" + ( (yr.externals['_nb-uniq'])() );
+        var v122 = "tabs-" + ( (yr.externals['_nb-uniq'])() );
 
         r0 += closeAttrs(a0);
         r0 += "<div";
@@ -6298,7 +6370,7 @@ var yr = yr || require('yate/lib/runtime.js');
                 }
             }
             r0 += closeAttrs(a0);
-            r0 += "<a class=\"" + "_nb-tabs-link _link" + "\" href=\"" + "#" + scalar2attrvalue( ( v121 ) ) + "-" + scalar2attrvalue( ( i1 ) ) + "\">";
+            r0 += "<a class=\"" + "_nb-tabs-link _link" + "\" href=\"" + "#" + scalar2attrvalue( ( v122 ) ) + "-" + scalar2attrvalue( ( i1 ) ) + "\">";
             r0 += nodeset2xml( selectNametest('title', c1, []) );
             r0 += "</a>";
             r0 += "</li>";
@@ -6307,7 +6379,7 @@ var yr = yr || require('yate/lib/runtime.js');
         var items0 = selectNametest('items', c0, []);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
-            r0 += "<div class=\"" + "_nb-tabs-panel" + "\" id=\"" + scalar2attrvalue( ( v121 ) ) + "-" + scalar2attrvalue( ( i1 ) ) + "\">";
+            r0 += "<div class=\"" + "_nb-tabs-panel" + "\" id=\"" + scalar2attrvalue( ( v122 ) ) + "-" + scalar2attrvalue( ( i1 ) ) + "\">";
             if (simpleBoolean('content', c1)) {
                 r0 += simpleScalar('content', c1);
             }
@@ -6317,11 +6389,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t26.j = j90;
-    M.t26.a = 0;
+    M.t28.j = j90;
+    M.t28.a = 0;
 
     // match .arrow : nb
-    M.t27 = function t27(m, c0, i0, l0, a0) {
+    M.t29 = function t29(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var input-label : scalar
@@ -6332,7 +6404,7 @@ var yr = yr || require('yate/lib/runtime.js');
         } else {
             r1 += "";
         }
-        var v122 = r1;
+        var v123 = r1;
 
         //  var input-requests : scalar
         var r1 = '';
@@ -6342,12 +6414,13 @@ var yr = yr || require('yate/lib/runtime.js');
         } else {
             r1 += "";
         }
-        var v123 = r1;
+        var v124 = r1;
 
         r0 += closeAttrs(a0);
         r0 += "<form";
         a0.a = {
-            'class': new yr.scalarAttr("nb-arrow _nb-search-arrow")
+            'data-nb': new yr.scalarAttr("arrow"),
+            'class': new yr.scalarAttr("nb-arrow _init _nb-search-arrow")
         };
         a0.s = 'form';
         r0 += m.a(m, m.s(j14, c0), 'nb-main-attrs', a0)
@@ -6368,13 +6441,13 @@ var yr = yr || require('yate/lib/runtime.js');
             return r0;
         })()));
         r0 += "<div class=\"" + "_nb-search-arrow-content" + "\">";
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = "m";
             r0[ "class" ] = "_nb-search-arrow-input";
             r0[ "tabindex" ] = yr.nodeset2data(selectNametest('inputTabindex', c0, []));
-            r0[ "leftContent" ] = v122;
+            r0[ "leftContent" ] = v123;
             var r1 = {};
             var a1 = { a: {} };
             r1[ "autocomplete" ] = "off";
@@ -6383,7 +6456,7 @@ var yr = yr || require('yate/lib/runtime.js');
             r0[ "attrs" ] = r1;
             var r1 = {};
             var a1 = { a: {} };
-            r1[ "text" ] = v123;
+            r1[ "text" ] = v124;
             r1[ "ghost" ] = true;
             r0[ "hint" ] = r1;
 
@@ -6394,11 +6467,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t27.j = j93;
-    M.t27.a = 0;
+    M.t29.j = j93;
+    M.t29.a = 0;
 
     // match .arrow[ .search != "true" ] : nb
-    M.t28 = function t28(m, c0, i0, l0, a0) {
+    M.t30 = function t30(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6415,11 +6488,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t28.j = j99;
-    M.t28.a = 0;
+    M.t30.j = j99;
+    M.t30.a = 0;
 
     // match .arrow[ .search != "true" ][ .href ] : nb
-    M.t29 = function t29(m, c0, i0, l0, a0) {
+    M.t31 = function t31(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6437,11 +6510,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t29.j = j100;
-    M.t29.a = 0;
+    M.t31.j = j100;
+    M.t31.a = 0;
 
     // match .header : nb
-    M.t30 = function t30(m, c0, i0, l0, a0) {
+    M.t32 = function t32(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6494,7 +6567,7 @@ var yr = yr || require('yate/lib/runtime.js');
             if (nodeset2boolean( m.s(j108, c0) )) {
                 r0 += nodeset2scalar( m.s(j108, c0) );
             } else {
-                r0 += m.f('f29', c0, i0, l0, a0, selectNametest('user', c0, []));
+                r0 += m.f('f30', c0, i0, l0, a0, selectNametest('user', c0, []));
             }
         }
         if (simpleBoolean('auth', c0)) {
@@ -6505,17 +6578,17 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "<div class=\"" + "_nb-header-main" + "\">";
         r0 += "<a href=\"" + nodeset2attrvalue( ( selectNametest('yaHref', c0, []) ) ) + "\" class=\"" + "_nb-header-logo" + "\"></a>";
-        r0 += m.f('f27', c0, i0, l0, a0, selectNametest('arrow', c0, []));
+        r0 += m.f('f28', c0, i0, l0, a0, selectNametest('arrow', c0, []));
         r0 += "</div>";
         r0 += "</div>";
 
         return r0;
     };
-    M.t30.j = j101;
-    M.t30.a = 0;
+    M.t32.j = j101;
+    M.t32.a = 0;
 
     // match .user : nb
-    M.t31 = function t31(m, c0, i0, l0, a0) {
+    M.t33 = function t33(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6568,11 +6641,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t31.j = j107;
-    M.t31.a = 0;
+    M.t33.j = j107;
+    M.t33.a = 0;
 
     // match .user : nb-user-pic
-    M.t32 = function t32(m, c0, i0, l0, a0) {
+    M.t34 = function t34(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6606,11 +6679,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t32.j = j107;
-    M.t32.a = 0;
+    M.t34.j = j107;
+    M.t34.a = 0;
 
     // match .user : nb-user-name
-    M.t33 = function t33(m, c0, i0, l0, a0) {
+    M.t35 = function t35(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6627,11 +6700,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t33.j = j107;
-    M.t33.a = 0;
+    M.t35.j = j107;
+    M.t35.a = 0;
 
     // match .suggest : nb
-    M.t34 = function t34(m, c0, i0, l0, a0) {
+    M.t36 = function t36(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6665,16 +6738,23 @@ var yr = yr || require('yate/lib/runtime.js');
             }
         }
         r0 += closeAttrs(a0);
-        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset((function() {
+        r0 += m.f('f19', c0, i0, l0, a0, yr.object2nodeset((function() {
             var r0 = {};
             var a0 = { a: {} };
             r0[ "size" ] = yr.nodeset2data(selectNametest('size', c0, []));
             r0[ "class" ] = "_nb-suggest-input";
-            r0[ "attrs" ] = yr.nodeset2data(selectNametest('attrsInput', c0, []));
+            r0[ "attrs" ] = yr.nodeset2data(m.s(j121, c0));
             r0[ "tabindex" ] = yr.nodeset2data(selectNametest('tabindex', c0, []));
             r0[ "disabled" ] = yr.nodeset2data(selectNametest('disabled', c0, []));
             r0[ "name" ] = yr.nodeset2data(selectNametest('name', c0, []));
             r0[ "content" ] = yr.nodeset2data(selectNametest('content', c0, []));
+            r0[ "leftContent" ] = yr.nodeset2data(m.s(j122, c0));
+            r0[ "rightContent" ] = yr.nodeset2data(m.s(j123, c0));
+            r0[ "labelContent" ] = yr.nodeset2data(m.s(j124, c0));
+            r0[ "reset" ] = yr.nodeset2data(m.s(j125, c0));
+            r0[ "ghost" ] = yr.nodeset2data(m.s(j126, c0));
+            r0[ "error" ] = yr.nodeset2data(m.s(j127, c0));
+            r0[ "hint" ] = yr.nodeset2data(m.s(j128, c0));
 
             return r0;
         })()));
@@ -6682,11 +6762,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t34.j = j117;
-    M.t34.a = 0;
+    M.t36.j = j117;
+    M.t36.a = 0;
 
     // match / : nb-suggest
-    M.t35 = function t35(m, c0, i0, l0, a0) {
+    M.t37 = function t37(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6703,11 +6783,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t35.j = 1;
-    M.t35.a = 1;
+    M.t37.j = 1;
+    M.t37.a = 1;
 
     // match /[ .type == "default" ].item : nb-suggest
-    M.t36 = function t36(m, c0, i0, l0, a0) {
+    M.t38 = function t38(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6717,11 +6797,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t36.j = j123;
-    M.t36.a = 1;
+    M.t38.j = j130;
+    M.t38.a = 1;
 
     // match /[ .type == "username" ].item : nb-suggest
-    M.t37 = function t37(m, c0, i0, l0, a0) {
+    M.t39 = function t39(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var user : object
@@ -6750,42 +6830,42 @@ var yr = yr || require('yate/lib/runtime.js');
         if (simpleBoolean('emailHighlighted', c0)) {
             r1[ "emailHighlighted" ] = yr.nodeset2data(selectNametest('emailHighlighted', c0, []));
         }
-        var v124 = r1;
+        var v125 = r1;
 
         r0 += closeAttrs(a0);
-        r0 += m.f('f29', c0, i0, l0, a0, yr.object2nodeset( v124 ));
-
-        return r0;
-    };
-    M.t37.j = j124;
-    M.t37.a = 1;
-
-    // match .user[ .mod == "suggest" && .usernameHighlighted ].username : nb-user-name
-    M.t38 = function t38(m, c0, i0, l0, a0) {
-        var r0 = '';
-
-        r0 += closeAttrs(a0);
-        r0 += nodeset2scalar( m.s(j130, c0) );
-
-        return r0;
-    };
-    M.t38.j = j129;
-    M.t38.a = 0;
-
-    // match .user[ .mod == "suggest" && .emailHighlighted ].email : nb-user-name
-    M.t39 = function t39(m, c0, i0, l0, a0) {
-        var r0 = '';
-
-        r0 += closeAttrs(a0);
-        r0 += nodeset2scalar( m.s(j132, c0) );
+        r0 += m.f('f30', c0, i0, l0, a0, yr.object2nodeset( v125 ));
 
         return r0;
     };
     M.t39.j = j131;
-    M.t39.a = 0;
+    M.t39.a = 1;
+
+    // match .user[ .mod == "suggest" && .usernameHighlighted ].username : nb-user-name
+    M.t40 = function t40(m, c0, i0, l0, a0) {
+        var r0 = '';
+
+        r0 += closeAttrs(a0);
+        r0 += nodeset2scalar( m.s(j137, c0) );
+
+        return r0;
+    };
+    M.t40.j = j136;
+    M.t40.a = 0;
+
+    // match .user[ .mod == "suggest" && .emailHighlighted ].email : nb-user-name
+    M.t41 = function t41(m, c0, i0, l0, a0) {
+        var r0 = '';
+
+        r0 += closeAttrs(a0);
+        r0 += nodeset2scalar( m.s(j139, c0) );
+
+        return r0;
+    };
+    M.t41.j = j138;
+    M.t41.a = 0;
 
     // match .toggler : nb
-    M.t40 = function t40(m, c0, i0, l0, a0) {
+    M.t42 = function t42(m, c0, i0, l0, a0) {
         var r0 = '';
 
         r0 += closeAttrs(a0);
@@ -6836,7 +6916,7 @@ var yr = yr || require('yate/lib/runtime.js');
             'class': new yr.scalarAttr("_nb-toggler-checkbox")
         };
         a0.s = 'input';
-        var items0 = m.s(j31, c0);
+        var items0 = m.s(j17, c0);
         for (var i1 = 0, l1 = items0.length; i1 < l1; i1++) {
             var c1 = items0[ i1 ];
             a0.a[ ( c1.name ) ] = new yr.scalarAttr(nodeset2scalar( m.s(j14, c1) ));
@@ -6870,11 +6950,11 @@ var yr = yr || require('yate/lib/runtime.js');
 
         return r0;
     };
-    M.t40.j = j133;
-    M.t40.a = 0;
+    M.t42.j = j140;
+    M.t42.a = 0;
 
     // match /
-    M.t41 = function t41(m, c0, i0, l0, a0) {
+    M.t43 = function t43(m, c0, i0, l0, a0) {
         var r0 = '';
 
         //  var check : object
@@ -6882,22 +6962,22 @@ var yr = yr || require('yate/lib/runtime.js');
         var a1 = { a: {} };
         r1[ "content" ] = "Компактный вид";
         r1[ "class" ] = "js-toggle-compact";
-        var v125 = r1;
+        var v126 = r1;
 
         //  var check2 : object
         var r1 = {};
         var a1 = { a: {} };
         r1[ "content" ] = "HTML";
         r1[ "class" ] = "js-toggle-html";
-        var v126 = r1;
+        var v127 = r1;
 
         r0 += closeAttrs(a0);
         r0 += "<div class=\"" + "demo-toggle nb-island nb-fly-island" + "\">";
         r0 += "<div class=\"" + "demo-toggle__section" + "\">";
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset( v125 ));
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset( v126 ));
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-toggle__section demo-toggle__section_second" + "\">";
-        r0 += m.f('f17', c0, i0, l0, a0, yr.object2nodeset( v126 ));
+        r0 += m.f('f18', c0, i0, l0, a0, yr.object2nodeset( v127 ));
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -6907,7 +6987,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f49', c0, i0, l0, a0);
+        r0 += m.f('f50', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -6917,7 +6997,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f54', c0, i0, l0, a0);
+        r0 += m.f('f55', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -6927,8 +7007,8 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f77', c0, i0, l0, a0);
         r0 += m.f('f78', c0, i0, l0, a0);
+        r0 += m.f('f79', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -6938,7 +7018,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f113', c0, i0, l0, a0);
+        r0 += m.f('f114', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -6948,7 +7028,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f63', c0, i0, l0, a0);
+        r0 += m.f('f64', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -6958,7 +7038,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f82', c0, i0, l0, a0);
+        r0 += m.f('f83', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -6968,7 +7048,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f86', c0, i0, l0, a0);
+        r0 += m.f('f87', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -6978,7 +7058,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f89', c0, i0, l0, a0);
+        r0 += m.f('f90', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -6988,7 +7068,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f93', c0, i0, l0, a0);
+        r0 += m.f('f94', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7001,7 +7081,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f37', c0, i0, l0, a0);
+        r0 += m.f('f38', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7014,7 +7094,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f61', c0, i0, l0, a0);
+        r0 += m.f('f62', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7027,7 +7107,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f94', c0, i0, l0, a0);
+        r0 += m.f('f95', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7040,7 +7120,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f100', c0, i0, l0, a0);
+        r0 += m.f('f101', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7050,7 +7130,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f109', c0, i0, l0, a0);
+        r0 += m.f('f110', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7060,7 +7140,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f106', c0, i0, l0, a0);
+        r0 += m.f('f107', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7070,7 +7150,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f107', c0, i0, l0, a0);
+        r0 += m.f('f108', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7080,7 +7160,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f108', c0, i0, l0, a0);
+        r0 += m.f('f109', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7090,7 +7170,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f62', c0, i0, l0, a0);
+        r0 += m.f('f63', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7100,7 +7180,7 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f110', c0, i0, l0, a0);
+        r0 += m.f('f111', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane" + "\">";
@@ -7110,14 +7190,14 @@ var yr = yr || require('yate/lib/runtime.js');
         r0 += "</div>";
         r0 += "</div>";
         r0 += "<div class=\"" + "demo-pane__content" + "\">";
-        r0 += m.f('f118', c0, i0, l0, a0);
+        r0 += m.f('f119', c0, i0, l0, a0);
         r0 += "</div>";
         r0 += "</div>";
 
         return r0;
     };
-    M.t41.j = 1;
-    M.t41.a = 1;
+    M.t43.j = 1;
+    M.t43.a = 1;
 
     M.matcher = {
         "nb-main-attrs": {
@@ -7153,110 +7233,120 @@ var yr = yr || require('yate/lib/runtime.js');
                 "t8"
             ],
             "popup": [
-                "t9"
-            ],
-            "modalPopup": [
-                "t10"
-            ],
-            "radio-button": [
                 "t11"
             ],
-            "select": [
+            "modalPopup": [
                 "t12"
             ],
-            "checkbox": [
+            "radio-button": [
+                "t13"
+            ],
+            "select": [
                 "t14"
             ],
-            "input": [
-                "t15"
-            ],
-            "textarea": [
+            "checkbox": [
                 "t16"
             ],
-            "inputSimple": [
+            "input": [
                 "t17"
             ],
-            "textareaSimple": [
+            "textarea": [
                 "t18"
             ],
-            "input-group": [
+            "inputSimple": [
                 "t19"
             ],
-            "progress": [
+            "textareaSimple": [
                 "t20"
             ],
-            "paranja": [
+            "input-group": [
                 "t21"
             ],
-            "island": [
+            "progress": [
                 "t22"
             ],
-            "dropzone": [
+            "paranja": [
                 "t23"
             ],
-            "loader": [
+            "island": [
                 "t24"
             ],
-            "slider": [
+            "dropzone": [
                 "t25"
             ],
-            "tabs": [
+            "loader": [
                 "t26"
             ],
-            "arrow": [
-                "t29",
-                "t28",
+            "slider": [
                 "t27"
             ],
+            "tabs": [
+                "t28"
+            ],
+            "arrow": [
+                "t31",
+                "t30",
+                "t29"
+            ],
             "header": [
-                "t30"
+                "t32"
             ],
             "user": [
-                "t31"
+                "t33"
             ],
             "suggest": [
-                "t34"
+                "t36"
             ],
             "toggler": [
-                "t40"
+                "t42"
+            ]
+        },
+        "nb-popup-menu-content": {
+            "popupMenu": [
+                "t9"
+            ]
+        },
+        "nb-popup-menu-content-item": {
+            "menu": [
+                "t10"
             ]
         },
         "nb-select-options": {
             "": [
-                "t13"
+                "t15"
             ],
             "select": [
-                "t13"
+                "t15"
             ]
         },
         "nb-user-pic": {
             "user": [
-                "t32"
+                "t34"
             ]
         },
         "nb-user-name": {
             "user": [
-                "t33"
+                "t35"
             ],
             "username": [
-                "t38"
+                "t40"
             ],
             "email": [
-                "t39"
+                "t41"
             ]
         },
         "nb-suggest": {
             "": [
-                "t35"
+                "t37"
             ],
             "item": [
-                "t37",
-                "t36"
+                "t39",
+                "t38"
             ]
         },
         "": {
             "": [
-                "t41"
+                "t43"
             ]
         }
     };

@@ -185,6 +185,10 @@ match .buttonAttach nb {
                     if .disabled {
                         @disabled = 'disabled'
                     }
+                    
+                    if .attrs.accept {
+                        @accept = "{.attrs.accept}"
+                    }
                 </input>
                 <span class="_nb-file-intruder-focus"></span>
             </span>

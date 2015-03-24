@@ -30,11 +30,18 @@ match .suggest nb {
         nb-input({
              'size': .size
              'class': '_nb-suggest-input'
-             'attrs': .attrsInput
+             'attrs': .input.attrs
              'tabindex': .tabindex
              'disabled': .disabled
              'name': .name
              'content': .content
+             'leftContent': .input.leftContent
+             'rightContent': .input.rightContent
+             'labelContent': .input.labelContent
+             'reset': .input.reset
+             'ghost': .input.ghost
+             'error': .input.error
+             'hint': .input.hint
          })
     </div>
 }

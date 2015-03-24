@@ -205,7 +205,7 @@ nb.define('select', {
                     }
 
                     if (item.icon) {
-                        $itemNodeContent.prepend('<img class="nb-icon nb-s-' + item.icon + '-icon" src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif">');
+                        $itemNodeContent.prepend('<img class="nb-icon nb-s-' + item.icon + '-icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">');
                     }
 
                     $itemNode.append($itemNodeContent);
@@ -285,7 +285,7 @@ nb.define('select', {
                     if (!params.text) {
                         this.$node.addClass('_nb-with-only-button');
                     }
-                    content.prepend('<img class="nb-icon nb-s-' + params.icon + '-icon" src="//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif">');
+                    content.prepend('<img class="nb-icon nb-s-' + params.icon + '-icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">');
                 }
             } else {
                 // &nbsp; - to prevent button from collapse if no text on <option/>
