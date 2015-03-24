@@ -14,7 +14,9 @@ nb.define('checkbox', {
     },
 
     onchange: function() {
-        this.check();
+        if (this.getType() === 'radio') {
+            this.check();
+        }
     },
 
     /**
