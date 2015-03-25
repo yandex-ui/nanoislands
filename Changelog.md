@@ -1,3 +1,8 @@
+##### 0.6.5 — path
+
+###### Fixes
+* fix #480 — nb.checkbox don't fire the nb-checked event
+
 ##### 0.6.4 — path
 
 ###### Fixes

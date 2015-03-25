@@ -14,10 +14,12 @@ nb.define('checkbox', {
     },
 
     onchange: function() {
-        if (this.getType() === 'radio') {
-            this.check();
-        }
-    },
+          if (this.$control.prop('checked')) {
+              this.check();
+          } else {
+              this.uncheck();
+          }
+      },
 
     /**
      * Init a checkbox
