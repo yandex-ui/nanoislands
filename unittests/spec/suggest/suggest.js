@@ -75,6 +75,7 @@ describe("suggest Tests", function() {
 
         itShouldBindEvent('keydown.nb-suggest');
         itShouldBindEvent('suggest_search.nb-suggest');
+        itShouldBindEvent('suggest_setvalue.nb-suggest');
         itShouldBindEvent('suggestselect.nb-suggest');
 
         it('should trigger event \'nb-inited\'', function() {
@@ -83,6 +84,64 @@ describe("suggest Tests", function() {
             expect(nb.Block.prototype.trigger.calledWith('nb-inited')).to.be.ok();
             nb.Block.prototype.trigger.restore();
         });
+    });
+
+    describe('onSetValueToInput', function() {
+
+        beforeEach(function() {
+            this.event = $.Event('suggest_setvalue');
+            this._input = this.suggest.input;
+
+            sinon.stub(this.suggest.$control, 'val');
+            this.suggest.input = {
+                setValue: sinon.stub()
+            }
+        });
+
+        afterEach(function() {
+            this.suggest.input = this._input;
+            this.suggest.$control.val.restore();
+        });
+
+        it('should add the value to nb-input, if it was created', function() {
+            this.suggest.onSetValueToInput(this.event, 'test-value');
+
+            expect(this.suggest.input.setValue.calledWithExactly('test-value')).to.be.equal(true);
+            expect(this.suggest.$control.val.notCalled).to.be.equal(true);
+        });
+
+        it('should add the value to input control, if nb-input was not created', function() {
+            this.suggest.input = null;
+
+            this.suggest.onSetValueToInput(this.event, 'test-value');
+
+            expect(this.suggest.$control.val.called).to.be.equal(true);
+        });
+
+    });
+
+    describe('onSelectValue', function() {
+
+        beforeEach(function() {
+            this.event = $.Event('suggestselect');
+            this.itemData = {
+                item: {
+                    value: 'test'
+                }
+            };
+            sinon.stub(this.suggest, 'trigger');
+        });
+
+        afterEach(function() {
+            this.suggest.trigger.restore();
+        });
+
+        it('should be trigger `nb-select` event', function() {
+            this.suggest.onSelectValue(this.event, this.itemData);
+
+            expect(this.suggest.trigger.calledWithExactly('nb-select', this.suggest, this.itemData.item)).to.be.equal(true);
+        });
+
     });
 
     describe('#destroy', function() {
