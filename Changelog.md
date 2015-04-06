@@ -1,3 +1,8 @@
+##### 0.6.6 — path
+
+###### Fixes
+* fix #481 — Add preventing to insert data to input of suggest 
+  
 ##### 0.6.5 — path
 
 ###### Fixes
