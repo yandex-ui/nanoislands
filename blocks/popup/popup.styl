@@ -1,7 +1,7 @@
 ._nb-popup
   z-index: 100
   position: absolute
-  skin: popup (-content '&-content') (-close '&-close') (-tail '&-tail')
+  skin: popup (__content '&-content') (__close '&-close') (__tail '&-tail')
 
   overflow: hidden
 
@@ -23,11 +23,11 @@
 
 ._nb-popup
   & ._nb-popup-link
-    skin: menu-item (_hover '&:hover, &:focus')
+    skin: menu__item (_hover '&:hover, &:focus')
     outline: none
 
   & ._nb-popup-separator
-    skin: menu-separator padded
+    skin: menu__separator padded
 
   & ._nb-popup-menu
   & ._nb-popup-line

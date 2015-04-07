@@ -53,7 +53,8 @@
   transform: scale(0.75) rotate(-45deg) translate(3px, 5px)
 
 .nb-select-dropdown .ui-menu
-  skin: isle fly, menu no-elements padded
+  skin: isle fly
+  skin: menu no-elements padded
   position: absolute
   z-index: 10000
 
@@ -64,12 +65,12 @@
   reset: li
 
 ._nb-select-a
-  skin: menu-item (_checked '.is-selected &')
+  skin: menu__item (_checked '.is-selected &')
   white-space: nowrap
   padding-right: 21px
 
 ._nb-select-separator
-  skin: menu-separator padded
+  skin: menu__separator padded
 
 ._nb-select-popup ._nb-popup-content
   overflow-x: hidden
@@ -79,18 +80,18 @@
 ._nb-small-select-dropdown ._nb-select-item ._nb-select-a
 ._nb-small-pseudo-select-dropdown ._nb-select-item ._nb-select-a
 ._nb-small-action-select-dropdown ._nb-select-item ._nb-select-a
-  skin: menu-item_size small
+  skin: menu__item_size small
   padding-right: 19px
 
 .nb-select-dropdown .ui-state-focus
-  skin: menu-item_hover
+  skin: menu__item_hover
 
 // FIXME: we need to use `nb-is-disabled` here
 ._nb-small-normal-select .ui-menu-item_disabled_yes
-  kind: disabled 0.6 (-nested '')
+  kind: disabled 0.6 (__nested '')
 
 ._nb-select-seperator-item
-  skin: menu-separator padded
+  skin: menu__separator padded
 
 ._nb-is-disabled._nb-select-button:focus:after
   box-shadow: none

@@ -1,6 +1,6 @@
 ._nb-service-arrow
   kind: block inline
-  skin: arrow (-helper '& > ._nb-arrow-tail')
+  skin: arrow (__helper '& > ._nb-arrow-tail')
 
   a&
     skin: link #000
@@ -16,12 +16,12 @@
     width: 100%
 
   &-button
-    kind: shrink-right
+    kind: shrink__right
     margin-left: $islands_xs
 
 ._nb-search-arrow-label
-  kind: field-left 0.5*$islands_s
-  skin: input-label
+  kind: field__left 0.5*$islands_s
+  skin: input__label
 
   // Make proper when there would be a possibility to add left part without wrapper
   padding: 0.5*$islands_s $islands_s
