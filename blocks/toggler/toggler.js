@@ -8,7 +8,7 @@ nb.define('toggler', {
      * @fires 'nb-inited'
      */
     oninit: function() {
-        this.$control = this.$node.find('._nb-toggler-checkbox');
+        this.$control = this.$node.find('._nb-toggler-controller');
         this.trigger('nb-inited', this);
         return this;
     },

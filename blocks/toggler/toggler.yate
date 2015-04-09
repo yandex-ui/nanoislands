@@ -11,56 +11,52 @@ func nb-toggler(nodeset toggler) {
 }
 
 match .toggler nb {
-    <a data-nb="toggler">
-     _size-theme-type-class({
-        'name': 'toggler'
-        'size': .size
-    })
-    @class += " _init"
+    <label data-nb="toggler">
+        _size-theme-type-class({
+            'name': 'toggler'
+            'size': .size
+        })
+        @class += " _init"
 
         apply . nb-main-attrs
         if .checked {
             @class += ' _nb-is-checked'
         }
 
-        if (.tabindex && !.disabled) {
-            @tabindex = .tabindex
-        }
-
         if .disabled {
             @class += ' _nb-is-disabled'
         }
-        <label class="_nb-toggler-label">
-            <input type="checkbox" class="_nb-toggler-checkbox" >
-                for .attrs.* {
-                   @{name()} = .
-                }
 
-                if .name {
-                    @name = .name
-                }
+        <input type="checkbox" class="_nb-toggler-controller" >
+            for .attrs.* {
+               @{name()} = .
+            }
 
-                if .checked {
-                    @checked = 'checked'
-                }
+            if .name {
+                @name = .name
+            }
 
-                if .disabled {
-                    @disabled = 'disabled'
-                }
-            </input>
-        </label>
-        <span class="_nb-toggler-container">
-            <span class="_nb-toggler-sticker _nb-toggler-left-sticker">
-                <span class="_nb-toggler-text">
+            if .checked {
+                @checked = 'checked'
+            }
+
+            if (.tabindex && !.disabled) {
+                @tabindex = .tabindex
+            }
+
+            if .disabled {
+                @disabled = 'disabled'
+            }
+        </input>
+        <span class="_nb-toggler-view">
+            <span class="_nb-toggler-view-content">
+                <span class="_nb-toggler-on">
                     .leftText
                 </span>
-            </span>
-            <span class="_nb-toggler-sticker _nb-toggler-right-sticker">
-                <span class="_nb-toggler-text">
+                <span class="_nb-toggler-off">
                     .rightText
                 </span>
             </span>
         </span>
-        <span class="_nb-toggler-knob"></span>
-    </a>
+    </label>
 }
