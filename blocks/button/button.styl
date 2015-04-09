@@ -2,65 +2,82 @@
     Кнопка.
 */
 
-@import '_skin-dark'
-
-$skin-islands-button-content = '._nb-button-content'
-
-.nb-button
-  kind: button
-  position: relative // Why is it there?
-  text-align: center // Fixes #323
+// Do we need other sizes? Also, notation? Old s and medium were bigger than current
 
 ._nb-normal-button
-  skin: button
+  skin: v3-button (__content '& ._nb-button-content') (_size large)
 
 ._nb-small-button
-  skin: button small
+  skin: v3-button (__content '& ._nb-button-content')
 
 ._nb-flying-button
-  skin: button fly
+  skin: v3-button (__content '& ._nb-button-content') (_size large)
+  skin: isle fly
 
 ._nb-small-flying-button
-  skin: button fly small
+  skin: v3-button (__content '& ._nb-button-content')
+  skin: isle fly
 
 ._nb-action-button
-  skin: action-button
+  skin: v3-button (__content '& ._nb-button-content') (_type action) (_size large)
 
 ._nb-small-action-button
-  skin: action-button small
+  skin: v3-button (__content '& ._nb-button-content') (_type action)
 
 ._nb-dark-button
-  skin: dark-button
+  skin: v3-button (__content '& ._nb-button-content') (_type dark) (_size large)
 
 ._nb-small-dark-button
-  skin: dark-button small
+  skin: v3-button (__content '& ._nb-button-content') (_type dark)
 
 ._nb-pseudo-button
-  skin: pseudo-button
+  skin: v3-button (__content '& ._nb-button-content') (_type pseudo) (_size large)
 
 ._nb-small-pseudo-button
-  skin: pseudo-button small
+  skin: v3-button (__content '& ._nb-button-content') (_type pseudo)
 
-// Псевдо-кнопка
 ._nb-pseudo-inverted-button
-  skin: pseudo-button _inverted
+  skin: v3-button (__content '& ._nb-button-content') (_type dark-pseudo) (_size large)
 
-// Маленькая псевдо-кнопка
 ._nb-small-pseudo-inverted-button
-  skin: pseudo-button _inverted small
+  skin: v3-button (__content '& ._nb-button-content') (_type dark-pseudo)
 
 // Промо-кнопка
 ._nb-promo-button
+  kind: button
+  position: relative // Why is it there?
+  text-align: center // Fixes #323
   skin: promo-button
 
 ._nb-small-promo-button
+  kind: button
+  position: relative // Why is it there?
+  text-align: center // Fixes #323
   skin: promo-button small
 
 ._nb-large-promo-button
+  kind: button
+  position: relative // Why is it there?
+  text-align: center // Fixes #323
   skin: promo-button large
 
 ._nb-extra-large-promo-button
+  kind: button
+  position: relative // Why is it there?
+  text-align: center // Fixes #323
   skin: promo-button xlarge
+
+// Отдельные состояния
+
+.nb-button.ui-state-active
+  skin: v3-button_checked (__content '& ._nb-button-content')
+
+._nb-checkbox-input:checked + ._nb-checkbox-label ._nb-button-content
+  skin: v3-button_checked
+
+._nb-checkbox-input:focus + ._nb-checkbox-label ._nb-button-content
+  skin: v3-button_focus
+
 
 // Кнопка аттача
 ._nb-file-intruder
@@ -68,6 +85,3 @@ $skin-islands-button-content = '._nb-button-content'
     (__inner '&-inner') \
     (__input '&-input') \
     (__focus '&-focus' 'islands-button_focus_style')
-
-.nb-button.ui-state-active
-  skin: button_pressed

@@ -1,8 +1,7 @@
 ._nb-radio-button-radio
   kind: hidden visually
 
-._nb-radio-button-radio:checked + .nb-button
-  skin: button_checked
-
-._nb-radio-button-radio:focus + .nb-button
-  skin: button_focus
+.nb-button
+  skin: v3-button_ (__content '& ._nb-button-content') \
+        (_checked '._nb-radio-button-radio:checked + &') \
+        (_focus '._nb-radio-button-radio:focus + &')
