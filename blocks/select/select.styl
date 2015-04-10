@@ -8,16 +8,10 @@
     if !ie
       overflow: hidden
       text-overflow: ellipsis
-      padding-right: 4px
-      margin-right: - @padding-right
 
       // For baseline alignment
       float: left
       width: 100%
-
-  &._nb-with-icon ._nb-button-content
-    padding-left: 6px
-    margin-left: -6px;
 
 ._nb-select-fallback
   if !ie
@@ -43,6 +37,8 @@
 .nb-select-dropdown ._nb-select-group-item > ._nb-select-a:before
   content: ""
   skin: icon_dropdown selecty
+  top: 1em
+  margin-right: -10px
 
 ._nb-small-select ._nb-button-content:before
 ._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a:before
