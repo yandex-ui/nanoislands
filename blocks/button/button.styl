@@ -2,45 +2,100 @@
     Кнопка.
 */
 
-// Do we need other sizes? Also, notation? Old s and medium were bigger than current
+._nb-small-button
+  skin: v3-button (__content '& ._nb-button-content') (_size small)
 
 ._nb-normal-button
+  skin: v3-button (__content '& ._nb-button-content')
+
+._nb-large-button
   skin: v3-button (__content '& ._nb-button-content') (_size large)
 
-._nb-small-button
-  skin: v3-button (__content '& ._nb-button-content')
+._nb-extra-large-button
+  skin: v3-button (__content '& ._nb-button-content') (_size xl)
+
+
+// there is no flying mode in v3 guides
+._nb-small-flying-button
+  skin: v3-button (__content '& ._nb-button-content') (_size small)
+  /*skin: isle fly*/
 
 ._nb-flying-button
-  skin: v3-button (__content '& ._nb-button-content') (_size large)
-  skin: isle fly
-
-._nb-small-flying-button
   skin: v3-button (__content '& ._nb-button-content')
-  skin: isle fly
+  /*skin: isle fly*/
 
-._nb-action-button
-  skin: v3-button (__content '& ._nb-button-content') (_type action) (_size large)
+._nb-large-flying-button
+  skin: v3-button (__content '& ._nb-button-content') (_size large)
+  /*skin: isle fly*/
+
+._nb-extra-large-flying-button
+  skin: v3-button (__content '& ._nb-button-content') (_size xl)
+  /*skin: isle fly*/
+
 
 ._nb-small-action-button
+  skin: v3-button (__content '& ._nb-button-content') (_type action) (_size small)
+
+._nb-action-button
   skin: v3-button (__content '& ._nb-button-content') (_type action)
 
-._nb-dark-button
-  skin: v3-button (__content '& ._nb-button-content') (_type dark) (_size large)
+._nb-large-action-button
+  skin: v3-button (__content '& ._nb-button-content') (_type action) (_size large)
+
+._nb-extra-large-action-button
+  skin: v3-button (__content '& ._nb-button-content') (_type action) (_size xl)
+
 
 ._nb-small-dark-button
+  skin: v3-button (__content '& ._nb-button-content') (_type dark) (_size small)
+
+._nb-dark-button
   skin: v3-button (__content '& ._nb-button-content') (_type dark)
 
-._nb-pseudo-button
-  skin: v3-button (__content '& ._nb-button-content') (_type pseudo) (_size large)
+._nb-large-dark-button
+  skin: v3-button (__content '& ._nb-button-content') (_type dark) (_size large)
+
+._nb-extra-large-dark-button
+  skin: v3-button (__content '& ._nb-button-content') (_type dark) (_size xl)
+
 
 ._nb-small-pseudo-button
+  skin: v3-button (__content '& ._nb-button-content') (_type pseudo) (_size small)
+
+._nb-pseudo-button
   skin: v3-button (__content '& ._nb-button-content') (_type pseudo)
 
-._nb-pseudo-inverted-button
-  skin: v3-button (__content '& ._nb-button-content') (_type dark-pseudo) (_size large)
+._nb-large-pseudo-button
+  skin: v3-button (__content '& ._nb-button-content') (_type pseudo) (_size large)
+
+._nb-extra-large-pseudo-button
+  skin: v3-button (__content '& ._nb-button-content') (_type pseudo) (_size xl)
+
+._nb-small-clear-button
+  skin: v3-button (__content '& ._nb-button-content') (_type clear) (_size small)
+
+._nb-clear-button
+  skin: v3-button (__content '& ._nb-button-content') (_type clear)
+
+._nb-large-clear-button
+  skin: v3-button (__content '& ._nb-button-content') (_type clear) (_size large)
+
+._nb-extra-large-clear-button
+  skin: v3-button (__content '& ._nb-button-content') (_type clear) (_size xl)
+
 
 ._nb-small-pseudo-inverted-button
+  skin: v3-button (__content '& ._nb-button-content') (_type dark-pseudo) (_size small)
+
+._nb-pseudo-inverted-button
   skin: v3-button (__content '& ._nb-button-content') (_type dark-pseudo)
+
+._nb-large-pseudo-inverted-button
+  skin: v3-button (__content '& ._nb-button-content') (_type dark-pseudo) (_size large)
+
+._nb-extra-large-pseudo-inverted-button
+  skin: v3-button (__content '& ._nb-button-content') (_type dark-pseudo) (_size xl)
+
 
 // Промо-кнопка
 ._nb-promo-button
@@ -82,3 +137,8 @@
     (__inner '&-inner') \
     (__input '&-input') \
     (__focus '&-focus' 'islands-button_focus_style')
+
+/*
+.nb-button._nb-is-circle
+  skin: v3-button_shape (_shape circle)
+*/

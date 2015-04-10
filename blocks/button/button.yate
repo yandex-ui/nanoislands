@@ -2,6 +2,7 @@ func nb-button(nodeset options) {
     default = {
         'size': 'm'
         'theme': 'normal'
+        'shape': 'normal'
     }
 
     if options.type == 'file' {
@@ -33,6 +34,11 @@ func _nb-button-attributes(type) {
             @disabled = 'disabled'
         }
     }
+
+     if .shape == 'circle' {
+            @class += ' _nb-is-circle'
+
+        }
 
     if (.tabindex && !.disabled) {
         @tabindex = .tabindex
