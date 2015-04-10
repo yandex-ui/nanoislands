@@ -31,7 +31,7 @@ describe("Toggler Tests", function() {
     describe("#Yate API", function() {
         it("Tabindex", function() {
             var toggler = nb.find('toggler-tabindex');
-            expect(toggler.$node.attr('tabindex')).to.equal('1');
+            expect(toggler.$control.attr('tabindex')).to.equal('1');
         });
     });
 
