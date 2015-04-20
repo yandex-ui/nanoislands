@@ -34,9 +34,9 @@ style.render(function(err, css) {
     }
 
     if (!ie) {
-        css = autoprefixer.apply(this, browsers).process(css).css;
+        css = autoprefixer({'browsers': browsers}).process(css).css;
     } else {
-        css = autoprefixer('Explorer >= 9').process(css).css;
+        css = autoprefixer({'browsers': ['Explorer >= 9']}).process(css).css;
     }
     process.stdout.write(css);
 });

@@ -9,8 +9,7 @@
 
 ### Options
 
-* `color` {string} — spinner color, black by default, `while` is the only alternate option
-* `size` {string} — spinner size — s / m / l
+* `size` {string} — spinner size — xs / s / m / l
 
 ### Examples
 
@@ -20,14 +19,5 @@ Small loader:
 > ```yate
 >     nb-loader({
 >         'size': 's'
->     })
-> ```
-
-White medium loader on white background:
-> <div example="loader-w"/>
->
-> ```yate
->     nb-loader({
->         'color': 'white'
 >     })
 > ```

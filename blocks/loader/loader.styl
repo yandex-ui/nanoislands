@@ -1,45 +1,11 @@
-nb-loader()
+._nb-extra-small-loader
+  skin: v3-loader (_size small)
 
-  .nb-loader
-    position: relative
+._nb-small-loader
+  skin: v3-loader (_size small)
 
-    display: inline-block
+._nb-normal-loader
+  skin: v3-loader
 
-    // Fixes missing subpixel-antialiasing bug
-    overflow: hidden
-    -webkit-transform: translate(0,0)
-
-
-  ._nb-loader-spinner
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-
-    opacity: 0.4
-
-    background: url('loader_32.svg')
-    background-size: 100% 100%
-    transform: translateZ(0);
-
-    animation: spin 1s infinite linear
-
-  @import "_size"
-  @import "_color"
-
-  @keyframes spin
-    0%
-      -webkit-transform: rotate(0deg)
-      -moz-transform: rotate(0deg)
-      -ms-transform: rotate(0deg)
-      -o-transform: rotate(0deg)
-      transform: rotate(0deg)
-    100%
-      -webkit-transform: rotate(360deg)
-      -moz-transform: rotate(360deg)
-      -ms-transform: rotate(360deg)
-      -o-transform: rotate(360deg)
-      transform: rotate(360deg)
-
-nb-loader()
+._nb-large-loader
+  skin: v3-loader (_size large)
