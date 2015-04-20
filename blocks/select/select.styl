@@ -1,3 +1,4 @@
+// FIXME: move all those stuff to stylobate-islands
 .nb-select
   &.nb-button
     text-align: left // fixes #345
@@ -33,16 +34,18 @@
   box-sizing: border-box
   display: inline-block
 
-.nb-select ._nb-button-content:before
+.nb-select ._nb-button-content:before,
 .nb-select-dropdown ._nb-select-group-item > ._nb-select-a:before
   content: ""
-  skin: icon_dropdown selecty
-  top: 1em
+  skin: icon_dropdown selecty (width 1px) (size 8px)
+
+  top: 0.9em
+
   margin-right: -10px
 
-._nb-small-select ._nb-button-content:before
+._nb-small-select ._nb-button-content:before,
 ._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a:before
-  skin: icon_dropdown selecty small
+  skin: icon_dropdown selecty (width 1px) (size 8px) small
 
 .nb-select-dropdown ._nb-select-group-item > ._nb-select-a:before
 ._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a  > ._nb-select-text:before
