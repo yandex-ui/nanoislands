@@ -1,105 +1,50 @@
 ._nb-simple-input
-._nb-small-simple-input
-._nb-large-simple-input
-._nb-normal-input
-  kind: input
-  skin: input
-
-  &._nb-is-focused
-    skin: input_focus
-
+  skin: v3-input
 
 ._nb-small-simple-input
-    skin: input small
-    // reset default styles for <input type="search"/>
-    -webkit-appearance: textfield
-  &._nb-is-focused
-    skin: input_focus
+  skin: v3-input (_size small)
 
 ._nb-large-simple-input
-    skin: input large
-    // reset default styles for <input type="search"/>
-    -webkit-appearance: textfield
+  skin: v3-input (_size large)
+
+// Redefining default for complex inputs below
+stylobate_defaults('skin-islands-v3-input',
+  '_reset',
+  '__box',
+  '__controller' '& ._nb-input-controller',
+  '__view' '& ._nb-input-view',
+  '_focus' '& :focus + ._nb-input-view',
+  '_size' medium,
+  '__placeholder' '& ._nb-input-hint',
+  '__left' '& ._nb-input-left',
+  '__right' '& ._nb-input-right',
+  '__content' '& ._nb-input-content',
+  '__reset' '& ._nb-input-reset'
+  )
+
+stylobate_defaults('skin-islands-v3-input__placeholder',
+  '__inner' '&-inner',
+  '__ghost' '&-ghost'
+  )
 
 ._nb-complex-input
-._nb-small-complex-input
-  kind: field $islands_s $islands_s
-  skin: input__box
+  skin: v3-input
 
 ._nb-small-complex-input
-  skin: input__box small
+  skin: v3-input (_size small)
 
-._nb-simple-input
-._nb-complex-input
-._nb-small-complex-input
 ._nb-large-complex-input
-._nb-small-simple-input
-._nb-large-simple-input
-  ._nb-input-content
-    kind: field__content
+  skin: v3-input (_size large)
 
-  ._nb-input-controller
-    kind: input
 
-    z-index: 9
+.nb-input._nb-is-ghost:not(._nb-is-focused) ._nb-input-view
+  border: none
+  background: none
+  box-shadow: none
 
-    width: 100%
-    height: 100%
-
-  & textarea._nb-input-controller
-    vertical-align: top
-    resize: none
-
-  ._nb-input-view
-    border: 1px solid transparent
-    kind: fill -1px
-    skin: input__view no-focus
-
-    z-index: 8
-
-  &:not(._nb-is-disabled):focus ._nb-input-view
-  &:not(._nb-is-disabled)._nb-is-focused ._nb-input-view
-    skin: input_focus
-
-  ._nb-input-reset
-    kind: field__right 0.5*$islands_s
-    skin: icon _remove with-hover
-    margin-right: $islands_s * -1
-    height: auto
-
-    &:before
-      content: " " // utf nbsp here
-
-  ._nb-input-left
-    kind: field__left 0.5*$islands_s
-    margin-left: $islands_s * -1
-    height: auto
-
-  ._nb-input-right
-    kind: field__right 0.5*$islands_s
-    margin-right: $islands_s * -1
-    height: auto
-
-  &._nb-is-ghost:not(._nb-is-focused) ._nb-input-view
-    border: none
-    background: none
-    box-shadow: none
-
-  ._nb-input-hint
-    skin: input__placeholder (__inner '&-inner') (__ghost '&-ghost')
-
-._nb-small-simple-input
-._nb-small-complex-input
-  ._nb-input-hint-inner
-    line-height: $islands_m
-    font-size: $islands_text_s
 
 .nb-input._nb-is-wrong
   skin: input_error
-
-._nb-input-controller::-ms-clear
-._nb-simple-input::-ms-clear
-  display: none
 
 // Overriding Webkit's default background color for autofilled inputs
 // to ensure consistent appearance across platforms.
