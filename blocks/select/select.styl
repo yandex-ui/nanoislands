@@ -37,15 +37,18 @@
 .nb-select ._nb-button-content:before,
 .nb-select-dropdown ._nb-select-group-item > ._nb-select-a:before
   content: ""
-  skin: icon_dropdown selecty
+  skin: v3-icon_dropdown selecty
 
-  top: 0.9em
-
-  margin-right: -10px
-
-._nb-small-select ._nb-button-content:before,
+._nb-small-normal-select ._nb-button-content:before,
 ._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a:before
-  skin: icon_dropdown selecty small
+  skin: v3-icon_dropdown selecty small
+
+.nb-select-dropdown ._nb-select-group-item > ._nb-select-a:before
+  top: 0.65em
+
+._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a:before
+  top: 0.55em
+
 
 .nb-select-dropdown .ui-menu
   skin: isle fly
