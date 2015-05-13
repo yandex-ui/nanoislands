@@ -1,3 +1,7 @@
+stylobate_defaults('skin-islands-pseudo-button',
+  '_hover' '&:hover',
+  '_focus' '&:focus')
+
 skin-islands-pseudo-button($this)
   global_skin: islands-check-font
 
@@ -43,10 +47,6 @@ skin-islands-pseudo-button($this)
     else
       padding: ($islands_xs - 0.4*rem) $islands_s
 
-  stylobate_defaults($this,
-    _hover '&:hover',
-    _focus '&:focus')
-
 skin-islands-pseudo-button_hover($this)
   $border-alpha = $this.params.border-alpha ? $this.params.border-alpha + 0.15 : 0.35
 
@@ -59,6 +59,12 @@ skin-islands-pseudo-button_focus($this)
 
   global_skin: islands-button_focus
 
+
+stylobate_defaults('skin-islands-pseudo-button_inverted',
+  '_hover' '&:hover' _inverted,
+  '_focus' '&:focus' _inverted)
+
+
 skin-islands-pseudo-button_inverted($this)
   color: darken(invert($islands_color_text), 10%)
 
@@ -68,9 +74,6 @@ skin-islands-pseudo-button_inverted($this)
   if ie
     border: 1px solid invert(#CBCBCB)
 
-  stylobate_defaults($this,
-    _hover '&:hover' _inverted,
-    _focus '&:focus' _inverted)
 
 skin-islands-pseudo-button_inverted_hover($this)
   $border-alpha = $this.params.border-alpha ? $this.params.border-alpha + 0.2 : 0.5

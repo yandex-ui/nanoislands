@@ -139,6 +139,15 @@
             }
         },
 
+        _value: function(value) {
+            if (value) {
+                this._trigger('_setvalue', null, value);
+                return;
+            }
+
+            return this._super.apply(this, arguments);
+        },
+
         search: function(value, event) {
             this._trigger('_search');
 
@@ -229,17 +238,37 @@
                 this.trigger('nb-type', this, this.getValue());
             }.bind(this));
 
-            this.$jUI.on('suggestselect.nb-suggest', function(e, item) {
-                this.$selected = item.item;
-                if (this.input) {
-                    this.input.setValue(item.item.value);
-                } else {
-                    this.$control.val(item.item.value);
-                }
-                this.trigger('nb-select', this, item.item);
-            }.bind(this));
+            this.$jUI.on('suggest_setvalue.nb-suggest', this.onSetValueToInput.bind(this));
+
+            this.$jUI.on('suggestselect.nb-suggest', this.onSelectValue.bind(this));
 
             this.trigger('nb-inited', this);
+        },
+
+        /**
+         * Callback of a `suggestselect` event
+         * @param {$.Event} e
+         * @param {Object} item data of selected item
+         * @private
+         */
+        onSelectValue: function(e, item) {
+            this.$selected = item.item;
+
+            this.trigger('nb-select', this, item.item);
+        },
+
+        /**
+         * Callback of a `suggest_setvalue` event
+         * @param {$.Event} e
+         * @param {string} value
+         * @private
+         */
+        onSetValueToInput: function(e, value) {
+            if (this.input) {
+                this.input.setValue(value);
+            } else {
+                this.$control.val(value);
+            }
         },
 
         /**

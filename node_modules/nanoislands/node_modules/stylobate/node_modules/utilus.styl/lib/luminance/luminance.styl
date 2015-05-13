@@ -1,9 +1,7 @@
 // Getting luminance of a color,
 //   got from https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js#L55
 utilus_luminance($color)
-  f($c)
-    $c = $c / 255
-    return ($c < 0.03928) ? ($c / 12.92) : (($c + 0.055) / 1.055) ** 2.4;
-  return 0.2126 * f(red($color)) + 0.7152 * f(green($color)) + 0.0722 * f(blue($color));
+  warn('`utilus_luminance` is deprecated, use `luminosity` from Stylus itself.')
+  return luminosity($color)
 
 luminance ?= utilus_luminance

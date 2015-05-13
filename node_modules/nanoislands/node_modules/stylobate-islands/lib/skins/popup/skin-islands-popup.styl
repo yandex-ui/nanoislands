@@ -2,25 +2,25 @@ skin-islands-popup($this)
   global_skin(islands-isle fly)
 
   // This could be moved to subskin only when we could get the parent's selector and reuse it inside.
-  $popup-tail = utilus_get($this.arguments, '-tail')
+  $popup-tail = utilus_get($this.arguments, '__tail')
   if $popup-tail
     &_to_top {$popup-tail}
-      skin-islands-popup-tail_to_top()
+      skin-islands-popup__tail_to_top()
 
     &_to_right {$popup-tail}
-      skin-islands-popup-tail_to_right()
+      skin-islands-popup__tail_to_right()
 
     &_to_bottom {$popup-tail}
-      skin-islands-popup-tail_to_bottom()
+      skin-islands-popup__tail_to_bottom()
 
     &_to_left {$popup-tail}
-      skin-islands-popup-tail_to_left()
+      skin-islands-popup__tail_to_left()
 
 
-skin-islands-popup-overlay($this)
+skin-islands-popup__overlay($this)
   background: $this.colors[0] or rgba(#000, 0.3)
 
-skin-islands-popup-content($this)
+skin-islands-popup__content($this)
   display: block
   if small in $this.arguments
     kind: content $islands_xs $islands_s
@@ -28,7 +28,7 @@ skin-islands-popup-content($this)
     kind: content $islands_m $islands_l
 
 
-skin-islands-popup-close()
+skin-islands-popup__close()
   _stylobate('skin-islands-', icon _remove with-hover)
 
   position: absolute
@@ -38,7 +38,7 @@ skin-islands-popup-close()
   margin-top: 0
 
 
-skin-islands-popup-tail()
+skin-islands-popup__tail()
   position: absolute
 
   font-size: $islands_m
@@ -64,7 +64,7 @@ skin-islands-popup-tail()
     transform: rotate(45deg)
 
 
-skin-islands-popup-tail_to_top()
+skin-islands-popup__tail_to_top()
   bottom: 0
   left: 50%
   margin: -1em -.5em
@@ -73,7 +73,7 @@ skin-islands-popup-tail_to_top()
   &:before
     top: -50%
 
-skin-islands-popup-tail_to_right()
+skin-islands-popup__tail_to_right()
   top: 50%
   left: 0
   margin: -.5em -1em
@@ -82,7 +82,7 @@ skin-islands-popup-tail_to_right()
   &:before
     left: 50%
 
-skin-islands-popup-tail_to_bottom()
+skin-islands-popup__tail_to_bottom()
   top: 0
   left: 50%
   margin: -1em -.5em
@@ -91,7 +91,7 @@ skin-islands-popup-tail_to_bottom()
   &:before
     top: 50%
 
-skin-islands-popup-tail_to_left()
+skin-islands-popup__tail_to_left()
   top: 50%
   right: 0
   margin: -.5em -1em

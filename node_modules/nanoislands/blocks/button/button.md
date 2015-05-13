@@ -14,7 +14,7 @@
 
 ### Optional attributes
 
-* `'size'` {string} `'s' / 'm' / 'l'`
+* `'size'` {string} `'s' / 'm' / 'l' / 'xl'`
 * `'theme'` {string} `'normal' / 'action' (yellow) / 'dark' / 'pseudo' / 'pseudo-inverted' / 'promo' (big yellow)`
 * `'id'` {string} ...
 * `'name'` {string} ...
@@ -83,6 +83,16 @@
 > })
 > ' '
 > nb-button({
+>     'content': 'Large'
+>     'size': 'l'
+> })
+> ' '
+> nb-button({
+>     'content': 'Extra Large'
+>     'size': 'xl'
+> })
+> ' '
+> nb-button({
 >    'theme': 'promo'
 >    'content': 'Large'
 > })
@@ -96,7 +106,7 @@
 
 
 #### Themes
-`'theme': 'action'  'pseudo'  'dark'  'promo'`
+`'theme': 'action'  'pseudo' 'pseudo-inverted' 'clear'  'dark'  'promo'`
 > <div example="buttons-theme" >
 > </div>
 >
@@ -109,6 +119,16 @@
 > nb-button({
 >     'content': 'Pseudo'
 >     'theme': 'pseudo'
+> })
+> ' '
+> nb-button({
+>     'content': 'Clear'
+>     'theme': 'clear'
+> })
+> ' '
+> nb-button({
+>     'content': 'Pseudo'
+>     'theme': 'pseudo-inverted'
 > })
 > ' '
 > nb-button({

@@ -26,9 +26,9 @@ skin-islands-select($this)
 
   // Hardcoded paddings, yeah, Opera and Fx are stupid there
   unless no-paddings in $this.arguments
-    skin-islands-select-padding($this)
+    skin-islands-select__padding($this)
 
-skin-islands-select-padding($this)
+skin-islands-select__padding($this)
   if small in $this.arguments
     $sides = ($islands_xs - 0.1*rem) (2*$islands_xs + $islands_m - 0.3*rem) ($islands_xs - 0.1*rem) ($islands_m - 0.3*rem)
   else
@@ -51,14 +51,14 @@ skin-islands-select-padding($this)
     padding-bottom: ($sides[0] + 0.2*rem) unless small in $this.arguments
     padding-bottom: ($sides[0] + 0.1*rem) if small in $this.arguments
 
-skin-islands-select-focus()
+skin-islands-select__focus()
   select:focus + &
     kind: fill
     z-index: 9
     skin-islands-button_focus_style()
 
 
-skin-islands-select-wrap()
+skin-islands-select__wrap()
   padding: 0
 
   // In Opera the va suxx, also hiding arrow using oh

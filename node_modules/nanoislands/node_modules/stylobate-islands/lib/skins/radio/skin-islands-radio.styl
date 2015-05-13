@@ -12,13 +12,11 @@ skin-islands-radio($this)
     &:before
       border-radius: 50%
 
-  unless ie or (no-elements in $this.arguments)
+  unless ie
     stylobate_defaults($this,
-      -icon '& > &-icon')
+      __icon '& > &-icon')
 
-  deprecate($this.arguments, no-elements)
-
-skin-islands-radio-icon()
+skin-islands-radio__icon()
   if !ie
     // Replace it with svg?
     // And icon kind?

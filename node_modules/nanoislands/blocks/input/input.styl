@@ -24,10 +24,10 @@
 ._nb-complex-input
 ._nb-small-complex-input
   kind: field $islands_s $islands_s
-  skin: input-box
+  skin: input__box
 
 ._nb-small-complex-input
-  skin: input-box small
+  skin: input__box small
 
 ._nb-simple-input
 ._nb-complex-input
@@ -36,7 +36,7 @@
 ._nb-small-simple-input
 ._nb-large-simple-input
   ._nb-input-content
-    kind: field-content
+    kind: field__content
 
   ._nb-input-controller
     kind: input
@@ -53,7 +53,7 @@
   ._nb-input-view
     border: 1px solid transparent
     kind: fill -1px
-    skin: input-view no-focus
+    skin: input__view no-focus
 
     z-index: 8
 
@@ -62,7 +62,7 @@
     skin: input_focus
 
   ._nb-input-reset
-    kind: field-right 0.5*$islands_s
+    kind: field__right 0.5*$islands_s
     skin: icon _remove with-hover
     margin-right: $islands_s * -1
     height: auto
@@ -71,12 +71,12 @@
       content: " " // utf nbsp here
 
   ._nb-input-left
-    kind: field-left 0.5*$islands_s
+    kind: field__left 0.5*$islands_s
     margin-left: $islands_s * -1
     height: auto
 
   ._nb-input-right
-    kind: field-right 0.5*$islands_s
+    kind: field__right 0.5*$islands_s
     margin-right: $islands_s * -1
     height: auto
 
@@ -86,8 +86,7 @@
     box-shadow: none
 
   ._nb-input-hint
-    // In quotes, 'cause there is conflict with nib's input function
-    skin: 'input-placeholder' (-inner '&-inner') (-ghost '&-ghost')
+    skin: input__placeholder (__inner '&-inner') (__ghost '&-ghost')
 
 ._nb-small-simple-input
 ._nb-small-complex-input

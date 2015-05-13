@@ -42,11 +42,26 @@ func buttons() {
             'theme': 'pseudo'
         })
         ' '
+
         nb-button({
-            'content': 'Dark'
-            'theme': 'dark'
+            'content': 'Clear'
+            'theme': 'clear'
         })
 
+        ' '
+         <div style="display: inline-block; background-color: #333; padding: 1em;">
+            nb-button({
+                'content': 'Dark'
+                'theme': 'dark'
+            })
+        </div>
+        ' '
+        <div style="display: inline-block; background-color: #333; padding: 1em;">
+            nb-button({
+                'content': 'Pseudo Inverted'
+                'theme': 'pseudo-inverted'
+            })
+        </div>
         ' '
         nb-button({
             'content': 'Promo'
@@ -90,6 +105,16 @@ func buttons() {
         })
         ' '
         nb-button({
+            'content': 'Large'
+            'size': 'l'
+        })
+        ' '
+        nb-button({
+            'content': 'Extra Large'
+            'size': 'xl'
+        })
+        ' '
+        nb-button({
            'theme': 'promo'
            'content': 'Large'
         })
@@ -102,6 +127,11 @@ func buttons() {
     )
 
     show('buttons-size', buttons-size)
+
+    show('buttons-shape', nb-button({
+          'shape': 'circle'
+          'content': 'Circle'
+      }))
 
 
 

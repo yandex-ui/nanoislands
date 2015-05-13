@@ -1,212 +1,23 @@
-$toggler-height_s = 28px
-$toggler-width_s = 72px
-
-$toggler-height_xs = 22px
-$toggler-width_xs = 72px
-
-$toggler-height_m = 32px
-$toggler-width_m = 82px
-
-.nb-toggler
-  position: relative
-  display: inline-block
-  cursor: pointer
-  vertical-align: top
-  overflow: hidden
-  outline: none
-
-.nb-toggler:focus:not(._nb-is-disabled)
-.nb-toggler._nb-is-focused
-  box-shadow: 0 1px 0 rgba(0,0,0,.07), 0 0 6px 2px rgba(255,204,0,.7)
-
-._nb-toggler-container
-  display: block
-  position: absolute
-  right: 0
-
-  width: 100%
-  height: 100%
-
-._nb-toggler-checkbox
-  position: absolute
-  left: -99999px
-
-._nb-toggler-label
-  width: 100%
-  height: 100%
-  display: block
-  position: absolute
-
-._nb-toggler-sticker
-  display: block
-  position: absolute
-  text-align: center
-  overflow: hidden
-  height: 100%
-  transition: width .2s ease
-  border-radius: 3px
-  user-select: none
-
-._nb-toggler-sticker:before
-  position: absolute
-  top: 1px
-  left: 1px
-  bottom: 1px
-  right: 1px
-  content: ''
-  border-radius: 3px
-
-._nb-toggler-left-sticker
-  left: 0
-  background: rgba(255,236,166,.4)
-  box-shadow: inset 0 1px 5px rgba(30,23,0,.8), 0 2px 0 -1px rgba(255,255,255,.2)
-  width: 0
-
-._nb-toggler-left-sticker:before
-  background: #ffeca6
-  background: linear-gradient(to bottom, #ffeca6 0,#fff6d5 100%)
-  box-shadow: inset 0 1px 3px -1px rgba(0,0,0,.45)
-
-._nb-toggler-right-sticker
-  right: 0
-  background: rgba(0,0,0,0.07)
-  box-shadow: inset 0 1px 3px rgba(0,0,0,.3), inset 0 0 0 1px rgba(0,0,0,.15), 0 1px 0 rgba(255,255,255,.2)
-  width: 100%
-
-._nb-toggler-knob
-  display: block
-  border-radius: 3px
-  z-index: 1
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0,rgba(0,0,0,0.4) 100%)
-  box-shadow: 0 1px 0 rgba(0,0,0,.07)
-
-  transition: left .2s ease
-
-  position: absolute
-  left: 0
-
-._nb-toggler-knob:before
-  position: absolute
-  top: 1px
-  right: 1px
-  bottom: 1px
-  left: 1px
-
-  content: ''
-  border-radius: 2px
-  background: #fff
-  background: linear-gradient(to bottom, #fff 0,#eee 100%)
-
-._nb-toggler-text
-  color: #909090
-  z-index: 1
-  position: relative
-  display: inline-block
-
-._nb-toggler-right-sticker
-  ._nb-toggler-text
-    float: right
-    transition: right .2s ease
-
-._nb-toggler-left-sticker
-  ._nb-toggler-text
-    float: left
-    transition: left .2s ease
-
-/* Sizes */
+._nb-extra-small-toggler
+  skin: v3-switch (_size small) \
+        (__controller '& ._nb-toggler-controller') \
+        (__view '& ._nb-toggler-view') \
+        (__view-content '& ._nb-toggler-view-content') \
+        (__on '& ._nb-toggler-on') \
+        (__off '& ._nb-toggler-off')
 
 ._nb-small-toggler
-  width: $toggler-width_s
-  height: $toggler-height_s
-
-  ._nb-toggler-knob
-    height: $toggler-height_s
-    width: @height
-
-  ._nb-toggler-text
-    line-height: $toggler-height_s
-    width: $toggler-width_s - $toggler-height_s
-
-  ._nb-toggler-left-sticker
-    ._nb-toggler-text
-      left: - ($toggler-width_s - $toggler-height_s)
-
-._nb-extra-small-toggler
-  width: $toggler-width_xs
-  height: $toggler-height_xs
-
-  ._nb-toggler-knob
-    height: $toggler-height_xs
-    width: @height
-
-  ._nb-toggler-text
-    font: $font-p1
-    position: relative
-    top: 1px;
-    line-height: $toggler-height_xs
-    width: $toggler-width_xs - $toggler-height_xs
-
-  ._nb-toggler-left-sticker
-    ._nb-toggler-text
-      left: - ($toggler-width_xs - $toggler-height_xs)
+  skin: v3-switch (_size medium) \
+        (__controller '& ._nb-toggler-controller') \
+        (__view '& ._nb-toggler-view') \
+        (__view-content '& ._nb-toggler-view-content') \
+        (__on '& ._nb-toggler-on') \
+        (__off '& ._nb-toggler-off')
 
 ._nb-normal-toggler
-  width: $toggler-width_m
-  height: $toggler-height_m
-
-  ._nb-toggler-knob
-    height: $toggler-height_m
-    width: @height
-
-  ._nb-toggler-text
-    line-height: $toggler-height_m
-    width: $toggler-width_m - $toggler-height_m
-
-  ._nb-toggler-left-sticker
-    ._nb-toggler-text
-      left: - ($toggler-width_m - $toggler-height_m)
-
-/* Checked */
-
-.nb-toggler._nb-is-checked
-  ._nb-toggler-left-sticker
-    width: 100%
-
-  ._nb-toggler-right-sticker
-    width: 0
-
-._nb-small-toggler._nb-is-checked
-  ._nb-toggler-knob
-    left: $toggler-width_s - $toggler-height_s
-
-  ._nb-toggler-right-sticker
-    ._nb-toggler-text
-      right: - ($toggler-width_s - $toggler-height_s)
-
-  ._nb-toggler-left-sticker
-    ._nb-toggler-text
-      left: 0
-
-._nb-extra-small-toggler._nb-is-checked
-  ._nb-toggler-knob
-    left: $toggler-width_xs - $toggler-height_xs
-
-  ._nb-toggler-right-sticker
-    ._nb-toggler-text
-      right: - ($toggler-width_xs - $toggler-height_xs)
-
-  ._nb-toggler-left-sticker
-    ._nb-toggler-text
-      left: 0
-
-._nb-normal-toggler._nb-is-checked
-  ._nb-toggler-knob
-    left: $toggler-width_m - $toggler-height_m
-
-  ._nb-toggler-right-sticker
-    ._nb-toggler-text
-      right: - ($toggler-width_m - $toggler-height_m)
-
-  ._nb-toggler-left-sticker
-    ._nb-toggler-text
-      left: 0
+  skin: v3-switch (_size large) \
+        (__controller '& ._nb-toggler-controller') \
+        (__view '& ._nb-toggler-view') \
+        (__view-content '& ._nb-toggler-view-content') \
+        (__on '& ._nb-toggler-on') \
+        (__off '& ._nb-toggler-off')

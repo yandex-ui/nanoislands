@@ -11,7 +11,7 @@ skin-islands-page($this)
 skin-islands-page-font()
   // Not in shorthand 'cause of IE 9&10 — http://dabblet.com/gist/7445329
   font-size: $islands_text_m
-  line-height: 2.2*rem
+  line-height: round(unit(2.2*rem/$islands_text_m, ''), 3)
   font-family: Arial, sans-serif
 
 skin-islands-check-font()

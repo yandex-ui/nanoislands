@@ -7,12 +7,12 @@ kind-file-intruder($this)
     if ie
       overflow: hidden
 
-  $focus = $this.elements.-focus
+  $focus = $this.elements.focus
   $focus-skin = utilus_get_string($focus, $index: 1)
-  {$this.elements.-input[0]}:focus + {utilus_get_string($focus)}
+  {$this.elements.input[0]}:focus + {utilus_get_string($focus)}
     skin-{$focus-skin}() if $focus-skin
 
-kind-file-intruder-inner()
+kind-file-intruder__inner()
   +cache()
     float: right
     text-align:right
@@ -21,7 +21,7 @@ kind-file-intruder-inner()
     width: 100%
     height: 100%
 
-kind-file-intruder-input()
+kind-file-intruder__input()
   +cache()
     position: relative
     z-index: 11
@@ -38,5 +38,5 @@ kind-file-intruder-input()
 
     opacity: 0
 
-kind-file-intruder-focus()
+kind-file-intruder__focus()
   kind(fill)

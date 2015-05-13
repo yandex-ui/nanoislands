@@ -1,15 +1,5 @@
 // Remove the first item, return the original array.
 utilus_remove_first($where)
-  $result = unquote('')
-  if utilus_is_comma_list($where)
-    for $item, $index in $where
-      if $index == 1
-        $result = $item
-      else if $index > 1
-        $result = $result, $item
-  else
-    for $item, $index in $where
-      push($result, $item) if $index > 0
-  return $result
+  return $where[1..length($where)]
 
 remove_first ?= utilus_remove_first

@@ -2,7 +2,7 @@ skin-islands-menu($this)
   if padded in $this.arguments
     padding: 0.5*(small in $this.arguments ? $islands_xs : $islands_s) 0
 
-skin-islands-menu-item($this)
+skin-islands-menu__item($this)
   kind: block
   global_skin(islands-link $islands_color_text no-hover)
 
@@ -13,13 +13,13 @@ skin-islands-menu-item($this)
     kind: ellipsis
 
   unless utilus_get($this.arguments, '_size')
-    skin-islands-menu-item_size($this)
+    skin-islands-menu__item_size($this)
 
   unless no-hover in $this.arguments or utilus_get($this.arguments, '_hover')
     &:hover
-      skin-islands-menu-item_hover($this)
+      skin-islands-menu__item_hover($this)
 
-skin-islands-menu-item_size($this)
+skin-islands-menu__item_size($this)
   if small in $this.arguments
     global_skin(islands-para2 no-margin)
     padding: 0.5*$islands_xs $islands_s
@@ -27,21 +27,21 @@ skin-islands-menu-item_size($this)
     global_skin(islands-para no-margin)
     padding: 0.5*$islands_s $islands_m
 
-skin-islands-menu-item_hover()
+skin-islands-menu__item_hover()
   background: $islands_color_selected
 
-skin-islands-menu-item_checked($this)
+skin-islands-menu__item_checked($this)
   unless utilus_get($this.arguments, '-helper')
     &:after
       content: ""
-      skin-islands-menu-item_checked-helper()
+      skin-islands-menu__item_checked__helper()
 
-skin-islands-menu-item_checked-helper()
+skin-islands-menu__item_checked__helper()
   global_skin: islands-icon_check
   margin: -1*$islands_s 0 0 $islands_s
 
 
-skin-islands-menu-group($this)
+skin-islands-menu__group($this)
   display: block
 
   & + &
@@ -51,7 +51,7 @@ skin-islands-menu-group($this)
       margin-top: 0.5*(small in arguments ? $islands_xs : $islands_s)
       padding-top: 0.5*(small in arguments ? $islands_xs : $islands_s)
 
-skin-islands-menu-separator($this)
+skin-islands-menu__separator($this)
   display: block
   border-top: 1px solid rgba-ie(#000, 0.2)
 

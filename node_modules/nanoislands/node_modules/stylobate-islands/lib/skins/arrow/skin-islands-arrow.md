@@ -50,24 +50,7 @@
 
 Такая стрелка не тянется, так как там внутри просто обычные инлайн-блоки, ну а если надо сделать её тянущейся, нужно использовать `kind: shrink` с дополнительным враппером:
 
-> <div class="search">
->     <button class="button search-right" type="button" tabindex="2">
->         <span class="button-content">Найти</span>
->     </button>
->     <div class="search-content">
->         <label class="search-field field">
->             <a class="field-label" href="#x">
->                 Маркет
->             </a>
->             <span class="field-content">
->                 <input class="input-controller" type="text" value="Окна" tabindex="1">
->                 <span class="input-view">&nbsp;</span>
->             </span>
->         </label>
->     </div>
-> </div>
->
-> <div class="example:search"></div>
+[Пример](tests/search.html)
 
 По умолчанию хвостик делается с помощью псевдоэлемента, если же нужно его отделить, можно обнулить соответствующий параметр на «теле» и вызвать `tail` на хвостике (и в этом случае хвостик будет отображаться и в IE).
 

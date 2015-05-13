@@ -3,60 +3,60 @@ kind-group()
     kind('block' inline)
     white-space: nowrap
 
-kind-group-item($this)
+kind-group__item($this)
   unless $this.params.no-radius
     &:first-child:not(:only-child)
-      kind-group-start($this)
+      kind-group__start($this)
 
     &:not(:first-child):not(:last-child)
-      kind-group-middle($this)
+      kind-group__middle($this)
 
     &:last-child:not(:only-child)
-      kind-group-end($this)
+      kind-group__end($this)
 
-kind-group-start($this)
+kind-group__start($this)
   {$this.strings[0] or ''}
-    $placeholder = $this.params.vertical ? '$kind-group-start_vertical' : '$kind-group-start'
+    $placeholder = $this.params.vertical ? '$kind-group__start_vertical' : '$kind-group__start'
     @extends {$placeholder}
 
-$kind-group-start
+$kind-group__start
   unless ie
     border-top-right-radius: 0 !important
     border-bottom-right-radius: 0 !important
 
-$kind-group-start_vertical
+$kind-group__start_vertical
   unless ie
     border-bottom-right-radius: 0 !important
     border-bottom-left-radius: 0 !important
 
-kind-group-end($this)
+kind-group__end($this)
   unless $this.params.no-margin
-    $placeholder = $this.params.vertical ? '$kind-group-margin_vertical' : '$kind-group-margin'
+    $placeholder = $this.params.vertical ? '$kind-group__margin_vertical' : '$kind-group__margin'
     @extends {$placeholder}
 
   {$this.strings[0] or ''}
-    $placeholder = $this.params.vertical ? '$kind-group-end_vertical' : '$kind-group-end'
+    $placeholder = $this.params.vertical ? '$kind-group__end_vertical' : '$kind-group__end'
     @extends {$placeholder}
 
-$kind-group-end
+$kind-group__end
   unless ie
     border-top-left-radius: 0 !important
     border-bottom-left-radius: 0 !important
 
-$kind-group-end_vertical
+$kind-group__end_vertical
   unless ie
     border-top-right-radius: 0 !important
     border-top-left-radius: 0 !important
 
-$kind-group-margin
+$kind-group__margin
   margin-left: -1px
 
-$kind-group-margin_vertical
+$kind-group__margin_vertical
   margin-top: -1px
 
-kind-group-middle($this)
+kind-group__middle($this)
   unless $this.params.no-margin
-    $placeholder = $this.params.vertical ? '$kind-group-margin_vertical' : '$kind-group-margin'
+    $placeholder = $this.params.vertical ? '$kind-group__margin_vertical' : '$kind-group__margin'
     @extends {$placeholder}
 
   $selector = $this.strings[0] or ''

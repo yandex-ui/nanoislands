@@ -11,20 +11,20 @@ skin-islands-tabs($this)
   else
     font-size: $islands_text_m
 
-skin-islands-tabs-item($this)
+skin-islands-tabs__item($this)
   skin-islands-link($this)
   line-height: 2em
   padding: 0.3*rem 0.5*$islands_m
 
-skin-islands-tabs-item_selected($this)
+skin-islands-tabs__item_selected($this)
   skin-islands-link_selected($this)
 
   unless no-elements in $this.arguments
     &:before
       content: ""
-      skin-islands-tabs-item_selected-helper($this)
+      skin-islands-tabs__item_selected-helper($this)
 
-skin-islands-tabs-item_selected-helper()
+skin-islands-tabs__item_selected-helper()
   kind: fill top -1px 0.5*$islands_m
 
   border-top: 2px solid

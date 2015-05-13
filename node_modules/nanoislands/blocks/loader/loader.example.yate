@@ -1,18 +1,16 @@
 func loaders() {
 
     show('loader-s', nb-loader({
-         'size': 's'
-     }))
+        'size': 'xs'
+    }))
+
+    show('loader-s', nb-loader({
+        'size': 's'
+    }))
 
     show('loader-m', nb-loader())
 
-    loader-w = (
-     <div style="padding: 10px; background: #333;">
-         nb-loader({
-             'color': 'white'
-         })
-     </div>
-    )
-
-    show('loader-w', loader-w)
+    show('loader-s', nb-loader({
+        'size': 'l'
+    }))
 }

@@ -1,5 +1,7 @@
 $islands ?= {}
 
+$islands["px"] = 0.1*rem
+
 $islands["sizes"] = {
   xs: 0.6*rem,
   s:  1.0*rem,
@@ -19,6 +21,7 @@ $islands["text_sizes"] = {
   h6: 1.3*rem
 }
 
+$islands_px ?= $islands.px
 $islands_xs ?= $islands.sizes.xs
 $islands_s  ?= $islands.sizes.s
 $islands_m  ?= $islands.sizes.m
