@@ -73,4 +73,4 @@ module.exports = function () {
 		downNShot: downNShot,
 		changeViewport: changeViewport
 	};
-}
+};

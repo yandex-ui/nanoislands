@@ -4,8 +4,8 @@ var downNShot = util.downNShot;
 
 util.shotCurrent('body', 'default')();
 
-function changeViewport () {
-    casper.viewport(200, 300);
+function changeViewport() {
+    casper.viewport(500, 300);
 }
 
 util.sequence([
