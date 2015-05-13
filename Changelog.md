@@ -1,3 +1,8 @@
+##### 0.6.7 — path
+
+###### Fixes
+* fixed Block.destroy bug
+  
 ##### 0.6.6 — path
 
 ###### Fixes
