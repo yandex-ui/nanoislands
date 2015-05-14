@@ -612,7 +612,7 @@ describe("Select Tests", function() {
 
             it("#422", function() {
                 nb.find('select-texttext').setState({'text': 'Text'});
-                expect(nb.find('select-texttext').$node.find('._nb-button-content').html()).to.equal('Text');
+                expect(nb.find('select-texttext').$node.find('._nb-button-text').html()).to.equal('Text');
             });
 
             it("XSS in _setText", function() {
@@ -622,7 +622,7 @@ describe("Select Tests", function() {
                     'value': 'add-value'
                 });
 
-                expect(this.select.$node.find('._nb-button-content').html()).to.be.eql('&lt;b&gt;bold&lt;/b&gt;');
+                expect(this.select.$node.find('._nb-button-text').html()).to.be.eql('&lt;b&gt;bold&lt;/b&gt;');
             });
 
         });

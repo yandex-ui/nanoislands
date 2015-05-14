@@ -3,16 +3,9 @@
   &.nb-button
     text-align: left // fixes #345
 
-  & ._nb-button-content
-    if ie
+  if ie
+    & ._nb-button-content
       display: none !important
-    if !ie
-      overflow: hidden
-      text-overflow: ellipsis
-
-      // For baseline alignment
-      float: left
-      width: 100%
 
 ._nb-select-fallback
   if !ie
@@ -20,33 +13,20 @@
   if ie
     display: inline-block
 
-// For baseline alignment,
-// TODO: move to Stylobate
-._nb-select-helper
-  display: inline-block
-  width: 0
-  overflow: hidden
+.nb-select ._nb-select-arrow
+  skin: v3-icon_dropdown
 
-  &:before
-    content: " "
+._nb-small-normal-select ._nb-select-arrow
+  skin: v3-icon_dropdown small
 
-.nb-select ._nb-select-button
-  box-sizing: border-box
-  display: inline-block
-
-.nb-select ._nb-button-content:before,
-.nb-select-dropdown ._nb-select-group-item > ._nb-select-a:before
-  content: ""
+.nb-select-dropdown ._nb-select-group-item > ._nb-select-a:after
   skin: v3-icon_dropdown selecty
-
-._nb-small-normal-select ._nb-button-content:before,
-._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a:before
-  skin: v3-icon_dropdown selecty small
-
-.nb-select-dropdown ._nb-select-group-item > ._nb-select-a:before
+  content: ""
   top: 0.65em
 
-._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a:before
+._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a:after
+  skin: v3-icon_dropdown selecty small
+  content: ""
   top: 0.55em
 
 

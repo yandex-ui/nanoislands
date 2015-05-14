@@ -37,15 +37,19 @@ match .select nb {
         }
 
         <span class="_nb-button-content">
-            isSelected = count(.items[(.selected)]) > 0
+            <span class="_nb-button-after">
+                <span class="_nb-select-arrow"></span>
+            </span>
+            <span class="_nb-button-text">
+                isSelected = count(.items[(.selected)]) > 0
 
-            for .items {
-                if (isSelected && .selected) || (!isSelected && index() == 0)  {
-                    .text
+                for .items {
+                    if (isSelected && .selected) || (!isSelected && index() == 0)  {
+                        .text
+                    }
                 }
-            }
+            </span>
         </span>
-        <span class="_nb-select-helper"></span> // Helper for baseline alignment
         <select class="_nb-select-fallback">
             if ( .disabled ) {
                 @disabled = 'disabled'

@@ -59,21 +59,34 @@ func _nb-button-attributes(type) {
     }
 
     if !( .content ) && (.icon || .iconText) {
-        @class += ' _nb-with-only-button'
+        @class += ' _nb-with-only-icon'
     }
 
 
 }
 
 func _nb-button-content() {
-    if .iconText {
-        <span class="nb-icon _nb-icon-text">
-          .iconText
-        </span>
-    }
-    if .content {
-        html(.content)
-    }
+    <span class="_nb-button-content">
+        if .icon || .iconText {
+            <span class="_nb-button-before">
+                if .icon {
+                    nb-icon({
+                        'icon': .icon
+                    })
+                }
+                if .iconText {
+                    <span class="nb-icon _nb-icon-text">
+                      .iconText
+                    </span>
+                }
+            </span>
+        }
+        if .content {
+            <span class="_nb-button-text">
+                html(.content)
+            </span>
+        }
+    </span>
 }
 
 func _nb-button-static(){
@@ -91,15 +104,7 @@ match .button nb {
 
         apply . nb-main-attrs
 
-        <span class="_nb-button-content">
-             if .icon {
-                nb-icon({
-                    'icon': .icon
-                })
-            }
-
-            _nb-button-content()
-        </span>
+        _nb-button-content()
     </button>
 }
 
@@ -111,15 +116,7 @@ match .buttonLink nb {
 
         apply . nb-main-attrs
 
-        <span class="_nb-button-content">
-             if .icon {
-                nb-icon({
-                    'icon': .icon
-                })
-            }
-
-            _nb-button-content()
-        </span>
+        _nb-button-content()
     </a>
 }
 
@@ -131,15 +128,7 @@ match .buttonSpan nb {
 
         apply . nb-main-attrs
 
-        <span class="_nb-button-content">
-            if .icon {
-                nb-icon({
-                    'icon': .icon
-                })
-            }
-
-            _nb-button-content()
-        </span>
+        _nb-button-content()
     </span>
 }
 
@@ -151,14 +140,7 @@ match .buttonLabel nb {
 
         apply . nb-main-attrs
 
-        <span class="_nb-button-content">
-            if .icon {
-                nb-icon({
-                    'icon': .icon
-                })
-            }
-            _nb-button-content()
-        </span>
+        _nb-button-content()
     </label>
 }
 
@@ -191,7 +173,7 @@ match .buttonAttach nb {
                     if .disabled {
                         @disabled = 'disabled'
                     }
-                    
+
                     if .attrs.accept {
                         @accept = "{.attrs.accept}"
                     }
@@ -199,14 +181,7 @@ match .buttonAttach nb {
                 <span class="_nb-file-intruder-focus"></span>
             </span>
         </span>
-        <span class="_nb-button-content">
-            if .icon {
-               nb-icon({
-                   'icon': .icon
-               })
-           }
 
-            _nb-button-content()
-        </span>
+        _nb-button-content()
     </label>
 }
