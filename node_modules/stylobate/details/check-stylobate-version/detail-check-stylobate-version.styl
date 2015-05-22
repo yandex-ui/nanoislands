@@ -1,9 +1,0 @@
-use('detail-check-stylobate-version.js')
-
-check-stylobate-version($version)
-  unless _check_stylobate_version is defined
-    error('Used Stylus version is very outdated, update it to the latest version.')
-
-  $check = _check_stylobate_version($version)
-  unless $check[0]
-    error('Used Stylobate version `' + $check[1] + '` is outdated, update it to the `' + $version + '`.')
