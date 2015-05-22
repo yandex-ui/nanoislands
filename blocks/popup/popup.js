@@ -891,7 +891,11 @@ nb.define('popup-toggler', {
      *  {
      *       id : 'id' — popupID or link to nb.block
      *       where: '#elem' — to what elem popup attached
-     *       how: { my: 'left', at:'right' } — to to open popup
+     *       how: {
+     *          my: 'left',
+     *          at:'right',
+     *          fixed: true — for position fixed popup
+     *      } — to to open popup
      *   }
      *  ```
      * @returns {Object} nb.block
@@ -936,7 +940,11 @@ nb.define('popup-toggler', {
      *  {
      *       id : 'id' — popupID or link to nb.block
      *       where: '#elem' — to what elem popup attached
-     *       how: { my: 'left', at:'right' } — to to open popup
+     *       how: {
+     *          my: 'left',
+     *          at:'right',
+     *          fixed: true — for position fixed popup
+     *      } — to to open popup
      *   }
      *  ```
      * @returns {Object} nb.block
