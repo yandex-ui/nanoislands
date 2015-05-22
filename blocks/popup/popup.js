@@ -769,7 +769,7 @@
                         // horizontal: fit, пытаемся уместить в window
                         // vertical: flip - выбирает наилучший вариант - вверх или вних
                         collision: (how.collision ? how.collision : 'fit flip'),
-                        using: using || how.using,
+                        using: how.using || using,
                         within: how.within
                     },
                     close: function() {
