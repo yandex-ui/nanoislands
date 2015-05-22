@@ -14,7 +14,7 @@
     "url": "git://github.com/yandex-ui/nanoislands.git"
   },
   "dependencies": {
-    "yate": "0.0.71",
+    "yate": "0.0.x",
     "es5-shim": "4.0.5",
     "stylobate": "0.24.x",
     "stylobate-islands": "0.27.x"

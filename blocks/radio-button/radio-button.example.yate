@@ -1,7 +1,6 @@
 func radio-buttons(){
     show('radio-buttons', nb-radio-button({
       'size': 'm'
-      'name': 'btn'
       'group':  [
           {
               'content': 'All'
