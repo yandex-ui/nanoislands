@@ -3,16 +3,6 @@ $svg ?= {}
 .nb-icon
   kind: icon (size 16px 16px)
 
-  // Move this to a skin?
-  .nb-button &
-  ._nb-select-a &
-    margin-right: $islands_xs
-    margin-left: -1*$islands_xs
-
-  ._nb-with-only-button &
-    margin-right: -1px + (-1*$islands_xs)
-    margin-left: -1px + (-1*$islands_xs)
-
 $svg-icons = 'close' 'download' 'upload' 'eye' 'link' 'trash' 'people' 'help' 'print' \
     'services' 'settings' 'attention' 'three-dots' 'play' 'pause' 'mail' 'link-white' \
     'download-white' 'upload-white' 'trash-white' 'vk' 'twitter' 'odnoklassniki' 'shared' \
@@ -42,5 +32,9 @@ for $size-name, $size-value in $svg.sizes
   width: 50px
 
 // Compensate visual shift for link icon
-.nb-s-icon-link
+.nb-s-link-icon
   left: 2px
+
+// Proper aligning for text icons
+._nb-icon-text
+  line-height: 18px

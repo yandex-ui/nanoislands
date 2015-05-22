@@ -23,7 +23,7 @@ nb.define('button', {
      */
     setContent: function(text) {
         if (this.$node && this.$node.data('uiButton')) {
-            this.$node.find('._nb-button-content').html(text);
+            this.$node.find('._nb-button-text').html(text);
             this.trigger('nb-text-set', this);
         }
         return this;
@@ -41,7 +41,7 @@ nb.define('button', {
      *
      */
     getContent: function() {
-        return this.$node.find('._nb-button-content').html();
+        return this.$node.find('._nb-button-text').html();
     },
 
     /**

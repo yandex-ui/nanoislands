@@ -277,19 +277,30 @@ nb.define('select', {
 
         _setText: function(params) {
             var content = this.$node.find('._nb-button-content');
-            if (params.text || params.icon) {
-                // use .text() to prevent XSS
-                content.text(params.text);
-                if (params.icon) {
-                    this.$node.addClass('_nb-with-icon');
-                    if (!params.text) {
-                        this.$node.addClass('_nb-with-only-button');
-                    }
-                    content.prepend('<img class="nb-icon nb-s-' + params.icon + '-icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">');
+            var text = content.find('._nb-button-text');
+            var before = content.find('._nb-button-before');
+            before.remove();
+
+            if (params.icon) {
+                this.$node.addClass('_nb-with-icon');
+                if (!params.text) {
+                    this.$node.addClass('_nb-with-only-icon');
+                } else {
+                    this.$node.removeClass('_nb-with-only-icon');
                 }
+                content.prepend('<span class="_nb-button-before"><img class="nb-icon nb-s-' + params.icon + '-icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></span>');
             } else {
-                // &nbsp; - to prevent button from collapse if no text on <option/>
-                this.$node.find('._nb-button-content').html('&nbsp;');
+                this.$node.removeClass('_nb-with-icon');
+            }
+            if (params.text) {
+                if (!text) {
+                    content.append('<span class="_nb-button-text"></span>');
+                    text = content.find('._nb-button-text');
+                }
+                // use .text() to prevent XSS
+                text.text(params.text);
+            } else {
+                text.remove();
             }
 
         },

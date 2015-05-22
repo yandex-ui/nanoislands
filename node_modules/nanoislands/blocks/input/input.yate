@@ -163,10 +163,6 @@ match .textarea nb {
            })
         }
 
-        if .reset {
-            <span class="_nb-input-reset"></span>
-        }
-
         if .leftContent {
             <span class="_nb-input-left">
                 html(.leftContent)
@@ -177,6 +173,10 @@ match .textarea nb {
             <span class="_nb-input-right">
                 html(.rightContent)
             </span>
+        }
+
+        if .reset {
+            <span class="_nb-input-reset"></span>
         }
 
         <span class="_nb-input-content">

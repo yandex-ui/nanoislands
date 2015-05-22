@@ -22,7 +22,7 @@ glob.sync("./lib/*/" + whatToTest + "/tests/*.styl").forEach(function(test){
       if (err) throw err;
 
       actual = postcss()
-          .use( autoprefixer({browsers: ['last 2 versions', 'ios 5', 'ie 9', 'fx 28']}).postcss )
+          .use( autoprefixer({browsers: ['last 2 versions', 'ios 5', 'ie 9', 'fx 28', 'fx 21']}).postcss )
           .process(actual);
 
       actual.root.eachRule(function (rule) {
