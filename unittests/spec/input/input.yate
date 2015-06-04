@@ -20,6 +20,12 @@ match .input {
    })
 
    nb-input({
+           'id': 'input-hint-content'
+           'hint': '1'
+           'content': '2'
+      })
+
+   nb-input({
          'id': 'input-reset'
          'reset': true()
          'content': 'vadim'

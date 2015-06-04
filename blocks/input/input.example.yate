@@ -24,6 +24,7 @@ func inputs() {
     show('input-simple-hint', nb-input({
         'name': 'greetings'
         'hint': 'Can you greet the world?'
+        'content': 'hello, world!'
     }))
 
     show('input-simple-hint-ghost', nb-input({

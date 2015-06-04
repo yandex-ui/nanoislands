@@ -80,7 +80,7 @@ match .input nb {
         }
 
         <span class="_nb-input-content">
-            if .hint && .hint.text != '' {
+            if (.hint && .hint.text != '' && (.content == '' || !.content)) {
                 <span class="_nb-input-hint">
                     <span class="_nb-input-hint-inner">
                         if .hint.ghost {
