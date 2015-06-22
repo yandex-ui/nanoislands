@@ -1,0 +1,91 @@
+module "nanoislands"
+
+include "nanoislands.yate"
+
+match / button {
+    nb-button(.)
+}
+
+match / checkbox {
+    nb-checkbox(.)
+}
+
+match / arrow {
+    nb-arrow(.)
+}
+
+match / dropzone {
+    nb-dropzone(.)
+}
+
+match / header {
+    nb-header(.)
+}
+
+match / icon {
+    nb-icon(.)
+}
+
+match / input {
+    nb-input(.)
+}
+
+match / input-group {
+    nb-input-group(.)
+}
+
+match / island {
+    nb-island(.)
+}
+
+match / loader {
+    nb-loader(.)
+}
+
+match / paranja {
+    nb-paranja(.)
+}
+
+match / popup {
+    nb-popup(.)
+}
+
+match / popup-menu {
+    nb-popup-menu(.)
+}
+
+match / popup-modal {
+    nb-popup-modal(.)
+}
+
+match / progress {
+    nb-progress(.)
+}
+
+match / radio-button {
+    nb-radio-button(.)
+}
+
+match / select {
+    nb-select(.)
+}
+
+match / slider {
+    nb-slider(.)
+}
+
+match / suggest {
+    nb-suggest(.)
+}
+
+match / tabs {
+    nb-tabs(.)
+}
+
+match / toggler {
+    nb-toggler(.)
+}
+
+match / user {
+    nb-user(.)
+}

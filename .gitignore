@@ -9,6 +9,9 @@ nanoislands.css
 nanoislands.ie.css
 nanoislands.js
 nanoislands.yate.js
+ni.min.js
+ni.yate.obj
+ni.yate.js
 demo/demo.yate.js
 unittests/tests.yate.js
 docs/js/_data.json
