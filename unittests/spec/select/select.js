@@ -197,6 +197,11 @@ describe("Select Tests", function() {
             this.select.setState({text: 'Гибрид'});
             expect(this.select.getState().value == 'option3').to.be.ok();
         });
+        it('should set state when the select had empty state', function() {
+            this.select._setText('');
+            this.select.setState({text: 'Гибрид'});
+            expect(this.select.$node.find('._nb-button-content').text()).to.be.eql('Гибрид');
+        });
         it('should set state by value', function() {
             this.select.setState({value: 'option3'});
             expect(this.select.getState().text == 'Гибрид').to.be.ok();
