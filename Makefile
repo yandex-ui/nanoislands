@@ -5,13 +5,16 @@ export NPM
 
 MAKEFLAGS+=-j 4
 
-all: node_modules demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js unittests/tests.yate.js docs
+all: node_modules demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js unittests/tests.yate.js docs ni.yate.js ni.min.js
 
 nanoislands.css: $(shell find . -name '*.styl') node_modules
 	node build/build-styl.js > $@
 
 demo/demo.yate.js: $(shell find . -name '*.yate') node_modules
 	$(NPM_BIN)/yate $(CURDIR)/demo/nanoislands.yate > $@
+
+ni.yate.js: ni.yate node_modules
+	$(NPM_BIN)/yate $(CURDIR)/ni.yate > $@
 
 unittests/tests.yate.js: $(shell find $(CURDIR)/unittests -name '*.yate') node_modules
 	$(NPM_BIN)/yate $(CURDIR)/unittests/tests.yate > $@
@@ -21,6 +24,9 @@ nanoislands.ie.css: $(shell find . -name '*.styl') node_modules
 
 nanoislands.js: $(CURDIR)/blocks/nanoislands.js $(shell find $(CURDIR)/blocks -name '*.js') node_modules
 	$(NPM_BIN)/borschik --input=blocks/nanoislands.js --minimize=no --output=nanoislands.js
+
+ni.min.js: ni.js nanoislands.js externals.yate.js ni.yate.js node_modules
+	$(NPM_BIN)/borschik --input=ni.js --minimize=no --output=ni.min.js
 
 docs/js/_data.json: $(shell find $(CURDIR)/blocks -name '*.js') $(shell find $(CURDIR)/blocks -name '*.md') node_modules
 	node build/build-doc.js > docs/js/_data.json
