@@ -49,7 +49,7 @@ make publish
 
         <script src="../libs/jquery.min.js"></script>
         <script src="../libs/jquery-ui/jquery-ui.custom.js"></script>
-        <script src="../ni.min.js"></script>
+        <script src="../react.nanoislands.min.js"></script>
 
         <script>
             $(function () {
