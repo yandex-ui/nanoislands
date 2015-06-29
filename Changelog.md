@@ -1,3 +1,7 @@
+##### 1.0.6-alfa — react wrapper
+
+* react-wrapper added
+
 ##### 0.6.6 — path
 
 ###### Fixes
