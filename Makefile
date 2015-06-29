@@ -5,7 +5,7 @@ export NPM
 
 MAKEFLAGS+=-j 4
 
-all: node_modules demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js unittests/tests.yate.js docs ni.yate.js ni.min.js
+all: node_modules demo/demo.yate.js nanoislands.css nanoislands.ie.css nanoislands.js unittests/tests.yate.js docs react.nanoislands.yate.js react.nanoislands.min.js
 
 nanoislands.css: $(shell find . -name '*.styl') node_modules
 	node build/build-styl.js > $@
@@ -13,8 +13,8 @@ nanoislands.css: $(shell find . -name '*.styl') node_modules
 demo/demo.yate.js: $(shell find . -name '*.yate') node_modules
 	$(NPM_BIN)/yate $(CURDIR)/demo/nanoislands.yate > $@
 
-ni.yate.js: ni.yate node_modules
-	$(NPM_BIN)/yate $(CURDIR)/ni.yate > $@
+react.nanoislands.yate.js: react.nanoislands.yate node_modules
+	$(NPM_BIN)/yate $(CURDIR)/react.nanoislands.yate > $@
 
 unittests/tests.yate.js: $(shell find $(CURDIR)/unittests -name '*.yate') node_modules
 	$(NPM_BIN)/yate $(CURDIR)/unittests/tests.yate > $@
@@ -25,8 +25,8 @@ nanoislands.ie.css: $(shell find . -name '*.styl') node_modules
 nanoislands.js: $(CURDIR)/blocks/nanoislands.js $(shell find $(CURDIR)/blocks -name '*.js') node_modules
 	$(NPM_BIN)/borschik --input=blocks/nanoislands.js --minimize=no --output=nanoislands.js
 
-ni.min.js: ni.js nanoislands.js externals.yate.js ni.yate.js node_modules
-	$(NPM_BIN)/borschik --input=ni.js --minimize=no --output=ni.min.js
+react.nanoislands.min.js: react.nanoislands.js nanoislands.js externals.yate.js react.nanoislands.yate.js node_modules
+	$(NPM_BIN)/borschik --input=react.nanoislands.js --minimize=no --output=react.nanoislands.min.js
 
 docs/js/_data.json: $(shell find $(CURDIR)/blocks -name '*.js') $(shell find $(CURDIR)/blocks -name '*.md') node_modules
 	node build/build-doc.js > docs/js/_data.json

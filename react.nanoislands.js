@@ -1,7 +1,7 @@
 /* borschik:include:node_modules/yate/lib/runtime.js */
 /* borschik:include:nanoislands.js */
 /* borschik:include:externals.yate.js */
-/* borschik:include:ni.yate.js */
+/* borschik:include:react.nanoislands.yate.js */
 
 (function () {
     "use strict";

@@ -37,4 +37,39 @@ make publish
 * [Groups](https://github.com/yandex-ui/nanoislands/blob/master/blocks/group/group.md)
 * [Gaps](https://github.com/yandex-ui/nanoislands/blob/master/blocks/gap/gap.md)
 
+### React intergation example
+
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="../nanoislands.css" />
+
+        <script src="../libs/react-with-addons.js"></script>
+
+        <script src="../libs/jquery.min.js"></script>
+        <script src="../libs/jquery-ui/jquery-ui.custom.js"></script>
+        <script src="../ni.min.js"></script>
+
+        <script>
+            $(function () {
+                var element = React.render(React.createElement(Island, {
+                    type: "checkbox",
+                    options: { content: "123", disabled: true },
+                    on: {
+                        "nb-checked": function () { console.log("checked") },
+                        "nb-unchecked": function () { console.log("unchecked") }
+                    }
+                }), document.body);
+
+                element.block.enable();
+            });
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
+```
+
 #### [Changelog](Changelog.md)
