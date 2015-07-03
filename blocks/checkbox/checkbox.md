@@ -98,6 +98,8 @@ Button type of checkbox
 
 #### Radio
 
+Radio buttons
+
 > <div example="radio-button" />
 >
 > ```yate
