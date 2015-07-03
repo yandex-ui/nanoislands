@@ -49,6 +49,7 @@ grammar.keywords = [
     'else',
     'else if',
     'apply',
+    'apply-imports',
     'key',
     'nodeset',
     'boolean',
@@ -302,6 +303,9 @@ rules.typedef = function() {
 
 rules.function_ = function(p, a) {
     this.match('FUNC');
+    if ( this.test('typedef') ) {
+        p.Typedef = this.match('typedef');
+    }
     p.Name = this.match('QNAME');
     p.Args = this.match('arglist');
     p.Body = this.match('body');
@@ -376,7 +380,7 @@ rules.block_expr = function() {
         r = this.match('if_');
     } else if ( this.test('FOR') ) {
         r = this.match('for_');
-    } else if ( this.test('APPLY') ) {
+    } else if ( this.testAny('APPLY-IMPORTS', 'APPLY') ) {
         r = this.match('apply');
     } else if ( this.test(':::') ) {
         r = this.match('cdata');
@@ -453,7 +457,12 @@ rules.for_ = function(p, a) {
 //  apply := 'apply' ( inline_expr | array | object ) template_mode? callargs?
 
 rules.apply = function(p, a) {
-    this.match('APPLY');
+    var keyword = this.matchAny('APPLY-IMPORTS', 'APPLY');
+    if ( keyword === 'apply' ) {
+        p.Start = 0;
+    } else {
+        p.Start = 1;
+    }
 
     if ( this.test('{') ) {
         p.Expr = this.match('object');
@@ -710,10 +719,13 @@ rules.xml_attrs = {
 
 };
 
-//  xml_attr := QNAME '=' inline_string
+//  xml_attr := QNAME ( ':' QNAME )? '=' inline_string
 
 rules.xml_attr = function(p, a) {
     p.Name = this.match('QNAME');
+    if (this.test(':')) {
+        p.Name += this.match(':') + this.match('QNAME');
+    }
     this.match('=');
     p.Value = this.match('inline_string');
 };
@@ -728,7 +740,7 @@ rules.xml_attr = function(p, a) {
 rules.inline_expr = {
 
     rule: function() {
-        return this.match('inline_or');
+        return this.match('inline_ternary');
     },
 
     options: {
@@ -737,10 +749,27 @@ rules.inline_expr = {
 
 };
 
+//  ---------------------------------------------------------------------------------------------------------------  //
+
+rules.inline_ternary = function(p, a) {
+    p.Condition = this.match('inline_or');
+
+    if ( this.test('?') ) {
+        this.match('?');
+        p.Then = this.match('inline_expr');
+        this.match(':');
+        p.Else = this.match('inline_expr');
+    } else {
+        return p.Condition;
+    }
+};
+
+//  ---------------------------------------------------------------------------------------------------------------  //
+
 rules.multiline_expr = {
 
     rule: function() {
-        return this.match('inline_or');
+        return this.match('inline_ternary');
     },
 
     options: {

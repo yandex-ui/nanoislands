@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "nanoislands": "*",
-    "yate": "0.0.64"
+    "yate": "0.0.x"
   },
   "engines": {
     "node": "*"

@@ -51,6 +51,12 @@ kind-button__text($this)
 
     min-width: 0 // For old Opera
 
+    // IE shrinking bug
+    /_:-ms-input-placeholder,
+    :root &
+      flex-basis: auto
+      width: 100%
+
 
 kind-button__before($this)
   +cache()

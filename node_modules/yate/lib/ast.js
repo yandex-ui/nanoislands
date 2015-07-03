@@ -95,6 +95,10 @@ yate.AST.prototype.isGlobal = function() {
     return !this.scope.parent;
 };
 
+yate.AST.prototype.isLocal = function() {
+    throw "No isLocal in " + this.id;
+};
+
 //  ---------------------------------------------------------------------------------------------------------------  //
 // Walk methods
 //  ---------------------------------------------------------------------------------------------------------------  //
@@ -157,6 +161,7 @@ yate.AST.prototype.w_deinclude = no.nop;
 yate.AST.prototype.w_deimport = no.nop;
 yate.AST.prototype.w_deitemize = no.nop;
 
+yate.AST.prototype.w_declarations = no.nop;
 yate.AST.prototype.w_action = no.nop;
 yate.AST.prototype.w_list = no.nop;
 yate.AST.prototype.w_validate = no.nop;

@@ -293,7 +293,7 @@ nb.define('select', {
                 this.$node.removeClass('_nb-with-icon');
             }
             if (params.text) {
-                if (!text) {
+                if (!text.length) {
                     content.append('<span class="_nb-button-text"></span>');
                     text = content.find('._nb-button-text');
                 }
