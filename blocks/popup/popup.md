@@ -124,14 +124,6 @@ There are 2 parts of popup control:
     </a>
 </div>
 
-<div>
-    <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'genericPopup', how: { animation: false}}" href="#right">
-        <span class="link__inner">
-            "generic popup without animation"
-        </span>
-    </a>
-</div>
-
 > <div example="genericPopup"/>
 >
 >```yate
@@ -141,6 +133,27 @@ There are 2 parts of popup control:
 >        'content': '<p>And welcome to nanoislands</p>'
 >    })
 >```
+
+<div>
+    <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'genericPopup-w-animation', how: { animation: false}}" href="#right">
+        <span class="link__inner">
+            "generic popup without animation"
+        </span>
+    </a>
+</div>
+
+> <div example="genericPopup-w-animation"/>
+>
+>```yate
+>    nb-popup({
+>    'id': 'genericPopup-w-animation'
+>    'animation': false()
+>    'titleContent': 'Hello, I’m your generic pop-up.'
+>    'content': '<p>And welcome to nanoislands</p>'
+> })
+>```
+
+
 
 <div>
     <a data-nb="popup-toggler" data-nb-popup-toggler="{id: 'genericPopup2'}" href="#default">

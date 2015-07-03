@@ -128,13 +128,6 @@ func buttons() {
 
     show('buttons-size', buttons-size)
 
-    show('buttons-shape', nb-button({
-          'shape': 'circle'
-          'content': 'Circle'
-      }))
-
-
-
     show('button-disabled',  nb-button({
         'disabled': true()
         'content': 'Disabled'
