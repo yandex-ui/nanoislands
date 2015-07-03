@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="../nanoislands.css"/>
+    <link type="text/css" rel="stylesheet" href="../libs/jquery-ui/jquery-ui.custom.css"/>
+
+    <script src="../libs/react-with-addons.js"></script>
+
+    <script src="../libs/jquery.min.js"></script>
+    <script src="../libs/jquery-ui/jquery-ui.custom.js"></script>
+    <script src="../react.nanoislands.min.js"></script>
+
+    <script>
+        $(function() {
+            var checkbox = React.render(React.createElement(Island, {
+                type: "checkbox",
+                options: {content: "123", disabled: true},
+                on: {
+                    "nb-checked": function() {
+                        console.log("checked")
+                    },
+                    "nb-unchecked": function() {
+                        console.log("unchecked")
+                    }
+                }
+            }), document.querySelector('.checkbox'));
+
+            checkbox.block.enable();
+
+            var suggest = React.render(React.createElement(Island, {
+                type: "suggest",
+                options: {
+                    source: '["Test1", "Test2", "Test3"]',
+                    hint: 'Test'
+                }
+            }), document.querySelector('.suggest'));
+
+
+            nb.init()
+        });
+    </script>
+</head>
+<body>
+<div class="checkbox"></div>
+<div class="suggest"></div>
+</body>
+</html>

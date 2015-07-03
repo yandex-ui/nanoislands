@@ -7,7 +7,7 @@
     "use strict";
 
     function ni(type, options) {
-        return yr.run("nanoislands", options, type);
+        return yr.run("react-nanoislands", options, type);
     }
 
     var Island = React.createClass({
@@ -55,6 +55,12 @@
         }
     });
 
+    nb.Block.prototype.getYateModuleName = function(){
+        return 'react-nanoislands';
+    };
+
     window.ni = ni;
     window.Island = Island;
+
+
 })();

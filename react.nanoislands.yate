@@ -1,4 +1,4 @@
-module "nanoislands"
+module "react-nanoislands"
 
 include "nanoislands.yate"
 
