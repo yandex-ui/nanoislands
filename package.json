@@ -17,7 +17,7 @@
     "yate": "0.0.71",
     "es5-shim": "4.0.5",
     "stylobate": "1.0.0-alpha.18",
-    "stylobate-islands": "1.0.0-alpha.23"
+    "stylobate-islands": "1.0.0-alpha.25"
   },
   "devDependencies": {
     "borschik": "0.4.x",
