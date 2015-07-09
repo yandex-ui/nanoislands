@@ -48,9 +48,7 @@ match .suggest nb {
 
 match / nb-suggest {
     <li class="_nb-suggest-item">
-        <a class="_nb-suggest-item-link">
-            apply .item nb-suggest
-        </a>
+        apply .item nb-suggest
     </li>
 }
 
