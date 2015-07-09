@@ -37,9 +37,9 @@
 
         componentWillUnmount: function() {
             if (this.block) {
+                this.block.destroy();
                 delete this.node;
                 delete this.block;
-                this.block.destroy();
             }
         },
 

@@ -1,4 +1,4 @@
-##### 1.0.9-alfa — react wrapper
+##### 1.0.9-alfa — patch
 
 * [React] — Fix js error on unmoutm island react component
 * [Suggest] — appendTo param, destroy fixes
@@ -6,6 +6,7 @@
 ###### Fixes
 * fix #498 - Вернуть старую версию блока arrow 
 * fix #499 — Инвертированное отображение toggler 
+* fix #501 — Сломали некоторые функции саджеста в 0.6.9 
 
 ##### 1.0.6-alfa — react wrapper
 
