@@ -11,6 +11,7 @@ Suggest element.
  * `'size'` {string}  - input size. `'s'` (no other sizes supported)
  * `'countMax'` {string}  - The number of elements in which the drop-down list appears scroll (default = 10)
  * `'classSuggest'` {string} — additional class for suggest popup
+ * `'appendTo'` {string} — selector where appendTp suggest Popup
  * `'content'` {string} — initial content og suggest field
  * `'input'` {object}:
     * `'attrs'` {object} - attrubutes for suggest node
@@ -42,6 +43,8 @@ suggest.input — доступ с наноблоку input
 > ```                                                                             
 
 Саджест с подсветкой, в котором представлена команда разработчиков Диска
+
+<div class="suggest-test"></div>
 
 > <div example="suggestUser"/>                                                         
 >

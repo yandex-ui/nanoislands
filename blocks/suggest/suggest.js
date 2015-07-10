@@ -221,6 +221,7 @@
                     of: this.$node.get(0)
                 },
                 countMax: this.$node.data('countMax'),
+                appendTo: this.$node.data('append-to'),
                 type: this.$node.data('type'),
                 size: this.$node.data('size'),
                 highlight: this.$node.data('highlight'),
@@ -477,7 +478,11 @@
                 this.$jUI.off('.nb-suggest');
                 if (jUIData && jUIData.uiSuggest) {
                     this.$jUI.suggest('destroy');
+                    this.$control.remove();
                 }
+
+                this.$control.remove();
+                this.$jUI.remove();
             }
             this.trigger('nb-destroyed', this);
             this.nbdestroy();

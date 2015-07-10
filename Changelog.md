@@ -1,3 +1,12 @@
+##### 1.0.9-alfa — react wrapper
+
+* [React] — Fix js error on unmoutm island react component
+* [Suggest] — appendTo param, destroy fixes
+
+###### Fixes
+* fix #498 - Вернуть старую версию блока arrow 
+* fix #499 — Инвертированное отображение toggler 
+
 ##### 1.0.6-alfa — react wrapper
 
 * react-wrapper added

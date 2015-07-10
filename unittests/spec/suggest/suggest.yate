@@ -1,9 +1,14 @@
 match .suggest {
+
+    <div class="append-test"></div>
+
     nb-suggest({
         'id': 'suggest'
         'name': 'myname'
         'source': '["Variant1", "Variant2", "Variant3"]'
         'content': 'myValue'
+        'classSuggest': 'classSuggest'
+        'appendTo': '.append-test'
     })
 
     nb-suggest({

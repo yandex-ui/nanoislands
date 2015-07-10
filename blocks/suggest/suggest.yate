@@ -12,6 +12,7 @@ match .suggest nb {
         @data-countMax = .countMax
         @data-type = .type
         @data-size = .size
+        @data-append-to = .appendTo
         @data-source = .source
         @data-highlight = .highlight
         @data-class-suggest = 'nb-island _nb-fly-island _nb-suggest-container _nb-{.size}-suggest'

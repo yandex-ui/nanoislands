@@ -48,6 +48,11 @@ describe("suggest Tests", function() {
             expect(this.suggest.$suggest.hasClass(suggestClassName)).to.be.ok();
         });
 
+        it('appendTo param should append popup to right node', function() {
+            var suggestClassName = this.suggest.$node.data('class-suggest');
+            expect($('.append-test').children().length > 0).to.be.ok();
+        });
+
         var hasEvent = function(node, eventName, eventNamespace) {
             var hasEvent = false;
 
@@ -150,6 +155,11 @@ describe("suggest Tests", function() {
             this.suggest.destroy();
             expect(jQuery.fn.suggest.calledWith('destroy')).to.be.ok();
             jQuery.fn.suggest.restore();
+        });
+
+        it('should destroy the suggest node', function() {
+            this.suggest.destroy();
+            expect($('.classSuggest').length).not.to.be.ok();
         });
 
         it('should unbind of all events the Suggest', function() {
