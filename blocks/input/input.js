@@ -438,6 +438,17 @@
                 this.error.nbdestroy();
                 this.error.$node.remove();
             }
+
+            if (this.input) {
+                this.input.destroy();
+            }
+
+            this.$hintGhost.remove();
+            this.$reset.remove();
+            this.$hint.remove();
+            this.$control.off('focusin focusout change');
+            this.$control.remove();
+
             $(document).off('mousedown', this._onmousedown);
             $(document).off('touchstart', this._onmousedown);
             this.nbdestroy();
