@@ -443,11 +443,10 @@
                 this.input.destroy();
             }
 
-            this.$hintGhost.remove();
-            this.$reset.remove();
-            this.$hint.remove();
-            this.$control.off('focusin focusout change');
-            this.$control.remove();
+            delete this.$reset;
+            delete this.$hint;
+            delete this.$hintGhost;
+            delete this.$control;
 
             $(document).off('mousedown', this._onmousedown);
             $(document).off('touchstart', this._onmousedown);
