@@ -515,6 +515,18 @@
                             event: event,
                             ui: ui
                         });
+                    },
+                    focus: function(event, ui) {
+                        that.trigger('nb-focused', {
+                            event: event,
+                            ui: ui
+                        });
+                    },
+                    blur: function(event, ui) {
+                        that.trigger('nb-blured', {
+                            event: event,
+                            ui: ui
+                        });
                     }
                 });
             }

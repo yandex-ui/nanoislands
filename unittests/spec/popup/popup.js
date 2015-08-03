@@ -251,6 +251,43 @@ describe("Popup Tests", function() {
             this.popup.close();
         });
 
+        it('#Focus menu item check event', function(done) {
+            this.popup = nb.find('popup-menu');
+            this.popup.on('nb-focused', function(eventName, data) {
+                expect(data).to.have.keys(['ui', 'event']);
+                expect(data.ui.item.find('a').attr('id')).to.be.equal('popup-menu-item-test');
+                done();
+            });
+
+            this.popup.open({where: this.toggler.node, appendTo: '.content'});
+            this.popup.$menu.menu('focus', null, this.popup.$menu.find('.ui-menu-item:last'));
+        });
+
+        it('#Select menu item check event', function(done) {
+            this.popup = nb.find('popup-menu');
+            this.popup.on('nb-select', function(eventName, data) {
+                expect(data).to.have.keys(['ui', 'event']);
+                expect(data.ui.item.find('a').attr('id')).to.be.equal('popup-menu-item-test');
+                done();
+            });
+
+            this.popup.open({where: this.toggler.node, appendTo: '.content'});
+            this.popup.$menu.menu('focus', null, this.popup.$menu.find('.ui-menu-item:last'));
+            this.popup.$menu.menu('select');
+        });
+
+        it('#Blur menu item check event', function(done) {
+            this.popup = nb.find('popup-menu');
+            this.popup.on('nb-blured', function(eventName, data) {
+                expect(data).to.have.keys(['ui', 'event']);
+                done();
+            });
+
+            this.popup.open({where: this.toggler.node, appendTo: '.content'});
+            this.popup.$menu.menu('focus', null, this.popup.$menu.find('.ui-menu-item:last'));
+            this.popup.$menu.menu('blur');
+        });
+
         it('#Click on overlay should close popup', function(done) {
             this.popupModal.on('nb-closed', function() {
                 done();
