@@ -53,5 +53,16 @@ match .popup {
         'modal': true()
     }
     'content': 'Hello, words!'
-})
+ })
+
+ nb-popup-menu({
+    'id': 'popup-menu'
+    'menu': [
+        {
+            'id': 'popup-menu-item-test'
+            'href': '#'
+            'content': 'Test'
+        }
+    ]
+ })
 }
