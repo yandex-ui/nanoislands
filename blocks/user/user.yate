@@ -22,10 +22,10 @@ match .user nb {
         apply . nb-main-attrs
 
 
-        if !.rightToLeft {
-            @class += ' _nb-user_ltr'
-        } else {
+        if .rightToLeft {
             @class += ' _nb-user_rtl'
+        } else if !.centered {
+            @class += ' _nb-user_ltr'
         }
 
         apply . nb-user-pic
