@@ -25,7 +25,7 @@ match .island nb {
             ''
         })
 
-        @class += 'nb-island _nb{ padding }{ type }-island'
+        @class += ' nb-island _nb{ padding }{ type }-island'
 
         if .content {
             html(.content)
