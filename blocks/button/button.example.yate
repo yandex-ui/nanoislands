@@ -52,6 +52,12 @@ func buttons() {
             'content': 'Promo'
             'theme': 'promo'
         })
+
+        ' '
+        nb-button({
+            'content': 'Flying'
+            'theme': 'flying'
+        })
     )
 
     show('buttons-theme', buttons-theme)

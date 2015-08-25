@@ -96,7 +96,7 @@
 
 
 #### Themes
-`'theme': 'action'  'pseudo'  'dark'  'promo'`
+`'theme': 'action'  'pseudo'  'dark'  'promo' 'flying'`
 > <div example="buttons-theme" >
 > </div>
 >
@@ -120,6 +120,12 @@
 > nb-button({
 >     'content': 'Promo'
 >     'theme': 'promo'
+> })
+>
+> ' '
+> nb-button({
+>     'content': 'Flying'
+>     'theme': 'flying'
 > })
 > ```
 
