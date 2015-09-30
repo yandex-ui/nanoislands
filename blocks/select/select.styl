@@ -19,12 +19,12 @@
 ._nb-small-normal-select ._nb-select-arrow
   skin: v3-icon_dropdown small
 
-.nb-select-dropdown ._nb-select-group-item > ._nb-select-a:after
+.nb-large-select-dropdown ._nb-select-group-item > ._nb-select-a:after
   skin: v3-icon_dropdown selecty
   content: ""
   top: 0.65em
 
-._nb-small-select-dropdown ._nb-select-group-item > ._nb-select-a:after
+._nb-select-dropdown ._nb-select-group-item > ._nb-select-a:after
   skin: v3-icon_dropdown selecty small
   content: ""
   top: 0.55em
@@ -43,9 +43,9 @@
   reset: li
 
 ._nb-select-a
-  skin: menu__item (_checked '.is-selected &')
+  skin: menu__item (_size small) (_checked '.is-selected &')
   white-space: nowrap
-  padding-right: 21px
+  padding-right: 19px
 
 ._nb-select-separator
   skin: menu__separator padded
@@ -55,11 +55,13 @@
   overflow-y: auto
   padding: 0
 
-._nb-small-select-dropdown ._nb-select-item ._nb-select-a
-._nb-small-pseudo-select-dropdown ._nb-select-item ._nb-select-a
-._nb-small-action-select-dropdown ._nb-select-item ._nb-select-a
-  skin: menu__item_size small
-  padding-right: 19px
+._nb-large-select-dropdown,
+._nb-large-pseudo-select-dropdown,
+._nb-large-action-select-dropdown,
+._nb-large-dark-select-dropdown
+  & ._nb-select-item ._nb-select-a
+    skin: menu__item_size
+    padding-right: 21px
 
 .nb-select-dropdown .ui-state-focus
   skin: menu__item_hover

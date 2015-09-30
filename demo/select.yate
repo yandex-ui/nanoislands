@@ -305,6 +305,55 @@ func select-small() {
     })
     " Текст рядом с селектами"
 }
+func select-large() {
+    nb-select({
+        'size': 'l'
+        'id': 'select11'
+        'direction': 'top'
+        'items': [
+            {
+                'text': 'Карта'
+                'value': 'option1'
+                'selected': 'true'
+            }
+            {
+                'text': 'Спутник'
+                'value': 'option2'
+            }
+            {
+                'text': 'Гибрид'
+                'value': 'option3'
+            }
+            {
+                'text': 'Народная карта'
+                'value': 'option4'
+            }
+        ]
+    })
+    ' '
+    nb-select({
+      'size': 'l'
+      'id': 'select12'
+      'class': 'my-test-class'
+      'theme': 'pseudo'
+      'items': [
+          {
+              'text': 'Карта'
+              'value': 'option1'
+              'selected': 'true'
+          }
+          {
+              'text': 'Спутник'
+              'value': 'option2'
+          }
+          {
+              'text': 'Гибрид'
+              'value': 'option3'
+          }
+      ]
+    })
+    " Текст рядом с селектами"
+}
 
 //func select-disable() {
 //    block = {
@@ -329,6 +378,13 @@ func selects() {
         </div>
 
         show(select-small())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Size: L '
+        </div>
+
+        show(select-large())
     </div>
     // <div class="demo-section">
     //     <div class="demo-h3">
