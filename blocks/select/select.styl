@@ -31,24 +31,26 @@
 
 
 .nb-select-dropdown .ui-menu
-  skin: isle fly
-  skin: menu no-elements padded
+  skin: v3-isle (_type fly)
+  skin: v3-menu _padded
   position: absolute
   z-index: 10000
 
   reset: ul
   list-style-type: none // move to reset
 
+  // Fixing incorrect width on auto scroll
+  &[style*='max-height']
+    overflow-y: scroll !important
+
 ._nb-select-item
   reset: li
 
 ._nb-select-a
-  skin: menu__item (_size small) (_checked '.is-selected &')
-  white-space: nowrap
-  padding-right: 19px
+  skin: v3-menu__item _nested (_checked '.is-selected &') _ellipsis
 
 ._nb-select-separator
-  skin: menu__separator padded
+  skin: v3-menu__separator _padded
 
 ._nb-select-popup ._nb-popup-content
   overflow-x: hidden
@@ -59,9 +61,16 @@
 ._nb-large-pseudo-select-dropdown,
 ._nb-large-action-select-dropdown,
 ._nb-large-dark-select-dropdown
+
+  & .ui-menu
+    skin: v3-menu_ (_size large) (_padded '') (_ellipsis '')
+
   & ._nb-select-item ._nb-select-a
-    skin: menu__item_size
-    padding-right: 21px
+    skin: v3-menu__item _nested (_size large) (_checked '.is-selected &') (_hover '') (_ellipsis '')
+
+  & ._nb-select-item.is-selected ._nb-select-a
+    // Or just do `height: 17px` on `:before`?
+    skin: v3-menu__item_checked (_size large)
 
 .nb-select-dropdown .ui-state-focus
   skin: menu__item_hover
@@ -71,7 +80,7 @@
   kind: disabled 0.6 (__nested '')
 
 ._nb-select-seperator-item
-  skin: menu__separator padded
+  skin: v3-menu__separator _padded
 
 ._nb-is-disabled._nb-select-button:focus:after
   box-shadow: none
