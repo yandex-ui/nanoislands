@@ -22,28 +22,25 @@
   right: 2px
 
 ._nb-popup
-  & ._nb-popup-link
-    skin: menu__item (_hover '&:hover, &:focus')
+  &-link
+    skin: v3-menu__item (_size large) (_hover '&:hover, &:focus') _ellipsis
     outline: none
 
-  & ._nb-popup-separator
-    skin: menu__separator padded
+  &-separator
+    skin: v3-menu__separator _padded (_size large)
 
-  & ._nb-popup-menu
-  & ._nb-popup-line
+  &-menu,
+  &-line
     margin: 0
     padding: 0
     list-style: none
     outline: none
 
-  & ._nb-popup-line
-    &:first-child
-      margin-top: ($islands_s / 2)
-    &:last-child
-      margin-bottom: ($islands_s / 2)
+  &-menu
+    skin: v3-menu (_size large) (_hover '&:hover, &:focus')
 
 ._nb-modal-popup
-  ._nb-popup-title
+  & ._nb-popup-title
     font: $font-h3
     padding: $islands_s
     display: block
@@ -52,16 +49,16 @@
     white-space: nowrap
 
 
-  ._nb-popup-content
+  & ._nb-popup-content
     font: $font-p1
     padding: 0 $islands_s
 
-  ._nb-popup-buttons
+  & ._nb-popup-buttons
 
     padding: $islands_s
     padding-top: $islands_s
 
-    .nb-button
+    & .nb-button
       margin-right:  $islands_s
 
 .nb-popup.ui-dialog-fixed
@@ -75,7 +72,7 @@
   padding:  0
 
 ._nb-popup-outer
- .nb-popup
+ & .nb-popup
    position: static
 
 .ui-widget-overlay.ui-front
@@ -83,7 +80,7 @@
   background: rgba(0,0,0,0.3)
 
 ._nb-island-modal-popup
-  ._nb-popup-title
+  & ._nb-popup-title
     padding: 0 2*$gapM 0 $gapM
     height: 50px
     line-height: @height
@@ -93,11 +90,11 @@
     background: $backgroundPrimary
     border-bottom: 1px solid darken($background, 16%)
 
-  ._nb-popup-content
+  & ._nb-popup-content
     font: $font-p1
     padding: 0
 
-  ._nb-popup-buttons
+  & ._nb-popup-buttons
     margin-top: -1px
     padding: ($gapS + 1px) $gapS $gapS
 
@@ -119,12 +116,12 @@
   border: 0
   box-shadow: none
 
-  ._nb-popup-content
-  ._nb-popup-buttons
-  ._nb-popup-title
+  & ._nb-popup-content,
+  & ._nb-popup-buttons,
+  & ._nb-popup-title
     padding: 0
 
-  ._nb-popup-content:before
-  ._nb-popup-content:after
+  & ._nb-popup-content:before,
+  & ._nb-popup-content:after
     margin: 0
     display: none
