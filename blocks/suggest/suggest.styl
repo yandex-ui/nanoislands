@@ -7,15 +7,20 @@ nb-suggest()
     width: 100%
 
   ._nb-suggest-container
-    padding: 0
+    skin: v3-menu (_size large)
+
+    &._nb-small-suggest
+      skin: v3-menu_ (_size medium) (_padded '')
 
   ._nb-suggest-container.nb-island
     position: absolute
 
   ._nb-suggest-item
-    skin: menu__item (_hover '&.ui-state-focus')
+    skin: v3-menu__item _ellipsis (_size large) (_hover '&.ui-state-focus')
+
+    height: auto !important // As there could be custom content
 
   ._nb-small-suggest ._nb-suggest-item
-    skin: menu__item small no-hover
+    skin: v3-menu__item (_hover '')
 
 nb-suggest()
