@@ -44,6 +44,14 @@ func button-action() {
     })
 }
 
+func button-circle() {
+    nb-button({
+        'content': 'Выбрать&hellip;'
+        'size': 'm'
+        'shape': 'circle'
+    })
+}
+
 func button-pseudo() {
     nb-button({
         'content': 'Выбрать&hellip;'
@@ -191,6 +199,16 @@ func buttons() {
         </div>
 
         show(button-action())
+    </div>
+    <div class="demo-section">
+        <div class="demo-h3">
+            'Shape: circle '
+            <span class="demo-code demo-code_small">
+                '._nb-is-circle'
+            </span>
+        </div>
+
+        show(button-circle())
     </div>
     <div class="demo-section">
         <div class="demo-h3">
