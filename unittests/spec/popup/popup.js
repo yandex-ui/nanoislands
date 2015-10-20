@@ -45,6 +45,102 @@ describe("Popup Tests", function() {
         });
     });
 
+    describe("Popup extra modifier", function() {
+        describe("in case of popup_mod", function() {
+            beforeEach(function() {
+                this.popupWithMod = nb.find('popup-with-mod');
+            });
+            afterEach(function() {
+                this.popupWithMod.destroy();
+                this.popupWithMod = null;
+            });
+
+            it("nb-popup-outer_mod should be added to jquery ui wrapper", function(done) {
+                var popup = this.popupWithMod;
+
+                popup.on('nb-opened', function() {
+                    var $wrapper = $(popup.node.widget.uiDialog);
+                    expect($wrapper.hasClass('nb-popup-outer_mod')).to.be.ok();
+                    done();
+                });
+                popup.open();
+            });
+
+            it("should have nb-popup-outer_mod after reopening", function(done) {
+                var popup = this.popupWithMod;
+                var isFirstOpen = true;
+
+                popup.on('nb-opened', function() {
+                    if (isFirstOpen) {
+                        popup.on('nb-closed', function() {
+                            isFirstOpen = false;
+                            popup.open();
+                        });
+                        popup.close();
+                    } else {
+                        var $wrapper = $(popup.node.widget.uiDialog);
+                        expect($wrapper.hasClass('nb-popup-outer_mod')).to.be.ok();
+                        done();
+                    }
+                });
+                popup.open();
+            })
+        });
+
+        describe("in case of mix with my-block__element my-block__element_mod", function() {
+            beforeEach(function() {
+                this.popupWithMix = nb.find('popup-with-mix');
+            });
+            afterEach(function() {
+                this.popupWithMix.destroy();
+                this.popupWithMix = null;
+            });
+
+            it("nb-popup-outer_mod should be added to jquery ui wrapper", function(done) {
+                var popup = this.popupWithMix;
+
+                popup.on('nb-opened', function() {
+                    var $wrapper = $(popup.node.widget.uiDialog);
+                    expect($wrapper.hasClass('nb-popup-outer_mod')).to.be.ok();
+                    done();
+                });
+                popup.open();
+            });
+
+            it("nb-popup-outer_element should not be added to jquery ui wrapper", function(done) {
+                var popup = this.popupWithMix;
+
+                popup.on('nb-opened', function() {
+                    var $wrapper = $(popup.node.widget.uiDialog);
+                    expect($wrapper.hasClass('nb-popup-outer_element')).to.not.be.ok();
+                    done();
+                });
+                popup.open();
+            });
+        });
+
+        describe("in case _global-mod", function() {
+            beforeEach(function() {
+                this.popupWithGlobal = nb.find('popup-with-global-mod');
+            });
+            afterEach(function() {
+                this.popupWithGlobal.destroy();
+                this.popupWithGlobal = null;
+            });
+
+            it("nb-popup-outer_global-mod should not be added to jquery ui wrapper", function(done) {
+                var popup = this.popupWithGlobal;
+
+                popup.on('nb-opened', function() {
+                    var $wrapper = $(popup.node.widget.uiDialog);
+                    expect($wrapper.hasClass('nb-popup-outer_global-mod')).to.not.ok();
+                    done();
+                });
+                popup.open();
+            });
+        });
+    });
+
     describe("#Toggler", function() {
         it("#Open", function() {
             this.toggler.open();
