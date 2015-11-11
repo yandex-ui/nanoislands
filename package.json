@@ -6,7 +6,7 @@
   },
   "name": "nanoislands",
   "description": "Yate/Stylus/jQuery-UI library for Yandex corporate style",
-  "version": "1.0.13-alfa",
+  "version": "1.0.14-alfa",
   "licence": "MIT",
   "homepage": "http://yandex-ui.github.io/nanoislands/",
   "repository": {
@@ -17,7 +17,7 @@
     "yate": "0.0.71",
     "es5-shim": "4.0.5",
     "stylobate": "1.0.0-alpha.20",
-    "stylobate-islands": "1.0.0-alpha.28"
+    "stylobate-islands": "1.0.0-alpha.29"
   },
   "devDependencies": {
     "borschik": "0.4.x",
