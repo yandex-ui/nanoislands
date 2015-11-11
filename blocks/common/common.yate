@@ -24,7 +24,13 @@ match .* nb-main-attrs {
     }
 
     for .attrs.* {
-        @{name()} = .
+        if name() != 'class' {
+            @{name()} = .
+        } else {
+            @class += for . {
+                ' {.}'
+            }
+        }
     }
 }
 

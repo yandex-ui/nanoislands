@@ -95,10 +95,12 @@ match .input nb {
                 </span>
             }
 
-            <input type="text" class="_nb-input-controller" value="{.content}">
+            <input type="text" value="{.content}">
                 for .attrs.* {
                     @{name()} = .
                 }
+
+                @class += ' _nb-input-controller'
 
                 if .name {
                     @name = .name
@@ -180,10 +182,12 @@ match .textarea nb {
         }
 
         <span class="_nb-input-content">
-            <textarea class="_nb-input-controller">
+            <textarea>
                 for .attrs.* {
                     @{name()} = .
                 }
+
+                @class += ' _nb-input-controller'
 
                 if .name {
                     @name = .name
