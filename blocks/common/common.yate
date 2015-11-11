@@ -1,5 +1,5 @@
 // основной шаблон для нанобока
-match .* nb-main-attrs {
+match .* nb-main-attrs (omitAttrs) {
 
     apply . nb-attrs
     apply .* nb-attrs
@@ -23,12 +23,14 @@ match .* nb-main-attrs {
         @data-nb-{name()} = .
     }
 
-    for .attrs.* {
-        if name() != 'class' {
-            @{name()} = .
-        } else {
-            @class += for . {
-                ' {.}'
+    if !omitAttrs == true() {
+        for .attrs.* {
+            if name() != 'class' {
+                @{name()} = .
+            } else {
+                @class += for . {
+                    ' {.}'
+                }
             }
         }
     }

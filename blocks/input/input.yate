@@ -31,7 +31,7 @@ match .input nb {
            'type': 'complex'
         })
 
-        apply . nb-main-attrs
+        apply . nb-main-attrs (true())
 
         @class += ' _init'
 
@@ -138,7 +138,7 @@ match .textarea nb {
 
         @class +=' _init'
 
-        apply . nb-main-attrs
+        apply . nb-main-attrs (true())
 
         if !( .static ){
             @data-nb='input'

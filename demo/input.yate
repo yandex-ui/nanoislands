@@ -45,6 +45,9 @@ func input-reset() {
         'reset': true()
         'size': 'm'
         'content': 'privet'
+        'attrs': {
+            'class': 'privet'
+        }
     })
 }
 
