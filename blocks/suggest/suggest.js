@@ -478,11 +478,7 @@
                 this.$jUI.off('.nb-suggest');
                 if (jUIData && jUIData.uiSuggest) {
                     this.$jUI.suggest('destroy');
-                    this.$control.remove();
                 }
-
-                this.$control.remove();
-                this.$jUI.remove();
             }
             this.trigger('nb-destroyed', this);
             this.nbdestroy();
