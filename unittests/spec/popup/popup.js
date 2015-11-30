@@ -45,6 +45,39 @@ describe("Popup Tests", function() {
         });
     });
 
+    describe("Popup should be fixed", function() {
+        beforeEach(function() {
+            this.toggler1 = nb.find('popup-toggler-fixed1');
+            this.toggler2 = nb.find('popup-toggler-fixed2');
+        });
+        afterEach(function() {
+            this.toggler1.destroy();
+            this.toggler2.destroy();
+        });
+
+        it("when it`s toggler has how: 'fixed' option", function(done) {
+            var toggler = this.toggler1;
+            var popup = toggler.getPopup();
+
+            popup.on('nb-opened', function() {
+                expect(popup.$node.parent().hasClass('ui-dialog-fixed')).to.be.ok();
+                done();
+            });
+            toggler.open();
+        });
+
+        it("when it has data-nb-how attr defined as fixed", function(done) {
+            var toggler = this.toggler2;
+            var popup = toggler.getPopup();
+
+            popup.on('nb-opened', function() {
+                expect(popup.$node.parent().hasClass('ui-dialog-fixed')).to.be.ok();
+                done();
+            });
+            toggler.open();
+        });
+    });
+
     describe("Popup extra modifier", function() {
         describe("in case of popup_mod", function() {
             beforeEach(function() {
