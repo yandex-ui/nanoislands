@@ -59,6 +59,11 @@ describe("Input Tests", function() {
                 input.focus();
                 expect(input.$hint.css('visibility')).to.equal('hidden');
             });
+
+            it("Hint should not be visible if we have content", function() {
+                var input = nb.find('input-hint-content');
+                expect(input.$node.find('._nb-input-hint').length).to.equal(0);
+            });
         });
 
         describe("Tabindex", function() {

@@ -18,12 +18,14 @@ match .radio-button nb {
 
         @class += " nb-group"
 
+        controlName = 'radio-button_{_nb-uniq()}'
+
         apply . nb-main-attrs
         for .group {
 
             uniq = 'nb-radio-button_{_nb-uniq()}'
             <span class="_nb-radio-button-button nb-complex-group-item">
-                <input class="_nb-radio-button-radio" type="radio" name="{ ..name }" value="{ .value }" id="{ uniq }">
+                <input class="_nb-radio-button-radio" type="radio" value="{ .value }" id="{ uniq }">
                     if .checked {
                         @checked = 'checked'
                     }
@@ -35,13 +37,18 @@ match .radio-button nb {
                         @tabindex = .tabindex
                     }
 
-                    if .name {
-                        @name = .name
-                    }
+                    @name = (
+                            if (.name) {
+                                .name
+                            } else if (.attrs.name) {
+                                .attrs.name
+                            } else if (..name) {
+                                ..name
+                            } else {
+                                controlName
+                            }
+                        )
 
-                    if .attrs.name {
-                        @name = .attrs.name
-                    }
                 </input>
 
                 nb-button(_nb-extend(., {

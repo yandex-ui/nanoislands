@@ -13,6 +13,7 @@ There are 2 parts of popup control:
 * `id` {string} — id of connecte popup
 * `appendTo` {string} —  selector where append to
 * `how` {object} – http://api.jqueryui.com/position/
+* `how.fixed` {boolean} – for position fixed popup
 ```
 {
     at: '..',
@@ -113,6 +114,8 @@ There are 2 parts of popup control:
 * `close`{object|boolean} — with default cloase with `true()` or custom object:
   * `class` {array} — custom classes for close
   * `attrs` {object} — custom attrs for close
+* `data-nb` {object}
+    * `fixed`: {boolean} — for position fixed popup 
 
 ### Example of generic popup
 

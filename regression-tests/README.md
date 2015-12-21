@@ -1,79 +1,73 @@
-Тесты
-=====
+#Readme
 
-Запустить тесты можно так:
-```sh
-cd test
-npm install
-make test commit="origin/master"
+To run test you need to install casperjs and phantomjs. The easiest way is to use homebrew for mac. See [here](http://docs.casperjs.org/en/latest/installation.html) for details.
+
+To update screenshots over *all* blocks type
+
+```bash
+grunt regtest --update
 ```
-На место `commit` подставьте интересующий вас коммит.
 
-В файле `report.html` будет лежать страничка с результатами тестов.
-Этот файл получается через yate-преобразование из файла `report.json` на `tools/report.yate`
+To test screenshots over *all* blocks type
 
-Для работы тестов нужна бибилотека `imagemagick`. Но в любой момент можно отказаться от этой зависимости,
-если написать собственную диффалку картинок на canvas. Те, что я находил не пашут нормально. 
-
-На сервере `ufo.dev.yandex.net` все настроено.
-```sh
-ssh ufo.dev.yandex.net
-mkdir ufo && cd ufo
-git clone git@github.yandex-team.ru:UFO/nanoislands.git
-cd nanoislands
-npm install
-git submodule update --init
-cd test
-npm install
-make test commit="origin/master"
+```bash
+grunt regtest --diff
 ```
-Теперь можно посмотреть отчет на странице `http://nanoislands.<username>.ufo.dev.yandex.net/test/report.html`
 
-Как это работает
-================
+To test particular blocks type
 
-Файлы `test/block/**.test.js` представляют собой commonjs модули, в которых описываются тесты:
+```bash
+grunt --[diff|update]=block1,[...]
+```
 
-```js
-// test/block/button/button.test.js
-module.exports = {
-    'Default hovered button': {
-        tpl: 'button.yate',
-        args: {
-            content: 'Button',
-            class: '_hover'
-        }
-    }
+For example to update button and select:
+
+```bash
+grunt regtest --update=button,select
+```
+
+This will remove button.[some-fancy-state].png and select.[some-fancy-state].png from screenshots and insert new ones.
+
+To diff them type:
+
+```bash
+grunt regtest --diff=button,select
+```
+
+This will create or replace button.[some-fancy-state].diff.png and select.[some-fancy-state].png files and print to console if any failures occured. Actual diff images located in failures directory.
+
+For verbose mode use -e or -explain key at the end of statement like so:
+
+```bash
+grunt regtest --diff=button,select -e
+```
+
+## Whats under the hood
+
+The script does basically the following:
+* iterates over all arguments you've passed (if no arguments passed iterates over all folder inside 'blocks' folder)
+* During this iteration it checks if the testConfig.json exists and parses it (see below for full description of config file).
+* Takes template of each block with following priority: template from testConfig.json, [anything].test.yate, [anything].test.yate. If none of them are found proceed without processing current block.
+* Renders taken template into index.yate.js (*via index.yate*)
+* Runs casper which heads to localhost and does testing
+* requires scenario from testFile or rtest.js if it exists. If none of this is present only default state will be captured.
+
+** testConfig.json
+```json
+{
+    "testFile": "filename.yate",
+    "scenarioFile": "path to file relative to current directory" (default "rtest.js")
 }
 ```
+**testFile** is the one that has highest priority in choosing template for testing and requiring scenario file as described above. Change it if you can't conform this convention: [name].test.yate
 
-Здесь говорится, запустить шаблон `tpl: 'button.yate'` с аргументами `args: { ... }`.
+Instead of simply taking screenshot of body one may implement any scenario she wants by referencing testFile in testConfig.json. See [phantomcss docs](https://github.com/Huddle/PhantomCSS) for details. Please note that scenarios are not executed in node but rather in casperjs environment. Thus there are some picularities:
+* All vars defined in phantom-capture.js are global for scenario file. Therefore you can reference phantomcss, args, blockName, etc.
+* Use globally defined util tom simplify writing tests. Please note that almost all methods of util return functions. You can execute them immediately or pass as array to util.sequence which is better since it utilises casper's .then method. In most cases, this is the correct way to use tests.
+* Once again, scenario is not executed in standard node environment. So don't expect node standard modules to behave normally (e.g. fs).
 
-```
-match / content {
-    @style="width: 100px; height: 100px"
-    nb-button(.args)
-}
-```
 
-Полученный html будет скриншотится и сравниваться в будущем.
 
-Путь до шаблона рассчитывается относительно самого файла с тестами. В данном случае это будет `test/block/button/button.yate`
 
-Перед началом тестов в директорию `origin` кладется дерево репозитория на момент коммита,
-указанного в переменной `commit` (`make test commit="a4b3353"`)
 
-Затем все модули с тестами собираются в большой массив, по которому генерируюются html'ки в директорию `html`.
-В это директории получаются файлы `1.html` и `1.origin.html`.
-Где `1.html` это страничка полученная из текущего репозитория, а `1.origin.html` полученная из указанного коммита.
-
-Дальше в несколько потоков запускается скриншотилка `tools/screenshot`, которая делает скриншот всех страниц.
-Затем через `imagemagic` все скриншоты сравниваются, и запускается генертор отчета. Очень важно, чтобы полученные
-скриншоты были одного размера. Для этого необходимо в тестовом шаблоне yate задать жесткие размермеры контейнера:
-
-```
-@style="width: 100px; height: 100px"
-```
-
-Размер выбирается исходя из ваших пожеланий.
 

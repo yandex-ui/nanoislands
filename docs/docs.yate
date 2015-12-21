@@ -60,25 +60,7 @@ match / {
 
 
             <div class="page-inner">
- arrows()
-            buttons()
-            inputs()
-            checkbox()
-            selects()
-            dropzones()
-            gaps()
-            headers()
-            groups()
-            islands()
-            input-groups()
-            icons()
-            loaders()
-            progress()
-            radio-buttons()
-            popups()
-            sliders()
-            suggests()
-            togglers()
+
                 <ol class="blocks-menu">
                     apply .* blocks-menu-item
                 </ol>
@@ -86,6 +68,26 @@ match / {
                     apply .* blocks-item
                 </ul>
             </div>
+
+             arrows()
+                        buttons()
+                        inputs()
+                        checkbox()
+                        selects()
+                        dropzones()
+                        gaps()
+                        headers()
+                        groups()
+                        islands()
+                        input-groups()
+                        icons()
+                        loaders()
+                        progress()
+                        radio-buttons()
+                        popups()
+                        sliders()
+                        suggests()
+                        togglers()
 }
 
 

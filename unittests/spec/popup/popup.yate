@@ -17,6 +17,19 @@ match .popup {
         </span>
     </a>
 
+    // тогглер сам задает fixed для попапа
+    <a id="popup-toggler-fixed1" class="_init" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup-fixed1', appendTo: '.content', how: 'fixed'}}" href="#default">
+        <span class="link__inner">
+            "popup"
+        </span>
+    </a>
+
+    <a id="popup-toggler-fixed2" class="_init" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup-fixed2', appendTo: '.content'}}" href="#default">
+        <span class="link__inner">
+            "popup"
+        </span>
+    </a>
+
     // Попап, находящийся в тесном блоке, проверяется выравнивание хвостика.
     <div class="tight" style="width: 50px; height: 20px;">
         <a id="popup-toggler-tight" class="_init" data-nb="popup-toggler" data-nb-popup-toggler="{{id: 'popup-tight', appendTo: '.tight'}}" href="#default">
@@ -55,6 +68,46 @@ match .popup {
     'content': 'Hello, words!'
  })
 
+ nb-popup({
+    'id': 'popup-with-mod'
+    'class': 'popup_mod'
+    'data-nb': {
+        'modal': true()
+    }
+    'content': 'Hello, words!'
+ })
+
+  nb-popup({
+    'id': 'popup-with-global-mod'
+    'class': '_global-mod'
+    'data-nb': {
+        'modal': true()
+    }
+    'content': 'Hello, words!'
+ })
+
+ nb-popup({
+    'id': 'popup-with-mix'
+    'class': 'my-block__element my-block__element_mod'
+    'data-nb': {
+        'modal': true()
+    }
+    'content': 'Hello, words!'
+ })
+
+ nb-popup({
+    'id': 'popup-fixed1'
+    'content': 'Hello, words!'
+ })
+
+ nb-popup({
+    'id': 'popup-fixed2'
+    'data-nb': {
+        'how': 'fixed'
+    }
+    'content': 'Hello, words!'
+ })
+
  nb-popup-menu({
     'id': 'popup-menu'
     'menu': [
@@ -66,3 +119,4 @@ match .popup {
     ]
  })
 }
+

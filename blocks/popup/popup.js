@@ -1,6 +1,6 @@
-/*! 
+/*!
  * ### jQuery UI Depends
- * 
+ *
  * - jquery.ui.dialog.js
  * - jquery.ui.core.js
  * - jquery.ui.widget.js
@@ -110,8 +110,6 @@
         },
         _keepFocus: $.noop,
         _create: function() {
-            this.options.dialogClass += _getUIDialogExtraClass.call(this);
-            this.options.dialogClass += (this.options.position.fixed) ? ' ui-dialog-fixed' : '';
             this._super();
             this.element[0].widget = this;
         },
@@ -454,12 +452,12 @@
      *  функция вернет строку 'nb-popup-outer_mod nb-popup-outer_another-mod'
      *
      */
-    function _getUIDialogExtraClass() {
-        var popupClasses = this.element.attr('class').split(' ') || [];
+    function _getUIDialogExtraClass(classes) {
+        var popupClasses = classes.split(' ') || [];
         // не матчимся на _ в начале слова
         // иначе это глобальный класс,
         // не мачимся на __, чтобы ислючить элемент
-        var modRe = /\w+\_(?!_)/;
+        var modRe = /[^_]_(?!_)/;
         var uiDialogClasses;
 
         uiDialogClasses = $.map(popupClasses, function(item) {
@@ -685,19 +683,19 @@
             var that = this;
             var params = params || {};
             var how = how || {};
-
             var data = this.nbdata();
+
+            if (how === 'fixed' || data.how === 'fixed') {
+                how = {fixed: true};
+            }
+
             // по умолчанию попап позиционирова абсолютно
             var isFixed = false;
 
-            // сделаем попап фиксированным, если
-            // у popup-toggler задан how.fixed = true
+            // сделаем попап фиксированным, если:
+            // - у popup-toggler задан how.fixed = true
+            // - был задан атрибут data-nb-how = 'fixed' у самого попапа
             if (how.fixed) {
-                isFixed = true;
-            }
-            // или если был задан атрибут data-nb-how = 'fixed'
-            // в настройках самого попапа
-            if (data && data.how == 'fixed') {
                 isFixed = true;
             }
 
@@ -739,6 +737,10 @@
 
             //  Модальный попап двигать не нужно.
             if (this.modal) {
+                var dialogClass = params['class'] || '_nb-popup-outer ui-dialog-fixed ';
+
+                dialogClass += _getUIDialogExtraClass(this.$node.attr('class'));
+
                 $(this.node).baseDialog({
                     height: params.height || data.height,
                     minHeight: params.minHeight || data.minheight,
@@ -749,7 +751,7 @@
                     modal: true,
                     resizable: false,
                     draggable: false,
-                    dialogClass: params['class'] || '_nb-popup-outer ui-dialog-fixed',
+                    dialogClass: dialogClass,
                     close: function() {
                         that.close();
                     },
@@ -765,12 +767,22 @@
             }
 
             if (!this.animationInProgress) {
+                var dialogClass = '_nb-popup-outer ui-dialog-no-close ';
+
+                if (params['class']) {
+                    dialogClass += params['class'];
+                }
+                if (isFixed) {
+                    dialogClass += ' ui-dialog-fixed';
+                }
+                dialogClass += _getUIDialogExtraClass(this.$node.attr('class'));
+
                 this.$node.hide().contextDialog({
                     height: params.height || data.height || 'auto',
                     minHeight: params.minHeight || data.minheight || 'auto',
                     maxHeight: params.maxHeight || data.maxheight || 'auto',
                     width: params.width || data.width || 'auto',
-                    dialogClass: params['class'] ? '_nb-popup-outer ui-dialog-no-close ' + params['class'] : '_nb-popup-outer ui-dialog-no-close',
+                    dialogClass: dialogClass,
                     position: {
                         // где попап
                         at: (how.at ? how.at : 'center bottom'),// + ' center',
@@ -781,7 +793,7 @@
                         // horizontal: fit, пытаемся уместить в window
                         // vertical: flip - выбирает наилучший вариант - вверх или вних
                         collision: (how.collision ? how.collision : 'fit flip'),
-                        using: using || how.using,
+                        using: how.using || using,
                         within: how.within
                     },
                     close: function() {
@@ -903,7 +915,11 @@ nb.define('popup-toggler', {
      *  {
      *       id : 'id' — popupID or link to nb.block
      *       where: '#elem' — to what elem popup attached
-     *       how: { my: 'left', at:'right' } — to to open popup
+     *       how: {
+     *          my: 'left',
+     *          at:'right',
+     *          fixed: true — for position fixed popup
+     *      } — to to open popup
      *   }
      *  ```
      * @returns {Object} nb.block
@@ -948,7 +964,11 @@ nb.define('popup-toggler', {
      *  {
      *       id : 'id' — popupID or link to nb.block
      *       where: '#elem' — to what elem popup attached
-     *       how: { my: 'left', at:'right' } — to to open popup
+     *       how: {
+     *          my: 'left',
+     *          at:'right',
+     *          fixed: true — for position fixed popup
+     *      } — to to open popup
      *   }
      *  ```
      * @returns {Object} nb.block

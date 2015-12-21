@@ -177,7 +177,7 @@
          *
          * ```
          * input.showError({
-         *     where: [100, 200],
+         *     where: '#someElem',
          *     how: 'top bottom'
          *     class: 'test'
          *     appendTo: '#test'

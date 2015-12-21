@@ -1,4 +1,0 @@
-match / content {
-    @style="width: 100px; height: 100px"
-    nb-button(.args)
-}

@@ -14,7 +14,7 @@
     "url": "git://github.com/yandex-ui/nanoislands.git"
   },
   "dependencies": {
-    "yate": "0.0.71",
+    "yate": "0.0.x",
     "es5-shim": "4.0.5",
     "stylobate": "1.0.0-alpha.20",
     "stylobate-islands": "1.0.0-alpha.29"
@@ -31,11 +31,9 @@
     "grunt-jscs-checker": "~0.4.x",
     "grunt-karma": "~0.7.x",
     "jscs": "1.0.x",
-
     "mocha": "~1.17.0",
     "expect.js": "*",
     "sinon": "*",
-
     "karma": "~0.12.x",
     "karma-mocha": "~0.1.x",
     "karma-sinon-expect": "~0.1.x",
@@ -43,12 +41,13 @@
     "karma-yate-preprocessor": "~0.1.x",
     "karma-phantomjs-launcher": "~0.1.x",
     "karma-firefox-launcher": "~0.1.x",
-
     "grunt-contrib-watch": "*",
     "grunt-shell": "*",
     "dox": "0.4.x",
     "concat-stream": "1.4.x",
-    "marked": "0.3.x"
+    "marked": "0.3.x",
+    "express": "*",
+    "phantomcss": "*"
   },
   "engines": {
     "node": "*"
