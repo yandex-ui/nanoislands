@@ -1,3 +1,7 @@
+##### 1.0.16
+
+* Most of islands v3 styles added.
+
 ##### 1.0.9-alfa — patch
 
 * [React] — Fix js error on unmoutm island react component
