@@ -1,31 +1,35 @@
 nb.define('tooltip-jq-toggler', {
-
-    //NOTES: из-за такого определения Factory._onevent постоянно долбится событиями
-    // но по другому (mouseeneter/leave) не сделать, потому что они случаться один раз на document
-    // как вариант для mouseenter/leave надо делать не $document.on(event), $document.on(event, '.nb')
-    events: {
-        'mouseover': 'onmouseenter'
+    oninit: function() {
+        this.onmouseenter = this.onmouseenter.bind(this);
+        this.$node.tooltip(this._getParams());
+        this.$node.on('mouseenter', this.onmouseenter);
     },
-
-    'onmouseenter': function() {
+    destroy: function() {
+        this.$node.tooltip('destroy');
+        this.$node.off('mouseenter', this.onmouseenter);
+        this.nbdestroy();
+    },
+    onmouseenter: function() {
         if (this.$node.hasClass('_nb-is-disabled')) {
             return true;
         }
-
-        var data = this.nbdata()[this.name];
-
+        this.$node.tooltip("open");
+    },
+    _getParams: function() {
+        var data = this.nbdata()[this.name] || {};
         var params = {
-            content: data.content,
-            items: '*',
-            tooltipClass: "nb-tooltip nb-island _nb-small-fly-island"
+            tooltipClass: 'nb-tooltip nb-island _nb-small-fly-island'
         };
 
+        if (data['class']) {
+            data.tooltipClass += ' ' + data['class'];
+        }
+        if (data.content) {
+            params.content = data.content;
+        }
         if (data.position) {
             params.position = data.position;
         }
-
-        this.$node.tooltip(params);
-        this.$node.tooltip("open");
+        return params;
     }
-
 }, 'base');
