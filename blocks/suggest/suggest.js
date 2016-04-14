@@ -227,7 +227,8 @@
                 minLength: this.$node.data('minLength'),
                 renderItem: function(data) {
                     return yr.run(that.getYateModuleName(), data, 'nb-suggest');
-                }
+                },
+                search: this.onBeforeStartSearch.bind(this)
             });
 
             this.$suggest = this.$jUI.data().uiSuggest.menu.element;
@@ -243,6 +244,24 @@
             this.$jUI.on('suggestselect.nb-suggest', this.onSelectValue.bind(this));
 
             this.trigger('nb-inited', this);
+        },
+
+        /**
+         * Callback of `suggestsearch` event.
+         * Called right before search starts, if prevented than suggest doesn't open.
+         * @private
+         */
+        onBeforeStartSearch: function(e) {
+            var selected = this.getSelected();
+
+            if (!selected) {
+                return;
+            }
+            // if user's selected the same value as input already has,
+            // there's no need to start search and open suggest once more time
+            if (this.getValue() === selected.value) {
+                e.preventDefault();
+            }
         },
 
         /**
