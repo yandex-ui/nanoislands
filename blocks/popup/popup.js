@@ -88,7 +88,11 @@
             // if we close modal popup by "esc", we should trigger 'nb-closed' event
             if (evt && evt.keyCode === 27 && this.options.modal) {
                 this.nbBlock = this.nbBlock || nb.find($(this.uiDialog[0]).find('.nb-popup').attr('id'));
-                this.nbBlock.trigger('nb-closed', this.nbBlock);
+
+                // Блока может и не быть.
+                if (this.nbBlock) {
+                    this.nbBlock.trigger('nb-closed', this.nbBlock);
+                }
             }
 
             if (this.options.autoclose) {
