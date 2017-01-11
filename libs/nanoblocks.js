@@ -190,7 +190,9 @@ var nb = nb || {};
         'mouseover',
         'mouseout',
         'focusin',
-        'focusout'
+        'focusout',
+        'touchstart',
+        'touchend'
     ];
 
 //  Regexp для строк вида 'click', 'click .foo'.

@@ -17,7 +17,8 @@
  */
 nb.define('select', {
         events: {
-            'mousedown': '_onclick'
+            'mousedown': '_onclick',
+            'touchstart': '_onclick'
             //'open' { event, ui}
             //'close' { event, ui}
         },
