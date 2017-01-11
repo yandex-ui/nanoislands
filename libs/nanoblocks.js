@@ -206,6 +206,10 @@ var nb = nb || {};
 
 //  Получает название блока по ноде.
     var _getName = function(node) {
+        if (node && window.SVGElementInstance && node instanceof window.SVGElementInstance) {
+            node = node.correspondingUseElement;
+        }
+
         var _data_nb = node.getAttribute('data-nb');
         return _data_nb ? _data_nb.trim().replace(/\s+/g, ' ') : _data_nb;
     };
@@ -1188,4 +1192,3 @@ var nb = nb || {};
 //  ---------------------------------------------------------------------------------------------------------------  //
 
 })();
-
