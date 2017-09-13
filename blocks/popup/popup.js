@@ -37,7 +37,7 @@
                         }
 
                         that.options.closedByOuterClick = true;
-                        that.close();
+                        that.close(e);
                     };
                     this.overlay.click(this._onmousedown);
                 } else {
@@ -64,7 +64,7 @@
                         }
 
                         that.options.closedByOuterClick = true;
-                        that.close();
+                        that.close(e);
                     };
 
                     this.document.on('mousedown', this._onmousedown);
