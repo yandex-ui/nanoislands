@@ -52,7 +52,7 @@ match .user nb-user-pic {
     </span>
 }
 
-match .user nb-user-name {
+match .user[!!.username || !!.email] nb-user-name {
     <span class="_nb-user-label">
         <span class="_nb-user-name _link" title="{.username}">
             .username
