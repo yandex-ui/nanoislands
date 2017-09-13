@@ -1,3 +1,7 @@
+##### 1.0.17
+
+* Some small fixes
+
 ##### 1.0.16
 
 * Most of islands v3 styles added.
