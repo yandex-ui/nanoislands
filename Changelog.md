@@ -1,3 +1,7 @@
+##### 1.0.15-beta — patch
+
+* small fixes
+
 ##### 1.0.9-alfa — patch
 
 * [React] — Fix js error on unmoutm island react component
