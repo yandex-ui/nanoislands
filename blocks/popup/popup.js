@@ -1,6 +1,6 @@
-/*! 
+/*!
  * ### jQuery UI Depends
- * 
+ *
  * - jquery.ui.dialog.js
  * - jquery.ui.core.js
  * - jquery.ui.widget.js
@@ -17,6 +17,166 @@
 
     // 60 fps is optimal rate for smooth changes
     var TIME_PER_FRAME = 1000 / 60;
+
+    /**
+     * Возвращает координаты левой верхней и правой нижней вершин прямоугольника,
+     * из значений `top`, `left`, `width` и `height`:
+     *
+     *     {
+     *         top: 20,
+     *         left: 25,
+     *         width: 50,
+     *         height: 20
+     *     }
+     *
+     * в
+     *
+     *     [
+     *         {
+     *             x: 25,
+     *             y: 20
+     *         },
+     *         {
+     *             x: 75,
+     *             y: 70
+     *         }
+     *     ]
+     *
+     * @param  {Object} d
+     * @return {Object}
+     * @private
+     */
+    function _getBoundingRectangle(d) {
+        return [
+            {
+                x: Math.round(d.left),
+                y: Math.round(d.top)
+            },
+            {
+                x: Math.round(d.left + d.width),
+                y: Math.round(d.top + d.height)
+            }
+        ];
+    }
+
+    /**
+     * Вычисляет направление хвостика попапа, принимая во внимание положение
+     * и размер обоих элементов.
+     *
+     * Сперва для каждого элемента вычисляются координаты вершин опоясывающего
+     * прямоугольника. После этого, для каждой внешней полуплоскости,
+     * образованной сторонами прямоугольника целевого элемента (т.н. тогглера)
+     * проверяется попадание вершин прямоугольника попапа.
+     *
+     * @param  {Object} targetDimensions Положение и измерения элемента, на который указывает попап
+     * @param  {Object} popupDimensions  Положение и измерения попапа
+     * @return {String} top|right|bottom|left
+     * @private
+     */
+    function _getPopupTailDirection(targetDimensions, popupDimensions) {
+        var p = _getBoundingRectangle(popupDimensions);
+        var t = _getBoundingRectangle(targetDimensions);
+
+        // Проверка полуплоскости вверх от целевого элемента.
+        if (p[0].y <= t[0].y && p[1].y <= t[0].y) {
+            return 'bottom';
+        }
+
+        // Проверка полуплоскости вправо от целевого элемента.
+        if (p[0].x >= t[1].x && p[1].x >= t[1].x) {
+            return 'left';
+        }
+
+        // Проверка полуплоскости вниз от целевого элемента.
+        if (p[0].y >= t[1].y && p[1].y >= t[1].y) {
+            return 'top';
+        }
+
+        // В оставшихся случаях попап лежит слева от тогглера.
+        return 'right';
+    }
+
+    /**
+     * Рассчитывает координату центра прямоугольника на основе значений
+     * `left`, `top`, `width`, `height`.
+     * @param  {Object} d
+     * @return {Object}
+     * @private
+     */
+    function _getElementCenter(d) {
+        return {
+            x: Math.round(d.left + (d.width / 2)),
+            y: Math.round(d.top + (d.height / 2))
+        };
+    }
+
+    /**
+     * Ограничивает переданное число в заданный промежуток.
+     * @param  {Number} number
+     * @param  {Array}  range  [min, max]
+     * @return {Number}
+     * @private
+     */
+    function _limitNumber(number, range) {
+        return Math.min(Math.max(number, range[0]), range[1]);
+    }
+
+    /**
+     * Возвращает строковое представление противоположного направления,
+     * например `top` -> `bottom`.
+     * @param  {String} direction
+     * @return {String}
+     * @private
+     */
+    function _getInverseDirection(direction) {
+        var inversion = {
+            top: 'bottom',
+            bottom: 'top',
+            left: 'right',
+            right: 'left'
+        };
+
+        return inversion[direction];
+    }
+
+    function _isDirectionVertical(direction) {
+        return direction === 'top' || direction === 'bottom';
+    }
+
+    /*!
+     *  Функция возвращает строку с модификаторами
+     *  для обертки попапа, которую добавляет jquery ui,
+     *  в соответсвии с модификаторами самого попапа
+     *
+     *  Например, для попапа заданы классы-модификаторы nb-popup_mod и nb-popup_another-mod,
+     *  функция вернет строку 'nb-popup-outer_mod nb-popup-outer_another-mod'
+     *
+     */
+    function _getUIDialogExtraClass() {
+        var popupClasses = this.element.attr('class').split(' ') || [];
+        // не матчимся на _ в начале слова
+        // иначе это глобальный класс,
+        // не мачимся на __, чтобы ислючить элемент
+        var modRe = /\w+\_(?!_)/;
+        var uiDialogClasses;
+
+        uiDialogClasses = $.map(popupClasses, function(item) {
+            var parts = item.split(modRe);
+            var l = parts.length;
+            var modifier = parts.pop();
+            var newClass = '';
+
+            // в массиве должно быть больше 1 элемента
+            // иначе модификатора не было
+            if (l > 1) {
+                newClass = 'nb-popup-outer_' + modifier;
+            }
+
+            return newClass;
+        });
+
+        return uiDialogClasses.join(' ');
+    }
 
     $.widget('nb.baseDialog', $.ui.dialog, {
         options: {
@@ -323,167 +483,6 @@
             }
         }
     };
-
-    /**
-     * Вычисляет направление хвостика попапа, принимая во внимание положение
-     * и размер обоих элементов.
-     *
-     * Сперва для каждого элемента вычисляются координаты вершин опоясывающего
-     * прямоугольника. После этого, для каждой внешней полуплоскости,
-     * образованной сторонами прямоугольника целевого элемента (т.н. тогглера)
-     * проверяется попадание вершин прямоугольника попапа.
-     *
-     * @param  {Object} targetDimensions Положение и измерения элемента, на который указывает попап
-     * @param  {Object} popupDimensions  Положение и измерения попапа
-     * @return {String} top|right|bottom|left
-     * @private
-     */
-    function _getPopupTailDirection(targetDimensions, popupDimensions) {
-        var p = _getBoundingRectangle(popupDimensions);
-        var t = _getBoundingRectangle(targetDimensions);
-
-        // Проверка полуплоскости вверх от целевого элемента.
-        if (p[0].y <= t[0].y && p[1].y <= t[0].y) {
-            return 'bottom';
-        }
-
-        // Проверка полуплоскости вправо от целевого элемента.
-        if (p[0].x >= t[1].x && p[1].x >= t[1].x) {
-            return 'left';
-        }
-
-        // Проверка полуплоскости вниз от целевого элемента.
-        if (p[0].y >= t[1].y && p[1].y >= t[1].y) {
-            return 'top';
-        }
-
-        // В оставшихся случаях попап лежит слева от тогглера.
-        return 'right';
-    }
-
-    /**
-     * Рассчитывает координату центра прямоугольника на основе значений
-     * `left`, `top`, `width`, `height`.
-     * @param  {Object} d
-     * @return {Object}
-     * @private
-     */
-    function _getElementCenter(d) {
-        return {
-            x: Math.round(d.left + (d.width / 2)),
-            y: Math.round(d.top + (d.height / 2))
-        };
-    }
-
-    /**
-     * Ограничивает переданное число в заданный промежуток.
-     * @param  {Number} number
-     * @param  {Array}  range  [min, max]
-     * @return {Number}
-     * @private
-     */
-    function _limitNumber(number, range) {
-        return Math.min(Math.max(number, range[0]), range[1]);
-    }
-
-    /**
-     * Возвращает координаты левой верхней и правой нижней вершин прямоугольника,
-     * из значений `top`, `left`, `width` и `height`:
-     *
-     *     {
-     *         top: 20,
-     *         left: 25,
-     *         width: 50,
-     *         height: 20
-     *     }
-     *
-     * в
-     *
-     *     [
-     *         {
-     *             x: 25,
-     *             y: 20
-     *         },
-     *         {
-     *             x: 75,
-     *             y: 70
-     *         }
-     *     ]
-     *
-     * @param  {Object} d
-     * @return {Object}
-     * @private
-     */
-    function _getBoundingRectangle(d) {
-        return [
-            {
-                x: Math.round(d.left),
-                y: Math.round(d.top)
-            },
-            {
-                x: Math.round(d.left + d.width),
-                y: Math.round(d.top + d.height)
-            }
-        ];
-    }
-
-    /**
-     * Возвращает строковое представление противоположного направления,
-     * например `top` -> `bottom`.
-     * @param  {String} direction
-     * @return {String}
-     * @private
-     */
-    function _getInverseDirection(direction) {
-        var inversion = {
-            top: 'bottom',
-            bottom: 'top',
-            left: 'right',
-            right: 'left'
-        };
-
-        return inversion[direction];
-    }
-
-    function _isDirectionVertical(direction) {
-        return direction === 'top' || direction === 'bottom';
-    }
-
-    /*!
-     *  Функция возвращает строку с модификаторами
-     *  для обертки попапа, которую добавляет jquery ui,
-     *  в соответсвии с модификаторами самого попапа
-     *
-     *  Например, для попапа заданы классы-модификаторы nb-popup_mod и nb-popup_another-mod,
-     *  функция вернет строку 'nb-popup-outer_mod nb-popup-outer_another-mod'
-     *
-     */
-    function _getUIDialogExtraClass() {
-        var popupClasses = this.element.attr('class').split(' ') || [];
-        // не матчимся на _ в начале слова
-        // иначе это глобальный класс,
-        // не мачимся на __, чтобы ислючить элемент
-        var modRe = /\w+\_(?!_)/;
-        var uiDialogClasses;
-
-        uiDialogClasses = $.map(popupClasses, function(item) {
-            var parts = item.split(modRe);
-            var l = parts.length;
-            var modifier = parts.pop();
-            var newClass = '';
-
-            // в массиве должно быть больше 1 элемента
-            // иначе модификатора не было
-            if (l > 1) {
-                newClass = 'nb-popup-outer_' + modifier;
-            }
-
-            return newClass;
-        });
-
-        return uiDialogClasses.join(' ');
-    }
-
 
     nb.define('popup', {
 

@@ -1,4 +1,21 @@
 (function() {
+    var highlightings = {
+        'default': function(item, term) {
+            var matcher = new RegExp('(' + $.ui.autocomplete.escapeRegex(term) + ')', "i");
+            item.label = item.label.replace(matcher, '<b>$1</b>');
+        },
+
+        'username': function(item, term) {
+            var matcher = new RegExp('(' + $.ui.autocomplete.escapeRegex(term) + ')', "ig");
+
+            item.usernameHighlighted = item.username.replace(matcher, '<span class="_nb-suggest-hl">$1</span>');
+
+            if (typeof item.email == 'string') {
+                item.emailHighlighted = item.email.replace(matcher, '<span class="_nb-suggest-hl">$1</span>');
+            }
+        }
+    };
+
     /*!
      * Саджест
      * @namespace jquery.ui.suggest
@@ -154,23 +171,6 @@
             return this._super(value, event);
         }
     });
-
-    var highlightings = {
-        'default': function(item, term) {
-            var matcher = new RegExp('(' + $.ui.autocomplete.escapeRegex(term) + ')', "i");
-            item.label = item.label.replace(matcher, '<b>$1</b>');
-        },
-
-        'username': function(item, term) {
-            var matcher = new RegExp('(' + $.ui.autocomplete.escapeRegex(term) + ')', "ig");
-
-            item.usernameHighlighted = item.username.replace(matcher, '<span class="_nb-suggest-hl">$1</span>');
-
-            if (typeof item.email == 'string') {
-                item.emailHighlighted = item.email.replace(matcher, '<span class="_nb-suggest-hl">$1</span>');
-            }
-        }
-    };
 
     /*
      * ### jQuery UI Depends:
