@@ -101,7 +101,7 @@ var nb = nb || {};
 
         function parseValue(value) {
             var ch = value.charAt(0);
-            return (ch === '[' || ch === '{') ? eval('(' + value + ')') : value;
+            return (ch === '[' || ch === '{') ? JSON.parse(value) : value;
         }
     };
 
